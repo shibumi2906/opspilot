@@ -1,0 +1,96 @@
+{
+  "model": "gpt-4o-mini-tts",
+  "voice": "cedar",
+  "scenes": [
+    {
+      "scene": 1,
+      "start": 0.8,
+      "end": 13.5,
+      "source_seconds": 12.773792,
+      "tempo": 1.0058103937007874
+    },
+    {
+      "scene": 2,
+      "start": 14.2,
+      "end": 20.0,
+      "source_seconds": 5.271042,
+      "tempo": 1.0
+    },
+    {
+      "scene": 3,
+      "start": 21.0,
+      "end": 35.0,
+      "source_seconds": 15.005792,
+      "tempo": 1.0718422857142857
+    },
+    {
+      "scene": 4,
+      "start": 36.2,
+      "end": 48.5,
+      "source_seconds": 9.734167,
+      "tempo": 1.0
+    },
+    {
+      "scene": 5,
+      "start": 49.5,
+      "end": 64.0,
+      "source_seconds": 12.226458,
+      "tempo": 1.0
+    },
+    {
+      "scene": 6,
+      "start": 65.0,
+      "end": 76.5,
+      "source_seconds": 9.219958,
+      "tempo": 1.0
+    },
+    {
+      "scene": 7,
+      "start": 78.0,
+      "end": 90.0,
+      "source_seconds": 8.225708,
+      "tempo": 1.0
+    },
+    {
+      "scene": 8,
+      "start": 91.5,
+      "end": 110.0,
+      "source_seconds": 17.01975,
+      "tempo": 1.0
+    },
+    {
+      "scene": 9,
+      "start": 113.0,
+      "end": 126.0,
+      "source_seconds": 9.530083,
+      "tempo": 1.0
+    },
+    {
+      "scene": 10,
+      "start": 128.0,
+      "end": 145.0,
+      "source_seconds": 13.416208,
+      "tempo": 1.0
+    },
+    {
+      "scene": 11,
+      "start": 147.0,
+      "end": 157.5,
+      "source_seconds": 11.537208,
+      "tempo": 1.0987817142857144
+    }
+  ],
+  "output_seconds": 158.4,
+  "source_video_sha256": "bcd7bb3021c6a8e515bc0747522d1f611e9ed4850d081b9857bbdc6dbd324ba2",
+  "narration_type": "AI-generated English speech",
+  "output_video": "opspilot-demo-narrated.mp4",
+  "output_video_sha256": "e899e5433591c93156ecaa6f17f2d708259406e475ef0d552646d14c92a1cb1a",
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "audio_sample_rate": 48000,
+  "peak_dbfs": -1.3,
+  "clip_count": 11,
+  "paid_speech_requests": 11,
+  "usage_tokens": null,
+  "usage_note": "Speech WAV responses did not include billed token usage; exact cost is not asserted."
+}

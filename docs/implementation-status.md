@@ -324,3 +324,19 @@ are descriptive portfolio evidence, not production safety or latency guarantees.
 limits are unchanged: one API process, no durable queue, bounded approval/committed-result
 recovery only, synthetic integrations, no public hosting or production authentication.
 All eight Portfolio MVP stages are done; Phase 2 has not been added.
+
+## English narrated demo follow-up (18 October 2026)
+
+At the user's explicit request, added English AI-generated speech to the existing recording;
+no browser re-recording or new eval was performed. Output: docs/assets/opspilot-demo-narrated.mp4.
+The original silent WebM is unchanged. OpenAI Speech API generated 11 cached WAV segments using
+model gpt-4o-mini-tts and built-in voice cedar. Only the synthetic English narration text and
+voice instructions were sent; the local API key was not included in artifacts or command lines.
+Final assembly is local. Timed narration and measured media metadata are stored beside the MP4.
+
+Verification: 1440x1000 H.264 + mono AAC at 48 kHz; video/audio both 158.4 s, 6,615,971 bytes.
+All 11 scene intervals are ordered and nonoverlapping. Maximum tempo adjustment is under 1.10x.
+Audio decode/volume check succeeded, peak -1.3 dBFS (no full-scale clipping). Exact API cost is
+not asserted because the WAV responses contain no billed token usage. Cached synthesis does
+not repeat requests. Documentation explicitly discloses the AI-generated voice.
+Application implementation and the previously passed release/eval results are unchanged.

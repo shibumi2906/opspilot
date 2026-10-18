@@ -1,0 +1,13 @@
+[
+  {"start":0.8,"end":13.5,"text":"Meet OpsPilot. AI proposes, a deterministic core controls execution, and a human authorizes each write. This walkthrough uses synthetic data and a clearly labeled scripted model."},
+  {"start":14.2,"end":20.0,"text":"Let's investigate why GreenShop orders are failing today, using real MCP tools."},
+  {"start":21.0,"end":35.0,"text":"The evidence shows a degraded integration, repeated HTTP four oh one responses, and an expired credential. Together, these observations support a hypothesis. Historical incidents and documentation provide context, not proof."},
+  {"start":36.2,"end":48.5,"text":"OpsPilot proposes one internal ticket. The exact fields are saved before approval. The model cannot authorize this write, and no ticket has been created yet."},
+  {"start":49.5,"end":64.0,"text":"Now the API process is forcibly stopped while approval is pending. PostgreSQL retains the graph checkpoint and immutable action. The operator's consent remains pending throughout the restart."},
+  {"start":65.0,"end":76.5,"text":"The graph, checkpoints, MCP connections, and ticket operations are real. A separate twelve scenario evaluation also passed with a real language model."},
+  {"start":78.0,"end":90.0,"text":"After restart, the same investigation returns with the same action ID and payload hash. Recovery does not invent a new action or assume consent."},
+  {"start":91.5,"end":110.0,"text":"Let's approve. The MCP server independently checks the stored approval and exact payload, then saves the ticket and execution result atomically. OpsPilot reads the ticket back and verifies every expected field. Verified ticket creation does not mean order delivery has recovered."},
+  {"start":113.0,"end":126.0,"text":"Now let's investigate again and choose Reject. The same policy boundary applies: without the operator's approval, the proposed ticket must not be created."},
+  {"start":128.0,"end":145.0,"text":"The rejection is recorded, and the workflow finishes without a ticket. Evidence and the saved decision remain available for review. This is a local portfolio demonstration, with bounded recovery rather than general production crash recovery."},
+  {"start":147.0,"end":157.5,"text":"AI interprets and proposes. Explicit code validates, persists, and verifies. The operator decides. OpsPilot keeps that boundary visible and testable."}
+]
