@@ -1,0 +1,28 @@
+{
+  "status": "degraded",
+  "credential_status": "expired",
+  "last_success_minutes_before_clock": 40,
+  "events": [
+    {
+      "event_id": "00000000-0000-0000-0000-000000000401",
+      "minutes_before_clock": 35,
+      "http_status": 401,
+      "event_type": "order_delivery_failed",
+      "summary": "Synthetic delivery rejected"
+    },
+    {
+      "event_id": "00000000-0000-0000-0000-000000000402",
+      "minutes_before_clock": 20,
+      "http_status": 401,
+      "event_type": "order_delivery_failed",
+      "summary": "Synthetic delivery rejected"
+    },
+    {
+      "event_id": "00000000-0000-0000-0000-000000000403",
+      "minutes_before_clock": 5,
+      "http_status": 401,
+      "event_type": "order_delivery_failed",
+      "summary": "Synthetic delivery rejected"
+    }
+  ]
+}

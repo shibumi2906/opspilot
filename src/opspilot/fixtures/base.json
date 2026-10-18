@@ -1,0 +1,180 @@
+{
+  "customers": [
+    {
+      "id": "00000000-0000-0000-0000-000000000001",
+      "name": "GreenShop"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000002",
+      "name": "BlueMarket"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000003",
+      "name": "GreenShop EU"
+    }
+  ],
+  "integrations": [
+    {
+      "id": "00000000-0000-0000-0000-000000000101",
+      "customer_id": "00000000-0000-0000-0000-000000000001",
+      "integration_type": "shopify",
+      "external_ref": "synthetic-shop-1"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000102",
+      "customer_id": "00000000-0000-0000-0000-000000000002",
+      "integration_type": "shopify",
+      "external_ref": "synthetic-shop-2"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000103",
+      "customer_id": "00000000-0000-0000-0000-000000000003",
+      "integration_type": "shopify",
+      "external_ref": "synthetic-shop-3"
+    }
+  ],
+  "incidents": [
+    {
+      "id": "00000000-0000-0000-0000-000000000201",
+      "customer_id": "00000000-0000-0000-0000-000000000001",
+      "integration_type": "shopify",
+      "language": "ru",
+      "days_before_clock": 3,
+      "summary": "Заказы Shopify не приходят, HTTP 401",
+      "root_cause": "Истёк срок credential",
+      "resolution": "После ручного обновления credential поток восстановился"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000202",
+      "customer_id": "00000000-0000-0000-0000-000000000002",
+      "integration_type": "shopify",
+      "language": "en",
+      "days_before_clock": 6,
+      "summary": "Shopify delivery failed with HTTP 401",
+      "root_cause": "Expired credential",
+      "resolution": "Support replaced the expired credential"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000203",
+      "customer_id": "00000000-0000-0000-0000-000000000003",
+      "integration_type": "shopify",
+      "language": "ru",
+      "days_before_clock": 9,
+      "summary": "Ограничение частоты API 429",
+      "root_cause": "Превышен rate limit",
+      "resolution": "Уменьшена частота повторов"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000204",
+      "customer_id": "00000000-0000-0000-0000-000000000001",
+      "integration_type": "shopify",
+      "language": "en",
+      "days_before_clock": 12,
+      "summary": "Shopify provider outage",
+      "root_cause": "Provider unavailable",
+      "resolution": "Waited for provider recovery"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000205",
+      "customer_id": "00000000-0000-0000-0000-000000000002",
+      "integration_type": "shopify",
+      "language": "ru",
+      "days_before_clock": 15,
+      "summary": "Webhook отключён",
+      "root_cause": "Webhook disabled",
+      "resolution": "Webhook включён оператором"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000206",
+      "customer_id": "00000000-0000-0000-0000-000000000003",
+      "integration_type": "shopify",
+      "language": "en",
+      "days_before_clock": 18,
+      "summary": "Duplicate delivery events",
+      "root_cause": "Repeated webhook delivery",
+      "resolution": "Applied event deduplication"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000207",
+      "customer_id": "00000000-0000-0000-0000-000000000001",
+      "integration_type": "shopify",
+      "language": "ru",
+      "days_before_clock": 21,
+      "summary": "Сбой доставки заказов",
+      "root_cause": "Неверная конфигурация endpoint",
+      "resolution": "Исправлен endpoint"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000208",
+      "customer_id": "00000000-0000-0000-0000-000000000002",
+      "integration_type": "shopify",
+      "language": "en",
+      "days_before_clock": 24,
+      "summary": "Credential revoked",
+      "root_cause": "Revoked credential",
+      "resolution": "Operator issued replacement credential"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000209",
+      "customer_id": "00000000-0000-0000-0000-000000000003",
+      "integration_type": "shopify",
+      "language": "ru",
+      "days_before_clock": 27,
+      "summary": "Краткий timeout мониторинга",
+      "root_cause": "Временная недоступность мониторинга",
+      "resolution": "Повторная проверка статуса"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000210",
+      "customer_id": "00000000-0000-0000-0000-000000000001",
+      "integration_type": "shopify",
+      "language": "en",
+      "days_before_clock": 30,
+      "summary": "Orders delivery healthy",
+      "root_cause": "No incident confirmed",
+      "resolution": "Read-only check completed"
+    }
+  ],
+  "articles": [
+    {
+      "id": "00000000-0000-0000-0000-000000000301",
+      "title": "Shopify: 401 и истёкший credential",
+      "body": "Код 401 не доказывает истечение токена. Проверьте статус credential. Если expired подтверждён, создайте тикет после согласия оператора. Токен обновляется отдельно человеком.",
+      "integration_type": "shopify",
+      "language": "ru",
+      "version": "1.0"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000302",
+      "title": "Shopify credential troubleshooting",
+      "body": "Check current service status and credential metadata. HTTP 401 alone is insufficient to confirm expiration. Never expose secret values.",
+      "integration_type": "shopify",
+      "language": "en",
+      "version": "1.0"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000303",
+      "title": "Мониторинг недоступен",
+      "body": "При timeout отмечайте недостающие наблюдения. Не утверждайте исправность сервиса или подтверждённую причину без данных.",
+      "integration_type": "shopify",
+      "language": "ru",
+      "version": "1.0"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000304",
+      "title": "Shopify rate limiting",
+      "body": "HTTP 429 may indicate rate limiting. Inspect events and provider status before selecting a mitigation.",
+      "integration_type": "shopify",
+      "language": "en",
+      "version": "1.0"
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000000305",
+      "title": "Проверка доставки заказов",
+      "body": "Успешное создание тикета не означает восстановление интеграции. Отдельно проверьте последний успешный заказ и новые события.",
+      "integration_type": "shopify",
+      "language": "ru",
+      "version": "1.0"
+    }
+  ]
+}

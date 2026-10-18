@@ -1,0 +1,73 @@
+name: opspilot
+
+x-app: &app
+  image: opspilot:stage1
+  build:
+    context: .
+    target: runtime
+  init: true
+
+x-common-env: &common-env
+  APP_ENV: ${APP_ENV:-local}
+  MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
+  SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
+  SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
+  LLM_MODE: ${LLM_MODE:-scripted}
+
+services:
+  postgres:
+    image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+    environment:
+      POSTGRES_DB: opspilot
+      POSTGRES_USER: ops_migration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Fill POSTGRES_PASSWORD in .env}
+      WORKFLOW_DB_PASSWORD: ${WORKFLOW_DB_PASSWORD:?Fill WORKFLOW_DB_PASSWORD in .env}
+      DOMAIN_DB_PASSWORD: ${DOMAIN_DB_PASSWORD:?Fill DOMAIN_DB_PASSWORD in .env}
+      CHECKPOINT_DB_PASSWORD: ${CHECKPOINT_DB_PASSWORD:?Fill CHECKPOINT_DB_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  api:
+    <<: *app
+    environment:
+      <<: *common-env
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot?options=-csearch_path%3Dcheckpoints
+      MCP_URL: http://mcp:8001/mcp
+    ports:
+      - 127.0.0.1:${API_PORT:-8000}:8000
+    depends_on:
+      postgres: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=8)"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  mcp:
+    <<: *app
+    command: [python, -m, opspilot.mcp_server.main]
+    environment:
+      <<: *common-env
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  admin:
+    <<: *app
+    profiles: [tools]
+    environment:
+      <<: *common-env
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot
+    depends_on:
+      postgres: {condition: service_healthy}
+    command: [alembic, upgrade, head]
+
+volumes:
+  pgdata:

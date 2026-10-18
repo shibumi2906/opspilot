@@ -1,0 +1,39 @@
+# Always combine with compose.yaml and the distinct project name opspilot-test.
+services:
+  postgres:
+    environment:
+      POSTGRES_DB: opspilot_test
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot_test]
+  api:
+    ports: !reset []
+    environment:
+      APP_ENV: test
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
+  mcp:
+    environment:
+      APP_ENV: test
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
+  admin:
+    environment:
+      APP_ENV: test
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_test
+  tests:
+    image: opspilot:stage1-tests
+    build:
+      context: .
+      target: tests
+    init: true
+    environment:
+      APP_ENV: test
+      MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN}
+      MCP_URL: http://mcp:8001/mcp
+      TEST_API_URL: http://api:8000
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_test
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
+    depends_on:
+      api: {condition: service_healthy}
+      mcp: {condition: service_started}

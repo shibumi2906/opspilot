@@ -1,0 +1,49 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opspilot"
+version = "0.1.0"
+description = "Human-controlled operational incident investigation: Portfolio MVP"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "uvicorn>=0.34,<1",
+  "pydantic>=2.11,<3",
+  "pydantic-settings>=2.8,<3",
+  "sqlalchemy>=2.0.40,<2.1",
+  "psycopg[binary,pool]>=3.2,<4",
+  "alembic>=1.15,<2",
+  "mcp>=1.28,<2",
+  "httpx>=0.28,<1",
+  "loguru>=0.7,<1",
+  "langgraph>=1,<2",
+  "langgraph-checkpoint-postgres>=3,<4",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "pytest-asyncio>=0.26,<2", "ruff>=0.11,<1", "mypy>=1.15,<2"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opspilot"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = ["integration: requires an isolated migrated PostgreSQL database and MCP server"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+extend-exclude = [".tools", ".uv-cache", ".uv-clean-cache", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+python_version = "3.12"
+strict = true
+packages = ["opspilot"]
+mypy_path = "src"
