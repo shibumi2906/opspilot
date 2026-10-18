@@ -9,7 +9,7 @@
 | 3 | done | LangGraph, checkpoints, providers и CLI; 94 теста и полный live smoke прошли |
 | 4 | done | Immutable action, PostgreSQL interrupt, background API, Approve/Reject и singleton guard |
 | 5 | done | Atomic MCP create_ticket, approval barrier, replay и exact get_ticket verification |
-| 6 | not_started | React UI |
+| 6 | done | React UI, same-origin proxy, live progress; 122 Python tests + 9 Playwright scenarios passed |
 | 7 | not_started | Restart recovery и traces |
 | 8 | not_started | 12 eval cases, CI и release materials |
 
@@ -212,3 +212,27 @@ mismatch, raw grant/fault flag rejection, rollback after insert, lost write resp
 unknown write status, verification mismatch/missing ticket, reserved verification read,
 and repeated HTTP Approve with the same ticket ID. Read/seed checks preserve existing tickets.
 No paid real-LLM run was repeated for this stage; UI and restart recovery remain stages 6–7.
+
+## Stage 6 implementation (18 October 2026)
+
+- Two-column React workspace, responsive mobile layout, permanently visible mode and synthetic disclosure.
+- AI/Core/Human labels expose the deterministic-core / AI-layer boundary in the actual product.
+- Browser request -> live saved steps/evidence -> immutable approval -> exact verified ticket/report.
+- URL-based run restoration; one active polling GET with abort/cleanup, backoff and terminal stop.
+- Duplicate create requests retain client_request_id; decision errors reconcile before retry.
+- Source cards render source text safely and include evidence IDs/timestamps and missing checks.
+- nginx same-origin proxy; loopback web/API publication; no frontend MCP or database secrets.
+- Backend now publishes bounded progress after each node and exposes a minimal public config.
+- Playwright covers real Approve/Reject, pending refresh, duplicate clicks, reconnect, lost responses,
+  source text safety, narrow layout and unverified error states. Ticket-count assertions use test DB only.
+- Docker/lockfile pins make frontend and Chromium checks reproducible without host npm/browser setup.
+
+Validation: **122 Python tests passed (56.45 s)** against isolated PostgreSQL/MCP/API;
+**9 Playwright scenarios passed (46.4 s)** through the real nginx proxy and Chromium.
+TypeScript/Vite production build, ruff, mypy and diff checks passed. Desktop and 390px
+mobile screenshots were visually inspected; a separate headless Edge smoke passed.
+ESM test resolution and HTTP-origin UUID generation issues found during browser validation
+were fixed and the complete browser suite rerun successfully. Timeout/incomplete steps
+use a warning state, not a green success marker. No paid LLM run was repeated.
+The isolated test stack was stopped without deleting its volume. Demo UI was started on
+loopback port 8081 because 8080 was occupied; only ignored .env WEB_PORT was adjusted.

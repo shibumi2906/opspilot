@@ -82,3 +82,18 @@ No tickets/actions/approvals were created. See implementation-status.md for acce
 Stage 5 extends the same pinned MCP SDK/protocol to nine tools: eight read-tools plus
 create_ticket. Discovery validates exact input/result schemas for all nine; LLM binding
 continues to use only the eight read contracts. No dependency or schema migration was needed.
+
+## Stage 6 frontend
+
+Registry-verified exact dependencies and transitive integrity hashes are in web/package-lock.json:
+React/react-dom 19.3.1, Vite 8.3.4, TypeScript 7.0.2, Playwright 1.64.1.
+Node 24.18.0 bookworm-slim, nginx 1.30.6-alpine and the matching Playwright v1.64.1-noble
+images are pinned by digest in web/Dockerfile. PostgreSQL pg is a dev/test dependency only.
+
+References checked during implementation:
+- https://vite.dev/guide/ (Node compatibility and static build)
+- https://react.dev/reference/react/useEffect (cleanup for async effects)
+- https://playwright.dev/docs/docker (matching package/image versions)
+
+npm scripts invoke package entrypoints through node directly to support Windows checkout
+paths containing spaces and ampersands. No global Vite/TypeScript/Playwright installation is used.

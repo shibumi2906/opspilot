@@ -9,6 +9,9 @@ services:
     ports: !reset []
     environment:
       APP_ENV: test
+      LLM_MODE: scripted
+      OPENAI_API_KEY: ""
+      SCENARIO_ID: greenshop_expired
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
   mcp:
@@ -37,3 +40,19 @@ services:
     depends_on:
       api: {condition: service_healthy}
       mcp: {condition: service_started}
+
+  web:
+    ports: !reset []
+  e2e:
+    image: opspilot:e2e
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      target: e2e
+    init: true
+    ipc: host
+    environment:
+      E2E_BASE_URL: http://web
+      E2E_DATABASE_URL: postgresql://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
+    depends_on:
+      web: {condition: service_healthy}

@@ -1,6 +1,9 @@
 import copy
+import time
 from collections.abc import Awaitable, Callable
+from datetime import UTC, datetime
 from typing import Any
+from uuid import uuid4
 
 from langchain_core.runnables import RunnableLambda
 from langgraph.checkpoint.base import BaseCheckpointSaver
@@ -35,6 +38,8 @@ def build_graph(
     def guarded(name: str, node: Node) -> Callable[[AgentState], Awaitable[AgentState]]:
         async def invoke(current: AgentState) -> AgentState:
             state = copy.deepcopy(current)
+            started = time.monotonic()
+            started_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
             try:
                 if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
@@ -56,6 +61,34 @@ def build_graph(
                     "node": name,
                 }
             state["budget"] = runtime.budget.snapshot()
+            steps = state.setdefault("steps", {})
+            identity = str(uuid4())
+            steps[identity] = {
+                "id": identity,
+                "sequence": len(steps) + 1,
+                "node": name,
+                "type": "ai" if name in {"classify", "investigate", "reason", "plan"} else "core",
+                "status": "failed"
+                if name in state.get("errors", {})
+                else (
+                    "incomplete"
+                    if name != "report"
+                    and state.get("outcome")
+                    in {
+                        "partial",
+                        "unknown_outcome",
+                        "budget_exhausted",
+                        "blocked",
+                        "insufficient_context",
+                    }
+                    else "completed"
+                ),
+                "summary": name,
+                "started_at": started_at,
+                "duration_ms": round((time.monotonic() - started) * 1000),
+            }
+            if runtime.on_update is not None:
+                await runtime.on_update(state)
             return state
 
         return invoke

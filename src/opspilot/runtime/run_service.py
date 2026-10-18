@@ -92,6 +92,7 @@ class RunService:
                 created_at=run.created_at.isoformat().replace("+00:00", "Z"),
                 updated_at=run.updated_at.isoformat().replace("+00:00", "Z"),
                 report=public.get("final_report"),
+                missing_checks=public.get("missing_checks") or [],
                 timeline=public.get("timeline", []),
                 hypotheses=public.get("hypotheses") or [],
                 evidence=list((public.get("evidence") or {}).values()),

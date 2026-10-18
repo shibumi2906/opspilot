@@ -13,11 +13,11 @@ function Invoke-LocalCompose {
 }
 
 if (-not $SkipBuild) {
-    Invoke-LocalCompose -Arguments @('build', 'api', 'mcp')
+    Invoke-LocalCompose -Arguments @('build', 'api', 'mcp', 'web')
 }
 Invoke-LocalCompose -Arguments @('up', '-d', '--wait', 'postgres')
 Invoke-LocalCompose -Arguments @('run', '--rm', 'admin')
 Invoke-LocalCompose -Arguments @('run', '--rm', 'admin', 'python', '-m', 'opspilot.cli.seed')
 Invoke-LocalCompose -Arguments @('run', '--rm', '--no-deps', 'api', 'python', '-m', 'opspilot.cli.init_checkpoints')
-Invoke-LocalCompose -Arguments @('up', '-d', '--wait', 'mcp', 'api')
-Write-Output 'Local opspilot database and services ready: http://127.0.0.1:8000/health (default port).'
+Invoke-LocalCompose -Arguments @('up', '-d', '--wait', 'mcp', 'api', 'web')
+Write-Output 'OpsPilot ready: http://127.0.0.1:8080 (UI), http://127.0.0.1:8000/health (default ports).'

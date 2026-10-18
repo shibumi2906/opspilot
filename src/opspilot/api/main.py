@@ -37,6 +37,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             await app.state.engine.dispose()
 
     app = FastAPI(title="OpsPilot", version="0.1.0", lifespan=lifespan)
+
+    @app.get("/api/v1/config")
+    async def public_config() -> dict[str, object]:
+        return {
+            "mode": settings.llm_mode,
+            "model_id": settings.openai_model if settings.llm_mode == "real" else None,
+            "synthetic": True,
+            "scenario_clock": settings.scenario_clock.isoformat(),
+            "timezone": "Asia/Jerusalem",
+        }
+
     install_errors(app)
     app.include_router(runs_router)
     app.include_router(router)

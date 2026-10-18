@@ -1,5 +1,6 @@
 import asyncio
 import random
+from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
 from typing import Any, TypeVar
 from uuid import UUID, uuid4
@@ -23,7 +24,14 @@ T = TypeVar("T", bound=BaseModel)
 class Runtime:
     """Non-serializable dependencies and counters live outside the checkpoint state."""
 
-    def __init__(self, settings: Settings, provider: Provider, budget: Budget) -> None:
+    def __init__(
+        self,
+        settings: Settings,
+        provider: Provider,
+        budget: Budget,
+        on_update: Callable[[AgentState], Awaitable[None]] | None = None,
+    ) -> None:
+        self.on_update = on_update
         self.settings = settings
         self.provider = provider
         self.budget = budget

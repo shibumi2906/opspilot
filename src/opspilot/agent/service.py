@@ -133,7 +133,22 @@ async def run_investigation(
         }
         try:
             async with postgres_checkpointer(settings) as saver:
-                runtime = Runtime(settings, provider, Budget(limits))
+
+                async def publish(progress: AgentState) -> None:
+                    async with engine.begin() as connection:
+                        await connection.execute(
+                            update(AgentRun)
+                            .where(AgentRun.id == run_id)
+                            .values(
+                                public_snapshot={**project(dict(progress)), "status": "running"},
+                                language=progress.get("language", "en"),
+                                tool_results=progress.get("observations", {}),
+                                usage=progress["budget"],
+                                updated_at=datetime.now(UTC),
+                            )
+                        )
+
+                runtime = Runtime(settings, provider, Budget(limits), on_update=publish)
                 async with runtime.client.session() as (mcp_session, _):
                     await runtime.client.discover(mcp_session)
                 graph = build_graph(runtime, saver)
@@ -192,6 +207,7 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
             "candidates",
             "evidence",
             "hypotheses",
+            "missing_checks",
             "proposed_action",
             "policy_result",
             "budget",
@@ -218,11 +234,13 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
         }
         for index, (key, call) in enumerate(calls[:100], 1)
     ]
-    if state.get("action_id"):
+    if state.get("steps"):
+        timeline = list(state["steps"].values())[:300]
+    if state.get("__interrupt__") and state.get("action_id"):
         timeline.append(
             {
                 "id": state["action_id"],
-                "sequence": len(calls[:100]) + 1,
+                "sequence": len(timeline) + 1,
                 "node": "approval",
                 "type": "approval",
                 "status": public["status"],
@@ -233,5 +251,5 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
             }
         )
     public["timeline"] = timeline
-    public["truncated"] = len(calls) > 100
+    public["truncated"] = len(calls) > 100 or len(state.get("steps", {})) > 300
     return public

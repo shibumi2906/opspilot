@@ -103,6 +103,10 @@ async def test_monitoring_gates(overlay_settings, outcome):
         assert not result["hypotheses"]
         assert not any("expired" in f["statement"] for f in result["final_report"]["facts"])
     if overlay_settings.scenario_id == "timeout":
+        assert any(
+            step["node"] == "execute_reads" and step["status"] == "incomplete"
+            for step in result["timeline"]
+        )
         assert "get_service_status" in result["final_report"]["missing_checks"]
         assert result["budget"]["read_attempts"] == 5  # lookup/customer + three failed attempts
 
