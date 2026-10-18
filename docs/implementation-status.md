@@ -10,8 +10,8 @@
 | 4 | done | Immutable action, PostgreSQL interrupt, background API, Approve/Reject и singleton guard |
 | 5 | done | Atomic MCP create_ticket, approval barrier, replay и exact get_ticket verification |
 | 6 | done | React UI, same-origin proxy, live progress; 122 Python tests + 9 Playwright scenarios passed |
-| 7 | not_started | Restart recovery и traces |
-| 8 | not_started | 12 eval cases, CI и release materials |
+| 7 | done | Hard-process restart recovery, committed-write reconciliation, OTel/Jaeger и linked continuation; commit 5690992 |
+| 8 | done | 129 Python tests, 3 API hard-restart tests, 9 browser scenarios; scripted 12/12 и real 12/12; CI, screenshots и существующее demo |
 
 ## Этап 1: реализация
 
@@ -265,3 +265,62 @@ are recorded with that final change. No real-provider request was needed for thi
 
 Final optimized recovery implementation: **7 targeted process/recovery tests passed
 (60.45 s)**. All final stage 7 checks passed. Stage 7 is complete.
+
+## Stage 8 implementation (18 October 2026)
+
+- Twelve strict data-driven cases E01-E12 live in src/opspilot/evals/scenarios.yaml
+  (JSON-compatible YAML). Runner uses the production graph, actual MCP SDK transport and
+  isolated opspilot_test database only. It seeds fixtures, temporarily overlays articles,
+  restores them in finally, measures DB rows before decisions and after completion, and
+  allows read-route variations. Verification reads are excluded from diagnostic metrics.
+- Assertions cover required observations, current-versus-historical evidence, ambiguity,
+  unsupported canonical facts, budgets, immutable approval, exact tickets and replay.
+  Evaluator regression tests reject unapproved/duplicate/false-success synthetic results.
+- Reports retain all 12 cases, actual model IDs, clocks, provider errors, dependencies,
+  prompt/fixture/scenario hashes, usage, human wait, latency and metric denominators.
+  Source identity is parent commit 5690992 with dirty_snapshot=true; reports do not pretend
+  to have been produced from a future commit. Supplemental human-wait/error measurements
+  for the real report came from those same stored runs, without new provider calls.
+- CI runs lint, format, mypy, Python integration/contracts, Playwright, hard-process recovery
+  and scripted eval with generated local credentials. Provider secrets are absent from the
+  workflow. The workflow has been added; no remote GitHub CI run is claimed.
+- new-local-env.ps1 creates independent random secrets and refuses overwrite; setup preserves
+  the existing .env and WEB_PORT=8081. README keeps the AI-layer / deterministic-core position.
+- docs/assets contains the already recorded browser demo and five screenshots. The WebM is
+  1440x1000, VP9, **158.4 seconds**, decoded successfully. It shows actual pending API kill/start,
+  same action/hash, Approve/verified ticket and Reject. No further video creation was performed
+  after the user's stop instruction. docs/demo.md links the files and reproduction command.
+
+### Measured release checks
+
+A fresh Compose project opspilot-release-final used a new empty PostgreSQL volume and
+new generated credentials. Migrations, seed, checkpoint initialization and service startup
+passed. The first attempt exposed an unwritable tool-cache path; checks now disable Ruff
+cache and put mypy cache under /tmp. The fresh environment was rerun successfully:
+
+| Check | Result |
+| --- | --- |
+| Runtime/test/UI builds and fresh migration/seed | passed |
+| Ruff check/format and mypy | passed; 78 Python source files |
+| Full Python suite | **129 passed, 3 dedicated-process skips, 93.43 s** |
+| Separate real FastAPI kill/restart suite | **3 passed, 44.11 s** |
+| Playwright Chromium | **9 passed, 53.6 s** |
+| Scripted eval in fresh environment | **12/12**, hard safety gate passed |
+| Final evaluator tests after reporting-only additions | **2 passed, 1.50 s** |
+| Final scripted report with measured human wait | **12/12**, hard safety gate passed |
+| Real OpenAI Responses eval | **12/12**, actual model gpt-5.6-terra |
+| Secret checks | 176 candidate repo files, API/MCP/Collector logs and 2 Jaeger services; 0 leaks |
+
+Real eval used explicit user authorization to send synthetic requests/evidence to
+https://api.openai.com/v1/responses. Measured input/output: **92141 / 10258 tokens**;
+unknown usage attempts=0. Task completion=12/12; read-route macro precision/recall=1.0/1.0
+across 11 eligible cases. Unauthorized writes=0/2; exact approved writes=2/2; duplicates=0;
+false verified success=0; unsupported canonical factual claims=0/59. Active latency p50/p95
+(nearest rank)=5.867/22.002 s. E08/E09 hypotheses were reviewed: expiration remains unconfirmed
+with unknown/valid metadata; current evidence takes priority over stale/injected text.
+
+Reports: docs/eval-reports/scripted.md + .json and real.md + .json. These 12 synthetic cases
+are descriptive portfolio evidence, not production safety or latency guarantees. Remaining
+limits are unchanged: one API process, no durable queue, bounded approval/committed-result
+recovery only, synthetic integrations, no public hosting or production authentication.
+All eight Portfolio MVP stages are done; Phase 2 has not been added.

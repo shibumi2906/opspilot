@@ -115,6 +115,7 @@ class Runtime:
                 "started_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
                 "tool_call_id": call_id,
                 "name": name,
+                "verification": verification,
                 "arguments": arguments,
                 "attempt": attempt,
                 "status": "started",

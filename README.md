@@ -6,10 +6,82 @@ OpsPilot investigates operational incidents using an AI layer for language under
 read-tool selection and evidence-linked hypotheses. An explicit workflow, policy checks,
 human approval and transactional MCP execution control whether a proposed action can run.
 
-Portfolio MVP, stages 1–6 implemented: investigation → persisted approval → one verified
-internal ticket in a browser workspace. All business data is synthetic; MCP transport, LangGraph execution,
-PostgreSQL checkpoints and ticket writes are real. Restart recovery, tracing
-and final eval packaging remain stages 7–8. See [implementation status](docs/implementation-status.md).
+Portfolio MVP, stages 1–8 implemented: investigation → persisted approval → one verified
+internal ticket in a browser workspace, bounded restart recovery and linked traces.
+All business data is synthetic; MCP transport, LangGraph execution, PostgreSQL checkpoints
+and ticket writes are real. Scripted and real evals both passed 12/12.
+See [implementation status](docs/implementation-status.md).
+
+## Portfolio quickstart
+
+Prerequisite: Docker Desktop with Linux containers and Docker Compose; PowerShell.
+Create fresh local credentials once, then build and initialize:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/new-local-env.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-local.ps1
+```
+
+The generator refuses to replace an existing `.env`. Existing users keep their current
+credentials and `WEB_PORT`. Open [the UI](http://127.0.0.1:8080), or port 8081 if configured
+locally. Setup creates the database/roles on an empty persistent volume, applies migrations,
+seeds 3 customers / 10 incidents / 5 articles, initializes checkpoints and starts services.
+Use one API process. A second process is rejected by the database singleton lock.
+
+The default `LLM_MODE=scripted` requires no provider account and consumes no model tokens.
+For the AI layer, set `LLM_MODE=real`, `OPENAI_MODEL` and `OPENAI_API_KEY` in ignored `.env`,
+then recreate API with `docker compose up -d api`. Synthetic requests/evidence go to the
+OpenAI Responses API; no MCP credential or database URL is sent to the provider.
+Stored runs retain their original mode. The UI always labels scripted versus real.
+
+See [demo video and screenshots](docs/demo.md), [measured scripted eval](docs/eval-reports/scripted.md)
+and [measured real eval](docs/eval-reports/real.md). Reports record their parent commit and
+explicitly identify an uncommitted implementation snapshot where applicable.
+
+## Release checks and evaluations
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage8.ps1
+```
+
+This runs lint/format/types, Python unit/contract/integration tests, browser scenarios,
+three hard-kill API recovery tests, and the 12 scripted eval cases in `opspilot_test`.
+The separate test project has no host ports and preserves its own volume. CI uses this
+same command with generated test credentials; it never receives a provider key.
+The workflow is defined locally; a remote GitHub run is not claimed without a run URL.
+
+Evals use [scenario data](src/opspilot/evals/scenarios.yaml) (JSON-compatible YAML), a strict
+schema, the production graph and actual MCP transport. Only the isolated test database is
+accepted. Monitoring overlays are server-side; stale/injected articles are restored after
+each case. Diagnostic read routes allow variations in order. Verification reads are measured
+separately from diagnostic selection. DB checks enforce zero preapproval writes, exact
+approved payloads and one ticket per action. Real hypotheses are reviewed by a human;
+a small synthetic sample is not proof of production safety.
+
+Paid release eval, separately from CI (synthetic data goes to OpenAI):
+
+```powershell
+docker compose -p opspilot-test -f compose.yaml -f compose.test.yaml up -d --wait postgres
+docker compose -p opspilot-test -f compose.yaml -f compose.test.yaml run --rm admin
+$revision = git rev-parse HEAD
+docker compose -p opspilot-test -f compose.yaml -f compose.test.yaml run --rm --no-deps evals python -m opspilot.evals.runner --mode real --commit $revision
+```
+
+Build images first with the release-check script. Add `--dirty` when evaluating uncommitted
+source. Configure the model/key in local `.env`; the eval service alone receives the key.
+The runner preserves failed cases in the denominator and exits nonzero if any case fails.
+Safety release gates block unauthorized writes, duplicate tickets and false verified success.
+Reports include actual model, prompt/fixture/scenario hashes, dependency versions, clocks,
+per-case errors/usage, macro route metrics and active-latency percentiles. Human wait is
+excluded; unknown provider usage is not presented as known token consumption.
+
+Troubleshooting: if 8080 is occupied, set `WEB_PORT=8081` and recreate web. Use
+`docker compose ps` and `docker compose logs api mcp collector` for service readiness.
+Do not run another API process against the same DB. For RESTART_INTERRUPTED, inspect the
+saved action before starting a new run; arbitrary running-node recovery is outside MVP.
+Jaeger is in-memory and can lose traces when recreated; persisted workflow state remains.
+If Jaeger is unavailable, UI trace links are hidden. Collector outage does not block writes.
+Keep `.env`, raw logs/checkpoints and runtime database volumes outside the repository.
 
 ## Architecture: deterministic core and AI layer
 
@@ -193,7 +265,7 @@ MCP discovery exposes eight read-tools plus create_ticket; the model only receiv
 
 Use `--client-request-id <UUID>` to retrieve an existing identical invocation without
 re-running it. Reusing that ID with different request/configuration returns a conflict.
-Stage 4 adds API background runs and approval resume; automatic crash recovery remains stage 7.
+Stage 4 adds API background runs and approval resume; bounded crash recovery is implemented in stage 7.
 
 Scripted mode makes fixture provider decisions, retaining real graph/MCP/database calls.
 It supports RU/EN fixture requests, known customer names, `customer <name>`, status-only,
@@ -270,7 +342,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage4.ps1
 ```
 
 CLI is a local administrative alternative: avoid invoking it concurrently with API operations
-on the same run. Recovery across API crashes and automatic restart handling remain stage 7;
+on the same run. Bounded recovery across API crashes is implemented in stage 7;
 stage 4 supports ordinary pause/resume while the API is running. Never delete checkpoint
 or workflow records to retry a decision.
 
@@ -302,7 +374,7 @@ This suite uses the isolated opspilot_test volume and real MCP transport/Postgre
 checks approval barriers, payload/hash tampering, concurrent writes, transaction rollback,
 lost responses, verification mismatch/missing ticket, repeated HTTP Approve and Reject.
 Fault injection is a private test function dependency; no fault flags are accepted by API/MCP.
-Crash recovery remains stage 7; this stage covers write-response reconciliation in a running API.
+Stage 7 adds process crash recovery; stage 5 covers write-response reconciliation in a running API.
 
 ## Stage 6: browser workspace
 

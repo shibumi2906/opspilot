@@ -104,3 +104,11 @@ OpenTelemetry SDK and OTLP/HTTP exporter are locked in uv.lock (1.45.1).
 Collector 0.120.0 and Jaeger all-in-one 1.66.0 are digest-pinned in Compose.
 Telemetry uses manual instrumentation and a bounded asynchronous batch exporter;
 no automatic SQL/HTTP payload instrumentation is enabled.
+
+## Stage 8 reproducibility
+
+Eval schemas/reports use the locked runtime dependencies; no extra YAML parser or judge
+model is required (scenarios.yaml is JSON-compatible YAML). Browser demo/screenshots use
+the same digest-pinned Playwright Chromium image as the browser suite. The existing WebM
+was decoded as VP9 1440x1000, 25 fps, duration 158.4 s. CI uses checkout v6 and artifact
+upload v4; the workflow has not been submitted to a remote runner during local validation.

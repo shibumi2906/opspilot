@@ -58,3 +58,24 @@ services:
       E2E_DATABASE_URL: postgresql://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
     depends_on:
       web: {condition: service_healthy}
+
+  evals:
+    image: opspilot:stage1-tests
+    build:
+      context: .
+      target: tests
+    init: true
+    environment:
+      APP_ENV: test
+      LLM_MODE: scripted
+      MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_test
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
+    volumes:
+      - ./docs/eval-reports:/reports
+    command: [python, -m, opspilot.evals.runner, --commit, unspecified]

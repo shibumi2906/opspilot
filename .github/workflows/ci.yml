@@ -1,0 +1,33 @@
+name: Portfolio checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  scripted:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Generate isolated local secrets
+        shell: pwsh
+        run: ./scripts/new-local-env.ps1
+      - name: Make public report output writable for the container UID
+        run: chmod -R a+rwX docs/eval-reports
+      - name: Lint, types, Python, process recovery, browser and 12 scripted evals
+        shell: pwsh
+        run: ./scripts/test-stage8.ps1
+      - name: Upload measured eval reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scripted-eval-report
+          path: docs/eval-reports/scripted.*
+      - name: Stop test services
+        if: always()
+        run: docker compose -p opspilot-test -f compose.yaml -f compose.test.yaml stop
+# Paid real-provider eval is a separate local release command. No provider secret
+# is referenced here, including for same-repository PRs and untrusted forks.
