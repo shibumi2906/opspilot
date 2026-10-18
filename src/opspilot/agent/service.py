@@ -1,7 +1,8 @@
-"""Synchronous CLI run lifecycle. Background API execution and recovery belong to later stages."""
+"""Create and execute checkpointed investigations; API schedules these under a run lock."""
 
 import hashlib
 import json
+from datetime import UTC, datetime
 from typing import Any, Literal
 from uuid import UUID, uuid4
 
@@ -43,6 +44,8 @@ async def run_investigation(
     client_request_id: UUID | None = None,
     provider: Provider | None = None,
     limits: BudgetLimits | None = None,
+    run_id: UUID | None = None,
+    queued_only: bool = False,
 ) -> dict[str, Any]:
     request = request.strip()
     if not 1 <= len(request) <= 4000:
@@ -65,7 +68,7 @@ async def run_investigation(
         ).encode()
     ).hexdigest()
     engine = create_engine(settings.database_url("workflow"))
-    run_id = uuid4()
+    run_id = run_id or uuid4()
     try:
         async with AsyncSession(engine) as session, session.begin():
             await session.execute(
@@ -75,30 +78,40 @@ async def run_investigation(
             previous = await session.scalar(
                 select(AgentRun).where(AgentRun.client_request_id == client_request_id)
             )
-            if previous:
-                if previous.request_hash != request_hash or previous.status != "completed":
+            if previous and previous.status == "queued" and previous.id == run_id:
+                await session.execute(
+                    update(AgentRun).where(AgentRun.id == run_id).values(status="running")
+                )
+            elif previous:
+                if previous.request_hash != request_hash:
                     raise RunConflict(
                         "Request ID already exists with different input or unfinished run"
                     )
-                return previous.public_snapshot
-            session.add(
-                AgentRun(
-                    id=run_id,
-                    client_request_id=client_request_id,
-                    request=request,
-                    request_hash=request_hash,
-                    language="en",
-                    status="running",
-                    mode=mode,
-                    scenario_id=settings.scenario_id,
-                    scenario_clock=settings.scenario_clock,
-                    thread_id=str(run_id),
-                    state_schema_version=1,
-                    public_snapshot={},
-                    tool_results={},
-                    usage={},
+                return previous.public_snapshot or {
+                    "run_id": str(previous.id),
+                    "status": previous.status,
+                }
+            else:
+                session.add(
+                    AgentRun(
+                        id=run_id,
+                        client_request_id=client_request_id,
+                        request=request,
+                        request_hash=request_hash,
+                        language="en",
+                        status="queued" if queued_only else "running",
+                        mode=mode,
+                        scenario_id=settings.scenario_id,
+                        scenario_clock=settings.scenario_clock,
+                        thread_id=str(run_id),
+                        state_schema_version=1,
+                        public_snapshot={},
+                        tool_results={},
+                        usage={},
+                    )
                 )
-            )
+        if queued_only:
+            return {"run_id": str(run_id), "status": "queued"}
         initial: AgentState = {
             "schema_version": 1,
             "run_id": str(run_id),
@@ -131,38 +144,19 @@ async def run_investigation(
                         "recursion_limit": limits.recursion_limit,
                     },
                 )
-            public = {
-                key: state.get(key)
-                for key in (
-                    "schema_version",
-                    "run_id",
-                    "thread_id",
-                    "client_request_id",
-                    "mode",
-                    "model_id",
-                    "language",
-                    "candidates",
-                    "evidence",
-                    "hypotheses",
-                    "proposed_action",
-                    "policy_result",
-                    "budget",
-                    "errors",
-                    "outcome",
-                    "final_report",
-                )
-            }
+            public = project(state)
             async with engine.begin() as connection:
                 await connection.execute(
                     update(AgentRun)
                     .where(AgentRun.id == run_id)
                     .values(
-                        status="completed",
-                        outcome=state["outcome"],
+                        status=public["status"],
+                        outcome=state.get("outcome"),
                         language=state.get("language", "en"),
                         public_snapshot=public,
                         tool_results=state["observations"],
                         usage=state["budget"],
+                        updated_at=datetime.now(UTC),
                     )
                 )
             return public
@@ -182,3 +176,60 @@ async def run_investigation(
             raise RuntimeError(f"Run {run_id} failed; check service readiness") from None
     finally:
         await engine.dispose()
+
+
+def project(state: dict[str, Any]) -> dict[str, Any]:
+    public = {
+        key: state.get(key)
+        for key in (
+            "schema_version",
+            "run_id",
+            "thread_id",
+            "client_request_id",
+            "mode",
+            "model_id",
+            "language",
+            "candidates",
+            "evidence",
+            "hypotheses",
+            "proposed_action",
+            "policy_result",
+            "budget",
+            "errors",
+            "outcome",
+            "final_report",
+            "action_id",
+        )
+    }
+    public["status"] = "waiting_for_approval" if state.get("__interrupt__") else "completed"
+    calls = list(state.get("tool_calls", {}).items())
+    timeline: list[dict[str, Any]] = [
+        {
+            "id": key,
+            "sequence": index,
+            "node": "execute_reads",
+            "type": "tool_call",
+            "status": call["status"],
+            "summary": call["name"],
+            "started_at": call.get("started_at"),
+            "duration_ms": call.get("duration_ms"),
+        }
+        for index, (key, call) in enumerate(calls[:100], 1)
+    ]
+    if state.get("action_id"):
+        timeline.append(
+            {
+                "id": state["action_id"],
+                "sequence": len(calls[:100]) + 1,
+                "node": "approval",
+                "type": "approval",
+                "status": public["status"],
+                "summary": "Human decision required"
+                if state.get("__interrupt__")
+                else "Decision processed",
+                "started_at": None,
+            }
+        )
+    public["timeline"] = timeline
+    public["truncated"] = len(calls) > 100
+    return public

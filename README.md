@@ -1,9 +1,9 @@
 # OpsPilot
 
-Portfolio MVP: controlled operational incident investigation. Implementation in progress. Stages 1–3 are implemented.
+Portfolio MVP: controlled operational incident investigation. Implementation in progress. Stages 1–4 are implemented.
 
-Implemented: stages 1–3 (foundation, MCP diagnostics and checkpointed investigation) (see [implementation status](docs/implementation-status.md) for actual verification).
-Approvals, ticket execution and UI are future stages. All business data is synthetic.
+Implemented: stages 1–4 (foundation, MCP diagnostics, checkpointed investigation and approval) (see [implementation status](docs/implementation-status.md) for actual verification).
+Ticket execution and UI are future stages. All business data is synthetic.
 
 ## Initialize the local database
 
@@ -121,12 +121,13 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage3.ps1
 This runs a real LangGraph StateGraph with conditional edges and an investigation loop.
 PostgreSQL checkpoints are initialized in `checkpoints` before invocation; thread_id=run_id.
 CLI output includes mode, model ID, evidence-linked facts/hypotheses, budget counters and
-at most one ticket proposal. `proposed_only` means no approval and no ticket execution.
+at most one ticket proposal. Since stage 4, actionable investigations pause at approval;
+`proposed_only` was the stage-3 checkpoint outcome. No ticket is executed in stage 4.
 MCP discovery still exposes exactly eight read-tools. Runs are stored in `workflow.agent_runs`.
 
-Use `--client-request-id <UUID>` to retrieve an identical completed invocation without
-re-running it. Reusing that ID with different request/configuration or an unfinished run
-returns a conflict. Automatic recovery, API background runs and approval resume are later stages.
+Use `--client-request-id <UUID>` to retrieve an existing identical invocation without
+re-running it. Reusing that ID with different request/configuration returns a conflict.
+Stage 4 adds API background runs and approval resume; automatic crash recovery remains stage 7.
 
 Scripted mode makes fixture provider decisions, retaining real graph/MCP/database calls.
 It supports RU/EN fixture requests, known customer names, `customer <name>`, status-only,
@@ -164,3 +165,45 @@ including invalid-output correction. Attempts count even on failure. Known token
 and unknown_usage_count are separate. Timeouts are capped by remaining active time.
 Status-only, missing/ambiguous customers, unknown/timeout/contradictory monitoring and
 policy/budget violations cannot produce a ticket proposal.
+
+## Stage 4: durable approval and decisions
+
+Start the updated API/MCP with `scripts/setup-local.ps1`. The API supports one process;
+`uvicorn --workers > 1` is unsupported. A PostgreSQL session advisory lock rejects a
+second API process before it modifies workflow state. Different runs have separate locks;
+one run cannot be invoked/resumed concurrently. Background task failures become failed snapshots.
+
+```powershell
+$body = @{ request = 'Investigate GreenShop'; client_request_id = [guid]::NewGuid().ToString() } | ConvertTo-Json
+$run = Invoke-RestMethod http://127.0.0.1:8000/api/v1/runs -Method Post -ContentType application/json -Body $body
+$snapshot = Invoke-RestMethod ("http://127.0.0.1:8000" + $run.snapshot_url)
+# Poll GET until status=waiting_for_approval, then inspect snapshot.action.arguments.
+$decision = @{ action_id = $snapshot.action.action_id; decision = 'reject' } | ConvertTo-Json
+Invoke-RestMethod ("http://127.0.0.1:8000/api/v1/runs/" + $run.run_id + "/decision") -Method Post -ContentType application/json -Body $decision
+```
+
+Use `approve` for the other branch. Reject completes with `rejected`; Approve completes
+with `partial` and `execution_not_implemented`. Both leave tickets unchanged. The saved
+card remains visible after either decision; execution_status stays `not_started` and no
+report claims ticket creation or restored orders. Real ticket execution belongs to stage 5.
+
+POST returns 202 after saving the queued run. Polling reads a public snapshot, without raw
+checkpoint data. Reusing client_request_id with identical input returns the same run;
+changed input returns 409. Decisions accept only action_id and approve/reject: extra
+arguments return 422, missing action/run returns 404, another run's action or an opposite
+recorded decision returns 409. A repeated completed decision returns 200, otherwise 202.
+The graph pauses with a real persisted interrupt and resumes the original thread using
+only the action reference; the approval node independently reads the stored decision.
+
+CLI investigation also pauses at approval:
+
+```powershell
+docker compose exec api python -m opspilot.cli.run "Investigate GreenShop" --mode scripted
+docker compose exec api python -m opspilot.cli.run --run-id <run_id> --action-id <action_id> --decision reject
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage4.ps1
+```
+
+CLI is a local administrative alternative: avoid invoking it concurrently with API operations
+on the same run. Recovery across API crashes and automatic restart handling remain stage 7;
+stage 4 supports ordinary pause/resume while the API is running. Never delete checkpoint
+or workflow records to retry a decision.

@@ -13,27 +13,10 @@ from opspilot.llm.scripted import ScriptedProvider
 @pytest.fixture(autouse=True)
 async def no_business_writes(admin_engine):
     async with admin_engine.connect() as conn:
-        before = (
-            await conn.execute(
-                text(
-                    "SELECT (SELECT count(*) FROM domain.tickets), "
-                    "(SELECT count(*) FROM workflow.actions), "
-                    "(SELECT count(*) FROM workflow.approvals)"
-                )
-            )
-        ).one()
+        before = await conn.scalar(text("SELECT count(*) FROM domain.tickets"))
     yield
     async with admin_engine.connect() as conn:
-        after = (
-            await conn.execute(
-                text(
-                    "SELECT (SELECT count(*) FROM domain.tickets), "
-                    "(SELECT count(*) FROM workflow.actions), "
-                    "(SELECT count(*) FROM workflow.approvals)"
-                )
-            )
-        ).one()
-    assert after == before
+        assert await conn.scalar(text("SELECT count(*) FROM domain.tickets")) == before
 
 
 @pytest.mark.parametrize(
@@ -47,11 +30,11 @@ async def test_graph_proposal_and_durable_checkpoint(
     integration_settings, admin_engine, user_text, language
 ):
     result = await run_investigation(integration_settings, user_text, mode="scripted")
-    assert result["outcome"] == "proposed_only", result
+    assert result["status"] == "waiting_for_approval", result
     assert result["mode"] == "scripted" and result["language"] == language
     assert result["proposed_action"]["customer_id"] == "00000000-0000-0000-0000-000000000001"
-    assert result["final_report"]["verification_status"] == "not_started"
-    assert result["final_report"]["ticket_id"] is None
+    assert result["final_report"] is None
+    assert result["action_id"]
     assert result["hypotheses"]
     assert result["budget"]["read_attempts"] == 7
     assert result["budget"]["llm_attempts"] == 5
@@ -60,7 +43,7 @@ async def test_graph_proposal_and_durable_checkpoint(
         assert checkpoint is not None
         values = checkpoint.checkpoint["channel_values"]
         assert values["run_id"] == values["thread_id"] == result["run_id"]
-        assert values["final_report"] == result["final_report"]
+        assert values.get("final_report") == result["final_report"]
         assert {v["name"] for v in values["observations"].values()} == {
             "find_customers",
             "get_customer",
@@ -77,7 +60,7 @@ async def test_graph_proposal_and_durable_checkpoint(
             {"id": result["run_id"]},
         )
     assert count >= 10
-    for fact in result["final_report"]["facts"]:
+    for fact in values["facts"]:
         assert set(fact["evidence_ids"]) <= result["evidence"].keys()
     assert integration_settings.mcp_service_token.get_secret_value() not in str(result)
 
@@ -276,7 +259,7 @@ class EarlyStopProvider(ScriptedProvider):
         return await super().complete(operation, context)
 
 
-@pytest.mark.parametrize("always,outcome", [(False, "proposed_only"), (True, "budget_exhausted")])
+@pytest.mark.parametrize("always,outcome", [(False, None), (True, "budget_exhausted")])
 async def test_early_stop_gets_missing_reads_and_remains_bounded(
     integration_settings, always, outcome
 ):

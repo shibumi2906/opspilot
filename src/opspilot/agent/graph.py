@@ -10,6 +10,7 @@ from pydantic import ValidationError
 
 from opspilot.agent.budgets import BudgetExceeded
 from opspilot.agent.evidence import missing_reads
+from opspilot.agent.nodes.approval import approval, execute, prepare_approval
 from opspilot.agent.nodes.classify import classify
 from opspilot.agent.nodes.execute_reads import execute_reads
 from opspilot.agent.nodes.investigate import investigate
@@ -33,10 +34,10 @@ def build_graph(
         async def invoke(current: AgentState) -> AgentState:
             state = copy.deepcopy(current)
             try:
-                if name != "report":
+                if name not in {"report", "approval", "execute"}:
                     runtime.budget.check()
                 await node(state, runtime)
-                if name != "report":
+                if name not in {"report", "approval", "execute"}:
                     runtime.budget.check()
             except BudgetExceeded:
                 state.update({"outcome": "budget_exhausted", "proposed_action": None})
@@ -59,6 +60,9 @@ def build_graph(
 
     builder = StateGraph(AgentState)
     for name, node in (
+        ("prepare_approval", prepare_approval),
+        ("approval", approval),
+        ("execute", execute),
         ("classify", classify),
         ("resolve_customer", resolve_customer),
         ("investigate", investigate),
@@ -108,6 +112,21 @@ def build_graph(
             "investigate": "investigate",
         },
     )
-    builder.add_edge("risk_check", "report")
+    builder.add_conditional_edges(
+        "risk_check",
+        lambda state: "prepare_approval" if state.get("outcome") == "proposed_only" else "report",
+        {"prepare_approval": "prepare_approval", "report": "report"},
+    )
+    builder.add_conditional_edges(
+        "prepare_approval",
+        lambda state: "report" if state.get("outcome") else "approval",
+        {"report": "report", "approval": "approval"},
+    )
+    builder.add_conditional_edges(
+        "approval",
+        lambda state: "report" if state.get("outcome") else "execute",
+        {"report": "report", "execute": "execute"},
+    )
+    builder.add_edge("execute", "report")
     builder.add_edge("report", END)
     return builder.compile(checkpointer=checkpointer)

@@ -7,7 +7,7 @@
 | 1 | done | Окружение, миграция, fixtures, MCP server/client и readiness проверены; 23 теста прошли |
 | 2 | done | Восемь read-tools, FTS, evidence и CLI; 48 тестов прошли |
 | 3 | done | LangGraph, checkpoints, providers и CLI; 94 теста и полный live smoke прошли |
-| 4 | not_started | Approval interrupt и decision API |
+| 4 | done | Immutable action, PostgreSQL interrupt, background API, Approve/Reject и singleton guard |
 | 5 | not_started | Транзакционный create_ticket и verification |
 | 6 | not_started | React UI |
 | 7 | not_started | Restart recovery и traces |
@@ -173,3 +173,21 @@ Smoke выявил преждевременный stop и длинные AND-з�
 `scripts/setup-local.ps1` выполнен на основной БД: exit 0, seed 3/10/5,
 checkpoint schema ready, API healthy. Основные PostgreSQL/MCP/API оставлены запущенными.
 Пункт 3 этапа 1 в плане явно уточняет создание database и persistent volume.
+
+## Stage 4 implementation (18 October 2026)
+
+- Persist one immutable create_ticket action and pending approval per run, with canonical SHA-256 hash.
+- Actual LangGraph interrupt/checkpoint; saved decision resumes the same thread with Command.
+- POST runs (queued + background task + request idempotency), GET public snapshot, POST decision.
+- One asyncio lock per run; concurrent repeated decisions schedule exactly one resume.
+- PostgreSQL singleton advisory lock rejects a second API process.
+- Reject -> rejected without execute. Approve -> explicit execution_not_implemented / partial.
+- Snapshot preserves the exact action after either decision; no stage-4 path creates a ticket.
+- CLI supports --run-id / --action-id / --decision; README documents API and CLI usage.
+- Restart recovery remains stage 7; create_ticket and verification remain stage 5.
+
+Validation passed: ruff check, mypy src, and scripts/test-stage4.ps1: **103 passed**
+in 26.42 seconds against isolated PostgreSQL/MCP/API. CLI pause/reject and safe
+background-failure projection also passed; no live paid LLM run was repeated for this stage.
+The suite covers durable interrupt, immutable replay, both decisions, one concurrent resume,
+repeated/opposite decisions, wrong-run actions, payload injection, HTTP projection and singleton.

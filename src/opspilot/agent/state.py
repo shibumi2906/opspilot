@@ -29,6 +29,7 @@ class InvestigationDecision(StrictModel):
 
 
 class AgentState(TypedDict, total=False):
+    action_id: str
     schema_version: int
     run_id: str
     thread_id: str

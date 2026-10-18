@@ -6,6 +6,7 @@ from pydantic import Field
 from opspilot.contracts.common import StrictModel
 
 Outcome = Literal[
+    "rejected",
     "diagnosis_only",
     "proposed_only",
     "partial",

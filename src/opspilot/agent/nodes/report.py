@@ -33,7 +33,16 @@ async def report(state: AgentState, runtime: Runtime) -> None:
             "Investigation budget exhausted; no ticket is proposed.",
         ),
     }
-    if outcome != "proposed_only":
+    summaries["rejected"] = (
+        "Действие отклонено; тикет не создан.",
+        "Action rejected; no ticket created.",
+    )
+    if "execute" in state.get("errors", {}):
+        summaries["partial"] = (
+            "Исполнение ещё не реализовано; тикет не создан.",
+            "Execution is not implemented; no ticket created.",
+        )
+    if outcome != "proposed_only" and not state.get("action_id"):
         state["proposed_action"] = None
     facts = state.get("facts") or canonical_facts(state)
     result = Report(
@@ -46,7 +55,7 @@ async def report(state: AgentState, runtime: Runtime) -> None:
             if ru
             else "Proposal only; approval and execution are not implemented."
         )
-        if state.get("proposed_action")
+        if state.get("proposed_action") and not state.get("action_id")
         else ("Тикет не создан." if ru else "No ticket was created."),
         remaining_problem=(
             "Credential не обновлён; восстановление потока заказов не подтверждено."

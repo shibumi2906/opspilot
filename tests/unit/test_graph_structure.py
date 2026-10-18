@@ -20,4 +20,4 @@ def test_real_graph_has_research_cycle_and_conditional_edges():
     assert ("investigate", "reason") in edges
     assert ("risk_check", "report") in edges
     assert any(e.conditional for e in graph.edges)
-    assert "execute" not in graph.nodes and "prepare_approval" not in graph.nodes
+    assert {"execute", "prepare_approval", "approval"} <= graph.nodes.keys()

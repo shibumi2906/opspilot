@@ -1,5 +1,6 @@
 import asyncio
 import random
+from datetime import UTC, datetime
 from typing import Any, TypeVar
 from uuid import UUID, uuid4
 
@@ -90,6 +91,7 @@ class Runtime:
             self.budget.begin_read()
             key = f"{call_id}:{attempt}"
             state.setdefault("tool_calls", {})[key] = {
+                "started_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
                 "tool_call_id": call_id,
                 "name": name,
                 "arguments": arguments,
