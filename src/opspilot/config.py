@@ -1,7 +1,7 @@
 from datetime import UTC, datetime
 from typing import Literal
 
-from pydantic import SecretStr, field_validator
+from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
@@ -16,6 +16,14 @@ class Settings(BaseSettings):
     migration_database_url: SecretStr | None = None
     mcp_url: str = "http://mcp:8001/mcp"
     mcp_service_token: SecretStr
+    openai_api_key: SecretStr | None = None
+    openai_model: str | None = None
+    openai_reasoning_effort: Literal["none", "low", "medium", "high"] = "low"
+    agent_max_reads: int = Field(default=15, ge=1, le=15)
+    agent_max_llm_attempts: int = Field(default=10, ge=1, le=10)
+    agent_max_rounds: int = Field(default=6, ge=1, le=6)
+    agent_max_tokens: int = Field(default=30000, ge=1, le=30000)
+    agent_active_seconds: float = Field(default=120, gt=0, le=120)
     llm_mode: Literal["scripted", "real"] = "scripted"
     scenario_id: Literal["greenshop_expired", "healthy", "unknown", "timeout", "contradictory"] = (
         "greenshop_expired"

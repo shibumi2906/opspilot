@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | 1 | done | Окружение, миграция, fixtures, MCP server/client и readiness проверены; 23 теста прошли |
 | 2 | done | Восемь read-tools, FTS, evidence и CLI; 48 тестов прошли |
-| 3 | not_started | Граф расследования и LLM adapters |
+| 3 | implemented | LangGraph, PostgreSQL checkpoint, policy/budgets, providers и CLI; проверка ниже |
 | 4 | not_started | Approval interrupt и decision API |
 | 5 | not_started | Транзакционный create_ticket и verification |
 | 6 | not_started | React UI |
@@ -78,11 +78,10 @@ arguments/invalid UUID, повторный seed с сохранением пос
 
 ## Известные границы
 
-Реализованы этапы 1–2. Доступны восемь read-tools; нет runs API,
-расследования, записи тикетов, approval, UI или production authentication.
-LangGraph установлен для compatibility smoke, продуктовый graph ещё не реализован.
-PostgreSQL checkpoint tables создаёт SDK только в совместимостном тесте;
-runtime initialization будет подключён на этапе 3.
+Реализованы этапы 1–3. Доступны восемь read-tools и CLI расследования; нет runs API,
+записи тикетов, approval, UI или production authentication.
+CLI использует настоящий StateGraph и runtime setup AsyncPostgresSaver в schema checkpoints.
+Restart recovery ожидающего approval относится к следующим этапам.
 
 `.env` создан локально со случайными секретами, игнорируется Git и Docker build context.
 Образы и protocol версии записаны в dependencies.md. Реальный LLM не использовался.
@@ -113,3 +112,35 @@ Ruff check и format check проходят; mypy: 33 source files без оши
 ambiguous lookup, raw extra arguments и limit violations, все monitoring overlays
 через HTTP, timeout CLI с missing checks и отсутствие tickets после повторного чтения.
 Тестовые сервисы остановлены, volume сохранён. Demo stack не изменён.
+
+## Этап 3: реализация и проверка
+
+18 октября 2026. Отдельные узлы classify, resolve_customer, investigate, execute_reads,
+reason, plan, risk_check, report; conditional edges и исследовательский цикл.
+Typed state и strict classification/decision/analysis/proposal/report; reducers upsert по ID.
+Provider выбирает read-tools, код проверяет allowlist, аргументы и resolved scope до dispatch.
+Факты допускаются из канонических наблюдений с evidence; ссылки гипотез и customer/поля
+предложения проверяются независимо. История помечена как историческая; гипотезы отделены
+от фактов. Proposal строится из проверенного контекста и не исполняется.
+
+PostgreSQL checkpointer выполняет setup до invoke, thread_id=run_id. CLI сохраняет run,
+результат, observations и usage в workflow; повтор completed client_request_id идемпотентен.
+Domain читается только через MCP. Бюджеты и reserved verification read проверяет код,
+включая retries, invalid outputs, tokens и monotonic active time. Unknown usage явный.
+Ошибки провайдера сохраняются безопасными codes, без body/headers или credentials.
+
+Scripted mode использует fixture decisions с настоящими graph/MCP/БД.
+Real mode: OpenAI Responses API, function calling и strict structured outputs.
+Модель задаёт OPENAI_MODEL; secret только в ignored .env и API environment.
+Автоматический suite не вызывает оплачиваемую модель; smoke выполняется отдельно.
+
+Финальный полный Docker-прогон: **92 passed in 16.78s**, exit 0, без warnings.
+Ruff check/format проходят; mypy: 59 source files без ошибок. Проверены RU/EN GreenShop,
+настоящие сохранённые checkpoints, research cycle/conditional edges, status-only, unknown/
+ambiguous customers, healthy/unknown/timeout/contradictory monitoring, запрет неизвестных
+и write-tools, бюджеты, повтор client_request_id, token/unknown usage, invalid outputs,
+replay reducers, fake evidence и отсутствие бизнес-записей.
+
+Локально настроены модель gpt-5.6-terra и API key. Живой smoke подготовлен, но отправка
+payload во внешний OpenAI API отклонена автоматической проверкой одобрения: требуется
+явное разрешение передачи синтетических данных. Вызов ещё не выполнен.

@@ -1,9 +1,9 @@
 # OpsPilot
 
-Portfolio MVP: controlled operational incident investigation. Implementation in progress.
+Portfolio MVP: controlled operational incident investigation. Implementation in progress. Stages 1â€“3 are implemented.
 
-Implemented: stages 1–2 (foundation and MCP diagnostics) (see [implementation status](docs/implementation-status.md) for actual verification).
-LangGraph, approvals, ticket execution and UI are future stages. All business data is synthetic.
+Implemented: stages 1â€“3 (foundation, MCP diagnostics and checkpointed investigation) (see [implementation status](docs/implementation-status.md) for actual verification).
+Approvals, ticket execution and UI are future stages. All business data is synthetic.
 
 ## Stage 1 quickstart
 
@@ -77,8 +77,8 @@ list; an absent ticket returns `NOT_FOUND`. Diagnostics never create tickets.
 
 Search supports optional `language` (`ru`/`en`), integration type and incident customer
 filters; PostgreSQL full-text ranking uses language-specific GIN indexes and stable tie
-breaks. Query is 1–500 characters; search/customer limits are 1–10. Event windows are
-half-open `[from, to)`, timezone-aware, positive and at most seven days; event limit is 1–100.
+breaks. Query is 1â€“500 characters; search/customer limits are 1â€“10. Event windows are
+half-open `[from, to)`, timezone-aware, positive and at most seven days; event limit is 1â€“100.
 
 Set trusted `SCENARIO_ID` in `.env` to `greenshop_expired` (default), `healthy`, `unknown`,
 `timeout` or `contradictory`, then recreate `mcp` and `api` to select an overlay. Tool
@@ -88,3 +88,60 @@ with 401 events. Overlays change no database fixtures. Non-GreenShop integration
 healthy synthetic observations; the timeout overlay makes monitoring unavailable.
 
 The stage 2 script runs all current tests in the same isolated test stack as stage 1.
+
+## Stage 3 investigation
+
+After building/applying migrations as above:
+
+```powershell
+docker compose exec api python -m opspilot.cli.run "Investigate why GreenShop orders fail today" --mode scripted
+docker compose exec api python -m opspilot.cli.run "Check GreenShop status" --mode scripted
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage3.ps1
+```
+
+This runs a real LangGraph StateGraph with conditional edges and an investigation loop.
+PostgreSQL checkpoints are initialized in `checkpoints` before invocation; thread_id=run_id.
+CLI output includes mode, model ID, evidence-linked facts/hypotheses, budget counters and
+at most one ticket proposal. `proposed_only` means no approval and no ticket execution.
+MCP discovery still exposes exactly eight read-tools. Runs are stored in `workflow.agent_runs`.
+
+Use `--client-request-id <UUID>` to retrieve an identical completed invocation without
+re-running it. Reusing that ID with different request/configuration or an unfinished run
+returns a conflict. Automatic recovery, API background runs and approval resume are later stages.
+
+Scripted mode makes fixture provider decisions, retaining real graph/MCP/database calls.
+It supports RU/EN fixture requests, known customer names, `customer <name>`, status-only,
+and today relative to the scenario clock in Asia/Jerusalem. Real mode lets the model select
+read-tools and arguments; code enforces allowlist/scope/schema checks and budgets.
+
+For real mode add these entries to the local ignored `.env` file:
+
+```dotenv
+OPENAI_API_KEY=<your-local-key>
+OPENAI_MODEL=gpt-5.6-terra
+OPENAI_REASONING_EFFORT=low
+LLM_MODE=scripted
+```
+
+`OPENAI_MODEL` is an explicit API model ID; no automatic substitution occurs.
+Recreate API to load updated values, then invoke real mode explicitly:
+
+```powershell
+docker compose up -d --force-recreate api
+docker compose exec api python -m opspilot.cli.run "Investigate why GreenShop orders fail today" --mode real
+```
+
+The OpenAI Responses REST adapter uses function calling for read selection and strict
+structured outputs for classification, analysis and planning. Only API receives the LLM key;
+MCP and admin do not. Full provider responses, credentials and hidden reasoning are not logged
+or checkpointed. The suite mocks provider HTTP and makes no paid calls.
+
+Limits (recorded per run): rounds=6, read attempts=15 (one reserved for future verification,
+so at most 14 diagnostic attempts), model attempts=10, measured input+output tokens=30000,
+active processing=120 seconds, recursion_limit=60, proposals=1. Configure lower limits with
+`AGENT_MAX_ROUNDS`, `AGENT_MAX_READS`, `AGENT_MAX_LLM_ATTEMPTS`, `AGENT_MAX_TOKENS`,
+`AGENT_ACTIVE_SECONDS`. Read timeout=5s/max 3 attempts; model timeout=30s/max 2 attempts,
+including invalid-output correction. Attempts count even on failure. Known token totals
+and unknown_usage_count are separate. Timeouts are capped by remaining active time.
+Status-only, missing/ambiguous customers, unknown/timeout/contradictory monitoring and
+policy/budget violations cannot produce a ticket proposal.

@@ -40,6 +40,14 @@ services:
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
+      AGENT_MAX_READS: ${AGENT_MAX_READS:-15}
+      AGENT_MAX_LLM_ATTEMPTS: ${AGENT_MAX_LLM_ATTEMPTS:-10}
+      AGENT_MAX_ROUNDS: ${AGENT_MAX_ROUNDS:-6}
+      AGENT_MAX_TOKENS: ${AGENT_MAX_TOKENS:-30000}
+      AGENT_ACTIVE_SECONDS: ${AGENT_ACTIVE_SECONDS:-120}
     ports:
       - 127.0.0.1:${API_PORT:-8000}:8000
     depends_on:

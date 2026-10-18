@@ -62,3 +62,15 @@ all eight read-tools, with input schemas checked exactly against the client regi
 Migration 0002 adds PostgreSQL RU/EN FTS indexes. Full isolated Docker suite:
 `powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage2.ps1`:
 **48 passed in 5.90s**, including real HTTP transport overlay tests.
+
+## Stage 3 dependencies and sources
+
+No new dependencies: LangGraph/Postgres saver and HTTPX reuse the frozen lock. The adapter
+uses REST directly; no unpinned OpenAI SDK is introduced. Model ID is explicit in .env.
+
+- [Official function calling guide](https://developers.openai.com/api/docs/guides/function-calling).
+- [Official structured outputs guide](https://developers.openai.com/api/docs/guides/structured-outputs?api-mode=responses).
+- [GPT-5.6 Terra model ID](https://developers.openai.com/api/docs/models/gpt-5.6-terra).
+
+Contract tests cover function calls, strict structured outputs, refusals, incomplete output,
+invalid JSON, usage/missing usage and safe errors. Live smoke is recorded separately.
