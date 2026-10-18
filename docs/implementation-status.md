@@ -340,3 +340,12 @@ Audio decode/volume check succeeded, peak -1.3 dBFS (no full-scale clipping). Ex
 not asserted because the WAV responses contain no billed token usage. Cached synthesis does
 not repeat requests. Documentation explicitly discloses the AI-generated voice.
 Application implementation and the previously passed release/eval results are unchanged.
+
+## Narration synchronization review follow-up
+
+Checked scene correspondence in the delivered MP4. Corrected premature evidence/card cues
+and the recorded-Reject narration, which previously began while the card was still pending.
+Reused all 11 cached speech clips: no additional API calls or browser recording. Review and
+final scene windows are in docs/narration-sync-review.md. Audio and video remain 158.4 s;
+final size 6,611,284 bytes, peak -1.3 dBFS. Decoded output audio correlates 0.999864 with the
+timed local mix. This is a media synchronization check, not an independent ASR transcript.

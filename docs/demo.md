@@ -43,3 +43,7 @@ To assemble from the local voice cache, run `.venv/Scripts/python.exe scripts/na
 An explicit `--generate` enables paid Speech API calls for missing clips, using the local
 ignored `.env` key. This media task requires ffmpeg/ffprobe on PATH and the project Python
 environment. The API receives narration text only; video assembly is local.
+
+Narration timing was subsequently checked against contact sheets and transition close-ups
+from the rendered MP4. Early evidence/card narration and the Reject outcome were retimed
+using cached speech, with zero new API calls. See [synchronization review](narration-sync-review.md).
