@@ -9,6 +9,7 @@ from langgraph.graph.state import CompiledStateGraph
 from pydantic import ValidationError
 
 from opspilot.agent.budgets import BudgetExceeded
+from opspilot.agent.evidence import missing_reads
 from opspilot.agent.nodes.classify import classify
 from opspilot.agent.nodes.execute_reads import execute_reads
 from opspilot.agent.nodes.investigate import investigate
@@ -72,7 +73,6 @@ def build_graph(
     for name, next_name in (
         ("classify", "resolve_customer"),
         ("resolve_customer", "investigate"),
-        ("execute_reads", "investigate"),
         ("reason", "plan"),
         ("plan", "risk_check"),
     ):
@@ -82,15 +82,31 @@ def build_graph(
             {"report": "report", next_name: next_name},
         )
     builder.add_conditional_edges(
+        "execute_reads",
+        lambda state: (
+            "report"
+            if state.get("outcome")
+            else ("investigate" if missing_reads(state) else "reason")
+        ),
+        {"report": "report", "investigate": "investigate", "reason": "reason"},
+    )
+    builder.add_conditional_edges(
         "investigate",
         lambda state: (
             "report"
             if state.get("outcome")
             else "execute_reads"
             if state.get("pending_reads")
+            else "investigate"
+            if state.get("continue_investigation")
             else "reason"
         ),
-        {"report": "report", "execute_reads": "execute_reads", "reason": "reason"},
+        {
+            "report": "report",
+            "execute_reads": "execute_reads",
+            "reason": "reason",
+            "investigate": "investigate",
+        },
     )
     builder.add_edge("risk_check", "report")
     builder.add_edge("report", END)

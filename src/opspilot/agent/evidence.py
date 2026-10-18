@@ -21,9 +21,13 @@ def latest_data(state: AgentState, name: str) -> dict[str, Any] | None:
     return result["data"] if result["ok"] else None
 
 
-def missing_checks(state: AgentState) -> list[str]:
+def missing_reads(state: AgentState) -> list[str]:
     required = ("get_service_status",) if state.get("intent") == "status_only" else REQUIRED
-    missing = [name for name in required if latest_data(state, name) is None]
+    return [name for name in required if latest_data(state, name) is None]
+
+
+def missing_checks(state: AgentState) -> list[str]:
+    missing = missing_reads(state)
     status = latest_data(state, "get_service_status")
     credential = latest_data(state, "get_credential_status")
     events = latest_data(state, "get_integration_events")

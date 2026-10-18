@@ -54,7 +54,7 @@ async def test_graph_proposal_and_durable_checkpoint(
     assert result["final_report"]["ticket_id"] is None
     assert result["hypotheses"]
     assert result["budget"]["read_attempts"] == 7
-    assert result["budget"]["llm_attempts"] == 6
+    assert result["budget"]["llm_attempts"] == 5
     async with postgres_checkpointer(integration_settings) as saver:
         checkpoint = await saver.aget_tuple({"configurable": {"thread_id": result["run_id"]}})
         assert checkpoint is not None
@@ -257,3 +257,40 @@ async def test_unknown_hypothesis_reference_blocks_proposal(integration_settings
     )
     assert result["outcome"] == "blocked"
     assert result["proposed_action"] is None
+
+
+class EarlyStopProvider(ScriptedProvider):
+    def __init__(self, always=False):
+        self.decisions = 0
+        self.always = always
+
+    async def complete(self, operation, context):
+        if operation == "investigate":
+            self.decisions += 1
+            assert context["missing_reads"]
+            assert "evidence" not in context["state"]
+            if self.always or self.decisions == 2:
+                return Completion(
+                    output={"stop": True, "calls": []}, usage=Usage(input_tokens=0, output_tokens=0)
+                )
+        return await super().complete(operation, context)
+
+
+@pytest.mark.parametrize("always,outcome", [(False, "proposed_only"), (True, "budget_exhausted")])
+async def test_early_stop_gets_missing_reads_and_remains_bounded(
+    integration_settings, always, outcome
+):
+    result = await run_investigation(
+        integration_settings,
+        "Investigate GreenShop",
+        mode="scripted",
+        provider=EarlyStopProvider(always),
+    )
+    assert result["outcome"] == outcome, result
+    assert result["budget"]["rounds"] <= 6
+    if always:
+        assert result["proposed_action"] is None
+        assert result["budget"]["read_attempts"] == 2
+    else:
+        assert result["budget"]["read_attempts"] == 7
+        assert result["budget"]["rounds"] == 3

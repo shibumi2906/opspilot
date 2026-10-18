@@ -10,7 +10,7 @@ async def reason(state: AgentState, runtime: Runtime) -> None:
     missing = missing_checks(state)
     result = await runtime.llm(
         "reason",
-        runtime.context(state)
+        runtime.context(state, "reason")
         | {
             "canonical_facts": facts,
             "missing_checks": missing,

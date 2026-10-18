@@ -12,7 +12,7 @@ async def plan(state: AgentState, runtime: Runtime) -> None:
     canonical = canonical_proposal(state)
     result = await runtime.llm(
         "plan",
-        runtime.context(state)
+        runtime.context(state, "plan")
         | {
             "canonical_proposal": canonical.model_dump(mode="json"),
         },

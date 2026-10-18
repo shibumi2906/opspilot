@@ -1,5 +1,6 @@
 from uuid import uuid4
 
+from opspilot.agent.evidence import missing_reads
 from opspilot.agent.policy import PolicyViolation, validate_read
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState, InvestigationDecision
@@ -25,3 +26,5 @@ async def investigate(state: AgentState, runtime: Runtime) -> None:
             "attempt": 0,
         }
     state["pending_reads"] = pending
+
+    state["continue_investigation"] = bool(result.stop and missing_reads(state))

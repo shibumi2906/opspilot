@@ -6,7 +6,7 @@
 | --- | --- | --- |
 | 1 | done | Окружение, миграция, fixtures, MCP server/client и readiness проверены; 23 теста прошли |
 | 2 | done | Восемь read-tools, FTS, evidence и CLI; 48 тестов прошли |
-| 3 | implemented | LangGraph, PostgreSQL checkpoint, policy/budgets, providers и CLI; проверка ниже |
+| 3 | done | LangGraph, checkpoints, providers и CLI; 94 теста и полный live smoke прошли |
 | 4 | not_started | Approval interrupt и decision API |
 | 5 | not_started | Транзакционный create_ticket и verification |
 | 6 | not_started | React UI |
@@ -134,13 +134,42 @@ Real mode: OpenAI Responses API, function calling и strict structured outputs.
 Модель задаёт OPENAI_MODEL; secret только в ignored .env и API environment.
 Автоматический suite не вызывает оплачиваемую модель; smoke выполняется отдельно.
 
-Финальный полный Docker-прогон: **92 passed in 16.78s**, exit 0, без warnings.
-Ruff check/format проходят; mypy: 59 source files без ошибок. Проверены RU/EN GreenShop,
+Полный Docker-прогон после regression fixes: **94 passed in 15.35s**, exit 0, без warnings.
+Ruff check/format проходят; mypy: 60 source files без ошибок. Проверены RU/EN GreenShop,
 настоящие сохранённые checkpoints, research cycle/conditional edges, status-only, unknown/
 ambiguous customers, healthy/unknown/timeout/contradictory monitoring, запрет неизвестных
 и write-tools, бюджеты, повтор client_request_id, token/unknown usage, invalid outputs,
 replay reducers, fake evidence и отсутствие бизнес-записей.
 
-Локально настроены модель gpt-5.6-terra и API key. Живой smoke подготовлен, но отправка
-payload во внешний OpenAI API отклонена автоматической проверкой одобрения: требуется
-явное разрешение передачи синтетических данных. Вызов ещё не выполнен.
+## Live smoke этапа 3
+
+18 октября 2026, после явного разрешения пользователя на передачу синтетических данных.
+Провайдер OpenAI Responses API, фактическая модель `gpt-5.6-terra`.
+Запрос: `Investigate why GreenShop orders fail today`.
+
+Run: `32b8cb69-10a7-42d8-a3f7-5ee7f48640e3`; outcome=`proposed_only`.
+7 настоящих MCP reads, 5 investigation rounds, 8 model attempts; 14789 input + 1807 output
+токенов; unknown usage=0; active time=18.097 s. Есть все пять видов domain evidence:
+status, events/401, credential/expired, incident history, knowledge/runbook.
+В отчёте 10 фактов и 1 помеченная гипотеза, missing_checks=[]; proposal относится к GreenShop.
+В PostgreSQL сохранены 18 checkpoints; run.status=completed. tickets/actions/approvals=0.
+Проверены DTO результата и целостность evidence references.
+
+Smoke выявил преждевременный stop и длинные AND-запросы FTS. Цикл теперь возвращает
+недостающие reads при раннем stop, завершает исследование после обязательных чтений,
+сохраняет бюджеты и отправляет компактный контекст без дублирования evidence/results.
+Описания FTS объясняют короткие query и cross-customer history. Regression suite после
+изменения цикла: **94 passed in 15.35s**. FTS descriptions проверены отдельным полным live smoke.
+
+## Основная локальная база данных
+
+БД `opspilot` существует в основной PostgreSQL, volume сохраняется. На момент проверки:
+3 customers, 10 incidents, 5 knowledge articles, 0 tickets. Применена migration
+`0002_search_indexes`; checkpoint tables инициализированы официальным SDK.
+`scripts/setup-local.ps1` воспроизводимо создаёт БД при первом запуске PostgreSQL,
+применяет migrations, seed и checkpoint setup, затем поднимает API/MCP.
+Создание БД входит в этап 1; runtime checkpoint storage — в этап 3.
+
+`scripts/setup-local.ps1` выполнен на основной БД: exit 0, seed 3/10/5,
+checkpoint schema ready, API healthy. Основные PostgreSQL/MCP/API оставлены запущенными.
+Пункт 3 этапа 1 в плане явно уточняет создание database и persistent volume.

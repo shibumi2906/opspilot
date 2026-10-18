@@ -3,7 +3,6 @@ from datetime import datetime, timedelta
 from typing import Any
 from zoneinfo import ZoneInfo
 
-from opspilot.agent.evidence import latest_data
 from opspilot.agent.policy import forbidden_request
 from opspilot.agent.state import AgentState, Classification, InvestigationDecision
 from opspilot.contracts.actions import PlanDecision
@@ -78,7 +77,14 @@ class ScriptedProvider:
         elif operation == "reason":
             state = context["state"]
             hypotheses = []
-            credential = latest_data(state, "get_credential_status")
+            credential = next(
+                (
+                    e["facts"]
+                    for e in state["evidence"].values()
+                    if e["source_type"] == "credential_status"
+                ),
+                None,
+            )
             if credential and credential["status"] == "expired" and not context["missing_checks"]:
                 refs = [
                     key

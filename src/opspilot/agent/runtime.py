@@ -6,6 +6,7 @@ from uuid import UUID, uuid4
 from pydantic import BaseModel, ValidationError
 
 from opspilot.agent.budgets import Budget
+from opspilot.agent.evidence import missing_reads
 from opspilot.agent.policy import PolicyViolation
 from opspilot.agent.state import AgentState
 from opspilot.config import Settings
@@ -136,7 +137,8 @@ class Runtime:
         self.budget.check()
         return result
 
-    def context(self, state: AgentState) -> dict[str, Any]:
+    def context(self, state: AgentState, operation: Operation = "investigate") -> dict[str, Any]:
+        # Send each observation once; provenance hashes and duplicate raw results stay local.
         keys = (
             "request",
             "language",
@@ -146,7 +148,25 @@ class Runtime:
             "integration_id",
             "integration_type",
             "time_window",
-            "observations",
-            "evidence",
         )
-        return {"state": {key: state.get(key) for key in keys}}
+        data = {key: state.get(key) for key in keys}
+        if operation == "investigate":
+            data["observations"] = {
+                str(index): {
+                    "name": value["name"],
+                    "result": {
+                        "ok": value["result"]["ok"],
+                        "data": value["result"]["data"],
+                        "error": value["result"]["error"],
+                    },
+                }
+                for index, value in enumerate(state.get("observations", {}).values())
+            }
+        elif operation == "reason":
+            data["evidence"] = {
+                identity: {
+                    key: value[key] for key in ("source_type", "source_id", "observed_at", "facts")
+                }
+                for identity, value in state.get("evidence", {}).items()
+            }
+        return {"state": data, "missing_reads": missing_reads(state)}

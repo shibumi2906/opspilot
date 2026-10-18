@@ -74,3 +74,7 @@ uses REST directly; no unpinned OpenAI SDK is introduced. Model ID is explicit i
 
 Contract tests cover function calls, strict structured outputs, refusals, incomplete output,
 invalid JSON, usage/missing usage and safe errors. Live smoke is recorded separately.
+
+Live stage 3 smoke (18 October 2026): `gpt-5.6-terra`, Responses API, `proposed_only`,
+14789 input / 1807 output tokens, 8 model attempts, 7 MCP reads, 18 PostgreSQL checkpoints.
+No tickets/actions/approvals were created. See implementation-status.md for acceptance details.

@@ -50,6 +50,7 @@ class AgentState(TypedDict, total=False):
     tool_calls: Annotated[dict[str, Any], merge_by_id]
     llm_calls: Annotated[dict[str, Any], merge_by_id]
     pending_reads: list[dict[str, Any]]
+    continue_investigation: bool
     hypotheses: list[dict[str, Any]]
     facts: list[dict[str, Any]]
     proposed_action: dict[str, Any] | None

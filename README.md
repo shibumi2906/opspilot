@@ -5,6 +5,25 @@ Portfolio MVP: controlled operational incident investigation. Implementation in 
 Implemented: stages 1–3 (foundation, MCP diagnostics and checkpointed investigation) (see [implementation status](docs/implementation-status.md) for actual verification).
 Approvals, ticket execution and UI are future stages. All business data is synthetic.
 
+## Initialize the local database
+
+PostgreSQL is a real local Docker database, included in stage 1. The `opspilot` database,
+roles and schemas are created when the postgres service initializes its persistent volume.
+Alembic creates/updates application tables; seed adds synthetic demo data. Stage 3 adds SDK
+checkpoint tables in the separate `checkpoints` schema. No external database is required.
+
+After creating `.env` and filling the database passwords and MCP token as described below:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-local.ps1
+```
+
+This builds runtime images, starts PostgreSQL, applies migrations, seeds data, initializes
+checkpoints with the restricted checkpoint role and starts API/MCP. It is repeatable and
+preserves the volume and unrelated records; seeded demo records are upserted to fixture values.
+Use `-SkipBuild` only if images already match the source. No LLM calls are made by setup.
+The isolated `opspilot_test` database/volume is created separately by the test scripts.
+
 ## Stage 1 quickstart
 
 Prerequisite: Docker Desktop with Linux containers and Docker Compose.
