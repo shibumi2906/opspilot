@@ -13,6 +13,10 @@ async def test_seed_is_idempotent_and_preserves_nonfixture_data(
     integration_settings: Settings,
 ) -> None:
     clock = integration_settings.scenario_clock
+    async with admin_engine.connect() as connection:
+        before = list(
+            (await connection.execute(select(Ticket.__table__).order_by(Ticket.id))).all()
+        )
     await seed(admin_engine, clock)
     async with admin_engine.begin() as connection:
         # This transaction rolls back even if an assertion fails: no fixture cleanup dependency.
@@ -30,7 +34,10 @@ async def test_seed_is_idempotent_and_preserves_nonfixture_data(
         assert await connection.scalar(select(func.count()).select_from(Customer)) == 4
         assert await connection.scalar(select(func.count()).select_from(Incident)) == 10
         assert await connection.scalar(select(func.count()).select_from(KnowledgeArticle)) == 5
-        assert await connection.scalar(select(func.count()).select_from(Ticket)) == 0
+        assert (
+            list((await connection.execute(select(Ticket.__table__).order_by(Ticket.id))).all())
+            == before
+        )
         await connection.rollback()
     await seed(admin_engine, clock)
     async with admin_engine.connect() as connection:

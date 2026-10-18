@@ -22,7 +22,9 @@ async def settle(service, run_id):
             await asyncio.sleep(0.02)
 
 
-@pytest.mark.parametrize("choice,outcome", [("approve", "partial"), ("reject", "rejected")])
+@pytest.mark.parametrize(
+    "choice,outcome", [("approve", "actions_verified"), ("reject", "rejected")]
+)
 async def test_durable_decisions(integration_settings, admin_engine, choice, outcome):
     service = RunService(integration_settings)
     resumes = []
@@ -77,9 +79,25 @@ async def test_durable_decisions(integration_settings, admin_engine, choice, out
         assert final["thread_id"] == str(run_id)
         assert final["action"]["arguments"] == card["arguments"]
         assert final["action"]["arguments_hash"] == card["arguments_hash"]
-        assert final["action"]["execution_status"] == "not_started"
-        assert final["final_report"]["ticket_id"] is None
-        assert ("execute" in final["errors"]) == (choice == "approve")
+        assert final["action"]["execution_status"] == (
+            "succeeded" if choice == "approve" else "not_started"
+        )
+        assert bool(final["final_report"]["ticket_id"]) == (choice == "approve")
+        assert final["final_report"]["verification_status"] == (
+            "verified" if choice == "approve" else "not_started"
+        )
+        if choice == "approve":
+            from opspilot.mcp_client.client import MCPClient
+
+            client = MCPClient(integration_settings)
+            async with client.session() as (session, _):
+                ticket = await client.call(
+                    session, "get_ticket", {"ticket_id": final["final_report"]["ticket_id"]}
+                )
+            assert ticket.ok
+            for key, value in card["arguments"].items():
+                assert ticket.data[key] == value
+        assert "execute" not in final["errors"]
         await service.decide(run_id, decision)
         with pytest.raises(Conflict):
             await service.decide(
@@ -92,12 +110,15 @@ async def test_durable_decisions(integration_settings, admin_engine, choice, out
         with pytest.raises(LookupError):
             await service.decide(run_id, Decision(action_id=uuid4(), decision=choice))
         async with admin_engine.connect() as conn:
-            assert await conn.scalar(text("SELECT count(*) FROM domain.tickets")) == before
+            assert await conn.scalar(text("SELECT count(*) FROM domain.tickets")) == before + (
+                choice == "approve"
+            )
     finally:
         await service.close()
 
 
-async def test_api_contract_and_guard(integration_settings):
+@pytest.mark.parametrize("choice", ["approve", "reject"])
+async def test_api_contract_and_guard(integration_settings, choice):
     import os
 
     service = RunService(integration_settings)
@@ -119,13 +140,17 @@ async def test_api_contract_and_guard(integration_settings):
             pending = await settle(service, run_id)
             card = pending["action"]
             path = f"/api/v1/runs/{run_id}/decision"
-            body = {"action_id": card["action_id"], "decision": "reject"}
+            body = {"action_id": card["action_id"], "decision": choice}
             assert (await client.post(path, json={**body, "arguments": {}})).status_code == 422
             wrong = {**body, "action_id": str(uuid4())}
             assert (await client.post(path, json=wrong)).status_code == 404
             assert (await client.post(path, json=body)).status_code in {200, 202}
-            await settle(service, run_id)
-            opposite = {**body, "decision": "approve"}
+            final = await settle(service, run_id)
+            assert final["outcome"] == ("actions_verified" if choice == "approve" else "rejected")
+            replay = await client.post(path, json=body)
+            assert replay.status_code == 200
+            assert replay.json()["ticket_id"] == final["report"]["ticket_id"]
+            opposite = {**body, "decision": "reject" if choice == "approve" else "approve"}
             assert (await client.post(path, json=opposite)).status_code == 409
             public = (await client.get(f"/api/v1/runs/{run_id}")).json()
             assert public["action"]["arguments"] == card["arguments"]

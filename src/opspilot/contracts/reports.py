@@ -6,6 +6,8 @@ from pydantic import Field
 from opspilot.contracts.common import StrictModel
 
 Outcome = Literal[
+    "actions_verified",
+    "unknown_outcome",
     "rejected",
     "diagnosis_only",
     "proposed_only",
@@ -43,6 +45,6 @@ class Report(StrictModel):
     missing_checks: list[str]
     action_summary: str
     ticket_id: UUID | None = None
-    verification_status: Literal["not_started"] = "not_started"
+    verification_status: Literal["not_started", "verified", "mismatch", "unknown"] = "not_started"
     remaining_problem: str
     outcome: Outcome

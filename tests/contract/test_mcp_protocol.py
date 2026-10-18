@@ -7,7 +7,7 @@ from opspilot.config import Settings
 from opspilot.contracts.tools import CustomerData
 from opspilot.fixtures.loader import GREENSHOP_ID
 from opspilot.mcp_client.client import MCPClient
-from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.mcp_client.registry import ALL_TOOLS
 
 
 async def test_real_sdk_discovery_and_read(integration_settings: Settings) -> None:
@@ -15,7 +15,8 @@ async def test_real_sdk_discovery_and_read(integration_settings: Settings) -> No
     async with client.session() as (session, protocol):
         assert protocol == "2025-11-25"
         tools = await client.discover(session)
-        assert {t.name for t in tools} == set(READ_TOOLS)
+        assert {t.name for t in tools} == set(ALL_TOOLS)
+        assert next(t for t in tools if t.name == "create_ticket").annotations.readOnlyHint is False
         result = await client.call(session, "get_customer", {"customer_id": GREENSHOP_ID})
         assert result.ok
         customer = CustomerData.model_validate(result.data)

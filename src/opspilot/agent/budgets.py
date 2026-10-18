@@ -39,10 +39,10 @@ class Budget:
         if self.remaining() <= 0 or self.input_tokens + self.output_tokens >= self.limits.tokens:
             raise BudgetExceeded("Active time or token limit reached")
 
-    def begin_read(self) -> None:
+    def begin_read(self, *, verification: bool = False) -> None:
         self.check()
         # One reserved verification read is unavailable during pre-approval investigation.
-        if self.read_attempts >= self.limits.reads - 1:
+        if self.read_attempts >= self.limits.reads - (0 if verification else 1):
             raise BudgetExceeded("Read limit reached; verification reserve preserved")
         self.read_attempts += 1
 

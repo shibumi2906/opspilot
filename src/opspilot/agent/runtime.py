@@ -77,7 +77,13 @@ class Runtime:
         raise AssertionError("Unreachable provider attempt")
 
     async def read(
-        self, name: str, arguments: dict[str, Any], state: AgentState, call_id: str | None = None
+        self,
+        name: str,
+        arguments: dict[str, Any],
+        state: AgentState,
+        call_id: str | None = None,
+        *,
+        verification: bool = False,
     ) -> ToolResult:
         if name not in READ_TOOLS:
             raise PolicyViolation("Unknown read tool")
@@ -88,7 +94,7 @@ class Runtime:
         )
         call_id = call_id or str(uuid4())
         for attempt in range(1, 4):
-            self.budget.begin_read()
+            self.budget.begin_read(verification=verification)
             key = f"{call_id}:{attempt}"
             state.setdefault("tool_calls", {})[key] = {
                 "started_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),

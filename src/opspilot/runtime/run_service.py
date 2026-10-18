@@ -122,7 +122,7 @@ class RunService:
                     "approval_status": row.Approval.decision,
                     "execution_status": row.Action.execution_status,
                     "result": row.Action.execution_result,
-                    "verification": {"status": "not_started"},
+                    "verification": public.get("verification_result") or {"status": "not_started"},
                 }
             )
             if row is not None:

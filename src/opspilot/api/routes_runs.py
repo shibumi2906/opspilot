@@ -31,5 +31,5 @@ async def decide(
         "action_id": str(body.action_id),
         "decision": body.decision,
         "status": snapshot["status"],
-        "ticket_id": None,
+        "ticket_id": (snapshot.get("execution_result") or {}).get("ticket_id"),
     }

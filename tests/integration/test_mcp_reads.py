@@ -60,7 +60,7 @@ async def test_all_reads_and_no_mutations(integration_settings, admin_engine):
             .scalars()
             .all()
         )
-    assert before == after == []
+    assert before == after
 
 
 async def test_event_limit_and_half_open_range(integration_settings):

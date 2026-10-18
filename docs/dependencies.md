@@ -78,3 +78,7 @@ invalid JSON, usage/missing usage and safe errors. Live smoke is recorded separa
 Live stage 3 smoke (18 October 2026): `gpt-5.6-terra`, Responses API, `proposed_only`,
 14789 input / 1807 output tokens, 8 model attempts, 7 MCP reads, 18 PostgreSQL checkpoints.
 No tickets/actions/approvals were created. See implementation-status.md for acceptance details.
+
+Stage 5 extends the same pinned MCP SDK/protocol to nine tools: eight read-tools plus
+create_ticket. Discovery validates exact input/result schemas for all nine; LLM binding
+continues to use only the eight read contracts. No dependency or schema migration was needed.

@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
 from opspilot.config import Settings
 from opspilot.contracts.common import Source, ToolError, ToolResult
 from opspilot.contracts.tools import (
+    CreateTicketArgs,
     EventsArgs,
     FindCustomersArgs,
     GetCustomerArgs,
@@ -19,10 +20,12 @@ from opspilot.contracts.tools import (
     SearchDocumentationArgs,
 )
 from opspilot.db.models_domain import Customer, CustomerIntegration, Ticket
-from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.mcp_client.registry import ALL_TOOLS, READ_TOOLS
 from opspilot.mcp_server.adapters.monitoring import observe
 from opspilot.mcp_server.services.customers import get_customer
 from opspilot.mcp_server.services.retrieval import search
+from opspilot.mcp_server.services.tickets import WriteDenied
+from opspilot.mcp_server.tools_write import write_tool
 
 
 async def read_tool(
@@ -129,22 +132,26 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
         return [
             Tool(
                 name=name,
-                description=f"Read synthetic data: {name}",
+                description=f"Synthetic operational data: {name}",
                 inputSchema=contract.arguments.model_json_schema(),
                 outputSchema=ToolResult.model_json_schema(),
-                annotations=ToolAnnotations(readOnlyHint=True, destructiveHint=False),
+                annotations=ToolAnnotations(readOnlyHint=name in READ_TOOLS, destructiveHint=False),
             )
-            for name, contract in READ_TOOLS.items()
+            for name, contract in ALL_TOOLS.items()
         ]
 
     @server.call_tool(validate_input=False)  # type: ignore[untyped-decorator]
     async def call_tool(name: str, arguments: dict[str, Any]) -> CallToolResult:
-        if name not in READ_TOOLS:
+        if name not in ALL_TOOLS:
             raise ValueError("Unknown read tool")
-        contract = READ_TOOLS[name]
+        contract = ALL_TOOLS[name]
         try:
             args = contract.arguments.model_validate(arguments)
-            response = await read_tool(name, args, engine, settings)
+            response = (
+                await write_tool(CreateTicketArgs.model_validate(arguments), engine)
+                if name == "create_ticket"
+                else await read_tool(name, args, engine, settings)
+            )
             if response is None:
                 result = ToolResult(
                     ok=False,
@@ -159,6 +166,12 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                     data=contract.data.model_validate(data).model_dump(mode="json"),
                     sources=sources,
                 )
+        except WriteDenied as exc:
+            result = ToolResult(
+                ok=False,
+                observed_at=settings.scenario_clock,
+                error=ToolError(code=exc.code, message="Write authorization or payload rejected"),
+            )
         except ValidationError:
             result = ToolResult(
                 ok=False,

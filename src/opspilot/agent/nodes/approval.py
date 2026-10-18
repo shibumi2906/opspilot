@@ -48,8 +48,3 @@ async def approval(state: AgentState, runtime: Runtime) -> None:
             state["outcome"] = "rejected" if row.Approval.decision == "rejected" else None
     finally:
         await engine.dispose()
-
-
-async def execute(state: AgentState, runtime: Runtime) -> None:
-    state["errors"]["execute"] = {"code": "execution_not_implemented", "node": "execute"}
-    state["outcome"] = "partial"

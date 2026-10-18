@@ -1,9 +1,9 @@
 # OpsPilot
 
-Portfolio MVP: controlled operational incident investigation. Implementation in progress. Stages 1–4 are implemented.
+Portfolio MVP: controlled operational incident investigation. Implementation in progress. Stages 1–5 are implemented.
 
-Implemented: stages 1–4 (foundation, MCP diagnostics, checkpointed investigation and approval) (see [implementation status](docs/implementation-status.md) for actual verification).
-Ticket execution and UI are future stages. All business data is synthetic.
+Implemented: stages 1–5 (foundation, MCP diagnostics, checkpointed investigation, approval and verified ticket creation) (see [implementation status](docs/implementation-status.md) for actual verification).
+UI is a future stage. All business data is synthetic.
 
 ## Initialize the local database
 
@@ -49,7 +49,7 @@ docker compose exec api python -m opspilot.cli.mcp_smoke
 Health: http://127.0.0.1:8000/health (200 when database, migrations and MCP are ready).
 API uses a restricted workflow role; MCP uses a separate domain role. Neither PostgreSQL
 nor MCP publishes a host port. Admin is an explicitly invoked one-shot tools service.
-Discovery exposes eight read-tools; `create_ticket` is not registered. No LLM/API key required.
+Discovery exposes eight read-tools and the approval-gated `create_ticket` write-tool. No LLM/API key required.
 
 `docker compose down` preserves database data. Init SQL runs only on a new volume;
 changing passwords in `.env` does not change credentials in an existing database.
@@ -123,7 +123,7 @@ PostgreSQL checkpoints are initialized in `checkpoints` before invocation; threa
 CLI output includes mode, model ID, evidence-linked facts/hypotheses, budget counters and
 at most one ticket proposal. Since stage 4, actionable investigations pause at approval;
 `proposed_only` was the stage-3 checkpoint outcome. No ticket is executed in stage 4.
-MCP discovery still exposes exactly eight read-tools. Runs are stored in `workflow.agent_runs`.
+MCP discovery exposes eight read-tools plus create_ticket; the model only receives read-tools. Runs are stored in `workflow.agent_runs`.
 
 Use `--client-request-id <UUID>` to retrieve an existing identical invocation without
 re-running it. Reusing that ID with different request/configuration returns a conflict.
@@ -182,10 +182,10 @@ $decision = @{ action_id = $snapshot.action.action_id; decision = 'reject' } | C
 Invoke-RestMethod ("http://127.0.0.1:8000/api/v1/runs/" + $run.run_id + "/decision") -Method Post -ContentType application/json -Body $decision
 ```
 
-Use `approve` for the other branch. Reject completes with `rejected`; Approve completes
-with `partial` and `execution_not_implemented`. Both leave tickets unchanged. The saved
-card remains visible after either decision; execution_status stays `not_started` and no
-report claims ticket creation or restored orders. Real ticket execution belongs to stage 5.
+Use `approve` for the other branch. Reject completes with `rejected` and leaves tickets
+unchanged. Since stage 5, Approve creates one ticket and verifies it through get_ticket,
+finishing with `actions_verified` only on exact field equality. The saved card remains
+visible after either decision. Ticket creation does not repair credentials or restore orders.
 
 POST returns 202 after saving the queued run. Polling reads a public snapshot, without raw
 checkpoint data. Reusing client_request_id with identical input returns the same run;
@@ -207,3 +207,33 @@ CLI is a local administrative alternative: avoid invoking it concurrently with A
 on the same run. Recovery across API crashes and automatic restart handling remain stage 7;
 stage 4 supports ordinary pause/resume while the API is running. Never delete checkpoint
 or workflow records to retry a decision.
+
+## Stage 5: atomic ticket write and verification
+
+The existing API/CLI approval flow now executes the saved action through MCP. API/graph
+never insert a domain ticket directly. MCP locks the action, checks its run/tool, exact
+normalized arguments/hash and stored approved decision, then inserts the ticket and saves
+execution_result in the same PostgreSQL transaction. No new migration is required: the
+stage-1 schema already has the unique action/ticket constraints and restricted role grants.
+
+Repeated create_ticket requests for the same approved action return the original ticket_id
+with replayed=true. Payload mismatch is rejected even after a previous successful write.
+Concurrent requests create exactly one ticket. create_ticket is excluded from LLM tool
+binding and from the graph's diagnostic read dispatcher.
+
+After a lost write response, the executor reads the atomic workflow result and verifies
+that ticket via get_ticket. It never creates a replacement action or blindly retries an
+uncertain write. With no committed result it reports unknown_outcome. Exact verification
+checks customer/title/description/priority/evidence_ids, action/ticket IDs, status and timestamp.
+Mismatch gives partial/mismatch; unavailable verification gives unknown_outcome/unknown.
+The report includes ticket_id and verification status and leaves order recovery unconfirmed.
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/test-stage5.ps1
+```
+
+This suite uses the isolated opspilot_test volume and real MCP transport/PostgreSQL. It
+checks approval barriers, payload/hash tampering, concurrent writes, transaction rollback,
+lost responses, verification mismatch/missing ticket, repeated HTTP Approve and Reject.
+Fault injection is a private test function dependency; no fault flags are accepted by API/MCP.
+Crash recovery remains stage 7; this stage covers write-response reconciliation in a running API.

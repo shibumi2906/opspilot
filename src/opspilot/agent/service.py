@@ -199,6 +199,8 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
             "outcome",
             "final_report",
             "action_id",
+            "execution_result",
+            "verification_result",
         )
     }
     public["status"] = "waiting_for_approval" if state.get("__interrupt__") else "completed"

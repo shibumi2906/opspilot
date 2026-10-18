@@ -10,8 +10,9 @@ from pydantic import ValidationError
 
 from opspilot.agent.budgets import BudgetExceeded
 from opspilot.agent.evidence import missing_reads
-from opspilot.agent.nodes.approval import approval, execute, prepare_approval
+from opspilot.agent.nodes.approval import approval, prepare_approval
 from opspilot.agent.nodes.classify import classify
+from opspilot.agent.nodes.execute import execute
 from opspilot.agent.nodes.execute_reads import execute_reads
 from opspilot.agent.nodes.investigate import investigate
 from opspilot.agent.nodes.plan import plan
@@ -19,6 +20,7 @@ from opspilot.agent.nodes.reason import reason
 from opspilot.agent.nodes.report import report
 from opspilot.agent.nodes.resolve_customer import resolve_customer
 from opspilot.agent.nodes.risk_check import risk_check
+from opspilot.agent.nodes.verify import verify
 from opspilot.agent.policy import PolicyViolation
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
@@ -34,10 +36,10 @@ def build_graph(
         async def invoke(current: AgentState) -> AgentState:
             state = copy.deepcopy(current)
             try:
-                if name not in {"report", "approval", "execute"}:
+                if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
                 await node(state, runtime)
-                if name not in {"report", "approval", "execute"}:
+                if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
             except BudgetExceeded:
                 state.update({"outcome": "budget_exhausted", "proposed_action": None})
@@ -63,6 +65,7 @@ def build_graph(
         ("prepare_approval", prepare_approval),
         ("approval", approval),
         ("execute", execute),
+        ("verify", verify),
         ("classify", classify),
         ("resolve_customer", resolve_customer),
         ("investigate", investigate),
@@ -127,6 +130,11 @@ def build_graph(
         lambda state: "report" if state.get("outcome") else "execute",
         {"report": "report", "execute": "execute"},
     )
-    builder.add_edge("execute", "report")
+    builder.add_conditional_edges(
+        "execute",
+        lambda state: "report" if state.get("outcome") else "verify",
+        {"report": "report", "verify": "verify"},
+    )
+    builder.add_edge("verify", "report")
     builder.add_edge("report", END)
     return builder.compile(checkpointer=checkpointer)

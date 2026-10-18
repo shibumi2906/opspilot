@@ -2,6 +2,8 @@ from typing import NamedTuple
 
 from opspilot.contracts.common import StrictModel
 from opspilot.contracts.tools import (
+    CreateTicketArgs,
+    CreateTicketData,
     CredentialData,
     CustomerData,
     CustomersData,
@@ -35,3 +37,6 @@ READ_TOOLS = {
     "search_documentation": ToolContract(SearchDocumentationArgs, DocumentationData),
     "get_ticket": ToolContract(GetTicketArgs, TicketData),
 }
+
+WRITE_TOOLS = {"create_ticket": ToolContract(CreateTicketArgs, CreateTicketData)}
+ALL_TOOLS = READ_TOOLS | WRITE_TOOLS

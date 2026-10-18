@@ -4,6 +4,7 @@ from uuid import UUID
 
 from pydantic import AwareDatetime, Field, StringConstraints, model_validator
 
+from opspilot.contracts.actions import TicketProposal
 from opspilot.contracts.common import StrictModel
 
 
@@ -131,3 +132,15 @@ class TicketData(StrictModel):
     evidence_ids: list[str]
     originating_action_id: UUID
     created_at: AwareDatetime
+
+
+class CreateTicketArgs(StrictModel):
+    run_id: UUID
+    action_id: UUID
+    arguments: TicketProposal
+
+
+class CreateTicketData(StrictModel):
+    ticket_id: UUID
+    created_at: AwareDatetime
+    replayed: bool

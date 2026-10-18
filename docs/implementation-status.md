@@ -8,7 +8,7 @@
 | 2 | done | Восемь read-tools, FTS, evidence и CLI; 48 тестов прошли |
 | 3 | done | LangGraph, checkpoints, providers и CLI; 94 теста и полный live smoke прошли |
 | 4 | done | Immutable action, PostgreSQL interrupt, background API, Approve/Reject и singleton guard |
-| 5 | not_started | Транзакционный create_ticket и verification |
+| 5 | done | Atomic MCP create_ticket, approval barrier, replay и exact get_ticket verification |
 | 6 | not_started | React UI |
 | 7 | not_started | Restart recovery и traces |
 | 8 | not_started | 12 eval cases, CI и release materials |
@@ -191,3 +191,24 @@ in 26.42 seconds against isolated PostgreSQL/MCP/API. CLI pause/reject and safe
 background-failure projection also passed; no live paid LLM run was repeated for this stage.
 The suite covers durable interrupt, immutable replay, both decisions, one concurrent resume,
 repeated/opposite decisions, wrong-run actions, payload injection, HTTP projection and singleton.
+
+## Stage 5 implementation (18 October 2026)
+
+- MCP exposes one write-tool create_ticket alongside eight read-tools. LLM read binding is unchanged.
+- MCP validates run/action/tool, normalized immutable arguments and canonical hash, and the persisted approval.
+- SELECT FOR UPDATE on action serializes writes. Ticket insert and execution_result commit atomically.
+- A repeated action returns the existing ticket ID; mismatched payload is rejected before replay.
+- Execute loads saved arguments from workflow and uses MCP only for domain writes.
+- Lost response reconciles the saved operation result; unknown outcome never triggers a new action/write.
+- Verification reads get_ticket via MCP, using the reserved read budget and comparing all returned fields.
+- Reports distinguish actions_verified, partial/mismatch, and unknown_outcome; order recovery is unconfirmed.
+- Existing schema/role grants support stage 5; no new migration or package dependency is required.
+- Run scripts/test-stage5.ps1 for the isolated full suite.
+
+Validation passed: ruff check, mypy src, git diff --check and scripts/test-stage5.ps1:
+**120 passed in 45.08 seconds** using real PostgreSQL/MCP/API with the scripted provider.
+Coverage includes concurrent writes, pending/rejected/missing approval, run/payload/hash
+mismatch, raw grant/fault flag rejection, rollback after insert, lost write response,
+unknown write status, verification mismatch/missing ticket, reserved verification read,
+and repeated HTTP Approve with the same ticket ID. Read/seed checks preserve existing tickets.
+No paid real-LLM run was repeated for this stage; UI and restart recovery remain stages 6–7.

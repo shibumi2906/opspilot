@@ -37,26 +37,36 @@ async def report(state: AgentState, runtime: Runtime) -> None:
         "Действие отклонено; тикет не создан.",
         "Action rejected; no ticket created.",
     )
-    if "execute" in state.get("errors", {}):
-        summaries["partial"] = (
-            "Исполнение ещё не реализовано; тикет не создан.",
-            "Execution is not implemented; no ticket created.",
-        )
+    summaries["actions_verified"] = (
+        "Тикет создан и проверен. Восстановление заказов не подтверждено.",
+        "Ticket created and verified. Order delivery recovery is not confirmed.",
+    )
+    summaries["unknown_outcome"] = (
+        "Результат записи или проверки неизвестен; требуется сверка.",
+        "Write or verification outcome is unknown; reconciliation is required.",
+    )
     if outcome != "proposed_only" and not state.get("action_id"):
         state["proposed_action"] = None
     facts = state.get("facts") or canonical_facts(state)
+    execution = state.get("execution_result")
+    verification = state.get("verification_result") or {"status": "not_started"}
+    action_summary = "Тикет не создан." if ru else "No ticket was created."
+    if execution:
+        action_summary = (
+            "Тикет создан; статус проверки: " if ru else "Ticket created; verification: "
+        ) + verification["status"]
+    elif outcome == "unknown_outcome":
+        action_summary = (
+            "Результат создания тикета неизвестен." if ru else "Ticket creation outcome is unknown."
+        )
     result = Report(
         summary=summaries[outcome][0 if ru else 1],
         facts=facts,
         hypotheses=state.get("hypotheses", []),
         missing_checks=state.get("missing_checks", []),
-        action_summary=(
-            "Тикет только предложен; согласование и исполнение ещё не реализованы."
-            if ru
-            else "Proposal only; approval and execution are not implemented."
-        )
-        if state.get("proposed_action") and not state.get("action_id")
-        else ("Тикет не создан." if ru else "No ticket was created."),
+        action_summary=action_summary,
+        ticket_id=execution["ticket_id"] if execution else None,
+        verification_status=verification["status"],
         remaining_problem=(
             "Credential не обновлён; восстановление потока заказов не подтверждено."
             if ru

@@ -29,6 +29,8 @@ class InvestigationDecision(StrictModel):
 
 
 class AgentState(TypedDict, total=False):
+    execution_result: dict[str, Any] | None
+    verification_result: dict[str, Any] | None
     action_id: str
     schema_version: int
     run_id: str

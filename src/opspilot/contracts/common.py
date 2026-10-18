@@ -10,7 +10,15 @@ class StrictModel(BaseModel):
 
 
 class ToolError(StrictModel):
-    code: Literal["NOT_FOUND", "DEPENDENCY_UNAVAILABLE", "MONITORING_TIMEOUT", "INVALID_ARGUMENTS"]
+    code: Literal[
+        "NOT_FOUND",
+        "DEPENDENCY_UNAVAILABLE",
+        "MONITORING_TIMEOUT",
+        "INVALID_ARGUMENTS",
+        "APPROVAL_REQUIRED",
+        "PAYLOAD_MISMATCH",
+        "STATE_CONFLICT",
+    ]
     message: str
     retryable: bool = False
 
