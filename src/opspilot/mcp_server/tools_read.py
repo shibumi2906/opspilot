@@ -26,6 +26,7 @@ from opspilot.mcp_server.services.customers import get_customer
 from opspilot.mcp_server.services.retrieval import search
 from opspilot.mcp_server.services.tickets import WriteDenied
 from opspilot.mcp_server.tools_write import write_tool
+from opspilot.telemetry import traced
 
 
 async def read_tool(
@@ -141,6 +142,7 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
         ]
 
     @server.call_tool(validate_input=False)  # type: ignore[untyped-decorator]
+    @traced("mcp.server.tool")
     async def call_tool(name: str, arguments: dict[str, Any]) -> CallToolResult:
         if name not in ALL_TOOLS:
             raise ValueError("Unknown read tool")

@@ -3,6 +3,7 @@ from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID, uuid4
 
+import httpx
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 from sqlalchemy import select, update
@@ -19,6 +20,7 @@ from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import Conflict
+from opspilot.telemetry import carrier, span
 
 
 class RunService:
@@ -65,12 +67,18 @@ class RunService:
             except Exception:
                 await self.fail(run_id)
 
-    async def fail(self, run_id: UUID) -> None:
+    async def fail(self, run_id: UUID, code: str = "RUN_FAILED") -> None:
         async with self.engine.begin() as conn:
             await conn.execute(
                 update(AgentRun)
                 .where(AgentRun.id == run_id)
-                .values(status="failed", error={"code": "RUN_FAILED"})
+                .values(
+                    status="failed",
+                    error={
+                        "code": code,
+                        "message": "Interrupted. Review the saved action before a new run.",
+                    },
+                )
             )
 
     async def snapshot(self, run_id: UUID) -> dict[str, Any]:
@@ -99,8 +107,13 @@ class RunService:
                 usage={
                     "llm_calls": run.usage.get("llm_attempts", 0),
                     "read_calls": run.usage.get("read_attempts", 0),
-                    "input_tokens": run.usage.get("input_tokens"),
-                    "output_tokens": run.usage.get("output_tokens"),
+                    "input_tokens": None
+                    if run.usage.get("unknown_usage_count")
+                    else run.usage.get("input_tokens"),
+                    "output_tokens": None
+                    if run.usage.get("unknown_usage_count")
+                    else run.usage.get("output_tokens"),
+                    "unknown_usage_count": run.usage.get("unknown_usage_count", 0),
                     "active_ms": round(run.usage.get("active_seconds", 0) * 1000),
                     "human_wait_ms": 0,
                 },
@@ -131,7 +144,34 @@ class RunService:
                 public["usage"]["human_wait_ms"] = max(
                     0, round((end - row.Approval.created_at).total_seconds() * 1000)
                 )
-            return public
+            public["traces"] = []
+        available = False
+        if self.settings.jaeger_url and public.get("trace_context"):
+            try:
+                async with httpx.AsyncClient(timeout=0.3, trust_env=False) as client:
+                    available = (
+                        await client.get(self.settings.jaeger_query_url + "/api/services")
+                    ).is_success
+            except httpx.HTTPError:
+                pass
+        if available and self.settings.jaeger_url:
+            for label, key in (
+                ("Investigation", "trace_context"),
+                ("Continuation", "continuation_context"),
+            ):
+                context = public.get(key)
+                if context:
+                    public["traces"].append(
+                        {
+                            "label": label,
+                            "url": self.settings.jaeger_url.rstrip("/")
+                            + "/trace/"
+                            + context.split("-")[1],
+                        }
+                    )
+        public.pop("trace_context", None)
+        public.pop("continuation_context", None)
+        return public
 
     async def decide(self, run_id: UUID, body: Decision) -> dict[str, Any]:
         async with self.lock(run_id):
@@ -173,7 +213,7 @@ class RunService:
             self.spawn(self.resume(run_id, body.action_id))
         return await self.snapshot(run_id)
 
-    async def resume(self, run_id: UUID, action_id: UUID) -> None:
+    async def resume(self, run_id: UUID, action_id: UUID, *, continuation: bool = False) -> None:
         async with self.lock(run_id):
             try:
                 async with postgres_checkpointer(self.settings) as saver:
@@ -195,10 +235,23 @@ class RunService:
                         setattr(budget, key, counters[key])
                     budget.started -= counters["active_seconds"]
                     runtime = Runtime(self.settings, ScriptedProvider(), budget)
-                    state = await build_graph(runtime, saver).ainvoke(
-                        Command(resume={"action_id": str(action_id)}), config
-                    )
+                    async with AsyncSession(self.engine) as session:
+                        run = await session.get(AgentRun, run_id)
+                        linked = run.public_snapshot.get("trace_context") if run else None
+                    with span(
+                        "graph.continuation",
+                        linked=linked,
+                        run_id=str(run_id),
+                        action_id=str(action_id),
+                    ):
+                        continuation_context = carrier().get("traceparent")
+                        state = await build_graph(runtime, saver).ainvoke(
+                            None if continuation else Command(resume={"action_id": str(action_id)}),
+                            config,
+                        )
                     public = project(state)
+                    public["trace_context"] = linked
+                    public["continuation_context"] = continuation_context
                 async with self.engine.begin() as conn:
                     await conn.execute(
                         update(AgentRun)

@@ -236,3 +236,32 @@ were fixed and the complete browser suite rerun successfully. Timeout/incomplete
 use a warning state, not a green success marker. No paid LLM run was repeated.
 The isolated test stack was stopped without deleting its volume. Demo UI was started on
 loopback port 8081 because 8080 was occupied; only ignored .env WEB_PORT was adjusted.
+
+## Stage 7 implementation (18 October 2026)
+
+- Startup recovery runs after singleton lock acquisition and reads checkpoint tasks plus persisted actions/approvals.
+- Same pending action/thread survives restart. A committed decision resumes without new consent.
+- Committed operation results bypass write dispatch on replay; continuation verifies the same ticket via MCP.
+- Unrelated interrupted queued/running runs fail with RESTART_INTERRUPTED; no generic auto-resume.
+- Explicit OTel spans cover API, graph nodes, LLM, MCP client/server/tools and DB operation summaries.
+- W3C internal propagation and a new linked continuation trace are implemented. No span spans human wait.
+- Collector/Jaeger are digest-pinned; UI links depend on actual Jaeger availability. Token unknowns are null.
+- No payloads, prompts, SQL, headers, connection strings or exception bodies are deliberately exported.
+
+Validation: 127 Python tests passed (105.01 s); the three dedicated API process tests are
+skipped in that suite and run separately with the Compose API stopped. Full browser and
+hard-process results are recorded below after completion. The ordinary regression stack
+had no Collector: ticket flows succeeded despite exporter outage. Ruff/format/mypy passed.
+A live local Jaeger smoke verified real API/graph/LLM/MCP/DB spans and FOLLOWS_FROM reference
+from the continuation to investigation. The GreenShop action ended actions_verified.
+The in-memory exporter test verifies trace propagation, links and sentinel credential exclusion.
+
+Final stage 7 checks: **9 Playwright scenarios passed (52.9 s)** and **3 real FastAPI
+hard-kill/restart scenarios passed (60.25 s)**: pending interrupt, decision commit before
+resume, ticket commit before checkpoint. Tests restart actual subprocesses with the normal
+singleton guard, then reach the same approved payload and verified ticket. Startup scanning
+was subsequently optimized to share one checkpointer across runs; targeted recovery checks
+are recorded with that final change. No real-provider request was needed for this stage.
+
+Final optimized recovery implementation: **7 targeted process/recovery tests passed
+(60.45 s)**. All final stage 7 checks passed. Stage 7 is complete.

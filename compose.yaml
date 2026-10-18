@@ -13,8 +13,22 @@ x-common-env: &common-env
   SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
   SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
   LLM_MODE: ${LLM_MODE:-scripted}
+  OTEL_ENDPOINT: http://collector:4318/v1/traces
 
 services:
+  collector:
+    image: otel/opentelemetry-collector:0.120.0@sha256:1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./infra/otel/collector.yaml:/etc/otelcol/config.yaml:ro
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.66.0@sha256:9864182b4e01350fcc64631bdba5f4085f87daae9d477a04c25d9cb362e787a9
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - 127.0.0.1:16686:16686
+
   postgres:
     image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
     environment:
@@ -40,6 +54,7 @@ services:
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
+      JAEGER_URL: http://127.0.0.1:16686
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
       OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}

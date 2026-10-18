@@ -19,5 +19,5 @@ Invoke-LocalCompose -Arguments @('up', '-d', '--wait', 'postgres')
 Invoke-LocalCompose -Arguments @('run', '--rm', 'admin')
 Invoke-LocalCompose -Arguments @('run', '--rm', 'admin', 'python', '-m', 'opspilot.cli.seed')
 Invoke-LocalCompose -Arguments @('run', '--rm', '--no-deps', 'api', 'python', '-m', 'opspilot.cli.init_checkpoints')
-Invoke-LocalCompose -Arguments @('up', '-d', '--wait', 'mcp', 'api', 'web')
+Invoke-LocalCompose -Arguments @('up', '-d', '--wait', 'collector', 'jaeger', 'mcp', 'api', 'web')
 Write-Output 'OpsPilot ready: http://127.0.0.1:8080 (UI), http://127.0.0.1:8000/health (default ports).'

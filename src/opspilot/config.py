@@ -9,6 +9,10 @@ from sqlalchemy.engine import make_url
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore", hide_input_in_errors=True)
 
+    otel_endpoint: str | None = None
+    jaeger_query_url: str = "http://jaeger:16686"
+    jaeger_url: str | None = None
+
     app_env: Literal["local", "test"] = "local"
     workflow_database_url: SecretStr | None = None
     domain_database_url: SecretStr | None = None

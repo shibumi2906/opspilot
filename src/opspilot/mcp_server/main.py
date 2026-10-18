@@ -15,6 +15,7 @@ from opspilot.db.engine import create_engine
 from opspilot.logging import configure_logging
 from opspilot.mcp_server.auth import ServiceAuth
 from opspilot.mcp_server.tools_read import register_read_tools
+from opspilot.telemetry import TraceMiddleware, configure
 
 
 class MCPTransport:
@@ -27,6 +28,7 @@ class MCPTransport:
 
 def create_app(settings: Settings | None = None) -> ASGIApp:
     settings = settings or Settings()
+    configure(settings, "opspilot-mcp")
     engine = create_engine(settings.database_url("domain"))
     server: Server[Any, Any] = Server("OpsPilot", version="0.1.0")
     register_read_tools(server, settings, engine)
@@ -53,7 +55,9 @@ def create_app(settings: Settings | None = None) -> ASGIApp:
         routes=[Route("/mcp", MCPTransport(manager), methods=["GET", "POST", "DELETE"])],
         lifespan=lifespan,
     )
-    return ServiceAuth(app, settings.mcp_service_token.get_secret_value())
+    return ServiceAuth(
+        TraceMiddleware(app, "http.mcp.server"), settings.mcp_service_token.get_secret_value()
+    )
 
 
 if __name__ == "__main__":

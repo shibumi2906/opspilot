@@ -17,6 +17,7 @@ from opspilot.contracts.evidence import normalize_evidence
 from opspilot.llm.base import Operation, Provider, ProviderFailure, Usage
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.telemetry import span
 
 T = TypeVar("T", bound=BaseModel)
 
@@ -51,7 +52,13 @@ class Runtime:
             }
             try:
                 async with asyncio.timeout(min(30, self.budget.remaining())):
-                    completion = await self.provider.complete(operation, context)
+                    with span(
+                        "llm.request", operation=operation, run_id=state["run_id"]
+                    ) as current:
+                        completion = await self.provider.complete(operation, context)
+                        for key, value in completion.usage.model_dump().items():
+                            if value is not None:
+                                current.set_attribute(key, value)
                 usage = completion.usage
                 if completion.model_id:
                     state["model_id"] = completion.model_id

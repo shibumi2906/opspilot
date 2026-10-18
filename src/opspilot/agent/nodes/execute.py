@@ -53,6 +53,11 @@ async def execute(state: AgentState, runtime: Runtime) -> None:
     # Never dispatch model/state arguments and never automatically retry an uncertain write.
     try:
         action = await saved_action(state, runtime)
+        if action["execution_status"] == "succeeded" and action["result"]:
+            state["execution_result"] = CreateTicketData.model_validate(
+                action["result"]
+            ).model_dump(mode="json")
+            return
         async with runtime.client.session() as (session, _):
             result = await runtime.client.call(
                 session,

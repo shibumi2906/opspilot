@@ -63,6 +63,7 @@ export interface Step {
   duration_ms?: number | null;
 }
 export interface RunSnapshot {
+  traces?: { label: string; url: string }[];
   schema_version: number;
   run_id: string;
   request: string;
@@ -84,6 +85,8 @@ export interface RunSnapshot {
   usage: {
     llm_calls: number;
     read_calls: number;
+    input_tokens: number | null;
+    output_tokens: number | null;
     active_ms: number;
     human_wait_ms: number;
   };

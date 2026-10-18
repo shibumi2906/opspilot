@@ -11,6 +11,7 @@ from mcp.types import Tool
 from opspilot.config import Settings
 from opspilot.contracts.common import ToolResult
 from opspilot.mcp_client.registry import ALL_TOOLS
+from opspilot.telemetry import carrier, span
 
 
 class MCPClient:
@@ -21,7 +22,8 @@ class MCPClient:
     async def session(self) -> AsyncIterator[tuple[ClientSession, str]]:
         async with httpx.AsyncClient(
             headers={
-                "Authorization": f"Bearer {self.settings.mcp_service_token.get_secret_value()}"
+                **carrier(),
+                "Authorization": f"Bearer {self.settings.mcp_service_token.get_secret_value()}",
             },
             timeout=5,
             trust_env=False,
@@ -57,7 +59,8 @@ class MCPClient:
             .arguments.model_validate(arguments)
             .model_dump(mode="json", by_alias=True)
         )
-        response = await session.call_tool(name, arguments)
+        with span("mcp.client.tool", tool_name=name):
+            response = await session.call_tool(name, arguments)
         result = ToolResult.model_validate(response.structuredContent)
         if bool(response.isError) == result.ok:
             raise ValueError("Inconsistent MCP error status")

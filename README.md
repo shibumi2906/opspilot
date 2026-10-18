@@ -68,7 +68,7 @@ card, then compare Reject with Approve. The existing tests demonstrate the core'
 [approval and repeated decisions](tests/integration/test_decisions.py),
 [atomicity and concurrent writes](tests/integration/test_ticket_transaction.py), and
 [lost responses and verification failures](tests/integration/test_ticket_execution.py).
-The current baseline is 120 passing tests; this small synthetic suite is not a production
+The stage 6 baseline is 122 passing Python tests and 9 browser scenarios; this small synthetic suite is not a production
 safety guarantee.
 
 ## Initialize the local database
@@ -360,3 +360,26 @@ refresh/reconnect in stage 6 does not imply recovery of arbitrary interrupted gr
 Stage 6 validation: 122 Python tests and 9 Playwright scenarios passed. Desktop and mobile
 layouts were inspected. These runs use the scripted provider with real graph/MCP/database
 operations; they do not claim a new real-model eval or backend crash-recovery coverage.
+## Stage 7: bounded recovery and traces
+
+Startup acquires the singleton lock before inspecting PostgreSQL checkpoints and approvals.
+Pending interrupts restore the same action and thread. A committed decision is redelivered
+without asking for new consent. A committed ticket result is reused, then verified through
+MCP; recovery never dispatches another write for that saved result. Other interrupted
+queued/running investigations fail with RESTART_INTERRUPTED; review their action before
+starting a new run. This is not general-purpose crash recovery or a durable worker queue.
+
+`scripts/test-stage7.ps1` runs Python/browser regression checks plus dedicated hard-kill
+FastAPI tests with the ordinary Compose API stopped. Private fault helpers live in tests,
+not in public API arguments or production configuration.
+
+Setup also starts an OTel Collector and Jaeger. Open [Jaeger](http://127.0.0.1:16686).
+API, graph nodes, LLM requests, MCP transport/tools and DB operation summaries emit spans.
+Internal HTTP carries W3C traceparent. Continuations start a new trace linked to the saved
+investigation context; human wait holds no span open. The UI shows trace links only when
+Jaeger responds. Collector failure does not block execution. Token usage is null when a
+provider attempt has unknown usage; active processing and human wait are separate.
+
+Telemetry uses explicit safe fields, with no SQL text/parameters, prompts, payloads,
+headers, source excerpts or exception bodies. See [OTel instrumentation and links](https://opentelemetry.io/docs/languages/python/instrumentation/).
+Local `.env`, credentials and runtime checkpoints remain outside Git.

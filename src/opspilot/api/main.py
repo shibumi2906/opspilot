@@ -12,11 +12,14 @@ from opspilot.config import Settings
 from opspilot.db.engine import create_engine
 from opspilot.logging import configure_logging
 from opspilot.mcp_client.client import MCPClient
+from opspilot.runtime.recovery import recover
 from opspilot.runtime.run_service import RunService
+from opspilot.telemetry import TraceMiddleware, configure
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or Settings()
+    configure(settings, "opspilot-api")
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
@@ -28,6 +31,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             if not acquired:
                 raise RuntimeError("Only one API process is supported")
             app.state.runs = RunService(settings)
+            await recover(app.state.runs)
             yield
         finally:
             if hasattr(app.state, "runs"):
@@ -48,6 +52,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "timezone": "Asia/Jerusalem",
         }
 
+    app.add_middleware(TraceMiddleware, name="http.api")
     install_errors(app)
     app.include_router(runs_router)
     app.include_router(router)

@@ -20,6 +20,7 @@ from opspilot.db.models_workflow import AgentRun
 from opspilot.llm.base import Provider
 from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
+from opspilot.telemetry import carrier, traced
 
 
 class RunConflict(Exception):
@@ -36,6 +37,7 @@ def configured_limits(settings: Settings) -> BudgetLimits:
     )
 
 
+@traced("graph.investigation")
 async def run_investigation(
     settings: Settings,
     request: str,
@@ -219,6 +221,7 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
             "verification_result",
         )
     }
+    public["trace_context"] = carrier().get("traceparent")
     public["status"] = "waiting_for_approval" if state.get("__interrupt__") else "completed"
     calls = list(state.get("tool_calls", {}).items())
     timeline: list[dict[str, Any]] = [

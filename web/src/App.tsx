@@ -209,6 +209,10 @@ export default function App() {
                     <dd>{snapshot.usage.read_calls}</dd>
                     <dt>Model attempts</dt>
                     <dd>{snapshot.usage.llm_calls}</dd>
+                    <dt>Input / output tokens</dt>
+                    <dd>{snapshot.usage.input_tokens ?? "unknown"} / {snapshot.usage.output_tokens ?? "unknown"}</dd>
+                    <dt>Human wait</dt>
+                    <dd>{(snapshot.usage.human_wait_ms / 1000).toFixed(1)} s</dd>
                     <dt>Active time</dt>
                     <dd>{(snapshot.usage.active_ms / 1000).toFixed(1)} s</dd>
                   </>

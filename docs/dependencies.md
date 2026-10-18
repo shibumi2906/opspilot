@@ -97,3 +97,10 @@ References checked during implementation:
 
 npm scripts invoke package entrypoints through node directly to support Windows checkout
 paths containing spaces and ampersands. No global Vite/TypeScript/Playwright installation is used.
+
+## Stage 7 dependencies
+
+OpenTelemetry SDK and OTLP/HTTP exporter are locked in uv.lock (1.45.1).
+Collector 0.120.0 and Jaeger all-in-one 1.66.0 are digest-pinned in Compose.
+Telemetry uses manual instrumentation and a bounded asynchronous batch exporter;
+no automatic SQL/HTTP payload instrumentation is enabled.

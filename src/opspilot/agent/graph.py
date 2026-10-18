@@ -28,6 +28,7 @@ from opspilot.agent.policy import PolicyViolation
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
 from opspilot.llm.base import ProviderFailure
+from opspilot.telemetry import span
 
 Node = Callable[[AgentState, Runtime], Awaitable[None]]
 
@@ -43,7 +44,10 @@ def build_graph(
             try:
                 if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
-                await node(state, runtime)
+                with span(
+                    "graph.node." + name, run_id=state["run_id"], action_id=state.get("action_id")
+                ):
+                    await node(state, runtime)
                 if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
             except BudgetExceeded:

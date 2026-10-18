@@ -1,5 +1,7 @@
 # Always combine with compose.yaml and the distinct project name opspilot-test.
 services:
+  jaeger:
+    ports: !reset []
   postgres:
     environment:
       POSTGRES_DB: opspilot_test
