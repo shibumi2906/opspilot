@@ -1,3 +1,7 @@
+let csrfToken = "";
+export function setCsrf(value: string) {
+  csrfToken = value;
+}
 import type { Decision, PublicConfig, RunSnapshot } from "./types";
 export class ApiError extends Error {
   constructor(
@@ -10,7 +14,11 @@ export class ApiError extends Error {
 async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
   const response = await fetch(path, {
     ...options,
-    headers: { "Content-Type": "application/json", ...options.headers },
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRF-Token": csrfToken,
+      ...options.headers,
+    },
     cache: "no-store",
     signal: options.signal ?? AbortSignal.timeout(15000),
   });

@@ -1,12 +1,14 @@
 import type { Action, Decision } from "../api/types";
 import { EvidenceLinks, SectionHeader, type SelectEvidence } from "./shared";
 export function ApprovalCard({
+  canApprove = true,
   action,
   waiting,
   busy,
   onDecision,
   onSelect,
 }: {
+  canApprove?: boolean;
   action: Action;
   waiting: boolean;
   busy: boolean;
@@ -97,7 +99,7 @@ export function ApprovalCard({
             <button
               type="button"
               className="button secondary"
-              disabled={!waiting || busy}
+              disabled={!canApprove || !waiting || busy}
               onClick={() => void onDecision("reject")}
             >
               Reject action
@@ -105,7 +107,7 @@ export function ApprovalCard({
             <button
               type="button"
               className="button primary"
-              disabled={!waiting || busy}
+              disabled={!canApprove || !waiting || busy}
               onClick={() => void onDecision("approve")}
             >
               {busy ? "Checking saved decision…" : "Approve & create ticket"}

@@ -15,9 +15,9 @@ from sqlalchemy import (
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
+from opspilot.auth.context import actor_id
 from opspilot.db import models_identity  # noqa: F401
 from opspilot.db.engine import Base
-from opspilot.tenancy.context import DEMO_ACTOR
 from opspilot.tenancy.models import TenantOwned
 
 
@@ -30,7 +30,7 @@ class AgentRun(TenantOwned, Base):
         {"schema": "workflow"},
     )
     id: Mapped[UUID] = mapped_column(primary_key=True)
-    actor_id: Mapped[UUID] = mapped_column(ForeignKey("identity.users.id"), default=DEMO_ACTOR)
+    actor_id: Mapped[UUID] = mapped_column(ForeignKey("identity.users.id"), default=actor_id)
     client_request_id: Mapped[UUID] = mapped_column()
     request: Mapped[str] = mapped_column(Text)
     request_hash: Mapped[str] = mapped_column(String(64))
@@ -91,5 +91,7 @@ class Approval(TenantOwned, Base):
     id: Mapped[UUID] = mapped_column(primary_key=True)
     action_id: Mapped[UUID] = mapped_column(unique=True)
     decision: Mapped[str] = mapped_column(String(20), server_default="pending")
+    decided_by: Mapped[UUID | None] = mapped_column(ForeignKey("identity.users.id"))
+    self_approval_exception: Mapped[bool] = mapped_column(default=False, server_default="false")
     decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

@@ -1,5 +1,10 @@
 # Always combine with compose.full.yaml and the distinct project name opspilot-full-test.
 services:
+  oidc:
+    ports: !reset []
+    environment:
+      KC_HOSTNAME: http://oidc:8080
+      APP_ORIGIN: http://web
   jaeger:
     ports: !reset []
   postgres:
@@ -11,18 +16,28 @@ services:
     ports: !reset []
     environment:
       APP_ENV: test
+      APP_ORIGIN: http://web
+      OIDC_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: "true"
       LLM_MODE: scripted
       OPENAI_API_KEY: ""
       SCENARIO_ID: greenshop_expired
+      IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full_test
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
   mcp:
     environment:
       APP_ENV: test
+      APP_ORIGIN: http://web
+      OIDC_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: "true"
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
   admin:
     environment:
       APP_ENV: test
+      APP_ORIGIN: http://web
+      OIDC_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: "true"
       MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
   tests:
     image: opspilot-full/tests:f01
@@ -32,8 +47,13 @@ services:
     init: true
     environment:
       APP_ENV: test
+      APP_ORIGIN: http://web
+      OIDC_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: "true"
       MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN}
       MCP_URL: http://mcp:8001/mcp
+      SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY}
+      IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full_test
       TEST_API_URL: http://api:8000
       MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
@@ -54,6 +74,7 @@ services:
     init: true
     ipc: host
     environment:
+      OIDC_DEMO_PASSWORD: ${OIDC_DEMO_PASSWORD}
       E2E_BASE_URL: http://web
       E2E_DATABASE_URL: postgresql://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
     depends_on:
@@ -67,6 +88,9 @@ services:
     init: true
     environment:
       APP_ENV: test
+      APP_ORIGIN: http://web
+      OIDC_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: "true"
       LLM_MODE: scripted
       MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
@@ -77,5 +101,5 @@ services:
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
     volumes:
-      - ./docs/full/evidence/f02/evals:/reports
+      - ./docs/full/evidence/f03/evals:/reports
     command: [python, -m, opspilot.evals.runner, --commit, unspecified]

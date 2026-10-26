@@ -1,3 +1,4 @@
+import { AuthGate, useIdentity } from "./AuthGate";
 import { useEffect, useState } from "react";
 import { api, errorMessage } from "./api/client";
 import type { PublicConfig } from "./api/types";
@@ -9,6 +10,14 @@ import { RequestForm } from "./components/RequestForm";
 import { RunTimeline } from "./components/RunTimeline";
 import { shortId, Status, time } from "./components/shared";
 export default function App() {
+  return (
+    <AuthGate>
+      <Workspace />
+    </AuthGate>
+  );
+}
+function Workspace() {
+  const identity = useIdentity();
   const run = useRun();
   const [config, setConfig] = useState<PublicConfig | null>(null);
   const [configError, setConfigError] = useState<string | null>(null);
@@ -210,9 +219,14 @@ export default function App() {
                     <dt>Model attempts</dt>
                     <dd>{snapshot.usage.llm_calls}</dd>
                     <dt>Input / output tokens</dt>
-                    <dd>{snapshot.usage.input_tokens ?? "unknown"} / {snapshot.usage.output_tokens ?? "unknown"}</dd>
+                    <dd>
+                      {snapshot.usage.input_tokens ?? "unknown"} /{" "}
+                      {snapshot.usage.output_tokens ?? "unknown"}
+                    </dd>
                     <dt>Human wait</dt>
-                    <dd>{(snapshot.usage.human_wait_ms / 1000).toFixed(1)} s</dd>
+                    <dd>
+                      {(snapshot.usage.human_wait_ms / 1000).toFixed(1)} s
+                    </dd>
                     <dt>Active time</dt>
                     <dd>{(snapshot.usage.active_ms / 1000).toFixed(1)} s</dd>
                   </>
@@ -242,6 +256,7 @@ export default function App() {
             />
             {snapshot?.action ? (
               <ApprovalCard
+                canApprove={identity?.roles.includes("approver") ?? false}
                 action={snapshot.action}
                 waiting={
                   snapshot.status === "waiting_for_approval" && !run.error

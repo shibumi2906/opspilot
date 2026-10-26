@@ -13,6 +13,7 @@ from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.agent.graph import build_graph
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.service import project, run_investigation
+from opspilot.auth.context import AuthError, optional_principal
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.db.engine import create_engine
@@ -89,6 +90,7 @@ class RunService:
             public = dict(run.public_snapshot)
             public.update(
                 schema_version=run.state_schema_version,
+                actor_id=str(run.actor_id),
                 run_id=str(run.id),
                 status=run.status,
                 error=run.error,
@@ -206,6 +208,15 @@ class RunService:
                         item[1] == "__interrupt__" for item in (checkpoint.pending_writes or [])
                     ):
                         raise Conflict("Saved approval interrupt missing")
+                actor = optional_principal()
+                if actor is not None:
+                    if "approver" not in actor.roles:
+                        raise AuthError()
+                    same = run.actor_id == actor.user_id
+                    if same and not self.settings.allow_demo_self_approval:
+                        raise AuthError("SELF_APPROVAL_FORBIDDEN")
+                    row.Approval.decided_by = actor.user_id
+                    row.Approval.self_approval_exception = same
                 row.Approval.decision = choice
                 row.Approval.decided_at = datetime.now(UTC)
                 run.status = "running"

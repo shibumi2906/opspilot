@@ -16,16 +16,16 @@ jobs:
         shell: pwsh
         run: ./scripts/new-full-env.ps1
       - name: Make public report output writable for the container UID
-        run: chmod -R a+rwX docs/full/evidence/f02/evals
+        run: chmod -R a+rwX docs/full/evidence/f03/evals
       - name: Lint, types, Python, process recovery, browser and 12 scripted evals
         shell: pwsh
-        run: ./scripts/test-full-f02.ps1
+        run: ./scripts/test-full-f03.ps1
       - name: Upload measured eval reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: scripted-eval-report
-          path: docs/full/evidence/f02/evals/scripted.*
+          path: docs/full/evidence/f03/evals/scripted.*
       - name: Stop test services
         if: always()
         run: docker compose -p opspilot-full-test -f compose.full.yaml -f compose.full.test.yaml stop

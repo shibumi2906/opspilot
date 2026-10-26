@@ -16,6 +16,16 @@ class Settings(BaseSettings):
     jaeger_query_url: str = "http://jaeger:16686"
     jaeger_url: str | None = None
 
+    identity_database_url: SecretStr | None = None
+    identity_db_password: SecretStr | None = None
+    session_signing_key: SecretStr = SecretStr("")
+    session_ttl_seconds: int = Field(default=28800, ge=60, le=86400)
+    app_origin: str = "http://127.0.0.1:8091"
+    oidc_issuer: str = "http://127.0.0.1:8181/realms/opspilot"
+    oidc_internal_issuer: str = "http://oidc:8080/realms/opspilot"
+    oidc_client_id: str = "opspilot-bff"
+    allow_demo_self_approval: bool = False
+
     local_demo_tenant: UUID = DEMO_TENANT
 
     app_env: Literal["local", "test"] = "local"
@@ -60,6 +70,7 @@ class Settings(BaseSettings):
         "domain_database_url",
         "checkpoint_database_url",
         "migration_database_url",
+        "identity_database_url",
     )
     @classmethod
     def validate_dsn(cls, value: SecretStr | None) -> SecretStr | None:
@@ -70,7 +81,9 @@ class Settings(BaseSettings):
             raise ValueError("Use a postgresql+psycopg URL")
         return value
 
-    def database_url(self, role: Literal["workflow", "domain", "checkpoint", "migration"]) -> str:
+    def database_url(
+        self, role: Literal["workflow", "domain", "checkpoint", "migration", "identity"]
+    ) -> str:
         value = getattr(self, f"{role}_database_url")
         if not isinstance(value, SecretStr):
             raise ValueError(f"Missing {role} database URL")

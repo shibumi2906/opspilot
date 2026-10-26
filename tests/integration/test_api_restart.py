@@ -15,7 +15,7 @@ pytestmark = pytest.mark.skipif(
 
 
 @pytest.mark.parametrize("fault", ["pause", "decision", "write"])
-async def test_api_hard_restart(fault):
+async def test_api_hard_restart(fault, integration_settings):
     with socket.socket() as sock:
         sock.bind(("127.0.0.1", 0))
         port = sock.getsockname()[1]
@@ -50,6 +50,9 @@ async def test_api_hard_restart(fault):
 
     async with httpx.AsyncClient(base_url=f"http://127.0.0.1:{port}") as client:
         process = await start(inject=True)
+        from tests.auth_helpers import session_client
+
+        await session_client(client, integration_settings)
         try:
             response = await client.post(
                 "/api/v1/runs",

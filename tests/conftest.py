@@ -16,7 +16,7 @@ def integration_settings() -> Iterator[Settings]:
     if os.environ.get("APP_ENV") != "test":
         pytest.skip("Use the isolated Compose test stack (APP_ENV=test)")
     settings = Settings()
-    for role in ("migration", "workflow", "domain", "checkpoint"):
+    for role in ("migration", "workflow", "domain", "checkpoint", "identity"):
         if make_url(settings.database_url(role)).database != "opspilot_full_test":
             pytest.fail("Integration tests require the isolated opspilot_full_test database")
     with tenant_scope(settings.local_demo_tenant):

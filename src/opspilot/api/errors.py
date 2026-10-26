@@ -5,6 +5,8 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from opspilot.agent.service import RunConflict
+from opspilot.auth.context import AuthError
+from opspilot.auth.http import denial
 from opspilot.runtime.actions import Conflict
 
 
@@ -34,6 +36,11 @@ def install_errors(app: FastAPI) -> None:
     async def internal(request: Request, exc: Exception) -> JSONResponse:
         return error("INTERNAL_ERROR", "Request could not be completed", 500)
 
+    async def access_denied(request: Request, exc: Exception) -> JSONResponse:
+        assert isinstance(exc, AuthError)
+        return denial(exc)
+
+    app.add_exception_handler(AuthError, access_denied)
     app.add_exception_handler(Conflict, conflict)
     app.add_exception_handler(RunConflict, conflict)
     app.add_exception_handler(LookupError, missing)

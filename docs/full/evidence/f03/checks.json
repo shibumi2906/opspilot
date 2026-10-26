@@ -1,0 +1,23 @@
+{
+  "stage": "F03",
+  "base_commit": "a65f702",
+  "commit_subject": "feat(full): implement F03 OIDC sessions and tenant roles",
+  "schema": "0004_identity_sessions",
+  "backend_main": {
+    "passed": 178,
+    "skipped": 7
+  },
+  "identity_final": {
+    "passed": 5,
+    "new": 1,
+    "repeated": 4
+  },
+  "unique_backend_cases": 179,
+  "browser_real_oidc": 11,
+  "recovery": 3,
+  "scripted_evals": 12,
+  "mypy_source_files": 90,
+  "oidc_image_digest": "sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9",
+  "public_pilot": false,
+  "paid_calls": 0
+}

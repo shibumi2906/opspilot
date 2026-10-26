@@ -1193,3 +1193,6 @@ footer {
 .payload dt {
   font-size: 10px;
 }
+
+.identity-bar { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; padding:1rem 2rem; background:#eef5f1; color:#153b32; }
+.identity-bar select, .identity-bar button { padding:.5rem; }

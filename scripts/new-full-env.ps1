@@ -11,7 +11,7 @@ foreach ($match in [regex]::Matches($template, '(?m)^(?:API|WEB|JAEGER|OIDC)_POR
 }
 $generator = [System.Security.Cryptography.RandomNumberGenerator]::Create()
 try {
-    foreach ($name in @('MCP_SERVICE_TOKEN', 'POSTGRES_PASSWORD', 'WORKFLOW_DB_PASSWORD', 'DOMAIN_DB_PASSWORD', 'CHECKPOINT_DB_PASSWORD')) {
+    foreach ($name in @('MCP_SERVICE_TOKEN', 'POSTGRES_PASSWORD', 'WORKFLOW_DB_PASSWORD', 'DOMAIN_DB_PASSWORD', 'CHECKPOINT_DB_PASSWORD', 'IDENTITY_DB_PASSWORD', 'SESSION_SIGNING_KEY', 'OIDC_BOOTSTRAP_PASSWORD', 'OIDC_DEMO_PASSWORD')) {
         $bytes = New-Object byte[] 32
         $generator.GetBytes($bytes)
         $value = -join ($bytes | ForEach-Object { '{0:x2}' -f $_ })

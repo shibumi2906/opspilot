@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F02 завершены; F03–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F03 завершены; F04–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F03 — OIDC, sessions, memberships/роли. Не начат.**
+**Следующий этап: F04 — сквозная API/MCP authorization. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F03 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F04 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -45,7 +45,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | --- | --- | --- | --- |
 | F01 | done | Отдельные worktree/ресурсы Full, сохранённый MVP, baseline/contracts | [evidence](full/evidence/f01.md); commit subject: `feat(full): isolate F01 foundation and preserve portfolio MVP` |
 | F02 | done | Tenant schema/RLS/upgrade fixtures | [evidence](full/evidence/f02/README.md); commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades` |
-| F03 | not_started | OIDC, sessions, memberships/роли | — |
+| F03 | done | OIDC, sessions, memberships/роли | [evidence](full/evidence/f03/README.md); commit subject: `feat(full): implement F03 OIDC sessions and tenant roles` |
 | F04 | not_started | Сквозная API/MCP authorization | — |
 | F05 | not_started | Durable jobs, отдельный worker | — |
 | F06 | not_started | Multiworker leases/fenced checkpoints | — |
@@ -174,3 +174,26 @@ Prometheus/Jira calls — 0. Remote CI не запускался и не зая�
 Known limits: local synthetic scope до F03/F04; семь Alembic deprecation warnings не влияют на gates.
 Evidence commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades`.
 Следующий F03 остаётся not_started; следующие этапы по запросу владельца не начинались.
+
+## F03 — Identity, sessions и роли
+
+26 октября 2026; прежний отдельный Full worktree/ветка codex/opspilot-full, base a65f702.
+Schema 0004_identity_sessions; graph/policy версии F02 не менялись, public state schema 1.
+Реализованы отдельный pinned Keycloak dev issuer и volume (8181), BFF Authorization Code + PKCE,
+one-time state/nonce/browser binding, pinned RS256/JWKS validation, server sessions/fixation prevention,
+expiry/logout, live membership checks, CSRF/exact origin, login/tenant UI и роли. Default self-approval
+запрещён; local demo O+A exception явно показан и записан в approval вместе с decided_by.
+Новый identity gateway role — без ownership/superuser/BYPASSRLS и без domain data permissions.
+
+Пути: auth/, cli/bootstrap_identity.py, migrations/0004, infra/identity/, API/runtime/models,
+web/AuthGate и auth-aware client, Full Compose/template/scripts и identity/real browser tests.
+[Architecture/runbook](full/identity.md), [точные команды и evidence](full/evidence/f03/README.md).
+Проверки: backend 178 passed, 7 dedicated skips; final identity suite 5 passed (1 новый + 4 повтора),
+179 различных backend cases. Настоящий OIDC browser 11/11; recovery 3/3; scripted regression evals
+12/12, hard safety gate true; Ruff/mypy прошли (90 source files). Live Full schema 0004, UI/API HTTP 200.
+MVP fingerprints source/media/.env/main/images/volumes совпали, исходный checkout не менялся.
+Тестовые projects остановлены без удаления volumes; dev Full запущен отдельно.
+Вызовы — local synthetic issuer/PostgreSQL/MCP; paid provider calls 0. Remote CI не заявляется.
+Limits: HTTP dev issuer, BFF-local logout (не IdP-wide SSO logout); публичный pilot не открыт.
+F04 authorization/context ещё не реализованы в этом коммите; F05 не начинался. Blockers F03 нет.
+Evidence commit subject: feat(full): implement F03 OIDC sessions and tenant roles.

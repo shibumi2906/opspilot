@@ -177,7 +177,7 @@ def snapshot():
 
 def test_fresh_database_has_tenant_schema_and_rls():
     reset()
-    command.upgrade(Config("alembic.ini"), "head")
+    command.upgrade(Config("alembic.ini"), "0003_tenant_rls")
     with connect() as conn:
         assert (
             conn.execute("SELECT version_num FROM workflow.alembic_version").fetchone()[0]
@@ -204,7 +204,7 @@ def test_fixture_mvp_upgrade_preserves_rows_pending_interrupt_and_ticket():
     command.upgrade(Config("alembic.ini"), "0002_search_indexes")
     legacy_fixture()
     before = snapshot()
-    command.upgrade(Config("alembic.ini"), "head")
+    command.upgrade(Config("alembic.ini"), "0003_tenant_rls")
     assert snapshot() == before
     with connect() as conn:
         for table in TABLES:
@@ -238,7 +238,7 @@ def test_unknown_ownership_blocks_and_rolls_back(unknown):
                 dict(thread_id="unknown-orphan", checkpoint_id="orphan", checkpoint={}),
             )
     with pytest.raises(RuntimeError, match="explicit mapping"):
-        command.upgrade(Config("alembic.ini"), "head")
+        command.upgrade(Config("alembic.ini"), "0003_tenant_rls")
     with connect() as conn:
         assert (
             conn.execute("SELECT version_num FROM workflow.alembic_version").fetchone()[0]

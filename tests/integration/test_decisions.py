@@ -128,6 +128,9 @@ async def test_api_contract_and_guard(integration_settings, choice):
             pass
     try:
         async with httpx.AsyncClient(base_url=os.environ["TEST_API_URL"]) as client:
+            from tests.auth_helpers import session_client
+
+            await session_client(client, integration_settings)
             assert (await client.get(f"/api/v1/runs/{uuid4()}")).status_code == 404
             response = await client.post(
                 "/api/v1/runs",

@@ -2,7 +2,7 @@
 
 Canonical progress: [docs/full-version-status.md](docs/full-version-status.md).
 Full setup, isolation and checks: [docs/full/architecture.md](docs/full/architecture.md).
-Use `compose.full.yaml` and `scripts/test-full-f02.ps1`; this checkout is isolated from Portfolio MVP.
+Use `compose.full.yaml` and `scripts/test-full-f03.ps1`; this checkout is isolated from Portfolio MVP.
 The inherited README below is historical MVP documentation; its old resource names are not Full commands.
 
 ---

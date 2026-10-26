@@ -1,0 +1,124 @@
+{
+  "realm": "opspilot",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "loginWithEmailAllowed": false,
+  "resetPasswordAllowed": false,
+  "clients": [
+    {
+      "clientId": "opspilot-bff",
+      "enabled": true,
+      "publicClient": true,
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": false,
+      "redirectUris": [
+        "${APP_ORIGIN}/auth/callback"
+      ],
+      "webOrigins": [
+        "${APP_ORIGIN}"
+      ],
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      }
+    }
+  ],
+  "users": [
+    {
+      "id": "00000000-0000-0000-0000-000000002710",
+      "username": "demo",
+      "enabled": true,
+      "firstName": "Synthetic",
+      "lastName": "demo",
+      "email": "demo@example.invalid",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${OIDC_DEMO_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000002711",
+      "username": "operator",
+      "enabled": true,
+      "firstName": "Synthetic",
+      "lastName": "operator",
+      "email": "operator@example.invalid",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${OIDC_DEMO_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000002712",
+      "username": "approver",
+      "enabled": true,
+      "firstName": "Synthetic",
+      "lastName": "approver",
+      "email": "approver@example.invalid",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${OIDC_DEMO_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000002713",
+      "username": "auditor",
+      "enabled": true,
+      "firstName": "Synthetic",
+      "lastName": "auditor",
+      "email": "auditor@example.invalid",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${OIDC_DEMO_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000002714",
+      "username": "admin",
+      "enabled": true,
+      "firstName": "Synthetic",
+      "lastName": "admin",
+      "email": "admin@example.invalid",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${OIDC_DEMO_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "00000000-0000-0000-0000-000000002715",
+      "username": "unassigned",
+      "enabled": true,
+      "firstName": "Synthetic",
+      "lastName": "unassigned",
+      "email": "unassigned@example.invalid",
+      "emailVerified": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "${OIDC_DEMO_PASSWORD}",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}

@@ -8,6 +8,9 @@ from sqlalchemy import text
 from opspilot.api.errors import install_errors
 from opspilot.api.routes_health import router
 from opspilot.api.routes_runs import router as runs_router
+from opspilot.auth.http import SessionMiddleware
+from opspilot.auth.http import router as auth_router
+from opspilot.auth.store import IdentityStore
 from opspilot.config import Settings
 from opspilot.db.engine import create_engine
 from opspilot.logging import configure_logging
@@ -15,7 +18,7 @@ from opspilot.mcp_client.client import MCPClient
 from opspilot.runtime.recovery import recover
 from opspilot.runtime.run_service import RunService
 from opspilot.telemetry import TraceMiddleware, configure
-from opspilot.tenancy.middleware import LocalTenantScope
+from opspilot.tenancy.context import tenant_scope
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -24,6 +27,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+        app.state.identity = IdentityStore(settings)
         app.state.engine = create_engine(settings.database_url("workflow"))
         app.state.mcp = MCPClient(settings)
         guard = await app.state.engine.connect()
@@ -32,7 +36,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             if not acquired:
                 raise RuntimeError("Only one API process is supported")
             app.state.runs = RunService(settings)
-            await recover(app.state.runs)
+            with tenant_scope(settings.local_demo_tenant):
+                await recover(app.state.runs)
             yield
         finally:
             if hasattr(app.state, "runs"):
@@ -40,6 +45,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             await guard.execute(text("SELECT pg_advisory_unlock(1801202604)"))
             await guard.close()
             await app.state.engine.dispose()
+            await app.state.identity.engine.dispose()
 
     app = FastAPI(title="OpsPilot", version="0.1.0", lifespan=lifespan)
 
@@ -54,8 +60,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         }
 
     app.add_middleware(TraceMiddleware, name="http.api")
-    app.add_middleware(LocalTenantScope, tenant=settings.local_demo_tenant)
+    app.add_middleware(SessionMiddleware, settings=settings)
     install_errors(app)
+    app.include_router(auth_router)
     app.include_router(runs_router)
     app.include_router(router)
     return app

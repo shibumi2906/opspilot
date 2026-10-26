@@ -10,6 +10,11 @@ x-app: &app
 x-common-env: &common-env
   APP_ENV: ${APP_ENV:-local}
   LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
+  SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY:?Generate Full identity secrets}
+  APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
+  OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
+  OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
+  ALLOW_DEMO_SELF_APPROVAL: ${ALLOW_DEMO_SELF_APPROVAL:-true}
   MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
   SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
   SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
@@ -17,6 +22,24 @@ x-common-env: &common-env
   OTEL_ENDPOINT: http://collector:4318/v1/traces
 
 services:
+  oidc:
+    image: opspilot-full/oidc:f03
+    build:
+      context: .
+      dockerfile: infra/identity/Dockerfile
+    command: [start-dev, --import-realm]
+    mem_limit: 1g
+    environment:
+      KC_HOSTNAME: http://127.0.0.1:${OIDC_PORT:-8181}
+      KC_BOOTSTRAP_ADMIN_USERNAME: opspilot-local-admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${OIDC_BOOTSTRAP_PASSWORD:?Generate Full identity secrets}
+      OIDC_DEMO_PASSWORD: ${OIDC_DEMO_PASSWORD:?Generate Full identity secrets}
+      APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
+    ports:
+      - 127.0.0.1:${OIDC_PORT:-8181}:8080
+    volumes:
+      - oidcdata:/opt/keycloak/data
+
   collector:
     image: opspilot-full/collector:f01
     build:
@@ -64,6 +87,7 @@ services:
     <<: *app
     environment:
       <<: *common-env
+      IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
@@ -116,10 +140,12 @@ services:
     profiles: [tools]
     environment:
       <<: *common-env
+      IDENTITY_DB_PASSWORD: ${IDENTITY_DB_PASSWORD:?Generate Full identity secrets}
       MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full
     depends_on:
       postgres: {condition: service_healthy}
     command: [alembic, upgrade, head]
 
 volumes:
+  oidcdata:
   pgdata:

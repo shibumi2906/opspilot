@@ -4,6 +4,8 @@ from fastapi import APIRouter, Request
 from sqlalchemy import text
 from starlette.responses import JSONResponse
 
+from opspilot.tenancy.context import tenant_scope
+
 router = APIRouter()
 
 
@@ -17,14 +19,15 @@ async def health(request: Request) -> JSONResponse:
             revision = await connection.scalar(
                 text("SELECT version_num FROM workflow.alembic_version")
             )
-            if revision == "0003_tenant_rls":
+            if revision == "0004_identity_sessions":
                 checks["migrations"] = "ready"
     except Exception:
         pass
     try:
-        async with asyncio.timeout(6), request.app.state.mcp.session() as (session, _):
-            await request.app.state.mcp.discover(session)
-            checks["mcp"] = "ready"
+        with tenant_scope(request.app.state.mcp.settings.local_demo_tenant):
+            async with asyncio.timeout(6), request.app.state.mcp.session() as (session, _):
+                await request.app.state.mcp.discover(session)
+                checks["mcp"] = "ready"
     except Exception:
         pass
     ready = all(value == "ready" for value in checks.values())

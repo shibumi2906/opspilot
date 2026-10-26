@@ -40,6 +40,7 @@ class ServerSession(Base):
     __table_args__ = {"schema": "identity"}
     id: Mapped[UUID] = mapped_column(primary_key=True)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("identity.users.id"))
+    tenant_id: Mapped[UUID | None] = mapped_column(ForeignKey("identity.tenants.id"))
     token_hash: Mapped[str] = mapped_column(String, unique=True)
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
