@@ -2,7 +2,6 @@ from typing import Any
 from uuid import UUID
 
 from sqlalchemy import select, update
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.budgets import BudgetExceeded
 from opspilot.agent.runtime import Runtime
@@ -11,6 +10,7 @@ from opspilot.contracts.tools import CreateTicketData
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.runtime.actions import payload_hash
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 async def saved_action(state: AgentState, runtime: Runtime) -> dict[str, Any]:

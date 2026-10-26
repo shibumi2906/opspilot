@@ -6,7 +6,7 @@ from mcp.types import CallToolResult, TextContent, Tool, ToolAnnotations
 from pydantic import ValidationError
 from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.config import Settings
 from opspilot.contracts.common import Source, ToolError, ToolResult
@@ -27,6 +27,7 @@ from opspilot.mcp_server.services.retrieval import search
 from opspilot.mcp_server.services.tickets import WriteDenied
 from opspilot.mcp_server.tools_write import write_tool
 from opspilot.telemetry import traced
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 async def read_tool(

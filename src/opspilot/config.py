@@ -1,9 +1,12 @@
 from datetime import UTC, datetime
 from typing import Literal
+from uuid import UUID
 
 from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
+
+from opspilot.tenancy.context import DEMO_TENANT
 
 
 class Settings(BaseSettings):
@@ -12,6 +15,8 @@ class Settings(BaseSettings):
     otel_endpoint: str | None = None
     jaeger_query_url: str = "http://jaeger:16686"
     jaeger_url: str | None = None
+
+    local_demo_tenant: UUID = DEMO_TENANT
 
     app_env: Literal["local", "test"] = "local"
     workflow_database_url: SecretStr | None = None

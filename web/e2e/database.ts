@@ -11,12 +11,17 @@ export async function ticketCount(actionId?: string): Promise<number> {
     const identity = await client.query("SELECT current_database() AS name");
     if (identity.rows[0].name !== "opspilot_full_test")
       throw new Error("Connected database is not opspilot_full_test");
+    await client.query("BEGIN");
+    await client.query("SELECT set_config('app.tenant_id', $1, true)", [
+      "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+    ]);
     const result = await client.query(
       actionId
         ? "SELECT count(*) FROM domain.tickets WHERE originating_action_id=$1"
         : "SELECT count(*) FROM domain.tickets",
       actionId ? [actionId] : [],
     );
+    await client.query("COMMIT");
     return Number(result.rows[0].count);
   } finally {
     await client.end();

@@ -2,13 +2,13 @@ from uuid import UUID
 
 from langgraph.types import interrupt
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.runtime.actions import Conflict, payload_hash, prepare
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 async def prepare_approval(state: AgentState, runtime: Runtime) -> None:

@@ -2,18 +2,36 @@ from datetime import datetime
 from typing import Any
 from uuid import UUID
 
-from sqlalchemy import CheckConstraint, DateTime, ForeignKey, String, Text, func
+from sqlalchemy import (
+    CheckConstraint,
+    DateTime,
+    ForeignKey,
+    ForeignKeyConstraint,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
+from opspilot.db import models_identity  # noqa: F401
 from opspilot.db.engine import Base
+from opspilot.tenancy.context import DEMO_ACTOR
+from opspilot.tenancy.models import TenantOwned
 
 
-class AgentRun(Base):
+class AgentRun(TenantOwned, Base):
     __tablename__ = "agent_runs"
-    __table_args__ = {"schema": "workflow"}
+    __table_args__ = (
+        UniqueConstraint("tenant_id", "id"),
+        UniqueConstraint("tenant_id", "client_request_id"),
+        UniqueConstraint("tenant_id", "thread_id"),
+        {"schema": "workflow"},
+    )
     id: Mapped[UUID] = mapped_column(primary_key=True)
-    client_request_id: Mapped[UUID] = mapped_column(unique=True)
+    actor_id: Mapped[UUID] = mapped_column(ForeignKey("identity.users.id"), default=DEMO_ACTOR)
+    client_request_id: Mapped[UUID] = mapped_column()
     request: Mapped[str] = mapped_column(Text)
     request_hash: Mapped[str] = mapped_column(String(64))
     language: Mapped[str] = mapped_column(String(10))
@@ -33,9 +51,13 @@ class AgentRun(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
-class Action(Base):
+class Action(TenantOwned, Base):
     __tablename__ = "actions"
     __table_args__ = (
+        UniqueConstraint("tenant_id", "id"),
+        ForeignKeyConstraint(
+            ["tenant_id", "run_id"], ["workflow.agent_runs.tenant_id", "workflow.agent_runs.id"]
+        ),
         CheckConstraint("tool_name = 'create_ticket'", name="ck_actions_tool"),
         CheckConstraint(
             "execution_status IN ('not_started', 'succeeded', 'failed', 'unknown')",
@@ -44,7 +66,7 @@ class Action(Base):
         {"schema": "workflow"},
     )
     id: Mapped[UUID] = mapped_column(primary_key=True)
-    run_id: Mapped[UUID] = mapped_column(ForeignKey("workflow.agent_runs.id"), unique=True)
+    run_id: Mapped[UUID] = mapped_column(unique=True)
     tool_name: Mapped[str] = mapped_column(String(40))
     arguments: Mapped[dict[str, Any]] = mapped_column(JSONB)
     arguments_hash: Mapped[str] = mapped_column(String(64))
@@ -54,16 +76,20 @@ class Action(Base):
     executed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
 
-class Approval(Base):
+class Approval(TenantOwned, Base):
     __tablename__ = "approvals"
     __table_args__ = (
+        UniqueConstraint("tenant_id", "id"),
+        ForeignKeyConstraint(
+            ["tenant_id", "action_id"], ["workflow.actions.tenant_id", "workflow.actions.id"]
+        ),
         CheckConstraint(
             "decision IN ('pending', 'approved', 'rejected')", name="ck_approvals_decision"
         ),
         {"schema": "workflow"},
     )
     id: Mapped[UUID] = mapped_column(primary_key=True)
-    action_id: Mapped[UUID] = mapped_column(ForeignKey("workflow.actions.id"), unique=True)
+    action_id: Mapped[UUID] = mapped_column(unique=True)
     decision: Mapped[str] = mapped_column(String(20), server_default="pending")
     decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

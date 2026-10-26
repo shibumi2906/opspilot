@@ -7,7 +7,6 @@ from typing import Any, Literal
 from uuid import UUID, uuid4
 
 from sqlalchemy import select, text, update
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -21,6 +20,7 @@ from opspilot.llm.base import Provider
 from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.telemetry import carrier, traced
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 class RunConflict(Exception):

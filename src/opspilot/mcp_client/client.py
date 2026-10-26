@@ -12,6 +12,7 @@ from opspilot.config import Settings
 from opspilot.contracts.common import ToolResult
 from opspilot.mcp_client.registry import ALL_TOOLS
 from opspilot.telemetry import carrier, span
+from opspilot.tenancy.context import TenantContextError, require_tenant
 
 
 class MCPClient:
@@ -20,6 +21,8 @@ class MCPClient:
 
     @asynccontextmanager
     async def session(self) -> AsyncIterator[tuple[ClientSession, str]]:
+        if require_tenant() != self.settings.local_demo_tenant:
+            raise TenantContextError("MCP synthetic instance does not match trusted tenant")
         async with httpx.AsyncClient(
             headers={
                 **carrier(),

@@ -77,5 +77,5 @@ services:
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
     volumes:
-      - ./docs/full/evidence/evals:/reports
+      - ./docs/full/evidence/f02/evals:/reports
     command: [python, -m, opspilot.evals.runner, --commit, unspecified]

@@ -6,6 +6,7 @@ from opspilot.contracts.tools import CustomerData
 from opspilot.fixtures.loader import GREENSHOP_ID
 from opspilot.logging import configure_logging
 from opspilot.mcp_client.client import MCPClient
+from opspilot.tenancy.context import tenant_scope
 
 
 async def main() -> None:
@@ -41,4 +42,5 @@ async def main() -> None:
 
 if __name__ == "__main__":
     configure_logging()
-    asyncio.run(main())
+    with tenant_scope(Settings().local_demo_tenant):
+        asyncio.run(main())

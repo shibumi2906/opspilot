@@ -5,7 +5,6 @@ from typing import TYPE_CHECKING
 
 from langchain_core.runnables import RunnableConfig
 from sqlalchemy import select, update
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -15,6 +14,7 @@ from opspilot.agent.service import project
 from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import payload_hash
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 if TYPE_CHECKING:
     from opspilot.runtime.run_service import RunService

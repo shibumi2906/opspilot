@@ -1,9 +1,10 @@
-from sqlalchemy import event
+from sqlalchemy import event, text
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
 from opspilot.telemetry import span
+from opspilot.tenancy.context import current_tenant
 
 
 class Base(DeclarativeBase):
@@ -26,6 +27,14 @@ def create_engine(url: str) -> AsyncEngine:
         finally:
             cursor.close()
         dbapi_connection.rollback()
+
+    @event.listens_for(engine.sync_engine, "begin")
+    def tenant_transaction(connection):  # type: ignore[no-untyped-def]
+        tenant = current_tenant()
+        connection.execute(
+            text("SELECT set_config('app.tenant_id', :tenant, true)"),
+            {"tenant": str(tenant) if tenant else ""},
+        )
 
     @event.listens_for(engine.sync_engine, "before_cursor_execute")
     def before(conn, cursor, statement, parameters, context, executemany):  # type: ignore[no-untyped-def]

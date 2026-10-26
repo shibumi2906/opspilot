@@ -1,9 +1,10 @@
-"""Initialize PostgreSQL checkpoint tables with the restricted checkpoint role."""
+"""Verify administratively migrated PostgreSQL checkpoint tables."""
 
 import asyncio
 
 from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.config import Settings
+from opspilot.tenancy.context import tenant_scope
 
 
 async def initialize(settings: Settings) -> None:
@@ -16,4 +17,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    with tenant_scope(Settings().local_demo_tenant):
+        main()

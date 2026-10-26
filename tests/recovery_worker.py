@@ -10,6 +10,7 @@ from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.mcp_client.client import MCPClient
 from opspilot.runtime.run_service import RunService
+from opspilot.tenancy.context import DEMO_TENANT, tenant_scope
 
 
 async def main():
@@ -50,4 +51,5 @@ async def main():
         await asyncio.Event().wait()
 
 
-asyncio.run(main())
+with tenant_scope(DEMO_TENANT):
+    asyncio.run(main())

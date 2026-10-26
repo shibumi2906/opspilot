@@ -5,6 +5,7 @@ from uuid import UUID
 
 from opspilot.agent.service import RunConflict, run_investigation
 from opspilot.config import Settings
+from opspilot.tenancy.context import tenant_scope
 
 
 def main() -> None:
@@ -52,4 +53,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    with tenant_scope(Settings().local_demo_tenant):
+        main()

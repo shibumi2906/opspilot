@@ -3,7 +3,7 @@ import asyncio
 from alembic import context
 
 from opspilot.config import Settings
-from opspilot.db import models_domain, models_workflow  # noqa: F401
+from opspilot.db import models_domain, models_identity, models_workflow  # noqa: F401
 from opspilot.db.engine import Base, create_engine
 
 

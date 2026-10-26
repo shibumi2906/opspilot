@@ -9,6 +9,7 @@ from opspilot.config import Settings
 from opspilot.contracts.common import ToolResult
 from opspilot.contracts.evidence import normalize_evidence
 from opspilot.mcp_client.client import MCPClient
+from opspilot.tenancy.context import tenant_scope
 
 
 async def diagnose(settings: Settings, query: str, language: str) -> dict[str, Any]:
@@ -88,4 +89,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    with tenant_scope(Settings().local_demo_tenant):
+        main()

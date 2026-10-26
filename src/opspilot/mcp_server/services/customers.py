@@ -1,10 +1,11 @@
 from uuid import UUID
 
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.contracts.tools import CustomerData, IntegrationSummary
 from opspilot.db.models_domain import Customer, CustomerIntegration
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 async def get_customer(engine: AsyncEngine, customer_id: UUID) -> CustomerData | None:

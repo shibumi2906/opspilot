@@ -6,6 +6,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.contracts.tools import SearchDocumentationArgs, SearchIncidentsArgs
+from opspilot.tenancy.context import require_tenant
 
 
 # Use an explicit configuration: predictable RU/EN stemming, independent of server defaults.
@@ -29,14 +30,14 @@ async def search(
         else "id AS article_id, version, language, title, left(body, 600) AS excerpt"
     )
     branches = []
-    params: dict[str, Any] = {"query": args.query, "limit": args.limit}
+    params: dict[str, Any] = {"query": args.query, "limit": args.limit, "tenant": require_tenant()}
     for lang in ("ru", "en"):
         if args.language and args.language != lang:
             continue
         vector = vector_sql(kind, lang)
         config = "russian" if lang == "ru" else "english"
         query = f"websearch_to_tsquery('{config}'::regconfig, :query)"
-        filters = [f"language = '{lang}'", f"{vector} @@ {query}"]
+        filters = ["tenant_id = :tenant", f"language = '{lang}'", f"{vector} @@ {query}"]
         if args.integration_type is not None:
             filters.append("integration_type = :integration_type")
             params["integration_type"] = args.integration_type

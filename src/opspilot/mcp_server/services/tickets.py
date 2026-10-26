@@ -6,12 +6,13 @@ from typing import Any, Literal
 from uuid import uuid4
 
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.contracts.tools import CreateTicketArgs, CreateTicketData
 from opspilot.db.models_domain import Ticket
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.runtime.actions import payload_hash
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 class WriteDenied(Exception):

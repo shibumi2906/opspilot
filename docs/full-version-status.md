@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01 завершён; F02–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F02 завершены; F03–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F02 — Tenant schema/RLS/upgrade fixtures. Не начат.**
+**Следующий этап: F03 — OIDC, sessions, memberships/роли. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F02 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F03 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -44,7 +44,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | ID | Статус | Результат этапа | Evidence / commit |
 | --- | --- | --- | --- |
 | F01 | done | Отдельные worktree/ресурсы Full, сохранённый MVP, baseline/contracts | [evidence](full/evidence/f01.md); commit subject: `feat(full): isolate F01 foundation and preserve portfolio MVP` |
-| F02 | not_started | Tenant schema/RLS/upgrade fixtures | — |
+| F02 | done | Tenant schema/RLS/upgrade fixtures | [evidence](full/evidence/f02/README.md); commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades` |
 | F03 | not_started | OIDC, sessions, memberships/роли | — |
 | F04 | not_started | Сквозная API/MCP authorization | — |
 | F05 | not_started | Durable jobs, отдельный worker | — |
@@ -129,3 +129,48 @@ synthetic fixtures/MCP/PostgreSQL. Provider/Prometheus/Jira вызовов не 
 Blockers F01 отсутствуют. CI workflow адаптирован, remote CI run не выполнялся и не заявляется.
 Evidence commit subject: `feat(full): isolate F01 foundation and preserve portfolio MVP`.
 Следующий этап F02 остаётся not_started; выполнение остановлено на F01 по запросу владельца.
+
+## F02 — Tenant data и RLS
+
+26 октября 2026. Worktree `C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`;
+ветка `codex/opspilot-full`; base SHA `0d529b0eb3f31619e014e6d1e163a49b5f11e66c`.
+Schema `0003_tenant_rls`; SDK checkpoint migration 9; graph blob
+`5ea9d96354e37e4b8c54719006e1ac0b836866f1`, policy blob
+`7dddb49f221d157d8859295d2e85b28ae05e1824`, public state schema 1.
+
+Реализованы identity foundation, tenant keys всех существующих domain/workflow/checkpoint rows,
+9 composite FK, tenant-scoped command keys, FORCE RLS (15 таблиц), transaction-local контекст,
+tenant-filtered repositories и защита identity map при смене scope. Runtime роли не владельцы
+таблиц, без superuser/BYPASSRLS. Checkpoint schema теперь создаётся административной миграцией;
+runtime только проверяет pinned level, DSN/actual database/schema и работает в доверенном tenant scope.
+Threads привязаны составным FK к tenant/run; epoch fencing остаётся F06.
+
+Два synthetic tenant имеют одинаковые customer names, но разные customer/integration/ticket IDs.
+API/MCP используют только конфигурируемый локальный synthetic scope; MCP client отвергает mismatch,
+аргументы и X-Tenant-ID не дают полномочий. Это scaffold F02, не реализация OIDC/публичной авторизации.
+Свежая Full-БД и upgrade воспроизводимой fixture-схемы MVP проверены без чтения runtime DB MVP;
+неизвестная принадлежность останавливает и откатывает migration. Обновлена также dev БД opspilot_full.
+
+Изменения: `migrations/versions/0003_tenant_rls.py`, `src/opspilot/tenancy/`, identity/domain/workflow
+models, DB engine, scoped repositories/API/MCP/CLI/checkpointer, fixtures, тесты и Full scripts/CI.
+Контракты/ADR и runbook: [tenancy.md](full/tenancy.md), [ADR 004](full/adr/004-tenant-isolation.md).
+Точные команды/версии/отчёты: [F02 evidence](full/evidence/f02/README.md).
+
+Проверки: migration gates **4 passed**; основной backend **164 passed, 7 skipped** (4 migration
+и 3 recovery выполнены отдельно); финальные checkpoint guard/SDK **11 passed** — 4 новых и 7 повторных.
+Итого 168 различных backend cases, без повторного счёта SDK проверок. Recovery **3 passed**,
+Playwright **9 passed**, scripted regression evals **12/12**, hard safety gate true.
+Ruff/format/mypy прошли (84 source files); Full UI/API HTTP 200 и real MCP SDK smoke прошли.
+После последних DB-guard изменений SDK/guard/lint/types и live smoke перепроверены отдельно.
+Тестовые projects остановлены без удаления volumes; отдельный dev Full остаётся запущен.
+
+MVP: 184 fingerprints source/media/docs/.env, main/HEAD, четыре image tags, volume metadata и
+read-only content fingerprint 1343 файлов совпали с сохранённым baseline; исходный checkout чист.
+[Preservation evidence](full/evidence/f02/mvp-isolation.json). Порты MVP 8000/8081 не изменены;
+Full остаётся на 8011/8091, Jaeger 16696. F01 reports сохранены, F02 reports вынесены отдельно.
+
+Внешние application calls: только локальные synthetic MCP/PostgreSQL fixtures; paid LLM/provider,
+Prometheus/Jira calls — 0. Remote CI не запускался и не заявляется. Blockers F02 отсутствуют.
+Known limits: local synthetic scope до F03/F04; семь Alembic deprecation warnings не влияют на gates.
+Evidence commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades`.
+Следующий F03 остаётся not_started; следующие этапы по запросу владельца не начинались.

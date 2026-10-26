@@ -15,6 +15,7 @@ from opspilot.mcp_client.client import MCPClient
 from opspilot.runtime.recovery import recover
 from opspilot.runtime.run_service import RunService
 from opspilot.telemetry import TraceMiddleware, configure
+from opspilot.tenancy.middleware import LocalTenantScope
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -53,6 +54,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         }
 
     app.add_middleware(TraceMiddleware, name="http.api")
+    app.add_middleware(LocalTenantScope, tenant=settings.local_demo_tenant)
     install_errors(app)
     app.include_router(runs_router)
     app.include_router(router)

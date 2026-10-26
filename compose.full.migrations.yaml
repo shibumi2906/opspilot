@@ -1,0 +1,6 @@
+services:
+  tests:
+    environment:
+      F02_MIGRATION_TEST: "1"
+      F02_MIGRATION_PROJECT: opspilot-full-f02-migrations
+    command: [python, -m, pytest, -p, "no:cacheprovider", -q, tests/full_migrations]

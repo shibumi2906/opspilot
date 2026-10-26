@@ -31,6 +31,7 @@ from opspilot.fixtures.loader import seed
 from opspilot.mcp_server.main import create_app
 from opspilot.runtime.actions import payload_hash
 from opspilot.runtime.run_service import RunService
+from opspilot.tenancy.context import tenant_scope
 
 
 def scenarios() -> list[Scenario]:
@@ -293,7 +294,8 @@ def main() -> None:
     parser.add_argument("--commit", required=True)
     parser.add_argument("--dirty", action="store_true")
     parser.add_argument("--output", default="/reports")
-    raise SystemExit(asyncio.run(run(parser.parse_args())))
+    with tenant_scope(Settings().local_demo_tenant):
+        raise SystemExit(asyncio.run(run(parser.parse_args())))
 
 
 if __name__ == "__main__":

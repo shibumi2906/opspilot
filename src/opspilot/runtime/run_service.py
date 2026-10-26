@@ -7,7 +7,6 @@ import httpx
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 from sqlalchemy import select, update
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -21,6 +20,7 @@ from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import Conflict
 from opspilot.telemetry import carrier, span
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 class RunService:

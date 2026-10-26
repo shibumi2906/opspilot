@@ -6,9 +6,9 @@ from typing import Any
 from uuid import UUID, uuid4
 
 from sqlalchemy import select
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.db.models_workflow import Action, Approval
+from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 class Conflict(Exception):

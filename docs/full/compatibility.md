@@ -20,3 +20,8 @@ not a replacement SDK mock. Async SQLAlchemy's adapted psycopg cursor requires e
 Full's connection identity guard uses that supported DBAPI surface before application SQL.
 These checks demonstrate the inherited local baseline; fenced checkpointer compatibility remains F06.
 No claim of OIDC/vendor protocol implementation or current vendor compatibility is made by F01.
+
+F02: checkpoint tables are provisioned by frozen Alembic DDL at SDK migration level 9, with tenant
+columns/RLS/composite run FKs. Runtime setup is replaced by a schema-level preflight; pinned SDK
+compatibility and cross-tenant checkpoint access are tested with the real saver. Dependency locks
+remain unchanged. This still makes no claim about ownership fencing (F06).

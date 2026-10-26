@@ -1,4 +1,4 @@
-param([Parameter(Mandatory=$true)][string]$MvpPath)
+param([Parameter(Mandatory=$true)][string]$MvpPath, [string]$ReportPath = 'docs/full/evidence/f01-isolation.json')
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 $baseline = Get-Content -Raw .tools/mvp-before.json | ConvertFrom-Json
@@ -34,5 +34,5 @@ $result = [ordered]@{
     mvp_volume_fingerprint_sha256 = ([BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([Text.Encoding]::UTF8.GetBytes((Get-Content -Raw .tools/mvp-volume-after.json).Trim()))).Replace('-', ''))
     note = 'Source/env/media fingerprints captured before Full builds. Volume content baseline captured after initial Full setup; no MVP volume was mounted by Full services. Read-only probe only.'
 }
-$result | ConvertTo-Json -Depth 4 | Set-Content docs/full/evidence/f01-isolation.json
+$result | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $ReportPath
 Write-Output 'MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.'

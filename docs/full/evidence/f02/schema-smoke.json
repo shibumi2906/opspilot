@@ -1,0 +1,40 @@
+{
+  "schema_version": "0003_tenant_rls",
+  "database": "opspilot_full",
+  "tenant_fixtures": [
+    {
+      "id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "name": "Synthetic A",
+      "customers": 3,
+      "incidents": 10,
+      "tickets": 1
+    },
+    {
+      "id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "name": "Synthetic B",
+      "customers": 3,
+      "incidents": 10,
+      "tickets": 1
+    }
+  ],
+  "forced_rls_tables": 15,
+  "composite_foreign_keys": 9,
+  "runtime_roles": [
+    {
+      "rolname": "ops_checkpoint",
+      "rolsuper": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "ops_domain",
+      "rolsuper": false,
+      "rolbypassrls": false
+    },
+    {
+      "rolname": "ops_workflow",
+      "rolsuper": false,
+      "rolbypassrls": false
+    }
+  ],
+  "checkpoint_sdk_migration": 9
+}

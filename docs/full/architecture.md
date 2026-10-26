@@ -45,3 +45,11 @@ Local ignored `.tools/mvp-before.json` captures all tracked MVP file hashes, .en
 MVP image IDs, volume metadata and container inventory before any Full build/migration.
 The MVP `.tools/opspilot-full-workspace.json` is the only local pointer added there (ignored).
 Final evidence compares file fingerprints and Docker resources; existing MVP containers are never started.
+
+## F02 update
+
+Tenant foundation is now implemented; see [tenancy.md](tenancy.md) and
+[ADR 004](adr/004-tenant-isolation.md). Schema head is 0003_tenant_rls, runtime checkpoint DDL is now
+administrative. Use scripts/test-full-f02.ps1 for the current stage gate; its regression portion reuses
+the F01 script. F02 reports go to evidence/f02/evals, preserving evidence/evals as the F01 baseline.
+OIDC and public multi-user authorization remain unimplemented F03/F04 work.

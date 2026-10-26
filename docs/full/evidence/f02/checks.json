@@ -1,0 +1,60 @@
+{
+  "stage": "F02",
+  "date": "2026-10-26",
+  "branch": "codex/opspilot-full",
+  "base_commit": "0d529b0eb3f31619e014e6d1e163a49b5f11e66c",
+  "commit_subject": "feat(full): add F02 tenant isolation and safe fixture upgrades",
+  "schema_revision": "0003_tenant_rls",
+  "checkpoint_sdk_migration": 9,
+  "backend_main": {
+    "passed": 164,
+    "skipped": 7,
+    "skips": "4 dedicated migration cases and 3 dedicated process-recovery cases"
+  },
+  "migration_suite": {
+    "passed": 4,
+    "cases": [
+      "fresh schema + runtime checkpoint access",
+      "fixture MVP upgrade preserving original fields/checkpoint/ticket",
+      "unknown customer ownership rollback",
+      "unknown checkpoint ownership rollback"
+    ]
+  },
+  "browser": {
+    "passed": 9
+  },
+  "process_recovery": {
+    "passed": 3
+  },
+  "final_checkpoint_guard_sdk": {
+    "passed": 11,
+    "new_tests": 4,
+    "repeated_checks": 7
+  },
+  "unique_backend_cases_passed": 168,
+  "scripted_regression_evals": {
+    "passed": 12,
+    "total": 12,
+    "hard_safety_gate": true,
+    "provider": "scripted"
+  },
+  "lint": "passed",
+  "format": "121 files formatted",
+  "mypy": "passed: 84 source files",
+  "workflow_graph_blob": "5ea9d96354e37e4b8c54719006e1ac0b836866f1",
+  "policy_blob": "7dddb49f221d157d8859295d2e85b28ae05e1824",
+  "seeder_sha256": "35c12ac4f9d6ed34c82ecab0e1ab3a961fa5170e7939155ab3fbd8e94c2eb9e7",
+  "migration_sha256": "f537681345b7e44f32a137b182e95841cea2c904e333b83659d253c7f5d51060",
+  "live_full": {
+    "database": "opspilot_full",
+    "ui_port": 8091,
+    "api_port": 8011,
+    "jaeger_port": 16696,
+    "http_smoke": "200",
+    "mcp_protocol": "2025-11-25"
+  },
+  "paid_provider_calls": 0,
+  "f03_started": false,
+  "remote_ci_run": null,
+  "note": "Main regression used the final F02 tenant schema. The last checkpoint DSN/current_database guard was verified in the final 11-case SDK/guard rerun and live Full smoke. Counts are separate, not summed as repeated independent cases."
+}
