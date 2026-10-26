@@ -112,7 +112,7 @@ async def test_self_approval_default_denied_demo_exception_persisted(integration
 
     from opspilot.auth.context import auth_scope
     from opspilot.contracts.api import CreateRun, Decision
-    from opspilot.runtime.run_service import RunService
+    from tests.worker_helpers import RunService
 
     store = IdentityStore(integration_settings)
     async with httpx.AsyncClient(base_url=os.environ["TEST_API_URL"]) as client:

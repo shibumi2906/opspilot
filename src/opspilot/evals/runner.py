@@ -165,6 +165,9 @@ async def run_case(settings: Settings, case: Scenario, engine: Any) -> dict[str,
                     await service.decide(
                         run_id, Decision(action_id=pending["action_id"], decision=choice)
                     )
+                    from opspilot.runtime.worker import process_one
+
+                    await process_one(service, run_id)
                     async with asyncio.timeout(30):
                         while True:
                             final = await service.snapshot(run_id)

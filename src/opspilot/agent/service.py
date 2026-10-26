@@ -1,4 +1,4 @@
-"""Create and execute checkpointed investigations; API schedules these under a run lock."""
+"""Create and execute checkpointed investigations; Full API only enqueues; the worker executes."""
 
 import hashlib
 import json
@@ -21,6 +21,7 @@ from opspilot.db.models_workflow import AgentRun
 from opspilot.llm.base import Provider
 from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
+from opspilot.runtime.jobs import enqueue
 from opspilot.telemetry import carrier, traced
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
@@ -115,9 +116,18 @@ async def run_investigation(
                         state_schema_version=1,
                         public_snapshot={},
                         tool_results={},
-                        usage={},
+                        usage={
+                            "command": {
+                                "version": 1,
+                                "limits": limits.model_dump(),
+                                "model": settings.openai_model,
+                            }
+                        },
                     )
                 )
+                if queued_only:
+                    await session.flush()
+                    await enqueue(session, run_id, "start")
         if queued_only:
             return {"run_id": str(run_id), "status": "queued"}
         initial: AgentState = {

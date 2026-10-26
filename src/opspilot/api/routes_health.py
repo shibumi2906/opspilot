@@ -20,7 +20,7 @@ async def health(request: Request) -> JSONResponse:
             revision = await connection.scalar(
                 text("SELECT version_num FROM workflow.alembic_version")
             )
-            if revision == "0005_authorization_context":
+            if revision == "0006_command_jobs":
                 checks["migrations"] = "ready"
     except Exception:
         pass

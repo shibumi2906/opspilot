@@ -1,0 +1,40 @@
+{
+  "stage": "F05",
+  "base_commit": "a332965b4d0fcbd2095aaaf9d5c8b3ff3dc77fdc",
+  "commit_subject": "feat(full): implement F05 durable jobs and independent worker",
+  "schema": "0006_command_jobs",
+  "workflow_graph_blob": "5ea9d96354e37e4b8c54719006e1ac0b836866f1",
+  "policy_blob": "7dddb49f221d157d8859295d2e85b28ae05e1824",
+  "public_state_schema_version": 1,
+  "checkpoint_sdk_migration": 9,
+  "initial_command_definition_version": 1,
+  "backend_main": {
+    "passed": 205,
+    "skipped": 6
+  },
+  "dedicated_queue_suite": {
+    "passed": 5,
+    "repeated_main_cases": 4
+  },
+  "unique_backend_cases": 206,
+  "browser_passed": 12,
+  "scripted_regression_passed": 12,
+  "hard_safety_gate": true,
+  "lint": "passed",
+  "format": "passed",
+  "mypy_source_files": 97,
+  "compose_config": "passed",
+  "live_full": {
+    "schema": "0006_command_jobs",
+    "api_health": 200,
+    "web": 200,
+    "worker": "running",
+    "mcp_protocol": "2025-11-25",
+    "mcp_tools": 9
+  },
+  "paid_provider_calls": 0,
+  "remote_ci_run": null,
+  "worker_count_supported": 1,
+  "f06_started": false,
+  "final_process_fixture": "execute is blocked 60s after claim; SIGKILL precedes graph invoke; start attempts=2; SIGTERM drains active resume"
+}

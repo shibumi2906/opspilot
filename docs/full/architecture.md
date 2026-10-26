@@ -32,7 +32,7 @@ It refuses to overwrite .env and checks prospective public ports. Adjust only th
 Then `docker compose -p opspilot-full -f compose.full.yaml up -d --build --wait postgres`,
 `docker compose -p opspilot-full -f compose.full.yaml run --rm admin`,
 `docker compose -p opspilot-full -f compose.full.yaml run --rm admin python -m opspilot.cli.seed`,
-and `docker compose -p opspilot-full -f compose.full.yaml up -d --build --wait mcp api web`.
+and `docker compose -p opspilot-full -f compose.full.yaml up -d --build --wait mcp api worker web`.
 Use `powershell -File scripts/test-full-f01.ps1` for lint/types/backend/browser/recovery/12 scripted evals.
 Tests stop only their project and preserve its volume. No paid provider requests are part of F01.
 Both URL and server database identity are checked before domain/application SQL; migration uses the same guard.
@@ -59,3 +59,10 @@ OIDC and public multi-user authorization remain unimplemented F03/F04 work.
 F04 supersedes the fixed local MCP scope/V1 baseline described above. Authenticated V2 and signed
 per-actor/tenant/run MCP context are implemented; see [authorization.md](authorization.md).
 API background execution is still not F05 durable workers; F06 fencing remains future work.
+
+## F05 update
+
+Full API now commits durable start/resume jobs; the separate single worker owns graph execution.
+Schema head 0006_command_jobs. See [durable-jobs.md](durable-jobs.md) for queue semantics, recovery,
+shutdown and the exact F06 boundary. Current gate: scripts/test-full-f05.ps1. Previous stage text above
+records the historical baseline; canonical progress is docs/full-version-status.md.

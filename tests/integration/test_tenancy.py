@@ -29,6 +29,7 @@ CUSTOMER_B = uuid5(B, CUSTOMER_A)
         ("workflow", "workflow.agent_runs"),
         ("workflow", "workflow.actions"),
         ("workflow", "workflow.approvals"),
+        ("workflow", "workflow.command_jobs"),
         ("checkpoint", "checkpoints.checkpoints"),
         ("checkpoint", "checkpoints.checkpoint_blobs"),
         ("checkpoint", "checkpoints.checkpoint_writes"),

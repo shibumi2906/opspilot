@@ -23,6 +23,18 @@ async def ready(client, path):
             result = response.json()
             if result["status"] not in {"queued", "running"}:
                 return result
+            from opspilot.config import Settings
+            from opspilot.runtime.run_service import RunService
+            from opspilot.runtime.worker import process_one
+            from opspilot.tenancy.context import tenant_scope
+
+            service = RunService(Settings())
+            try:
+                for tenant in service.settings.recovery_tenants:
+                    with tenant_scope(tenant):
+                        await process_one(service, UUID(path.rsplit("/", 1)[1]))
+            finally:
+                await service.close()
             await asyncio.sleep(0.05)
 
 

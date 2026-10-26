@@ -21,6 +21,7 @@ from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import Conflict
+from opspilot.runtime.jobs import enqueue
 from opspilot.telemetry import carrier, span
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
@@ -30,15 +31,9 @@ class RunService:
         self.settings = settings
         self.engine = create_engine(settings.database_url("workflow"))
         self.locks: dict[UUID, asyncio.Lock] = {}
-        self.tasks: set[asyncio.Task[None]] = set()
 
     def lock(self, run_id: UUID) -> asyncio.Lock:
         return self.locks.setdefault(run_id, asyncio.Lock())
-
-    def spawn(self, coroutine: Any) -> None:
-        task = asyncio.create_task(coroutine)
-        self.tasks.add(task)
-        task.add_done_callback(self.tasks.discard)
 
     async def create(self, body: CreateRun) -> dict[str, Any]:
         run_id = uuid4()
@@ -49,8 +44,6 @@ class RunService:
             run_id=run_id,
             queued_only=True,
         )
-        if result["run_id"] == str(run_id):
-            self.spawn(self.execute(run_id, body))
         return {
             "run_id": result["run_id"],
             "status": result["status"],
@@ -61,9 +54,24 @@ class RunService:
     async def execute(self, run_id: UUID, body: CreateRun) -> None:
         async with self.lock(run_id):
             try:
+                async with AsyncSession(self.engine) as session:
+                    run = await session.get(AgentRun, run_id)
+                    if run is None:
+                        raise LookupError("Run not found")
+                    command = run.usage.get("command", {})
+                    settings = self.settings.model_copy(
+                        update={
+                            "llm_mode": run.mode,
+                            "scenario_id": run.scenario_id,
+                            "scenario_clock": run.scenario_clock,
+                            "openai_model": command.get("model", self.settings.openai_model),
+                        }
+                    )
+                    limits = BudgetLimits.model_validate(command["limits"]) if command else None
                 await run_investigation(
-                    self.settings,
+                    settings,
                     body.request,
+                    limits=limits,
                     client_request_id=body.client_request_id,
                     run_id=run_id,
                 )
@@ -233,7 +241,8 @@ class RunService:
                 row.Approval.decided_at = datetime.now(UTC)
                 run.status = "running"
                 run.updated_at = datetime.now(UTC)
-            self.spawn(self.resume(run_id, body.action_id))
+                await session.flush()
+                await enqueue(session, run_id, "resume", body.action_id)
         return await self.snapshot(run_id)
 
     @persisted_worker
@@ -292,6 +301,4 @@ class RunService:
                 await self.fail(run_id)
 
     async def close(self) -> None:
-        if self.tasks:
-            await asyncio.gather(*self.tasks)
         await self.engine.dispose()

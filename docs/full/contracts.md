@@ -32,3 +32,10 @@ Public V1 compatibility must enforce V2 authorization or return 410 by F04; MVP 
 F04 supersedes the fixed local MCP scope/V1 baseline described above. Authenticated V2 and signed
 per-actor/tenant/run MCP context are implemented; see [authorization.md](authorization.md).
 API background execution is still not F05 durable workers; F06 fencing remains future work.
+
+## F05 current boundary
+
+API create and decision atomically enqueue tenant-scoped durable commands; only the independent
+single worker invokes/resumes the graph. See [durable-jobs.md](durable-jobs.md). Unique run/kind command
+keys implement the existing single-action protocol; F09/F11 command revisions and F06 fencing are
+not claimed. Public DTO schema and F04 authorization stay at version 1.

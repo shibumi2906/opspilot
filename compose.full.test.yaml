@@ -25,6 +25,17 @@ services:
       IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full_test
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
+  worker:
+    environment:
+      APP_ENV: test
+      APP_ORIGIN: http://web
+      OIDC_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: "true"
+      LLM_MODE: scripted
+      OPENAI_API_KEY: ""
+      SCENARIO_ID: greenshop_expired
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
   mcp:
     environment:
       APP_ENV: test
@@ -106,5 +117,5 @@ services:
     volumes:
       - ./.tools/service-keys/private:/run/service-private:ro
       - ./.tools/service-keys/public:/run/service-public:ro
-      - ./docs/full/evidence/f04/evals:/reports
+      - ./docs/full/evidence/f05/evals:/reports
     command: [python, -m, opspilot.evals.runner, --commit, unspecified]

@@ -31,8 +31,9 @@ def main() -> None:
                 await service.decide(
                     args.run_id, Decision(action_id=args.action_id, decision=args.decision)
                 )
-                if service.tasks:
-                    await asyncio.gather(*service.tasks)
+                from opspilot.runtime.worker import process_one
+
+                await process_one(service, args.run_id)
                 return await service.snapshot(args.run_id)
             finally:
                 await service.close()

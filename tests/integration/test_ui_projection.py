@@ -6,7 +6,7 @@ import httpx
 
 from opspilot.contracts.api import CreateRun
 from opspilot.llm.scripted import ScriptedProvider
-from opspilot.runtime.run_service import RunService
+from tests.worker_helpers import RunService
 
 
 async def test_progress_snapshot_arrives_before_approval(integration_settings, monkeypatch):

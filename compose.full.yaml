@@ -120,6 +120,30 @@ services:
       timeout: 10s
       retries: 10
 
+  worker:
+    <<: *app
+    volumes:
+      - ./.tools/service-keys/private:/run/service-private:ro
+    environment:
+      <<: *common-env
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
+      MCP_URL: http://mcp:8001/mcp
+      JAEGER_URL: http://127.0.0.1:${JAEGER_PORT:-16696}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
+      AGENT_MAX_READS: ${AGENT_MAX_READS:-15}
+      AGENT_MAX_LLM_ATTEMPTS: ${AGENT_MAX_LLM_ATTEMPTS:-10}
+      AGENT_MAX_ROUNDS: ${AGENT_MAX_ROUNDS:-6}
+      AGENT_MAX_TOKENS: ${AGENT_MAX_TOKENS:-30000}
+      AGENT_ACTIVE_SECONDS: ${AGENT_ACTIVE_SECONDS:-120}
+    command: [python, -m, opspilot.runtime.worker]
+    stop_grace_period: 180s
+    depends_on:
+      postgres: {condition: service_healthy}
+      mcp: {condition: service_started}
+
   mcp:
     <<: *app
     volumes:

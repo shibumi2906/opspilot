@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F04 завершены; F05–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F05 завершены; F06–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F05 — durable jobs и отдельный worker. Не начат.**
+**Следующий этап: F06 — multiworker, leases и fencing. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F05 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F06 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -47,7 +47,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | F02 | done | Tenant schema/RLS/upgrade fixtures | [evidence](full/evidence/f02/README.md); commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades` |
 | F03 | done | OIDC, sessions, memberships/роли | [evidence](full/evidence/f03/README.md); commit subject: `feat(full): implement F03 OIDC sessions and tenant roles` |
 | F04 | done | Сквозная API/MCP authorization | [evidence](full/evidence/f04/README.md); commit subject: `feat(full): enforce F04 API and scoped MCP authorization` |
-| F05 | not_started | Durable jobs, отдельный worker | — |
+| F05 | done | Durable jobs, отдельный worker | [evidence](full/evidence/f05/README.md); commit subject: `feat(full): implement F05 durable jobs and independent worker` |
 | F06 | not_started | Multiworker leases/fenced checkpoints | — |
 | F07 | not_started | Transactional events/audit/projections | — |
 | F08 | not_started | Clarification и cancellation | — |
@@ -234,3 +234,43 @@ Limits: локальный synthetic issuer; фоновые задачи пок�
 SSE/F13, admin UI/F14 и deployment/F23 не выдаются за готовые. Blockers F04 отсутствуют.
 Evidence commit subject: feat(full): enforce F04 API and scoped MCP authorization.
 Следующий F05 остаётся not_started; диапазон F03–F04 завершён, следующие этапы не начинались.
+
+## F05 — durable command queue и отдельный worker
+
+26 октября 2026; worktree `C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`;
+ветка `codex/opspilot-full`; base SHA `a332965b4d0fcbd2095aaaf9d5c8b3ff3dc77fdc`.
+Schema `0006_command_jobs`, initial command definition 1, checkpoint SDK migration 9;
+graph `5ea9d96354e37e4b8c54719006e1ac0b836866f1`, policy
+`7dddb49f221d157d8859295d2e85b28ae05e1824`, public state/service context version 1.
+
+API атомарно создаёт run+start job и decision/status+resume job. PostgreSQL queue имеет tenant RLS,
+composite FK, unique command keys, committed claims, attempts/backoff и dead-letter. Graph invoke/
+resume и checkpoint recovery выполняет отдельный worker; API singleton и in-memory scheduler удалены.
+Сохраняются начальные budget/model/scenario параметры; execution actor загружается из persisted run.
+Один worker удерживает session advisory lock; второй реальный процесс отвергается. SIGTERM завершает
+активную команду; SIGKILL оставляет claim для bounded retry после рестарта. Это не F06 fencing.
+
+Пути: migrations/0006, runtime/{jobs,worker,recovery,run_service}, agent/service, API lifespan/health,
+CLI/eval harness, Full/legacy-isolated Compose, текущие CI/stage scripts, tests и docs.
+[Runbook](full/durable-jobs.md), [точные команды/evidence](full/evidence/f05/README.md).
+Backend **205 passed, 6 dedicated skips**; исправленный процессный gate **5 passed**, из них 4 повтора
+и 1 новый case: **206 уникальных backend cases**. Три прежних checkpoint recovery cases входят в 205.
+Реальный OIDC/browser с отдельным Compose worker **12 passed**; scripted regression **12/12**,
+hard safety gate true. Ruff/format/mypy (97 source files), Compose config и live SDK smoke прошли.
+Процессный gate доказывает API kill после commit до response для create/decision, replay/offline
+worker, SIGKILL после claim, backoff/start attempts=2, singleton и drain активного resume при SIGTERM;
+одна фактическая local ticket operation и exact verification. Rollback, tenant deny, dead-letter и
+saved-budget tests прошли. Timing race тестового kill исправлен и проверен повторным process gate.
+
+Dev Full мигрирован 0005→0006, отдельный worker запущен; UI 8091/API 8011 HTTP 200, MCP SDK 9 tools.
+Тестовый project остановлен без удаления volumes. MVP: 184 source/media/docs/.env fingerprints,
+main/HEAD, четыре image tags, volume metadata и read-only content SHA256 совпали с baseline до/после;
+исходный checkout чист. [Preservation evidence](full/evidence/f05/mvp-isolation.json).
+Внешние application calls — только локальные synthetic OIDC/PostgreSQL/MCP; paid/provider/vendor
+calls 0. Remote CI не запускался и не заявляется. F01–F04 evidence сохранены.
+
+Limits: один worker; epochs/leases/stale-writer fencing — F06, events/outbox — F07. Interrupted graph
+без безопасного checkpoint завершается conservative failure; автоматический blind write retry
+не добавлен. Blockers F05 отсутствуют. Evidence commit subject:
+`feat(full): implement F05 durable jobs and independent worker`.
+Следующий F06 остаётся not_started; работа завершена только на F05 по запросу владельца.

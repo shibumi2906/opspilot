@@ -8,13 +8,14 @@ from sqlalchemy import text
 
 from opspilot.contracts.api import Decision
 from opspilot.runtime.recovery import recover
-from opspilot.runtime.run_service import RunService
+from tests.worker_helpers import RunService
 
 
 async def worker(*args):
     return await asyncio.create_subprocess_exec(
         sys.executable,
-        "tests/recovery_worker.py",
+        "-m",
+        "tests.recovery_worker",
         *args,
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.DEVNULL,

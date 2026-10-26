@@ -9,8 +9,8 @@ from uuid import UUID, uuid4
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.mcp_client.client import MCPClient
-from opspilot.runtime.run_service import RunService
 from opspilot.tenancy.context import DEMO_TENANT, tenant_scope
+from tests.worker_helpers import RunService
 
 
 async def main():

@@ -10,12 +10,16 @@ from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.api.main import create_app
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.runtime.actions import Conflict, prepare
-from opspilot.runtime.run_service import RunService
+from tests.worker_helpers import RunService
 
 
 async def settle(service, run_id):
     async with asyncio.timeout(30):
         while True:
+            from opspilot.runtime.worker import process_one
+
+            if not service.tasks:
+                await process_one(service, run_id)
             snapshot = await service.snapshot(run_id)
             if snapshot["status"] not in {"queued", "running"}:
                 return snapshot
@@ -123,9 +127,8 @@ async def test_api_contract_and_guard(integration_settings, choice):
 
     service = RunService(integration_settings)
     other = create_app(integration_settings)
-    with pytest.raises(RuntimeError, match="Only one"):
-        async with other.router.lifespan_context(other):
-            pass
+    async with other.router.lifespan_context(other):
+        pass
     try:
         async with httpx.AsyncClient(base_url=os.environ["TEST_API_URL"]) as client:
             from tests.auth_helpers import session_client

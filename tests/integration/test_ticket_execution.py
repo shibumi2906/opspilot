@@ -7,7 +7,7 @@ from sqlalchemy import text
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.contracts.common import ToolError, ToolResult
 from opspilot.mcp_client.client import MCPClient
-from opspilot.runtime.run_service import RunService
+from tests.worker_helpers import RunService
 
 
 async def settle(service, run_id):

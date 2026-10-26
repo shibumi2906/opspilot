@@ -1,7 +1,8 @@
-"""Bounded startup recovery. Call only after acquiring the process singleton lock."""
+"""Worker-owned checkpoint recovery for a claimed durable command."""
 
 from datetime import UTC, datetime
 from typing import TYPE_CHECKING
+from uuid import UUID
 
 from langchain_core.runnables import RunnableConfig
 from sqlalchemy import select, update
@@ -22,7 +23,7 @@ if TYPE_CHECKING:
     from opspilot.runtime.run_service import RunService
 
 
-async def recover(service: "RunService") -> None:
+async def recover(service: "RunService", only_run: UUID | None = None) -> None:
     async with AsyncSession(service.engine) as session:
         ids = list(
             await session.scalars(
@@ -32,6 +33,8 @@ async def recover(service: "RunService") -> None:
             )
         )
     for run_id in ids:
+        if only_run is not None and run_id != only_run:
+            continue
         try:
             async with (
                 execution_scope(service.engine, run_id),
@@ -77,7 +80,7 @@ async def recover(service: "RunService") -> None:
                             )
                         )
                     if row.Approval.decision != "pending":
-                        service.spawn(service.resume(run_id, row.Action.id))
+                        await service.resume(run_id, row.Action.id)
                 elif (
                     valid
                     and row is not None
@@ -85,7 +88,7 @@ async def recover(service: "RunService") -> None:
                     and (row.Action.execution_status == "succeeded" and row.Action.execution_result)
                     and set(saved.next) <= {"execute", "verify", "report"}
                 ):
-                    service.spawn(service.resume(run_id, row.Action.id, continuation=True))
+                    await service.resume(run_id, row.Action.id, continuation=True)
                 elif valid and not saved.next and values.get("final_report"):
                     public = project(values)
                     for key in ("trace_context", "continuation_context"):
