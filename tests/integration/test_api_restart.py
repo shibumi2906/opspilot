@@ -55,11 +55,11 @@ async def test_api_hard_restart(fault, integration_settings):
         await session_client(client, integration_settings)
         try:
             response = await client.post(
-                "/api/v1/runs",
+                "/api/v2/runs",
                 json={"request": "Investigate GreenShop", "client_request_id": str(uuid4())},
             )
             assert response.status_code == 202
-            path = "/api/v1/runs/" + response.json()["run_id"]
+            path = "/api/v2/runs/" + response.json()["run_id"]
             async with asyncio.timeout(30):
                 while True:
                     pending = (await client.get(path)).json()

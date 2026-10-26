@@ -81,7 +81,7 @@ async def test_operator_cannot_approve_and_membership_revocation(
         _, user = await session_client(client, integration_settings, "operator")
         assert (
             await client.post(
-                f"/api/v1/runs/{uuid4()}/decision",
+                f"/api/v2/runs/{uuid4()}/decision",
                 json={"action_id": str(uuid4()), "decision": "approve"},
             )
         ).status_code == 403
@@ -93,7 +93,7 @@ async def test_operator_cannot_approve_and_membership_revocation(
         try:
             assert (
                 await client.post(
-                    "/api/v1/runs",
+                    "/api/v2/runs",
                     json={"request": "Investigate GreenShop", "client_request_id": str(uuid4())},
                 )
             ).status_code == 403

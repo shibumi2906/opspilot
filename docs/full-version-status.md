@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F03 завершены; F04–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F04 завершены; F05–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F04 — сквозная API/MCP authorization. Не начат.**
+**Следующий этап: F05 — durable jobs и отдельный worker. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F04 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F05 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -46,7 +46,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | F01 | done | Отдельные worktree/ресурсы Full, сохранённый MVP, baseline/contracts | [evidence](full/evidence/f01.md); commit subject: `feat(full): isolate F01 foundation and preserve portfolio MVP` |
 | F02 | done | Tenant schema/RLS/upgrade fixtures | [evidence](full/evidence/f02/README.md); commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades` |
 | F03 | done | OIDC, sessions, memberships/роли | [evidence](full/evidence/f03/README.md); commit subject: `feat(full): implement F03 OIDC sessions and tenant roles` |
-| F04 | not_started | Сквозная API/MCP authorization | — |
+| F04 | done | Сквозная API/MCP authorization | [evidence](full/evidence/f04/README.md); commit subject: `feat(full): enforce F04 API and scoped MCP authorization` |
 | F05 | not_started | Durable jobs, отдельный worker | — |
 | F06 | not_started | Multiworker leases/fenced checkpoints | — |
 | F07 | not_started | Transactional events/audit/projections | — |
@@ -197,3 +197,40 @@ MVP fingerprints source/media/.env/main/images/volumes совпали, исхо�
 Limits: HTTP dev issuer, BFF-local logout (не IdP-wide SSO logout); публичный pilot не открыт.
 F04 authorization/context ещё не реализованы в этом коммите; F05 не начинался. Blockers F03 нет.
 Evidence commit subject: feat(full): implement F03 OIDC sessions and tenant roles.
+
+## F04 — сквозная API → execution context → MCP authorization
+
+26 октября 2026; тот же отдельный Full worktree/codex/opspilot-full; base 75367f9.
+Schema 0005_authorization_context; service context version 1; graph/policy blobs остаются F02,
+public state schema 1. F03 выполнен и закоммичен отдельно до F04.
+
+Full V1 закрыт (410 после auth), UI/API перенесены на V2. Реализованы tenant/actor/role checks
+для snapshot/actions/evidence/history/counts, scope-bound cursor, membership admin mutations,
+actor-bound client_request_id replay и минимальный health без внутренних данных. Returned snapshot
+URL использует V2. Неавторизованный/невыбранный tenant отклоняется до object lookup.
+
+MCP требует отдельный bearer и Ed25519 context с issuer/audience/environment/expiry/kid/scope;
+read context не даёт action authority. Write проверяет точный hash/run/action/tool, persisted approval,
+current actor/approver membership, self-policy и атомарный receipt. Runtime роли не получают UPDATE
+membership: узкий tenant-checked read/lock helper сериализует revoke/write. MCP получает только
+public keys, без private signer/BFF secret. Current/next rotation доказана реальным MCP HTTP fixture.
+Execution/resume/recovery загружают actor из persisted run, не из approver context. Checkpoint RLS
+дополнен actor/thread mapping; отдельные durable jobs и epoch fencing остаются F05/F06.
+
+Пути: migrations/0005, auth/{execution,service_context}, MCP auth/authorization/write, V2 routes,
+Core/runtime/recovery/checkpointer, Full secret mounts/keygen/script, UI client и tests.
+[Runbook/границы](full/authorization.md), [команды/evidence](full/evidence/f04/README.md).
+Проверки: backend 200 passed, 7 dedicated skips; browser 12 passed; recovery 3 passed;
+scripted regression 12/12, hard safety gate true. Финальные 17 auth/identity cases повторены после
+последних contract/security corrections; Ruff/mypy прошли (95 source files). Это повторы, не новые cases.
+Два tenant прошли собственные GreenShop operator→approver→MCP→verified сценарии и не видят чужие
+UUID/evidence/counts. Отзыв approver/read-context without authority блокируют запись.
+Live dev Full обновлён 0004→0005; HTTP/SDK smoke и runtime-role lock helper проверены.
+
+MVP source/media/.env/main/images/volumes fingerprints совпали; исходный checkout чист и на f9f8d79.
+Все прежние F01–F03 reports сохранены. Full dev запущен на 8091/8011/16696/8181; тесты остановлены
+без удаления volumes. Внешних paid/model/vendor calls — 0, remote CI не заявляется.
+Limits: локальный synthetic issuer; фоновые задачи пока в API; ревизии/TTL/F09, freshness/F12,
+SSE/F13, admin UI/F14 и deployment/F23 не выдаются за готовые. Blockers F04 отсутствуют.
+Evidence commit subject: feat(full): enforce F04 API and scoped MCP authorization.
+Следующий F05 остаётся not_started; диапазон F03–F04 завершён, следующие этапы не начинались.

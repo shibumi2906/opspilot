@@ -4,13 +4,17 @@ from uuid import NAMESPACE_URL, UUID, uuid5
 
 from opspilot.config import Settings
 from opspilot.fixtures.loader import GREENSHOP_ID, monitoring_snapshot
+from opspilot.tenancy.context import SECOND_TENANT
 
 
 def observe(settings: Settings, customer_id: UUID, integration_id: UUID) -> dict[str, Any]:
     if settings.scenario_id == "timeout":
         raise TimeoutError("Synthetic monitoring timeout")
     snapshot = monitoring_snapshot(settings.scenario_clock)
-    if str(customer_id) != GREENSHOP_ID or settings.scenario_id == "healthy":
+    if (
+        str(customer_id) not in {GREENSHOP_ID, str(uuid5(SECOND_TENANT, GREENSHOP_ID))}
+        or settings.scenario_id == "healthy"
+    ):
         snapshot.update(
             status="healthy",
             credential_status="valid",

@@ -131,9 +131,9 @@ async def test_api_contract_and_guard(integration_settings, choice):
             from tests.auth_helpers import session_client
 
             await session_client(client, integration_settings)
-            assert (await client.get(f"/api/v1/runs/{uuid4()}")).status_code == 404
+            assert (await client.get(f"/api/v2/runs/{uuid4()}")).status_code == 404
             response = await client.post(
-                "/api/v1/runs",
+                "/api/v2/runs",
                 json={"request": "Investigate GreenShop", "client_request_id": str(uuid4())},
             )
             assert response.status_code == 202
@@ -142,7 +142,7 @@ async def test_api_contract_and_guard(integration_settings, choice):
             run_id = UUID(response.json()["run_id"])
             pending = await settle(service, run_id)
             card = pending["action"]
-            path = f"/api/v1/runs/{run_id}/decision"
+            path = f"/api/v2/runs/{run_id}/decision"
             body = {"action_id": card["action_id"], "decision": choice}
             assert (await client.post(path, json={**body, "arguments": {}})).status_code == 422
             wrong = {**body, "action_id": str(uuid4())}
@@ -155,7 +155,7 @@ async def test_api_contract_and_guard(integration_settings, choice):
             assert replay.json()["ticket_id"] == final["report"]["ticket_id"]
             opposite = {**body, "decision": "reject" if choice == "approve" else "approve"}
             assert (await client.post(path, json=opposite)).status_code == 409
-            public = (await client.get(f"/api/v1/runs/{run_id}")).json()
+            public = (await client.get(f"/api/v2/runs/{run_id}")).json()
             assert public["action"]["arguments"] == card["arguments"]
             assert "channel_values" not in public and "observations" not in public
             assert integration_settings.mcp_service_token.get_secret_value() not in str(public)

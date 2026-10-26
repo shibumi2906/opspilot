@@ -36,8 +36,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             if not acquired:
                 raise RuntimeError("Only one API process is supported")
             app.state.runs = RunService(settings)
-            with tenant_scope(settings.local_demo_tenant):
-                await recover(app.state.runs)
+            for tenant in settings.recovery_tenants:
+                with tenant_scope(tenant):
+                    await recover(app.state.runs)
             yield
         finally:
             if hasattr(app.state, "runs"):
@@ -49,7 +50,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app = FastAPI(title="OpsPilot", version="0.1.0", lifespan=lifespan)
 
-    @app.get("/api/v1/config")
+    @app.get("/api/v2/config")
     async def public_config() -> dict[str, object]:
         return {
             "mode": settings.llm_mode,
@@ -65,6 +66,26 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(auth_router)
     app.include_router(runs_router)
     app.include_router(router)
+
+    @app.api_route("/api/v1/{path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"])
+    async def retired_v1(path: str) -> object:
+        from fastapi.responses import JSONResponse
+
+        return JSONResponse(
+            {
+                "error": {
+                    "code": "API_VERSION_RETIRED",
+                    "schema_version": 1,
+                    "message": "Use authenticated V2",
+                    "retryable": False,
+                }
+            },
+            status_code=410,
+        )
+
+    from opspilot.api.routes_authorized import router as authorized_router
+
+    app.include_router(authorized_router)
     return app
 
 

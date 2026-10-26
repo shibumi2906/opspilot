@@ -13,7 +13,8 @@ from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.agent.graph import build_graph
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.service import project, run_investigation
-from opspilot.auth.context import AuthError, optional_principal
+from opspilot.auth.context import AuthError, actor_id, optional_principal
+from opspilot.auth.execution import execution_scope, persisted_worker
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.db.engine import create_engine
@@ -53,9 +54,10 @@ class RunService:
         return {
             "run_id": result["run_id"],
             "status": result["status"],
-            "snapshot_url": f"/api/v1/runs/{result['run_id']}",
+            "snapshot_url": f"/api/v2/runs/{result['run_id']}",
         }
 
+    @persisted_worker
     async def execute(self, run_id: UUID, body: CreateRun) -> None:
         async with self.lock(run_id):
             try:
@@ -200,7 +202,10 @@ class RunService:
                     return await self.snapshot(run_id)
                 if run.status != "waiting_for_approval":
                     raise Conflict("Run is not waiting for approval")
-                async with postgres_checkpointer(self.settings) as saver:
+                async with (
+                    execution_scope(self.engine, run_id),
+                    postgres_checkpointer(self.settings) as saver,
+                ):
                     checkpoint = await saver.aget_tuple(
                         {"configurable": {"thread_id": run.thread_id}}
                     )
@@ -217,6 +222,13 @@ class RunService:
                         raise AuthError("SELF_APPROVAL_FORBIDDEN")
                     row.Approval.decided_by = actor.user_id
                     row.Approval.self_approval_exception = same
+                else:
+                    # Explicit internal local-demo CLI/test actor; not a browser-supplied identity.
+                    row.Approval.decided_by = actor_id()
+                    same = run.actor_id == actor_id()
+                    if same and not self.settings.allow_demo_self_approval:
+                        raise AuthError("SELF_APPROVAL_FORBIDDEN")
+                    row.Approval.self_approval_exception = same
                 row.Approval.decision = choice
                 row.Approval.decided_at = datetime.now(UTC)
                 run.status = "running"
@@ -224,6 +236,7 @@ class RunService:
             self.spawn(self.resume(run_id, body.action_id))
         return await self.snapshot(run_id)
 
+    @persisted_worker
     async def resume(self, run_id: UUID, action_id: UUID, *, continuation: bool = False) -> None:
         async with self.lock(run_id):
             try:

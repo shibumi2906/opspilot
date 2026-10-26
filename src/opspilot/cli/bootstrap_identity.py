@@ -7,7 +7,7 @@ from sqlalchemy import text
 
 from opspilot.config import Settings
 from opspilot.db.engine import create_engine
-from opspilot.tenancy.context import DEMO_TENANT, SECOND_TENANT
+from opspilot.tenancy.context import DEMO_ACTOR, DEMO_TENANT, SECOND_TENANT
 
 SUBJECTS = {
     name: str(UUID(int=10000 + i))
@@ -37,6 +37,15 @@ async def bootstrap() -> None:
                                current_setting('ops.identity_password'));
             END $$""")
             )
+            if settings.allow_demo_self_approval:
+                for tenant in (DEMO_TENANT, SECOND_TENANT):
+                    await conn.execute(
+                        text(
+                            "INSERT INTO identity.tenant_memberships VALUES (:t, :u, "
+                            "'approver') ON CONFLICT DO NOTHING"
+                        ),
+                        {"t": tenant, "u": DEMO_ACTOR},
+                    )
             for name, subject in SUBJECTS.items():
                 user = uuid5(NAMESPACE_URL, settings.oidc_issuer + "|" + subject)
                 await conn.execute(

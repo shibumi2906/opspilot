@@ -5,6 +5,7 @@ from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 from psycopg import AsyncConnection
 from sqlalchemy.engine import make_url
 
+from opspilot.auth.context import actor_id
 from opspilot.config import Settings
 from opspilot.tenancy.context import require_tenant
 
@@ -26,6 +27,7 @@ async def postgres_checkpointer(settings: Settings) -> AsyncIterator[AsyncPostgr
         if row is None or row["schema"] != "checkpoints" or row["database"] != url.database:
             raise ValueError("Checkpoint connection must use checkpoints schema")
         await saver.conn.execute("SELECT set_config('app.tenant_id', %s, false)", (str(tenant),))
+        await saver.conn.execute("SELECT set_config('app.actor_id', %s, false)", (str(actor_id()),))
         version = await saver.conn.execute("SELECT max(v) AS version FROM checkpoint_migrations")
         row = await version.fetchone()
         if row is None or row["version"] != 9:

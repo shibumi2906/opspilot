@@ -68,4 +68,4 @@ async def test_health_and_mcp_network_boundary(integration_settings: Settings) -
     async with httpx.AsyncClient() as http:
         response = await http.get(os.environ["TEST_API_URL"] + "/health")
     assert response.status_code == 200
-    assert response.json()["checks"] == {"database": "ready", "migrations": "ready", "mcp": "ready"}
+    assert response.json() == {"status": "ready"}

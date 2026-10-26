@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from opspilot.auth.context import AuthError
 from opspilot.config import Settings
 from opspilot.contracts.common import Source, ToolError, ToolResult
 from opspilot.contracts.tools import (
@@ -22,6 +23,7 @@ from opspilot.contracts.tools import (
 from opspilot.db.models_domain import Customer, CustomerIntegration, Ticket
 from opspilot.mcp_client.registry import ALL_TOOLS, READ_TOOLS
 from opspilot.mcp_server.adapters.monitoring import observe
+from opspilot.mcp_server.authorization import authorize_tool
 from opspilot.mcp_server.services.customers import get_customer
 from opspilot.mcp_server.services.retrieval import search
 from opspilot.mcp_server.services.tickets import WriteDenied
@@ -150,8 +152,9 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
         contract = ALL_TOOLS[name]
         try:
             args = contract.arguments.model_validate(arguments)
+            await authorize_tool(name, args, engine)
             response = (
-                await write_tool(CreateTicketArgs.model_validate(arguments), engine)
+                await write_tool(CreateTicketArgs.model_validate(arguments), engine, settings)
                 if name == "create_ticket"
                 else await read_tool(name, args, engine, settings)
             )
@@ -169,6 +172,15 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                     data=contract.data.model_validate(data).model_dump(mode="json"),
                     sources=sources,
                 )
+        except AuthError as exc:
+            result = ToolResult(
+                ok=False,
+                observed_at=settings.scenario_clock,
+                error=ToolError(
+                    code="NOT_FOUND" if exc.status == 404 else "ACCESS_DENIED",
+                    message="Resource not available",
+                ),
+            )
         except WriteDenied as exc:
             result = ToolResult(
                 ok=False,

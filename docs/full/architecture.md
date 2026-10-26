@@ -53,3 +53,9 @@ Tenant foundation is now implemented; see [tenancy.md](tenancy.md) and
 administrative. Use scripts/test-full-f02.ps1 for the current stage gate; its regression portion reuses
 the F01 script. F02 reports go to evidence/f02/evals, preserving evidence/evals as the F01 baseline.
 OIDC and public multi-user authorization remain unimplemented F03/F04 work.
+
+## F04 current boundary
+
+F04 supersedes the fixed local MCP scope/V1 baseline described above. Authenticated V2 and signed
+per-actor/tenant/run MCP context are implemented; see [authorization.md](authorization.md).
+API background execution is still not F05 durable workers; F06 fencing remains future work.

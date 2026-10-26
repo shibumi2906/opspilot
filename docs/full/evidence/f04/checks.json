@@ -1,0 +1,24 @@
+{
+  "stage": "F04",
+  "base_commit": "75367f9cd869b213aa3ac86dfd844ac8b101cd12",
+  "commit_subject": "feat(full): enforce F04 API and scoped MCP authorization",
+  "schema": "0005_authorization_context",
+  "service_context_version": 1,
+  "backend_main": {
+    "passed": 200,
+    "skipped": 7
+  },
+  "final_authority_identity_repeat": 17,
+  "browser": 12,
+  "recovery": 3,
+  "scripted_evals": 12,
+  "hard_safety_gate": true,
+  "mypy_source_files": 95,
+  "paid_provider_calls": 0,
+  "final_changes_verified": "minimum MCP credentials, pre-lookup missing-scope denial, actor-bound idempotency replay, returned V2 snapshot URL",
+  "mcp_private_key_mount": false,
+  "mcp_bff_signing_secret": false,
+  "lock_helper_runtime_update_permission": false,
+  "f05_started": false,
+  "remote_ci_run": null
+}

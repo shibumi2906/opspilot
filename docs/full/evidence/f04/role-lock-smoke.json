@@ -1,0 +1,6 @@
+{
+  "role": "ops_domain",
+  "own_role_lock": true,
+  "foreign_role_lock": false,
+  "can_update_memberships": false
+}

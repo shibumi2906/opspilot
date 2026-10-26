@@ -19,13 +19,14 @@ def install_errors(app: FastAPI) -> None:
                     "code": code,
                     "message": message,
                     "retryable": False,
-                    "correlation_id": str(uuid4()),
+                    "request_id": str(uuid4()),
+                    "schema_version": 1,
                 }
             },
         )
 
     async def conflict(request: Request, exc: Exception) -> JSONResponse:
-        return error("STATE_CONFLICT", str(exc), 409)
+        return error("STATE_CONFLICT", "State conflict; refresh the saved result", 409)
 
     async def missing(request: Request, exc: Exception) -> JSONResponse:
         return error("NOT_FOUND", "Run or action not found", 404)

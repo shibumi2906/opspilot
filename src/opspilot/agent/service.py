@@ -13,6 +13,8 @@ from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.agent.graph import build_graph
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
+from opspilot.auth.context import actor_id
+from opspilot.auth.service_context import run_scope
 from opspilot.config import Settings
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import AgentRun
@@ -71,6 +73,8 @@ async def run_investigation(
     ).hexdigest()
     engine = create_engine(settings.database_url("workflow"))
     run_id = run_id or uuid4()
+    scope = run_scope(str(run_id))
+    scope.__enter__()
     try:
         async with AsyncSession(engine) as session, session.begin():
             await session.execute(
@@ -80,6 +84,8 @@ async def run_investigation(
             previous = await session.scalar(
                 select(AgentRun).where(AgentRun.client_request_id == client_request_id)
             )
+            if previous and previous.actor_id != actor_id():
+                raise RunConflict("Request key is not available to this actor")
             if previous and previous.status == "queued" and previous.id == run_id:
                 await session.execute(
                     update(AgentRun).where(AgentRun.id == run_id).values(status="running")
@@ -193,6 +199,7 @@ async def run_investigation(
             raise RuntimeError(f"Run {run_id} failed; check service readiness") from None
     finally:
         await engine.dispose()
+        scope.__exit__(None, None, None)
 
 
 def project(state: dict[str, Any]) -> dict[str, Any]:

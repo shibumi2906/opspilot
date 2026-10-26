@@ -10,7 +10,7 @@ x-app: &app
 x-common-env: &common-env
   APP_ENV: ${APP_ENV:-local}
   LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
-  SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY:?Generate Full identity secrets}
+  SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
   APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
   OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
   OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
@@ -22,6 +22,13 @@ x-common-env: &common-env
   OTEL_ENDPOINT: http://collector:4318/v1/traces
 
 services:
+  service-keys:
+    <<: *app
+    profiles: [tools]
+    command: [python, -m, opspilot.cli.service_keys, /keys]
+    volumes:
+      - ./.tools/service-keys:/keys
+
   oidc:
     image: opspilot-full/oidc:f03
     build:
@@ -85,8 +92,11 @@ services:
 
   api:
     <<: *app
+    volumes:
+      - ./.tools/service-keys/private:/run/service-private:ro
     environment:
       <<: *common-env
+      SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY:?Generate Full identity secrets}
       IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
@@ -112,6 +122,8 @@ services:
 
   mcp:
     <<: *app
+    volumes:
+      - ./.tools/service-keys/public:/run/service-public:ro
     command: [python, -m, opspilot.mcp_server.main]
     environment:
       <<: *common-env

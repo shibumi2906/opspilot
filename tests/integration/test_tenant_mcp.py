@@ -5,6 +5,7 @@ from uuid import UUID, uuid5
 import pytest
 import uvicorn
 
+from opspilot.auth.service_context import mint
 from opspilot.fixtures.loader import GREENSHOP_ID, GREENSHOP_INTEGRATION_ID
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_server.main import create_app
@@ -89,6 +90,7 @@ async def test_mcp_header_cannot_select_tenant_or_authorize_foreign_action(integ
     headers = {
         "Authorization": f"Bearer {integration_settings.mcp_service_token.get_secret_value()}",
         "X-Tenant-ID": str(SECOND_TENANT),
+        "X-OpsPilot-Context": mint(integration_settings),
     }
     async with httpx.AsyncClient(headers=headers, timeout=5, trust_env=False) as http:
         async with streamable_http_client(
@@ -120,8 +122,8 @@ async def test_mcp_header_cannot_select_tenant_or_authorize_foreign_action(integ
                 assert not result.ok and result.error.code == "APPROVAL_REQUIRED"
 
 
-async def test_mcp_client_rejects_mismatched_or_absent_trusted_context(integration_settings):
-    for tenant in (None, SECOND_TENANT):
+async def test_mcp_client_rejects_absent_trusted_context(integration_settings):
+    for tenant in (None,):
         with tenant_scope(tenant), pytest.raises(TenantContextError):
             async with MCPClient(integration_settings).session():
                 raise AssertionError("Mismatched context must fail before network dispatch")

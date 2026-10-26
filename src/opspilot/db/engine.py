@@ -3,6 +3,7 @@ from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
+from opspilot.auth.context import actor_id
 from opspilot.telemetry import span
 from opspilot.tenancy.context import current_tenant
 
@@ -34,6 +35,10 @@ def create_engine(url: str) -> AsyncEngine:
         connection.execute(
             text("SELECT set_config('app.tenant_id', :tenant, true)"),
             {"tenant": str(tenant) if tenant else ""},
+        )
+        connection.execute(
+            text("SELECT set_config('app.actor_id', :actor, true)"),
+            {"actor": str(actor_id())},
         )
 
     @event.listens_for(engine.sync_engine, "before_cursor_execute")

@@ -82,3 +82,9 @@ From the existing Full worktree:
 Migrations and schema management belong to the administrative image/role; do not auto-generate drops
 for the SDK-owned-by-migration checkpoint schema from application ORM metadata.
 F02 evidence belongs under evidence/f02; F01 reports and all MVP artifacts remain separate.
+
+## F04 current boundary
+
+F04 supersedes the fixed local MCP scope/V1 baseline described above. Authenticated V2 and signed
+per-actor/tenant/run MCP context are implemented; see [authorization.md](authorization.md).
+API background execution is still not F05 durable workers; F06 fencing remains future work.

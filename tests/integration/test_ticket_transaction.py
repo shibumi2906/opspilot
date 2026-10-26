@@ -6,12 +6,15 @@ from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.service import run_investigation
+from opspilot.auth.service_context import action_scope
 from opspilot.contracts.tools import CreateTicketArgs
 from opspilot.db.engine import create_engine
 from opspilot.db.models_domain import Ticket
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_server.services.tickets import create_ticket
+from opspilot.runtime.actions import payload_hash
+from opspilot.tenancy.context import DEMO_ACTOR
 
 
 async def pending_action(settings):
@@ -26,14 +29,19 @@ async def pending_action(settings):
 async def set_approval(engine, action_id, decision):
     async with engine.begin() as conn:
         await conn.execute(
-            update(Approval).where(Approval.action_id == action_id).values(decision=decision)
+            update(Approval)
+            .where(Approval.action_id == action_id)
+            .values(decision=decision, decided_by=DEMO_ACTOR, self_approval_exception=True)
         )
 
 
 async def call_write(settings, args):
     client = MCPClient(settings)
-    async with client.session() as (session, _):
-        return await client.call(session, "create_ticket", args.model_dump(mode="json"))
+    with action_scope(
+        str(args.run_id), str(args.action_id), payload_hash(args.arguments.model_dump(mode="json"))
+    ):
+        async with client.session() as (session, _):
+            return await client.call(session, "create_ticket", args.model_dump(mode="json"))
 
 
 async def tickets_for(engine, action_id):

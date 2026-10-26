@@ -33,16 +33,16 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
 }
 export const api = {
   config: (signal: AbortSignal) =>
-    request<PublicConfig>("/api/v1/config", { signal }),
+    request<PublicConfig>("/api/v2/config", { signal }),
   snapshot: (id: string, signal: AbortSignal) =>
-    request<RunSnapshot>(`/api/v1/runs/${encodeURIComponent(id)}`, { signal }),
+    request<RunSnapshot>(`/api/v2/runs/${encodeURIComponent(id)}`, { signal }),
   create: (text: string, key: string) =>
-    request<{ run_id: string; status: string }>("/api/v1/runs", {
+    request<{ run_id: string; status: string }>("/api/v2/runs", {
       method: "POST",
       body: JSON.stringify({ request: text, client_request_id: key }),
     }),
   decide: (id: string, actionId: string, decision: Decision) =>
-    request(`/api/v1/runs/${encodeURIComponent(id)}/decision`, {
+    request(`/api/v2/runs/${encodeURIComponent(id)}/decision`, {
       method: "POST",
       body: JSON.stringify({ action_id: actionId, decision }),
     }),

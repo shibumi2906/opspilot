@@ -1,7 +1,7 @@
 import hashlib
 import hmac
 from typing import Any, cast
-from uuid import UUID
+from uuid import UUID, uuid4
 
 import httpx
 from fastapi import APIRouter, Request
@@ -31,6 +31,7 @@ def denial(exc: AuthError) -> JSONResponse:
         {
             "error": {
                 "schema_version": 1,
+                "request_id": str(uuid4()),
                 "code": exc.code,
                 "message": "Access denied",
                 "retryable": False,
@@ -46,11 +47,7 @@ class SessionMiddleware:
 
     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
         path = scope.get("path", "")
-        protected = (
-            path.startswith("/api/")
-            and path != "/api/v1/config"
-            or path in {"/auth/me", "/auth/logout", "/auth/tenant"}
-        )
+        protected = path.startswith("/api/") or path in {"/auth/me", "/auth/logout", "/auth/tenant"}
         if scope["type"] != "http" or not protected:
             await self.app(scope, receive, send)
             return
@@ -66,8 +63,14 @@ class SessionMiddleware:
                     request.headers.get("x-csrf-token", ""), csrf(self.settings, raw)
                 ):
                     raise AuthError("CSRF_INVALID")
+
+            async def private_send(message: Any) -> None:
+                if message["type"] == "http.response.start":
+                    message.setdefault("headers", []).append((b"cache-control", b"no-store"))
+                await send(message)
+
             with auth_scope(user):
-                await self.app(scope, receive, send)
+                await self.app(scope, receive, private_send)
         except AuthError as exc:
             await denial(exc)(scope, receive, send)
 
@@ -120,6 +123,7 @@ async def callback(request: Request, state: str = "", code: str = "") -> Any:
         return denial(AuthError("OIDC_INVALID", 400))
 
 
+@router.get("/api/v2/me")
 @router.get("/auth/me")
 async def me(request: Request) -> dict[str, Any]:
     user = principal()
@@ -148,7 +152,7 @@ async def select_tenant(body: TenantSelection, request: Request) -> dict[str, bo
 @router.post("/auth/logout")
 async def logout(request: Request) -> JSONResponse:
     await request.app.state.identity.logout(principal())
-    response = JSONResponse({"ok": True})
+    response = JSONResponse({"ok": True}, headers={"Cache-Control": "no-store"})
     response.delete_cookie(COOKIE, path="/")
     response.headers["Cache-Control"] = "no-store"
     return response

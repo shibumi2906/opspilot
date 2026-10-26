@@ -16,7 +16,6 @@ from opspilot.logging import configure_logging
 from opspilot.mcp_server.auth import ServiceAuth
 from opspilot.mcp_server.tools_read import register_read_tools
 from opspilot.telemetry import TraceMiddleware, configure
-from opspilot.tenancy.middleware import LocalTenantScope
 
 
 class MCPTransport:
@@ -57,8 +56,8 @@ def create_app(settings: Settings | None = None) -> ASGIApp:
         lifespan=lifespan,
     )
     return ServiceAuth(
-        LocalTenantScope(TraceMiddleware(app, "http.mcp.server"), settings.local_demo_tenant),
-        settings.mcp_service_token.get_secret_value(),
+        TraceMiddleware(app, "http.mcp.server"),
+        settings,
     )
 
 

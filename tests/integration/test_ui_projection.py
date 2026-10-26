@@ -47,7 +47,10 @@ async def test_progress_snapshot_arrives_before_approval(integration_settings, m
 
 async def test_public_config_has_no_secrets(integration_settings):
     async with httpx.AsyncClient() as client:
-        response = await client.get(os.environ["TEST_API_URL"] + "/api/v1/config")
+        from tests.auth_helpers import session_client
+
+        await session_client(client, integration_settings)
+        response = await client.get(os.environ["TEST_API_URL"] + "/api/v2/config")
     assert response.status_code == 200
     body = response.json()
     assert set(body) == {"mode", "model_id", "synthetic", "scenario_clock", "timezone"}

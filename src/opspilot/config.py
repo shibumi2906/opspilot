@@ -6,7 +6,7 @@ from pydantic import Field, SecretStr, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
-from opspilot.tenancy.context import DEMO_TENANT
+from opspilot.tenancy.context import DEMO_TENANT, SECOND_TENANT
 
 
 class Settings(BaseSettings):
@@ -15,6 +15,12 @@ class Settings(BaseSettings):
     otel_endpoint: str | None = None
     jaeger_query_url: str = "http://jaeger:16686"
     jaeger_url: str | None = None
+
+    recovery_tenants: tuple[UUID, ...] = (DEMO_TENANT, SECOND_TENANT)
+
+    service_private_dir: str = "/run/service-private"
+    service_public_keys: str = "/run/service-public/keys.json"
+    service_active_kid: str = "current"
 
     identity_database_url: SecretStr | None = None
     identity_db_password: SecretStr | None = None

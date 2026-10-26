@@ -6,6 +6,7 @@ from sqlalchemy import select, update
 from opspilot.agent.budgets import BudgetExceeded
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
+from opspilot.auth.service_context import action_scope
 from opspilot.contracts.tools import CreateTicketData
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, Approval
@@ -58,55 +59,63 @@ async def execute(state: AgentState, runtime: Runtime) -> None:
                 action["result"]
             ).model_dump(mode="json")
             return
-        async with runtime.client.session() as (session, _):
-            result = await runtime.client.call(
-                session,
-                "create_ticket",
-                {
-                    "run_id": state["run_id"],
-                    "action_id": state["action_id"],
-                    "arguments": action["arguments"],
-                },
-            )
-        if not result.ok:
-            if result.error and result.error.retryable:
-                raise RuntimeError("Write response uncertain")
-            state["outcome"] = "partial"
-            state["errors"]["execute"] = {
-                "code": result.error.code if result.error else "WRITE_FAILED",
-                "node": "execute",
-            }
-            return
-        state["execution_result"] = CreateTicketData.model_validate(result.data).model_dump(
-            mode="json"
-        )
+        with action_scope(state["run_id"], state["action_id"], payload_hash(action["arguments"])):
+            await dispatch(state, runtime, action)
+        return
     except Exception:
-        # A committed write with a lost response is recovered from the atomic workflow result.
-        try:
-            action = await saved_action(state, runtime)
-            if action["execution_status"] == "succeeded" and action["result"]:
-                state["execution_result"] = CreateTicketData.model_validate(
-                    action["result"]
-                ).model_dump(mode="json")
-                return
-        except Exception:
-            pass
-        engine = create_engine(runtime.settings.database_url("workflow"))
-        try:
-            async with engine.begin() as connection:
-                # If a late commit won the row lock, leave its succeeded result intact.
-                await connection.execute(
-                    update(Action)
-                    .where(
-                        Action.id == UUID(state["action_id"]),
-                        Action.run_id == UUID(state["run_id"]),
-                        Action.execution_result.is_(None),
-                    )
-                    .values(execution_status="unknown")
+        await recover_write(state, runtime)
+
+
+async def dispatch(state: AgentState, runtime: Runtime, action: dict[str, Any]) -> None:
+    async with runtime.client.session() as (session, _):
+        result = await runtime.client.call(
+            session,
+            "create_ticket",
+            {
+                "run_id": state["run_id"],
+                "action_id": state["action_id"],
+                "arguments": action["arguments"],
+            },
+        )
+    if not result.ok:
+        if result.error and result.error.retryable:
+            raise RuntimeError("Write response uncertain")
+        state["outcome"] = "partial"
+        state["errors"]["execute"] = {
+            "code": result.error.code if result.error else "WRITE_FAILED",
+            "node": "execute",
+        }
+        return
+    state["execution_result"] = CreateTicketData.model_validate(result.data).model_dump(mode="json")
+
+
+async def recover_write(state: AgentState, runtime: Runtime) -> None:
+    # A committed write with a lost response is recovered from the atomic workflow result.
+    try:
+        action = await saved_action(state, runtime)
+        if action["execution_status"] == "succeeded" and action["result"]:
+            state["execution_result"] = CreateTicketData.model_validate(
+                action["result"]
+            ).model_dump(mode="json")
+            return
+    except Exception:
+        pass
+    engine = create_engine(runtime.settings.database_url("workflow"))
+    try:
+        async with engine.begin() as connection:
+            # If a late commit won the row lock, leave its succeeded result intact.
+            await connection.execute(
+                update(Action)
+                .where(
+                    Action.id == UUID(state["action_id"]),
+                    Action.run_id == UUID(state["run_id"]),
+                    Action.execution_result.is_(None),
                 )
-        except Exception:
-            pass
-        finally:
-            await engine.dispose()
-        state["outcome"] = "unknown_outcome"
-        state["errors"]["execute"] = {"code": "WRITE_OUTCOME_UNKNOWN", "node": "execute"}
+                .values(execution_status="unknown")
+            )
+    except Exception:
+        pass
+    finally:
+        await engine.dispose()
+    state["outcome"] = "unknown_outcome"
+    state["errors"]["execute"] = {"code": "WRITE_OUTCOME_UNKNOWN", "node": "execute"}

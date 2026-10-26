@@ -7,7 +7,7 @@ from opspilot.auth.context import AuthError, principal, require_role
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.runtime.run_service import RunService
 
-router = APIRouter(prefix="/api/v1/runs")
+router = APIRouter(prefix="/api/v2/runs")
 
 
 @router.post("", status_code=202)
@@ -18,8 +18,10 @@ async def create_run(body: CreateRun, request: Request) -> dict[str, Any]:
 
 @router.get("/{run_id}")
 async def get_run(run_id: UUID, request: Request) -> dict[str, Any]:
-    value = await cast(RunService, request.app.state.runs).snapshot(run_id)
     user = principal()
+    if user.tenant_id is None or not user.roles & {"operator", "approver", "auditor"}:
+        raise AuthError("NOT_FOUND", 404)
+    value = await cast(RunService, request.app.state.runs).snapshot(run_id)
     if not ({"approver", "auditor"} & user.roles) and not (
         "operator" in user.roles and value["actor_id"] == str(user.user_id)
     ):

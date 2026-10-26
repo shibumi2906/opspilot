@@ -9,6 +9,7 @@ from opspilot.tenancy.context import tenant_scope
 router = APIRouter()
 
 
+@router.get("/health/ready")
 @router.get("/health")
 async def health(request: Request) -> JSONResponse:
     checks = {"database": "unavailable", "migrations": "unavailable", "mcp": "unavailable"}
@@ -19,7 +20,7 @@ async def health(request: Request) -> JSONResponse:
             revision = await connection.scalar(
                 text("SELECT version_num FROM workflow.alembic_version")
             )
-            if revision == "0004_identity_sessions":
+            if revision == "0005_authorization_context":
                 checks["migrations"] = "ready"
     except Exception:
         pass
@@ -32,6 +33,11 @@ async def health(request: Request) -> JSONResponse:
         pass
     ready = all(value == "ready" for value in checks.values())
     return JSONResponse(
-        {"status": "ready" if ready else "unavailable", "checks": checks},
+        {"status": "ready" if ready else "unavailable"},
         status_code=200 if ready else 503,
     )
+
+
+@router.get("/health/live")
+async def live() -> dict[str, str]:
+    return {"status": "alive"}

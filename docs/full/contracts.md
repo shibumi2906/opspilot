@@ -26,3 +26,9 @@ Status, execution and verification are independent: succeeded effect can have mi
 Unknown dispatch is reconciled with reads, not resent. Cancellation cannot undo accepted effects.
 Permissions, membership, TTL/freshness and ownership are rechecked before dispatch, not frozen in graph state.
 Public V1 compatibility must enforce V2 authorization or return 410 by F04; MVP V1 remains separate.
+
+## F04 current boundary
+
+F04 supersedes the fixed local MCP scope/V1 baseline described above. Authenticated V2 and signed
+per-actor/tenant/run MCP context are implemented; see [authorization.md](authorization.md).
+API background execution is still not F05 durable workers; F06 fencing remains future work.

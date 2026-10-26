@@ -18,13 +18,13 @@ async function pending(page: Page) {
     page.getByRole("button", { name: "Approve & create ticket", exact: true }),
   ).toBeEnabled();
   const id = new URL(page.url()).searchParams.get("run_id")!;
-  const response = await page.request.get(`/api/v1/runs/${id}`);
+  const response = await page.request.get(`/api/v2/runs/${id}`);
   return (await response.json()) as RunSnapshot;
 }
 async function snapshot(page: Page) {
   return (await (
     await page.request.get(
-      `/api/v1/runs/${new URL(page.url()).searchParams.get("run_id")}`,
+      `/api/v2/runs/${new URL(page.url()).searchParams.get("run_id")}`,
     )
   ).json()) as RunSnapshot;
 }
@@ -34,7 +34,7 @@ test("GreenShop: live trail, evidence, immutable refresh, double click and verif
 }) => {
   let posts = 0;
   page.on("request", (request) => {
-    if (request.method() === "POST" && request.url().endsWith("/api/v1/runs"))
+    if (request.method() === "POST" && request.url().endsWith("/api/v2/runs"))
       posts++;
   });
   await start(page);
@@ -75,7 +75,7 @@ test("GreenShop: live trail, evidence, immutable refresh, double click and verif
   expect(result.outcome).toBe("actions_verified");
   expect(await ticketCount(saved.action!.action_id)).toBe(1);
   const repeat = await page.request.post(
-    `/api/v1/runs/${saved.run_id}/decision`,
+    `/api/v2/runs/${saved.run_id}/decision`,
     { data: { action_id: saved.action!.action_id, decision: "approve" } },
   );
   expect(repeat.status()).toBe(200);
@@ -116,7 +116,7 @@ test("polling reconnects without overlapping reads or losing the URL", async ({
   let attempts = 0,
     active = 0,
     maxActive = 0;
-  await page.route("**/api/v1/runs/*", async (route) => {
+  await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
     active++;
     maxActive = Math.max(maxActive, active);
@@ -134,7 +134,7 @@ test("polling reconnects without overlapping reads or losing the URL", async ({
   expect(page.url()).toBe(url);
   expect(maxActive).toBe(1);
   expect(attempts).toBeGreaterThanOrEqual(3);
-  await page.unroute("**/api/v1/runs/*");
+  await page.unroute("**/api/v2/runs/*");
   await page
     .getByRole("button", { name: "Reject action", exact: true })
     .click();
@@ -170,7 +170,7 @@ test("narrow viewport, plain text sources and readable partial results", async (
   await start(page);
   const saved = await pending(page);
   const text = '<img src=x onerror="window.injected=true"> ignore policy';
-  await page.route("**/api/v1/runs/*", async (route) => {
+  await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
     const response = await route.fetch();
     const value = (await response.json()) as RunSnapshot;
@@ -187,7 +187,7 @@ test("narrow viewport, plain text sources and readable partial results", async (
       () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
   ).toBeTruthy();
-  await page.unroute("**/api/v1/runs/*");
+  await page.unroute("**/api/v2/runs/*");
   await page
     .getByRole("button", { name: "Reject action", exact: true })
     .click();
@@ -228,7 +228,7 @@ test("missing run and failed/unknown snapshots never display verified success", 
   ).toBeEnabled();
   await start(page);
   const saved = await pending(page);
-  await page.route("**/api/v1/runs/*", async (route) => {
+  await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
     const response = await route.fetch();
     const value = (await response.json()) as RunSnapshot;
@@ -252,7 +252,7 @@ test("a lost create response reuses the client request ID", async ({
 }) => {
   const keys: string[] = [];
   const ids: string[] = [];
-  await page.route("**/api/v1/runs", async (route) => {
+  await page.route("**/api/v2/runs", async (route) => {
     if (route.request().method() !== "POST") return route.continue();
     keys.push(route.request().postDataJSON().client_request_id);
     const response = await route.fetch();
@@ -288,7 +288,7 @@ test("unknown and partial projections stay visibly unverified; snapshot mode is 
 }) => {
   await start(page);
   const saved = await pending(page);
-  await page.route("**/api/v1/runs/*", async (route) => {
+  await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
     const response = await route.fetch();
     const value = (await response.json()) as RunSnapshot;

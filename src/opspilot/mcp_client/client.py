@@ -8,11 +8,12 @@ from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 from mcp.types import Tool
 
+from opspilot.auth.service_context import mint
 from opspilot.config import Settings
 from opspilot.contracts.common import ToolResult
 from opspilot.mcp_client.registry import ALL_TOOLS
 from opspilot.telemetry import carrier, span
-from opspilot.tenancy.context import TenantContextError, require_tenant
+from opspilot.tenancy.context import require_tenant
 
 
 class MCPClient:
@@ -21,11 +22,11 @@ class MCPClient:
 
     @asynccontextmanager
     async def session(self) -> AsyncIterator[tuple[ClientSession, str]]:
-        if require_tenant() != self.settings.local_demo_tenant:
-            raise TenantContextError("MCP synthetic instance does not match trusted tenant")
+        require_tenant()
         async with httpx.AsyncClient(
             headers={
                 **carrier(),
+                "X-OpsPilot-Context": mint(self.settings),
                 "Authorization": f"Bearer {self.settings.mcp_service_token.get_secret_value()}",
             },
             timeout=5,
