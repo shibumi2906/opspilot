@@ -1,12 +1,10 @@
 import asyncio
 
 from alembic import context
-from sqlalchemy import pool
-from sqlalchemy.ext.asyncio import create_async_engine
 
 from opspilot.config import Settings
 from opspilot.db import models_domain, models_workflow  # noqa: F401
-from opspilot.db.engine import Base
+from opspilot.db.engine import Base, create_engine
 
 
 def run_migrations(connection):  # type: ignore[no-untyped-def]
@@ -21,7 +19,7 @@ def run_migrations(connection):  # type: ignore[no-untyped-def]
 
 
 async def run_online() -> None:
-    engine = create_async_engine(Settings().database_url("migration"), poolclass=pool.NullPool)
+    engine = create_engine(Settings().database_url("migration"))
     async with engine.connect() as connection:
         await connection.run_sync(run_migrations)
     await engine.dispose()

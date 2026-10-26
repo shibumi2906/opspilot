@@ -1,0 +1,124 @@
+name: opspilot-full
+
+x-app: &app
+  image: opspilot-full/app:f01
+  build:
+    context: .
+    target: runtime
+  init: true
+
+x-common-env: &common-env
+  APP_ENV: ${APP_ENV:-local}
+  MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
+  SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
+  SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
+  LLM_MODE: ${LLM_MODE:-scripted}
+  OTEL_ENDPOINT: http://collector:4318/v1/traces
+
+services:
+  collector:
+    image: opspilot-full/collector:f01
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: collector
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./infra/otel/collector.yaml:/etc/otelcol/config.yaml:ro
+
+  jaeger:
+    image: opspilot-full/jaeger:f01
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: jaeger
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - 127.0.0.1:${JAEGER_PORT:-16696}:16686
+
+  postgres:
+    image: opspilot-full/postgres:f01
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: postgres
+    environment:
+      POSTGRES_DB: opspilot_full
+      POSTGRES_USER: ops_migration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Fill POSTGRES_PASSWORD in .env}
+      WORKFLOW_DB_PASSWORD: ${WORKFLOW_DB_PASSWORD:?Fill WORKFLOW_DB_PASSWORD in .env}
+      DOMAIN_DB_PASSWORD: ${DOMAIN_DB_PASSWORD:?Fill DOMAIN_DB_PASSWORD in .env}
+      CHECKPOINT_DB_PASSWORD: ${CHECKPOINT_DB_PASSWORD:?Fill CHECKPOINT_DB_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot_full]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  api:
+    <<: *app
+    environment:
+      <<: *common-env
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
+      MCP_URL: http://mcp:8001/mcp
+      JAEGER_URL: http://127.0.0.1:${JAEGER_PORT:-16696}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-}
+      OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
+      AGENT_MAX_READS: ${AGENT_MAX_READS:-15}
+      AGENT_MAX_LLM_ATTEMPTS: ${AGENT_MAX_LLM_ATTEMPTS:-10}
+      AGENT_MAX_ROUNDS: ${AGENT_MAX_ROUNDS:-6}
+      AGENT_MAX_TOKENS: ${AGENT_MAX_TOKENS:-30000}
+      AGENT_ACTIVE_SECONDS: ${AGENT_ACTIVE_SECONDS:-120}
+    ports:
+      - 127.0.0.1:${API_PORT:-8011}:8000
+    depends_on:
+      postgres: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=8)"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  mcp:
+    <<: *app
+    command: [python, -m, opspilot.mcp_server.main]
+    environment:
+      <<: *common-env
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full
+    depends_on:
+      postgres: {condition: service_healthy}
+
+  web:
+    image: opspilot-full/web:f01
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      target: runtime
+    ports:
+      - 127.0.0.1:${WEB_PORT:-8091}:80
+    depends_on:
+      api: {condition: service_healthy}
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1/]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  admin:
+    <<: *app
+    profiles: [tools]
+    environment:
+      <<: *common-env
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full
+    depends_on:
+      postgres: {condition: service_healthy}
+    command: [alembic, upgrade, head]
+
+volumes:
+  pgdata:

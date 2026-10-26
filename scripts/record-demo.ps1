@@ -6,7 +6,7 @@ $scriptPath = Join-Path (Get-Location) 'web/demo.mjs'
 function Check-Exit { if ($LASTEXITCODE -ne 0) { throw "Demo command failed ($LASTEXITCODE)" } }
 New-Item -ItemType Directory -Force -Path $OutputDirectory | Out-Null
 try {
-    docker run -d --name $recordName --network opspilot_default --mount "type=bind,source=$scriptPath,target=/app/web/demo.mjs,readonly" -e DEMO_BASE_URL=http://web opspilot:e2e node demo.mjs
+    docker run -d --name $recordName --network opspilot-full_default --mount "type=bind,source=$scriptPath,target=/app/web/demo.mjs,readonly" -e DEMO_BASE_URL=http://web opspilot-full/e2e:f01 node demo.mjs
     Check-Exit
     docker exec $recordName node -e "const fs=require('fs');const t=setInterval(()=>{if(fs.existsSync('/tmp/opspilot-demo/restart-ready')){clearInterval(t);process.exit(0)}},500);setTimeout(()=>process.exit(1),90000)"
     Check-Exit

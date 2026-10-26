@@ -16,5 +16,6 @@ FROM runtime AS tests
 USER root
 RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
 COPY tests ./tests
+COPY docs/full/state-transitions.json ./docs/full/state-transitions.json
 USER opspilot
 CMD ["python", "-m", "pytest", "-p", "no:cacheprovider", "-q"]

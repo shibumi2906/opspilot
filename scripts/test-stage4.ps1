@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
-$composeArgs = @('compose', '-p', 'opspilot-test', '-f', 'compose.yaml', '-f', 'compose.test.yaml')
+$composeArgs = @('compose', '-p', 'opspilot-full-test', '-f', 'compose.full.yaml', '-f', 'compose.full.test.yaml')
 
 function Invoke-TestCompose {
     param([string[]]$Arguments)

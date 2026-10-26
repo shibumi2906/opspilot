@@ -223,7 +223,7 @@ async def run_case(settings: Settings, case: Scenario, engine: Any) -> dict[str,
 async def run(args: Any) -> int:
     settings = Settings(llm_mode=args.mode)
     if settings.app_env != "test" or any(
-        make_url(url).database != "opspilot_test"
+        make_url(url).database != "opspilot_full_test"
         for url in (
             settings.database_url("migration"),
             settings.database_url("domain"),
@@ -231,12 +231,14 @@ async def run(args: Any) -> int:
             settings.database_url("checkpoint"),
         )
     ):
-        raise ValueError("Evals require APP_ENV=test and isolated opspilot_test roles")
+        raise ValueError("Evals require APP_ENV=test and isolated opspilot_full_test roles")
     if args.mode == "real" and (not settings.openai_api_key or not settings.openai_model):
         raise ValueError("Real eval requires provider key and explicit model")
     engine = create_engine(settings.database_url("migration"))
     try:
         async with engine.connect() as guard:
+            if await guard.scalar(text("SELECT current_database()")) != "opspilot_full_test":
+                raise ValueError("Connected database is not opspilot_full_test")
             if not await guard.scalar(text("SELECT pg_try_advisory_lock(1801202608)")):
                 raise ValueError("Another eval is running")
             await seed(engine, settings.scenario_clock)

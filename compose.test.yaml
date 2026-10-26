@@ -1,12 +1,12 @@
-# Always combine with compose.yaml and the distinct project name opspilot-test.
+# Always combine with compose.full.yaml and the distinct project name opspilot-full-test.
 services:
   jaeger:
     ports: !reset []
   postgres:
     environment:
-      POSTGRES_DB: opspilot_test
+      POSTGRES_DB: opspilot_full_test
     healthcheck:
-      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot_test]
+      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot_full_test]
   api:
     ports: !reset []
     environment:
@@ -14,18 +14,18 @@ services:
       LLM_MODE: scripted
       OPENAI_API_KEY: ""
       SCENARIO_ID: greenshop_expired
-      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
-      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
   mcp:
     environment:
       APP_ENV: test
-      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
   admin:
     environment:
       APP_ENV: test
-      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_test
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
   tests:
-    image: opspilot:stage1-tests
+    image: opspilot-full/tests:f01
     build:
       context: .
       target: tests
@@ -35,10 +35,10 @@ services:
       MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN}
       MCP_URL: http://mcp:8001/mcp
       TEST_API_URL: http://api:8000
-      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_test
-      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
-      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
-      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
     depends_on:
       api: {condition: service_healthy}
       mcp: {condition: service_started}
@@ -46,7 +46,7 @@ services:
   web:
     ports: !reset []
   e2e:
-    image: opspilot:e2e
+    image: opspilot-full/e2e:f01
     build:
       context: .
       dockerfile: web/Dockerfile
@@ -55,12 +55,12 @@ services:
     ipc: host
     environment:
       E2E_BASE_URL: http://web
-      E2E_DATABASE_URL: postgresql://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
+      E2E_DATABASE_URL: postgresql://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
     depends_on:
       web: {condition: service_healthy}
 
   evals:
-    image: opspilot:stage1-tests
+    image: opspilot-full/tests:f01
     build:
       context: .
       target: tests
@@ -72,10 +72,10 @@ services:
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
       OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
-      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_test
-      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_test
-      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_test
-      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_test?options=-csearch_path%3Dcheckpoints
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
     volumes:
-      - ./docs/eval-reports:/reports
+      - ./docs/full/evidence/evals:/reports
     command: [python, -m, opspilot.evals.runner, --commit, unspecified]

@@ -1,3 +1,12 @@
+# OpsPilot Full development worktree
+
+Canonical progress: [docs/full-version-status.md](docs/full-version-status.md).
+Full setup, isolation and checks: [docs/full/architecture.md](docs/full/architecture.md).
+Use `compose.full.yaml` and `scripts/test-full-f01.ps1`; this checkout is isolated from Portfolio MVP.
+The inherited README below is historical MVP documentation; its old resource names are not Full commands.
+
+---
+
 # OpsPilot
 
 **AI proposes; a deterministic core controls execution.**

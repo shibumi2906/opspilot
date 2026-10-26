@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "contract_version": "full-v1-draft",
+  "transitions": {
+    "run": {
+      "queued": [
+        "running",
+        "cancelling",
+        "failed",
+        "needs_attention"
+      ],
+      "running": [
+        "waiting_for_input",
+        "waiting_for_approval",
+        "cancelling",
+        "reconciling",
+        "completed",
+        "failed",
+        "needs_attention"
+      ],
+      "waiting_for_input": [
+        "queued",
+        "cancelling",
+        "completed",
+        "failed",
+        "needs_attention"
+      ],
+      "waiting_for_approval": [
+        "queued",
+        "cancelling",
+        "completed",
+        "failed",
+        "needs_attention"
+      ],
+      "cancelling": [
+        "cancelled",
+        "reconciling",
+        "needs_attention"
+      ],
+      "reconciling": [
+        "completed",
+        "cancelled",
+        "failed",
+        "needs_attention"
+      ],
+      "needs_attention": [
+        "reconciling"
+      ],
+      "completed": [],
+      "cancelled": [],
+      "failed": []
+    },
+    "approval": {
+      "pending": [
+        "approved",
+        "rejected",
+        "expired",
+        "superseded",
+        "cancelled"
+      ],
+      "approved": [
+        "expired",
+        "superseded",
+        "cancelled"
+      ],
+      "rejected": [],
+      "expired": [],
+      "superseded": [],
+      "cancelled": []
+    },
+    "execution": {
+      "not_started": [
+        "reserved",
+        "skipped_dependency",
+        "cancelled"
+      ],
+      "reserved": [
+        "dispatch_started",
+        "cancelled",
+        "failed"
+      ],
+      "dispatch_started": [
+        "succeeded",
+        "failed",
+        "unknown"
+      ],
+      "unknown": [
+        "succeeded",
+        "failed"
+      ],
+      "succeeded": [],
+      "failed": [],
+      "skipped_dependency": [],
+      "cancelled": []
+    },
+    "verification": {
+      "not_started": [
+        "verified",
+        "mismatch",
+        "unavailable",
+        "unknown"
+      ],
+      "unavailable": [
+        "verified",
+        "mismatch",
+        "unknown"
+      ],
+      "unknown": [
+        "verified",
+        "mismatch",
+        "unavailable"
+      ],
+      "verified": [],
+      "mismatch": []
+    }
+  },
+  "action_combinations": [
+    {
+      "execution": "not_started",
+      "approvals": [
+        "pending",
+        "approved",
+        "rejected",
+        "expired",
+        "superseded",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started"
+      ]
+    },
+    {
+      "execution": "reserved",
+      "approvals": [
+        "approved"
+      ],
+      "verifications": [
+        "not_started"
+      ]
+    },
+    {
+      "execution": "dispatch_started",
+      "approvals": [
+        "approved",
+        "expired",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started"
+      ]
+    },
+    {
+      "execution": "succeeded",
+      "approvals": [
+        "approved",
+        "expired",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started",
+        "verified",
+        "mismatch",
+        "unavailable",
+        "unknown"
+      ]
+    },
+    {
+      "execution": "failed",
+      "approvals": [
+        "approved",
+        "expired",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started"
+      ]
+    },
+    {
+      "execution": "unknown",
+      "approvals": [
+        "approved",
+        "expired",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started",
+        "unknown",
+        "unavailable"
+      ]
+    },
+    {
+      "execution": "skipped_dependency",
+      "approvals": [
+        "pending",
+        "approved",
+        "rejected",
+        "expired",
+        "superseded",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started"
+      ]
+    },
+    {
+      "execution": "cancelled",
+      "approvals": [
+        "pending",
+        "approved",
+        "rejected",
+        "expired",
+        "superseded",
+        "cancelled"
+      ],
+      "verifications": [
+        "not_started"
+      ]
+    }
+  ]
+}

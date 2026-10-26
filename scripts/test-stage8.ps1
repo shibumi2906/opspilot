@@ -1,14 +1,14 @@
-param([string]$Project = 'opspilot-test', [string]$EnvFile = '.env', [switch]$SkipBuild)
+param([string]$Project = 'opspilot-full-test', [string]$EnvFile = '.env', [switch]$SkipBuild)
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
-$composeArgs = @('compose', '--env-file', $EnvFile, '-p', $Project, '-f', 'compose.yaml', '-f', 'compose.test.yaml')
+$composeArgs = @('compose', '--env-file', $EnvFile, '-p', $Project, '-f', 'compose.full.yaml', '-f', 'compose.full.test.yaml')
 function Invoke-Checks {
     param([string[]]$Arguments)
     & docker @composeArgs @Arguments
     if ($LASTEXITCODE -ne 0) { throw "Release check failed (exit $LASTEXITCODE)" }
 }
 try {
-    if (-not $SkipBuild) { Invoke-Checks -Arguments @('build', 'api', 'mcp', 'tests', 'web', 'e2e') }
+    if (-not $SkipBuild) { Invoke-Checks -Arguments @('build', 'postgres', 'collector', 'jaeger', 'api', 'mcp', 'tests', 'web', 'e2e') }
     Invoke-Checks -Arguments @('up', '-d', '--wait', 'postgres')
     Invoke-Checks -Arguments @('run', '--rm', 'admin')
     Invoke-Checks -Arguments @('run', '--rm', 'admin', 'python', '-m', 'opspilot.cli.seed')

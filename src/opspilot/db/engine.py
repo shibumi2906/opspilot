@@ -1,4 +1,5 @@
 from sqlalchemy import event
+from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
@@ -10,7 +11,21 @@ class Base(DeclarativeBase):
 
 
 def create_engine(url: str) -> AsyncEngine:
+    expected = make_url(url).database
+    if expected not in {"opspilot_full", "opspilot_full_test"}:
+        raise ValueError("Full requires opspilot_full or opspilot_full_test")
     engine = create_async_engine(url, pool_pre_ping=True, hide_parameters=True)
+
+    @event.listens_for(engine.sync_engine, "connect")
+    def identity(dbapi_connection, connection_record):  # type: ignore[no-untyped-def]
+        cursor = dbapi_connection.cursor()
+        try:
+            cursor.execute("SELECT current_database()")
+            if cursor.fetchone()[0] != expected:
+                raise ValueError("Full connected database identity mismatch")
+        finally:
+            cursor.close()
+        dbapi_connection.rollback()
 
     @event.listens_for(engine.sync_engine, "before_cursor_execute")
     def before(conn, cursor, statement, parameters, context, executemany):  # type: ignore[no-untyped-def]

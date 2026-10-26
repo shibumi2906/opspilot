@@ -1,7 +1,7 @@
-name: opspilot
+name: opspilot-full
 
 x-app: &app
-  image: opspilot:stage1
+  image: opspilot-full/app:f01
   build:
     context: .
     target: runtime
@@ -17,22 +17,34 @@ x-common-env: &common-env
 
 services:
   collector:
-    image: otel/opentelemetry-collector:0.120.0@sha256:1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06
+    image: opspilot-full/collector:f01
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: collector
     command: ["--config=/etc/otelcol/config.yaml"]
     volumes:
       - ./infra/otel/collector.yaml:/etc/otelcol/config.yaml:ro
 
   jaeger:
-    image: jaegertracing/all-in-one:1.66.0@sha256:9864182b4e01350fcc64631bdba5f4085f87daae9d477a04c25d9cb362e787a9
+    image: opspilot-full/jaeger:f01
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: jaeger
     environment:
       COLLECTOR_OTLP_ENABLED: "true"
     ports:
-      - 127.0.0.1:16686:16686
+      - 127.0.0.1:${JAEGER_PORT:-16696}:16686
 
   postgres:
-    image: postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+    image: opspilot-full/postgres:f01
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: postgres
     environment:
-      POSTGRES_DB: opspilot
+      POSTGRES_DB: opspilot_full
       POSTGRES_USER: ops_migration
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Fill POSTGRES_PASSWORD in .env}
       WORKFLOW_DB_PASSWORD: ${WORKFLOW_DB_PASSWORD:?Fill WORKFLOW_DB_PASSWORD in .env}
@@ -42,7 +54,7 @@ services:
       - pgdata:/var/lib/postgresql/data
       - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
     healthcheck:
-      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot]
+      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot_full]
       interval: 2s
       timeout: 3s
       retries: 30
@@ -51,10 +63,10 @@ services:
     <<: *app
     environment:
       <<: *common-env
-      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot
-      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot?options=-csearch_path%3Dcheckpoints
+      WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
+      CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
-      JAEGER_URL: http://127.0.0.1:16686
+      JAEGER_URL: http://127.0.0.1:${JAEGER_PORT:-16696}
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
       OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
@@ -64,7 +76,7 @@ services:
       AGENT_MAX_TOKENS: ${AGENT_MAX_TOKENS:-30000}
       AGENT_ACTIVE_SECONDS: ${AGENT_ACTIVE_SECONDS:-120}
     ports:
-      - 127.0.0.1:${API_PORT:-8000}:8000
+      - 127.0.0.1:${API_PORT:-8011}:8000
     depends_on:
       postgres: {condition: service_healthy}
     healthcheck:
@@ -78,18 +90,18 @@ services:
     command: [python, -m, opspilot.mcp_server.main]
     environment:
       <<: *common-env
-      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot
+      DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full
     depends_on:
       postgres: {condition: service_healthy}
 
   web:
-    image: opspilot:web
+    image: opspilot-full/web:f01
     build:
       context: .
       dockerfile: web/Dockerfile
       target: runtime
     ports:
-      - 127.0.0.1:${WEB_PORT:-8080}:80
+      - 127.0.0.1:${WEB_PORT:-8091}:80
     depends_on:
       api: {condition: service_healthy}
     healthcheck:
@@ -103,7 +115,7 @@ services:
     profiles: [tools]
     environment:
       <<: *common-env
-      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot
+      MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full
     depends_on:
       postgres: {condition: service_healthy}
     command: [alembic, upgrade, head]

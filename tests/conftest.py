@@ -2,6 +2,7 @@ import os
 from collections.abc import AsyncIterator
 
 import pytest
+from sqlalchemy import text
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine
 
@@ -15,8 +16,8 @@ def integration_settings() -> Settings:
         pytest.skip("Use the isolated Compose test stack (APP_ENV=test)")
     settings = Settings()
     for role in ("migration", "workflow", "domain", "checkpoint"):
-        if make_url(settings.database_url(role)).database != "opspilot_test":
-            pytest.fail("Integration tests require the isolated opspilot_test database")
+        if make_url(settings.database_url(role)).database != "opspilot_full_test":
+            pytest.fail("Integration tests require the isolated opspilot_full_test database")
     return settings
 
 
@@ -24,6 +25,9 @@ def integration_settings() -> Settings:
 async def admin_engine(integration_settings: Settings) -> AsyncIterator[AsyncEngine]:
     engine = create_engine(integration_settings.database_url("migration"))
     try:
+        async with engine.connect() as connection:
+            if await connection.scalar(text("SELECT current_database()")) != "opspilot_full_test":
+                pytest.fail("Connected database is not opspilot_full_test")
         yield engine
     finally:
         await engine.dispose()
