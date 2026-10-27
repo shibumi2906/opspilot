@@ -12,6 +12,7 @@ from opspilot.auth.service_context import mint
 from opspilot.config import Settings
 from opspilot.contracts.common import ToolResult
 from opspilot.mcp_client.registry import ALL_TOOLS
+from opspilot.security.tls import client_context
 from opspilot.telemetry import carrier, span
 from opspilot.tenancy.context import require_tenant
 
@@ -23,12 +24,19 @@ class MCPClient:
     @asynccontextmanager
     async def session(self) -> AsyncIterator[tuple[ClientSession, str]]:
         require_tenant()
+        token = mint(self.settings)
+        bearer = (
+            token
+            if self.settings.security_profile == "hardened"
+            else self.settings.mcp_service_token.get_secret_value()
+        )
         async with httpx.AsyncClient(
             headers={
                 **carrier(),
-                "X-OpsPilot-Context": mint(self.settings),
-                "Authorization": f"Bearer {self.settings.mcp_service_token.get_secret_value()}",
+                "X-OpsPilot-Context": token,
+                "Authorization": f"Bearer {bearer}",
             },
+            verify=client_context(self.settings),
             timeout=5,
             trust_env=False,
         ) as http:

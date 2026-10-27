@@ -18,7 +18,7 @@ class Decision(StrictModel):
 
 class ClarificationAnswer(StrictModel):
     clarification_id: UUID
-    expected_version: Annotated[int, Field(ge=1, le=2)]
+    expected_version: Annotated[int, Field(strict=True, ge=1, le=2)]
     kind: Literal["customer", "integration", "timezone"]
     choice: Annotated[str, StringConstraints(min_length=1, max_length=100)]
     command_id: UUID

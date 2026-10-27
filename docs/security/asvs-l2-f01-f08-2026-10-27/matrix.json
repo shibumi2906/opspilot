@@ -1,0 +1,4941 @@
+{
+  "standard": "OWASP ASVS 5.0.0",
+  "target": "L2",
+  "audited_commit": "fe78a5c17d8e88c4c0f58001366855c589adf518",
+  "conclusion": "NOT_MET; full independent L2 verification incomplete",
+  "status_definitions": {
+    "supported": "Scoped control supported by source review and/or recorded stage evidence; not an independent ASVS pass.",
+    "partial": "Implementation or evidence covers only part of the requirement.",
+    "gap": "Concrete absent/mismatched control for L2 target; development-only limitations explicitly scoped.",
+    "not_verified": "Insufficient requirement-specific evidence; no compliance or exploit claim.",
+    "not_applicable": "Absent conditional feature; mandatory missing controls such as MFA never excluded this way."
+  },
+  "counts": {
+    "not_verified": 47,
+    "supported": 73,
+    "not_applicable": 52,
+    "partial": 42,
+    "gap": 39
+  },
+  "no_compliance_percentage": true,
+  "requirements": [
+    {
+      "id": "v5.0.0-1.1.1",
+      "upstream_id": "V1.1.1",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Encoding and Sanitization Architecture",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Requirement-specific evidence insufficient in this limited audit; independently verify before claiming L2.",
+      "evidence": [],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.1.2",
+      "upstream_id": "V1.1.2",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Encoding and Sanitization Architecture",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "React text rendering/JSON serialization preserve data context; recorded browser plain-text regression.",
+      "evidence": [
+        "tests/e2e/greenshop.spec.ts",
+        "web/src/components/EvidencePanel.tsx",
+        "web/src/components/FinalReport.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.1",
+      "upstream_id": "V1.2.1",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "React text rendering/JSON serialization preserve data context; recorded browser plain-text regression.",
+      "evidence": [
+        "tests/e2e/greenshop.spec.ts",
+        "web/src/components/EvidencePanel.tsx",
+        "web/src/components/FinalReport.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.2",
+      "upstream_id": "V1.2.2",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Dynamic run URLs use encodeURIComponent, redirect/provider bases are trusted config.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/src/api/client.ts"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.3",
+      "upstream_id": "V1.2.3",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "React text rendering/JSON serialization preserve data context; recorded browser plain-text regression.",
+      "evidence": [
+        "tests/e2e/greenshop.spec.ts",
+        "web/src/components/EvidencePanel.tsx",
+        "web/src/components/FinalReport.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.4",
+      "upstream_id": "V1.2.4",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Runtime SQL uses binds/ORM; stream SQL is selected from static alternatives.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.5",
+      "upstream_id": "V1.2.5",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "No shell/eval/user-built template execution in application requests/tools; allowlisted tools only.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.6",
+      "upstream_id": "V1.2.6",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.7",
+      "upstream_id": "V1.2.7",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.8",
+      "upstream_id": "V1.2.8",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.2.9",
+      "upstream_id": "V1.2.9",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Injection Prevention",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Runtime regex patterns are static; user text is only the subject.",
+      "evidence": [
+        "src/opspilot/agent/nodes/classify.py",
+        "src/opspilot/agent/policy.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.1",
+      "upstream_id": "V1.3.1",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.2",
+      "upstream_id": "V1.3.2",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "No shell/eval/user-built template execution in application requests/tools; allowlisted tools only.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.3",
+      "upstream_id": "V1.3.3",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Typed/ranged inputs and finally-close exist; complete per-sink/native/SDK serializer review not performed on pinned runtime.",
+      "evidence": [
+        "src/opspilot/agent/checkpoints.py",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.4",
+      "upstream_id": "V1.3.4",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.5",
+      "upstream_id": "V1.3.5",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Untrusted snippets/Markdown are displayed as plain text, not scriptable content.",
+      "evidence": [
+        "tests/e2e/greenshop.spec.ts",
+        "web/src/components/EvidencePanel.tsx",
+        "web/src/components/FinalReport.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.6",
+      "upstream_id": "V1.3.6",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Current user inputs cannot supply outbound URLs; fixed provider and pinned OIDC endpoints plus tool allowlist. Infrastructure egress is separately incomplete.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/mcp_client/registry.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.7",
+      "upstream_id": "V1.3.7",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "No shell/eval/user-built template execution in application requests/tools; allowlisted tools only.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.8",
+      "upstream_id": "V1.3.8",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.9",
+      "upstream_id": "V1.3.9",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.10",
+      "upstream_id": "V1.3.10",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Requirement-specific evidence insufficient in this limited audit; independently verify before claiming L2.",
+      "evidence": [],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.3.11",
+      "upstream_id": "V1.3.11",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Sanitization",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.4.1",
+      "upstream_id": "V1.4.1",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Memory, String, and Unmanaged Code",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Requirement-specific evidence insufficient in this limited audit; independently verify before claiming L2.",
+      "evidence": [],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.4.2",
+      "upstream_id": "V1.4.2",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Memory, String, and Unmanaged Code",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Typed/ranged inputs and finally-close exist; complete per-sink/native/SDK serializer review not performed on pinned runtime.",
+      "evidence": [
+        "src/opspilot/agent/checkpoints.py",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.4.3",
+      "upstream_id": "V1.4.3",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Memory, String, and Unmanaged Code",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Typed/ranged inputs and finally-close exist; complete per-sink/native/SDK serializer review not performed on pinned runtime.",
+      "evidence": [
+        "src/opspilot/agent/checkpoints.py",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.5.1",
+      "upstream_id": "V1.5.1",
+      "level": 1,
+      "chapter": "Encoding and Sanitization",
+      "section": "Safe Deserialization",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No LDAP/XPath/LaTeX, WYSIWYG/SVG upload, JNDI/memcache/mail or XML input API in scoped runtime. Reassess when added.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-1.5.2",
+      "upstream_id": "V1.5.2",
+      "level": 2,
+      "chapter": "Encoding and Sanitization",
+      "section": "Safe Deserialization",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Typed/ranged inputs and finally-close exist; complete per-sink/native/SDK serializer review not performed on pinned runtime.",
+      "evidence": [
+        "src/opspilot/agent/checkpoints.py",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.1.1",
+      "upstream_id": "V2.1.1",
+      "level": 1,
+      "chapter": "Validation and Business Logic",
+      "section": "Validation and Business Logic Documentation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Contracts/workflow docs define structural/context validation.",
+      "evidence": [
+        "docs/full/contracts.md",
+        "docs/full/human-commands.md",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.1.2",
+      "upstream_id": "V2.1.2",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Validation and Business Logic Documentation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Contracts/workflow docs define structural/context validation.",
+      "evidence": [
+        "docs/full/contracts.md",
+        "docs/full/human-commands.md",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.1.3",
+      "upstream_id": "V2.1.3",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Validation and Business Logic Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Per-run budgets/round limits exist, but not aggregate actor/tenant/global quotas.",
+      "evidence": [
+        "src/opspilot/agent/budgets.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/runtime/worker.py"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-2.2.1",
+      "upstream_id": "V2.2.1",
+      "level": 1,
+      "chapter": "Validation and Business Logic",
+      "section": "Input Validation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Server validation exists; all-input strict types not proven, expected_version coercion observed on host.",
+      "evidence": [
+        "local-probes.json",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": [
+        "ASVS-11"
+      ]
+    },
+    {
+      "id": "v5.0.0-2.2.2",
+      "upstream_id": "V2.2.2",
+      "level": 1,
+      "chapter": "Validation and Business Logic",
+      "section": "Input Validation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Trusted server validates action ownership, tenant/customer/integration consistency and allowed clarification choices.",
+      "evidence": [
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.2.3",
+      "upstream_id": "V2.2.3",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Input Validation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Trusted server validates action ownership, tenant/customer/integration consistency and allowed clarification choices.",
+      "evidence": [
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.3.1",
+      "upstream_id": "V2.3.1",
+      "level": 1,
+      "chapter": "Validation and Business Logic",
+      "section": "Business Logic Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Workflow sequencing, atomic operations, uniqueness and business locking supported by rollback/concurrency/fault stage evidence. Scope: implemented operations.",
+      "evidence": [
+        "docs/full/evidence/f06/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.3.2",
+      "upstream_id": "V2.3.2",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Business Logic Security",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Per-run budgets/round limits exist, but not aggregate actor/tenant/global quotas.",
+      "evidence": [
+        "src/opspilot/agent/budgets.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/runtime/worker.py"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-2.3.3",
+      "upstream_id": "V2.3.3",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Business Logic Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Workflow sequencing, atomic operations, uniqueness and business locking supported by rollback/concurrency/fault stage evidence. Scope: implemented operations.",
+      "evidence": [
+        "docs/full/evidence/f06/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.3.4",
+      "upstream_id": "V2.3.4",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Business Logic Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Workflow sequencing, atomic operations, uniqueness and business locking supported by rollback/concurrency/fault stage evidence. Scope: implemented operations.",
+      "evidence": [
+        "docs/full/evidence/f06/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-2.4.1",
+      "upstream_id": "V2.4.1",
+      "level": 2,
+      "chapter": "Validation and Business Logic",
+      "section": "Anti-automation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No aggregate anti-automation admission control for new runs/login attempts; per-run budgets do not bound their count.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/agent/budgets.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/runtime/worker.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.2.1",
+      "upstream_id": "V3.2.1",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Unintended Content Interpretation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "JSON/plain text reduce context confusion; complete response-context controls/CSP live matrix not verified.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "tests/e2e/greenshop.spec.ts",
+        "web/nginx.conf",
+        "web/src/components/EvidencePanel.tsx",
+        "web/src/components/FinalReport.tsx"
+      ],
+      "findings": [
+        "ASVS-03"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.2.2",
+      "upstream_id": "V3.2.2",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Unintended Content Interpretation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "React text rendering/JSON serialization preserve data context; recorded browser plain-text regression.",
+      "evidence": [
+        "tests/e2e/greenshop.spec.ts",
+        "web/src/components/EvidencePanel.tsx",
+        "web/src/components/FinalReport.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.3.1",
+      "upstream_id": "V3.3.1",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Cookie Setup",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Cookie lacks __Host-/__Secure- prefix even for HTTPS; HTTP config sets Secure=false.",
+      "evidence": [
+        "docs/full/identity.md",
+        "local-probes.json",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-01",
+        "ASVS-02"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.3.2",
+      "upstream_id": "V3.3.2",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Cookie Setup",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Cookie helper sets SameSite=Lax, HttpOnly, host-only path=/; raw session not returned in JSON.",
+      "evidence": [
+        "docs/full/identity.md",
+        "local-probes.json",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.3.3",
+      "upstream_id": "V3.3.3",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Cookie Setup",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Cookie lacks __Host-/__Secure- prefix even for HTTPS; HTTP config sets Secure=false.",
+      "evidence": [
+        "docs/full/identity.md",
+        "local-probes.json",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-01",
+        "ASVS-02"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.3.4",
+      "upstream_id": "V3.3.4",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Cookie Setup",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Cookie helper sets SameSite=Lax, HttpOnly, host-only path=/; raw session not returned in JSON.",
+      "evidence": [
+        "docs/full/identity.md",
+        "local-probes.json",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.4.1",
+      "upstream_id": "V3.4.1",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Security Mechanism Headers",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No production HTTPS/HSTS profile; current HTTP is explicitly local development.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.4.2",
+      "upstream_id": "V3.4.2",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Security Mechanism Headers",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "No permissive BFF CORS wildcard; mutations require exact Origin plus CSRF.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/api/main.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.4.3",
+      "upstream_id": "V3.4.3",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Security Mechanism Headers",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "CSP and frame-ancestors missing.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/api/main.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-03"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.4.4",
+      "upstream_id": "V3.4.4",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Security Mechanism Headers",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "nginx locations add Cache-Control, suppressing inherited nosniff/referrer headers; direct API has no such middleware. Static finding, not fresh live test.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "sources.json",
+        "src/opspilot/api/main.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-03"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.4.5",
+      "upstream_id": "V3.4.5",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Security Mechanism Headers",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "nginx locations add Cache-Control, suppressing inherited nosniff/referrer headers; direct API has no such middleware. Static finding, not fresh live test.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "sources.json",
+        "src/opspilot/api/main.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-03"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.4.6",
+      "upstream_id": "V3.4.6",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Security Mechanism Headers",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "CSP and frame-ancestors missing.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/api/main.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-03"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.5.1",
+      "upstream_id": "V3.5.1",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Origin Separation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Mutations use unsafe methods, exact Origin and HMAC CSRF; OIDC callback has one-use state/binding/nonce/PKCE.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.5.2",
+      "upstream_id": "V3.5.2",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Origin Separation",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "BFF does not use preflight as its primary CSRF defense.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.5.3",
+      "upstream_id": "V3.5.3",
+      "level": 1,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Origin Separation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Mutations use unsafe methods, exact Origin and HMAC CSRF; OIDC callback has one-use state/binding/nonce/PKCE.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.5.4",
+      "upstream_id": "V3.5.4",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Origin Separation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Full/MVP/IdP share hostname 127.0.0.1 with different ports; cookies are not port isolated.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/evidence/f01.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "sources.json",
+        "src/opspilot/config.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-02"
+      ]
+    },
+    {
+      "id": "v5.0.0-3.5.5",
+      "upstream_id": "V3.5.5",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Browser Origin Separation",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.7.1",
+      "upstream_id": "V3.7.1",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Other Browser Security Considerations",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "React/fetch UI, no legacy browser plugins. Library vulnerability lifecycle is separately unverified.",
+      "evidence": [
+        "web/package.json",
+        "web/src"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-3.7.2",
+      "upstream_id": "V3.7.2",
+      "level": 2,
+      "chapter": "Web Frontend Security",
+      "section": "Other Browser Security Considerations",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Redirects use configured issuer/app_origin, not user-provided redirect targets.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.1.1",
+      "upstream_id": "V4.1.1",
+      "level": 1,
+      "chapter": "API and Web Service",
+      "section": "Generic Web Service Security",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "FastAPI JSON media type correct in code; complete charset/nginx content-type response matrix blocked.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/api/errors.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.1.2",
+      "upstream_id": "V4.1.2",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "Generic Web Service Security",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No production browser HTTPS upgrade/API plaintext-rejection policy.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-4.1.3",
+      "upstream_id": "V4.1.3",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "Generic Web Service Security",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Requirement-specific evidence insufficient in this limited audit; independently verify before claiming L2.",
+      "evidence": [],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.2.1",
+      "upstream_id": "V4.2.1",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "HTTP Message Structure Validation",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Requirement-specific evidence insufficient in this limited audit; independently verify before claiming L2.",
+      "evidence": [],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.3.1",
+      "upstream_id": "V4.3.1",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "GraphQL",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No GraphQL API.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.3.2",
+      "upstream_id": "V4.3.2",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "GraphQL",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No GraphQL API.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.4.1",
+      "upstream_id": "V4.4.1",
+      "level": 1,
+      "chapter": "API and Web Service",
+      "section": "WebSocket",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebSocket API; MCP Streamable HTTP is not WebSocket.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.4.2",
+      "upstream_id": "V4.4.2",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "WebSocket",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebSocket API; MCP Streamable HTTP is not WebSocket.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.4.3",
+      "upstream_id": "V4.4.3",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "WebSocket",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebSocket API; MCP Streamable HTTP is not WebSocket.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-4.4.4",
+      "upstream_id": "V4.4.4",
+      "level": 2,
+      "chapter": "API and Web Service",
+      "section": "WebSocket",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebSocket API; MCP Streamable HTTP is not WebSocket.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.1.1",
+      "upstream_id": "V5.1.1",
+      "level": 2,
+      "chapter": "File Handling",
+      "section": "File Handling Documentation",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.2.1",
+      "upstream_id": "V5.2.1",
+      "level": 1,
+      "chapter": "File Handling",
+      "section": "File Upload and Content",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.2.2",
+      "upstream_id": "V5.2.2",
+      "level": 1,
+      "chapter": "File Handling",
+      "section": "File Upload and Content",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.2.3",
+      "upstream_id": "V5.2.3",
+      "level": 2,
+      "chapter": "File Handling",
+      "section": "File Upload and Content",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.3.1",
+      "upstream_id": "V5.3.1",
+      "level": 1,
+      "chapter": "File Handling",
+      "section": "File Storage",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.3.2",
+      "upstream_id": "V5.3.2",
+      "level": 1,
+      "chapter": "File Handling",
+      "section": "File Storage",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.4.1",
+      "upstream_id": "V5.4.1",
+      "level": 2,
+      "chapter": "File Handling",
+      "section": "File Download",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.4.2",
+      "upstream_id": "V5.4.2",
+      "level": 2,
+      "chapter": "File Handling",
+      "section": "File Download",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-5.4.3",
+      "upstream_id": "V5.4.3",
+      "level": 2,
+      "chapter": "File Handling",
+      "section": "File Download",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No user file upload/download/archive feature; trusted key files assessed separately.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.1.1",
+      "upstream_id": "V6.1.1",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Authentication Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No complete documented L2 brute-force/context-password policy; realm import is not effective-policy proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04",
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.1.2",
+      "upstream_id": "V6.1.2",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No complete documented L2 brute-force/context-password policy; realm import is not effective-policy proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04",
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.1.3",
+      "upstream_id": "V6.1.3",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "OIDC/BFF/service paths documented; consistent production authentication-strength contract incomplete.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.1",
+      "upstream_id": "V6.2.1",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.2",
+      "upstream_id": "V6.2.2",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.3",
+      "upstream_id": "V6.2.3",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.4",
+      "upstream_id": "V6.2.4",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.5",
+      "upstream_id": "V6.2.5",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.6",
+      "upstream_id": "V6.2.6",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.7",
+      "upstream_id": "V6.2.7",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.8",
+      "upstream_id": "V6.2.8",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.9",
+      "upstream_id": "V6.2.9",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.10",
+      "upstream_id": "V6.2.10",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.11",
+      "upstream_id": "V6.2.11",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.2.12",
+      "upstream_id": "V6.2.12",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Password Security",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Password handling delegated to Keycloak; effective policy/hash/password-manager behavior needs independent deployed verification.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.3.1",
+      "upstream_id": "V6.3.1",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "General Authentication Security",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No BFF login throttling or verified effective IdP anti-automation defense.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.3.2",
+      "upstream_id": "V6.3.2",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "General Authentication Security",
+      "scope": "development_profile_vs_production_target",
+      "status": "gap",
+      "assessment": "Enabled synthetic realm users share generated password with temporary=false; development fixture is not a production L2 profile.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04",
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.3.3",
+      "upstream_id": "V6.3.3",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Authentication Security",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No MFA requirement/configuration or documented L2 compensating exception; recorded browser flows use password login.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/e2e/authorization.spec.ts",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.3.4",
+      "upstream_id": "V6.3.4",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Authentication Security",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "OIDC/BFF/service paths documented; consistent production authentication-strength contract incomplete.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.4.1",
+      "upstream_id": "V6.4.1",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "scope": "development_profile_vs_production_target",
+      "status": "gap",
+      "assessment": "Enabled synthetic realm users share generated password with temporary=false; development fixture is not a production L2 profile.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04",
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.4.2",
+      "upstream_id": "V6.4.2",
+      "level": 1,
+      "chapter": "Authentication",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "IdP recovery/identity-proofing controls unverified; resetPasswordAllowed=false alone is not a secure recovery-process proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.4.3",
+      "upstream_id": "V6.4.3",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "IdP recovery/identity-proofing controls unverified; resetPasswordAllowed=false alone is not a secure recovery-process proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.4.4",
+      "upstream_id": "V6.4.4",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "IdP recovery/identity-proofing controls unverified; resetPasswordAllowed=false alone is not a secure recovery-process proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-6.5.1",
+      "upstream_id": "V6.5.1",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Multi-factor authentication requirements",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.5.2",
+      "upstream_id": "V6.5.2",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Multi-factor authentication requirements",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.5.3",
+      "upstream_id": "V6.5.3",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Multi-factor authentication requirements",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.5.4",
+      "upstream_id": "V6.5.4",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Multi-factor authentication requirements",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.5.5",
+      "upstream_id": "V6.5.5",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "General Multi-factor authentication requirements",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.6.1",
+      "upstream_id": "V6.6.1",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Out-of-Band authentication mechanisms",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.6.2",
+      "upstream_id": "V6.6.2",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Out-of-Band authentication mechanisms",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.6.3",
+      "upstream_id": "V6.6.3",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Out-of-Band authentication mechanisms",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.8.1",
+      "upstream_id": "V6.8.1",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication with an Identity Provider",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "Only one configured issuer. Issuer+subject namespacing exists; multi-IdP behavior must be reassessed if enabled.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.8.2",
+      "upstream_id": "V6.8.2",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication with an Identity Provider",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "RS256 signature from pinned issuer JWKS is checked; recorded negative OIDC tests.",
+      "evidence": [
+        "docs/full/evidence/f03/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.8.3",
+      "upstream_id": "V6.8.3",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication with an Identity Provider",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-6.8.4",
+      "upstream_id": "V6.8.4",
+      "level": 2,
+      "chapter": "Authentication",
+      "section": "Authentication with an Identity Provider",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No acr/amr/auth_time validation or documented production strength/freshness fallback.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.1.1",
+      "upstream_id": "V7.1.1",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Management Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Absolute 8h lifetime documented, but idle/risk/concurrent-session policy missing.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/db/models_identity.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.1.2",
+      "upstream_id": "V7.1.2",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Management Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Absolute 8h lifetime documented, but idle/risk/concurrent-session policy missing.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/db/models_identity.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.1.3",
+      "upstream_id": "V7.1.3",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Management Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "IdP/BFF separation documented; coordinated termination/reauth policy incomplete.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.2.1",
+      "upstream_id": "V7.2.1",
+      "level": 1,
+      "chapter": "Session Management",
+      "section": "Fundamental Session Management Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Backend validates hashes of 48-byte CSPRNG opaque tokens; login rotates and revokes old session.",
+      "evidence": [
+        "docs/full/evidence/f03/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-7.2.2",
+      "upstream_id": "V7.2.2",
+      "level": 1,
+      "chapter": "Session Management",
+      "section": "Fundamental Session Management Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Backend validates hashes of 48-byte CSPRNG opaque tokens; login rotates and revokes old session.",
+      "evidence": [
+        "docs/full/evidence/f03/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-7.2.3",
+      "upstream_id": "V7.2.3",
+      "level": 1,
+      "chapter": "Session Management",
+      "section": "Fundamental Session Management Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Backend validates hashes of 48-byte CSPRNG opaque tokens; login rotates and revokes old session.",
+      "evidence": [
+        "docs/full/evidence/f03/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-7.2.4",
+      "upstream_id": "V7.2.4",
+      "level": 1,
+      "chapter": "Session Management",
+      "section": "Fundamental Session Management Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Backend validates hashes of 48-byte CSPRNG opaque tokens; login rotates and revokes old session.",
+      "evidence": [
+        "docs/full/evidence/f03/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-7.3.1",
+      "upstream_id": "V7.3.1",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Timeout",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No last_seen/idle-expiry enforcement or idle reauthentication.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/db/models_identity.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.3.2",
+      "upstream_id": "V7.3.2",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Timeout",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "DB-time absolute expiry exists; risk justification/strength-based reauth incomplete.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.4.1",
+      "upstream_id": "V7.4.1",
+      "level": 1,
+      "chapter": "Session Management",
+      "section": "Session Termination",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "BFF logout/expiry rejects further use; recorded session integration tests. IdP coordination separately incomplete.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-7.4.2",
+      "upstream_id": "V7.4.2",
+      "level": 1,
+      "chapter": "Session Management",
+      "section": "Session Termination",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No IdP disable/deletion propagation to BFF, or admin/user BFF session inventory/revoke-all API. Fresh membership lookup is not session termination.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/identity.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/db/models_identity.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.4.3",
+      "upstream_id": "V7.4.3",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Termination",
+      "scope": "external_idp_and_federation",
+      "status": "not_verified",
+      "assessment": "IdP credential/MFA updates need proof of reauth and BFF session revocation.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.4.4",
+      "upstream_id": "V7.4.4",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Termination",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Authenticated UI has visible Sign out.",
+      "evidence": [
+        "web/src/AuthGate.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-7.4.5",
+      "upstream_id": "V7.4.5",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Session Termination",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No IdP disable/deletion propagation to BFF, or admin/user BFF session inventory/revoke-all API. Fresh membership lookup is not session termination.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/identity.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/db/models_identity.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.5.1",
+      "upstream_id": "V7.5.1",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Defenses Against Session Abuse",
+      "scope": "external_idp_and_federation",
+      "status": "not_verified",
+      "assessment": "IdP credential/MFA updates need proof of reauth and BFF session revocation.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.5.2",
+      "upstream_id": "V7.5.2",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Defenses Against Session Abuse",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No IdP disable/deletion propagation to BFF, or admin/user BFF session inventory/revoke-all API. Fresh membership lookup is not session termination.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/identity.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/db/models_identity.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.6.1",
+      "upstream_id": "V7.6.1",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Federated Re-authentication",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "BFF/IdP separation documented; authentication-age and coordinated disable/reset termination incomplete.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-7.6.2",
+      "upstream_id": "V7.6.2",
+      "level": 2,
+      "chapter": "Session Management",
+      "section": "Federated Re-authentication",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Sign in explicitly starts transaction-bound, one-use state/browser-binding/nonce/PKCE flow.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/src/AuthGate.tsx"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.1.1",
+      "upstream_id": "V8.1.1",
+      "level": 1,
+      "chapter": "Authorization",
+      "section": "Authorization Documentation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.1.2",
+      "upstream_id": "V8.1.2",
+      "level": 2,
+      "chapter": "Authorization",
+      "section": "Authorization Documentation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.2.1",
+      "upstream_id": "V8.2.1",
+      "level": 1,
+      "chapter": "Authorization",
+      "section": "General Authorization Design",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.2.2",
+      "upstream_id": "V8.2.2",
+      "level": 1,
+      "chapter": "Authorization",
+      "section": "General Authorization Design",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.2.3",
+      "upstream_id": "V8.2.3",
+      "level": 2,
+      "chapter": "Authorization",
+      "section": "General Authorization Design",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.3.1",
+      "upstream_id": "V8.3.1",
+      "level": 1,
+      "chapter": "Authorization",
+      "section": "Operation Level Authorization",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-8.4.1",
+      "upstream_id": "V8.4.1",
+      "level": 2,
+      "chapter": "Authorization",
+      "section": "Other Authorization Considerations",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Server-enforced role/owner/tenant/field rules, public DTO allowlists and RLS/composite FK supported by recorded negative tests. Not a fresh independent penetration test.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.1.1",
+      "upstream_id": "V9.1.1",
+      "level": 1,
+      "chapter": "Self-contained Tokens",
+      "section": "Token source and integrity",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.1.2",
+      "upstream_id": "V9.1.2",
+      "level": 1,
+      "chapter": "Self-contained Tokens",
+      "section": "Token source and integrity",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.1.3",
+      "upstream_id": "V9.1.3",
+      "level": 1,
+      "chapter": "Self-contained Tokens",
+      "section": "Token source and integrity",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.2.1",
+      "upstream_id": "V9.2.1",
+      "level": 1,
+      "chapter": "Self-contained Tokens",
+      "section": "Token content",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.2.2",
+      "upstream_id": "V9.2.2",
+      "level": 2,
+      "chapter": "Self-contained Tokens",
+      "section": "Token content",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.2.3",
+      "upstream_id": "V9.2.3",
+      "level": 2,
+      "chapter": "Self-contained Tokens",
+      "section": "Token content",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-9.2.4",
+      "upstream_id": "V9.2.4",
+      "level": 2,
+      "chapter": "Self-contained Tokens",
+      "section": "Token content",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC/service paths verify signature, pinned algorithms/key source, issuer/audience/lifetime and purpose; bounded service scope. Deployed key strength separately unverified.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.1.1",
+      "upstream_id": "V10.1.1",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "Generic OAuth and OIDC Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC tokens stay in BFF; transaction-bound one-use CSPRNG state/binding/nonce/S256.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.1.2",
+      "upstream_id": "V10.1.2",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "Generic OAuth and OIDC Security",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC tokens stay in BFF; transaction-bound one-use CSPRNG state/binding/nonce/S256.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.2.1",
+      "upstream_id": "V10.2.1",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Client",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC tokens stay in BFF; transaction-bound one-use CSPRNG state/binding/nonce/S256.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.2.2",
+      "upstream_id": "V10.2.2",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Client",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "Only one configured issuer. Issuer+subject namespacing exists; multi-IdP behavior must be reassessed if enabled.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.3.1",
+      "upstream_id": "V10.3.1",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Resource Server",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "BFF uses opaque sessions; MCP uses proprietary service JWT, not OAuth access-token resource-server endpoints.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.3.2",
+      "upstream_id": "V10.3.2",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Resource Server",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "BFF uses opaque sessions; MCP uses proprietary service JWT, not OAuth access-token resource-server endpoints.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.3.3",
+      "upstream_id": "V10.3.3",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Resource Server",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "BFF uses opaque sessions; MCP uses proprietary service JWT, not OAuth access-token resource-server endpoints.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.3.4",
+      "upstream_id": "V10.3.4",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Resource Server",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "BFF uses opaque sessions; MCP uses proprietary service JWT, not OAuth access-token resource-server endpoints.",
+      "evidence": [
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.4.1",
+      "upstream_id": "V10.4.1",
+      "level": 1,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "partial",
+      "assessment": "Import pins redirect, code flow and S256 and disables password grant. Recorded positive browser flow is not full adversarial IdP proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "tests/e2e/authorization.spec.ts",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.4.2",
+      "upstream_id": "V10.4.2",
+      "level": 1,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.4.3",
+      "upstream_id": "V10.4.3",
+      "level": 1,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.4.4",
+      "upstream_id": "V10.4.4",
+      "level": 1,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "partial",
+      "assessment": "Import pins redirect, code flow and S256 and disables password grant. Recorded positive browser flow is not full adversarial IdP proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "tests/e2e/authorization.spec.ts",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.4.5",
+      "upstream_id": "V10.4.5",
+      "level": 1,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.4.6",
+      "upstream_id": "V10.4.6",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "partial",
+      "assessment": "Import pins redirect, code flow and S256 and disables password grant. Recorded positive browser flow is not full adversarial IdP proof.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "tests/e2e/authorization.spec.ts",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.4.7",
+      "upstream_id": "V10.4.7",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.4.8",
+      "upstream_id": "V10.4.8",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.4.9",
+      "upstream_id": "V10.4.9",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.4.10",
+      "upstream_id": "V10.4.10",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "Public PKCE client, not a confidential client.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.4.11",
+      "upstream_id": "V10.4.11",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OAuth Authorization Server",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective authorization-server code replay/lifetime/grants/refresh/scopes need deployed negative tests; import alone insufficient.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-04"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.5.1",
+      "upstream_id": "V10.5.1",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OIDC Client",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC nonce, subject, exact discovery issuer/endpoints and audience checked.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.5.2",
+      "upstream_id": "V10.5.2",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OIDC Client",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC nonce, subject, exact discovery issuer/endpoints and audience checked.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.5.3",
+      "upstream_id": "V10.5.3",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OIDC Client",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC nonce, subject, exact discovery issuer/endpoints and audience checked.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.5.4",
+      "upstream_id": "V10.5.4",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OIDC Client",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "OIDC nonce, subject, exact discovery issuer/endpoints and audience checked.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.5.5",
+      "upstream_id": "V10.5.5",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OIDC Client",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "Back-channel logout absent; missing federated account/session termination is separately a gap.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-05"
+      ]
+    },
+    {
+      "id": "v5.0.0-10.6.1",
+      "upstream_id": "V10.6.1",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OpenID Provider",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Actual IdP response/logout behavior needs deployed negative tests; BFF does not implement provider-wide logout.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.6.2",
+      "upstream_id": "V10.6.2",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "OpenID Provider",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Actual IdP response/logout behavior needs deployed negative tests; BFF does not implement provider-wide logout.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.7.1",
+      "upstream_id": "V10.7.1",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "Consent Management",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Document first-party consent policy and obtain effective IdP evidence; no assumption from absence of consent UI alone.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.7.2",
+      "upstream_id": "V10.7.2",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "Consent Management",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Document first-party consent policy and obtain effective IdP evidence; no assumption from absence of consent UI alone.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-10.7.3",
+      "upstream_id": "V10.7.3",
+      "level": 2,
+      "chapter": "OAuth and OIDC",
+      "section": "Consent Management",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Document first-party consent policy and obtain effective IdP evidence; no assumption from absence of consent UI alone.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.1.1",
+      "upstream_id": "V11.1.1",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Cryptographic Inventory and Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Two-slot signing lifecycle exists; all-key inventory/policy/agility/destruction not proven for sessions/DB/IdP/TLS.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/cli/service_keys.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.1.2",
+      "upstream_id": "V11.1.2",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Cryptographic Inventory and Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Two-slot signing lifecycle exists; all-key inventory/policy/agility/destruction not proven for sessions/DB/IdP/TLS.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/cli/service_keys.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.2.1",
+      "upstream_id": "V11.2.1",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Secure Cryptography Implementation",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Uses cryptography/PyJWT, Ed25519, SHA-256/HMAC and secrets CSPRNG. UUIDs serve identifiers, not secret bearer capabilities.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/cli/service_keys.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.2.2",
+      "upstream_id": "V11.2.2",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Secure Cryptography Implementation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Two-slot signing lifecycle exists; all-key inventory/policy/agility/destruction not proven for sessions/DB/IdP/TLS.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/cli/service_keys.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.2.3",
+      "upstream_id": "V11.2.3",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Secure Cryptography Implementation",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Ed25519 meets target; actual IdP RSA modulus not measured because Docker/JWKS unavailable. Do not assume >=3072 bits.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/evidence/f04/README.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.3.1",
+      "upstream_id": "V11.3.1",
+      "level": 1,
+      "chapter": "Cryptography",
+      "section": "Encryption Algorithms",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "No audited data-encryption/at-rest storage design/proof; data classification first. Docker volumes do not prove encryption.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/architecture.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.3.2",
+      "upstream_id": "V11.3.2",
+      "level": 1,
+      "chapter": "Cryptography",
+      "section": "Encryption Algorithms",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "No audited data-encryption/at-rest storage design/proof; data classification first. Docker volumes do not prove encryption.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/architecture.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.3.3",
+      "upstream_id": "V11.3.3",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Encryption Algorithms",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "No audited data-encryption/at-rest storage design/proof; data classification first. Docker volumes do not prove encryption.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/architecture.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-11.4.1",
+      "upstream_id": "V11.4.1",
+      "level": 1,
+      "chapter": "Cryptography",
+      "section": "Hashing and Hash-based Functions",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Uses cryptography/PyJWT, Ed25519, SHA-256/HMAC and secrets CSPRNG. UUIDs serve identifiers, not secret bearer capabilities.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/cli/service_keys.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.4.2",
+      "upstream_id": "V11.4.2",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Hashing and Hash-based Functions",
+      "scope": "external_idp",
+      "status": "not_verified",
+      "assessment": "Effective Keycloak password hash algorithm/parameters unverified.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.4.3",
+      "upstream_id": "V11.4.3",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Hashing and Hash-based Functions",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Uses cryptography/PyJWT, Ed25519, SHA-256/HMAC and secrets CSPRNG. UUIDs serve identifiers, not secret bearer capabilities.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/cli/service_keys.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.4.4",
+      "upstream_id": "V11.4.4",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Hashing and Hash-based Functions",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "Application keys are not derived from passwords; IdP password hashing assessed separately.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/cli/service_keys.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.5.1",
+      "upstream_id": "V11.5.1",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Random Values",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Uses cryptography/PyJWT, Ed25519, SHA-256/HMAC and secrets CSPRNG. UUIDs serve identifiers, not secret bearer capabilities.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/cli/service_keys.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-11.6.1",
+      "upstream_id": "V11.6.1",
+      "level": 2,
+      "chapter": "Cryptography",
+      "section": "Public Key Cryptography",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Uses cryptography/PyJWT, Ed25519, SHA-256/HMAC and secrets CSPRNG. UUIDs serve identifiers, not secret bearer capabilities.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/cli/service_keys.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-12.1.1",
+      "upstream_id": "V12.1.1",
+      "level": 1,
+      "chapter": "Secure Communication",
+      "section": "General TLS Security Guidance",
+      "scope": "deployment_target",
+      "status": "not_verified",
+      "assessment": "No deployed TLS endpoint/profile to measure protocol/ciphers/certificate trust. Plaintext transport itself is a separate confirmed gap; no claim of a weak deployed cipher or invalid certificate.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.1.2",
+      "upstream_id": "V12.1.2",
+      "level": 2,
+      "chapter": "Secure Communication",
+      "section": "General TLS Security Guidance",
+      "scope": "deployment_target",
+      "status": "not_verified",
+      "assessment": "No deployed TLS endpoint/profile to measure protocol/ciphers/certificate trust. Plaintext transport itself is a separate confirmed gap; no claim of a weak deployed cipher or invalid certificate.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.1.3",
+      "upstream_id": "V12.1.3",
+      "level": 2,
+      "chapter": "Secure Communication",
+      "section": "General TLS Security Guidance",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No postMessage, OTP/lookup/PSTN, SAML or mTLS identity feature. Missing MFA itself remains a mandatory L2 gap.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-12.2.1",
+      "upstream_id": "V12.2.1",
+      "level": 1,
+      "chapter": "Secure Communication",
+      "section": "HTTPS Communication with External Facing Services",
+      "scope": "deployment_target",
+      "status": "gap",
+      "assessment": "Current deployment uses HTTP for BFF/IdP/MCP/OTLP and has no production TLS/certificate/internal-encryption profile/evidence. OpenAI HTTPS does not cover internal links.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.2.2",
+      "upstream_id": "V12.2.2",
+      "level": 1,
+      "chapter": "Secure Communication",
+      "section": "HTTPS Communication with External Facing Services",
+      "scope": "deployment_target",
+      "status": "not_verified",
+      "assessment": "No deployed TLS endpoint/profile to measure protocol/ciphers/certificate trust. Plaintext transport itself is a separate confirmed gap; no claim of a weak deployed cipher or invalid certificate.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.3.1",
+      "upstream_id": "V12.3.1",
+      "level": 2,
+      "chapter": "Secure Communication",
+      "section": "General Service to Service Communication Security",
+      "scope": "deployment_target",
+      "status": "gap",
+      "assessment": "Current deployment uses HTTP for BFF/IdP/MCP/OTLP and has no production TLS/certificate/internal-encryption profile/evidence. OpenAI HTTPS does not cover internal links.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.3.2",
+      "upstream_id": "V12.3.2",
+      "level": 2,
+      "chapter": "Secure Communication",
+      "section": "General Service to Service Communication Security",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "HTTPX default certificate validation retained for external HTTPS; internal HTTP has no certificate validation.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.3.3",
+      "upstream_id": "V12.3.3",
+      "level": 2,
+      "chapter": "Secure Communication",
+      "section": "General Service to Service Communication Security",
+      "scope": "deployment_target",
+      "status": "gap",
+      "assessment": "Current deployment uses HTTP for BFF/IdP/MCP/OTLP and has no production TLS/certificate/internal-encryption profile/evidence. OpenAI HTTPS does not cover internal links.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-12.3.4",
+      "upstream_id": "V12.3.4",
+      "level": 2,
+      "chapter": "Secure Communication",
+      "section": "General Service to Service Communication Security",
+      "scope": "deployment_target",
+      "status": "not_verified",
+      "assessment": "No deployed TLS endpoint/profile to measure protocol/ciphers/certificate trust. Plaintext transport itself is a separate confirmed gap; no claim of a weak deployed cipher or invalid certificate.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.1.1",
+      "upstream_id": "V13.1.1",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Configuration Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Architecture lists services, but complete communication/egress inventory and deployed policy not proven.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/architecture.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.2.1",
+      "upstream_id": "V13.2.1",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Backend Communication Configuration",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "MCP requires short-lived scoped JWT plus bootstrap bearer; static DB/service credential lifecycle not verified.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/evidence/f04/README.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.2.2",
+      "upstream_id": "V13.2.2",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Backend Communication Configuration",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Distinct non-owner DB roles and generated secrets; no committed root/root credentials. Shared synthetic end-user fixture is separately a production gap.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "migrations/versions/0003_tenant_rls.py",
+        "scripts/new-full-env.ps1"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-13.2.3",
+      "upstream_id": "V13.2.3",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Backend Communication Configuration",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Distinct non-owner DB roles and generated secrets; no committed root/root credentials. Shared synthetic end-user fixture is separately a production gap.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "migrations/versions/0003_tenant_rls.py",
+        "scripts/new-full-env.ps1"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-13.2.4",
+      "upstream_id": "V13.2.4",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Backend Communication Configuration",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Current app destinations are fixed/trusted config; infrastructure egress allowlist not verified.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.2.5",
+      "upstream_id": "V13.2.5",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Backend Communication Configuration",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Current app destinations are fixed/trusted config; infrastructure egress allowlist not verified.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.3.1",
+      "upstream_id": "V13.3.1",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Secret Management",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Ignored .env/local PEM mounts are not a production managed secret creation/access/rotation/destruction solution.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/authorization.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/cli/service_keys.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.3.2",
+      "upstream_id": "V13.3.2",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Secret Management",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Core-only private keys/public-only MCP mounts; host ACL and production secret-manager RBAC not verified.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/authorization.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/cli/service_keys.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.4.1",
+      "upstream_id": "V13.4.1",
+      "level": 1,
+      "chapter": "Configuration",
+      "section": "Unintended Information Leakage",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Images copy explicit paths, not .git; no nginx autoindex. Fresh live exposure probe unavailable.",
+      "evidence": [
+        ".dockerignore",
+        "Dockerfile",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-13.4.2",
+      "upstream_id": "V13.4.2",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Unintended Information Leakage",
+      "scope": "development_profile_vs_production_target",
+      "status": "gap",
+      "assessment": "Only local/test profile and Keycloak start-dev with synthetic fixtures; no production-minimum profile/evidence. Not a claim of internet exposure.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/config.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-13.4.3",
+      "upstream_id": "V13.4.3",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Unintended Information Leakage",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Images copy explicit paths, not .git; no nginx autoindex. Fresh live exposure probe unavailable.",
+      "evidence": [
+        ".dockerignore",
+        "Dockerfile",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-13.4.4",
+      "upstream_id": "V13.4.4",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Unintended Information Leakage",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "TRACE not declared by app; actual proxy/server method behavior not probed without Docker.",
+      "evidence": [
+        "src/opspilot/api/main.py",
+        "web/nginx.conf"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-13.4.5",
+      "upstream_id": "V13.4.5",
+      "level": 2,
+      "chapter": "Configuration",
+      "section": "Unintended Information Leakage",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "FastAPI default docs/OpenAPI bypass session protected paths; monitoring loopback listener lacks a production exposure policy. Loopback is not internet exposure.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/api/main.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.1.1",
+      "upstream_id": "V14.1.1",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "Data Protection Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No complete classification/protection policy covering prompts, evidence, checkpoints, events, logs, backups and provider transfers.",
+      "evidence": [
+        "docs/full/architecture.md",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.1.2",
+      "upstream_id": "V14.1.2",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "Data Protection Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No complete classification/protection policy covering prompts, evidence, checkpoints, events, logs, backups and provider transfers.",
+      "evidence": [
+        "docs/full/architecture.md",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.2.1",
+      "upstream_id": "V14.2.1",
+      "level": 1,
+      "chapter": "Data Protection",
+      "section": "General Data Protection",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Sessions in HttpOnly cookies, service/provider credentials in headers; URL run IDs are not bearer capabilities. OIDC code/state are protocol transients.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "docs/full/evidence/f04/README.md",
+        "docs/full/identity.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/service_context.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/mcp_server/authorization.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-14.2.2",
+      "upstream_id": "V14.2.2",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "General Data Protection",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "No-store, allowlisted telemetry and provider store:false help; full classification/retention/encryption/data-sharing verification incomplete.",
+      "evidence": [
+        "docs/full/architecture.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.2.3",
+      "upstream_id": "V14.2.3",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "General Data Protection",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "No-store, allowlisted telemetry and provider store:false help; full classification/retention/encryption/data-sharing verification incomplete.",
+      "evidence": [
+        "docs/full/architecture.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.2.4",
+      "upstream_id": "V14.2.4",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "General Data Protection",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "No-store, allowlisted telemetry and provider store:false help; full classification/retention/encryption/data-sharing verification incomplete.",
+      "evidence": [
+        "docs/full/architecture.md",
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/telemetry.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-09"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.3.1",
+      "upstream_id": "V14.3.1",
+      "level": 1,
+      "chapter": "Data Protection",
+      "section": "Client-side Data Protection",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Successful logout reloads UI, but expired/revoked session/401 retains old snapshot in React state/DOM; identity fetched once.",
+      "evidence": [
+        "web/src/AuthGate.tsx",
+        "web/src/api/client.ts",
+        "web/src/hooks/useRun.ts"
+      ],
+      "findings": [
+        "ASVS-06"
+      ]
+    },
+    {
+      "id": "v5.0.0-14.3.2",
+      "upstream_id": "V14.3.2",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "Client-side Data Protection",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Private BFF responses/fetches and API/auth nginx locations use no-store; live response matrix not rerun.",
+      "evidence": [
+        "compose.full.yaml",
+        "docs/full/identity.md",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "tests/integration/test_identity.py",
+        "web/nginx.conf",
+        "web/src/AuthGate.tsx",
+        "web/src/api/client.ts",
+        "web/src/hooks/useRun.ts"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-14.3.3",
+      "upstream_id": "V14.3.3",
+      "level": 2,
+      "chapter": "Data Protection",
+      "section": "Client-side Data Protection",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "No sensitive persistent browser storage found; session cookie is permitted token exception.",
+      "evidence": [
+        "web/src/AuthGate.tsx",
+        "web/src/api/client.ts",
+        "web/src/hooks/useRun.ts"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-15.1.1",
+      "upstream_id": "V15.1.1",
+      "level": 1,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Secure Coding and Architecture Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No risk-based dependency remediation SLA/update policy. Pinning alone is insufficient.",
+      "evidence": [
+        ".github/workflows/ci.yml",
+        "Dockerfile",
+        "infra/full/Dockerfile",
+        "uv.lock",
+        "web/package-lock.json"
+      ],
+      "findings": [
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.1.2",
+      "upstream_id": "V15.1.2",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Secure Coding and Architecture Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Lockfiles/image digests provide partial inventory; SBOM/OS/provenance and current vulnerability proof incomplete.",
+      "evidence": [
+        ".github/workflows/ci.yml",
+        "Dockerfile",
+        "infra/full/Dockerfile",
+        "uv.lock",
+        "web/package-lock.json"
+      ],
+      "findings": [
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.1.3",
+      "upstream_id": "V15.1.3",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Secure Coding and Architecture Documentation",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Durable queue/two workers/per-run budgets exist; aggregate admission and actor/tenant/global limits missing.",
+      "evidence": [
+        "docs/full/durable-jobs.md",
+        "src/opspilot/agent/budgets.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/runtime/worker.py"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.2.1",
+      "upstream_id": "V15.2.1",
+      "level": 1,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Security Architecture and Dependencies",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "No current SCA/image vulnerability report run/found; no assertion that a particular dependency is vulnerable.",
+      "evidence": [
+        ".github/workflows/ci.yml",
+        "Dockerfile",
+        "infra/full/Dockerfile",
+        "uv.lock",
+        "web/package-lock.json"
+      ],
+      "findings": [
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.2.2",
+      "upstream_id": "V15.2.2",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Security Architecture and Dependencies",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Durable queue/two workers/per-run budgets exist; aggregate admission and actor/tenant/global limits missing.",
+      "evidence": [
+        "docs/full/durable-jobs.md",
+        "src/opspilot/agent/budgets.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/config.py",
+        "src/opspilot/runtime/worker.py"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.2.3",
+      "upstream_id": "V15.2.3",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Security Architecture and Dependencies",
+      "scope": "development_profile_vs_production_target",
+      "status": "gap",
+      "assessment": "Only local/test profile and Keycloak start-dev with synthetic fixtures; no production-minimum profile/evidence. Not a claim of internet exposure.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/config.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-10"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.3.1",
+      "upstream_id": "V15.3.1",
+      "level": 1,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Nested response allowlists and extra=forbid limit fields/mass assignment; server context owns tenant/actor.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/contracts/tools.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-15.3.2",
+      "upstream_id": "V15.3.2",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "HTTPX redirects disabled explicitly for OIDC and by default for provider; no user-directed proxy.",
+      "evidence": [
+        "docs/full/identity.md",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/llm/real.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-15.3.3",
+      "upstream_id": "V15.3.3",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Nested response allowlists and extra=forbid limit fields/mass assignment; server context owns tenant/actor.",
+      "evidence": [
+        "docs/full/authorization.md",
+        "src/opspilot/api/routes_authorized.py",
+        "src/opspilot/api/routes_runs.py",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/public.py",
+        "src/opspilot/contracts/tools.py",
+        "src/opspilot/tenancy/session.py",
+        "tests/integration/test_authorization.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-15.3.4",
+      "upstream_id": "V15.3.4",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "Trusted proxy/original-IP contract not verified; required before IP-based limits/security decisions.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "src/opspilot/api/main.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.3.5",
+      "upstream_id": "V15.3.5",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Non-strict expected_version int accepts true as 1 on host probe. Pinned runtime verification needed; no authorization bypass demonstrated.",
+      "evidence": [
+        "local-probes.json",
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py"
+      ],
+      "findings": [
+        "ASVS-11"
+      ]
+    },
+    {
+      "id": "v5.0.0-15.3.6",
+      "upstream_id": "V15.3.6",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "not_verified",
+      "assessment": "No unsafe dynamic object merge found in sampled UI; dedicated prototype-pollution review/test not performed.",
+      "evidence": [
+        "web/src/AuthGate.tsx",
+        "web/src/api/client.ts",
+        "web/src/hooks/useRun.ts"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-15.3.7",
+      "upstream_id": "V15.3.7",
+      "level": 2,
+      "chapter": "Secure Coding and Architecture",
+      "section": "Defensive Coding",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "MCP rejects duplicate auth/context headers; system-wide duplicate JSON/query/header semantics untested.",
+      "evidence": [
+        "src/opspilot/contracts/api.py",
+        "src/opspilot/contracts/common.py",
+        "src/opspilot/contracts/tools.py",
+        "src/opspilot/mcp_server/auth.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-16.1.1",
+      "upstream_id": "V16.1.1",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Security Logging Documentation",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No complete per-layer log inventory/storage/access/use/retention policy.",
+      "evidence": [
+        "docs/full/architecture.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.2.1",
+      "upstream_id": "V16.2.1",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "General Logging",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "F07 has actor/time/epoch/reason and bounded JSON; all-layer metadata, clock synchronization, inventory and data classification not fully verified.",
+      "evidence": [
+        "docs/full/evidence/f07/README.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.2.2",
+      "upstream_id": "V16.2.2",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "General Logging",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "F07 has actor/time/epoch/reason and bounded JSON; all-layer metadata, clock synchronization, inventory and data classification not fully verified.",
+      "evidence": [
+        "docs/full/evidence/f07/README.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.2.3",
+      "upstream_id": "V16.2.3",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "General Logging",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "F07 has actor/time/epoch/reason and bounded JSON; all-layer metadata, clock synchronization, inventory and data classification not fully verified.",
+      "evidence": [
+        "docs/full/evidence/f07/README.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.2.4",
+      "upstream_id": "V16.2.4",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "General Logging",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "F07 has actor/time/epoch/reason and bounded JSON; all-layer metadata, clock synchronization, inventory and data classification not fully verified.",
+      "evidence": [
+        "docs/full/evidence/f07/README.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.2.5",
+      "upstream_id": "V16.2.5",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "General Logging",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "F07 has actor/time/epoch/reason and bounded JSON; all-layer metadata, clock synchronization, inventory and data classification not fully verified.",
+      "evidence": [
+        "docs/full/evidence/f07/README.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.3.1",
+      "upstream_id": "V16.3.1",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Security Events",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Login/callback denial/logout/membership events exist; invalid session/MCP failures and all IdP operations not fully covered.",
+      "evidence": [
+        "docs/full/identity.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/store.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py",
+        "tests/integration/test_identity.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.3.2",
+      "upstream_id": "V16.3.2",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Security Events",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Safe API/MCP denial/error responses do not produce all required authz/bypass/security-failure audit events.",
+      "evidence": [
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.3.3",
+      "upstream_id": "V16.3.3",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Security Events",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Safe API/MCP denial/error responses do not produce all required authz/bypass/security-failure audit events.",
+      "evidence": [
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.3.4",
+      "upstream_id": "V16.3.4",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Security Events",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "Safe API/MCP denial/error responses do not produce all required authz/bypass/security-failure audit events.",
+      "evidence": [
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.4.1",
+      "upstream_id": "V16.4.1",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Log Protection",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Structured JSON and allowlisted event/trace fields avoid raw SQL/provider bodies/arbitrary log formats.",
+      "evidence": [
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-16.4.2",
+      "upstream_id": "V16.4.2",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Log Protection",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Run audit is append-only/RLS for runtime roles; privileged tampering/other logs/backups unverified.",
+      "evidence": [
+        "docs/full/evidence/f07/README.md",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": [
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.4.3",
+      "upstream_id": "V16.4.3",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Log Protection",
+      "scope": "application_and_deployment",
+      "status": "gap",
+      "assessment": "No secure logically separate security-log sink; HTTP OTLP traces are not full security audit logging.",
+      "evidence": [
+        "compose.full.yaml",
+        "infra/identity/opspilot-realm.json",
+        "infra/otel/collector.yaml",
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py",
+        "web/nginx.conf"
+      ],
+      "findings": [
+        "ASVS-01",
+        "ASVS-08"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.5.1",
+      "upstream_id": "V16.5.1",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Error Handling",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Generic API error messages/safe provider codes; tracing suppresses exception details.",
+      "evidence": [
+        "migrations/versions/0008_transactional_events.py",
+        "src/opspilot/api/errors.py",
+        "src/opspilot/auth/http.py",
+        "src/opspilot/llm/real.py",
+        "src/opspilot/logging.py",
+        "src/opspilot/mcp_server/auth.py",
+        "src/opspilot/telemetry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-16.5.2",
+      "upstream_id": "V16.5.2",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Error Handling",
+      "scope": "application_and_deployment",
+      "status": "partial",
+      "assessment": "Bounded retries/partial reports/durable queue/reconciliation exist; exhaustive external fault coverage remains future work.",
+      "evidence": [
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/agent/nodes/execute.py",
+        "src/opspilot/agent/runtime.py",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": [
+        "ASVS-07"
+      ]
+    },
+    {
+      "id": "v5.0.0-16.5.3",
+      "upstream_id": "V16.5.3",
+      "level": 2,
+      "chapter": "Security Logging and Error Handling",
+      "section": "Error Handling",
+      "scope": "application_and_deployment",
+      "status": "supported",
+      "assessment": "Fail-closed authorization/fencing, rollback and no blind write retry supported by committed concurrency/fault evidence; not global availability assurance.",
+      "evidence": [
+        "docs/full/evidence/f08/README.md",
+        "src/opspilot/mcp_server/services/tickets.py",
+        "src/opspilot/runtime/actions.py",
+        "src/opspilot/runtime/human_commands.py",
+        "src/opspilot/runtime/jobs.py",
+        "tests/integration/test_human_commands.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.1.1",
+      "upstream_id": "V17.1.1",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "TURN Server",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.2.1",
+      "upstream_id": "V17.2.1",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "Media",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.2.2",
+      "upstream_id": "V17.2.2",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "Media",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.2.3",
+      "upstream_id": "V17.2.3",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "Media",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.2.4",
+      "upstream_id": "V17.2.4",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "Media",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.3.1",
+      "upstream_id": "V17.3.1",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "Signaling",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    },
+    {
+      "id": "v5.0.0-17.3.2",
+      "upstream_id": "V17.3.2",
+      "level": 2,
+      "chapter": "WebRTC",
+      "section": "Signaling",
+      "scope": "absent_conditional_feature",
+      "status": "not_applicable",
+      "assessment": "No WebRTC/TURN/media/signaling.",
+      "evidence": [
+        "src/opspilot/agent/policy.py",
+        "src/opspilot/api/main.py",
+        "src/opspilot/mcp_client/registry.py"
+      ],
+      "findings": []
+    }
+  ]
+}

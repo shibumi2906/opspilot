@@ -1,0 +1,11 @@
+ Container opspilot-full-security-test-postgres-1  Running
+ Container opspilot-full-security-test-api-1  Running
+ Container opspilot-full-security-test-mcp-1  Running
+ Container opspilot-full-security-test-postgres-1  Waiting
+ Container opspilot-full-security-test-postgres-1  Waiting
+ Container opspilot-full-security-test-postgres-1  Healthy
+ Container opspilot-full-security-test-postgres-1  Healthy
+...........sssssFF.......FF.......FFFFFFF.F.ssss..F..................... [ 27%]
+..FFFFFF.FFFFFFFFFFF...F........FFFF.................................... [ 54%]
+exit status 143
+.FF

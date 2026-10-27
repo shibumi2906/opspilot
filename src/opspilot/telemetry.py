@@ -39,7 +39,9 @@ def configure(settings: Settings, service: str) -> None:
     provider = TracerProvider(resource=Resource.create({"service.name": service}))
     provider.add_span_processor(
         BatchSpanProcessor(
-            OTLPSpanExporter(endpoint=settings.otel_endpoint, timeout=1),
+            OTLPSpanExporter(
+                endpoint=settings.otel_endpoint, timeout=1, certificate_file=settings.tls_ca_file
+            ),
             schedule_delay_millis=200,
             export_timeout_millis=1500,
         )

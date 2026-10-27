@@ -22,6 +22,10 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 **Следующий этап: F09 — action revisions, approval и grants. Не начат.**
 
+По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
+[security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
+о полном соответствии L2; локальный hardened-контур отделён от development Full и MVP.
+
 Команда для следующего этапа (пока не выполнять):
 
 > Сделай F09 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.

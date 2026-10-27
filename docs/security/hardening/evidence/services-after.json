@@ -1,0 +1,11 @@
+{
+  "checked_at_utc": "2026-10-27T14:09:53.3164764Z",
+  "web_status": 200,
+  "health_status": 200,
+  "workers": [
+    "worker",
+    "worker2"
+  ],
+  "development_full_restored": true,
+  "security_lab": "verified and stopped; restart with scripts/test-security-local.ps1 -SkipBuild"
+}

@@ -162,6 +162,9 @@ async def update_membership(
     user_id: UUID, body: MembershipChange, request: Request
 ) -> dict[str, Any]:
     actor = require_role("admin")
+    from opspilot.auth.session_routes import require_recent
+
+    require_recent(request.app.state.identity.settings)
     roles = set(body.roles)
     if user_id == actor.user_id and not roles <= actor.roles:
         raise AuthError("SELF_ESCALATION_FORBIDDEN")

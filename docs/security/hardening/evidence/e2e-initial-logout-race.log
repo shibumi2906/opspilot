@@ -1,0 +1,62 @@
+ Container opspilot-full-security-regression-postgres-1  Running
+ Container opspilot-full-security-regression-api-1  Running
+ Container opspilot-full-security-regression-web-1  Running
+ Container opspilot-full-security-regression-postgres-1  Waiting
+ Container opspilot-full-security-regression-postgres-1  Healthy
+ Container opspilot-full-security-regression-api-1  Waiting
+ Container opspilot-full-security-regression-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 12 tests using 1 worker
+
+  ✓   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (9.2s)
+  ✓   2 ../tests/e2e/greenshop.spec.ts:32:5 › GreenShop: live trail, evidence, immutable refresh, double click and verified ticket (9.6s)
+  ✓   3 ../tests/e2e/greenshop.spec.ts:90:5 › Reject creates no ticket and keeps the card visible (5.2s)
+  ✓   4 ../tests/e2e/greenshop.spec.ts:110:5 › polling reconnects without overlapping reads or losing the URL (15.0s)
+  ✓   5 ../tests/e2e/greenshop.spec.ts:146:5 › lost decision response reconciles the server decision before retry (5.8s)
+  ✓   6 ../tests/e2e/greenshop.spec.ts:166:5 › narrow viewport, plain text sources and readable partial results (6.1s)
+  ✓   7 ../tests/e2e/greenshop.spec.ts:200:5 › status-only completes without an approval card; terminal polling stops (5.2s)
+  ✓   8 ../tests/e2e/greenshop.spec.ts:218:5 › missing run and failed/unknown snapshots never display verified success (4.1s)
+  ✓   9 ../tests/e2e/greenshop.spec.ts:250:5 › a lost create response reuses the client request ID (5.5s)
+  ✓  10 ../tests/e2e/greenshop.spec.ts:286:5 › unknown and partial projections stay visibly unverified; snapshot mode is authoritative (6.1s)
+  ✘  11 ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout (1.7s)
+  ✓  12 ../tests/e2e/identity.spec.ts:46:5 › OIDC login never auto-provisions a membership (876ms)
+
+
+  1) ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 401
+    Received: 200
+
+      42 |     headers: { Cookie: `opspilot_session=${raw}` },
+      43 |   });
+    > 44 |   expect(response.status()).toBe(401);
+         |                             ^
+      45 | });
+      46 | test("OIDC login never auto-provisions a membership", async ({ page }) => {
+      47 |   await signIn(page, "unassigned");
+        at /app/tests/e2e/identity.spec.ts:44:29
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/identity-real-OIDC-PKCE-se-32f31-o-browser-tokens-and-logout/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/identity-real-OIDC-PKCE-se-32f31-o-browser-tokens-and-logout/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/identity-real-OIDC-PKCE-se-32f31-o-browser-tokens-and-logout/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/identity-real-OIDC-PKCE-se-32f31-o-browser-tokens-and-logout/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout
+  11 passed (1.3m)
+exit status 1

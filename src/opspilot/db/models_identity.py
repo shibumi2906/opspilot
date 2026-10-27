@@ -19,6 +19,7 @@ class User(Base):
     __tablename__ = "users"
     __table_args__ = (UniqueConstraint("issuer", "subject"), {"schema": "identity"})
     id: Mapped[UUID] = mapped_column(primary_key=True)
+    disabled_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     issuer: Mapped[str] = mapped_column(String)
     subject: Mapped[str] = mapped_column(String)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -41,6 +42,14 @@ class ServerSession(Base):
     id: Mapped[UUID] = mapped_column(primary_key=True)
     user_id: Mapped[UUID] = mapped_column(ForeignKey("identity.users.id"))
     tenant_id: Mapped[UUID | None] = mapped_column(ForeignKey("identity.tenants.id"))
+    last_seen_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    auth_time: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    auth_strength: Mapped[str] = mapped_column(String, server_default="single-factor")
+    idp_sid: Mapped[str | None] = mapped_column(String)
+    idp_token_ciphertext: Mapped[str | None] = mapped_column(String)
+    revocation_reason: Mapped[str | None] = mapped_column(String)
     token_hash: Mapped[str] = mapped_column(String, unique=True)
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

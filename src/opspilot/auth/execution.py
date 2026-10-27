@@ -28,7 +28,9 @@ async def execution_scope(engine: AsyncEngine, run: UUID) -> AsyncIterator[None]
         roles = frozenset(
             await conn.scalars(
                 text(
-                    "SELECT role FROM identity.tenant_memberships WHERE tenant_id=:t AND user_id=:u"
+                    "SELECT m.role FROM identity.tenant_memberships m "
+                    "WHERE m.tenant_id=:t AND m.user_id=:u "
+                    "AND identity.lock_role(m.user_id,m.tenant_id,m.role)"
                 ),
                 {"t": tenant, "u": actor},
             )

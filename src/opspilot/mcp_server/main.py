@@ -1,6 +1,7 @@
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Any
+from urllib.parse import urlsplit
 
 import uvicorn
 from mcp.server.lowlevel import Server
@@ -15,6 +16,7 @@ from opspilot.db.engine import create_engine
 from opspilot.logging import configure_logging
 from opspilot.mcp_server.auth import ServiceAuth
 from opspilot.mcp_server.tools_read import register_read_tools
+from opspilot.security.http import SecurityMiddleware
 from opspilot.telemetry import TraceMiddleware, configure
 
 
@@ -38,8 +40,16 @@ def create_app(settings: Settings | None = None) -> ASGIApp:
         json_response=True,
         security_settings=TransportSecuritySettings(
             enable_dns_rebinding_protection=True,
-            allowed_hosts=["mcp:8001", "localhost:*", "127.0.0.1:*"],
-            allowed_origins=["http://localhost:*", "http://127.0.0.1:*"],
+            allowed_hosts=(
+                [urlsplit(settings.mcp_url).netloc]
+                if settings.security_profile == "hardened"
+                else ["mcp:8001", "localhost:*", "127.0.0.1:*"]
+            ),
+            allowed_origins=(
+                [settings.app_origin]
+                if settings.security_profile == "hardened"
+                else ["http://localhost:*", "http://127.0.0.1:*"]
+            ),
         ),
     )
 
@@ -55,12 +65,25 @@ def create_app(settings: Settings | None = None) -> ASGIApp:
         routes=[Route("/mcp", MCPTransport(manager), methods=["GET", "POST", "DELETE"])],
         lifespan=lifespan,
     )
-    return ServiceAuth(
-        TraceMiddleware(app, "http.mcp.server"),
-        settings,
+    return SecurityMiddleware(
+        ServiceAuth(TraceMiddleware(app, "http.mcp.server"), settings), settings
     )
 
 
 if __name__ == "__main__":
     configure_logging()
-    uvicorn.run(create_app(), host="0.0.0.0", port=8001, access_log=False, log_level="warning")
+    settings = Settings()
+    if settings.security_profile == "hardened" and not (
+        settings.tls_cert_file and settings.tls_key_file
+    ):
+        raise ValueError("Hardened server requires native TLS certificate and key")
+    uvicorn.run(
+        create_app(settings),
+        host="0.0.0.0",
+        port=8001,
+        access_log=False,
+        log_level="warning",
+        ssl_certfile=settings.tls_cert_file,
+        ssl_keyfile=settings.tls_key_file,
+        proxy_headers=False,
+    )

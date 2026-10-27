@@ -4,7 +4,9 @@ import type { Decision, RunSnapshot } from "../api/types";
 const validId = (id: string) =>
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 const terminal = (status?: string) =>
-  status === "completed" || status === "failed";
+  ["completed", "failed", "cancelled", "needs_attention"].includes(
+    status ?? "",
+  );
 export function useRun() {
   const [runId, setRunId] = useState(() =>
     new URLSearchParams(location.search).get("run_id"),
@@ -80,6 +82,13 @@ export function useRun() {
         }
       } catch (reason) {
         if (disposed || epoch !== pollEpoch.current) return;
+        if (
+          reason instanceof ApiError &&
+          [401, 403, 404].includes(reason.status)
+        ) {
+          setSnapshot(null);
+          setMutationError(null);
+        }
         setError(errorMessage(reason));
         failures++;
         if (reason instanceof ApiError && [404, 422].includes(reason.status))

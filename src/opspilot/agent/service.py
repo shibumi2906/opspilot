@@ -82,6 +82,14 @@ async def run_investigation(
     lease = None
     try:
         async with AsyncSession(engine) as session, session.begin():
+            for name, value in {
+                "max_actor_runs": settings.max_actor_active_runs,
+                "max_tenant_runs": settings.max_tenant_active_runs,
+                "max_global_runs": settings.max_global_active_runs,
+            }.items():
+                await session.execute(
+                    text("SELECT set_config(:k,:v,true)"), {"k": "app." + name, "v": str(value)}
+                )
             await session.execute(
                 text("SELECT pg_advisory_xact_lock(:key)"),
                 {"key": client_request_id.int % (2**63 - 1)},

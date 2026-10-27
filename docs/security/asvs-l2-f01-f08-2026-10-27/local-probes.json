@@ -1,0 +1,37 @@
+{
+  "execution": "host in-memory source probes; not a container/runtime test",
+  "dependencies": {
+    "pydantic": "2.11.7",
+    "fastapi": "0.115.6",
+    "starlette": "0.41.3"
+  },
+  "mutating_api_calls": 0,
+  "network_calls": 0,
+  "cookies": [
+    {
+      "origin": "http://127.0.0.1:8091",
+      "name": "opspilot_session",
+      "secure": false,
+      "httponly": true,
+      "samesite_lax": true,
+      "host_prefix": false,
+      "secure_prefix": false,
+      "domain_attribute": false
+    },
+    {
+      "origin": "https://opspilot.example.invalid",
+      "name": "opspilot_session",
+      "secure": true,
+      "httponly": true,
+      "samesite_lax": true,
+      "host_prefix": false,
+      "secure_prefix": false,
+      "domain_attribute": false
+    }
+  ],
+  "bool_expected_version": {
+    "accepted": true,
+    "parsed_type": "int",
+    "value": 1
+  }
+}

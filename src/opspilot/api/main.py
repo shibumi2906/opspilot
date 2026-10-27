@@ -9,12 +9,14 @@ from opspilot.api.routes_health import router
 from opspilot.api.routes_runs import router as runs_router
 from opspilot.auth.http import SessionMiddleware
 from opspilot.auth.http import router as auth_router
+from opspilot.auth.session_routes import router as sessions_router
 from opspilot.auth.store import IdentityStore
 from opspilot.config import Settings
 from opspilot.db.engine import create_engine
 from opspilot.logging import configure_logging
 from opspilot.mcp_client.client import MCPClient
 from opspilot.runtime.run_service import RunService
+from opspilot.security.http import SecurityMiddleware
 from opspilot.telemetry import TraceMiddleware, configure
 
 
@@ -35,7 +37,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             await app.state.engine.dispose()
             await app.state.identity.engine.dispose()
 
-    app = FastAPI(title="OpsPilot", version="0.1.0", lifespan=lifespan)
+    app = FastAPI(
+        title="OpsPilot",
+        version="0.1.0",
+        lifespan=lifespan,
+        docs_url=None,
+        redoc_url=None,
+        openapi_url=None,
+    )
 
     @app.get("/api/v2/config")
     async def public_config() -> dict[str, object]:
@@ -49,8 +58,10 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app.add_middleware(TraceMiddleware, name="http.api")
     app.add_middleware(SessionMiddleware, settings=settings)
-    install_errors(app)
+    app.add_middleware(SecurityMiddleware, settings=settings)
+    install_errors(app, settings)
     app.include_router(auth_router)
+    app.include_router(sessions_router)
     app.include_router(runs_router)
     app.include_router(router)
 
@@ -78,4 +89,18 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
 if __name__ == "__main__":
     configure_logging()
-    uvicorn.run(create_app(), host="0.0.0.0", port=8000, access_log=False, log_level="warning")
+    settings = Settings()
+    if settings.security_profile == "hardened" and not (
+        settings.tls_cert_file and settings.tls_key_file
+    ):
+        raise ValueError("Hardened server requires native TLS certificate and key")
+    uvicorn.run(
+        create_app(settings),
+        host="0.0.0.0",
+        port=8000,
+        access_log=False,
+        log_level="warning",
+        ssl_certfile=settings.tls_cert_file,
+        ssl_keyfile=settings.tls_key_file,
+        proxy_headers=False,
+    )

@@ -1,3 +1,4 @@
+import { clearPrivateState } from "./privacy";
 let csrfToken = "";
 export function setCsrf(value: string) {
   csrfToken = value;
@@ -23,6 +24,10 @@ async function request<T>(path: string, options: RequestInit = {}): Promise<T> {
     signal: options.signal ?? AbortSignal.timeout(15000),
   });
   if (!response.ok) {
+    if (response.status === 401 || response.status === 403) {
+      csrfToken = "";
+      clearPrivateState();
+    }
     const body = await response.json().catch(() => null);
     throw new ApiError(
       response.status,

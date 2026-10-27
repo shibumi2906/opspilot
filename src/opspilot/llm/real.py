@@ -14,6 +14,7 @@ from opspilot.contracts.actions import PlanDecision
 from opspilot.contracts.reports import Analysis
 from opspilot.llm.base import Completion, Operation, ProviderFailure, Usage
 from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.security.tls import client_context
 
 
 def strict_schema(schema: dict[str, Any]) -> dict[str, Any]:
@@ -61,6 +62,7 @@ class RealProvider:
         self.model = settings.openai_model
         self.reasoning_effort = settings.openai_reasoning_effort
         self.transport = transport
+        self.tls = client_context(settings)
 
     async def complete(self, operation: Operation, context: dict[str, Any]) -> Completion:
         payload: dict[str, Any] = {
@@ -109,7 +111,7 @@ class RealProvider:
             }
         try:
             async with httpx.AsyncClient(
-                transport=self.transport, trust_env=False, timeout=30
+                transport=self.transport, trust_env=False, timeout=30, verify=self.tls
             ) as http:
                 response = await http.post(
                     "https://api.openai.com/v1/responses",

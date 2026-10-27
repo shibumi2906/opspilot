@@ -1,0 +1,27 @@
+{
+  "fresh_live_http_jwks": {
+    "status": "not_executed",
+    "reason": "Docker daemon unavailable: //./pipe/dockerDesktopLinuxEngine not found",
+    "requests_executed": 0
+  },
+  "fresh_in_memory_probes": "local-probes.json; host package versions differ from pinned container dependencies, not a runtime attestation",
+  "historical_stage_evidence": [
+    "docs/full/evidence/f03/README.md",
+    "docs/full/evidence/f04/README.md",
+    "docs/full/evidence/f07/README.md",
+    "docs/full/evidence/f08/checks.json"
+  ],
+  "historical_counts": "F08 record: 239 main passes, 9 skips, browser 12, queue 5, fencing 3, scripted evals 12. These are not newly rerun ASVS tests.",
+  "not_performed": [
+    "Authenticated live ASVS penetration tests",
+    "Docker/image SCA or current CVE confirmation",
+    "IdP effective policy/JWKS strength/MFA/account-disable tests",
+    "TLS/certificate/cipher/at-rest/backup validation",
+    "Load/brute-force testing",
+    "Production deployment review"
+  ],
+  "provider_calls": 0,
+  "session_or_membership_mutations": 0,
+  "application_fixes": false,
+  "functional_stage_statuses_changed": false
+}

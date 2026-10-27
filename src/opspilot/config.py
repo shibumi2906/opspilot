@@ -1,8 +1,11 @@
 from datetime import UTC, datetime
-from typing import Literal, Self
+from pathlib import Path
+from typing import Any, Literal, Self
+from urllib.parse import urlsplit
 from uuid import UUID
 
-from pydantic import Field, SecretStr, field_validator, model_validator
+from cryptography.fernet import Fernet
+from pydantic import Field, SecretStr, ValidationInfo, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
@@ -34,6 +37,24 @@ class Settings(BaseSettings):
     identity_database_url: SecretStr | None = None
     identity_db_password: SecretStr | None = None
     session_signing_key: SecretStr = SecretStr("")
+    security_role: Literal["api", "worker", "mcp", "admin", "audit"] = "api"
+    tls_ca_file: str | None = None
+    tls_cert_file: str | None = None
+    tls_key_file: str | None = None
+    security_profile: Literal["development", "hardened"] = "development"
+    session_idle_seconds: int = Field(default=900, ge=60, le=3600)
+    session_max_parallel: int = Field(default=3, ge=1, le=20)
+    recent_auth_seconds: int = Field(default=300, ge=60, le=900)
+    oidc_max_auth_age_seconds: int = Field(default=3600, ge=300, le=43200)
+    oidc_required_acr: str = "2"
+    secret_files: dict[str, str] = Field(default_factory=dict)
+    idp_token_key: SecretStr | None = None
+    max_actor_active_runs: int = Field(default=1000, ge=1, le=1000)
+    max_tenant_active_runs: int = Field(default=5000, ge=1, le=5000)
+    max_global_active_runs: int = Field(default=10000, ge=1, le=10000)
+    login_per_minute: int = Field(default=30, ge=1, le=60)
+    actor_requests_per_minute: int = Field(default=600, ge=10, le=1000)
+    max_request_bytes: int = Field(default=65536, ge=4096, le=1048576)
     session_ttl_seconds: int = Field(default=28800, ge=60, le=86400)
     app_origin: str = "http://127.0.0.1:8091"
     oidc_issuer: str = "http://127.0.0.1:8181/realms/opspilot"
@@ -43,13 +64,13 @@ class Settings(BaseSettings):
 
     local_demo_tenant: UUID = DEMO_TENANT
 
-    app_env: Literal["local", "test"] = "local"
+    app_env: Literal["local", "test", "production"] = "local"
     workflow_database_url: SecretStr | None = None
     domain_database_url: SecretStr | None = None
     checkpoint_database_url: SecretStr | None = None
     migration_database_url: SecretStr | None = None
     mcp_url: str = "http://mcp:8001/mcp"
-    mcp_service_token: SecretStr
+    mcp_service_token: SecretStr = SecretStr("")
     openai_api_key: SecretStr | None = None
     openai_model: str | None = None
     openai_reasoning_effort: Literal["none", "low", "medium", "high"] = "low"
@@ -66,10 +87,99 @@ class Settings(BaseSettings):
     clarification_ttl_seconds: int = Field(default=86400, ge=1, le=604800)
     demo_timezone: str = "Asia/Jerusalem"
 
+    @model_validator(mode="before")
+    @classmethod
+    def load_secret_files(cls, value: Any) -> Any:
+        if not isinstance(value, dict):
+            return value
+        mapping = value.get("secret_files", {})
+        if isinstance(mapping, str):
+            import json
+
+            mapping = json.loads(mapping)
+        if not isinstance(mapping, dict):
+            raise ValueError("Secret files must be a mapping")
+        allowed = {
+            "session_signing_key",
+            "mcp_service_token",
+            "idp_token_key",
+            "openai_api_key",
+            "identity_database_url",
+            "workflow_database_url",
+            "checkpoint_database_url",
+            "domain_database_url",
+            "migration_database_url",
+        }
+        for name, file in mapping.items():
+            if name not in allowed or value.get(name):
+                raise ValueError("Invalid or ambiguous secret file configuration")
+            path = Path(file)
+            if not path.is_absolute() or not path.is_file() or path.stat().st_size > 16384:
+                raise ValueError("Secret file unavailable or oversized")
+            value[name] = path.read_text().strip()
+        return value
+
+    @model_validator(mode="after")
+    def enforce_security_profile(self) -> Self:
+        if self.app_env == "production" and self.security_profile != "hardened":
+            raise ValueError("Production requires hardened security profile")
+        if self.security_profile != "hardened":
+            return self
+        origins = [self.mcp_url] if self.security_role in {"api", "worker"} else []
+        if self.security_role == "api":
+            origins += [self.app_origin, self.oidc_issuer, self.oidc_internal_issuer]
+        if self.otel_endpoint:
+            origins.append(self.otel_endpoint)
+        if self.jaeger_url:
+            origins += [self.jaeger_url, self.jaeger_query_url]
+        for value in origins:
+            parsed = urlsplit(value)
+            if (
+                parsed.scheme != "https"
+                or not parsed.hostname
+                or parsed.username
+                or parsed.password
+            ):
+                raise ValueError("Hardened connections require trusted HTTPS origins")
+        origin = urlsplit(self.app_origin)
+        if origin.path not in {"", "/"} or origin.query or origin.fragment:
+            raise ValueError("APP_ORIGIN must be an origin")
+        if self.security_role == "api" and origin.hostname == urlsplit(self.oidc_issuer).hostname:
+            raise ValueError("Application and IdP require distinct hostnames")
+        if self.allow_demo_self_approval:
+            raise ValueError("Demo self approval forbidden in hardened profile")
+        if self.security_role == "api" and not self.idp_token_key:
+            raise ValueError("Hardened profile requires token encryption key")
+        if self.idp_token_key:
+            Fernet(self.idp_token_key.get_secret_value().encode())
+        if self.security_role == "api" and len(self.session_signing_key.get_secret_value()) < 64:
+            raise ValueError("Strong session signing key required")
+        if self.session_ttl_seconds > 43200 or self.session_idle_seconds > 1800:
+            raise ValueError("Session policy exceeds AAL2 bounds")
+        if (
+            self.max_actor_active_runs > 8
+            or self.max_tenant_active_runs > 64
+            or self.max_global_active_runs > 128
+        ):
+            raise ValueError("Explicit bounded production admission policy required")
+        for name in [
+            "identity_database_url",
+            "workflow_database_url",
+            "checkpoint_database_url",
+            "domain_database_url",
+            "migration_database_url",
+        ]:
+            dsn = getattr(self, name)
+            if dsn and make_url(dsn.get_secret_value()).query.get("sslmode") != "verify-full":
+                raise ValueError("Hardened database clients require sslmode=verify-full")
+        return self
+
     @field_validator("mcp_service_token")
     @classmethod
-    def validate_token(cls, value: SecretStr) -> SecretStr:
+    def validate_token(cls, value: SecretStr, info: ValidationInfo) -> SecretStr:
         token = value.get_secret_value()
+        if not token and info.data.get("security_profile") == "hardened":
+            return value
         if len(token) < 64 or any(c not in "0123456789abcdefABCDEF" for c in token):
             raise ValueError("MCP token must contain at least 64 random hexadecimal characters")
         return value

@@ -25,6 +25,7 @@ from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import Conflict
 from opspilot.runtime.jobs import enqueue
+from opspilot.security.tls import client_context
 from opspilot.telemetry import carrier, span
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
@@ -195,7 +196,9 @@ class RunService:
         available = False
         if self.settings.jaeger_url and public.get("trace_context"):
             try:
-                async with httpx.AsyncClient(timeout=0.3, trust_env=False) as client:
+                async with httpx.AsyncClient(
+                    timeout=0.3, trust_env=False, verify=client_context(self.settings)
+                ) as client:
                     available = (
                         await client.get(self.settings.jaeger_query_url + "/api/services")
                     ).is_success
@@ -221,6 +224,10 @@ class RunService:
         return public
 
     async def decide(self, run_id: UUID, body: Decision) -> dict[str, Any]:
+        from opspilot.auth.session_routes import require_recent
+
+        if optional_principal() is not None:
+            require_recent(self.settings)
         async with self.lock(run_id):
             async with AsyncSession(self.engine) as session, session.begin():
                 run = await session.get(AgentRun, run_id)

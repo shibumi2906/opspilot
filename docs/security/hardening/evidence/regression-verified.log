@@ -1,0 +1,12 @@
+ Container opspilot-full-security-regression-postgres-1  Running
+ Container opspilot-full-security-regression-api-1  Running
+ Container opspilot-full-security-regression-mcp-1  Running
+ Container opspilot-full-security-regression-postgres-1  Waiting
+ Container opspilot-full-security-regression-postgres-1  Waiting
+ Container opspilot-full-security-regression-postgres-1  Healthy
+ Container opspilot-full-security-regression-postgres-1  Healthy
+...........sssss............................ssss........................ [ 26%]
+........................................................................ [ 53%]
+........................................................................ [ 80%]
+......................................................                   [100%]
+261 passed, 9 skipped in 211.30s (0:03:31)

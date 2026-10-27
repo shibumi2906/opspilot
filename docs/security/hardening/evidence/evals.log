@@ -1,0 +1,15 @@
+E01: True actions_verified []
+E02: True rejected []
+E03: True actions_verified []
+E04: True diagnosis_only []
+E05: True insufficient_context []
+E06: True None []
+2026-10-27 14:00:26.694 | WARNING  | opspilot.mcp_server.tools_read:call_tool:207 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-27 14:00:26.859 | WARNING  | opspilot.mcp_server.tools_read:call_tool:207 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-27 14:00:27.122 | WARNING  | opspilot.mcp_server.tools_read:call_tool:207 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+E07: True partial []
+E08: True partial []
+E09: True partial []
+E10: True blocked []
+E11: True rejected []
+E12: True budget_exhausted []

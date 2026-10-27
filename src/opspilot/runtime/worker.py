@@ -10,6 +10,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun
 from opspilot.db.models_workflow import AgentRun
+from opspilot.logging import configure_logging
 from opspilot.runtime.events import publish_pending
 from opspilot.runtime.fencing import Fence, execution_lease
 from opspilot.runtime.jobs import claim, finish, reap
@@ -89,6 +90,7 @@ async def serve(settings: Settings, stop: asyncio.Event) -> None:
 
 
 async def main() -> None:
+    configure_logging()
     settings = Settings()
     configure(settings, "opspilot-worker")
     stop = asyncio.Event()

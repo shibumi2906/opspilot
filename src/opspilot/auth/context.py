@@ -2,6 +2,7 @@ from collections.abc import Iterator
 from contextlib import contextmanager
 from contextvars import ContextVar
 from dataclasses import dataclass
+from datetime import datetime
 from uuid import UUID
 
 from opspilot.tenancy.context import DEMO_ACTOR, tenant_scope
@@ -18,6 +19,9 @@ class Principal:
     tenant_id: UUID | None
     roles: frozenset[str]
     session_id: UUID
+    auth_time: datetime | None = None
+    expires_at: datetime | None = None
+    idle_expires_at: datetime | None = None
 
 
 _current: ContextVar[Principal | None] = ContextVar("principal", default=None)
