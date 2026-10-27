@@ -6,7 +6,7 @@ import hmac
 import json
 from datetime import datetime
 from typing import Any, Literal, cast
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
@@ -186,5 +186,114 @@ async def update_membership(
                 text("INSERT INTO identity.tenant_memberships VALUES (:t,:u,:r)"),
                 {"t": actor.tenant_id, "u": user_id, "r": role},
             )
-    await store.audit("membership_changed", actor.user_id, actor.tenant_id)
+        await conn.execute(
+            text(
+                "INSERT INTO identity.security_events(id,actor_id,tenant_id,k"
+                "ind) VALUES(:id,:u,:t,'membership_changed')"
+            ),
+            {"id": uuid4(), "u": actor.user_id, "t": actor.tenant_id},
+        )
     return {"user_id": str(user_id), "roles": sorted(roles)}
+
+
+def stream_cursor(request: Request, run_id: UUID, stream: str, sequence: int) -> str:
+    user = principal()
+    raw = json.dumps(
+        {
+            "v": 1,
+            "actor": str(user.user_id),
+            "tenant": str(user.tenant_id),
+            "run": str(run_id),
+            "stream": stream,
+            "sequence": sequence,
+        },
+        sort_keys=True,
+    ).encode()
+    value = base64.urlsafe_b64encode(raw).decode().rstrip("=")
+    return value + "." + cursor_mac(request, value)
+
+
+def stream_after(request: Request, run_id: UUID, stream: str, cursor: str) -> int:
+    try:
+        if len(cursor) > 1500:
+            raise ValueError()
+        raw, signature = cursor.split(".")
+        if not hmac.compare_digest(signature, cursor_mac(request, raw)):
+            raise ValueError()
+        body = json.loads(base64.urlsafe_b64decode(raw + "=" * ((-len(raw)) % 4)))
+        user = principal()
+        if any(
+            body.get(k) != v
+            for k, v in {
+                "v": 1,
+                "actor": str(user.user_id),
+                "tenant": str(user.tenant_id),
+                "run": str(run_id),
+                "stream": stream,
+            }.items()
+        ):
+            raise ValueError()
+        sequence = body["sequence"]
+        if type(sequence) is not int or sequence < 0:
+            raise ValueError()
+        return sequence
+    except (ValueError, KeyError, TypeError, AttributeError, OverflowError) as exc:
+        raise AuthError("INVALID_CURSOR", 400) from exc
+
+
+async def replay(
+    run_id: UUID, request: Request, stream: str, limit: int, cursor: str | None
+) -> dict[str, Any]:
+    # Authorization precedes cursor validation, bounds and every export query.
+    await get_run(run_id, request)
+    after = stream_after(request, run_id, stream, cursor) if cursor else 0
+    service = cast(RunService, request.app.state.runs)
+    async with TenantSession(
+        service.engine.execution_options(isolation_level="REPEATABLE READ")
+    ) as session:
+        latest = await session.scalar(
+            text("SELECT sequence FROM workflow.run_streams WHERE run_id=:r"), {"r": run_id}
+        )
+        earliest = max(1, latest - 999)
+        reset = after < earliest - 1 or after > latest
+        after = earliest - 1 if reset else after
+        # Both variants are static SQL; stream is never interpolated into a query.
+        query = (
+            "SELECT e.* FROM workflow.run_events e WHERE e.run_id=:r AND "
+            "e.sequence>:s ORDER BY e.sequence LIMIT :n"
+            if stream == "events"
+            else "SELECT e.event_id,e.timestamp,e.type,e.schema_version,e.snapshot_version,a.* "
+            "FROM workflow.run_audit a JOIN workflow.run_events e "
+            "USING(tenant_id,run_id,sequence) WHERE a.run_id=:r"
+            " AND a.sequence>:s ORDER BY a.sequence LIMIT :n"
+        )
+        rows = (
+            (await session.execute(text(query), {"r": run_id, "s": after, "n": limit + 1}))
+            .mappings()
+            .all()
+        )
+    items = [dict(row) for row in rows[:limit]]
+    return {
+        "schema_version": 1,
+        "items": items,
+        "snapshot_version": latest,
+        "earliest_sequence": earliest,
+        "reset_required": reset,
+        "next_cursor": stream_cursor(request, run_id, stream, items[-1]["sequence"])
+        if len(rows) > limit
+        else None,
+    }
+
+
+@router.get("/runs/{run_id}/events")
+async def events(
+    run_id: UUID, request: Request, limit: int = Query(50, ge=1, le=100), cursor: str | None = None
+) -> dict[str, Any]:
+    return await replay(run_id, request, "events", limit, cursor)
+
+
+@router.get("/runs/{run_id}/audit")
+async def audit(
+    run_id: UUID, request: Request, limit: int = Query(50, ge=1, le=100), cursor: str | None = None
+) -> dict[str, Any]:
+    return await replay(run_id, request, "audit", limit, cursor)

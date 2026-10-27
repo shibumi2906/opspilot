@@ -132,5 +132,5 @@ services:
     volumes:
       - ./.tools/service-keys/private:/run/service-private:ro
       - ./.tools/service-keys/public:/run/service-public:ro
-      - ./docs/full/evidence/f06/evals:/reports
+      - ./docs/full/evidence/f07/evals:/reports
     command: [python, -m, opspilot.evals.runner, --commit, unspecified]

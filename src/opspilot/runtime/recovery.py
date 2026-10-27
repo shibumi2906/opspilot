@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from uuid import UUID
 
 from langchain_core.runnables import RunnableConfig
-from sqlalchemy import select, update
+from sqlalchemy import select, text, update
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -42,6 +42,8 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                 execution_lease(service.engine, run_id, service.settings),
                 postgres_checkpointer(service.settings) as saver,
             ):
+                async with service.engine.begin() as conn:
+                    await conn.execute(text("SELECT workflow.record_recovery(:r)"), {"r": run_id})
                 graph = build_graph(
                     Runtime(service.settings, ScriptedProvider(), Budget(BudgetLimits())), saver
                 )

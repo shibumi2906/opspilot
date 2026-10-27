@@ -1,0 +1,53 @@
+{
+  "stage": "F07",
+  "date": "2026-10-27",
+  "base_commit": "829670ffefe4f45c3be14efcd2ec599c0bb6e4af",
+  "commit_subject": "feat(full): implement F07 transactional events audit and projections",
+  "schema": "0008_transactional_events",
+  "workflow_version": "full-graph-v1",
+  "public_dto_version": 1,
+  "event_schema_version": 1,
+  "event_payload_max_bytes": 4096,
+  "public_replay_window": 1000,
+  "page_max_items": 100,
+  "outbox_batch_max_items": 100,
+  "backend_main": {
+    "passed": 222,
+    "skipped": 9,
+    "f07_cases": 11
+  },
+  "dedicated_queue_suite": {
+    "passed": 5,
+    "repeated_main_cases": 4
+  },
+  "dedicated_multiworker_faults": {
+    "passed": 3,
+    "cases": [
+      "kill",
+      "stop",
+      "partition"
+    ]
+  },
+  "unique_backend_cases": 226,
+  "browser": {
+    "passed": 12,
+    "workers": 2,
+    "lease_seconds": 30,
+    "heartbeat_seconds": 10
+  },
+  "scripted_regression": {
+    "passed": 12,
+    "total": 12,
+    "hard_safety_gate": true
+  },
+  "ruff": "passed",
+  "format": "passed",
+  "mypy_source_files": 100,
+  "final_line_wrap_ast_equivalence_files": 3,
+  "fresh_schema_install": true,
+  "dev_upgrade": "0007_execution_fences -> 0008_transactional_events",
+  "mvp_preserved": true,
+  "paid_provider_calls": 0,
+  "remote_ci_run": null,
+  "f08_started": false
+}

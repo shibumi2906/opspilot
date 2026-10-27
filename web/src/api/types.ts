@@ -63,6 +63,8 @@ export interface Step {
   duration_ms?: number | null;
 }
 export interface RunSnapshot {
+  dto_version: number;
+  snapshot_version: number;
   traces?: { label: string; url: string }[];
   schema_version: number;
   run_id: string;

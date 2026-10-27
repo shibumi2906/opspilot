@@ -1,0 +1,32 @@
+{
+  "database": "opspilot_full",
+  "schema": "0008_transactional_events",
+  "force_rls_tables": 5,
+  "audit_update_denied": true,
+  "run_id": "5c28f3a4-d630-4b87-9169-f598a036b767",
+  "status": "completed",
+  "outcome": "diagnosis_only",
+  "snapshot_version": 11,
+  "event_count": 11,
+  "audit_count": 11,
+  "pending_outbox": 0,
+  "mcp_protocol": "2025-11-25",
+  "mcp_tools": 9,
+  "paid_calls": 0,
+  "services": {
+    "mcp": "running",
+    "web": "running",
+    "worker2": "running",
+    "oidc": "running",
+    "jaeger": "running",
+    "collector": "running",
+    "api": "running",
+    "worker": "running",
+    "postgres": "running"
+  },
+  "http": {
+    "8011": 200,
+    "8091": 200
+  },
+  "checked_at_utc": "2026-10-27T05:53:30.6267678Z"
+}

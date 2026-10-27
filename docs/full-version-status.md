@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F06 завершены; F07–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F07 завершены; F08–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F07 — transactional events/audit/projections. Не начат.**
+**Следующий этап: F08 — clarification и cancellation. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F07 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F08 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -49,7 +49,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | F04 | done | Сквозная API/MCP authorization | [evidence](full/evidence/f04/README.md); commit subject: `feat(full): enforce F04 API and scoped MCP authorization` |
 | F05 | done | Durable jobs, отдельный worker | [evidence](full/evidence/f05/README.md); commit subject: `feat(full): implement F05 durable jobs and independent worker` |
 | F06 | done | Multiworker leases/fenced checkpoints | [evidence](full/evidence/f06/README.md); commit subject: `feat(full): implement F06 multiworker leases and fenced checkpoints` |
-| F07 | not_started | Transactional events/audit/projections | — |
+| F07 | done | Transactional events/audit/projections | [evidence](full/evidence/f07/README.md); commit subject: `feat(full): implement F07 transactional events audit and projections` |
 | F08 | not_started | Clarification и cancellation | — |
 | F09 | not_started | Revisions/TTL/approval/grants | — |
 | F10 | not_started | Local ticket/comment/internal inbox writes | — |
@@ -322,3 +322,51 @@ Blockers F06 отсутствуют. Transactional events/audit/outbox, полн
 остаются своими этапами. Evidence commit subject:
 `feat(full): implement F06 multiworker leases and fenced checkpoints`.
 Следующий F07 остаётся not_started; выполнен только F06 по запросу владельца.
+
+
+## F07 — transactional events, audit и projections
+
+27 октября 2026. Canonical worktree
+`C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`,
+ветка `codex/opspilot-full`; base `829670ffefe4f45c3be14efcd2ec599c0bb6e4af`.
+Schema `0008_transactional_events`, workflow `full-graph-v1`, DTO/event schema 1.
+
+Tenant-scoped FORCE-RLS run_events/run_audit/outbox записываются DB triggers в той же
+транзакции, что run/approval/operation receipt; rollback не оставляет orphan events.
+Per-run row lock выделяет monotonic sequence; bounded payload содержит только публичные
+статусы/идентификаторы/reason codes. Audit связывает actor/service, action, epoch и redacted
+diff с event UUID/run/sequence. Runtime роли не могут изменять event/audit storage напрямую.
+Fenced recovery имеет собственное persisted event. Membership mutation и security audit
+теперь также transactional. Старые runs получают явно обозначенный baseline.
+
+Worker публикует bounded outbox batches; PostgreSQL wakeups содержат только identifiers,
+DB replay авторитетен. Duplicate/out-of-order delivery не меняет state и не уменьшает watermark.
+Persisted events/audit API проверяет object authorization перед replay, имеет подписанные
+actor/tenant/run/stream cursors, страницы до 100 и окно 1000 sequences с snapshot reset.
+Snapshot восстанавливается из committed source projection и authoritative run/approval/receipt
+под repeatable read; public DTO использует вложенный allowlist, private graph state не экспортируется.
+SSE остаётся F13, retention/archival — F17; F08 не начинался.
+
+Пути: migration 0008; API routes/health; runtime events/recovery/worker/snapshots;
+public contracts/web types; tests, Full test Compose/CI/scripts и docs.
+[Контракт и measured evidence](full/evidence/f07/README.md),
+[checks](full/evidence/f07/checks.json), [live](full/evidence/f07/live.json).
+Release entry point: `scripts/test-full-f07.ps1`; project `opspilot-full-test-f07`,
+DB `opspilot_full_test`, test ports отсутствуют. Backend **222 passed, 9 skipped**, включая
+11 F07 DB/API/fault cases; queue suite **5 passed** (4 повтора), multiworker faults **3 passed**;
+всего **226 уникальных backend cases**. Browser/OIDC с двумя workers **12/12**;
+scripted evals **12/12**, hard safety gate true; Ruff/format/mypy (100 source files) прошли.
+Проверены crash до/после commit/publication, rollback, concurrent sequence allocation,
+duplicate/out-of-order delivery, snapshot cache loss, immutable audit, private-state redaction,
+RLS/cursor scope, bounded reset и stale epoch. SIGKILL/SIGSTOP/TCP partition F06 не регрессировали.
+
+Исправлены найденные DTO/test assumptions; полный backend повторён. Два browser timeout при
+одновременных dev/test стеках исчезли после остановки только dev Full; весь browser suite повторён
+успешно, timeout/логика исполнения не ослаблялись. Fresh schema install и dev Full upgrade 0007→0008
+выполнены. Dev Full восстановлен с двумя workers; UI/API HTTP 200, MCP protocol 2025-11-25/9 tools,
+новый synthetic diagnosis run завершён с event/audit и опубликованным outbox. Test stack остановлен
+без удаления volumes. MVP 184 fingerprints, main/HEAD, четыре image tags, volume metadata/content
+совпадают до/после; исходный checkout чист. [Preservation](full/evidence/f07/mvp-isolation.json).
+Paid/provider/vendor calls 0; remote CI не запускался. Blockers F07 отсутствуют.
+Отдельный локальный commit subject: `feat(full): implement F07 transactional events audit and projections`.
+Следующий этап F08 остаётся not_started.

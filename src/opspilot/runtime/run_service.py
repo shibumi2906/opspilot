@@ -7,7 +7,7 @@ import httpx
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 from psycopg import Error as PsycopgError
-from sqlalchemy import select, update
+from sqlalchemy import select, text, update
 from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.agent.budgets import Budget, BudgetLimits
@@ -105,11 +105,20 @@ class RunService:
             )
 
     async def snapshot(self, run_id: UUID) -> dict[str, Any]:
-        async with AsyncSession(self.engine) as session:
+        async with AsyncSession(
+            self.engine.execution_options(isolation_level="REPEATABLE READ")
+        ) as session:
             run = await session.get(AgentRun, run_id)
             if run is None:
                 raise LookupError("Run not found")
-            public = dict(run.public_snapshot)
+            stream = (
+                await session.execute(
+                    text("SELECT projection,sequence FROM workflow.run_streams WHERE run_id=:r"),
+                    {"r": run_id},
+                )
+            ).one()
+            public = dict(stream.projection)
+            public.update(dto_version=1, snapshot_version=stream.sequence)
             public.update(
                 schema_version=run.state_schema_version,
                 actor_id=str(run.actor_id),

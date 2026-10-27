@@ -10,6 +10,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun
 from opspilot.db.models_workflow import AgentRun
+from opspilot.runtime.events import publish_pending
 from opspilot.runtime.fencing import Fence, execution_lease
 from opspilot.runtime.jobs import claim, finish, reap
 from opspilot.runtime.recovery import recover
@@ -63,6 +64,7 @@ async def serve(settings: Settings, stop: asyncio.Event) -> None:
                 with tenant_scope(tenant):
                     try:
                         worked = await process_one(service) or worked
+                        worked = bool(await publish_pending(service.engine)) or worked
                     except (SQLAlchemyError, OSError):
                         # No claim is forgotten: unacknowledged work remains fenced for the reaper.
                         logger.warning("worker_database_unavailable")

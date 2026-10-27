@@ -74,3 +74,16 @@ fencing for snapshots, local operations and SDK checkpoint/pending writes. Schem
 workflow full-graph-v1, public state 1. See [execution-fencing.md](execution-fencing.md) and
 [ADR 006](adr/006-fenced-checkpoint-adapter.md). Current gate: scripts/test-full-f06.ps1. F07 events/outbox
 are not implemented by this stage; earlier stage sections record their historical boundary.
+
+
+## F07 current boundary
+
+Schema head is `0008_transactional_events`. Run/action/approval state transitions append
+versioned public events, append-only audit and outbox in the same DB transaction.
+Per-run stream locking allocates monotonic sequences. Two workers publish bounded batches
+of identifier-only PostgreSQL wakeups; repeated/out-of-order delivery cannot change state.
+Authorized event/audit replay has signed scope-bound cursors, at most 100 items per page
+and a 1000-sequence public window with snapshot reset. Snapshots read the committed source
+projection and authoritative run/approval/receipt rows under repeatable read, then export
+through the public DTO allowlist (version 1). See [F07 evidence/contract](evidence/f07/README.md).
+Current gate: `scripts/test-full-f07.ps1`. SSE is F13; storage retention is F17.
