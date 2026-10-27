@@ -220,7 +220,7 @@ async def test_api_commit_loss_offline_worker_and_singleton(integration_settings
             "tests.queue_slow_worker" if slow else "tests.queue_ready_worker",
             env={**os.environ, "SLOW_RUN": path.rsplit("/", 1)[1]},
             stdout=asyncio.subprocess.PIPE,
-            stderr=asyncio.subprocess.DEVNULL,
+            stderr=asyncio.subprocess.PIPE,
         )
         processes.append(proc)
         if not slow:
@@ -286,7 +286,9 @@ async def test_api_commit_loss_offline_worker_and_singleton(integration_settings
             active = await worker(slow=True)
             assert await asyncio.wait_for(active.stdout.readline(), 20) == b"claimed\n"
             active.terminate()
-            assert await asyncio.wait_for(active.wait(), 20) == 0
+            assert await asyncio.wait_for(active.wait(), 20) == 0, (
+                await active.stderr.read()
+            ).decode()[-4000:]
             final = await ready(path)
             assert final["outcome"] == "actions_verified", final
             assert (await client.post(path + "/decision", json=choice)).status_code == 200

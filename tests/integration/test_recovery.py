@@ -20,12 +20,20 @@ async def worker(*args):
         *args,
         env={**os.environ, "WORKER_LEASE_SECONDS": "3", "WORKER_HEARTBEAT_SECONDS": "1"},
         stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.DEVNULL,
+        stderr=asyncio.subprocess.PIPE,
     )
 
 
 async def line(process):
-    return await asyncio.wait_for(process.stdout.readline(), 30)
+    try:
+        result = await asyncio.wait_for(process.stdout.readline(), 30)
+    except TimeoutError:
+        process.kill()
+        await process.wait()
+        raise AssertionError((await process.stderr.read()).decode()[-4000:]) from None
+    if not result:
+        raise AssertionError((await process.stderr.read()).decode()[-4000:])
+    return result
 
 
 async def terminal(service, run_id):
@@ -43,7 +51,8 @@ async def test_hard_process_recovery(integration_settings, admin_engine, crash):
     try:
         pending = json.loads(await line(process))
     finally:
-        process.kill()
+        if process.returncode is None:
+            process.kill()
         await process.wait()
     run_id = UUID(pending["run_id"])
     if crash != "pause":

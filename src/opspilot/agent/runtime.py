@@ -44,6 +44,9 @@ class Runtime:
     ) -> T:
         for attempt in range(1, 3):
             await ensure_current(self.settings)
+            from opspilot.runtime.human_commands import check_cancelled
+
+            await check_cancelled(self.settings)
             self.budget.begin_llm()
             call_id = str(uuid4())
             usage = Usage()
@@ -112,6 +115,9 @@ class Runtime:
         call_id = call_id or str(uuid4())
         for attempt in range(1, 4):
             await ensure_current(self.settings)
+            from opspilot.runtime.human_commands import check_cancelled
+
+            await check_cancelled(self.settings)
             self.budget.begin_read(verification=verification)
             key = f"{call_id}:{attempt}"
             state.setdefault("tool_calls", {})[key] = {

@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F07 завершены; F08–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F08 завершены; F09–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F08 — clarification и cancellation. Не начат.**
+**Следующий этап: F09 — action revisions, approval и grants. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F08 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F09 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -50,7 +50,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | F05 | done | Durable jobs, отдельный worker | [evidence](full/evidence/f05/README.md); commit subject: `feat(full): implement F05 durable jobs and independent worker` |
 | F06 | done | Multiworker leases/fenced checkpoints | [evidence](full/evidence/f06/README.md); commit subject: `feat(full): implement F06 multiworker leases and fenced checkpoints` |
 | F07 | done | Transactional events/audit/projections | [evidence](full/evidence/f07/README.md); commit subject: `feat(full): implement F07 transactional events audit and projections` |
-| F08 | not_started | Clarification и cancellation | — |
+| F08 | done | Durable typed clarification и cancellation | [evidence](full/evidence/f08/README.md); commit subject: `feat(full): implement F08 durable clarification and cancellation` |
 | F09 | not_started | Revisions/TTL/approval/grants | — |
 | F10 | not_started | Local ticket/comment/internal inbox writes | — |
 | F11 | not_started | Mixed plans/dependencies/approval waves | — |
@@ -370,3 +370,56 @@ RLS/cursor scope, bounded reset и stale epoch. SIGKILL/SIGSTOP/TCP partition F0
 Paid/provider/vendor calls 0; remote CI не запускался. Blockers F07 отсутствуют.
 Отдельный локальный commit subject: `feat(full): implement F07 transactional events audit and projections`.
 Следующий этап F08 остаётся not_started.
+
+
+## F08 — durable clarification и cancellation
+
+27 октября 2026. Канонический worktree
+`C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`,
+ветка `codex/opspilot-full`; base F07 `bd2350178597f6dff191d5d1e206a49841a503c8`.
+Schema `0009_human_commands`, workflow `full-graph-v1`, state/DTO/event schema 1,
+checkpoint SDK migration 9. Graph blob `d2091b610b027f295629ea7163e6353a3b4bac41`,
+policy blob `7dddb49f221d157d8859295d2e85b28ae05e1824`.
+
+Добавлены typed customer/integration/timezone forms, стабильные IDs, TTL 24 h с настройкой
+CLARIFICATION_TTL_SECONDS, два раунда и pure checkpointed interrupt. Answer + tenant-RLS
+immutable command ledger + resume job + event/audit/outbox атомарны. DB-time acceptance,
+stale/forged/opposite conflict, replay между раундами и восстановление следующей формы
+после checkpoint/projection gap проверены. Принятый вовремя ответ переживает задержку очереди;
+expiry sweep ограничен 100 runs. API разрешает команды только operator-владельцу run.
+
+Cancel + durable command атомарны; состояния waiting_for_input→queued и cancelling→cancelled.
+Проверки выполняются перед node/model/read/write dispatch; MCP повторяет проверку в локальной
+транзакции. Cancel/local write сериализуются ownership-row lock. Report строится по committed
+receipts, сохраняет выполненные/unknown effects и перечисляет отменённые undispatched actions.
+Известная отмена до dispatch не превращается transport task group в unknown write.
+Cancellation guards переиспользуют worker DB engine. Совместимость F07 approval interrupts
+сохранена; full UI остаётся F14, revisions/approval TTL/grants — F09.
+
+Пути: migration 0009, agent nodes/state/graph/service/runtime, runtime human_commands,
+run_service/recovery/worker/fencing, API/public DTO, MCP ticket service, Full Compose/env example,
+client types, tests, stage/live scripts и docs. [Контракт](full/human-commands.md),
+[команды/evidence](full/evidence/f08/README.md), [checks](full/evidence/f08/checks.json).
+Project `opspilot-full-test-f08-release`, DB `opspilot_full_test`, test ports отсутствуют.
+Backend **239 passed, 9 skipped**, включая **18 F08 cases**; queue suite **5 passed**
+(четыре повтора), multiworker faults **3 passed**: **243 уникальных backend cases**.
+Browser/OIDC с двумя workers **12/12**, scripted evals **12/12**, hard safety gate true.
+Ruff/format/mypy (102 source files), TypeScript/Vite и Compose config прошли.
+
+Проверены ambiguous Green RU/EN, timezone/DST, новый процесс с pending interrupt, restart
+после answer commit, forged/stale/opposite/duplicate answers, два раунда и expiry, rollback,
+foreign owner/role/tenant denies, cancel queued/running/waiting, отсутствие tool call после
+pre-dispatch cancel, cancel во время открытой write transaction и после committed response.
+Найденные projection/transport ошибки исправлены; история красных кандидатов и transient
+ускоренных fault failures честно сохранена в evidence, deadlines/assertions не ослаблены.
+
+Dev Full upgrade 0008→0009 выполнен; финальный live run прошёл clarification→approval→cancel,
+MCP 9 tools, event/audit/outbox согласованы; два workers healthy, UI/API HTTP 200.
+[Live](full/evidence/f08/live.json). Все test stacks остановлены без удаления volumes.
+MVP 184 fingerprints source/media/docs/.env, main/HEAD, четыре image tags, volume metadata
+и read-only content hash совпали до/после; исходный checkout чист.
+[Preservation](full/evidence/f08/mvp-isolation.json). F01–F07 evidence сохранены.
+Application calls только local synthetic OIDC/PostgreSQL/MCP; paid/provider/vendor calls 0,
+remote CI не запускался. Blockers F08 отсутствуют.
+Отдельный локальный commit subject: `feat(full): implement F08 durable clarification and cancellation`.
+Следующий этап F09 остаётся not_started; выполнен только F08 по запросу владельца.

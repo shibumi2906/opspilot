@@ -63,6 +63,7 @@ class Settings(BaseSettings):
         "greenshop_expired"
     )
     scenario_clock: datetime = datetime(2026, 10, 18, 9, tzinfo=UTC)
+    clarification_ttl_seconds: int = Field(default=86400, ge=1, le=604800)
     demo_timezone: str = "Asia/Jerusalem"
 
     @field_validator("mcp_service_token")

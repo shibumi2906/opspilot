@@ -29,7 +29,9 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
         ids = list(
             await session.scalars(
                 select(AgentRun.id).where(
-                    AgentRun.status.in_(["queued", "running", "waiting_for_approval"])
+                    AgentRun.status.in_(
+                        ["queued", "running", "waiting_for_approval", "waiting_for_input"]
+                    )
                 )
             )
         )
@@ -74,7 +76,33 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                     and row.Action.arguments_hash == payload_hash(row.Action.arguments)
                 )
                 interrupted = any(task.interrupts for task in saved.tasks)
-                if valid and row is not None and interrupted:
+                if interrupted and values.get("clarification"):
+                    form = run.clarification
+                    checkpoint_form = values["clarification"]
+                    if not form or form["id"] != checkpoint_form["id"]:
+                        if form and checkpoint_form["version"] != form["version"] + 1:
+                            raise ValueError("Clarification binding mismatch")
+                        # The next interrupt checkpoint committed before its run projection.
+                        form = checkpoint_form
+                    if form.get("answer") or datetime.now(UTC) >= datetime.fromisoformat(
+                        form["expires_at"]
+                    ):
+                        await service.resume(run_id, UUID(int=0), clarification=True)
+                    else:
+                        public = project({**values, "__interrupt__": True})
+                        async with service.engine.begin() as conn:
+                            await conn.execute(
+                                update(AgentRun)
+                                .where(AgentRun.id == run_id)
+                                .values(
+                                    status="waiting_for_input",
+                                    clarification=form,
+                                    public_snapshot=public,
+                                    usage=values["budget"],
+                                    updated_at=datetime.now(UTC),
+                                )
+                            )
+                elif valid and row is not None and interrupted:
                     public = project({**values, "__interrupt__": True})
                     public["trace_context"] = run.public_snapshot.get("trace_context")
                     async with service.engine.begin() as conn:

@@ -21,6 +21,9 @@ from opspilot.tenancy.session import TenantSession
 
 
 async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
+    from opspilot.runtime.human_commands import expire, finalize_cancel
+
+    await expire(service)
     await reap(service.engine, run_id)
     job = await claim(service.engine, run_id, service.settings.worker_lease_seconds)
     if job is None:
@@ -36,7 +39,9 @@ async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
                 run = await session.get(AgentRun, job["run_id"])
                 if run is None:
                     raise RuntimeError("Command run missing")
-            if run.workflow_version != "full-graph-v1":
+            if await finalize_cancel(service, run.id):
+                pass
+            elif run.workflow_version != "full-graph-v1":
                 await service.fail(run.id, "UNSUPPORTED_WORKFLOW_VERSION")
             elif run.state_schema_version != 1:
                 await service.fail(run.id, "CHECKPOINT_UNSUPPORTED")
@@ -44,8 +49,9 @@ async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
                 await service.execute(
                     run.id, CreateRun(request=run.request, client_request_id=run.client_request_id)
                 )
-            elif run.status in {"running", "waiting_for_approval"}:
+            elif run.status in {"queued", "running", "waiting_for_approval", "waiting_for_input"}:
                 await recover(service, run.id)
+            await finalize_cancel(service, run.id)
             await finish(service.engine, job)
         except Exception:
             # No raw provider details persist. Cancellation leaves a running job for restart.

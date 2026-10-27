@@ -20,6 +20,11 @@ def evaluate(case: Scenario, state: dict[str, Any], db: dict[str, Any]) -> dict[
             errors.append(code)
 
     check(state.get("outcome") == case.expected_outcome, "OUTCOME")
+    if case.expected_status == "waiting_for_input":
+        check(
+            bool(state.get("clarification")) and not state.get("final_report"),
+            "CLARIFICATION_PENDING",
+        )
     check(case.required_tools <= selected, "REQUIRED_TOOLS")
     check(selected <= case.allowed_tools, "TOOL_ALLOWLIST")
     check(not selected & case.forbidden_tools, "FORBIDDEN_TOOLS")

@@ -1,0 +1,95 @@
+{
+  "date": "2026-10-27",
+  "base_commit": "bd2350178597f6dff191d5d1e206a49841a503c8",
+  "project": "opspilot-full-test-f08-release",
+  "database": "opspilot_full_test",
+  "schema": "0009_human_commands",
+  "workflow_version": "full-graph-v1",
+  "state_dto_event_schema": 1,
+  "checkpoint_sdk_migration": 9,
+  "graph_blob": "d2091b610b027f295629ea7163e6353a3b4bac41",
+  "policy_blob": "7dddb49f221d157d8859295d2e85b28ae05e1824",
+  "ruff_check": true,
+  "ruff_format": true,
+  "formatted_files": 151,
+  "mypy_source_files": 102,
+  "mypy": true,
+  "typescript_vite_build": true,
+  "backend": {
+    "passed": 239,
+    "skipped": 9,
+    "duration_seconds": 219.49
+  },
+  "browser_oidc": {
+    "passed": 12,
+    "workers": 2
+  },
+  "queue_processes": {
+    "passed": 5,
+    "duration_seconds": 43.54,
+    "repeated_main_cases": 4,
+    "additional_cases": 1
+  },
+  "fenced_multiworker_processes": {
+    "passed": 3,
+    "duration_seconds": 37.66,
+    "additional_cases": 3
+  },
+  "independent_drain_repeat": {
+    "passed": 1,
+    "duration_seconds": 48.15,
+    "additional_cases": 0
+  },
+  "unique_backend_cases": 243,
+  "scripted_evals": {
+    "passed": 12,
+    "total": 12,
+    "hard_safety_gate": true,
+    "e06": "pending waiting_for_input clarification, no automatic target/write"
+  },
+  "fault_timing_seconds": {
+    "lease": 3,
+    "heartbeat": 1
+  },
+  "normal_timing_seconds": {
+    "lease": 30,
+    "heartbeat": 10
+  },
+  "external_application_destinations": [
+    "local synthetic OIDC",
+    "local PostgreSQL",
+    "local MCP"
+  ],
+  "paid_provider_vendor_calls": 0,
+  "remote_ci_run": false,
+  "initial_queue_failure": "Accelerated SIGTERM drain worker exited 1; original fixture discarded stderr. Capturing stderr is now retained. Complete queue suite and an independent isolated case passed without runtime, timeout or assertion changes. Original cause unconfirmed.",
+  "commit_subject": "feat(full): implement F08 durable clarification and cancellation",
+  "execute_blob": "80065e0096c8412fef88b849f513ce57e93d11a8",
+  "dev_upgrade": {
+    "from": "0008_transactional_events",
+    "to": "0009_human_commands",
+    "first_live_probe": "8e5cac32-e2f7-473b-ba01-a86c6878881f"
+  },
+  "f08_cases_in_full_backend": 18,
+  "fencing_blob": "7b006255440c3d9d811d78c6388eb53009d3f333",
+  "human_commands_blob": "4943a9ba27530c171d3260e41dad60223a3df1be",
+  "intermediate_f08_focused": {
+    "passed": 17,
+    "duration_seconds": 33.42,
+    "repeated_main_cases": 16,
+    "additional_cases_in_final_backend": 0
+  },
+  "intermediate_preflight": {
+    "passed": 23,
+    "duration_seconds": 64.69,
+    "f08_cases": 18,
+    "execution_fault_cases": 5
+  },
+  "final_release_log": ".tools/f08-release-final.log",
+  "final_fault_eval_log": ".tools/f08-faults-final.log",
+  "final_live_log": ".tools/f08-deploy-final.log",
+  "compose_config": true,
+  "eval_output_routing_probe": true,
+  "initial_recovery_timeout": "One intermediate 30-second fixture readiness wait timed out; fixture now retains stderr and fails promptly for terminal run errors. Assertions and deadlines are unchanged. Final complete backend passed with dev Full stopped and worker-owned engine reuse.",
+  "initial_final_kill_failure": "One accelerated kill case retried a start whose first safe checkpoint was absent and stopped conservatively with RESTART_INTERRUPTED, no write. Identical timing/assertions full fault suite rerun passed all three; initial transient cause unconfirmed."
+}

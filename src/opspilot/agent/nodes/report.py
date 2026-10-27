@@ -8,6 +8,10 @@ async def report(state: AgentState, runtime: Runtime) -> None:
     ru = state.get("language") == "ru"
     outcome = state.get("outcome") or "partial"
     summaries = {
+        "cancelled": (
+            "Выполнение отменено; уже выполненные действия сохранены.",
+            "Run cancelled; completed effects are preserved.",
+        ),
         "proposed_only": (
             "Расследование завершено; предложен тикет без исполнения.",
             "Investigation complete; a ticket is proposed without execution.",

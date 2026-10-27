@@ -70,7 +70,24 @@ export interface RunSnapshot {
   run_id: string;
   request: string;
   status:
-    "queued" | "running" | "waiting_for_approval" | "completed" | "failed";
+    | "queued"
+    | "running"
+    | "waiting_for_input"
+    | "waiting_for_approval"
+    | "cancelling"
+    | "cancelled"
+    | "completed"
+    | "failed"
+    | "needs_attention";
+  clarification?: {
+    id: string;
+    version: number;
+    kind: "customer" | "integration" | "timezone";
+    expires_at: string;
+    options: { id: string; label: string }[];
+    answered: boolean;
+  } | null;
+  cancellation?: { requested_at: string } | null;
   mode: Mode;
   model_id: string | null;
   language: string;

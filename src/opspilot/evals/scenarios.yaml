@@ -242,7 +242,7 @@
       "execute_sql"
     ],
     "human_decisions": [],
-    "expected_outcome": "insufficient_context",
+    "expected_outcome": null,
     "required_evidence_predicates": [
       "candidates"
     ],
@@ -254,7 +254,8 @@
       "ticket_delta": 0,
       "action_count": 0
     },
-    "article_overlay": "none"
+    "article_overlay": "none",
+    "expected_status": "waiting_for_input"
   },
   {
     "id": "E07",

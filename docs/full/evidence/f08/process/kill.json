@@ -1,0 +1,10 @@
+{
+  "fault": "kill",
+  "run": "f23e49f4-05f8-48b9-b580-e518e849d0e8",
+  "old_epoch": 1,
+  "final_epoch": 4,
+  "outcome": "actions_verified",
+  "tickets": 1,
+  "stale_boundaries": 0,
+  "held_sdk_transaction": false
+}

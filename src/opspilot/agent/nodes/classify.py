@@ -17,12 +17,25 @@ async def classify(state: AgentState, runtime: Runtime) -> None:
     if re.search(r"[\u0590-\u05ff\u0600-\u06ff\u4e00-\u9fff]", text):
         state["outcome"] = "insufficient_context"
         return
+    if not state.get("timezone") and re.search(r"timezone|часов(?:ой|ого) пояс", text, re.I):
+        from opspilot.agent.nodes.clarify import prepare
+
+        prepare(
+            state,
+            runtime,
+            "timezone",
+            [
+                {"id": runtime.settings.demo_timezone, "label": runtime.settings.demo_timezone},
+                {"id": "UTC", "label": "UTC"},
+            ],
+        )
+        return
     result = await runtime.llm(
         "classify",
         {
             "request": text,
             "scenario_clock": runtime.settings.scenario_clock.isoformat(),
-            "timezone": "Asia/Jerusalem",
+            "timezone": state.get("timezone", runtime.settings.demo_timezone),
         },
         Classification,
         state,

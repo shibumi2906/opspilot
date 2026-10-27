@@ -11,6 +11,7 @@ from opspilot.contracts.tools import CreateTicketData
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.runtime.actions import payload_hash
+from opspilot.runtime.human_commands import RunCancelled, check_cancelled
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
@@ -62,12 +63,21 @@ async def execute(state: AgentState, runtime: Runtime) -> None:
         with action_scope(state["run_id"], state["action_id"], payload_hash(action["arguments"])):
             await dispatch(state, runtime, action)
         return
+    except RunCancelled:
+        raise
     except Exception:
         await recover_write(state, runtime)
 
 
 async def dispatch(state: AgentState, runtime: Runtime, action: dict[str, Any]) -> None:
     async with runtime.client.session() as (session, _):
+        try:
+            await check_cancelled(runtime.settings)
+        except RunCancelled:
+            # Do not carry a known cancellation through the transport task group:
+            # it would become an ExceptionGroup and look like an uncertain write.
+            state["outcome"] = "cancelled"
+            return
         result = await runtime.client.call(
             session,
             "create_ticket",

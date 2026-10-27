@@ -1,0 +1,10 @@
+{
+  "fault": "stop",
+  "run": "6c0ed982-0808-4779-915f-d4e0129ee58d",
+  "old_epoch": 1,
+  "final_epoch": 4,
+  "outcome": "actions_verified",
+  "tickets": 1,
+  "stale_boundaries": 8,
+  "held_sdk_transaction": true
+}

@@ -4,7 +4,7 @@ from uuid import UUID
 from fastapi import APIRouter, Request, Response
 
 from opspilot.auth.context import AuthError, principal, require_role
-from opspilot.contracts.api import CreateRun, Decision
+from opspilot.contracts.api import CancelRun, ClarificationAnswer, CreateRun, Decision
 from opspilot.contracts.public import public_snapshot
 from opspilot.runtime.run_service import RunService
 
@@ -45,3 +45,15 @@ async def decide(
         "status": snapshot["status"],
         "ticket_id": (snapshot.get("execution_result") or {}).get("ticket_id"),
     }
+
+
+@router.post("/{run_id}/clarifications", status_code=202)
+async def clarify(run_id: UUID, body: ClarificationAnswer, request: Request) -> dict[str, Any]:
+    require_role("operator")
+    return public_snapshot(await cast(RunService, request.app.state.runs).clarify(run_id, body))
+
+
+@router.post("/{run_id}/cancel", status_code=202)
+async def cancel(run_id: UUID, body: CancelRun, request: Request) -> dict[str, Any]:
+    require_role("operator")
+    return public_snapshot(await cast(RunService, request.app.state.runs).cancel(run_id, body))

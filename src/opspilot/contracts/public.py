@@ -14,6 +14,16 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         "client_request_id request status mode model_id language "
         "outcome created_at updated_at missing_checks truncated traces",
     )
+    form = value.get("clarification")
+    result["clarification"] = pick(form, "id version kind expires_at") if form else None
+    if form:
+        result["clarification"]["options"] = [
+            pick(o, "id label") for o in form.get("options", [])[:100]
+        ]
+        result["clarification"]["answered"] = bool(form.get("answer"))
+    result["cancellation"] = (
+        pick(value["cancellation"], "requested_at") if value.get("cancellation") else None
+    )
     result["timeline"] = [
         pick(v, "id sequence node type status summary started_at duration_ms")
         for v in value.get("timeline", [])[:300]
@@ -64,6 +74,14 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
             pick(v, "statement evidence_ids") for v in report.get("facts", [])[:30]
         ]
         result["report"]["hypotheses"] = result["hypotheses"]
+        result["report"]["effects"] = []
+        for effect in report.get("effects", [])[:3]:
+            item = pick(effect, "action_id status")
+            item["result"] = (
+                pick(effect["result"], "ticket_id created_at") if effect.get("result") else None
+            )
+            result["report"]["effects"].append(item)
+        result["report"]["cancelled_actions"] = report.get("cancelled_actions", [])[:3]
     action = value.get("action")
     result["action"] = (
         pick(action, "action_id tool_name arguments_hash approval_status execution_status")

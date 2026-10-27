@@ -1,0 +1,59 @@
+{
+  "database": "opspilot_full",
+  "schema": "0009_human_commands",
+  "run_id": "5c2c8d71-777b-4967-843a-9947e934c5c8",
+  "states": [
+    "queued",
+    "waiting_for_input",
+    "queued",
+    "waiting_for_approval",
+    "cancelling",
+    "cancelled"
+  ],
+  "reopened_pending_form_unchanged": true,
+  "duplicate_answer_replayed": true,
+  "human_commands": 2,
+  "event_count": 12,
+  "audit_count": 12,
+  "pending_outbox": 0,
+  "rls": true,
+  "ledger_update_denied": true,
+  "mcp_protocol": "2025-11-25",
+  "mcp_tools": 9,
+  "report": {
+    "summary": "Run cancelled; completed effects are preserved.",
+    "missing_checks": [],
+    "action_summary": "No writes were performed.",
+    "ticket_id": null,
+    "verification_status": "not_started",
+    "remaining_problem": "Review completed effects; remaining work was cancelled.",
+    "outcome": "cancelled",
+    "facts": [],
+    "hypotheses": [
+      {
+        "hypothesis_id": "credential-expiration",
+        "summary": "Credential expiration may explain delivery failures.",
+        "supporting_evidence_ids": [
+          "ev_1778d7935fea1c0ec25aa543634723ce5d1fde28ad9f81d01ee12aa8b2468cdf",
+          "ev_68af549b5ab5277060d1dee20a881ace59c08a4ec67de1acb62627b7c3d0efed",
+          "ev_3272c9454202b5c2b70a27759ced0a2d6ab6864c3129a896af797cf35d18a9b9",
+          "ev_fc9d405e3a9d017607d70a7a4cd87fb5568a0172033afe55ea9b4b66d21b8fc3"
+        ],
+        "contradicting_evidence_ids": [],
+        "confidence_label": "high",
+        "missing_checks": []
+      }
+    ],
+    "effects": [],
+    "cancelled_actions": [
+      "2a95a985-284d-45f4-a4f1-ba5673ec2e90"
+    ]
+  },
+  "paid_calls": 0,
+  "http_ui": 200,
+  "http_api": 200,
+  "workers": [
+    "worker",
+    "worker2"
+  ]
+}

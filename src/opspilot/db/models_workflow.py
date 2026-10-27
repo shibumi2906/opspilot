@@ -46,6 +46,8 @@ class AgentRun(TenantOwned, Base):
     public_snapshot: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
     tool_results: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
     usage: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+    clarification: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    cancellation: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     trace_id: Mapped[str | None] = mapped_column(String(32))
     error: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

@@ -20,7 +20,7 @@ class ScriptedProvider:
             clock = datetime.fromisoformat(context["scenario_clock"])
             start = clock - timedelta(hours=2)
             if re.search(r"сегодня|\btoday\b", request, re.I):
-                local = clock.astimezone(ZoneInfo("Asia/Jerusalem"))
+                local = clock.astimezone(ZoneInfo(context.get("timezone", "Asia/Jerusalem")))
                 start = local.replace(hour=0, minute=0, second=0, microsecond=0).astimezone(
                     clock.tzinfo
                 )

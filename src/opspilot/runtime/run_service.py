@@ -18,7 +18,7 @@ from opspilot.agent.service import project, run_investigation
 from opspilot.auth.context import AuthError, actor_id, optional_principal
 from opspilot.auth.execution import execution_scope, persisted_worker
 from opspilot.config import Settings
-from opspilot.contracts.api import CreateRun, Decision
+from opspilot.contracts.api import CancelRun, ClarificationAnswer, CreateRun, Decision
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.real import RealProvider
@@ -37,6 +37,18 @@ class RunService:
 
     def lock(self, run_id: UUID) -> asyncio.Lock:
         return self.locks.setdefault(run_id, asyncio.Lock())
+
+    async def clarify(self, run_id: UUID, body: ClarificationAnswer) -> dict[str, Any]:
+        from opspilot.runtime.human_commands import answer
+
+        await answer(self, run_id, body)
+        return await self.snapshot(run_id)
+
+    async def cancel(self, run_id: UUID, body: CancelRun) -> dict[str, Any]:
+        from opspilot.runtime.human_commands import cancel
+
+        await cancel(self, run_id, body)
+        return await self.snapshot(run_id)
 
     async def create(self, body: CreateRun) -> dict[str, Any]:
         run_id = uuid4()
@@ -124,6 +136,8 @@ class RunService:
                 actor_id=str(run.actor_id),
                 run_id=str(run.id),
                 status=run.status,
+                clarification=run.clarification,
+                cancellation=run.cancellation,
                 error=run.error,
                 request=run.request,
                 language=run.language,
@@ -229,7 +243,7 @@ class RunService:
                     if row.Approval.decision != choice:
                         raise Conflict("Decision already recorded")
                     return await self.snapshot(run_id)
-                if run.status != "waiting_for_approval":
+                if run.cancellation or run.status != "waiting_for_approval":
                     raise Conflict("Run is not waiting for approval")
                 async with (
                     execution_scope(self.engine, run_id),
@@ -267,7 +281,14 @@ class RunService:
         return await self.snapshot(run_id)
 
     @persisted_worker
-    async def resume(self, run_id: UUID, action_id: UUID, *, continuation: bool = False) -> None:
+    async def resume(
+        self,
+        run_id: UUID,
+        action_id: UUID,
+        *,
+        continuation: bool = False,
+        clarification: bool = False,
+    ) -> None:
         async with self.lock(run_id):
             try:
                 async with postgres_checkpointer(self.settings) as saver:
@@ -309,6 +330,8 @@ class RunService:
                     runtime = Runtime(runtime_settings, provider, budget)
                     async with AsyncSession(self.engine) as session:
                         run = await session.get(AgentRun, run_id)
+                        form = (run.clarification or {}) if run else {}
+                        answer = {**form.get("answer", {}), "answered_at": form.get("answered_at")}
                         linked = run.public_snapshot.get("trace_context") if run else None
                     with span(
                         "graph.continuation",
@@ -318,7 +341,11 @@ class RunService:
                     ):
                         continuation_context = carrier().get("traceparent")
                         state = await build_graph(runtime, saver).ainvoke(
-                            None if continuation else Command(resume={"action_id": str(action_id)}),
+                            None
+                            if continuation
+                            else Command(
+                                resume=answer if clarification else {"action_id": str(action_id)}
+                            ),
                             config,
                         )
                     public = project(state)
@@ -330,6 +357,7 @@ class RunService:
                         .where(AgentRun.id == run_id)
                         .values(
                             status=public["status"],
+                            clarification=state.get("clarification"),
                             outcome=state.get("outcome"),
                             public_snapshot=public,
                             usage=state["budget"],

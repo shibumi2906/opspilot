@@ -70,7 +70,6 @@ async def test_graph_proposal_and_durable_checkpoint(
     [
         ("Check GreenShop status", "diagnosis_only"),
         ("Investigate customer MissingShop", "insufficient_context"),
-        ("Investigate Green", "insufficient_context"),
         ("Investigate the incident", "insufficient_context"),
         ("Delete GreenShop", "blocked"),
     ],

@@ -14,6 +14,7 @@ from pydantic import ValidationError
 from opspilot.agent.budgets import BudgetExceeded
 from opspilot.agent.evidence import missing_reads
 from opspilot.agent.nodes.approval import approval, prepare_approval
+from opspilot.agent.nodes.clarify import clarify
 from opspilot.agent.nodes.classify import classify
 from opspilot.agent.nodes.execute import execute
 from opspilot.agent.nodes.execute_reads import execute_reads
@@ -28,6 +29,7 @@ from opspilot.agent.policy import PolicyViolation
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
 from opspilot.llm.base import ProviderFailure
+from opspilot.runtime.human_commands import RunCancelled, check_cancelled
 from opspilot.telemetry import span
 
 Node = Callable[[AgentState, Runtime], Awaitable[None]]
@@ -42,6 +44,8 @@ def build_graph(
             started = time.monotonic()
             started_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
             try:
+                if name != "report":
+                    await check_cancelled(runtime.settings)
                 if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
                 with span(
@@ -50,6 +54,8 @@ def build_graph(
                     await node(state, runtime)
                 if name not in {"report", "approval", "execute", "verify"}:
                     runtime.budget.check()
+            except RunCancelled:
+                state.update({"outcome": "cancelled", "clarification": None})
             except BudgetExceeded:
                 state.update({"outcome": "budget_exhausted", "proposed_action": None})
                 state.setdefault("errors", {})[name] = {"code": "BUDGET_EXHAUSTED", "node": name}
@@ -104,6 +110,7 @@ def build_graph(
         ("execute", execute),
         ("verify", verify),
         ("classify", classify),
+        ("clarify", clarify),
         ("resolve_customer", resolve_customer),
         ("investigate", investigate),
         ("execute_reads", execute_reads),
@@ -122,9 +129,20 @@ def build_graph(
     ):
         builder.add_conditional_edges(
             name,
-            lambda state, target=next_name: "report" if state.get("outcome") else target,
-            {"report": "report", next_name: next_name},
+            lambda state, target=next_name: (
+                "report"
+                if state.get("outcome")
+                else "clarify"
+                if state.get("clarification")
+                else target
+            ),
+            {"report": "report", "clarify": "clarify", next_name: next_name},
         )
+    builder.add_conditional_edges(
+        "clarify",
+        lambda state: "report" if state.get("outcome") else "resolve_customer",
+        {"report": "report", "resolve_customer": "resolve_customer"},
+    )
     builder.add_conditional_edges(
         "execute_reads",
         lambda state: (

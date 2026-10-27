@@ -164,6 +164,7 @@ async def run_investigation(
                             update(AgentRun)
                             .where(AgentRun.id == run_id)
                             .values(
+                                clarification=progress.get("clarification"),
                                 public_snapshot={**project(dict(progress)), "status": "running"},
                                 language=progress.get("language", "en"),
                                 tool_results=progress.get("observations", {}),
@@ -249,7 +250,15 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
         )
     }
     public["trace_context"] = carrier().get("traceparent")
-    public["status"] = "waiting_for_approval" if state.get("__interrupt__") else "completed"
+    public["status"] = (
+        "cancelled"
+        if state.get("outcome") == "cancelled"
+        else "waiting_for_input"
+        if state.get("__interrupt__") and state.get("clarification")
+        else "waiting_for_approval"
+        if state.get("__interrupt__")
+        else "completed"
+    )
     calls = list(state.get("tool_calls", {}).items())
     timeline: list[dict[str, Any]] = [
         {

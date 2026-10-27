@@ -23,7 +23,8 @@ class Scenario(StrictModel):
     allowed_tools: set[str]
     forbidden_tools: set[str]
     human_decisions: list[Literal["approve", "reject"]]
-    expected_outcome: Outcome
+    expected_status: Literal["completed", "waiting_for_input"] = "completed"
+    expected_outcome: Outcome | None
     required_evidence_predicates: list[str]
     forbidden_claims: list[str]
     db_assertions: DBAssertions

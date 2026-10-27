@@ -79,6 +79,9 @@ async def create_ticket(
                 .model_copy(update={"replayed": True})
                 .model_dump(mode="json")
             )
+        if run.cancellation:
+            raise WriteDenied("STATE_CONFLICT")
+        await session.execute(text("SELECT workflow.check_not_cancelled(:r)"), {"r": args.run_id})
         ticket = Ticket(
             id=uuid4(),
             originating_action_id=action.id,

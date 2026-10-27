@@ -25,6 +25,10 @@ _current: ContextVar[Fence | None] = ContextVar("execution_fence", default=None)
 _execution_engine: ContextVar[AsyncEngine | None] = ContextVar("execution_engine", default=None)
 
 
+def current_engine() -> AsyncEngine | None:
+    return _execution_engine.get()
+
+
 def current_fence() -> Fence | None:
     return _current.get()
 

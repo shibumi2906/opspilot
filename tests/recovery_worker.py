@@ -22,8 +22,16 @@ async def main():
         )
         run_id = UUID(result["run_id"])
         while True:
-            if (await service.snapshot(run_id))["status"] == "waiting_for_approval":
+            snapshot = await service.snapshot(run_id)
+            if snapshot["status"] == "waiting_for_approval":
                 break
+            if snapshot["status"] in {"failed", "needs_attention"}:
+                raise RuntimeError(
+                    "RECOVERY_FIXTURE_"
+                    + snapshot["status"]
+                    + ":"
+                    + str((snapshot.get("error") or {}).get("code"))
+                )
             await asyncio.sleep(0.02)
         print(json.dumps(await service.snapshot(run_id)), flush=True)
         await asyncio.Event().wait()
