@@ -36,7 +36,11 @@ export interface Action {
   tool_name: "create_ticket";
   arguments: TicketArguments;
   arguments_hash: string;
-  approval_status: "pending" | "approved" | "rejected";
+  expected_version: number;
+  logical_action_id: string;
+  revision_hash: string;
+  expires_at: string;
+  approval_status: "pending" | "approved" | "rejected" | "expired" | "revoked" | "superseded";
   execution_status: "not_started" | "succeeded" | "failed" | "unknown";
   result: { ticket_id: string; created_at: string; replayed: boolean } | null;
   verification: { status: string };

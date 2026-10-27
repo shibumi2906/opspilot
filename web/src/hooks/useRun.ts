@@ -140,7 +140,7 @@ export function useRun() {
     setMutationError(null);
     const id = snapshot.run_id;
     try {
-      await api.decide(id, snapshot.action.action_id, choice);
+      await api.decide(id, snapshot.action.action_id, choice, snapshot.action.expected_version);
     } catch {
       if (currentRun.current === id)
         setMutationError(

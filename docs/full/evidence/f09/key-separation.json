@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "profile": "opspilot-full-test-f09-verified live release containers",
+  "api": {
+    "service_signing_present": true,
+    "grant_signing_present": false
+  },
+  "worker": {
+    "grant_signing_present": true
+  },
+  "mcp": {
+    "grant_public_ring_present": true,
+    "grant_signing_present": false
+  },
+  "reproduction": "scripts/test-full-f09.ps1 exec assertions completed in successful final release gate"
+}

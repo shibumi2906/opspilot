@@ -1,4 +1,4 @@
-param([switch]$SkipBuild)
+param([switch]$SkipBuild, [string]$ReportDir='docs/security/hardening/evidence')
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 $project='opspilot-full-security'
@@ -7,7 +7,11 @@ function Invoke-Lab([string[]]$Arguments) {
     & docker @compose @Arguments
     if($LASTEXITCODE){throw "Security lab check failed: $($Arguments[0])"}
 }
-New-Item -ItemType Directory -Force docs/security/hardening/evidence | Out-Null
+New-Item -ItemType Directory -Force $ReportDir | Out-Null
+$reports=(Resolve-Path -LiteralPath $ReportDir).Path
+$overlay=Join-Path (Get-Location) '.tools/security-report-overlay.json'
+@{services=@{probe=@{volumes=@("${reports}:/reports")};browser=@{volumes=@("${reports}:/reports")}}} | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath $overlay
+$compose += @('-f',$overlay)
 if(-not $SkipBuild){
     & docker compose --env-file .env -p opspilot-full-security-build -f compose.full.yaml -f compose.full.test.yaml build api tests web e2e oidc postgres
     if($LASTEXITCODE){throw 'Security images build failed'}

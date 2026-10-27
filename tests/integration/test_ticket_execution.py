@@ -71,7 +71,7 @@ async def test_execution_faults_and_verification(
         pending = await settle(service, run_id)
         assert pending["status"] == "waiting_for_approval", pending
         action = pending["action"]
-        decision = Decision(action_id=action["action_id"], decision="approve")
+        decision = Decision(expected_version=1, action_id=action["action_id"], decision="approve")
         await service.decide(run_id, decision)
         final = await settle(service, run_id)
         assert final["outcome"] == outcome, final

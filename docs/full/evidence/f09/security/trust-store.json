@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "image_id": "sha256:ff4a72e4357efaad818b3e15d1c05f2636fd0f9cc4f39fb87d58059a4a01df17",
+  "check": "ssl.create_default_context system roots exclude compromised emSign ECC Root CA - G3",
+  "reproduction": "scripts/scan-full-security.ps1 runtime trust-store assertion",
+  "scope": "specific known incident regression; not full PKI acceptance"
+}

@@ -18,6 +18,20 @@ const context=await browser.newContext();
 const page=await context.newPage(); page.setDefaultTimeout(15000);
 page.on('response',r=>{if(r.url().startsWith(origin+'/auth/callback'))console.log('callback status',r.status());});
 const checks=[];
+async function chooseTenant(p) {
+ const selector=p.getByLabel('Tenant',{exact:true});
+ const target='aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa';
+ await selector.waitFor();
+ if(await selector.inputValue() !== target) {
+   await Promise.all([
+     p.waitForEvent('framenavigated',frame=>frame===p.mainFrame()),
+     selector.selectOption(target),
+   ]);
+ }
+ await p.waitForLoadState('networkidle');
+ await p.getByLabel('Tenant',{exact:true}).waitFor();
+ assert.equal(await p.getByLabel('Tenant',{exact:true}).inputValue(),target);
+}
 function otp(name){const b=Buffer.alloc(8);b.writeBigUInt64BE(BigInt(Math.floor(Date.now()/30000)));const h=createHmac('sha1',secrets[name]).update(b).digest();const i=h[19]&15;return String((h.readUInt32BE(i)&0x7fffffff)%1000000).padStart(6,'0');}
 try {
  await page.goto(origin);
@@ -43,9 +57,7 @@ try {
  let me=await page.evaluate(async()=>{const r=await fetch('/auth/me');return {status:r.status,body:await r.json()};});
  assert.equal(me.status,200);
  checks.push('provider userinfo validates live MFA session over trusted TLS');
- const select=page.getByLabel('Tenant',{exact:true});
- await select.selectOption('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa');
- await page.waitForLoadState('networkidle');
+ await chooseTenant(page);
  me=await page.evaluate(async()=>{const r=await fetch('/auth/me');return {status:r.status,body:await r.json()};});
  const sessions=await page.evaluate(async()=>{const r=await fetch('/auth/sessions');return {status:r.status,body:await r.json()};});
  assert.equal(sessions.status,200);assert(sessions.body.items.length>=1);
@@ -79,16 +91,16 @@ try {
    throw Error('Hardened worker did not reach a saved result');
  }
  const pending=await savedSnapshot(page);assert.equal(pending.status,'waiting_for_approval');
- const forbidden=await page.evaluate(async({path,csrf,action})=>(await fetch(path+'/decision',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({action_id:action,decision:'approve'})})).status,{path:created.body.snapshot_url,csrf:me.body.csrf_token,action:pending.action.action_id});
+ const forbidden=await page.evaluate(async({path,csrf,action})=>(await fetch(path+'/decision',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({action_id:action,decision:'approve',expected_version:1})})).status,{path:created.body.snapshot_url,csrf:me.body.csrf_token,action:pending.action.action_id});
  assert.equal(forbidden,403);
  const approvalContext=await browser.newContext();const approvalPage=await approvalContext.newPage();approvalPage.setDefaultTimeout(15000);
  try {
    await approvalPage.goto(origin);await approvalPage.getByRole('link',{name:'Sign in',exact:true}).click();
    await approvalPage.locator('#username').fill('approver');await approvalPage.locator('#password').fill(credentials.user);await approvalPage.locator('#kc-login').click();
    await approvalPage.locator('#otp').fill(otp('approver'));await approvalPage.locator('#kc-login').click();
-   await approvalPage.waitForURL(origin+'/');await approvalPage.getByLabel('Tenant',{exact:true}).selectOption('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa');await approvalPage.waitForLoadState('networkidle');
+   await approvalPage.waitForURL(origin+'/');await chooseTenant(approvalPage);
    const approver=await approvalPage.evaluate(async()=> (await fetch('/auth/me')).json());
-   const accepted=await approvalPage.evaluate(async({path,csrf,action})=>(await fetch(path+'/decision',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({action_id:action,decision:'approve'})})).status,{path:created.body.snapshot_url,csrf:approver.csrf_token,action:pending.action.action_id});
+   const accepted=await approvalPage.evaluate(async({path,csrf,action})=>(await fetch(path+'/decision',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({action_id:action,decision:'approve',expected_version:1})})).status,{path:created.body.snapshot_url,csrf:approver.csrf_token,action:pending.action.action_id});
    assert.equal(accepted,202);
    const completed=await savedSnapshot(approvalPage);assert.equal(completed.status,'completed');assert.equal(completed.outcome,'actions_verified');
    checks.push('operator cannot approve; separate fresh-MFA approver completes signed TLS MCP action with verified outcome');

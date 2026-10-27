@@ -124,8 +124,14 @@ async def probe(self, run):
                     and not result.error.retryable
                 ):
                     rejected.append("operation")
-            except Exception:
-                pass
+            except Exception as exc:
+                # F09 rejects stale Core issuance before a request can reach MCP.
+                # The same DB fence SQLSTATE is required; arbitrary failures do not pass.
+                state = getattr(exc, "sqlstate", None) or getattr(
+                    getattr(exc, "orig", None), "sqlstate", None
+                )
+                if state == "40001":
+                    rejected.append("operation")
     return rejected
 
 

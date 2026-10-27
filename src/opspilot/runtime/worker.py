@@ -22,8 +22,10 @@ from opspilot.tenancy.session import TenantSession
 
 
 async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
+    from opspilot.runtime.actions import expire_approvals
     from opspilot.runtime.human_commands import expire, finalize_cancel
 
+    await expire_approvals(service)
     await expire(service)
     await reap(service.engine, run_id)
     job = await claim(service.engine, run_id, service.settings.worker_lease_seconds)

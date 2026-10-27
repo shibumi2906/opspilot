@@ -33,6 +33,9 @@ class Settings(BaseSettings):
     service_private_dir: str = "/run/service-private"
     service_public_keys: str = "/run/service-public/keys.json"
     service_active_kid: str = "current"
+    grant_active_kid: str = Field(default="grant-current", pattern=r"^grant-(current|next)$")
+    approval_ttl_seconds: int = Field(default=900, ge=1, le=86400)
+    grant_ttl_seconds: int = Field(default=60, ge=1, le=60)
 
     identity_database_url: SecretStr | None = None
     identity_db_password: SecretStr | None = None

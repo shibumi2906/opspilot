@@ -150,7 +150,10 @@ async def test_receipt_recovery_projection_and_audit_explain_run(
         pending = await service.snapshot(run)
         await recover(service, run)
         await service.decide(
-            run, Decision(action_id=pending["action"]["action_id"], decision="approve")
+            run,
+            Decision(
+                expected_version=1, action_id=pending["action"]["action_id"], decision="approve"
+            ),
         )
         await process_one(service, run)
         final = await service.snapshot(run)

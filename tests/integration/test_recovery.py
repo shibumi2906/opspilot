@@ -32,7 +32,10 @@ async def line(process):
         await process.wait()
         raise AssertionError((await process.stderr.read()).decode()[-4000:]) from None
     if not result:
-        raise AssertionError((await process.stderr.read()).decode()[-4000:])
+        raise AssertionError(
+            f"Recovery worker exit={process.returncode}: "
+            + (await process.stderr.read()).decode()[-4000:]
+        )
     return result
 
 
@@ -69,13 +72,19 @@ async def test_hard_process_recovery(integration_settings, admin_engine, crash):
             assert result["status"] == "waiting_for_approval"
             assert result["action"] == pending["action"]
             await service.decide(
-                run_id, Decision(action_id=result["action"]["action_id"], decision="approve")
+                run_id,
+                Decision(
+                    expected_version=1, action_id=result["action"]["action_id"], decision="approve"
+                ),
             )
             result = await terminal(service, run_id)
         assert result["outcome"] == "actions_verified", result
         assert result["action"]["arguments_hash"] == pending["action"]["arguments_hash"]
         await service.decide(
-            run_id, Decision(action_id=result["action"]["action_id"], decision="approve")
+            run_id,
+            Decision(
+                expected_version=1, action_id=result["action"]["action_id"], decision="approve"
+            ),
         )
         async with admin_engine.connect() as conn:
             count = await conn.scalar(

@@ -140,7 +140,10 @@ async def test_two_workers_expiry_and_stale_boundaries(
         pending = await wait_status({"waiting_for_approval", "failed", "needs_attention"})
         assert pending["status"] == "waiting_for_approval", pending
         await service.decide(
-            run, Decision(action_id=pending["action"]["action_id"], decision="approve")
+            run,
+            Decision(
+                expected_version=1, action_id=pending["action"]["action_id"], decision="approve"
+            ),
         )
         final = await wait_status({"completed", "failed", "needs_attention"})
         assert final["outcome"] == "actions_verified", final

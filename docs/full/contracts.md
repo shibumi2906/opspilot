@@ -47,3 +47,21 @@ fencing for snapshots, local operations and SDK checkpoint/pending writes. Schem
 workflow full-graph-v1, public state 1. See [execution-fencing.md](execution-fencing.md) and
 [ADR 006](adr/006-fenced-checkpoint-adapter.md). Current gate: scripts/test-full-f06.ps1. F07 events/outbox
 are not implemented by this stage; earlier stage sections record their historical boundary.
+
+
+## F09: revision-aware decision contract
+
+`POST /api/v2/runs/{run_id}/decision` принимает `{action_id, decision, expected_version}`;
+`action_id` — immutable revision ID; expected_version — обязательный strict integer 1–10.
+Snapshot.action содержит logical_action_id, revision_id/action_id, expected_version,
+revision_hash, expires_at. Grant/JWT в public contract отсутствует.
+Identical replay сохраняет результат; opposite/stale — 409; expired — 410.
+
+`POST /api/v2/actions/{logical_action_id}/revisions` принимает
+`{expected_version, arguments: TicketProposal}`. Operator-владелец может менять только
+title/description/priority; customer/evidence не меняются. Новая карточка требует нового
+согласия и supersedes старую pending/approved revision. Succeeded/unknown закрыты.
+`POST /api/v2/actions/{revision_id}/revoke` принимает `{expected_version}`;
+доступен автору approval с fresh MFA и ролью approver до нового effect.
+Version/hash/TTL/policy повторно проверяются Core и MCP; JWT существует только в
+service transport. Подробности: [F09 security contracts](f09-security-contracts.md).

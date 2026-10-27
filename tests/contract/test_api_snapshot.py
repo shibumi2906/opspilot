@@ -24,4 +24,6 @@ def test_request_requires_id_and_normalizes_text():
 @pytest.mark.parametrize("extra", [{"arguments": {}}, {"title": "changed"}, {"approved": True}])
 def test_decision_forbids_payload_and_grants(extra):
     with pytest.raises(ValidationError):
-        Decision.model_validate({"action_id": str(uuid4()), "decision": "approve", **extra})
+        Decision.model_validate(
+            {"action_id": str(uuid4()), "decision": "approve", "expected_version": 1, **extra}
+        )

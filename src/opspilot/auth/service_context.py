@@ -141,3 +141,7 @@ def verify(token: str, settings: Settings) -> dict[str, Any]:
         return claims
     except (jwt.PyJWTError, ValueError, KeyError, TypeError, OSError) as exc:
         raise AuthError("SERVICE_CONTEXT_INVALID", 401) from exc
+
+
+def action_context() -> dict[str, str] | None:
+    return _action.get()

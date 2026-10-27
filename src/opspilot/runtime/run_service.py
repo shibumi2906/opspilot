@@ -7,7 +7,7 @@ import httpx
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 from psycopg import Error as PsycopgError
-from sqlalchemy import select, text, update
+from sqlalchemy import func, select, text, update
 from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.agent.budgets import Budget, BudgetLimits
@@ -170,7 +170,7 @@ class RunService:
                 await session.execute(
                     select(Action, Approval)
                     .join(Approval, Action.id == Approval.action_id)
-                    .where(Action.run_id == run_id)
+                    .where(Action.run_id == run_id, Action.superseded_at.is_(None))
                 )
             ).one_or_none()
             public["action"] = (
@@ -181,6 +181,11 @@ class RunService:
                     "tool_name": row.Action.tool_name,
                     "arguments": row.Action.arguments,
                     "arguments_hash": row.Action.arguments_hash,
+                    "revision_hash": row.Action.revision_hash,
+                    "logical_action_id": str(row.Action.logical_action_id),
+                    "revision_id": str(row.Action.id),
+                    "expected_version": row.Approval.version,
+                    "expires_at": row.Approval.expires_at.isoformat(),
                     "approval_status": row.Approval.decision,
                     "execution_status": row.Action.execution_status,
                     "result": row.Action.execution_result,
@@ -226,6 +231,8 @@ class RunService:
     async def decide(self, run_id: UUID, body: Decision) -> dict[str, Any]:
         from opspilot.auth.session_routes import require_recent
 
+        if self.settings.security_profile == "hardened" and optional_principal() is None:
+            raise AuthError("AUTHENTICATION_REQUIRED", 401)
         if optional_principal() is not None:
             require_recent(self.settings)
         async with self.lock(run_id):
@@ -245,6 +252,26 @@ class RunService:
                     if await session.get(Action, body.action_id) is None:
                         raise LookupError("Action not found")
                     raise Conflict("Action does not belong to run")
+                from opspilot.security.revisions import valid_revision
+
+                if row.Action.superseded_at or row.Approval.version != body.expected_version:
+                    raise Conflict("Stale revision/version")
+                if not valid_revision(row.Action):
+                    raise Conflict("Revision digest mismatch")
+                if not await session.scalar(
+                    text("SELECT identity.lock_role(:u,:t,'approver')"),
+                    {"u": actor_id(), "t": run.tenant_id},
+                ):
+                    raise AuthError()
+                now = await session.scalar(select(func.clock_timestamp()))
+                assert now is not None
+                if row.Approval.decision in {"expired", "revoked", "superseded"}:
+                    raise AuthError(
+                        "APPROVAL_" + row.Approval.decision.upper(),
+                        410 if row.Approval.decision == "expired" else 409,
+                    )
+                if now >= row.Approval.expires_at and row.Action.execution_status != "succeeded":
+                    raise AuthError("APPROVAL_EXPIRED", 410)
                 choice = "approved" if body.decision == "approve" else "rejected"
                 if row.Approval.decision != "pending":
                     if row.Approval.decision != choice:
@@ -280,7 +307,7 @@ class RunService:
                         raise AuthError("SELF_APPROVAL_FORBIDDEN")
                     row.Approval.self_approval_exception = same
                 row.Approval.decision = choice
-                row.Approval.decided_at = datetime.now(UTC)
+                row.Approval.decided_at = now
                 run.status = "running"
                 run.updated_at = datetime.now(UTC)
                 await session.flush()

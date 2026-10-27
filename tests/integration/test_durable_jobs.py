@@ -43,7 +43,9 @@ async def test_enqueue_rollback_and_replay(integration_settings, monkeypatch, ad
         assert (await service.snapshot(run))["status"] == "queued"
         await process_one(service, run)
         pending = await service.snapshot(run)
-        choice = Decision(action_id=pending["action"]["action_id"], decision="approve")
+        choice = Decision(
+            expected_version=1, action_id=pending["action"]["action_id"], decision="approve"
+        )
         monkeypatch.setattr(decisions, "enqueue", fail)
         with pytest.raises(RuntimeError):
             await service.decide(run, choice)
@@ -274,7 +276,11 @@ async def test_api_commit_loss_offline_worker_and_singleton(integration_settings
             await asyncio.wait_for(api.wait(), 15)
             api = await start_api("decide")
             await session_client(client, integration_settings)
-            choice = {"action_id": pending["action"]["action_id"], "decision": "approve"}
+            choice = {
+                "action_id": pending["action"]["action_id"],
+                "decision": "approve",
+                "expected_version": 1,
+            }
             with pytest.raises(httpx.TransportError):
                 await client.post(path + "/decision", json=choice)
             assert await asyncio.wait_for(api.wait(), 10) == 73

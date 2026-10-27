@@ -8,10 +8,12 @@ from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 from mcp.types import Tool
 
-from opspilot.auth.service_context import mint
+from opspilot.auth.context import AuthError
+from opspilot.auth.service_context import action_context, mint
 from opspilot.config import Settings
 from opspilot.contracts.common import ToolResult
 from opspilot.mcp_client.registry import ALL_TOOLS
+from opspilot.security.grants import issue
 from opspilot.security.tls import client_context
 from opspilot.telemetry import carrier, span
 from opspilot.tenancy.context import require_tenant
@@ -25,6 +27,14 @@ class MCPClient:
     async def session(self) -> AsyncIterator[tuple[ClientSession, str]]:
         require_tenant()
         token = mint(self.settings)
+        grant_headers = {}
+        operation = action_context()
+        if operation:
+            try:
+                grant_headers["X-OpsPilot-Grant"] = await issue(self.settings, operation)
+            except AuthError:
+                # Missing/stale authorization never grants a write; MCP returns the precise denial.
+                pass
         bearer = (
             token
             if self.settings.security_profile == "hardened"
@@ -33,6 +43,7 @@ class MCPClient:
         async with httpx.AsyncClient(
             headers={
                 **carrier(),
+                **grant_headers,
                 "X-OpsPilot-Context": token,
                 "Authorization": f"Bearer {bearer}",
             },

@@ -14,9 +14,10 @@ from opspilot.db.models_domain import (
     KnowledgeArticle,
     Ticket,
 )
-from opspilot.db.models_workflow import Action, AgentRun, Approval
+from opspilot.db.models_workflow import Action, AgentRun, Approval, LogicalAction
 from opspilot.fixtures.models import Fixtures, MonitoringFixture
 from opspilot.runtime.actions import payload_hash
+from opspilot.security.revisions import canonical_hash, document
 from opspilot.tenancy.context import DEMO_ACTOR, DEMO_TENANT, SECOND_TENANT
 
 GREENSHOP_ID = "00000000-0000-0000-0000-000000000001"
@@ -134,11 +135,45 @@ async def seed(engine: AsyncEngine, clock: datetime) -> dict[str, int]:
                     ),
                 ),
                 (
+                    LogicalAction,
+                    dict(
+                        id=action_id,
+                        tenant_id=tenant,
+                        run_id=run_id,
+                        current_revision_id=action_id,
+                        version=1,
+                    ),
+                ),
+                (
                     Action,
                     dict(
                         id=action_id,
                         tenant_id=tenant,
                         run_id=run_id,
+                        logical_action_id=action_id,
+                        revision_number=1,
+                        plan_version=1,
+                        expires_at=clock,
+                        revision_document=document(
+                            tenant=str(tenant),
+                            run=str(run_id),
+                            logical=str(action_id),
+                            revision=str(action_id),
+                            version=1,
+                            arguments=arguments,
+                            expires=clock,
+                        ),
+                        revision_hash=canonical_hash(
+                            document(
+                                tenant=str(tenant),
+                                run=str(run_id),
+                                logical=str(action_id),
+                                revision=str(action_id),
+                                version=1,
+                                arguments=arguments,
+                                expires=clock,
+                            )
+                        ),
                         tool_name="create_ticket",
                         arguments=arguments,
                         arguments_hash=payload_hash(arguments),

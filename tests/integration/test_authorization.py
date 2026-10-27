@@ -70,12 +70,20 @@ async def test_two_tenant_operator_approver_real_mcp_scenario(
         assert (
             await operator.post(
                 path + "/decision",
-                json={"action_id": pending["action"]["action_id"], "decision": "approve"},
+                json={
+                    "action_id": pending["action"]["action_id"],
+                    "decision": "approve",
+                    "expected_version": 1,
+                },
             )
         ).status_code == 403
         accepted = await approver.post(
             path + "/decision",
-            json={"action_id": pending["action"]["action_id"], "decision": "approve"},
+            json={
+                "action_id": pending["action"]["action_id"],
+                "decision": "approve",
+                "expected_version": 1,
+            },
         )
         assert accepted.status_code == 202, accepted.text
         final = await ready(operator, path)

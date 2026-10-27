@@ -48,3 +48,9 @@ approval node is renamed. Database migration is 0009_human_commands.
 
 Reproduce with `powershell -NoProfile -File scripts/test-full-f08.ps1`, isolated Compose
 project opspilot-full-test-f08-release, database opspilot_full_test. No MVP resources are used.
+
+
+F09 уточнение: все decision requests теперь обязаны передавать strict expected_version
+из текущей snapshot.action. Revisions и revoke описаны в [contracts](contracts.md#f09-revision-aware-decision-contract).
+Approval expiry также завершает human gate через durable resume; новая revision повторно
+ставит resume, даже если job старой revision уже done. UI не отправляет execution grants.

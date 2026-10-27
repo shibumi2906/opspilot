@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F08 завершены; F09–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 27 октября 2026 года. **F01–F09 завершены; F10–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F09 — action revisions, approval и grants. Не начат.**
+**Следующий этап: F10 — local ticket/comment/internal inbox operations. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F09 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F10 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -61,7 +61,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F06 | done | Multiworker leases/fenced checkpoints | [evidence](full/evidence/f06/README.md); commit subject: `feat(full): implement F06 multiworker leases and fenced checkpoints` | [SEC-00: local baseline](security/hardening/status.md) |
 | F07 | done | Transactional events/audit/projections | [evidence](full/evidence/f07/README.md); commit subject: `feat(full): implement F07 transactional events audit and projections` | [SEC-00: local baseline](security/hardening/status.md) |
 | F08 | done | Durable typed clarification и cancellation | [evidence](full/evidence/f08/README.md); commit subject: `feat(full): implement F08 durable clarification and cancellation` | [SEC-00: local baseline](security/hardening/status.md) |
-| F09 | not_started | Revisions/TTL/approval/grants | — | [SEC-01/02/03/04/05/06](security/asvs-l2-implementation-plan.md) |
+| F09 | done | Immutable revisions, version/TTL, independent signed persisted grants, exact MCP authorization | [evidence](full/evidence/f09/README.md); commit subject: `feat(full-f09): bind immutable revisions to signed execution grants` | [SEC-01/02/03/04/05/06](security/asvs-l2-implementation-plan.md) |
 | F10 | not_started | Local ticket/comment/internal inbox writes | — | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
 | F11 | not_started | Mixed plans/dependencies/approval waves | — | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
 | F12 | not_started | Freshness/expiry/revocation/replan | — | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
@@ -450,3 +450,31 @@ Application/DB/Compose/CI/deployment не менялись; новые runtime �
 документационной задачи и не заявляются. MVP checkout не изменялся.
 F09 остаётся следующим `not_started`; весь L2 по-прежнему NOT_MET.
 Отдельный local commit subject: `docs(full): integrate ASVS L2 security tasks into implementation stages`.
+
+
+## F09 — action revisions, approval и grants (27 октября 2026)
+
+Статус: done. Scope сохраняется: один исполняемый create_ticket,
+без новых tools F10 и DAG F11. Logical intent и immutable revisions отделены migration 0011;
+strict expected_version, DB-time approval TTL, supersede/revoke/expiry и durable resume.
+Core выдаёт transient Ed25519 grant с независимым purpose/key generation ID, jti, epoch,
+exact revision hash и lifetime ≤60 секунд/остатка approval. MCP повторно проверяет persisted
+approval, актуальные роли/ownership/self-approval/tenant/fence; consume + ticket + receipt атомарны.
+API не имеет private grant keys. В public DTO/model/checkpoint/audit JWT не передаётся.
+
+До migration записаны [security contracts](full/f09-security-contracts.md). SEC-01/02/03/04/05/06
+проверяются в локальном scope; SEC-10 дополняет change gate scan/audit и remediation policy.
+Первый runtime scan обнаружил CVE: runtime переведён на поддерживаемый Alpine с vendor updates,
+uv исправлен, неиспользуемый системный pip с vendored vulnerabilities удалён. Это исправления
+Full; исходный MVP не менялся. Поздние requirements менеджера/retention/collector/IdP/deployment
+остаются конкретными задачами F17/F16/F23/F24; полный ASVS L2 по-прежнему NOT_MET.
+
+Измеренная приемка и границы: [F09 evidence](full/evidence/f09/README.md).
+
+
+F09 acceptance: Python 301 passed / 9 skipped; browser 12; durable queue process 5;
+fencing kill/stop/partition 3; scripted evals 12/12 с 0 unauthorized/duplicate writes.
+Ruff/format/mypy, real local TLS/MFA (8+11 checks), legacy upgrade (2 receipts preserved),
+SCA app/web 0 findings, Python/npm audit 0, live key separation/DB audit privileges — pass.
+MVP fingerprint сохранён. Отдельный локальный commit F09; push не выполнялся.
+Следующий этап — F10, он остаётся not_started.

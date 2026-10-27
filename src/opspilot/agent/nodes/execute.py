@@ -32,6 +32,8 @@ async def saved_action(state: AgentState, runtime: Runtime) -> dict[str, Any]:
             if row is None or row.Approval.decision != "approved":
                 raise ValueError("Approved action missing")
             action = row.Action
+            if action.superseded_at is not None:
+                raise ValueError("Superseded revision")
             if action.tool_name != "create_ticket" or action.arguments_hash != payload_hash(
                 action.arguments
             ):
@@ -70,6 +72,7 @@ async def execute(state: AgentState, runtime: Runtime) -> None:
 
 
 async def dispatch(state: AgentState, runtime: Runtime, action: dict[str, Any]) -> None:
+    await check_cancelled(runtime.settings)
     async with runtime.client.session() as (session, _):
         try:
             await check_cancelled(runtime.settings)

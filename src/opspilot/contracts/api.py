@@ -3,6 +3,7 @@ from uuid import UUID
 
 from pydantic import Field, StringConstraints
 
+from opspilot.contracts.actions import TicketProposal
 from opspilot.contracts.common import StrictModel
 
 
@@ -14,6 +15,7 @@ class CreateRun(StrictModel):
 class Decision(StrictModel):
     action_id: UUID
     decision: Literal["approve", "reject"]
+    expected_version: Annotated[int, Field(strict=True, ge=1, le=10)]
 
 
 class ClarificationAnswer(StrictModel):
@@ -26,3 +28,12 @@ class ClarificationAnswer(StrictModel):
 
 class CancelRun(StrictModel):
     command_id: UUID
+
+
+class RevisionChange(StrictModel):
+    expected_version: Annotated[int, Field(strict=True, ge=1, le=10)]
+    arguments: TicketProposal
+
+
+class RevokeApproval(StrictModel):
+    expected_version: Annotated[int, Field(strict=True, ge=1, le=10)]

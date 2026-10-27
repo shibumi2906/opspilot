@@ -179,7 +179,12 @@ async def test_cancel_queued_waiting(integration_settings, waiting):
         if waiting == "approval":
             with pytest.raises(Conflict):
                 await service.decide(
-                    run, Decision(action_id=pending["action"]["action_id"], decision="approve")
+                    run,
+                    Decision(
+                        expected_version=1,
+                        action_id=pending["action"]["action_id"],
+                        decision="approve",
+                    ),
                 )
         await process_one(service, run)
         final = await service.snapshot(run)
@@ -246,7 +251,10 @@ async def test_cancel_racing_local_write(
     try:
         run, pending = await create(service, "Investigate GreenShop")
         await service.decide(
-            run, Decision(action_id=pending["action"]["action_id"], decision="approve")
+            run,
+            Decision(
+                expected_version=1, action_id=pending["action"]["action_id"], decision="approve"
+            ),
         )
         task = asyncio.create_task(process_one(service, run))
         await asyncio.wait_for(entered.wait(), 15)
@@ -426,8 +434,8 @@ async def test_cancel_serializes_with_inflight_local_transaction(
     from opspilot.auth.execution import execution_scope
     from opspilot.contracts.tools import CreateTicketArgs
     from opspilot.db.engine import create_engine
-    from opspilot.mcp_server.services.tickets import create_ticket
     from opspilot.runtime.fencing import execution_lease
+    from tests.grant_helpers import create_ticket
 
     entered, release = asyncio.Event(), asyncio.Event()
     service = RunService(integration_settings)
@@ -435,7 +443,9 @@ async def test_cancel_serializes_with_inflight_local_transaction(
     try:
         run, pending = await create(service, "Investigate GreenShop")
         card = pending["action"]
-        await service.decide(run, Decision(action_id=card["action_id"], decision="approve"))
+        await service.decide(
+            run, Decision(expected_version=1, action_id=card["action_id"], decision="approve")
+        )
 
         async def after_insert():
             entered.set()
@@ -507,7 +517,10 @@ async def test_cancel_between_node_entry_and_write_dispatch(integration_settings
         monkeypatch.setattr(node, "saved_action", saved)
         monkeypatch.setattr(MCPClient, "call", staticmethod(call))
         await service.decide(
-            run, Decision(action_id=pending["action"]["action_id"], decision="approve")
+            run,
+            Decision(
+                expected_version=1, action_id=pending["action"]["action_id"], decision="approve"
+            ),
         )
         task = asyncio.create_task(process_one(service, run))
         await asyncio.wait_for(entered.wait(), 10)

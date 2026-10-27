@@ -182,6 +182,9 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                 ),
             )
         except WriteDenied as exc:
+            logger.bind(security_event="write_authorization_denied", reason=exc.code).warning(
+                "security_event"
+            )
             result = ToolResult(
                 ok=False,
                 observed_at=settings.scenario_clock,

@@ -51,7 +51,10 @@ async def main():
 
             MCPClient.call = staticmethod(call)
         await service.decide(
-            run_id, Decision(action_id=snapshot["action"]["action_id"], decision="approve")
+            run_id,
+            Decision(
+                expected_version=1, action_id=snapshot["action"]["action_id"], decision="approve"
+            ),
         )
         if mode == "decision":
             print("committed", flush=True)

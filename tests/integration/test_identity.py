@@ -82,7 +82,7 @@ async def test_operator_cannot_approve_and_membership_revocation(
         assert (
             await client.post(
                 f"/api/v2/runs/{uuid4()}/decision",
-                json={"action_id": str(uuid4()), "decision": "approve"},
+                json={"action_id": str(uuid4()), "decision": "approve", "expected_version": 1},
             )
         ).status_code == 403
         async with admin_engine.begin() as conn:
@@ -129,7 +129,11 @@ async def test_self_approval_default_denied_demo_exception_persisted(integration
             await asyncio.gather(*service.tasks)
             run = UUID(created["run_id"])
             snapshot = await service.snapshot(run)
-            choice = Decision(action_id=UUID(snapshot["action"]["action_id"]), decision="approve")
+            choice = Decision(
+                expected_version=1,
+                action_id=UUID(snapshot["action"]["action_id"]),
+                decision="approve",
+            )
             with pytest.raises(AuthError, match="SELF_APPROVAL_FORBIDDEN"):
                 await service.decide(run, choice)
             service.settings = integration_settings.model_copy(

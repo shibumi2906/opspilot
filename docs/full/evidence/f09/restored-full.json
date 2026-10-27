@@ -1,0 +1,9 @@
+{
+  "ui": "http://127.0.0.1:8091",
+  "profile": "ordinary Full local development; hardened lab separately verified",
+  "web_status": 200,
+  "schema": "0011_action_grants (readiness checked)",
+  "api": {
+    "status": "ready"
+  }
+}

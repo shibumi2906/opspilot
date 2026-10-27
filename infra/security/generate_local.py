@@ -35,6 +35,22 @@ service_key = ed25519.Ed25519PrivateKey.generate()
     )
 )
 
+grant_ring = {}
+for kid in ("grant-current", "grant-next"):
+    grant_key = ed25519.Ed25519PrivateKey.generate()
+    (OUT / ("service-private/" + kid + ".pem")).write_bytes(
+        grant_key.private_bytes(
+            serialization.Encoding.PEM,
+            serialization.PrivateFormat.PKCS8,
+            serialization.NoEncryption(),
+        )
+    )
+    grant_ring[kid] = (
+        grant_key.public_key()
+        .public_bytes(serialization.Encoding.PEM, serialization.PublicFormat.SubjectPublicKeyInfo)
+        .decode()
+    )
+(OUT / "service-public/grants.json").write_text(json.dumps(grant_ring))
 now = datetime.now(timezone.utc)
 
 
@@ -243,7 +259,9 @@ def service(role, dbs):
     if role in ["api", "mcp"]:
         env.update(TLS_CERT_FILE="/tls/" + role + ".crt", TLS_KEY_FILE="/tls/" + role + ".key")
         vol += mounts(role + ".crt", role + ".key")
-    if role in ["api", "worker"]:
+    if role == "api":
+        vol += ["./service-private/current.pem:/run/service-private/current.pem:ro"]
+    if role == "worker":
         vol += ["./service-private:/run/service-private:ro"]
     if role == "mcp":
         vol += ["./service-public:/run/service-public:ro"]

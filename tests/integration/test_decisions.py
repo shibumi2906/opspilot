@@ -67,14 +67,16 @@ async def test_durable_decisions(integration_settings, admin_engine, choice, out
         other_id = UUID(other["run_id"])
         await settle(service, other_id)
         with pytest.raises(Conflict):
-            await service.decide(other_id, Decision(action_id=card["action_id"], decision=choice))
+            await service.decide(
+                other_id, Decision(expected_version=1, action_id=card["action_id"], decision=choice)
+            )
         async with AsyncSession(service.engine) as session, session.begin():
             action = await prepare(session, run_id, card["arguments"])
             assert str(action.id) == card["action_id"]
         with pytest.raises(Conflict):
             async with AsyncSession(service.engine) as session, session.begin():
                 await prepare(session, run_id, {**card["arguments"], "title": "tampered"})
-        decision = Decision(action_id=card["action_id"], decision=choice)
+        decision = Decision(expected_version=1, action_id=card["action_id"], decision=choice)
         await asyncio.gather(service.decide(run_id, decision), service.decide(run_id, decision))
         final = await settle(service, run_id)
         assert final["status"] == "completed", final
@@ -107,12 +109,15 @@ async def test_durable_decisions(integration_settings, admin_engine, choice, out
             await service.decide(
                 run_id,
                 Decision(
+                    expected_version=1,
                     action_id=decision.action_id,
                     decision="reject" if choice == "approve" else "approve",
                 ),
             )
         with pytest.raises(LookupError):
-            await service.decide(run_id, Decision(action_id=uuid4(), decision=choice))
+            await service.decide(
+                run_id, Decision(expected_version=1, action_id=uuid4(), decision=choice)
+            )
         async with admin_engine.connect() as conn:
             assert await conn.scalar(text("SELECT count(*) FROM domain.tickets")) == before + (
                 choice == "approve"
@@ -146,7 +151,7 @@ async def test_api_contract_and_guard(integration_settings, choice):
             pending = await settle(service, run_id)
             card = pending["action"]
             path = f"/api/v2/runs/{run_id}/decision"
-            body = {"action_id": card["action_id"], "decision": choice}
+            body = {"action_id": card["action_id"], "decision": choice, "expected_version": 1}
             assert (await client.post(path, json={**body, "arguments": {}})).status_code == 422
             wrong = {**body, "action_id": str(uuid4())}
             assert (await client.post(path, json=wrong)).status_code == 404
@@ -156,7 +161,11 @@ async def test_api_contract_and_guard(integration_settings, choice):
             replay = await client.post(path, json=body)
             assert replay.status_code == 200
             assert replay.json()["ticket_id"] == final["report"]["ticket_id"]
-            opposite = {**body, "decision": "reject" if choice == "approve" else "approve"}
+            opposite = {
+                **body,
+                "decision": "reject" if choice == "approve" else "approve",
+                "expected_version": 1,
+            }
             assert (await client.post(path, json=opposite)).status_code == 409
             public = (await client.get(f"/api/v2/runs/{run_id}")).json()
             assert public["action"]["arguments"] == card["arguments"]

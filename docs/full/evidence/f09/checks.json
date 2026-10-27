@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-27T16:57:29.587080+00:00",
+  "profile": "Full local scripted + real local TLS/MFA; no paid calls/production writes",
+  "python": {
+    "passed": 301,
+    "skipped": 9,
+    "seconds": 263.21
+  },
+  "browser": {
+    "passed": 12,
+    "minutes": 2.5
+  },
+  "durable_queue_process": {
+    "passed": 5,
+    "seconds": 73.4
+  },
+  "fencing_process": {
+    "passed": 3,
+    "seconds": 51.39
+  },
+  "lint_format": "passed",
+  "mypy_source_files": 111,
+  "database_security": {
+    "passed": true,
+    "security_events": 170,
+    "event_kinds": [
+      "grant.consumed",
+      "grant.issued",
+      "revision.current_changed"
+    ],
+    "payloads": "IDs/version/hash/key metadata only; no JWT",
+    "least_privilege": "domain cannot approve/issue/revoke; audit delete denied"
+  },
+  "tls_probes": 8,
+  "tls_browser_security_checks": 11,
+  "upgrade": {
+    "preserved_receipts": 2,
+    "backfilled_revisions": 3,
+    "unexecuted_legacy_approval": "revoked"
+  },
+  "sca": {
+    "app_findings": 0,
+    "web_findings": 0,
+    "python_distributions": 89,
+    "python_vulnerabilities": 0,
+    "npm_vulnerabilities": 0
+  },
+  "evals": {
+    "passed": 12,
+    "total": 12,
+    "tool_precision": 1.0,
+    "tool_recall": 1.0,
+    "precision_cases": 11,
+    "recall_cases": 11,
+    "forbidden_calls": 0,
+    "unauthorized_writes": 0,
+    "writes": 2,
+    "duplicates": 0,
+    "approved_exact_writes": 2,
+    "false_verified_success": 0,
+    "unsupported_facts": 0,
+    "factual_claims": 44,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "unknown_usage_count": 0,
+    "active_latency_p50": 0.9217297510003846,
+    "active_latency_p95": 2.1543817710007716,
+    "human_wait_ms": 719,
+    "hard_safety_gate": true
+  },
+  "whole_asvs_l2": "NOT_MET; future requirements retained in security backlog",
+  "remote_ci": "not_run"
+}

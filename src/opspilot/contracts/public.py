@@ -84,7 +84,11 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         result["report"]["cancelled_actions"] = report.get("cancelled_actions", [])[:3]
     action = value.get("action")
     result["action"] = (
-        pick(action, "action_id tool_name arguments_hash approval_status execution_status")
+        pick(
+            action,
+            "action_id revision_id logical_action_id expected_version revision_hash expires_at "
+            "tool_name arguments_hash approval_status execution_status",
+        )
         if action
         else None
     )

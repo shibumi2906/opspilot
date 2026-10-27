@@ -16,6 +16,7 @@ export function ApprovalCard({
   onSelect: SelectEvidence;
 }) {
   const pending = action.approval_status === "pending";
+  const expired = Date.parse(action.expires_at) <= Date.now();
   return (
     <section className="approval-panel" data-testid="approval-card">
       <SectionHeader
@@ -41,6 +42,7 @@ export function ApprovalCard({
           {action.approval_status}
         </span>
       </div>
+      <p>Revision {action.expected_version} · Approval expires <time dateTime={action.expires_at}>{new Date(action.expires_at).toLocaleString()}</time>{expired && pending ? " · Expired; refresh the saved decision." : ""}</p>
       <dl className="payload">
         <dt>Customer ID</dt>
         <dd className="mono" data-testid="ticket-customer">
@@ -99,7 +101,7 @@ export function ApprovalCard({
             <button
               type="button"
               className="button secondary"
-              disabled={!canApprove || !waiting || busy}
+              disabled={!canApprove || !waiting || busy || expired}
               onClick={() => void onDecision("reject")}
             >
               Reject action
@@ -107,7 +109,7 @@ export function ApprovalCard({
             <button
               type="button"
               className="button primary"
-              disabled={!canApprove || !waiting || busy}
+              disabled={!canApprove || !waiting || busy || expired}
               onClick={() => void onDecision("approve")}
             >
               {busy ? "Checking saved decision…" : "Approve & create ticket"}

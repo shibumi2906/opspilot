@@ -11,6 +11,7 @@ from sqlalchemy import (
     Text,
     UniqueConstraint,
     func,
+    text,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
@@ -69,7 +70,14 @@ class Action(TenantOwned, Base):
         {"schema": "workflow"},
     )
     id: Mapped[UUID] = mapped_column(primary_key=True)
-    run_id: Mapped[UUID] = mapped_column(unique=True)
+    run_id: Mapped[UUID] = mapped_column()
+    logical_action_id: Mapped[UUID] = mapped_column()
+    revision_number: Mapped[int] = mapped_column(default=1)
+    plan_version: Mapped[int] = mapped_column(default=1)
+    revision_document: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    revision_hash: Mapped[str] = mapped_column(String(64))
+    expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    superseded_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     tool_name: Mapped[str] = mapped_column(String(40))
     arguments: Mapped[dict[str, Any]] = mapped_column(JSONB)
     arguments_hash: Mapped[str] = mapped_column(String(64))
@@ -87,14 +95,29 @@ class Approval(TenantOwned, Base):
             ["tenant_id", "action_id"], ["workflow.actions.tenant_id", "workflow.actions.id"]
         ),
         CheckConstraint(
-            "decision IN ('pending', 'approved', 'rejected')", name="ck_approvals_decision"
+            "decision IN ('pending', 'approved', 'rejected', 'expired', 'revoked', 'superseded')",
+            name="ck_approvals_decision",
         ),
         {"schema": "workflow"},
     )
     id: Mapped[UUID] = mapped_column(primary_key=True)
     action_id: Mapped[UUID] = mapped_column(unique=True)
     decision: Mapped[str] = mapped_column(String(20), server_default="pending")
+    version: Mapped[int] = mapped_column(default=1, server_default="1")
+    expires_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        server_default=func.clock_timestamp() + text("interval '15 minutes'"),
+    )
     decided_by: Mapped[UUID | None] = mapped_column(ForeignKey("identity.users.id"))
     self_approval_exception: Mapped[bool] = mapped_column(default=False, server_default="false")
     decided_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class LogicalAction(TenantOwned, Base):
+    __tablename__ = "logical_actions"
+    __table_args__ = (UniqueConstraint("tenant_id", "id"), {"schema": "workflow"})
+    id: Mapped[UUID] = mapped_column(primary_key=True)
+    run_id: Mapped[UUID] = mapped_column()
+    current_revision_id: Mapped[UUID] = mapped_column()
+    version: Mapped[int] = mapped_column(default=1)

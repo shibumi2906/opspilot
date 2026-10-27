@@ -30,7 +30,7 @@ F01–F08 сохраняют исторический done. Следующий �
 
 ## Пакеты работ
 
-Статус SEC-00 — done в ограниченном local scope. SEC-01–12 — `not_started`;
+Статус SEC-00 — done в ограниченном local scope. SEC-01/02/03/04/05/06/10 — `in_progress` (F09 contracts и локальная реализация), остальные — `not_started`;
 это новые задачи, а не подтверждение выполнения соответствующих норм.
 Подзадачи могут закрываться поэтапно; пакет целиком — после всех его gates.
 
@@ -88,3 +88,7 @@ review владельца и подтверждённый scope; пустое ev
 F17 принимает Core в его scope; F24 принимает весь Full Pilot и L2 только после F23.
 Решения о публичном домене/IdP/manager/deployment принимаются до использования соответствующей
 внешней зависимости; этот план не разрешает deploy, платные calls или внешние writes сам по себе.
+
+F09 change review: [контракты и scope](../full/f09-security-contracts.md). Requirement backlog содержит F09 contributions отдельно от полного закрытия нормы. Финальные результаты текущего этапа записываются в его evidence; исторический baseline не перезаписывается.
+
+F09 local change gate завершён: [измеренные проверки](../full/evidence/f09/checks.json). SEC packages сохраняют in_progress до всех своих будущих gates; вклад F09 отмечен отдельно в requirement backlog. Полный L2 остаётся NOT_MET.

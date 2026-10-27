@@ -95,6 +95,7 @@ class SecurityMiddleware:
             b"x-csrf-token",
             b"cookie",
             b"x-opspilot-context",
+            b"x-opspilot-grant",
         }
         if any(sum(k.lower() == name for k, _ in headers) > 1 for name in single):
             await reject(400, "AMBIGUOUS_HEADERS")

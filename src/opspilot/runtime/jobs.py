@@ -17,7 +17,12 @@ async def enqueue(
     await session.execute(
         text("""INSERT INTO workflow.command_jobs
         (id,tenant_id,run_id,kind,action_id) VALUES(:id,:tenant,:run,:kind,:action)
-        ON CONFLICT(tenant_id,run_id,kind) DO NOTHING"""),
+        ON CONFLICT(tenant_id,run_id,kind) DO UPDATE SET
+action_id=EXCLUDED.action_id,status='pending',attempts=0,available_at=clock_timestamp(),
+        finished_at=NULL,claim_owner=NULL,claim_epoch=NULL
+        WHERE workflow.command_jobs.kind='resume' AND workflow.command_jobs.status IN
+('done','dead')
+        AND workflow.command_jobs.action_id IS DISTINCT FROM EXCLUDED.action_id"""),
         {
             "id": uuid4(),
             "tenant": require_tenant(),

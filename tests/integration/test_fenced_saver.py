@@ -121,7 +121,10 @@ async def test_corrupt_checkpoint_binding_blocks_local_dispatch(integration_sett
                 {"r": str(run), "wrong": str(uuid4())},
             )
         await service.decide(
-            run, Decision(action_id=pending["action"]["action_id"], decision="approve")
+            run,
+            Decision(
+                expected_version=1, action_id=pending["action"]["action_id"], decision="approve"
+            ),
         )
         await process_one(service, run)
         final = await service.snapshot(run)

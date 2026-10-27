@@ -56,7 +56,7 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                         await session.execute(
                             select(Action, Approval)
                             .join(Approval, Approval.action_id == Action.id)
-                            .where(Action.run_id == run_id)
+                            .where(Action.run_id == run_id, Action.superseded_at.is_(None))
                         )
                     ).one_or_none()
                 config: RunnableConfig = {"configurable": {"thread_id": str(run_id)}}
@@ -71,8 +71,12 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                     raise ValueError("Unsupported checkpoint binding")
                 valid = (
                     row is not None
-                    and values.get("action_id") == str(row.Action.id)
-                    and row.Action.arguments == values.get("proposed_action")
+                    and (
+                        values.get("action_id") == str(row.Action.id)
+                        or await session_old_revision(
+                            service, values.get("action_id"), row.Action.logical_action_id
+                        )
+                    )
                     and row.Action.arguments_hash == payload_hash(row.Action.arguments)
                 )
                 interrupted = any(task.interrupts for task in saved.tasks)
@@ -154,3 +158,11 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                 await service.fail(run_id, "CHECKPOINT_UNSUPPORTED")
         except AuthError:
             await service.fail(run_id, "AUTHORIZATION_REVOKED")
+
+
+async def session_old_revision(service: "RunService", value: str | None, logical: UUID) -> bool:
+    if value is None:
+        return False
+    async with AsyncSession(service.engine) as session:
+        old = await session.get(Action, UUID(value))
+        return old is not None and old.logical_action_id == logical

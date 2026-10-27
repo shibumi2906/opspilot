@@ -76,7 +76,7 @@ test("GreenShop: live trail, evidence, immutable refresh, double click and verif
   expect(await ticketCount(saved.action!.action_id)).toBe(1);
   const repeat = await page.request.post(
     `/api/v2/runs/${saved.run_id}/decision`,
-    { data: { action_id: saved.action!.action_id, decision: "approve" } },
+    { data: { action_id: saved.action!.action_id, decision: "approve", expected_version: 1 } },
   );
   expect(repeat.status()).toBe(200);
   expect((await repeat.json()).ticket_id).toBe(result.report!.ticket_id);

@@ -2,25 +2,25 @@
 
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
-from typing import Any, Literal
+from typing import Any
 from uuid import uuid4
 
-from sqlalchemy import select, text
+from sqlalchemy import func, select, text
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from opspilot.auth.context import actor_id
+from opspilot.auth.context import AuthError, actor_id
 from opspilot.config import Settings
 from opspilot.contracts.tools import CreateTicketArgs, CreateTicketData
 from opspilot.db.models_domain import Ticket
-from opspilot.db.models_workflow import Action, AgentRun, Approval
+from opspilot.db.models_workflow import Action, AgentRun, Approval, LogicalAction
 from opspilot.runtime.actions import payload_hash
+from opspilot.security.grants import consume
+from opspilot.security.revisions import valid_revision
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 class WriteDenied(Exception):
-    def __init__(
-        self, code: Literal["APPROVAL_REQUIRED", "STATE_CONFLICT", "PAYLOAD_MISMATCH"]
-    ) -> None:
+    def __init__(self, code: str) -> None:
         self.code = code
 
 
@@ -55,11 +55,26 @@ async def create_ticket(
             or action.arguments_hash != payload_hash(arguments)
         ):
             raise WriteDenied("PAYLOAD_MISMATCH")
+        logical = await session.get(LogicalAction, action.logical_action_id)
+        if (
+            logical is None
+            or logical.current_revision_id != action.id
+            or action.superseded_at
+            or not valid_revision(action)
+        ):
+            raise WriteDenied("STATE_CONFLICT")
+        if not await session.scalar(text("SELECT workflow.lock_approval(:a)"), {"a": action.id}):
+            raise WriteDenied("APPROVAL_REQUIRED")
         approval = await session.scalar(select(Approval).where(Approval.action_id == action.id))
         if approval is None or approval.decision != "approved":
             raise WriteDenied("APPROVAL_REQUIRED")
         run = await session.get(AgentRun, action.run_id)
-        if run is None or run.actor_id != actor_id() or approval.decided_by is None:
+        if (
+            run is None
+            or run.actor_id != actor_id()
+            or approval.decided_by is None
+            or approval.decided_at is None
+        ):
             raise WriteDenied("APPROVAL_REQUIRED")
         for user, role in [(run.actor_id, "operator"), (approval.decided_by, "approver")]:
             allowed = await session.scalar(
@@ -71,6 +86,14 @@ async def create_ticket(
         same = run.actor_id == approval.decided_by
         if same and (not settings.allow_demo_self_approval or not approval.self_approval_exception):
             raise WriteDenied("APPROVAL_REQUIRED")
+        now = await session.scalar(select(func.clock_timestamp()))
+        assert now is not None
+        if now >= approval.expires_at or now >= action.expires_at:
+            raise WriteDenied("APPROVAL_EXPIRED")
+        try:
+            await consume(session, action, approval, run, settings)
+        except AuthError as exc:
+            raise WriteDenied(exc.code) from None
         if action.execution_result is not None:
             if action.execution_status != "succeeded":
                 raise WriteDenied("STATE_CONFLICT")

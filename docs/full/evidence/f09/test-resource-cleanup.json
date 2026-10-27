@@ -1,0 +1,13 @@
+{
+  "images_deleted": false,
+  "projects": [
+    "opspilot-full-f09",
+    "opspilot-full-f09-upgrade",
+    "opspilot-full-test-f09-release",
+    "opspilot-full-test-f09-acceptance",
+    "opspilot-full-test-f09-verified",
+    "opspilot-full-f09-upgrade-final"
+  ],
+  "scope": "own stopped F09 test containers and networks only",
+  "volumes_deleted": false
+}

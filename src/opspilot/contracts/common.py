@@ -18,6 +18,10 @@ class ToolError(StrictModel):
         "APPROVAL_REQUIRED",
         "PAYLOAD_MISMATCH",
         "STATE_CONFLICT",
+        "GRANT_REQUIRED",
+        "GRANT_INVALID",
+        "GRANT_REPLAY",
+        "APPROVAL_EXPIRED",
     ]
     message: str
     retryable: bool = False

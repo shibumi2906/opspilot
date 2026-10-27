@@ -11,6 +11,9 @@ x-common-env: &common-env
   APP_ENV: ${APP_ENV:-local}
   LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
   SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
+  GRANT_ACTIVE_KID: ${GRANT_ACTIVE_KID:-grant-current}
+  APPROVAL_TTL_SECONDS: ${APPROVAL_TTL_SECONDS:-900}
+  GRANT_TTL_SECONDS: ${GRANT_TTL_SECONDS:-60}
   APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
   OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
   OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
@@ -94,7 +97,8 @@ services:
   api:
     <<: *app
     volumes:
-      - ./.tools/service-keys/private:/run/service-private:ro
+      - ./.tools/service-keys/private/current.pem:/run/service-private/current.pem:ro
+      - ./.tools/service-keys/private/next.pem:/run/service-private/next.pem:ro
     environment:
       <<: *common-env
       SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY:?Generate Full identity secrets}

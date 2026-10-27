@@ -5,6 +5,7 @@ import uvicorn
 from fastapi import FastAPI
 
 from opspilot.api.errors import install_errors
+from opspilot.api.routes_actions import router as actions_router
 from opspilot.api.routes_health import router
 from opspilot.api.routes_runs import router as runs_router
 from opspilot.auth.http import SessionMiddleware
@@ -63,6 +64,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(auth_router)
     app.include_router(sessions_router)
     app.include_router(runs_router)
+    app.include_router(actions_router)
     app.include_router(router)
 
     @app.api_route("/api/v1/{path:path}", methods=["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD"])

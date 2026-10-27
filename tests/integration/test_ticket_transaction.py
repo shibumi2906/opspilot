@@ -2,7 +2,8 @@ import asyncio
 from uuid import uuid4
 
 import pytest
-from sqlalchemy import select, update
+from sqlalchemy import func, select, update
+from sqlalchemy.exc import DBAPIError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from opspilot.agent.service import run_investigation
@@ -12,10 +13,10 @@ from opspilot.db.engine import create_engine
 from opspilot.db.models_domain import Ticket
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.mcp_client.client import MCPClient
-from opspilot.mcp_server.services.tickets import create_ticket
 from opspilot.runtime.actions import payload_hash
 from opspilot.runtime.fencing import execution_lease
 from opspilot.tenancy.context import DEMO_ACTOR
+from tests.grant_helpers import create_ticket
 
 
 async def pending_action(settings):
@@ -32,7 +33,12 @@ async def set_approval(engine, action_id, decision):
         await conn.execute(
             update(Approval)
             .where(Approval.action_id == action_id)
-            .values(decision=decision, decided_by=DEMO_ACTOR, self_approval_exception=True)
+            .values(
+                decision=decision,
+                decided_by=DEMO_ACTOR,
+                self_approval_exception=True,
+                decided_at=func.clock_timestamp(),
+            )
         )
 
 
@@ -90,10 +96,16 @@ async def test_direct_mcp_write_barrier(integration_settings, admin_engine, case
             update={"arguments": args.arguments.model_copy(update={"title": "tampered"})}
         )
     elif case == "wrong_hash":
-        async with admin_engine.begin() as conn:
-            await conn.execute(
-                update(Action).where(Action.id == args.action_id).values(arguments_hash="0" * 64)
-            )
+        # F09 rejects persisted revision tampering before it can reach the MCP boundary.
+        with pytest.raises(DBAPIError, match="IMMUTABLE_REVISION"):
+            async with admin_engine.begin() as conn:
+                await conn.execute(
+                    update(Action)
+                    .where(Action.id == args.action_id)
+                    .values(arguments_hash="0" * 64)
+                )
+        assert not await tickets_for(admin_engine, original_id)
+        return
     elif case == "missing_approval":
         from sqlalchemy import delete
 

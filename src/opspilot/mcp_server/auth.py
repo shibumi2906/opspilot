@@ -8,6 +8,7 @@ from starlette.types import ASGIApp, Receive, Scope, Send
 from opspilot.auth.context import AuthError, Principal, auth_scope
 from opspilot.auth.service_context import verified_scope, verify
 from opspilot.config import Settings
+from opspilot.security.grants import grant_scope
 
 
 class ServiceAuth:
@@ -35,7 +36,14 @@ class ServiceAuth:
                 raise AuthError("SERVICE_CONTEXT_REQUIRED", 401)
             claims = verify(contexts[0].decode(), self.settings)
             user = Principal(UUID(claims["sub"]), UUID(claims["tenant"]), frozenset(), UUID(int=0))
-            with auth_scope(user), verified_scope(claims):
+            grants = [v for k, v in scope["headers"] if k.lower() == b"x-opspilot-grant"]
+            if len(grants) > 1 or grants and len(grants[0]) > 8192:
+                raise AuthError("GRANT_INVALID")
+            with (
+                auth_scope(user),
+                verified_scope(claims),
+                grant_scope(grants[0].decode() if grants else None),
+            ):
                 await self.app(scope, receive, send)
         except (AuthError, UnicodeError):
             logger.bind(

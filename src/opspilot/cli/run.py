@@ -29,7 +29,8 @@ def main() -> None:
             service = RunService(Settings())
             try:
                 await service.decide(
-                    args.run_id, Decision(action_id=args.action_id, decision=args.decision)
+                    args.run_id,
+                    Decision(expected_version=1, action_id=args.action_id, decision=args.decision),
                 )
                 from opspilot.runtime.worker import process_one
 

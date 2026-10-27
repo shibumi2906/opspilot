@@ -1,0 +1,20 @@
+ Network opspilot-full-f09-upgrade-final_default  Creating
+ Network opspilot-full-f09-upgrade-final_default  Created
+ Volume "opspilot-full-f09-upgrade-final_pgdata"  Creating
+ Volume "opspilot-full-f09-upgrade-final_pgdata"  Created
+ Container opspilot-full-f09-upgrade-final-postgres-1  Creating
+ Container opspilot-full-f09-upgrade-final-postgres-1  Created
+ Container opspilot-full-f09-upgrade-final-postgres-1  Starting
+ Container opspilot-full-f09-upgrade-final-postgres-1  Started
+ Container opspilot-full-f09-upgrade-final-postgres-1  Waiting
+ Container opspilot-full-f09-upgrade-final-postgres-1  Healthy
+ Container opspilot-full-f09-upgrade-final-postgres-1  Running
+ Container opspilot-full-f09-upgrade-final-postgres-1  Running
+{'tenants': 2, 'customers': 6, 'incidents': 20, 'articles': 10}
+ Container opspilot-full-f09-upgrade-final-postgres-1  Running
+Legacy committed receipts and unexecuted approval fixture prepared
+ Container opspilot-full-f09-upgrade-final-postgres-1  Running
+ Container opspilot-full-f09-upgrade-final-postgres-1  Running
+{"passed": true, "preserved_committed_receipts": 2, "tickets": 2, "backfilled_revisions": 3, "legacy_unexecuted_approval": "revoked", "new_execution_grants": 0}
+ Container opspilot-full-f09-upgrade-final-postgres-1  Stopping
+ Container opspilot-full-f09-upgrade-final-postgres-1  Stopped
