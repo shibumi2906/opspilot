@@ -187,7 +187,7 @@ test("narrow viewport, plain text sources and readable partial results", async (
       () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
   ).toBeTruthy();
-  await page.unroute("**/api/v2/runs/*");
+  await page.unrouteAll({ behavior: "wait" });
   await page
     .getByRole("button", { name: "Reject action", exact: true })
     .click();

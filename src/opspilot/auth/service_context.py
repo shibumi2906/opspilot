@@ -75,7 +75,12 @@ def mint(settings: Settings) -> str:
         "run": _run.get(),
     }
     if operation:
+        from opspilot.runtime.fencing import current_fence
+
+        fence = current_fence()
         claims.update(operation, scope="action")
+        if fence is not None:
+            claims.update(execution_owner=str(fence.owner), execution_epoch=fence.epoch)
     key = Path(settings.service_private_dir, settings.service_active_kid + ".pem").read_text()
     return jwt.encode(claims, key, algorithm="EdDSA", headers={"kid": settings.service_active_kid})
 
@@ -125,6 +130,10 @@ def verify(token: str, settings: Settings) -> dict[str, Any]:
             UUID(claims[field])
         if claims.get("run"):
             UUID(claims["run"])
+        if "execution_owner" in claims or "execution_epoch" in claims:
+            UUID(claims["execution_owner"])
+            if type(claims["execution_epoch"]) is not int or claims["execution_epoch"] < 1:
+                raise ValueError("invalid execution epoch")
         if claims["scope"] == "action":
             UUID(claims["action"])
             if claims.get("tool") != "create_ticket" or len(claims.get("hash", "")) != 64:

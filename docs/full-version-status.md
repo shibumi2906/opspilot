@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. **F01–F05 завершены; F06–F24 не начаты.**
+Дата создания: 26 октября 2026 года. **F01–F06 завершены; F07–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,11 +20,11 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F06 — multiworker, leases и fencing. Не начат.**
+**Следующий этап: F07 — transactional events/audit/projections. Не начат.**
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F06 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F07 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -48,7 +48,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 | F03 | done | OIDC, sessions, memberships/роли | [evidence](full/evidence/f03/README.md); commit subject: `feat(full): implement F03 OIDC sessions and tenant roles` |
 | F04 | done | Сквозная API/MCP authorization | [evidence](full/evidence/f04/README.md); commit subject: `feat(full): enforce F04 API and scoped MCP authorization` |
 | F05 | done | Durable jobs, отдельный worker | [evidence](full/evidence/f05/README.md); commit subject: `feat(full): implement F05 durable jobs and independent worker` |
-| F06 | not_started | Multiworker leases/fenced checkpoints | — |
+| F06 | done | Multiworker leases/fenced checkpoints | [evidence](full/evidence/f06/README.md); commit subject: `feat(full): implement F06 multiworker leases and fenced checkpoints` |
 | F07 | not_started | Transactional events/audit/projections | — |
 | F08 | not_started | Clarification и cancellation | — |
 | F09 | not_started | Revisions/TTL/approval/grants | — |
@@ -274,3 +274,51 @@ Limits: один worker; epochs/leases/stale-writer fencing — F06, events/outb
 не добавлен. Blockers F05 отсутствуют. Evidence commit subject:
 `feat(full): implement F05 durable jobs and independent worker`.
 Следующий F06 остаётся not_started; работа завершена только на F05 по запросу владельца.
+
+## F06 — multiworker, leases и fenced checkpoints
+
+26–27 октября 2026; финальные gates 27 октября. Worktree
+`C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`,
+ветка `codex/opspilot-full`; base `0f705a00fa90d342178094f50920f8fa5e60a7fe`.
+Schema `0007_execution_fences`; runtime workflow `full-graph-v1`, public state/service context 1,
+checkpoint SDK migration 9. Graph `5ea9d96354e37e4b8c54719006e1ac0b836866f1` и policy
+`7dddb49f221d157d8859295d2e85b28ae05e1824` не менялись.
+
+Вместо process singleton — tenant/run ownership row, монотонный epoch, heartbeat и reaper по времени
+БД. Claims и ack привязаны к owner/epoch; отменённая без ack job сохраняется для expiry/backoff,
+после пяти transient failures — dead-letter/needs_attention. Два отдельных Compose workers.
+DB triggers fence фактические workflow projections, actions/worker approvals, local effects/receipts,
+checkpoint/blobs/pending writes. SDK adapter сохраняет blob+checkpoint и batch pending writes в одной
+короткой транзакции с ownership row lock; bound context не обновляется старому callback.
+MCP получает owner/epoch в signed action context и независимо проверяет их в транзакции local write.
+Перед read/model dispatch также проверяется live fence. Heartbeat проверяет expiry после получения
+row lock; runtime DB statement/idle-in-transaction timeout 5s не даёт SIGSTOP бесконечно держать lock.
+Pinned workflow/schema и corrupt run/thread/mode checkpoint останавливают dispatch в needs_attention.
+
+Пути: migrations/0007; runtime/{fencing,jobs,worker,recovery,run_service}; checkpoint adapter,
+DB engine/models, auth context/MCP local write, runtime dispatch, Full Compose/CI/setup, tests/docs.
+[Контракт/runbook](full/execution-fencing.md), [ADR](full/adr/006-fenced-checkpoint-adapter.md),
+[команды и measured evidence](full/evidence/f06/README.md).
+Backend **211 passed, 9 dedicated skips**, SDK rollback/heartbeat/epoch reuse/corrupt-binding gates
+включены. Queue process suite **5 passed** (4 повтора + 1 новый); multiworker fault suite **3 passed**:
+всего **215 уникальных backend cases**. Реальный OIDC/browser с двумя workers — **12 passed**;
+scripted regression **12/12**, hard safety gate true. Ruff/format/mypy (98 source files) прошли.
+Нормальные проверки используют production 30s/10s; fault subprocesses явно переключаются на 3s/1s.
+SIGKILL, SIGSTOP внутри SDK transaction и настоящий TCP partition завершены одним verified ticket;
+после takeover старый epoch отвергнут на всех восьми границах. Старый owner UUID с новым epoch
+проверен отдельно; старый epoch не получает authority. Process fixture SIGTERM readiness race
+устранена и затронутые gates повторены; предыдущие красные прогоны не объявляются зелёными.
+
+Свежая test DB до 0007 и отдельный dev Full upgrade 0006→0007 выполнены без экспорта MVP.
+Dev Full: два workers, UI 8091/API 8011 HTTP 200 и scoped real MCP SDK smoke; test project остановлен
+без удаления volumes. MVP 184 fingerprints source/media/docs/.env, main/HEAD, четыре image tags,
+volume metadata/content SHA256 совпали до/после и после возобновления; исходный checkout чист.
+[Preservation](full/evidence/f06/mvp-isolation.json), [live](full/evidence/f06/live.json).
+Docker startup после паузы восстановлен сохранением stale runtime socket directory, без reset/удаления
+volumes. F01–F05 reports сохранены; внешние application calls только local synthetic OIDC/PG/MCP,
+paid/provider/vendor calls 0. Remote CI не запускался и не заявляется.
+
+Blockers F06 отсутствуют. Transactional events/audit/outbox, полный UI, usage/load/holdout/pilot gates
+остаются своими этапами. Evidence commit subject:
+`feat(full): implement F06 multiworker leases and fenced checkpoints`.
+Следующий F07 остаётся not_started; выполнен только F06 по запросу владельца.

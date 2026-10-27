@@ -7,6 +7,7 @@ from sqlalchemy import text
 from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.config import Settings
 from opspilot.db.engine import create_engine
+from opspilot.runtime.fencing import execution_lease
 from tests.tenant_helpers import register_probe
 
 
@@ -21,10 +22,13 @@ async def test_pinned_graph_and_postgres_saver_are_compatible(
     thread = f"compatibility-{uuid4()}"
     registration = create_engine(integration_settings.database_url("workflow"))
     try:
-        await register_probe(registration, integration_settings.scenario_clock, thread)
+        probe_id = await register_probe(registration, integration_settings.scenario_clock, thread)
     finally:
         await registration.dispose()
-    async with postgres_checkpointer(integration_settings) as saver:
+    async with (
+        execution_lease(registration, probe_id, integration_settings),
+        postgres_checkpointer(integration_settings) as saver,
+    ):
         builder = StateGraph(ProbeState)
         builder.add_node("probe", lambda state: {"value": state["value"] + 1})
         builder.add_edge(START, "probe")

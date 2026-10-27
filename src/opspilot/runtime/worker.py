@@ -1,79 +1,75 @@
-"""Independent durable worker; session singleton, no lease/multiworker claim."""
+"""Independent worker with renewable per-run leases and epoch-fenced writes."""
 
 import asyncio
 import signal
 from uuid import UUID
 
-from sqlalchemy import text
+from loguru import logger
+from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun
 from opspilot.db.models_workflow import AgentRun
-from opspilot.runtime.jobs import claim, finish
+from opspilot.runtime.fencing import Fence, execution_lease
+from opspilot.runtime.jobs import claim, finish, reap
 from opspilot.runtime.recovery import recover
 from opspilot.runtime.run_service import RunService
 from opspilot.telemetry import configure
 from opspilot.tenancy.context import tenant_scope
 from opspilot.tenancy.session import TenantSession
 
-WORKER_LOCK = 1801202605
-
 
 async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
-    job = await claim(service.engine, run_id)
+    await reap(service.engine, run_id)
+    job = await claim(service.engine, run_id, service.settings.worker_lease_seconds)
     if job is None:
         return False
-    try:
-        async with TenantSession(service.engine) as session:
-            run = await session.get(AgentRun, job["run_id"])
-            if run is None:
-                raise RuntimeError("Command run missing")
-        if run.status == "queued" and job["kind"] == "start":
-            await service.execute(
-                run.id, CreateRun(request=run.request, client_request_id=run.client_request_id)
-            )
-        elif run.status in {"running", "waiting_for_approval"}:
-            await recover(service, run.id)
-        await finish(service.engine, job)
-    except Exception:
-        # No raw provider details persist. Cancellation leaves a running job for restart.
-        await finish(service.engine, job, failed=True)
+    async with execution_lease(
+        service.engine,
+        job["run_id"],
+        service.settings,
+        Fence(job["run_id"], job["claim_owner"], job["claim_epoch"]),
+    ):
+        try:
+            async with TenantSession(service.engine) as session:
+                run = await session.get(AgentRun, job["run_id"])
+                if run is None:
+                    raise RuntimeError("Command run missing")
+            if run.workflow_version != "full-graph-v1":
+                await service.fail(run.id, "UNSUPPORTED_WORKFLOW_VERSION")
+            elif run.state_schema_version != 1:
+                await service.fail(run.id, "CHECKPOINT_UNSUPPORTED")
+            elif run.status == "queued" and job["kind"] == "start":
+                await service.execute(
+                    run.id, CreateRun(request=run.request, client_request_id=run.client_request_id)
+                )
+            elif run.status in {"running", "waiting_for_approval"}:
+                await recover(service, run.id)
+            await finish(service.engine, job)
+        except Exception:
+            # No raw provider details persist. Cancellation leaves a running job for restart.
+            await finish(service.engine, job, failed=True)
     return True
 
 
 async def serve(settings: Settings, stop: asyncio.Event) -> None:
     service = RunService(settings)
-    guard = await service.engine.connect()
     try:
-        if not await guard.scalar(text("SELECT pg_try_advisory_lock(:key)"), {"key": WORKER_LOCK}):
-            raise RuntimeError("Only one worker process is supported until F06")
-        await guard.commit()
-        for tenant in settings.recovery_tenants:
-            with tenant_scope(tenant):
-                async with service.engine.connect() as conn:
-                    interrupted = (
-                        (
-                            await conn.execute(
-                                text("""SELECT id,run_id,attempts
-                        FROM workflow.command_jobs WHERE tenant_id=:t AND status='running'"""),
-                                {"t": tenant},
-                            )
-                        )
-                        .mappings()
-                        .all()
-                    )
-                for job in interrupted:
-                    await finish(service.engine, dict(job), failed=True)
         while not stop.is_set():
-            # A failed guard connection stops the process; never continue after losing singleton.
-            await guard.execute(text("SELECT 1"))
-            await guard.commit()
             worked = False
             for tenant in settings.recovery_tenants:
                 if stop.is_set():
                     break
                 with tenant_scope(tenant):
-                    worked = await process_one(service) or worked
+                    try:
+                        worked = await process_one(service) or worked
+                    except (SQLAlchemyError, OSError):
+                        # No claim is forgotten: unacknowledged work remains fenced for the reaper.
+                        logger.warning("worker_database_unavailable")
+                        try:
+                            await asyncio.wait_for(stop.wait(), 0.5)
+                        except TimeoutError:
+                            pass
             if not worked:
                 try:
                     await asyncio.wait_for(stop.wait(), 0.25)
@@ -82,10 +78,6 @@ async def serve(settings: Settings, stop: asyncio.Event) -> None:
     finally:
         # SIGTERM drains the active command before releasing ownership.
         await service.close()
-        try:
-            await guard.execute(text("SELECT pg_advisory_unlock(:key)"), {"key": WORKER_LOCK})
-        finally:
-            await guard.close()
 
 
 async def main() -> None:

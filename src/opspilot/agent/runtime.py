@@ -17,6 +17,7 @@ from opspilot.contracts.evidence import normalize_evidence
 from opspilot.llm.base import Operation, Provider, ProviderFailure, Usage
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.runtime.fencing import ensure_current
 from opspilot.telemetry import span
 
 T = TypeVar("T", bound=BaseModel)
@@ -42,6 +43,7 @@ class Runtime:
         self, operation: Operation, context: dict[str, Any], model: type[T], state: AgentState
     ) -> T:
         for attempt in range(1, 3):
+            await ensure_current(self.settings)
             self.budget.begin_llm()
             call_id = str(uuid4())
             usage = Usage()
@@ -109,6 +111,7 @@ class Runtime:
         )
         call_id = call_id or str(uuid4())
         for attempt in range(1, 4):
+            await ensure_current(self.settings)
             self.budget.begin_read(verification=verification)
             key = f"{call_id}:{attempt}"
             state.setdefault("tool_calls", {})[key] = {

@@ -4,6 +4,8 @@ from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
 from opspilot.auth.context import actor_id
+from opspilot.auth.service_context import verified_context
+from opspilot.runtime.fencing import current_fence
 from opspilot.telemetry import span
 from opspilot.tenancy.context import current_tenant
 
@@ -16,7 +18,16 @@ def create_engine(url: str) -> AsyncEngine:
     expected = make_url(url).database
     if expected not in {"opspilot_full", "opspilot_full_test"}:
         raise ValueError("Full requires opspilot_full or opspilot_full_test")
-    engine = create_async_engine(url, pool_pre_ping=True, hide_parameters=True)
+    parsed = make_url(url)
+    connect_args = {}
+    if parsed.username in {"ops_workflow", "ops_checkpoint", "ops_domain"}:
+        connect_args["options"] = (
+            str(parsed.query.get("options", ""))
+            + " -c idle_in_transaction_session_timeout=5000 -c statement_timeout=5000"
+        )
+    engine = create_async_engine(
+        url, pool_pre_ping=True, hide_parameters=True, connect_args=connect_args
+    )
 
     @event.listens_for(engine.sync_engine, "connect")
     def identity(dbapi_connection, connection_record):  # type: ignore[no-untyped-def]
@@ -32,13 +43,20 @@ def create_engine(url: str) -> AsyncEngine:
     @event.listens_for(engine.sync_engine, "begin")
     def tenant_transaction(connection):  # type: ignore[no-untyped-def]
         tenant = current_tenant()
+        fence = current_fence()
+        claims = verified_context() or {}
+        values = {
+            "tenant": tenant,
+            "actor": actor_id(),
+            "run": fence.run if fence else claims.get("run"),
+            "owner": fence.owner if fence else claims.get("execution_owner"),
+            "epoch": fence.epoch if fence else claims.get("execution_epoch"),
+        }
         connection.execute(
-            text("SELECT set_config('app.tenant_id', :tenant, true)"),
-            {"tenant": str(tenant) if tenant else ""},
-        )
-        connection.execute(
-            text("SELECT set_config('app.actor_id', :actor, true)"),
-            {"actor": str(actor_id())},
+            text("""SELECT set_config('app.tenant_id',:tenant,true),
+          set_config('app.actor_id',:actor,true),set_config('app.execution_run',:run,true),
+          set_config('app.execution_owner',:owner,true),set_config('app.execution_epoch',:epoch,true)"""),
+            {key: str(value) if value is not None else "" for key, value in values.items()},
         )
 
     @event.listens_for(engine.sync_engine, "before_cursor_execute")

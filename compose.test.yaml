@@ -15,6 +15,8 @@ services:
   api:
     ports: !reset []
     environment:
+      WORKER_LEASE_SECONDS: "30"
+      WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
@@ -25,8 +27,10 @@ services:
       IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full_test
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
-  worker:
+  worker: &test-worker
     environment:
+      WORKER_LEASE_SECONDS: "30"
+      WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
@@ -36,8 +40,13 @@ services:
       SCENARIO_ID: greenshop_expired
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full_test?options=-csearch_path%3Dcheckpoints
+  worker2:
+    <<: *test-worker
+
   mcp:
     environment:
+      WORKER_LEASE_SECONDS: "30"
+      WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
@@ -45,6 +54,8 @@ services:
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
   admin:
     environment:
+      WORKER_LEASE_SECONDS: "30"
+      WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
@@ -60,6 +71,8 @@ services:
       target: tests
     init: true
     environment:
+      WORKER_LEASE_SECONDS: "30"
+      WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
@@ -101,6 +114,8 @@ services:
       target: tests
     init: true
     environment:
+      WORKER_LEASE_SECONDS: "30"
+      WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
@@ -117,5 +132,5 @@ services:
     volumes:
       - ./.tools/service-keys/private:/run/service-private:ro
       - ./.tools/service-keys/public:/run/service-public:ro
-      - ./docs/full/evidence/f05/evals:/reports
+      - ./docs/full/evidence/f06/evals:/reports
     command: [python, -m, opspilot.evals.runner, --commit, unspecified]

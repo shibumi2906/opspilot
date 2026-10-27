@@ -8,6 +8,7 @@ from opspilot.agent.checkpoints import postgres_checkpointer
 from opspilot.db.engine import create_engine
 from opspilot.db.models_domain import Customer
 from opspilot.mcp_server.services.customers import get_customer
+from opspilot.runtime.fencing import execution_lease
 from opspilot.tenancy.context import DEMO_TENANT, SECOND_TENANT, TenantContextError, tenant_scope
 from opspilot.tenancy.session import TenantSession
 from tests.tenant_helpers import register_probe
@@ -30,6 +31,7 @@ CUSTOMER_B = uuid5(B, CUSTOMER_A)
         ("workflow", "workflow.actions"),
         ("workflow", "workflow.approvals"),
         ("workflow", "workflow.command_jobs"),
+        ("workflow", "workflow.run_execution_leases"),
         ("checkpoint", "checkpoints.checkpoints"),
         ("checkpoint", "checkpoints.checkpoint_blobs"),
         ("checkpoint", "checkpoints.checkpoint_writes"),
@@ -151,8 +153,12 @@ async def test_cross_tenant_update_or_composite_fk_is_rejected(
 
 async def test_ticket_customer_and_action_must_share_tenant(integration_settings):
     engine = create_engine(integration_settings.database_url("domain"))
+    workflow = create_engine(integration_settings.database_url("workflow"))
     try:
-        async with engine.begin() as conn:
+        async with (
+            execution_lease(workflow, uuid5(A, "seed-run"), integration_settings),
+            engine.begin() as conn,
+        ):
             with pytest.raises(DBAPIError) as error:
                 await conn.execute(
                     text(
@@ -173,6 +179,7 @@ async def test_ticket_customer_and_action_must_share_tenant(integration_settings
             assert error.value.orig.sqlstate in {"23503", "23505"}
     finally:
         await engine.dispose()
+        await workflow.dispose()
 
 
 async def test_repository_and_identity_map_never_cross_scope(integration_settings):
@@ -202,11 +209,14 @@ async def test_checkpoint_thread_is_hidden_from_other_tenant(integration_setting
     config = {"configurable": {"thread_id": thread}}
     registration = create_engine(integration_settings.database_url("workflow"))
     try:
-        await register_probe(registration, integration_settings.scenario_clock, thread)
+        probe_id = await register_probe(registration, integration_settings.scenario_clock, thread)
     finally:
         await registration.dispose()
     with tenant_scope(A):
-        async with postgres_checkpointer(integration_settings) as saver:
+        async with (
+            execution_lease(registration, probe_id, integration_settings),
+            postgres_checkpointer(integration_settings) as saver,
+        ):
             builder = StateGraph(dict)
             builder.add_node("probe", lambda state: {"value": 1})
             builder.add_edge(START, "probe")

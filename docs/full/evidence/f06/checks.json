@@ -1,0 +1,78 @@
+{
+  "stage": "F06",
+  "date": "2026-10-27",
+  "base_commit": "0f705a00fa90d342178094f50920f8fa5e60a7fe",
+  "commit_subject": "feat(full): implement F06 multiworker leases and fenced checkpoints",
+  "schema": "0007_execution_fences",
+  "workflow_version": "full-graph-v1",
+  "public_state_schema_version": 1,
+  "graph_blob": "5ea9d96354e37e4b8c54719006e1ac0b836866f1",
+  "policy_blob": "7dddb49f221d157d8859295d2e85b28ae05e1824",
+  "checkpoint_sdk_migration": 9,
+  "sdk_versions": {
+    "langgraph": "1.2.16",
+    "langgraph-checkpoint-postgres": "3.2.0",
+    "psycopg": "3.3.6",
+    "sqlalchemy": "2.0.55"
+  },
+  "backend_main": {
+    "passed": 211,
+    "skipped": 9
+  },
+  "dedicated_queue_suite": {
+    "passed": 5,
+    "repeated_main_cases": 4
+  },
+  "dedicated_multiworker_faults": {
+    "passed": 3,
+    "cases": [
+      "kill",
+      "stop",
+      "partition"
+    ]
+  },
+  "unique_backend_cases": 215,
+  "browser": {
+    "passed": 12,
+    "workers": 2,
+    "lease_seconds": 30,
+    "heartbeat_seconds": 10
+  },
+  "fault_subprocesses": {
+    "lease_seconds": 3,
+    "heartbeat_seconds": 1
+  },
+  "runtime_db_timeouts_ms": {
+    "statement": 5000,
+    "idle_in_transaction": 5000
+  },
+  "sdk_atomic_rollback": true,
+  "blocked_heartbeat_revival_denied": true,
+  "reused_owner_old_epoch_denied": true,
+  "unsupported_workflow_blocked": true,
+  "corrupt_checkpoint_binding_blocked": true,
+  "stale_boundaries": [
+    "projection",
+    "action",
+    "approval",
+    "checkpoint",
+    "pending_writes",
+    "operation",
+    "read_dispatch",
+    "model_dispatch"
+  ],
+  "scripted_regression": {
+    "passed": 12,
+    "hard_safety_gate": true
+  },
+  "ruff": "passed",
+  "format": "passed",
+  "mypy_source_files": 98,
+  "worker_services": [
+    "worker",
+    "worker2"
+  ],
+  "f07_started": false,
+  "paid_provider_calls": 0,
+  "remote_ci_run": null
+}

@@ -6,10 +6,11 @@ from opspilot.tenancy.session import TenantSession
 
 
 async def register_probe(engine, clock, thread):
+    probe_id = uuid4()
     async with TenantSession(engine) as session, session.begin():
         session.add(
             AgentRun(
-                id=uuid4(),
+                id=probe_id,
                 tenant_id=require_tenant(),
                 actor_id=DEMO_ACTOR,
                 client_request_id=uuid4(),
@@ -27,3 +28,5 @@ async def register_probe(engine, clock, thread):
                 usage={},
             )
         )
+
+    return probe_id

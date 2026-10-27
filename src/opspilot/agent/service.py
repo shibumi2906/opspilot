@@ -6,7 +6,9 @@ from datetime import UTC, datetime
 from typing import Any, Literal
 from uuid import UUID, uuid4
 
+from psycopg import Error as PsycopgError
 from sqlalchemy import select, text, update
+from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -21,6 +23,7 @@ from opspilot.db.models_workflow import AgentRun
 from opspilot.llm.base import Provider
 from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
+from opspilot.runtime.fencing import execution_lease
 from opspilot.runtime.jobs import enqueue
 from opspilot.telemetry import carrier, traced
 from opspilot.tenancy.session import TenantSession as AsyncSession
@@ -76,6 +79,7 @@ async def run_investigation(
     run_id = run_id or uuid4()
     scope = run_scope(str(run_id))
     scope.__enter__()
+    lease = None
     try:
         async with AsyncSession(engine) as session, session.begin():
             await session.execute(
@@ -130,6 +134,8 @@ async def run_investigation(
                     await enqueue(session, run_id, "start")
         if queued_only:
             return {"run_id": str(run_id), "status": "queued"}
+        lease = execution_lease(engine, run_id, settings)
+        await lease.__aenter__()
         initial: AgentState = {
             "schema_version": 1,
             "run_id": str(run_id),
@@ -193,6 +199,8 @@ async def run_investigation(
                     )
                 )
             return public
+        except (SQLAlchemyError, PsycopgError):
+            raise
         except Exception:
             async with engine.begin() as connection:
                 await connection.execute(
@@ -208,6 +216,8 @@ async def run_investigation(
                 )
             raise RuntimeError(f"Run {run_id} failed; check service readiness") from None
     finally:
+        if lease is not None:
+            await lease.__aexit__(None, None, None)
         await engine.dispose()
         scope.__exit__(None, None, None)
 

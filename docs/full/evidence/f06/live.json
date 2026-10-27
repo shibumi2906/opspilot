@@ -1,0 +1,28 @@
+{
+  "database": "opspilot_full",
+  "schema": "0007_execution_fences",
+  "strict_missing_owner": true,
+  "force_rls": true,
+  "domain_can_update_lease": false,
+  "checkpoint_can_update_lease": false,
+  "services": {
+    "api": "running",
+    "collector": "running",
+    "jaeger": "running",
+    "mcp": "running",
+    "oidc": "running",
+    "postgres": "running",
+    "web": "running",
+    "worker": "running",
+    "worker2": "running"
+  },
+  "http": {
+    "8011": 200,
+    "8091": 200
+  },
+  "mcp_protocol": "2025-11-25",
+  "mcp_tools": 9,
+  "mcp_unknown_customer": "NOT_FOUND",
+  "normal_lease_seconds": 30,
+  "normal_heartbeat_seconds": 10
+}

@@ -66,3 +66,11 @@ Full API now commits durable start/resume jobs; the separate single worker owns 
 Schema head 0006_command_jobs. See [durable-jobs.md](durable-jobs.md) for queue semantics, recovery,
 shutdown and the exact F06 boundary. Current gate: scripts/test-full-f05.ps1. Previous stage text above
 records the historical baseline; canonical progress is docs/full-version-status.md.
+
+## F06 current boundary
+
+Two independent workers use DB-clock per-run ownership epochs, heartbeat/reaper and transactional
+fencing for snapshots, local operations and SDK checkpoint/pending writes. Schema 0007_execution_fences;
+workflow full-graph-v1, public state 1. See [execution-fencing.md](execution-fencing.md) and
+[ADR 006](adr/006-fenced-checkpoint-adapter.md). Current gate: scripts/test-full-f06.ps1. F07 events/outbox
+are not implemented by this stage; earlier stage sections record their historical boundary.

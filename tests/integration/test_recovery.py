@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 import sys
 from uuid import UUID, uuid4
 
@@ -17,6 +18,7 @@ async def worker(*args):
         "-m",
         "tests.recovery_worker",
         *args,
+        env={**os.environ, "WORKER_LEASE_SECONDS": "3", "WORKER_HEARTBEAT_SECONDS": "1"},
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.DEVNULL,
     )
@@ -86,7 +88,7 @@ async def test_other_running_run_fails_on_restart(integration_settings, admin_en
     try:
         await recover(service)
         result = await service.snapshot(UUID(result["run_id"]))
-        assert result["status"] == "failed"
+        assert result["status"] == "needs_attention"
         assert result["error"]["code"] == "RESTART_INTERRUPTED"
         assert result["action"] is None
     finally:

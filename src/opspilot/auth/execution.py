@@ -11,6 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.auth.context import AuthError, Principal, auth_scope
 from opspilot.auth.service_context import run_scope
+from opspilot.runtime.fencing import execution_lease
 from opspilot.tenancy.context import require_tenant
 
 
@@ -42,7 +43,10 @@ def persisted_worker(method: Callable[..., Awaitable[Any]]) -> Callable[..., Awa
     @wraps(method)
     async def wrapped(self: Any, run: UUID, *args: Any, **kwargs: Any) -> Any:
         try:
-            async with execution_scope(self.engine, run):
+            async with (
+                execution_scope(self.engine, run),
+                execution_lease(self.engine, run, self.settings),
+            ):
                 return await method(self, run, *args, **kwargs)
         except AuthError:
             await self.fail(run, "AUTHORIZATION_REVOKED")

@@ -194,14 +194,25 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                 error=ToolError(code="INVALID_ARGUMENTS", message="Invalid tool arguments"),
             )
         except (SQLAlchemyError, TimeoutError) as exc:
+            stale = getattr(getattr(exc, "orig", None), "sqlstate", None) == "40001"
             code = (
-                "MONITORING_TIMEOUT" if isinstance(exc, TimeoutError) else "DEPENDENCY_UNAVAILABLE"
+                "STATE_CONFLICT"
+                if stale
+                else (
+                    "MONITORING_TIMEOUT"
+                    if isinstance(exc, TimeoutError)
+                    else "DEPENDENCY_UNAVAILABLE"
+                )
             )
             logger.warning("tool_failed tool={} code={}", name, code)
             result = ToolResult(
                 ok=False,
                 observed_at=settings.scenario_clock,
-                error=ToolError(code=code, message="Source unavailable", retryable=True),
+                error=ToolError(
+                    code=code,
+                    message="Execution ownership lost" if stale else "Source unavailable",
+                    retryable=not stale,
+                ),
             )
         return CallToolResult(
             content=[TextContent(type="text", text=result.model_dump_json())],

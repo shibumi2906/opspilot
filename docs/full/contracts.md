@@ -39,3 +39,11 @@ API create and decision atomically enqueue tenant-scoped durable commands; only 
 single worker invokes/resumes the graph. See [durable-jobs.md](durable-jobs.md). Unique run/kind command
 keys implement the existing single-action protocol; F09/F11 command revisions and F06 fencing are
 not claimed. Public DTO schema and F04 authorization stay at version 1.
+
+## F06 current boundary
+
+Two independent workers use DB-clock per-run ownership epochs, heartbeat/reaper and transactional
+fencing for snapshots, local operations and SDK checkpoint/pending writes. Schema 0007_execution_fences;
+workflow full-graph-v1, public state 1. See [execution-fencing.md](execution-fencing.md) and
+[ADR 006](adr/006-fenced-checkpoint-adapter.md). Current gate: scripts/test-full-f06.ps1. F07 events/outbox
+are not implemented by this stage; earlier stage sections record their historical boundary.

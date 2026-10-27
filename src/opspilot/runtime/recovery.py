@@ -17,6 +17,7 @@ from opspilot.auth.execution import execution_scope
 from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import payload_hash
+from opspilot.runtime.fencing import execution_lease
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
 if TYPE_CHECKING:
@@ -38,6 +39,7 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
         try:
             async with (
                 execution_scope(service.engine, run_id),
+                execution_lease(service.engine, run_id, service.settings),
                 postgres_checkpointer(service.settings) as saver,
             ):
                 graph = build_graph(
@@ -56,6 +58,13 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                 config: RunnableConfig = {"configurable": {"thread_id": str(run_id)}}
                 saved = await graph.aget_state(config)
                 values = saved.values
+                if values and (
+                    values.get("schema_version") != 1
+                    or values.get("run_id") != str(run_id)
+                    or values.get("thread_id") != run.thread_id
+                    or values.get("mode") not in {"scripted", "real"}
+                ):
+                    raise ValueError("Unsupported checkpoint binding")
                 valid = (
                     row is not None
                     and values.get("action_id") == str(row.Action.id)
@@ -89,7 +98,10 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                     and set(saved.next) <= {"execute", "verify", "report"}
                 ):
                     await service.resume(run_id, row.Action.id, continuation=True)
-                elif valid and not saved.next and values.get("final_report"):
+                elif row is None and saved.next and values.get("budget"):
+                    # Resume the pinned graph from its persisted read/model boundary.
+                    await service.resume(run_id, UUID(int=0), continuation=True)
+                elif (valid or row is None) and not saved.next and values.get("final_report"):
                     public = project(values)
                     for key in ("trace_context", "continuation_context"):
                         public[key] = run.public_snapshot.get(key)
@@ -107,5 +119,8 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                         )
                 else:
                     await service.fail(run_id, code="RESTART_INTERRUPTED")
+        except (ValueError, KeyError, TypeError):
+            async with execution_lease(service.engine, run_id, service.settings):
+                await service.fail(run_id, "CHECKPOINT_UNSUPPORTED")
         except AuthError:
             await service.fail(run_id, "AUTHORIZATION_REVOKED")

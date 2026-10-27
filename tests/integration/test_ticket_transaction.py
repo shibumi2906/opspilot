@@ -14,6 +14,7 @@ from opspilot.db.models_workflow import Action, Approval
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_server.services.tickets import create_ticket
 from opspilot.runtime.actions import payload_hash
+from opspilot.runtime.fencing import execution_lease
 from opspilot.tenancy.context import DEMO_ACTOR
 
 
@@ -36,12 +37,22 @@ async def set_approval(engine, action_id, decision):
 
 
 async def call_write(settings, args):
-    client = MCPClient(settings)
-    with action_scope(
-        str(args.run_id), str(args.action_id), payload_hash(args.arguments.model_dump(mode="json"))
-    ):
-        async with client.session() as (session, _):
-            return await client.call(session, "create_ticket", args.model_dump(mode="json"))
+    workflow = create_engine(settings.database_url("workflow"))
+    try:
+        async with AsyncSession(workflow) as session:
+            action = await session.get(Action, args.action_id)
+            owner_run = action.run_id if action is not None else args.run_id
+        async with execution_lease(workflow, owner_run, settings):
+            client = MCPClient(settings)
+            with action_scope(
+                str(args.run_id),
+                str(args.action_id),
+                payload_hash(args.arguments.model_dump(mode="json")),
+            ):
+                async with client.session() as (session, _):
+                    return await client.call(session, "create_ticket", args.model_dump(mode="json"))
+    finally:
+        await workflow.dispose()
 
 
 async def tickets_for(engine, action_id):
@@ -126,7 +137,12 @@ async def test_failure_after_insert_rolls_back_both_records(integration_settings
 
     try:
         with pytest.raises(RuntimeError, match="test-only"):
-            await create_ticket(engine, args, after_insert=fail)
+            workflow = create_engine(integration_settings.database_url("workflow"))
+            try:
+                async with execution_lease(workflow, args.run_id, integration_settings):
+                    await create_ticket(engine, args, after_insert=fail)
+            finally:
+                await workflow.dispose()
     finally:
         await engine.dispose()
     assert not await tickets_for(admin_engine, args.action_id)

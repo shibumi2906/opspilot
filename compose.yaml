@@ -120,12 +120,15 @@ services:
       timeout: 10s
       retries: 10
 
-  worker:
+  worker: &worker
     <<: *app
+    restart: on-failure
     volumes:
       - ./.tools/service-keys/private:/run/service-private:ro
     environment:
       <<: *common-env
+      WORKER_LEASE_SECONDS: ${WORKER_LEASE_SECONDS:-30}
+      WORKER_HEARTBEAT_SECONDS: ${WORKER_HEARTBEAT_SECONDS:-10}
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
@@ -143,6 +146,9 @@ services:
     depends_on:
       postgres: {condition: service_healthy}
       mcp: {condition: service_started}
+
+  worker2:
+    <<: *worker
 
   mcp:
     <<: *app

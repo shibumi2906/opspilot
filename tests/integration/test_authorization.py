@@ -9,8 +9,10 @@ from sqlalchemy import text
 from opspilot.auth.context import Principal, auth_scope
 from opspilot.auth.service_context import action_scope
 from opspilot.cli.bootstrap_identity import SUBJECTS
+from opspilot.db.engine import create_engine
 from opspilot.mcp_client.client import MCPClient
 from opspilot.runtime.actions import payload_hash
+from opspilot.runtime.fencing import execution_lease
 from opspilot.tenancy.context import DEMO_TENANT, SECOND_TENANT
 from tests.auth_helpers import session_client
 
@@ -277,14 +279,17 @@ async def test_service_read_context_cannot_write_even_with_persisted_approval(
                     ),
                     {"t": DEMO_TENANT, "u": decider},
                 )
+            workflow = create_engine(integration_settings.database_url("workflow"))
             try:
-                with action_scope(
-                    pending["run_id"], str(action), payload_hash(arguments["arguments"])
-                ):
-                    async with MCPClient(integration_settings).session() as (session, _):
-                        denied = await MCPClient.call(session, "create_ticket", arguments)
-                        assert not denied.ok and denied.error.code == "APPROVAL_REQUIRED"
+                async with execution_lease(workflow, UUID(pending["run_id"]), integration_settings):
+                    with action_scope(
+                        pending["run_id"], str(action), payload_hash(arguments["arguments"])
+                    ):
+                        async with MCPClient(integration_settings).session() as (session, _):
+                            denied = await MCPClient.call(session, "create_ticket", arguments)
+                            assert not denied.ok and denied.error.code == "APPROVAL_REQUIRED"
             finally:
+                await workflow.dispose()
                 async with admin_engine.begin() as conn:
                     await conn.execute(
                         text("INSERT INTO identity.tenant_memberships VALUES (:t,:u,'approver')"),

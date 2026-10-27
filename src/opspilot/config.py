@@ -1,8 +1,8 @@
 from datetime import UTC, datetime
-from typing import Literal
+from typing import Literal, Self
 from uuid import UUID
 
-from pydantic import Field, SecretStr, field_validator
+from pydantic import Field, SecretStr, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
@@ -15,6 +15,15 @@ class Settings(BaseSettings):
     otel_endpoint: str | None = None
     jaeger_query_url: str = "http://jaeger:16686"
     jaeger_url: str | None = None
+
+    worker_lease_seconds: float = Field(default=30, gt=0)
+    worker_heartbeat_seconds: float = Field(default=10, gt=0)
+
+    @model_validator(mode="after")
+    def validate_worker_timing(self) -> Self:
+        if self.worker_heartbeat_seconds >= self.worker_lease_seconds:
+            raise ValueError("Worker heartbeat must be shorter than the lease")
+        return self
 
     recovery_tenants: tuple[UUID, ...] = (DEMO_TENANT, SECOND_TENANT)
 

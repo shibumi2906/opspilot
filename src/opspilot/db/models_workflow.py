@@ -41,6 +41,7 @@ class AgentRun(TenantOwned, Base):
     scenario_id: Mapped[str] = mapped_column(String(80))
     scenario_clock: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     thread_id: Mapped[str] = mapped_column(String(100), unique=True)
+    workflow_version: Mapped[str] = mapped_column(String(40), server_default="full-graph-v1")
     state_schema_version: Mapped[int] = mapped_column(default=1)
     public_snapshot: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
     tool_results: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)

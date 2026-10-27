@@ -217,12 +217,14 @@ async def test_api_commit_loss_offline_worker_and_singleton(integration_settings
         proc = await asyncio.create_subprocess_exec(
             sys.executable,
             "-m",
-            "tests.queue_slow_worker" if slow else "opspilot.runtime.worker",
+            "tests.queue_slow_worker" if slow else "tests.queue_ready_worker",
             env={**os.environ, "SLOW_RUN": path.rsplit("/", 1)[1]},
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.DEVNULL,
         )
         processes.append(proc)
+        if not slow:
+            assert await asyncio.wait_for(proc.stdout.readline(), 20) == b"ready\n"
         return proc
 
     async def ready(path):
@@ -250,7 +252,10 @@ async def test_api_commit_loss_offline_worker_and_singleton(integration_settings
             delayed = await worker(slow=True)
             assert await asyncio.wait_for(delayed.stdout.readline(), 20) == b"claimed\n"
             duplicate = await worker()
-            assert await asyncio.wait_for(duplicate.wait(), 15) != 0
+            await asyncio.sleep(0.3)
+            assert duplicate.returncode is None
+            duplicate.terminate()
+            assert await asyncio.wait_for(duplicate.wait(), 15) == 0
             delayed.kill()
             await delayed.wait()
             active = await worker()
@@ -258,7 +263,10 @@ async def test_api_commit_loss_offline_worker_and_singleton(integration_settings
             assert pending["status"] == "waiting_for_approval", pending
             # The singleton is enforced by an actual independent worker process.
             duplicate = await worker()
-            assert await asyncio.wait_for(duplicate.wait(), 15) != 0
+            await asyncio.sleep(0.3)
+            assert duplicate.returncode is None
+            duplicate.terminate()
+            assert await asyncio.wait_for(duplicate.wait(), 15) == 0
             assert active.returncode is None
             active.terminate()
             assert await asyncio.wait_for(active.wait(), 15) == 0

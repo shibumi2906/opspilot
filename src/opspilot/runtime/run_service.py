@@ -6,7 +6,9 @@ from uuid import UUID, uuid4
 import httpx
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
+from psycopg import Error as PsycopgError
 from sqlalchemy import select, update
+from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -19,6 +21,7 @@ from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun, Decision
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, AgentRun, Approval
+from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import Conflict
 from opspilot.runtime.jobs import enqueue
@@ -75,6 +78,8 @@ class RunService:
                     client_request_id=body.client_request_id,
                     run_id=run_id,
                 )
+            except (SQLAlchemyError, PsycopgError):
+                raise
             except Exception:
                 await self.fail(run_id)
 
@@ -84,7 +89,14 @@ class RunService:
                 update(AgentRun)
                 .where(AgentRun.id == run_id)
                 .values(
-                    status="failed",
+                    status="needs_attention"
+                    if code
+                    in {
+                        "RESTART_INTERRUPTED",
+                        "UNSUPPORTED_WORKFLOW_VERSION",
+                        "CHECKPOINT_UNSUPPORTED",
+                    }
+                    else "failed",
                     error={
                         "code": code,
                         "message": "Interrupted. Review the saved action before a new run.",
@@ -255,6 +267,13 @@ class RunService:
                     if saved is None:
                         raise Conflict("Checkpoint missing")
                     values = saved.checkpoint["channel_values"]
+                    if (
+                        values.get("schema_version") != 1
+                        or values.get("run_id") != str(run_id)
+                        or values.get("thread_id") != str(run_id)
+                        or values.get("mode") not in {"scripted", "real"}
+                    ):
+                        raise ValueError("Unsupported checkpoint binding")
                     counters = values["budget"]
                     budget = Budget(BudgetLimits.model_validate(counters["limits"]))
                     for key in (
@@ -267,7 +286,18 @@ class RunService:
                     ):
                         setattr(budget, key, counters[key])
                     budget.started -= counters["active_seconds"]
-                    runtime = Runtime(self.settings, ScriptedProvider(), budget)
+                    runtime_settings = self.settings.model_copy(
+                        update={
+                            "llm_mode": values.get("mode", "scripted"),
+                            "openai_model": values.get("model_id") or self.settings.openai_model,
+                        }
+                    )
+                    provider = (
+                        RealProvider(runtime_settings)
+                        if runtime_settings.llm_mode == "real"
+                        else ScriptedProvider()
+                    )
+                    runtime = Runtime(runtime_settings, provider, budget)
                     async with AsyncSession(self.engine) as session:
                         run = await session.get(AgentRun, run_id)
                         linked = run.public_snapshot.get("trace_context") if run else None
@@ -297,6 +327,10 @@ class RunService:
                             updated_at=datetime.now(UTC),
                         )
                     )
+            except (ValueError, KeyError, TypeError):
+                await self.fail(run_id, "CHECKPOINT_UNSUPPORTED")
+            except (SQLAlchemyError, PsycopgError):
+                raise
             except Exception:
                 await self.fail(run_id)
 
