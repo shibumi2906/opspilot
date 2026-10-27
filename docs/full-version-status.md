@@ -26,6 +26,12 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
 о полном соответствии L2; локальный hardened-контур отделён от development Full и MVP.
 
+Безопасность включена в очередь реализации: [обязательный план SEC-01–12](security/asvs-l2-implementation-plan.md)
+и [backlog всех 253 ASVS IDs](security/asvs-l2-requirement-backlog.json).
+F09 включает предварительные security contracts; F17/F23 не являются поводом отложить их
+проектирование. Общие SEC-01/SEC-10 change gates обязательны для каждого нового этапа.
+Функциональный done без security gates текущего этапа запрещён; полный L2 пока NOT_MET.
+
 Команда для следующего этапа (пока не выполнять):
 
 > Сделай F09 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
@@ -45,32 +51,32 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 Наличие реализации на mocks не закрывает реальный connector/deployment/CI gate.
 Если задача остановлена владельцем, записать причину в подробностях; не объявлять её done.
 
-| ID | Статус | Результат этапа | Evidence / commit |
-| --- | --- | --- | --- |
-| F01 | done | Отдельные worktree/ресурсы Full, сохранённый MVP, baseline/contracts | [evidence](full/evidence/f01.md); commit subject: `feat(full): isolate F01 foundation and preserve portfolio MVP` |
-| F02 | done | Tenant schema/RLS/upgrade fixtures | [evidence](full/evidence/f02/README.md); commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades` |
-| F03 | done | OIDC, sessions, memberships/роли | [evidence](full/evidence/f03/README.md); commit subject: `feat(full): implement F03 OIDC sessions and tenant roles` |
-| F04 | done | Сквозная API/MCP authorization | [evidence](full/evidence/f04/README.md); commit subject: `feat(full): enforce F04 API and scoped MCP authorization` |
-| F05 | done | Durable jobs, отдельный worker | [evidence](full/evidence/f05/README.md); commit subject: `feat(full): implement F05 durable jobs and independent worker` |
-| F06 | done | Multiworker leases/fenced checkpoints | [evidence](full/evidence/f06/README.md); commit subject: `feat(full): implement F06 multiworker leases and fenced checkpoints` |
-| F07 | done | Transactional events/audit/projections | [evidence](full/evidence/f07/README.md); commit subject: `feat(full): implement F07 transactional events audit and projections` |
-| F08 | done | Durable typed clarification и cancellation | [evidence](full/evidence/f08/README.md); commit subject: `feat(full): implement F08 durable clarification and cancellation` |
-| F09 | not_started | Revisions/TTL/approval/grants | — |
-| F10 | not_started | Local ticket/comment/internal inbox writes | — |
-| F11 | not_started | Mixed plans/dependencies/approval waves | — |
-| F12 | not_started | Freshness/expiry/revocation/replan | — |
-| F13 | not_started | SSE replay/reconnect и авторизация | — |
-| F14 | not_started | Полный UI/история/inbox/admin | — |
-| F15 | not_started | Redis/limits/durable usage/cost | — |
-| F16 | not_started | Traces/metrics/operator diagnostics | — |
-| F17 | not_started | Retention/rotation/Full Core acceptance | — |
-| F18 | not_started | Adapters и signed durable ingress | — |
-| F19 | not_started | Authorized Prometheus read connector | — |
-| F20 | not_started | Authorized Jira sandbox writes/reconciliation | — |
-| F21 | not_started | Fault/concurrency/load/soak evidence | — |
-| F22 | not_started | 50 evals и отдельный real/holdout report | — |
-| F23 | not_started | Pilot deployment/TLS/backup/restore | — |
-| F24 | not_started | Full Pilot release и traceability | — |
+| ID | Статус | Результат этапа | Evidence / commit | Обязательные security-задачи |
+| --- | --- | --- | --- | --- |
+| F01 | done | Отдельные worktree/ресурсы Full, сохранённый MVP, baseline/contracts | [evidence](full/evidence/f01.md); commit subject: `feat(full): isolate F01 foundation and preserve portfolio MVP` | [SEC-00: local baseline](security/hardening/status.md) |
+| F02 | done | Tenant schema/RLS/upgrade fixtures | [evidence](full/evidence/f02/README.md); commit subject: `feat(full): add F02 tenant isolation and safe fixture upgrades` | [SEC-00: local baseline](security/hardening/status.md) |
+| F03 | done | OIDC, sessions, memberships/роли | [evidence](full/evidence/f03/README.md); commit subject: `feat(full): implement F03 OIDC sessions and tenant roles` | [SEC-00: local baseline](security/hardening/status.md) |
+| F04 | done | Сквозная API/MCP authorization | [evidence](full/evidence/f04/README.md); commit subject: `feat(full): enforce F04 API and scoped MCP authorization` | [SEC-00: local baseline](security/hardening/status.md) |
+| F05 | done | Durable jobs, отдельный worker | [evidence](full/evidence/f05/README.md); commit subject: `feat(full): implement F05 durable jobs and independent worker` | [SEC-00: local baseline](security/hardening/status.md) |
+| F06 | done | Multiworker leases/fenced checkpoints | [evidence](full/evidence/f06/README.md); commit subject: `feat(full): implement F06 multiworker leases and fenced checkpoints` | [SEC-00: local baseline](security/hardening/status.md) |
+| F07 | done | Transactional events/audit/projections | [evidence](full/evidence/f07/README.md); commit subject: `feat(full): implement F07 transactional events audit and projections` | [SEC-00: local baseline](security/hardening/status.md) |
+| F08 | done | Durable typed clarification и cancellation | [evidence](full/evidence/f08/README.md); commit subject: `feat(full): implement F08 durable clarification and cancellation` | [SEC-00: local baseline](security/hardening/status.md) |
+| F09 | not_started | Revisions/TTL/approval/grants | — | [SEC-01/02/03/04/05/06](security/asvs-l2-implementation-plan.md) |
+| F10 | not_started | Local ticket/comment/internal inbox writes | — | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
+| F11 | not_started | Mixed plans/dependencies/approval waves | — | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
+| F12 | not_started | Freshness/expiry/revocation/replan | — | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
+| F13 | not_started | SSE replay/reconnect и авторизация | — | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
+| F14 | not_started | Полный UI/история/inbox/admin | — | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
+| F15 | not_started | Redis/limits/durable usage/cost | — | [SEC-07](security/asvs-l2-implementation-plan.md) |
+| F16 | not_started | Traces/metrics/operator diagnostics | — | [SEC-05](security/asvs-l2-implementation-plan.md) |
+| F17 | not_started | Retention/rotation/Full Core acceptance | — | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
+| F18 | not_started | Adapters и signed durable ingress | — | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
+| F19 | not_started | Authorized Prometheus read connector | — | [SEC-09](security/asvs-l2-implementation-plan.md) |
+| F20 | not_started | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
+| F21 | not_started | Fault/concurrency/load/soak evidence | — | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
+| F22 | not_started | 50 evals и отдельный real/holdout report | — | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
+| F23 | not_started | Pilot deployment/TLS/backup/restore | — | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
+| F24 | not_started | Full Pilot release и traceability | — | [SEC-01/10/11/12](security/asvs-l2-implementation-plan.md) |
 
 ## Запись результата этапа
 
@@ -80,6 +86,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 FNN — название
 Дата; абсолютный worktree path; branch; base SHA; workflow/policy/schema versions.
 Что реализовано и какие требования спецификации закрыты.
+Security: SEC IDs / ASVS IDs, scope delta, implementation/evidence/review/N/A/blockers в backlog.
 Изменённые migration/code/UI/docs paths в Full checkout.
 Проверки: точные команды, isolated project/database, результаты и report paths.
 Изоляция MVP: какие source/config/image/volume fingerprints проверены; результат.
@@ -427,3 +434,19 @@ Application calls только local synthetic OIDC/PostgreSQL/MCP; paid/provide
 remote CI не запускался. Blockers F08 отсутствуют.
 Отдельный локальный commit subject: `feat(full): implement F08 durable clarification and cancellation`.
 Следующий этап F09 остаётся not_started; выполнен только F08 по запросу владельца.
+
+## 27 октября 2026 — security-задачи в плане реализации
+
+После baseline `48486d0` по запросу владельца ASVS 5.0.0 L2 включён в обязательства F09–F24.
+Добавлены пакеты SEC-01–12, предварительные contracts и security gates в спецификации,
+security-колонка этой очереди и backlog 253 requirement-specific tasks с accountable stage.
+Scope-changing этап повторно проверяет затронутые controls, даже если primary owner — другой этап.
+N/A — отдельная задача проверки применимости, не требование реализовать отсутствующую функцию.
+
+Проверены JSON/уникальность и полнота 253 IDs, неизменность исходных levels/assessments,
+валидность SEC/F owners, наличие security gates у всех F09–F24, локальные Markdown links,
+сохранение 24 stage statuses и `git diff --check`. Source hashes security baseline совпадают.
+Application/DB/Compose/CI/deployment не менялись; новые runtime тесты не требуются для этой
+документационной задачи и не заявляются. MVP checkout не изменялся.
+F09 остаётся следующим `not_started`; весь L2 по-прежнему NOT_MET.
+Отдельный local commit subject: `docs(full): integrate ASVS L2 security tasks into implementation stages`.

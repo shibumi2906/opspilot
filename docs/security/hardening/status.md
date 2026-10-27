@@ -39,3 +39,11 @@ Security lab проверен и остановлен после проверо�
 Production secret manager, защищённый log collector/redaction, data lifecycle/backup,
 IdP administrative MFA/recovery/reset policy, image/OS SCA и независимая ASVS-проверка
 остаются условиями полного L2, а не исключениями N/A.
+
+## Задачи последующей реализации
+
+Открытые требования включены в [обязательства F09–F24](../asvs-l2-implementation-plan.md)
+и [253 requirement tasks](../asvs-l2-requirement-backlog.json). Это продолжение после
+local baseline, не изменение исторического audit assessment и не объявление полного L2.
+Контракты безопасности обязательны уже в F09; manager/collector/lifecycle/deployment
+закрываются по назначенным gates, прежде чем использующие их функции получают done.

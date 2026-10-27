@@ -1,6 +1,7 @@
 # OpsPilot Full — спецификация и последовательный план реализации
 
-Версия 1.0 · 26 октября 2026 года. Статус: **проектирование; этапы F01–F24 не реализованы**.
+Версия 1.1 · 27 октября 2026 года. План F01–F24; фактические статусы —
+в [каноническом tracker Full](docs/full-version-status.md). ASVS L2 включён в критерии этапов.
 
 **AI предлагает; детерминированное ядро контролирует исполнение; человек разрешает запись.**
 
@@ -425,6 +426,17 @@ identity/hash/result reference и живут дольше любого разр�
 Удаление tenant/user — отдельный administrative workflow с preview, audit и границами backup
 retention; отсутствует в agent tools. Secrets не попадают в grants archive, exports, traces и media.
 
+### 13.1. ASVS L2 — обязательная часть реализации
+
+Цель Full: OWASP ASVS **5.0.0 L2** (включая L1), 253 требования pinned baseline.
+Нормативное дополнение: [security implementation plan](docs/security/asvs-l2-implementation-plan.md)
+и [requirement backlog](docs/security/asvs-l2-requirement-backlog.json).
+Baseline `48486d0` проверен локально; это не полное L2 и не production acceptance.
+Контракты секретов/ключей/аудита/данных проектируются в F09 до первой новой schema,
+реализуются и проверяются по этапам ниже; их нельзя целиком откладывать до F17/F23.
+Каждый этап обязан сохранить baseline controls и закрыть свои security gates.
+Все 253 IDs имеют accountable F-stage; inherited supported/N/A не заменяет review/evidence.
+
 ## 14. Интеграции и внешние эффекты
 
 F18 вводит adapter interface, capability matrix и canonical mapping version, не меняя MCP
@@ -479,7 +491,8 @@ planning tracker в текущем checkout. Локальный workspace pointe
 1. Найти Full worktree и прочитать этот документ, tracker и applicable AGENTS.md.
 2. Выбрать первый этап по порядку, статус которого не done. Если in_progress — продолжить;
    если blocked — сначала проверить/устранить blocker. Не перескакивать к более удобному этапу.
-3. Проверить evidence зависимостей; отсутствующие предпосылки исправлять в Full, не в MVP.
+3. Прочитать security-план и ASVS backlog текущего этапа; проверить scope delta, предварительные
+   contracts и security evidence. Проверить evidence зависимостей; отсутствующие предпосылки исправлять в Full, не в MVP.
    MVP-код, `.env`, volumes, images и UI при этом не изменять.
 4. Ограничить scope текущим этапом. Отметить in_progress и коротко сообщить результат, который
    будет проверен. Не подменять необходимый реальный transport/multi-process test mock-объектом.
@@ -487,7 +500,8 @@ planning tracker в текущем checkout. Локальный workspace pointe
 6. Запустить указанные проверки плюс регрессии затронутых invariants. Записать команды, среду,
    фактические results, report paths, limitations и remaining work. Старые 129 тестов не выдавать
    за новый прогон; фиксированные проценты до измерений запрещены.
-7. done только когда обязательные проверки и внешние evidence получены. Missing credentials,
+7. done только когда функциональные и security gates текущего этапа закрыты, ASVS backlog
+   обновлён и обязательные проверки и внешние evidence получены. Missing credentials,
    sandbox/issuer/deployment target — конкретный blocker, не «считается done на mocks».
    До запроса недостающих данных закончить независимую локальную подготовку.
 8. Отдельный локальный коммит на этапе: `feat(full-fNN): ...` / `docs(full-fNN): ...`.
@@ -618,6 +632,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
 - Исполнение пока ограничить create_ticket, сохраняя regression его прежних invariants.
 - **Проверки:** tampered hash/tool/tenant/audience/epoch, expired/revoked approval, grant replay,
   approve-vs-reject/expiry, revision после approval, потеря ответа после decision commit.
+- **Security (SEC-01/02/03/04/05/06):** До migration зафиксировать threat model, canonical grants/key IDs, secret refs, security events и data classes; сохранить fresh-MFA и негативные API/MCP checks.
 - **Готово:** без подходящего persisted approval + grant новый write невозможен даже через прямой MCP.
 
 ### F10. Локальные ticket/comment/inbox operations
@@ -627,6 +642,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
 - Для notification enforce существующего tenant recipient; comments только к известному тикету.
 - **Проверки:** реальные PostgreSQL/MCP transactions, write without grant, rollback, lost response,
   concurrent replay, чужой recipient/ticket, verification missing/mismatch для каждого tool.
+- **Security (SEC-03/06/08):** Классифицировать новые comment/inbox fields; enforce tenant recipient/ticket/approved fields и безопасный rendering/export; secrets/PII не утекли.
 - **Готово:** три write вида создают по одному согласованному объекту и имеют exact verification.
 
 ### F11. Несколько действий и dependencies
@@ -636,6 +652,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
 - **Проверки:** approve ticket/reject inbox и обратная смесь; зависимость от rejected action;
   cycle/unknown dependency; ticket → новая конкретная comment card → отдельный approval;
   restart между actions и повтор plan без повторного succeeded business intent.
+- **Security (SEC-03/07):** Ограничить plan/DAG/actions, проверить per-action least privilege и отдельные grants/waves без escalation/replay completed effects.
 - **Готово:** UI/API projection отражает per-action итог, а не один глобальный success для всего плана.
 
 ### F12. Свежесть, TTL и replan
@@ -644,6 +661,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   role revocation перед dispatch, bounded replan/new revision и отдельный verification budget.
 - **Проверки:** approve ровно на TTL boundary, clock skew worker, stale cache, healthy-after-approval,
   unknown preconditions, изменённый recipient/project, replan loop cap и revoked approver.
+- **Security (SEC-02/03/04):** Проверить свежую MFA там, где требуется, DB-time TTL/revoke/roles/key rotation и bounded replan; кеш не источник authorization.
 - **Готово:** старое согласие не разрешает изменившийся эффект; expiry/restart не создают запись.
 
 ### F13. SSE replay и reconnect
@@ -652,6 +670,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   heartbeat/backpressure и revoke checks. Сохранить ограниченный polling fallback.
 - **Проверки:** события между snapshot и subscribe, reconnect после API restart, duplicate events,
   cursor чужого tenant, compacted cursor, slow reader, logout и membership revoke ≤30 s.
+- **Security (SEC-02/07/08):** Проверить session/tenant/cursor binding, отсутствие URL secrets, revoke ≤30 s, connection/backpressure limits и сброс private DOM.
 - **Готово:** состояние браузера сходится с authoritative snapshot без пропусков и повторных mutations.
 
 ### F14. Полный пользовательский интерфейс
@@ -662,6 +681,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   Не показывать технические grants/headers в продуктовых формах.
 - **Проверки:** Playwright для основных ролей/двух tenant, mixed approvals, expiry/revision,
   refresh/reconnect, keyboard/focus/mobile, injection rendering, accessibility smoke.
+- **Security (SEC-02/06/08):** Закрыть session/admin UX и scoped export, secure encoding/headers/cookies/CSRF; Playwright role/tenant/XSS/offline/revoke matrix и отдельные IdP policy evidence.
 - **Готово:** все уже реализованные ветки доступны из браузера, без административного SQL вручную.
 
 ### F15. Cache, admission, quotas и стоимость
@@ -670,6 +690,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   fair bounded worker admission, retry accounting и версионированные model prices.
 - **Проверки:** cache poisoning/cross-tenant keys, outage Redis, concurrency quota exhaustion,
   model timeout с unknown usage, restart не обнуляет counters, price unknown и cached token pricing.
+- **Security (SEC-07):** Durable actor/tenant/global reservations не исчезают при Redis outage/restart/eviction; bounded degradation, scoped cache и concurrent abuse tests.
 - **Готово:** bounded fallback, tokens/known cost/unknown usage показаны честно; CI не делает paid calls.
 
 ### F16. Observability и operator diagnostics
@@ -679,6 +700,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   active/wait/queue latency, upstream errors, budgets; внутренние readiness/run diagnostics.
 - **Проверки:** human pause не держит span, restart trace links, Collector/metrics outage,
   sentinel secrets в logs/spans/events/export; operator может найти причину stuck run по IDs.
+- **Security (SEC-05):** Подключить защищённый collector с redaction, integrity/access/retention/time и проверенными alerts; sentinel/tamper/outage tests без отключения diagnostics.
 - **Готово:** runbook содержит проверенные диагностику и alert conditions без фиктивного SLO.
 
 ### F17. Retention, secrets и приёмка Full Core
@@ -687,6 +709,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   secret/key rotation и dependency/security inventory. Сроки настраиваемы и явно проектные.
 - **Проверки:** не удаляются pending/unknown, replay после compaction не дублирует write,
   rotation с in-flight jobs, tenant export isolation и redaction, обратимая safe config change.
+- **Security (SEC-04/05/06/10):** Реальный secrets manager с ACL и rotation/recovery drill, crypto inventory, data lifecycle/export/delete/tombstones и package/image inventory обязательны для Core gate.
 - **Готово:** Full Core acceptance suite объединяет F02–F17, два tenant/worker и три local write вида.
   Документация явно отделяет готовый Core от ещё не готового Full Pilot. MVP отдельно сохранён.
 
@@ -696,6 +719,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   version, health/circuit breaker; signed ingress + receipts + processing jobs и replay protection.
 - **Проверки:** contract simulator по HTTP, invalid signatures/timestamps, duplicate/out-of-order
   events, crash до/после receipt, URL redirects/SSRF, oversized payload и чужой connector.
+- **Security (SEC-04/09):** До vendor calls применять manager-backed credential refs, scope/egress policy, SSRF/DNS/redirect/TLS и signed ingress replay/key-rotation controls.
 - **Готово:** replay-safe реальные transport boundaries; simulator явно маркирован, не выдаётся за vendor.
 
 ### F19. Prometheus read connector
@@ -704,6 +728,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   ограниченные range/pagination/cardinality, provenance и credential-status unknown.
 - **Проверки:** локальный настоящий Prometheus fixture server, contract/error cases и отдельный
   authorized staging endpoint с tenant mapping. Сохранить redacted smoke evidence, version и scope.
+- **Security (SEC-09):** Проверить Prometheus credential/query/tenant/range/cardinality/egress/TLS scope и разрешённый staging endpoint; mock не закрывает live gate.
 - **Готово:** UI расследует разрешённый источник через MCP; отсутствие staging target/credentials
   блокирует live acceptance, хотя локальный adapter можно закончить. Не называть synthetic series live.
 
@@ -715,6 +740,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   реальный разрешённый Jira sandbox: reject → 0 записей, approve → exact issue, отдельный
   comment approval → exact comment, replay → без нового объекта. Без native idempotency
   не проводить опасные live fault retries; inject faults в контролируемом simulator.
+- **Security (SEC-03/09):** Проверить Jira least privilege/project/field scopes, grant и independent verification, unknown/reconciliation; sandbox side effects только при авторизации.
 - **Готово:** redacted external IDs и audit receipts доказаны; неизвестная запись не маскируется
   автоматическим новым POST. Нет sandbox или разрешения на запись — конкретный blocker.
 
@@ -727,6 +753,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   20 concurrent active runs, 30-min soak с ≥200 jobs на документированной машине.
   Scripted workload, bounded queue, точные counts, 0 local duplicate/unauthorized writes и leaks;
   все accepted commands terminal либо честно needs_attention с причиной после восстановления.
+- **Security (SEC-02/03/05/07/09/11):** В fault/load/soak включить adversarial session/role/grant/replay/SSRF/limits/logging cases; 0 unauthorized/duplicate writes, disclosures и secret leaks.
 - **Готово:** измерены latency/throughput/recovery и пределы, а не обещаны заранее; кворум/HA не выдуман.
 
 ### F22. Evals 50 и release gates
@@ -741,6 +768,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   Первые 30+20 дают отчёт по 50 distinct cases; первый holdout входит в три повтора, не добавляется
   четвёртым. Без скрытого отбора лучших результатов.
   Hypotheses/неоднозначные claims проходят человеческую ревизию, не только LLM judge.
+- **Security (SEC-10/11):** Security evals связать с ASVS IDs; обеспечить SCA/secret/config gates, scripted invariants и честный real/holdout/remote-CI evidence.
 - **Готово:** отчёты содержат все denominators, setup errors, unknown usage, actual spend при известности,
   commit/dirty snapshot, dependency/fixture/prompt versions и реальные failures. Нет ключа/разрешения —
   real gate blocked, не done. Holdout, просмотренный при исправлении, больше не объявляется unseen.
@@ -757,6 +785,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
   сохранённый pending interrupt, committed operation без replay, rotation/revoke и rollback rehearsal.
   Project targets: backup interval ≤24 h, retention 7 daily/4 weekly, measured RTO target ≤60 min
   на документированной pilot-среде; если не достигнут — gate не пройден, а не «SLA гарантировано».
+- **Security (SEC-02/04/05/06/09/10/12):** На реальном target подтвердить admin MFA, managed secrets, PKI/service TLS/private networks, protected logs, storage/backup encryption, image/OS scans и restore/rotation/rollback.
 - **Готово:** авторизованный pilot endpoint и измеренный restore evidence; remote target/secrets/
   domain/egress approval отсутствуют → закончить локальные артефакты и явно заблокировать live часть.
 
@@ -770,6 +799,7 @@ planning tracker в текущем checkout. Локальный workspace pointe
 - **Проверки:** все gates §17, clean setup Full по README, smoke Core + authorized integrations,
   живой pilot/restore, link/artifact/secret checks; сравнение MVP fingerprint и отдельный read-only
   smoke его UI, если он запущен. Не запускать MVP заново с Full-конфигурацией ради проверки.
+- **Security (SEC-01/10/11/12):** Закрыть requirement-specific review всех 253 строк: evidence на release SHA/profile/deployment либо reviewed N/A; открытые applicable requirements блокируют L2/release acceptance.
 - **Готово:** F01–F23 done, обязательных blockers нет, полная таблица evidence и известные limits
   опубликованы в Full checkout. Новые видео/голос не обязательны и без отдельной просьбы не создаются.
 
@@ -790,6 +820,11 @@ fixture clock/source labels, N/all setup failures, per-case allowed/required/att
 tools, factual/hypothesis predicates, action receipts/verification, approved/executed/unknown counts,
 queue/active/human wait/recovery latency, tokens/cached tokens/unknown usage и known spend.
 Не смешивать 12 старых MVP, 50 Full и 3 holdout repeats в один искусственный denominator.
+
+ASVS release gate: все применимые L1+L2 requirements verified/reviewed на pinned release
+и deployment; N/A имеют rationale и review владельца. Отсутствующие external evidence,
+неустранённые applicable gaps и невыбранные operational dependencies не закрываются
+процентом тестов или risk acceptance. F24/L2 acceptance остаётся blocked до их устранения.
 
 Дополнительные обязательные gates: поддерживаемый checkpoint version upgrade; fenced stale-worker
 test; revoked session/SSE access; expiry/cancellation races; independent Full resources; реальные
