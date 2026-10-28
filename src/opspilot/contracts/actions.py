@@ -21,3 +21,27 @@ class TicketProposal(StrictModel):
 
 class PlanDecision(StrictModel):
     proposal: TicketProposal | None
+
+
+class CommentProposal(StrictModel):
+    customer_id: UUID
+    ticket_id: UUID
+    body: Annotated[str, StringConstraints(min_length=1, max_length=6000)]
+    evidence_ids: Annotated[list[str], Field(min_length=1, max_length=30)]
+
+    @field_validator("evidence_ids")
+    @classmethod
+    def normalize_ids(cls, value: list[str]) -> list[str]:
+        return sorted(set(value))
+
+
+class NotificationProposal(StrictModel):
+    customer_id: UUID
+    recipient_id: UUID
+    body: Annotated[str, StringConstraints(min_length=1, max_length=6000)]
+    evidence_ids: Annotated[list[str], Field(min_length=1, max_length=30)]
+
+    @field_validator("evidence_ids")
+    @classmethod
+    def normalize_ids(cls, value: list[str]) -> list[str]:
+        return sorted(set(value))

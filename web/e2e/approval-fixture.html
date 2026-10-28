@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Approval rendering test</title></head><body><div id="root"></div><script type="module">
+import React from 'react';
+import {createRoot} from 'react-dom/client';
+import {ApprovalCard} from '../src/components/ApprovalCard.tsx';
+const root=createRoot(document.getElementById('root'));
+window.renderApproval=(action)=>root.render(React.createElement(ApprovalCard,{action,waiting:true,busy:false,onDecision:async()=>{},onSelect:()=>{}}));
+</script></body></html>

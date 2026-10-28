@@ -1,7 +1,7 @@
 from opspilot.agent.nodes.execute import saved_action
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
-from opspilot.contracts.tools import TicketData
+from opspilot.mcp_client.registry import READ_TOOLS
 
 
 async def verify(state: AgentState, runtime: Runtime) -> None:
@@ -12,18 +12,21 @@ async def verify(state: AgentState, runtime: Runtime) -> None:
         return
     try:
         action = await saved_action(state, runtime)
-        result = await runtime.read(
-            "get_ticket", {"ticket_id": execution["ticket_id"]}, state, verification=True
-        )
+        read, id_field = {
+            "create_ticket": ("get_ticket", "ticket_id"),
+            "add_ticket_comment": ("get_ticket_comment", "comment_id"),
+            "notify_manager": ("get_notification", "notification_id"),
+        }[action["tool"]]
+        result = await runtime.read(read, {id_field: execution[id_field]}, state, verification=True)
         if not result.ok:
             state["outcome"] = "unknown_outcome"
             return
-        data = TicketData.model_validate(result.data).model_dump(mode="json")
+        data = READ_TOOLS[read].data.model_validate(result.data).model_dump(mode="json")
         expected = {
             **action["arguments"],
-            "ticket_id": execution["ticket_id"],
+            id_field: execution[id_field],
             "originating_action_id": state["action_id"],
-            "status": "open",
+            **({"status": "open"} if action["tool"] == "create_ticket" else {}),
             "created_at": execution["created_at"],
         }
         if data != expected:
@@ -31,7 +34,7 @@ async def verify(state: AgentState, runtime: Runtime) -> None:
             state["outcome"] = "partial"
             state["errors"]["verify"] = {"code": "TICKET_MISMATCH", "node": "verify"}
             return
-        state["verification_result"] = {"status": "verified", "ticket_id": data["ticket_id"]}
+        state["verification_result"] = {"status": "verified", id_field: data[id_field]}
         state["outcome"] = "actions_verified"
     except Exception:
         state["outcome"] = "unknown_outcome"

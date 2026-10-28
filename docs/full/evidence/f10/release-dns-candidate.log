@@ -1,0 +1,155 @@
+Compose now can delegate build to bake for better performances
+Just set COMPOSE_BAKE=true
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [collector internal] load build definition from Dockerfile
+#1 transferring dockerfile: 402B 0.0s done
+#1 DONE 0.1s
+
+#2 [oidc internal] load build definition from Dockerfile
+#2 transferring dockerfile: 237B 0.0s done
+#2 DONE 0.1s
+
+#3 [postgres internal] load build definition from Dockerfile
+#3 transferring dockerfile: 402B 0.0s done
+#3 DONE 0.1s
+
+#4 [jaeger internal] load build definition from Dockerfile
+#4 transferring dockerfile: 402B 0.0s done
+#4 DONE 0.1s
+
+#5 [oidc internal] load metadata for quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9
+#5 DONE 0.0s
+
+#6 [jaeger internal] load metadata for docker.io/jaegertracing/all-in-one:1.66.0@sha256:9864182b4e01350fcc64631bdba5f4085f87daae9d477a04c25d9cb362e787a9
+#6 DONE 0.0s
+
+#7 [collector internal] load metadata for docker.io/otel/opentelemetry-collector:0.120.0@sha256:1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06
+#7 DONE 0.0s
+
+#8 [postgres internal] load metadata for docker.io/library/postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+#8 DONE 0.0s
+
+#9 [collector internal] load .dockerignore
+#9 transferring context: 316B 0.0s done
+#9 DONE 0.1s
+
+#10 [postgres internal] load .dockerignore
+#10 transferring context: 316B 0.0s done
+#10 DONE 0.1s
+
+#11 [oidc internal] load .dockerignore
+#11 transferring context: 316B 0.0s done
+#11 DONE 0.1s
+
+#12 [jaeger internal] load .dockerignore
+#12 transferring context: 316B 0.0s done
+#12 DONE 0.1s
+
+#13 [oidc internal] load build context
+#13 DONE 0.0s
+
+#14 [jaeger jaeger 1/1] FROM docker.io/jaegertracing/all-in-one:1.66.0@sha256:9864182b4e01350fcc64631bdba5f4085f87daae9d477a04c25d9cb362e787a9
+#14 CACHED
+
+#15 [collector collector 1/1] FROM docker.io/otel/opentelemetry-collector:0.120.0@sha256:1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06
+#15 CACHED
+
+#16 [jaeger] exporting to image
+#16 exporting layers done
+#16 writing image sha256:9d47e66e6acd2de777c8097d044e89a633d84c83214b1414c43cee2e2dec39f5
+#16 writing image sha256:9d47e66e6acd2de777c8097d044e89a633d84c83214b1414c43cee2e2dec39f5 0.0s done
+#16 naming to docker.io/opspilot-full/jaeger:f01 0.0s done
+#16 DONE 0.1s
+
+#17 [oidc 1/2] FROM quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9
+#17 DONE 0.0s
+
+#18 [postgres postgres 1/1] FROM docker.io/library/postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+#18 CACHED
+
+#19 [collector] exporting to image
+#19 exporting layers done
+#19 writing image sha256:a612505ce0501632ae6a915bfccbf6acb05242b85c981074546a327fdffcd7cb 0.0s done
+#19 naming to docker.io/opspilot-full/collector:f01 0.0s done
+#19 DONE 0.1s
+
+#20 [postgres] exporting to image
+#20 exporting layers done
+#20 writing image sha256:6366a3b98d9d4d4939ca706b39ea6696eb84bb4876ab54cc45a550aaad31106f done
+#20 naming to docker.io/opspilot-full/postgres:f01 0.0s done
+#20 DONE 0.1s
+
+#13 [oidc internal] load build context
+#13 transferring context: 3.25kB 0.1s done
+#13 DONE 0.1s
+
+#21 [oidc 2/2] COPY infra/identity/opspilot-realm.json /opt/keycloak/data/import/opspilot-realm.json
+#21 CACHED
+
+#22 [oidc] exporting to image
+#22 exporting layers done
+#22 writing image sha256:90af8d0cc77d6d29d7889239f60b2d247e16b9a7b08f13f2cfcb9f5ce1f832e3 0.0s done
+#22 naming to docker.io/opspilot-full/oidc:f03 0.0s done
+#22 DONE 0.1s
+
+#23 [jaeger] resolving provenance for metadata file
+#23 ...
+
+#24 [postgres] resolving provenance for metadata file
+#24 DONE 0.1s
+
+#25 [oidc] resolving provenance for metadata file
+#25 DONE 0.1s
+
+#23 [jaeger] resolving provenance for metadata file
+#23 DONE 0.3s
+
+#26 [collector] resolving provenance for metadata file
+#26 DONE 0.2s
+
+#27 [mcp internal] load build definition from Dockerfile
+#27 transferring dockerfile: 992B 0.0s done
+#27 DONE 0.0s
+
+#28 [api internal] load build definition from Dockerfile
+#28 transferring dockerfile: 992B done
+#28 DONE 0.1s
+
+#29 [mcp internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#29 DONE 10.1s
+
+#30 [mcp internal] load .dockerignore
+#30 transferring context: 316B 0.0s done
+#30 DONE 0.0s
+
+#31 [api internal] load .dockerignore
+#31 transferring context: 316B done
+#31 DONE 0.1s
+
+#32 [mcp runtime  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#32 DONE 0.0s
+
+#33 [api runtime  2/12] WORKDIR /app
+#33 CACHED
+
+#34 [api internal] load build context
+#34 transferring context: 16.83kB 0.0s done
+#34 DONE 0.1s
+
+#35 [mcp internal] load build context
+#35 transferring context: 1.28MB 0.1s done
+#35 DONE 0.1s
+
+#36 [api runtime  3/12] RUN apk --no-cache upgrade
+#36 5.723 WARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.23/main/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)
+#36 10.75 WARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.23/community/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)
+#36 10.75 ERROR: Not continuing due to stale/unavailable repositories. Use --force-missing-repositories to continue.
+#36 ERROR: process "/bin/sh -c apk --no-cache upgrade" did not complete successfully: exit code: 99
+------
+ > [api runtime  3/12] RUN apk --no-cache upgrade:
+5.723 WARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.23/main/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)
+10.75 WARNING: fetching https://dl-cdn.alpinelinux.org/alpine/v3.23/community/x86_64/APKINDEX.tar.gz: DNS: transient error (try again later)
+10.75 ERROR: Not continuing due to stale/unavailable repositories. Use --force-missing-repositories to continue.
+------
+failed to solve: process "/bin/sh -c apk --no-cache upgrade" did not complete successfully: exit code: 99

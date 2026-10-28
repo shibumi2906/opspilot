@@ -29,7 +29,7 @@ export function ApprovalCard({
           ▤
         </span>
         <div>
-          <h3>Create an internal ticket</h3>
+          <h3>{{create_ticket: "Create an internal ticket", add_ticket_comment: "Add a ticket comment", notify_manager: "Notify an internal recipient"}[action.tool_name]}</h3>
           <p>
             Records the issue for follow-up. Credentials and the integration
             stay unchanged.
@@ -48,16 +48,19 @@ export function ApprovalCard({
         <dd className="mono" data-testid="ticket-customer">
           {action.arguments.customer_id}
         </dd>
-        <dt>Title</dt>
-        <dd data-testid="ticket-title">{action.arguments.title}</dd>
-        <dt>Description</dt>
-        <dd className="description" data-testid="ticket-description">
-          {action.arguments.description}
-        </dd>
-        <dt>Priority</dt>
-        <dd data-testid="ticket-priority">
-          <span className="priority">{action.arguments.priority}</span>
-        </dd>
+        {"title" in action.arguments ? <>
+          <dt>Title</dt>
+          <dd data-testid="ticket-title">{action.arguments.title}</dd>
+          <dt>Description</dt>
+          <dd className="description" data-testid="ticket-description">{action.arguments.description}</dd>
+          <dt>Priority</dt>
+          <dd data-testid="ticket-priority"><span className="priority">{action.arguments.priority}</span></dd>
+        </> : <>
+          <dt>{action.tool_name === "add_ticket_comment" ? "Ticket ID" : "Recipient ID"}</dt>
+          <dd className="mono">{action.arguments.ticket_id ?? action.arguments.recipient_id}</dd>
+          <dt>Body</dt>
+          <dd className="description" data-testid="operation-body">{action.arguments.body}</dd>
+        </>}
         <dt>Evidence IDs</dt>
         <dd>
           <ul className="exact-evidence">
@@ -112,7 +115,7 @@ export function ApprovalCard({
               disabled={!canApprove || !waiting || busy || expired}
               onClick={() => void onDecision("approve")}
             >
-              {busy ? "Checking saved decision…" : "Approve & create ticket"}
+              {busy ? "Checking saved decision…" : {create_ticket: "Approve & create ticket", add_ticket_comment: "Approve & add comment", notify_manager: "Approve & notify recipient"}[action.tool_name]}
               <span aria-hidden="true">↗</span>
             </button>
           </div>

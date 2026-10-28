@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 27 октября 2026 года. **F01–F09 завершены; F10–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 28 октября 2026 года. **F01–F10 завершены; F11–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F10 — local ticket/comment/internal inbox operations. Не начат.**
+**Следующий этап: F11 — mixed plans/dependencies/approval waves. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F10 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F11 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -62,7 +62,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F07 | done | Transactional events/audit/projections | [evidence](full/evidence/f07/README.md); commit subject: `feat(full): implement F07 transactional events audit and projections` | [SEC-00: local baseline](security/hardening/status.md) |
 | F08 | done | Durable typed clarification и cancellation | [evidence](full/evidence/f08/README.md); commit subject: `feat(full): implement F08 durable clarification and cancellation` | [SEC-00: local baseline](security/hardening/status.md) |
 | F09 | done | Immutable revisions, version/TTL, independent signed persisted grants, exact MCP authorization | [evidence](full/evidence/f09/README.md); commit subject: `feat(full-f09): bind immutable revisions to signed execution grants` | [SEC-01/02/03/04/05/06](security/asvs-l2-implementation-plan.md) |
-| F10 | not_started | Local ticket/comment/internal inbox writes | — | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
+| F10 | done | Три local write-tools, atomic receipts, exact verification и tenant/object/recipient scope | [evidence](full/evidence/f10/README.md) | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
 | F11 | not_started | Mixed plans/dependencies/approval waves | — | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
 | F12 | not_started | Freshness/expiry/revocation/replan | — | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
 | F13 | not_started | SSE replay/reconnect и авторизация | — | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
@@ -478,3 +478,46 @@ Ruff/format/mypy, real local TLS/MFA (8+11 checks), legacy upgrade (2 receipts p
 SCA app/web 0 findings, Python/npm audit 0, live key separation/DB audit privileges — pass.
 MVP fingerprint сохранён. Отдельный локальный commit F09; push не выполнялся.
 Следующий этап — F10, он остаётся not_started.
+
+
+## F10 — local ticket/comment/internal inbox operations
+
+28 октября 2026. Canonical Full worktree
+`C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`,
+ветка `codex/opspilot-full`; base F09 `278d92d`. Schema `0012_local_operations`;
+workflow `full-graph-v1`, state/DTO/revision schema1, checkpoint SDK migration9.
+
+Добавлены add_ticket_comment/notify_manager и get_ticket_comment/get_notification.
+Immutable revision и независимый signed grant привязаны к конкретному tool и всем утверждённым
+полям. MCP перепроверяет tenant/actor/approval/roles/TTL/fence/cancellation; existing ticket/customer
+и доступ к target, enabled tenant recipient. Domain row + grant consume + receipt атомарны;
+concurrent replay возвращает тот же объект. DB trigger блокирует target без выдачи runtime UPDATE.
+Independent verification сравнивает approved fields, generated ID/time и origin operation;
+missing/mismatch не дают verified success, lost response восстанавливается из receipt.
+
+SEC-01/03/06/08/10: [security contracts](full/f10-security-contracts.md), классификация новых
+body/recipient fields, FORCE RLS, private reads, operation-specific DTO и React text rendering,
+ASVS scoped contributions без полного закрытия норм. Полный L2 NOT_MET; retention/managed storage,
+operational controls и deployment остаются F17/F23/F24. F11 DAG и F14 full inbox UI не начинались.
+
+[Measured acceptance и команды](full/evidence/f10/README.md): backend **331 passed / 9 dedicated
+skips**, включая все26 F10 PostgreSQL/MCP cases; browser/OIDC **12/12**, durable queue process **5**,
+fencing kill/stop/partition **3**, scripted evals **12/12**, hard safety gate true, unauthorized/
+duplicate/false verified writes0. Ruff/format/mypy111, TypeScript/Vite, real Chromium new-field
+XSS/text check, fresh TLS/MFA **8+11** проходят. Runtime SCA HIGH/CRITICAL0, Python/npm audit0.
+
+Исходные Docker500/DNS blockers сняты после разрешённого владельцем restart (при зависшем stopping
+завершён только docker-desktop WSL). Сохранены failed candidates: readiness pin0011→0012 и
+неверный FOR UPDATE на tickets исправлены; privileges/assertions/deadlines не ослаблены.
+Fresh synthetic TLS profile использует новые credentials; секреты не включены в artifacts.
+
+Dev Full upgrade0011→0012 сохранил все прежние tickets/receipts; два worker healthy,
+UI8091/API8011 HTTP200, real MCP13 tools и новый read-only queued run завершён с event/audit.
+MVP184 source/media/docs/env fingerprints, main/HEAD, images, volume metadata/content совпали
+после restart и после финального rollout; исходный checkout чист. Test containers/networks
+удалены без удаления volumes/images. [Preservation](full/evidence/f10/mvp-isolation.json).
+Application calls только локальные synthetic OIDC/PG/MCP; paid/vendor writes0. Dependency/image
+scanner downloads были; remote CI, real provider и production deployment не запускались.
+Blockers F10 отсутствуют. Локальный stage commit subject:
+`feat(full-f10): implement local ticket comment and internal inbox operations`.
+Следующий F11 остаётся not_started; выполнен только F10.

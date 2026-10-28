@@ -4,7 +4,7 @@ from uuid import UUID
 
 from pydantic import AwareDatetime, Field, StringConstraints, model_validator
 
-from opspilot.contracts.actions import TicketProposal
+from opspilot.contracts.actions import CommentProposal, NotificationProposal, TicketProposal
 from opspilot.contracts.common import StrictModel
 
 
@@ -144,3 +144,47 @@ class CreateTicketData(StrictModel):
     ticket_id: UUID
     created_at: AwareDatetime
     replayed: bool
+
+
+class AddTicketCommentArgs(StrictModel):
+    run_id: UUID
+    action_id: UUID
+    arguments: CommentProposal
+
+
+class NotifyManagerArgs(StrictModel):
+    run_id: UUID
+    action_id: UUID
+    arguments: NotificationProposal
+
+
+class GetTicketCommentArgs(StrictModel):
+    comment_id: UUID
+
+
+class GetNotificationArgs(StrictModel):
+    notification_id: UUID
+
+
+class CommentReceipt(StrictModel):
+    comment_id: UUID
+    created_at: AwareDatetime
+    replayed: bool
+
+
+class NotificationReceipt(StrictModel):
+    notification_id: UUID
+    created_at: AwareDatetime
+    replayed: bool
+
+
+class CommentData(CommentProposal):
+    comment_id: UUID
+    originating_action_id: UUID
+    created_at: AwareDatetime
+
+
+class NotificationData(NotificationProposal):
+    notification_id: UUID
+    originating_action_id: UUID
+    created_at: AwareDatetime

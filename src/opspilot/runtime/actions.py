@@ -22,7 +22,11 @@ def payload_hash(arguments: dict[str, Any]) -> str:
 
 
 async def new_revision(
-    session: AsyncSession, logical: LogicalAction, arguments: dict[str, Any], settings: Settings
+    session: AsyncSession,
+    logical: LogicalAction,
+    arguments: dict[str, Any],
+    settings: Settings,
+    tool: str = "create_ticket",
 ) -> Action:
     now = await session.scalar(select(func.clock_timestamp()))
     assert now is not None
@@ -37,6 +41,7 @@ async def new_revision(
         plan_version=logical.version,
         arguments=arguments,
         expires=expires,
+        tool=tool,
     )
     action = Action(
         id=revision,
@@ -47,7 +52,7 @@ async def new_revision(
         revision_document=doc,
         revision_hash=canonical_hash(doc),
         expires_at=expires,
-        tool_name="create_ticket",
+        tool_name=tool,
         arguments=arguments,
         arguments_hash=payload_hash(arguments),
     )
@@ -67,8 +72,20 @@ async def new_revision(
 
 
 async def prepare(
-    session: AsyncSession, run_id: UUID, arguments: dict[str, Any], settings: Settings | None = None
+    session: AsyncSession,
+    run_id: UUID,
+    arguments: dict[str, Any],
+    settings: Settings | None = None,
+    *,
+    tool: str = "create_ticket",
 ) -> Action:
+    from opspilot.mcp_client.registry import WRITE_TOOLS
+
+    arguments = (
+        WRITE_TOOLS[tool]
+        .arguments.model_validate({"run_id": run_id, "action_id": run_id, "arguments": arguments})
+        .model_dump(mode="json")["arguments"]
+    )
     action = await session.scalar(
         select(Action)
         .where(Action.run_id == run_id, Action.superseded_at.is_(None))
@@ -76,13 +93,17 @@ async def prepare(
         .limit(1)
     )
     if action:
-        if action.arguments_hash != payload_hash(arguments) or action.arguments != arguments:
+        if (
+            action.tool_name != tool
+            or action.arguments_hash != payload_hash(arguments)
+            or action.arguments != arguments
+        ):
             raise Conflict("Immutable action differs from replay")
         return action
     logical = LogicalAction(id=uuid4(), run_id=run_id, current_revision_id=uuid4(), version=1)
     session.add(logical)
     await session.flush()
-    return await new_revision(session, logical, arguments, settings or Settings())
+    return await new_revision(session, logical, arguments, settings or Settings(), tool)
 
 
 async def expire_approvals(service: Any) -> None:

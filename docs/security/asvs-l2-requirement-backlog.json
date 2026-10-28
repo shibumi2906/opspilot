@@ -33,6 +33,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -60,6 +67,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -87,6 +101,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -114,6 +135,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -141,6 +169,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -168,6 +203,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -195,6 +237,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -224,6 +273,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -253,6 +309,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -282,6 +345,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -309,6 +379,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -338,6 +415,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -365,6 +449,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -392,6 +483,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -421,6 +519,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -448,6 +553,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -475,6 +587,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -502,6 +621,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -531,6 +657,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -560,6 +693,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -587,6 +727,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -616,6 +763,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -643,6 +797,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -670,6 +831,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -697,6 +865,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -726,6 +901,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -753,6 +935,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -797,7 +986,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.1.2",
@@ -841,7 +1037,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.1.3",
@@ -885,7 +1088,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.2.1",
@@ -929,7 +1139,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.2.2",
@@ -973,7 +1190,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.2.3",
@@ -1017,7 +1241,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.3.1",
@@ -1061,7 +1292,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.3.2",
@@ -1105,7 +1343,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.3.3",
@@ -1149,7 +1394,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.3.4",
@@ -1193,7 +1445,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-2.4.1",
@@ -1263,6 +1522,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1290,6 +1556,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1317,6 +1590,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1344,6 +1624,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1371,6 +1658,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1398,6 +1692,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1425,6 +1726,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1452,6 +1760,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1479,6 +1794,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1506,6 +1828,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1533,6 +1862,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1560,6 +1896,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1587,6 +1930,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1616,6 +1966,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1643,6 +2000,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1670,6 +2034,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1699,6 +2070,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1726,6 +2104,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1753,6 +2138,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1781,6 +2173,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1809,6 +2208,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1837,6 +2243,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1865,6 +2278,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1894,6 +2314,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1923,6 +2350,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1952,6 +2386,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -1981,6 +2422,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2010,6 +2458,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2039,6 +2494,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2068,6 +2530,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2097,6 +2566,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2126,6 +2602,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2155,6 +2638,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2184,6 +2674,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2213,6 +2710,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2242,6 +2746,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2271,6 +2782,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2300,6 +2818,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2950,6 +3475,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -2979,6 +3511,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3008,6 +3547,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3037,6 +3583,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3066,6 +3619,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3095,6 +3655,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3124,6 +3691,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3153,6 +3727,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3182,6 +3763,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3238,6 +3826,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -3815,7 +4410,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-8.1.2",
@@ -3861,7 +4463,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-8.2.1",
@@ -3907,7 +4516,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-8.2.2",
@@ -3953,7 +4569,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-8.2.3",
@@ -3999,7 +4622,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-8.3.1",
@@ -4045,7 +4675,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-8.4.1",
@@ -4091,7 +4728,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.1.1",
@@ -4136,7 +4780,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.1.2",
@@ -4181,7 +4832,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.1.3",
@@ -4226,7 +4884,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.2.1",
@@ -4271,7 +4936,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.2.2",
@@ -4316,7 +4988,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.2.3",
@@ -4361,7 +5040,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-9.2.4",
@@ -4406,7 +5092,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-10.1.1",
@@ -4516,6 +5209,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -4545,6 +5245,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -4574,6 +5281,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -4603,6 +5317,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -4632,6 +5353,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -4904,6 +5632,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -5068,6 +5803,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -5720,7 +6462,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-11.5.1",
@@ -5891,6 +6640,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6442,6 +7198,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6469,6 +7232,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6496,6 +7266,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6523,6 +7300,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6550,6 +7334,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6577,6 +7368,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6604,6 +7402,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6631,6 +7436,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6658,6 +7470,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -6700,7 +7519,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.1.2",
@@ -6742,7 +7568,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.1.3",
@@ -6784,7 +7617,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.2.1",
@@ -6827,7 +7667,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.2.2",
@@ -6870,7 +7717,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.2.3",
@@ -6913,7 +7767,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.1",
@@ -6955,7 +7816,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.2",
@@ -6997,7 +7865,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.3",
@@ -7039,7 +7914,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.4",
@@ -7081,7 +7963,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.5",
@@ -7123,7 +8012,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.6",
@@ -7165,7 +8061,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-15.3.7",
@@ -7207,7 +8110,14 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      }
     },
     {
       "id": "v5.0.0-16.1.1",
@@ -7908,6 +8818,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -7937,6 +8854,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -7966,6 +8890,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -7995,6 +8926,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -8024,6 +8962,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -8053,6 +8998,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     },
     {
@@ -8082,6 +9034,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f10_scope_review": {
+        "ref": "../full/f10-security-contracts.md",
+        "implementation": "local comment/notification contracts, exact tool grants, tenant/object/recipient checks, atomic receipt and operation-specific exports",
+        "verification_ref": "../full/evidence/f10/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
       }
     }
   ],
@@ -8091,5 +9050,11 @@
     "evidence": "../full/evidence/f09/checks.json",
     "source_manifest": "../full/evidence/f09/source-tree.json",
     "whole_requirement_acceptance": "still pending; accountable stages and owner N/A review retained"
+  },
+  "f10_local_gate": {
+    "status": "passed",
+    "evidence": "../full/evidence/f10/checks.json",
+    "source_manifest": "../full/evidence/f10/source-tree.json",
+    "whole_requirement_acceptance": "not claimed; accountable stages and full L2 NOT_MET retained"
   }
 }

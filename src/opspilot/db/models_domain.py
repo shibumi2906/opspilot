@@ -110,3 +110,50 @@ class Ticket(TenantOwned, Base):
     status: Mapped[str] = mapped_column(String(20), server_default="open")
     evidence_ids: Mapped[list[str]] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class TicketComment(TenantOwned, Base):
+    __tablename__ = "ticket_comments"
+    __table_args__ = (
+        UniqueConstraint("tenant_id", "id"),
+        ForeignKeyConstraint(
+            ["tenant_id", "ticket_id"], ["domain.tickets.tenant_id", "domain.tickets.id"]
+        ),
+        ForeignKeyConstraint(
+            ["tenant_id", "customer_id"], ["domain.customers.tenant_id", "domain.customers.id"]
+        ),
+        ForeignKeyConstraint(
+            ["tenant_id", "originating_action_id"],
+            ["workflow.actions.tenant_id", "workflow.actions.id"],
+        ),
+        {"schema": "domain"},
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True)
+    customer_id: Mapped[UUID] = mapped_column()
+    ticket_id: Mapped[UUID] = mapped_column()
+    originating_action_id: Mapped[UUID] = mapped_column(unique=True)
+    body: Mapped[str] = mapped_column(Text)
+    evidence_ids: Mapped[list[str]] = mapped_column(JSONB)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class Notification(TenantOwned, Base):
+    __tablename__ = "notifications"
+    __table_args__ = (
+        UniqueConstraint("tenant_id", "id"),
+        ForeignKeyConstraint(
+            ["tenant_id", "customer_id"], ["domain.customers.tenant_id", "domain.customers.id"]
+        ),
+        ForeignKeyConstraint(
+            ["tenant_id", "originating_action_id"],
+            ["workflow.actions.tenant_id", "workflow.actions.id"],
+        ),
+        {"schema": "domain"},
+    )
+    id: Mapped[UUID] = mapped_column(primary_key=True)
+    customer_id: Mapped[UUID] = mapped_column()
+    recipient_id: Mapped[UUID] = mapped_column()
+    originating_action_id: Mapped[UUID] = mapped_column(unique=True)
+    body: Mapped[str] = mapped_column(Text)
+    evidence_ids: Mapped[list[str]] = mapped_column(JSONB)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

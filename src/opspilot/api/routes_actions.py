@@ -4,6 +4,7 @@ from typing import Any
 from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Request
+from pydantic import ValidationError
 from sqlalchemy import func, select, text
 
 from opspilot.auth.context import AuthError, actor_id, require_role
@@ -11,6 +12,7 @@ from opspilot.auth.session_routes import require_recent
 from opspilot.contracts.api import RevisionChange, RevokeApproval
 from opspilot.contracts.public import public_snapshot
 from opspilot.db.models_workflow import Action, AgentRun, Approval, LogicalAction
+from opspilot.mcp_client.registry import WRITE_TOOLS
 from opspilot.runtime.actions import Conflict, new_revision
 from opspilot.runtime.fencing import execution_lease
 from opspilot.runtime.jobs import enqueue
@@ -47,6 +49,12 @@ async def revise(logical_id: UUID, body: RevisionChange, request: Request) -> di
             )
             assert old is not None
             arguments = body.arguments.model_dump(mode="json")
+            try:
+                WRITE_TOOLS[old.tool_name].arguments.model_validate(
+                    {"run_id": run_id, "action_id": old.id, "arguments": arguments}
+                )
+            except ValidationError:
+                raise Conflict("Revision cannot change operation type") from None
             if logical.version != body.expected_version:
                 if logical.version == body.expected_version + 1 and old.arguments == arguments:
                     return public_snapshot(await service.snapshot(run_id))
@@ -84,7 +92,7 @@ async def revise(logical_id: UUID, body: RevisionChange, request: Request) -> di
             logical.version += 1
             logical.current_revision_id = uuid4()
             await session.flush()
-            await new_revision(session, logical, arguments, service.settings)
+            await new_revision(session, logical, arguments, service.settings, old.tool_name)
             run.status = "waiting_for_approval"
             await session.execute(
                 text(

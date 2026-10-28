@@ -30,13 +30,13 @@ def run_scope(run: str) -> Iterator[None]:
 
 
 @contextmanager
-def action_scope(run: str, action: str, digest: str) -> Iterator[None]:
+def action_scope(run: str, action: str, digest: str, tool: str = "create_ticket") -> Iterator[None]:
     token = _action.set(
         {
             "run": str(UUID(run)),
             "action": str(UUID(action)),
             "hash": digest,
-            "tool": "create_ticket",
+            "tool": tool,
         }
     )
     try:
@@ -136,7 +136,10 @@ def verify(token: str, settings: Settings) -> dict[str, Any]:
                 raise ValueError("invalid execution epoch")
         if claims["scope"] == "action":
             UUID(claims["action"])
-            if claims.get("tool") != "create_ticket" or len(claims.get("hash", "")) != 64:
+            if (
+                claims.get("tool") not in {"create_ticket", "add_ticket_comment", "notify_manager"}
+                or len(claims.get("hash", "")) != 64
+            ):
                 raise ValueError("invalid action binding")
         return claims
     except (jwt.PyJWTError, ValueError, KeyError, TypeError, OSError) as exc:

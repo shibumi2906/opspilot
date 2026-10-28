@@ -1,0 +1,13 @@
+{
+  "before": {
+    "schema": "0011_action_grants",
+    "tickets": 2,
+    "receipts": 2
+  },
+  "after": {
+    "schema": "0012_local_operations",
+    "tickets": 2,
+    "receipts": 2
+  },
+  "preserved": true
+}

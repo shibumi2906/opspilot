@@ -84,7 +84,7 @@ def verify(token: str, settings: Settings, *, now: datetime) -> dict[str, Any]:
         if (
             type(value["ver"]) is not int
             or value["ver"] != 1
-            or value["tool"] != "create_ticket"
+            or value["tool"] not in {"create_ticket", "add_ticket_comment", "notify_manager"}
             or type(value["epoch"]) is not int
             or value["epoch"] < 1
         ):
@@ -115,6 +115,7 @@ async def issue(settings: Settings, operation: dict[str, str]) -> str:
             if (
                 action is None
                 or action.run_id != fence.run
+                or action.tool_name != operation.get("tool", "create_ticket")
                 or action.arguments_hash != operation["hash"]
             ):
                 raise AuthError("GRANT_INVALID")
@@ -175,7 +176,7 @@ async def issue(settings: Settings, operation: dict[str, str]) -> str:
                 "tenant": str(run.tenant_id),
                 "run": str(run.id),
                 "revision": str(action.id),
-                "tool": "create_ticket",
+                "tool": action.tool_name,
                 "actor": str(run.actor_id),
                 "approver": str(approval.decided_by),
                 "payload_hash": action.revision_hash,
@@ -226,7 +227,7 @@ async def consume(
         "approver": str(approval.decided_by),
         "payload_hash": action.revision_hash,
         "epoch": epoch,
-        "tool": "create_ticket",
+        "tool": action.tool_name,
     }
     if any(claims[k] != v for k, v in expected.items()):
         raise AuthError("GRANT_INVALID")

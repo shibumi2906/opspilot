@@ -63,13 +63,20 @@ async def report(state: AgentState, runtime: Runtime) -> None:
         action_summary = (
             "Результат создания тикета неизвестен." if ru else "Ticket creation outcome is unknown."
         )
+    if execution and "ticket_id" not in execution:
+        action_summary = "Local operation persisted; verification: " + verification["status"]
+        if outcome == "actions_verified":
+            summaries["actions_verified"] = (
+                "Локальная операция записана и проверена.",
+                "Local operation persisted and verified.",
+            )
     result = Report(
         summary=summaries[outcome][0 if ru else 1],
         facts=facts,
         hypotheses=state.get("hypotheses", []),
         missing_checks=state.get("missing_checks", []),
         action_summary=action_summary,
-        ticket_id=execution["ticket_id"] if execution else None,
+        ticket_id=execution.get("ticket_id") if execution else None,
         verification_status=verification["status"],
         remaining_problem=(
             "Credential не обновлён; восстановление потока заказов не подтверждено."

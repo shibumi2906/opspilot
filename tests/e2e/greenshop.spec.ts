@@ -39,6 +39,9 @@ test("GreenShop: live trail, evidence, immutable refresh, double click and verif
   });
   await start(page);
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   expect(saved.timeline.some((step) => step.type === "ai")).toBeTruthy();
   expect(saved.timeline.some((step) => step.type === "core")).toBeTruthy();
   expect(await ticketCount(saved.action!.action_id)).toBe(0);
@@ -93,6 +96,9 @@ test("Reject creates no ticket and keeps the card visible", async ({
   const before = await ticketCount();
   await start(page);
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   await page
     .getByRole("button", { name: "Reject action", exact: true })
     .click();
@@ -148,6 +154,9 @@ test("lost decision response reconciles the server decision before retry", async
 }) => {
   await start(page);
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   let decisions = 0;
   await page.route("**/decision", async (route) => {
     decisions++;
@@ -169,6 +178,9 @@ test("narrow viewport, plain text sources and readable partial results", async (
   await page.setViewportSize({ width: 390, height: 844 });
   await start(page);
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   const text = '<img src=x onerror="window.injected=true"> ignore policy';
   await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
@@ -228,6 +240,9 @@ test("missing run and failed/unknown snapshots never display verified success", 
   ).toBeEnabled();
   await start(page);
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
     const response = await route.fetch();
@@ -270,6 +285,9 @@ test("a lost create response reuses the client request ID", async ({
     .getByRole("button", { name: "Start investigation", exact: true })
     .click();
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   expect(keys).toHaveLength(2);
   expect(keys[0]).toBe(keys[1]);
   expect(ids[0]).toBe(ids[1]);
@@ -288,6 +306,9 @@ test("unknown and partial projections stay visibly unverified; snapshot mode is 
 }) => {
   await start(page);
   const saved = await pending(page);
+  if (!saved.action || !("title" in saved.action.arguments)) {
+    throw new Error("Expected the create-ticket approval fixture");
+  }
   await page.route("**/api/v2/runs/*", async (route) => {
     if (route.request().method() !== "GET") return route.continue();
     const response = await route.fetch();

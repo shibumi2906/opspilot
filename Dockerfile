@@ -1,4 +1,4 @@
-FROM python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d AS runtime
+FROM python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d AS app-build
 WORKDIR /app
 RUN apk --no-cache upgrade
 RUN pip install --no-cache-dir uv==0.13.4
@@ -10,11 +10,14 @@ COPY alembic.ini ./
 COPY migrations ./migrations
 RUN uv pip uninstall --system pip
 RUN adduser -D -u 10001 opspilot
-USER opspilot
 ENV PATH="/app/.venv/bin:$PATH" PYTHONUNBUFFERED=1
+
+FROM app-build AS runtime
+RUN uv pip uninstall --system uv
+USER opspilot
 CMD ["python", "-m", "opspilot.api.main"]
 
-FROM runtime AS tests
+FROM app-build AS tests
 USER root
 RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
 COPY tests ./tests

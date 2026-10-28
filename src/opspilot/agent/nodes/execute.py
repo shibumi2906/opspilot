@@ -7,9 +7,9 @@ from opspilot.agent.budgets import BudgetExceeded
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
 from opspilot.auth.service_context import action_scope
-from opspilot.contracts.tools import CreateTicketData
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, Approval
+from opspilot.mcp_client.registry import WRITE_TOOLS
 from opspilot.runtime.actions import payload_hash
 from opspilot.runtime.human_commands import RunCancelled, check_cancelled
 from opspilot.tenancy.session import TenantSession as AsyncSession
@@ -34,11 +34,12 @@ async def saved_action(state: AgentState, runtime: Runtime) -> dict[str, Any]:
             action = row.Action
             if action.superseded_at is not None:
                 raise ValueError("Superseded revision")
-            if action.tool_name != "create_ticket" or action.arguments_hash != payload_hash(
+            if action.tool_name not in WRITE_TOOLS or action.arguments_hash != payload_hash(
                 action.arguments
             ):
                 raise ValueError("Action mismatch")
             return {
+                "tool": action.tool_name,
                 "arguments": action.arguments,
                 "result": action.execution_result,
                 "execution_status": action.execution_status,
@@ -58,11 +59,18 @@ async def execute(state: AgentState, runtime: Runtime) -> None:
     try:
         action = await saved_action(state, runtime)
         if action["execution_status"] == "succeeded" and action["result"]:
-            state["execution_result"] = CreateTicketData.model_validate(
-                action["result"]
-            ).model_dump(mode="json")
+            state["execution_result"] = (
+                WRITE_TOOLS[action["tool"]]
+                .data.model_validate(action["result"])
+                .model_dump(mode="json")
+            )
             return
-        with action_scope(state["run_id"], state["action_id"], payload_hash(action["arguments"])):
+        with action_scope(
+            state["run_id"],
+            state["action_id"],
+            payload_hash(action["arguments"]),
+            tool=action["tool"],
+        ):
             await dispatch(state, runtime, action)
         return
     except RunCancelled:
@@ -83,7 +91,7 @@ async def dispatch(state: AgentState, runtime: Runtime, action: dict[str, Any]) 
             return
         result = await runtime.client.call(
             session,
-            "create_ticket",
+            action["tool"],
             {
                 "run_id": state["run_id"],
                 "action_id": state["action_id"],
@@ -99,7 +107,9 @@ async def dispatch(state: AgentState, runtime: Runtime, action: dict[str, Any]) 
             "node": "execute",
         }
         return
-    state["execution_result"] = CreateTicketData.model_validate(result.data).model_dump(mode="json")
+    state["execution_result"] = (
+        WRITE_TOOLS[action["tool"]].data.model_validate(result.data).model_dump(mode="json")
+    )
 
 
 async def recover_write(state: AgentState, runtime: Runtime) -> None:
@@ -107,9 +117,11 @@ async def recover_write(state: AgentState, runtime: Runtime) -> None:
     try:
         action = await saved_action(state, runtime)
         if action["execution_status"] == "succeeded" and action["result"]:
-            state["execution_result"] = CreateTicketData.model_validate(
-                action["result"]
-            ).model_dump(mode="json")
+            state["execution_result"] = (
+                WRITE_TOOLS[action["tool"]]
+                .data.model_validate(action["result"])
+                .model_dump(mode="json")
+            )
             return
     except Exception:
         pass

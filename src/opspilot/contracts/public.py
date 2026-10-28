@@ -78,7 +78,9 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         for effect in report.get("effects", [])[:3]:
             item = pick(effect, "action_id status")
             item["result"] = (
-                pick(effect["result"], "ticket_id created_at") if effect.get("result") else None
+                pick(effect["result"], "ticket_id comment_id notification_id created_at")
+                if effect.get("result")
+                else None
             )
             result["report"]["effects"].append(item)
         result["report"]["cancelled_actions"] = report.get("cancelled_actions", [])[:3]
@@ -94,10 +96,15 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
     )
     if action:
         result["action"]["arguments"] = pick(
-            action.get("arguments", {}), "customer_id title description priority evidence_ids"
+            action.get("arguments", {}),
+            {
+                "create_ticket": "customer_id title description priority evidence_ids",
+                "add_ticket_comment": "customer_id ticket_id body evidence_ids",
+                "notify_manager": "customer_id recipient_id body evidence_ids",
+            }.get(action.get("tool_name"), ""),
         )
         result["action"]["result"] = (
-            pick(action["result"], "ticket_id created_at replayed")
+            pick(action["result"], "ticket_id comment_id notification_id created_at replayed")
             if action.get("result")
             else None
         )

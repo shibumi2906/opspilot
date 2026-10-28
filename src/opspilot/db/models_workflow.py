@@ -62,7 +62,10 @@ class Action(TenantOwned, Base):
         ForeignKeyConstraint(
             ["tenant_id", "run_id"], ["workflow.agent_runs.tenant_id", "workflow.agent_runs.id"]
         ),
-        CheckConstraint("tool_name = 'create_ticket'", name="ck_actions_tool"),
+        CheckConstraint(
+            "tool_name IN ('create_ticket','add_ticket_comment','notify_manager')",
+            name="ck_actions_tool",
+        ),
         CheckConstraint(
             "execution_status IN ('not_started', 'succeeded', 'failed', 'unknown')",
             name="ck_actions_execution_status",

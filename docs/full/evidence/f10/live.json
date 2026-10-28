@@ -1,0 +1,1 @@
+{"database": "opspilot_full", "schema": "0012_local_operations", "mcp_protocol": "2025-11-25", "mcp_tools": 13, "run_id": "409bed42-98e1-418a-bb0f-4a86bd415dac", "outcome": "diagnosis_only", "read_only_run_actions": 0, "event_count": 11, "audit_count": 11, "force_rls": true, "paid_calls": 0}

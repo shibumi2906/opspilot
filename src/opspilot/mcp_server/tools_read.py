@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, cast
 
 from loguru import logger
 from mcp.server.lowlevel import Server
@@ -12,22 +12,29 @@ from opspilot.auth.context import AuthError
 from opspilot.config import Settings
 from opspilot.contracts.common import Source, ToolError, ToolResult
 from opspilot.contracts.tools import (
+    AddTicketCommentArgs,
     CreateTicketArgs,
     EventsArgs,
     FindCustomersArgs,
     GetCustomerArgs,
     GetTicketArgs,
     IntegrationArgs,
+    NotifyManagerArgs,
     SearchDocumentationArgs,
 )
-from opspilot.db.models_domain import Customer, CustomerIntegration, Ticket
-from opspilot.mcp_client.registry import ALL_TOOLS, READ_TOOLS
+from opspilot.db.models_domain import (
+    Customer,
+    CustomerIntegration,
+    Notification,
+    Ticket,
+    TicketComment,
+)
+from opspilot.mcp_client.registry import ALL_TOOLS, READ_TOOLS, WRITE_TOOLS
 from opspilot.mcp_server.adapters.monitoring import observe
 from opspilot.mcp_server.authorization import authorize_tool
 from opspilot.mcp_server.services.customers import get_customer
 from opspilot.mcp_server.services.retrieval import search
-from opspilot.mcp_server.services.tickets import WriteDenied
-from opspilot.mcp_server.tools_write import write_tool
+from opspilot.mcp_server.services.tickets import WriteDenied, local_write
 from opspilot.telemetry import traced
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
@@ -78,6 +85,24 @@ async def read_tool(
             )
             for h in hits
         ]
+    if name in {"get_ticket_comment", "get_notification"}:
+        model = TicketComment if name == "get_ticket_comment" else Notification
+        id_field = "comment_id" if name == "get_ticket_comment" else "notification_id"
+        async with AsyncSession(engine) as session:
+            item = await session.get(model, getattr(args, id_field))
+            if item is None:
+                return None
+            fields = (
+                "customer_id",
+                "body",
+                "evidence_ids",
+                "originating_action_id",
+                "created_at",
+                "ticket_id" if name == "get_ticket_comment" else "recipient_id",
+            )
+            data = {k: getattr(item, k) for k in fields}
+            data[id_field] = item.id
+        return data, [Source(source_type=model.__tablename__, source_id=str(item.id))]
     if name == "get_ticket":
         assert isinstance(args, GetTicketArgs)
         async with AsyncSession(engine) as session:
@@ -153,9 +178,19 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
         try:
             args = contract.arguments.model_validate(arguments)
             await authorize_tool(name, args, engine)
+            if name in WRITE_TOOLS:
+                assert isinstance(args, (CreateTicketArgs, AddTicketCommentArgs, NotifyManagerArgs))
             response = (
-                await write_tool(CreateTicketArgs.model_validate(arguments), engine, settings)
-                if name == "create_ticket"
+                (
+                    await local_write(
+                        engine,
+                        cast(CreateTicketArgs | AddTicketCommentArgs | NotifyManagerArgs, args),
+                        settings=settings,
+                        tool=name,
+                    ),
+                    [],
+                )
+                if name in WRITE_TOOLS
                 else await read_tool(name, args, engine, settings)
             )
             if response is None:
@@ -166,6 +201,13 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                 )
             else:
                 data, sources = response
+                if name in WRITE_TOOLS:
+                    id_field, source_type = {
+                        "create_ticket": ("ticket_id", "ticket"),
+                        "add_ticket_comment": ("comment_id", "ticket_comment"),
+                        "notify_manager": ("notification_id", "notification"),
+                    }[name]
+                    sources = [Source(source_type=source_type, source_id=str(data[id_field]))]
                 result = ToolResult(
                     ok=True,
                     observed_at=settings.scenario_clock,

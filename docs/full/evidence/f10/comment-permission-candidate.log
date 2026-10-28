@@ -1,0 +1,700 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f10-release-oidc-1  Created
+ Container opspilot-full-test-f10-release-postgres-1  Created
+ Container opspilot-full-test-f10-release-postgres-1  Starting
+ Container opspilot-full-test-f10-release-oidc-1  Starting
+ Container opspilot-full-test-f10-release-oidc-1  Started
+ Container opspilot-full-test-f10-release-postgres-1  Started
+ Container opspilot-full-test-f10-release-oidc-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-oidc-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Running
+ Container opspilot-full-test-f10-release-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f10-release-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f10-release-postgres-1  Running
+ Container opspilot-full-test-f10-release-collector-1  Created
+ Container opspilot-full-test-f10-release-jaeger-1  Created
+ Container opspilot-full-test-f10-release-mcp-1  Recreate
+ Container opspilot-full-test-f10-release-web-1  Stopping
+ Container opspilot-full-test-f10-release-web-1  Stopped
+ Container opspilot-full-test-f10-release-api-1  Recreate
+ Container opspilot-full-test-f10-release-mcp-1  Recreated
+ Container opspilot-full-test-f10-release-api-1  Recreated
+ Container opspilot-full-test-f10-release-web-1  Created
+ Container opspilot-full-test-f10-release-collector-1  Starting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-jaeger-1  Starting
+ Container opspilot-full-test-f10-release-collector-1  Started
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-api-1  Starting
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-mcp-1  Starting
+ Container opspilot-full-test-f10-release-jaeger-1  Started
+ Container opspilot-full-test-f10-release-api-1  Started
+ Container opspilot-full-test-f10-release-api-1  Waiting
+ Container opspilot-full-test-f10-release-mcp-1  Started
+ Container opspilot-full-test-f10-release-api-1  Healthy
+ Container opspilot-full-test-f10-release-web-1  Starting
+ Container opspilot-full-test-f10-release-web-1  Started
+ Container opspilot-full-test-f10-release-mcp-1  Waiting
+ Container opspilot-full-test-f10-release-jaeger-1  Waiting
+ Container opspilot-full-test-f10-release-collector-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-web-1  Waiting
+ Container opspilot-full-test-f10-release-api-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-mcp-1  Healthy
+ Container opspilot-full-test-f10-release-jaeger-1  Healthy
+ Container opspilot-full-test-f10-release-collector-1  Healthy
+ Container opspilot-full-test-f10-release-api-1  Healthy
+ Container opspilot-full-test-f10-release-web-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Running
+ Container opspilot-full-test-f10-release-api-1  Running
+ Container opspilot-full-test-f10-release-mcp-1  Running
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f10-release-postgres-1  Running
+ Container opspilot-full-test-f10-release-api-1  Running
+ Container opspilot-full-test-f10-release-mcp-1  Running
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+167 files already formatted
+ Container opspilot-full-test-f10-release-postgres-1  Running
+ Container opspilot-full-test-f10-release-api-1  Running
+ Container opspilot-full-test-f10-release-mcp-1  Running
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+Success: no issues found in 111 source files
+ Container opspilot-full-test-f10-release-postgres-1  Running
+ Container opspilot-full-test-f10-release-mcp-1  Running
+ Container opspilot-full-test-f10-release-api-1  Running
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Waiting
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+ Container opspilot-full-test-f10-release-postgres-1  Healthy
+...........ssss.....................s............................ssss... [ 21%]
+...............................................F.....F..F..F..F.F.F.F... [ 42%]
+........................................................................ [ 63%]
+........................................................................ [ 84%]
+....................................................                     [100%]
+=================================== FAILURES ===================================
+_________ test_local_concurrent_replay_exact_read[add_ticket_comment] __________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c357667d0>
+kind = 'add_ticket_comment'
+
+    @pytest.mark.parametrize("kind", KINDS)
+    async def test_local_concurrent_replay_exact_read(integration_settings, admin_engine, kind):
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        try:
+            args = await setup_action(settings, admin_engine, engine, kind)
+            async with execution_lease(engine, args.run_id, settings):
+                results = await asyncio.gather(*(rpc(settings, kind, args) for _ in range(4)))
+>           assert all(r.ok for r in results), results
+E           AssertionError: [ToolResult(schema_version=1, ok=False, tool_call_id=UUID('cb8da852-4ae8-4f45-83d4-2ca3a3a791e4'), observed_at=datetim..., data=None, sources=[], error=ToolError(code='DEPENDENCY_UNAVAILABLE', message='Source unavailable', retryable=True))]
+E           assert False
+E            +  where False = all(<generator object test_local_concurrent_replay_exact_read.<locals>.<genexpr> at 0x7f1c361afc40>)
+
+tests/integration/test_local_operations.py:120: AssertionError
+_______ test_rollback_keeps_grant_and_receipt_atomic[add_ticket_comment] _______
+
+self = <sqlalchemy.engine.base.Connection object at 0x7f1c35ca9250>
+dialect = <sqlalchemy.dialects.postgresql.psycopg.PGDialectAsync_psycopg object at 0x7f1c34316e10>
+context = <sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x7f1c34dfec60>
+statement = <sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x7f1c34dfdcd0>
+parameters = [{'id_1': UUID('ee997c23-53a5-4b3b-ae8e-9b29d6aab458'), 'tenant_1': UUID('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa')}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+
+        effective_parameters: Optional[_AnyExecuteParams]
+
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+
+        if self._echo:
+            self._log_info(str_statement)
+
+            stats = context._get_cache_stats()
+
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1976:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute
+    cursor.execute(statement, parameters)
+.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py:642: in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.AsyncCursor [closed] [BAD] at 0x7f1c34c5eed0>
+query = 'SELECT domain.tickets.id, domain.tickets.customer_id, domain.tickets.originating_action_id, domain.tickets.title, dom...domain.tickets \nWHERE domain.tickets.id = %(id_1)s::UUID AND domain.tickets.tenant_id = %(tenant_1)s::UUID FOR UPDATE'
+params = {'id_1': UUID('ee997c23-53a5-4b3b-ae8e-9b29d6aab458'), 'tenant_1': UUID('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa')}
+prepare = None, binary = None
+
+    async def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            async with self._conn.lock:
+                await self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.InsufficientPrivilege: permission denied for table tickets
+
+.venv/lib/python3.12/site-packages/psycopg/cursor_async.py:117: InsufficientPrivilege
+
+The above exception was the direct cause of the following exception:
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c365fa290>
+kind = 'add_ticket_comment'
+
+    @pytest.mark.parametrize("kind", KINDS)
+    async def test_rollback_keeps_grant_and_receipt_atomic(integration_settings, admin_engine, kind):
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        domain = create_engine(settings.database_url("domain"))
+        try:
+            args = await setup_action(settings, admin_engine, engine, kind)
+            async with execution_lease(engine, args.run_id, settings):
+                token = await issue(
+                    settings,
+                    {
+                        "run": str(args.run_id),
+                        "action": str(args.action_id),
+                        "hash": payload_hash(args.arguments.model_dump(mode="json")),
+                        "tool": kind,
+                    },
+                )
+
+                async def fail():
+                    raise RuntimeError("synthetic rollback")
+
+                with grant_scope(token), pytest.raises(RuntimeError, match="synthetic rollback"):
+>                   await local_write(domain, args, settings=settings, tool=kind, after_insert=fail)
+
+tests/integration/test_local_operations.py:192:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.12/site-packages/opspilot/mcp_server/services/tickets.py:114: in local_write
+    target = await session.scalar(
+.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py:505: in scalar
+    return await greenlet_spawn(
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2421: in scalar
+    return self._execute_internal(
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2271: in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py:306: in orm_execute_statement
+    result = conn.execute(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1428: in execute
+    return meth(
+.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1650: in _execute_clauseelement
+    ret = self._execute_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1855: in _execute_context
+    return self._exec_single_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1995: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2372: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1976: in _exec_single_context
+    self.dialect.do_execute(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute
+    cursor.execute(statement, parameters)
+.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py:642: in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.AsyncCursor [closed] [BAD] at 0x7f1c34c5eed0>
+query = 'SELECT domain.tickets.id, domain.tickets.customer_id, domain.tickets.originating_action_id, domain.tickets.title, dom...domain.tickets \nWHERE domain.tickets.id = %(id_1)s::UUID AND domain.tickets.tenant_id = %(tenant_1)s::UUID FOR UPDATE'
+params = {'id_1': UUID('ee997c23-53a5-4b3b-ae8e-9b29d6aab458'), 'tenant_1': UUID('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa')}
+prepare = None, binary = None
+
+    async def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            async with self._conn.lock:
+                await self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           sqlalchemy.exc.ProgrammingError: (psycopg.errors.InsufficientPrivilege) permission denied for table tickets
+E           [SQL: SELECT domain.tickets.id, domain.tickets.customer_id, domain.tickets.originating_action_id, domain.tickets.title, domain.tickets.description, domain.tickets.priority, domain.tickets.status, domain.tickets.evidence_ids, domain.tickets.created_at, domain.tickets.tenant_id
+E           FROM domain.tickets
+E           WHERE domain.tickets.id = %(id_1)s::UUID AND domain.tickets.tenant_id = %(tenant_1)s::UUID FOR UPDATE]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/f405)
+
+.venv/lib/python3.12/site-packages/psycopg/cursor_async.py:117: ProgrammingError
+_ test_execution_and_independent_verification[lost_response-add_ticket_comment] _
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c33ad86d0>
+kind = 'add_ticket_comment', fault = 'lost_response'
+
+    @pytest.mark.parametrize("kind", KINDS)
+    @pytest.mark.parametrize("fault", ["lost_response", "missing", "mismatch"])
+    async def test_execution_and_independent_verification(
+        integration_settings, admin_engine, kind, fault
+    ):
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        original = MCPClient.call
+
+        class Client(MCPClient):
+            @staticmethod
+            async def call(session, name, arguments):
+                result = await original(session, name, arguments)
+                if name == kind and fault == "lost_response":
+                    assert result.ok
+                    raise TimeoutError("private transport sentinel")
+                return result
+
+        try:
+            args = await setup_action(settings, admin_engine, engine, kind)
+
+            async def read(name, arguments, state, **kw):
+                with run_scope(str(args.run_id)):
+                    async with MCPClient(settings).session() as (session, _):
+                        result = await original(session, name, arguments)
+                assert result.ok, result
+                if fault == "missing":
+                    return ToolResult(
+                        ok=False,
+                        observed_at=settings.scenario_clock,
+                        error=ToolError(code="NOT_FOUND", message="Not found"),
+                    )
+                if fault == "mismatch":
+                    return result.model_copy(
+                        update={
+                            "data": {
+                                **result.data,
+                                "title" if kind == "create_ticket" else "body": "unexpected",
+                            }
+                        }
+                    )
+                return result
+
+            runtime = SimpleNamespace(
+                settings=settings,
+                client=Client(settings),
+                budget=SimpleNamespace(check=lambda: None),
+                read=read,
+            )
+            state = {"run_id": str(args.run_id), "action_id": str(args.action_id), "errors": {}}
+            async with execution_lease(engine, args.run_id, settings):
+                await execute(state, runtime)
+>               assert state.get("execution_result"), state
+E               AssertionError: {'run_id': 'e9e93f39-85d2-4bd7-bd3d-7c30790a0d39', 'action_id': '29fb226c-25fc-4036-a8bf-a101a1bad4b7', 'errors': {'execute': {'code': 'WRITE_OUTCOME_UNKNOWN', 'node': 'execute'}}, 'outcome': 'unknown_outcome'}
+E               assert None
+E                +  where None = <built-in method get of dict object at 0x7f1c3384e540>('execution_result')
+E                +    where <built-in method get of dict object at 0x7f1c3384e540> = {'run_id': 'e9e93f39-85d2-4bd7-bd3d-7c30790a0d39', 'action_id': '29fb226c-25fc-4036-a8bf-a101a1bad4b7', 'errors': {'execute': {'code': 'WRITE_OUTCOME_UNKNOWN', 'node': 'execute'}}, 'outcome': 'unknown_outcome'}.get
+
+tests/integration/test_local_operations.py:255: AssertionError
+___ test_execution_and_independent_verification[missing-add_ticket_comment] ____
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c34639210>
+kind = 'add_ticket_comment', fault = 'missing'
+
+    @pytest.mark.parametrize("kind", KINDS)
+    @pytest.mark.parametrize("fault", ["lost_response", "missing", "mismatch"])
+    async def test_execution_and_independent_verification(
+        integration_settings, admin_engine, kind, fault
+    ):
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        original = MCPClient.call
+
+        class Client(MCPClient):
+            @staticmethod
+            async def call(session, name, arguments):
+                result = await original(session, name, arguments)
+                if name == kind and fault == "lost_response":
+                    assert result.ok
+                    raise TimeoutError("private transport sentinel")
+                return result
+
+        try:
+            args = await setup_action(settings, admin_engine, engine, kind)
+
+            async def read(name, arguments, state, **kw):
+                with run_scope(str(args.run_id)):
+                    async with MCPClient(settings).session() as (session, _):
+                        result = await original(session, name, arguments)
+                assert result.ok, result
+                if fault == "missing":
+                    return ToolResult(
+                        ok=False,
+                        observed_at=settings.scenario_clock,
+                        error=ToolError(code="NOT_FOUND", message="Not found"),
+                    )
+                if fault == "mismatch":
+                    return result.model_copy(
+                        update={
+                            "data": {
+                                **result.data,
+                                "title" if kind == "create_ticket" else "body": "unexpected",
+                            }
+                        }
+                    )
+                return result
+
+            runtime = SimpleNamespace(
+                settings=settings,
+                client=Client(settings),
+                budget=SimpleNamespace(check=lambda: None),
+                read=read,
+            )
+            state = {"run_id": str(args.run_id), "action_id": str(args.action_id), "errors": {}}
+            async with execution_lease(engine, args.run_id, settings):
+                await execute(state, runtime)
+>               assert state.get("execution_result"), state
+E               AssertionError: {'run_id': '0e316336-ac00-4f6f-8e59-bb223bda903b', 'action_id': 'e7743b27-739c-41c7-bd50-a4e240afa127', 'errors': {'execute': {'code': 'WRITE_OUTCOME_UNKNOWN', 'node': 'execute'}}, 'outcome': 'unknown_outcome'}
+E               assert None
+E                +  where None = <built-in method get of dict object at 0x7f1c33a61640>('execution_result')
+E                +    where <built-in method get of dict object at 0x7f1c33a61640> = {'run_id': '0e316336-ac00-4f6f-8e59-bb223bda903b', 'action_id': 'e7743b27-739c-41c7-bd50-a4e240afa127', 'errors': {'execute': {'code': 'WRITE_OUTCOME_UNKNOWN', 'node': 'execute'}}, 'outcome': 'unknown_outcome'}.get
+
+tests/integration/test_local_operations.py:255: AssertionError
+___ test_execution_and_independent_verification[mismatch-add_ticket_comment] ___
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c33e01790>
+kind = 'add_ticket_comment', fault = 'mismatch'
+
+    @pytest.mark.parametrize("kind", KINDS)
+    @pytest.mark.parametrize("fault", ["lost_response", "missing", "mismatch"])
+    async def test_execution_and_independent_verification(
+        integration_settings, admin_engine, kind, fault
+    ):
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        original = MCPClient.call
+
+        class Client(MCPClient):
+            @staticmethod
+            async def call(session, name, arguments):
+                result = await original(session, name, arguments)
+                if name == kind and fault == "lost_response":
+                    assert result.ok
+                    raise TimeoutError("private transport sentinel")
+                return result
+
+        try:
+            args = await setup_action(settings, admin_engine, engine, kind)
+
+            async def read(name, arguments, state, **kw):
+                with run_scope(str(args.run_id)):
+                    async with MCPClient(settings).session() as (session, _):
+                        result = await original(session, name, arguments)
+                assert result.ok, result
+                if fault == "missing":
+                    return ToolResult(
+                        ok=False,
+                        observed_at=settings.scenario_clock,
+                        error=ToolError(code="NOT_FOUND", message="Not found"),
+                    )
+                if fault == "mismatch":
+                    return result.model_copy(
+                        update={
+                            "data": {
+                                **result.data,
+                                "title" if kind == "create_ticket" else "body": "unexpected",
+                            }
+                        }
+                    )
+                return result
+
+            runtime = SimpleNamespace(
+                settings=settings,
+                client=Client(settings),
+                budget=SimpleNamespace(check=lambda: None),
+                read=read,
+            )
+            state = {"run_id": str(args.run_id), "action_id": str(args.action_id), "errors": {}}
+            async with execution_lease(engine, args.run_id, settings):
+                await execute(state, runtime)
+>               assert state.get("execution_result"), state
+E               AssertionError: {'run_id': 'd8bf2467-195b-43eb-9d5b-04e0fc47962d', 'action_id': '27bda803-bb12-418f-aa32-c4a735b472c0', 'errors': {'execute': {'code': 'WRITE_OUTCOME_UNKNOWN', 'node': 'execute'}}, 'outcome': 'unknown_outcome'}
+E               assert None
+E                +  where None = <built-in method get of dict object at 0x7f1c33e01700>('execution_result')
+E                +    where <built-in method get of dict object at 0x7f1c33e01700> = {'run_id': 'd8bf2467-195b-43eb-9d5b-04e0fc47962d', 'action_id': '27bda803-bb12-418f-aa32-c4a735b472c0', 'errors': {'execute': {'code': 'WRITE_OUTCOME_UNKNOWN', 'node': 'execute'}}, 'outcome': 'unknown_outcome'}.get
+
+tests/integration/test_local_operations.py:255: AssertionError
+________ test_unknown_targets_never_write[add_ticket_comment-ticket_id] ________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c344c82d0>
+kind = 'add_ticket_comment', field = 'ticket_id'
+
+    @pytest.mark.parametrize(
+        "kind,field", [("add_ticket_comment", "ticket_id"), ("notify_manager", "recipient_id")]
+    )
+    async def test_unknown_targets_never_write(integration_settings, admin_engine, kind, field):
+        engine = create_engine(integration_settings.database_url("workflow"))
+        try:
+            args = await setup_action(
+                integration_settings, admin_engine, engine, kind, {field: str(uuid4())}
+            )
+            async with execution_lease(engine, args.run_id, integration_settings):
+                result = await rpc(integration_settings, kind, args)
+>           assert not result.ok and result.error.code == "NOT_FOUND", result
+E           AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('e17451ea-d091-4df8-90c7-1eaf9713200a'), observed_at=datetime...), data=None, sources=[], error=ToolError(code='DEPENDENCY_UNAVAILABLE', message='Source unavailable', retryable=True))
+E           assert (not False and 'DEPENDENCY_UNAVAILABLE' == 'NOT_FOUND'
+E            +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('e17451ea-d091-4df8-90c7-1eaf9713200a'), observed_at=datetime...), data=None, sources=[], error=ToolError(code='DEPENDENCY_UNAVAILABLE', message='Source unavailable', retryable=True)).ok
+E
+E             - NOT_FOUND
+E             + DEPENDENCY_UNAVAILABLE)
+
+tests/integration/test_local_operations.py:286: AssertionError
+_________ test_foreign_existing_targets_and_reads[add_ticket_comment] __________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c3497d190>
+kind = 'add_ticket_comment'
+
+    @pytest.mark.parametrize("kind", ["add_ticket_comment", "notify_manager"])
+    async def test_foreign_existing_targets_and_reads(integration_settings, admin_engine, kind):
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        try:
+            if kind == "add_ticket_comment":
+                with tenant_scope(SECOND_TENANT):
+                    foreign = await setup_action(settings, admin_engine, engine, "create_ticket")
+                    async with execution_lease(engine, foreign.run_id, settings):
+                        result = await rpc(settings, "create_ticket", foreign)
+                    assert result.ok
+                    target = result.data["ticket_id"]
+                field = "ticket_id"
+            else:
+                from opspilot.db.models_identity import User
+
+                async with TenantSession(admin_engine) as session, session.begin():
+                    user = User(id=uuid4(), issuer="urn:f10:synthetic", subject=str(uuid4()))
+                    session.add(user)
+                    await session.flush()
+                    target = str(user.id)
+                    await session.execute(
+                        text(
+                            "INSERT INTO identity.tenant_memberships(tenant_id,user_id,role) "
+                            "VALUES(:t,:u,'operator')"
+                        ),
+                        {"t": SECOND_TENANT, "u": user.id},
+                    )
+                field = "recipient_id"
+            args = await setup_action(settings, admin_engine, engine, kind, {field: target})
+            async with execution_lease(engine, args.run_id, settings):
+                result = await rpc(settings, kind, args)
+>           assert not result.ok and result.error.code == "NOT_FOUND", result
+E           AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('1f849206-24a8-4f34-b307-d6f4a38b0a1f'), observed_at=datetime...), data=None, sources=[], error=ToolError(code='DEPENDENCY_UNAVAILABLE', message='Source unavailable', retryable=True))
+E           assert (not False and 'DEPENDENCY_UNAVAILABLE' == 'NOT_FOUND'
+E            +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('1f849206-24a8-4f34-b307-d6f4a38b0a1f'), observed_at=datetime...), data=None, sources=[], error=ToolError(code='DEPENDENCY_UNAVAILABLE', message='Source unavailable', retryable=True)).ok
+E
+E             - NOT_FOUND
+E             + DEPENDENCY_UNAVAILABLE)
+
+tests/integration/test_local_operations.py:324: AssertionError
+_____ test_other_operator_cannot_read_private_payload[add_ticket_comment] ______
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f1c3433ff90>
+kind = 'add_ticket_comment'
+
+    @pytest.mark.parametrize("kind", ["add_ticket_comment", "notify_manager"])
+    async def test_other_operator_cannot_read_private_payload(integration_settings, admin_engine, kind):
+        from opspilot.auth.context import Principal, auth_scope
+        from opspilot.db.models_identity import User
+
+        settings = integration_settings
+        engine = create_engine(settings.database_url("workflow"))
+        try:
+            args = await setup_action(settings, admin_engine, engine, kind)
+            async with execution_lease(engine, args.run_id, settings):
+                result = await rpc(settings, kind, args)
+>           assert result.ok
+E           AssertionError: assert False
+E            +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('be3084eb-7014-4e6c-8d7b-cfde2293701c'), observed_at=datetime...), data=None, sources=[], error=ToolError(code='DEPENDENCY_UNAVAILABLE', message='Source unavailable', retryable=True)).ok
+
+tests/integration/test_local_operations.py:351: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_local_operations.py::test_local_concurrent_replay_exact_read[add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_rollback_keeps_grant_and_receipt_atomic[add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_execution_and_independent_verification[lost_response-add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_execution_and_independent_verification[missing-add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_execution_and_independent_verification[mismatch-add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_unknown_targets_never_write[add_ticket_comment-ticket_id]
+FAILED tests/integration/test_local_operations.py::test_foreign_existing_targets_and_reads[add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_other_operator_cannot_read_private_payload[add_ticket_comment]
+8 failed, 323 passed, 9 skipped in 296.12s (0:04:56)
+exit status 1
+ Container opspilot-full-test-f10-release-collector-1  Stopping
+ Container opspilot-full-test-f10-release-jaeger-1  Stopping
+ Container opspilot-full-test-f10-release-oidc-1  Stopping
+ Container opspilot-full-test-f10-release-web-1  Stopping
+ Container opspilot-full-test-f10-release-mcp-1  Stopping
+ Container opspilot-full-test-f10-release-collector-1  Stopped
+ Container opspilot-full-test-f10-release-jaeger-1  Stopped
+ Container opspilot-full-test-f10-release-oidc-1  Stopped
+ Container opspilot-full-test-f10-release-web-1  Stopped
+ Container opspilot-full-test-f10-release-api-1  Stopping
+ Container opspilot-full-test-f10-release-mcp-1  Stopped
+ Container opspilot-full-test-f10-release-api-1  Stopped
+ Container opspilot-full-test-f10-release-postgres-1  Stopping
+ Container opspilot-full-test-f10-release-postgres-1  Stopped

@@ -1,0 +1,9 @@
+{
+  "schema": "0012_local_operations",
+  "api": 200,
+  "ui": 200,
+  "workers": [
+    "worker",
+    "worker2"
+  ]
+}

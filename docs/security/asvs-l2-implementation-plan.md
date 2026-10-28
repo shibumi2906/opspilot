@@ -92,3 +92,10 @@ F17 принимает Core в его scope; F24 принимает весь Ful
 F09 change review: [контракты и scope](../full/f09-security-contracts.md). Requirement backlog содержит F09 contributions отдельно от полного закрытия нормы. Финальные результаты текущего этапа записываются в его evidence; исторический baseline не перезаписывается.
 
 F09 local change gate завершён: [измеренные проверки](../full/evidence/f09/checks.json). SEC packages сохраняют in_progress до всех своих будущих gates; вклад F09 отмечен отдельно в requirement backlog. Полный L2 остаётся NOT_MET.
+
+
+F10 local change gate passed: [contracts](../full/f10-security-contracts.md),
+[measured acceptance](../full/evidence/f10/checks.json). SEC-08 local implementation started;
+package/whole-requirement closure remains with accountable owners. F10 contributions are recorded
+separately in all affected backlog rows. Retention, managed storage/keys, deployment and complete
+L2 acceptance remain their future gates; full L2 is NOT_MET.

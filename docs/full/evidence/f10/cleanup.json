@@ -1,0 +1,24 @@
+{
+  "containers_removed": true,
+  "networks_removed": true,
+  "volumes_retained": true,
+  "images_retained": true,
+  "projects": {
+    "opspilot-full-test-f10-release": {
+      "containers": 0,
+      "networks": 0,
+      "retained_volumes": [
+        "opspilot-full-test-f10-release_oidcdata",
+        "opspilot-full-test-f10-release_pgdata"
+      ]
+    },
+    "opspilot-full-security-f10": {
+      "containers": 0,
+      "networks": 0,
+      "retained_volumes": [
+        "opspilot-full-security-f10_oidcdata",
+        "opspilot-full-security-f10_pgdata"
+      ]
+    }
+  }
+}

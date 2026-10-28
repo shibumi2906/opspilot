@@ -10,9 +10,10 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.auth.context import AuthError, actor_id
 from opspilot.config import Settings
-from opspilot.contracts.tools import CreateTicketArgs, CreateTicketData
-from opspilot.db.models_domain import Ticket
+from opspilot.contracts.tools import AddTicketCommentArgs, CreateTicketArgs, NotifyManagerArgs
+from opspilot.db.models_domain import Notification, Ticket, TicketComment
 from opspilot.db.models_workflow import Action, AgentRun, Approval, LogicalAction
+from opspilot.mcp_client.registry import WRITE_TOOLS
 from opspilot.runtime.actions import payload_hash
 from opspilot.security.grants import consume
 from opspilot.security.revisions import valid_revision
@@ -24,10 +25,11 @@ class WriteDenied(Exception):
         self.code = code
 
 
-async def create_ticket(
+async def local_write(
     engine: AsyncEngine,
-    args: CreateTicketArgs,
+    args: CreateTicketArgs | AddTicketCommentArgs | NotifyManagerArgs,
     *,
+    tool: str = "create_ticket",
     settings: Settings | None = None,
     after_insert: Callable[[], Awaitable[None]] | None = None,
 ) -> dict[str, Any]:
@@ -37,7 +39,7 @@ async def create_ticket(
         action = await session.scalar(select(Action).where(Action.id == args.action_id))
         if action is None:
             raise WriteDenied("APPROVAL_REQUIRED")
-        if action.run_id != args.run_id or action.tool_name != "create_ticket":
+        if action.run_id != args.run_id or action.tool_name != tool:
             raise WriteDenied("STATE_CONFLICT")
         if action.arguments != arguments or action.arguments_hash != payload_hash(arguments):
             raise WriteDenied("PAYLOAD_MISMATCH")
@@ -98,30 +100,87 @@ async def create_ticket(
             if action.execution_status != "succeeded":
                 raise WriteDenied("STATE_CONFLICT")
             return (
-                CreateTicketData.model_validate(action.execution_result)
+                WRITE_TOOLS[tool]
+                .data.model_validate(action.execution_result)
                 .model_copy(update={"replayed": True})
                 .model_dump(mode="json")
             )
         if run.cancellation:
             raise WriteDenied("STATE_CONFLICT")
         await session.execute(text("SELECT workflow.check_not_cancelled(:r)"), {"r": args.run_id})
-        ticket = Ticket(
-            id=uuid4(),
-            originating_action_id=action.id,
-            customer_id=args.arguments.customer_id,
-            title=args.arguments.title,
-            description=args.arguments.description,
-            priority=args.arguments.priority,
-            evidence_ids=args.arguments.evidence_ids,
-        )
+        ticket: Ticket | TicketComment | Notification
+        if tool == "add_ticket_comment":
+            assert isinstance(args, AddTicketCommentArgs)
+            target = await session.scalar(
+                select(Ticket).where(Ticket.id == args.arguments.ticket_id)
+            )
+            if target is None or target.customer_id != args.arguments.customer_id:
+                raise WriteDenied("NOT_FOUND")
+            owner = await session.scalar(
+                select(AgentRun.actor_id)
+                .join(Action, Action.run_id == AgentRun.id)
+                .where(Action.id == target.originating_action_id)
+            )
+            if owner != actor_id():
+                permitted = False
+                for role in ("approver", "auditor"):
+                    if await session.scalar(
+                        text("SELECT identity.lock_role(:u,:t,:r)"),
+                        {"u": actor_id(), "t": run.tenant_id, "r": role},
+                    ):
+                        permitted = True
+                        break
+                if not permitted:
+                    raise WriteDenied("NOT_FOUND")
+            ticket = TicketComment(id=uuid4(), originating_action_id=action.id, **arguments)
+            id_field = "comment_id"
+        elif tool == "notify_manager":
+            assert isinstance(args, NotifyManagerArgs)
+            roles = await session.scalars(
+                text(
+                    "SELECT role FROM identity.tenant_memberships "
+                    "WHERE tenant_id=identity.current_tenant() AND user_id=:u"
+                ),
+                {"u": args.arguments.recipient_id},
+            )
+            allowed = False
+            for role in roles:
+                if await session.scalar(
+                    text("SELECT identity.lock_role(:u,:t,:r)"),
+                    {"u": args.arguments.recipient_id, "t": run.tenant_id, "r": role},
+                ):
+                    allowed = True
+                    break
+            if not allowed:
+                raise WriteDenied("NOT_FOUND")
+            ticket = Notification(id=uuid4(), originating_action_id=action.id, **arguments)
+            id_field = "notification_id"
+        else:
+            assert isinstance(args, CreateTicketArgs)
+            ticket = Ticket(id=uuid4(), originating_action_id=action.id, **arguments)
+            id_field = "ticket_id"
         session.add(ticket)
         await session.flush()
         if after_insert is not None:
             await after_insert()
-        result = CreateTicketData(
-            ticket_id=ticket.id, created_at=ticket.created_at, replayed=False
-        ).model_dump(mode="json")
+        result = (
+            WRITE_TOOLS[tool]
+            .data.model_validate(
+                {id_field: ticket.id, "created_at": ticket.created_at, "replayed": False}
+            )
+            .model_dump(mode="json")
+        )
         action.execution_status = "succeeded"
         action.execution_result = result
         action.executed_at = datetime.now(UTC)
         return result
+
+
+async def create_ticket(
+    engine: AsyncEngine,
+    args: CreateTicketArgs,
+    *,
+    settings: Settings | None = None,
+    after_insert: Callable[[], Awaitable[None]] | None = None,
+) -> dict[str, Any]:
+    return await local_write(engine, args, settings=settings, after_insert=after_insert)

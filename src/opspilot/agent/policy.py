@@ -37,7 +37,7 @@ def validate_read(call: ReadCall, state: AgentState) -> dict[str, Any]:
         and args["query"].casefold() != str(state.get("customer_name")).casefold()
     ):
         raise PolicyViolation("Customer already resolved")
-    if call.name == "get_ticket":
+    if call.name in {"get_ticket", "get_ticket_comment", "get_notification"}:
         raise PolicyViolation("No trusted ticket reference exists at this stage")
     return args
 

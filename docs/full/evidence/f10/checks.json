@@ -1,0 +1,79 @@
+{
+  "stage": "F10",
+  "status": "passed",
+  "base_commit": "278d92d7558d06efb69946f2bcdf6c49359b16d5",
+  "backend": {
+    "passed": 331,
+    "dedicated_skips": 9,
+    "seconds": 279.09
+  },
+  "focused_real_postgresql_mcp": {
+    "passed": 26,
+    "seconds": 12.75,
+    "subset_of_backend": true
+  },
+  "host_unit": {
+    "passed": 114,
+    "subset_of_backend": true
+  },
+  "ruff_format_mypy": "passed; 111 application source files",
+  "typescript_vite": "passed",
+  "browser_oidc": {
+    "passed": 12
+  },
+  "queue_process": {
+    "passed": 5,
+    "seconds": 65.28
+  },
+  "fencing_kill_stop_partition": {
+    "passed": 3,
+    "seconds": 43.49
+  },
+  "tls": {
+    "probes": 8,
+    "browser_security": 11,
+    "fresh_isolated_lab": true
+  },
+  "sca": {
+    "app": {
+      "total_findings": 0,
+      "high_critical": 0
+    },
+    "web": {
+      "total_findings": 0,
+      "high_critical": 0
+    }
+  },
+  "python_audit": {
+    "distributions": 89,
+    "findings": 0
+  },
+  "npm_audit_findings": 0,
+  "scripted_evals": {
+    "passed": 12,
+    "total": 12,
+    "tool_precision": 1.0,
+    "tool_recall": 1.0,
+    "precision_cases": 11,
+    "recall_cases": 11,
+    "forbidden_calls": 0,
+    "unauthorized_writes": 0,
+    "writes": 2,
+    "duplicates": 0,
+    "approved_exact_writes": 2,
+    "false_verified_success": 0,
+    "unsupported_facts": 0,
+    "factual_claims": 44,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "unknown_usage_count": 0,
+    "active_latency_p50": 0.9906938820022333,
+    "active_latency_p95": 2.9355447740017553,
+    "human_wait_ms": 1037,
+    "hard_safety_gate": true
+  },
+  "mvp": "full source/env/head/images/volume metadata/content preservation passed",
+  "full_l2_status": "NOT_MET",
+  "remote_ci_real_provider_production_deployment": "not run; not claimed",
+  "blockers": []
+}

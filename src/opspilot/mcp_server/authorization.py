@@ -25,11 +25,14 @@ async def authorize_tool(name: str, args: Any, engine: AsyncEngine) -> None:
                 {"t": tenant, "u": user},
             )
         )
-        if not roles & {"operator", "approver", "auditor"}:
+        if not roles & {"operator", "approver", "auditor"} and not (
+            name == "get_notification" and "admin" in roles
+        ):
             raise AuthError()
-        if name == "create_ticket":
+        if name in {"create_ticket", "add_ticket_comment", "notify_manager"}:
             if (
                 claims["scope"] != "action"
+                or claims.get("tool") != name
                 or claims.get("run") != str(args.run_id)
                 or claims.get("action") != str(args.action_id)
                 or claims.get("hash") != payload_hash(args.arguments.model_dump(mode="json"))
@@ -56,4 +59,28 @@ async def authorize_tool(name: str, args: Any, engine: AsyncEngine) -> None:
                 {"t": tenant, "id": args.ticket_id},
             )
             if owner is not None and owner != user:
+                raise AuthError("NOT_FOUND", 404)
+
+        if name in {"get_ticket_comment", "get_notification"}:
+            table, identifier = (
+                ("ticket_comments", args.comment_id)
+                if name == "get_ticket_comment"
+                else ("notifications", args.notification_id)
+            )
+            recipient = "d.recipient_id" if name == "get_notification" else "NULL::uuid"
+            row = (
+                await conn.execute(
+                    text(
+                        f"SELECT r.actor_id, {recipient} AS recipient FROM domain.{table} d "
+                        "JOIN workflow.actions a ON a.tenant_id=d.tenant_id "
+                        "AND a.id=d.originating_action_id JOIN workflow.agent_runs r "
+                        "ON r.tenant_id=a.tenant_id AND r.id=a.run_id "
+                        "WHERE d.tenant_id=:t AND d.id=:id"
+                    ),
+                    {"t": tenant, "id": identifier},
+                )
+            ).one_or_none()
+            if row is None or (
+                user not in {row.actor_id, row.recipient} and not roles & {"approver", "auditor"}
+            ):
                 raise AuthError("NOT_FOUND", 404)

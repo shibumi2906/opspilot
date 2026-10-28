@@ -1,0 +1,14 @@
+{
+  "initial_runtime_findings": 8,
+  "advisories": [
+    "GHSA-c8m5-c952-6cm4",
+    "GHSA-h2v8-394m-p7vv",
+    "GHSA-vp88-798v-h67f",
+    "GHSA-w44r-93j7-qv28"
+  ],
+  "component": "rustls inside uv/uvx build executables",
+  "change": "Separate app-build/test tooling and uninstall uv/uvx in runtime target; no application dependency version change",
+  "final_runtime_findings": 0,
+  "full_release_repeated": true,
+  "full_asvs_l2": "NOT_MET; build/test and production operational acceptance remain with accountable future stages"
+}

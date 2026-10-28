@@ -1,0 +1,19 @@
+{
+  "scope": "Real Chromium component rendering via local Vite; no API/auth/DB acceptance claim",
+  "results": [
+    {
+      "tool": "add_ticket_comment",
+      "body_exact": true,
+      "target_visible": true,
+      "active_content": false,
+      "xss_executed": false
+    },
+    {
+      "tool": "notify_manager",
+      "body_exact": true,
+      "target_visible": true,
+      "active_content": false,
+      "xss_executed": false
+    }
+  ]
+}
