@@ -1,0 +1,9 @@
+{
+  "ui": 200,
+  "workers": [
+    "worker",
+    "worker2"
+  ],
+  "api": 200,
+  "schema": "0013_mixed_plans"
+}

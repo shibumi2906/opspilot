@@ -76,7 +76,11 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         result["report"]["hypotheses"] = result["hypotheses"]
         result["report"]["effects"] = []
         for effect in report.get("effects", [])[:3]:
-            item = pick(effect, "action_id status")
+            item = pick(
+                effect,
+                "action_id key tool_name status approval_status "
+                "verification_status wave dependencies",
+            )
             item["result"] = (
                 pick(effect["result"], "ticket_id comment_id notification_id created_at")
                 if effect.get("result")
@@ -89,7 +93,7 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         pick(
             action,
             "action_id revision_id logical_action_id expected_version revision_hash expires_at "
-            "tool_name arguments_hash approval_status execution_status",
+            "tool_name arguments_hash approval_status execution_status wave key plan_status",
         )
         if action
         else None
@@ -109,4 +113,13 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
             else None
         )
         result["action"]["verification"] = pick(action.get("verification", {}), "status")
+    if value.get("plan"):
+        result["plan"] = pick(value["plan"], "plan_id version hash wave")
+        result["plan"]["nodes"] = [
+            pick(n, "slot_id key tool_name status dependencies wave action_id")
+            for n in value["plan"].get("nodes", [])[:3]
+        ]
+        result["actions"] = [
+            public_snapshot({"action": a})["action"] for a in value.get("actions", [])[:3]
+        ]
     return result

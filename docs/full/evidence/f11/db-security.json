@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "operations": {
+    "create_ticket": {
+      "committed_objects": 56,
+      "all_receipts_consistent": true,
+      "force_rls": true
+    },
+    "add_ticket_comment": {
+      "committed_objects": 9,
+      "all_receipts_consistent": true,
+      "force_rls": true
+    },
+    "notify_manager": {
+      "committed_objects": 11,
+      "all_receipts_consistent": true,
+      "force_rls": true
+    },
+    "plan_gate": {
+      "plans": 8,
+      "bounded": true,
+      "verified_receipts_consistent": true,
+      "domain_direct_plan_access": false,
+      "body_free_plan_events": 55
+    }
+  },
+  "scope": "isolated local F11; full ASVS L2 remains NOT_MET"
+}

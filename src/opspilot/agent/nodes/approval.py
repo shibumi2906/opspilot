@@ -12,6 +12,11 @@ from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
 async def prepare_approval(state: AgentState, runtime: Runtime) -> None:
+    if state.get("proposed_plan"):
+        from opspilot.runtime.plans import prepare_node
+
+        await prepare_node(state, runtime)
+        return
     engine = create_engine(runtime.settings.database_url("workflow"))
     try:
         async with AsyncSession(engine) as session, session.begin():

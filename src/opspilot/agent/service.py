@@ -77,6 +77,9 @@ async def run_investigation(
     ).hexdigest()
     engine = create_engine(settings.database_url("workflow"))
     run_id = run_id or uuid4()
+    from opspilot.runtime.plans import VERSION, wants_mixed
+
+    workflow_version = VERSION if wants_mixed(request) else "full-graph-v1"
     scope = run_scope(str(run_id))
     scope.__enter__()
     lease = None
@@ -97,6 +100,8 @@ async def run_investigation(
             previous = await session.scalar(
                 select(AgentRun).where(AgentRun.client_request_id == client_request_id)
             )
+            if previous:
+                workflow_version = previous.workflow_version
             if previous and previous.actor_id != actor_id():
                 raise RunConflict("Request key is not available to this actor")
             if previous and previous.status == "queued" and previous.id == run_id:
@@ -126,6 +131,7 @@ async def run_investigation(
                         scenario_clock=settings.scenario_clock,
                         thread_id=str(run_id),
                         state_schema_version=1,
+                        workflow_version=workflow_version,
                         public_snapshot={},
                         tool_results={},
                         usage={
@@ -146,6 +152,7 @@ async def run_investigation(
         await lease.__aenter__()
         initial: AgentState = {
             "schema_version": 1,
+            "workflow_version": workflow_version,
             "run_id": str(run_id),
             "thread_id": str(run_id),
             "client_request_id": str(client_request_id),
@@ -184,7 +191,7 @@ async def run_investigation(
                 runtime = Runtime(settings, provider, Budget(limits), on_update=publish)
                 async with runtime.client.session() as (mcp_session, _):
                     await runtime.client.discover(mcp_session)
-                graph = build_graph(runtime, saver)
+                graph = build_graph(runtime, saver, version=workflow_version)
                 state = await graph.ainvoke(
                     initial,
                     {

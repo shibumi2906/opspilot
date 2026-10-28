@@ -1,0 +1,122 @@
+"""Read-only F11 receipt consistency, RLS and data minimization gate."""
+
+import asyncio
+import json
+
+from sqlalchemy import text
+
+from opspilot.config import Settings
+from opspilot.db.engine import create_engine
+
+
+async def main():
+    engine = create_engine(Settings().database_url("migration"))
+    report = {}
+    try:
+        async with engine.connect() as conn:
+            assert await conn.scalar(text("SELECT current_database()")) == "opspilot_full_test"
+            for table, tool, key in [
+                ("tickets", "create_ticket", "ticket_id"),
+                ("ticket_comments", "add_ticket_comment", "comment_id"),
+                ("notifications", "notify_manager", "notification_id"),
+            ]:
+                count = await conn.scalar(text(f"SELECT count(*) FROM domain.{table}"))
+                assert count > 0, table
+                bad = await conn.scalar(
+                    text(f"""SELECT count(*) FROM domain.{table} d
+                    LEFT JOIN workflow.actions a ON a.tenant_id=d.tenant_id
+                    AND a.id=d.originating_action_id
+                    WHERE a.id IS NULL OR a.tool_name<>:tool OR a.execution_status<>'succeeded'
+                    OR a.execution_result->>:key IS DISTINCT FROM d.id::text
+                    OR (a.execution_result-'replayed'-'created_at'-:key) <> '{{}}'::jsonb"""),
+                    {"tool": tool, "key": key},
+                )
+                assert bad == 0, (table, bad)
+                flags = (
+                    await conn.execute(
+                        text(
+                            "SELECT relrowsecurity,relforcerowsecurity FROM pg_class "
+                            "WHERE oid=to_regclass(:table)"
+                        ),
+                        {"table": "domain." + table},
+                    )
+                ).one()
+                assert all(flags)
+                if table != "tickets":
+                    for privilege in ("UPDATE", "DELETE", "TRUNCATE"):
+                        assert not await conn.scalar(
+                            text("SELECT has_table_privilege('ops_domain',:table,:privilege)"),
+                            {"table": "domain." + table, "privilege": privilege},
+                        )
+                report[tool] = {
+                    "committed_objects": count,
+                    "all_receipts_consistent": True,
+                    "force_rls": True,
+                }
+            for table in ("run_plans", "plan_slots"):
+                flags = (
+                    await conn.execute(
+                        text(
+                            "SELECT c.relrowsecurity,c.relforcerowsecurity FROM pg_class c "
+                            "JOIN pg_namespace n ON n.oid=c.relnamespace "
+                            "WHERE n.nspname='workflow' AND c.relname=:t"
+                        ),
+                        {"t": table},
+                    )
+                ).one()
+                assert all(flags)
+                assert not await conn.scalar(
+                    text("SELECT has_table_privilege('ops_domain',:t,'SELECT')"),
+                    {"t": "workflow." + table},
+                )
+            plans = await conn.scalar(text("SELECT count(*) FROM workflow.run_plans"))
+            assert plans > 0
+            assert not await conn.scalar(
+                text(
+                    "SELECT count(*) FROM (SELECT plan_id,count(*) n,max(wave) w,"
+                    "max(verify_attempts) v FROM workflow.plan_slots GROUP BY plan_id) x "
+                    "WHERE n>3 OR w>2 OR v>3"
+                )
+            )
+            assert not await conn.scalar(
+                text("""SELECT count(*) FROM workflow.plan_slots s LEFT JOIN workflow.actions a
+              ON a.tenant_id=s.tenant_id AND a.id=s.action_id
+              WHERE s.status='verified' AND (a.id IS NULL OR a.execution_status<>'succeeded'
+              OR a.execution_result IS NULL OR s.verification->>'status'<>'verified')""")
+            )
+            events = (
+                (
+                    await conn.execute(
+                        text(
+                            "SELECT payload FROM workflow.run_events WHERE type='plan.slot_changed'"
+                        )
+                    )
+                )
+                .scalars()
+                .all()
+            )
+            assert events
+            for body in events:
+                assert set(body) <= {"plan_id", "slot_id", "wave", "status", "action_id"}
+            report["plan_gate"] = {
+                "plans": plans,
+                "bounded": True,
+                "verified_receipts_consistent": True,
+                "domain_direct_plan_access": False,
+                "body_free_plan_events": len(events),
+            }
+            print(
+                json.dumps(
+                    {
+                        "passed": True,
+                        "operations": report,
+                        "scope": "isolated local F11; full ASVS L2 remains NOT_MET",
+                    }
+                )
+            )
+    finally:
+        await engine.dispose()
+
+
+if __name__ == "__main__":
+    asyncio.run(main())

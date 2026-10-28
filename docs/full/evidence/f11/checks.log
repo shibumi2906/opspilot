@@ -1,0 +1,203 @@
+ Network opspilot-full-test-f11-verified_default  Creating
+ Network opspilot-full-test-f11-verified_default  Created
+Existing independent Full service key ring preserved
+ Volume "opspilot-full-test-f11-verified_oidcdata"  Creating
+ Volume "opspilot-full-test-f11-verified_oidcdata"  Created
+ Volume "opspilot-full-test-f11-verified_pgdata"  Creating
+ Volume "opspilot-full-test-f11-verified_pgdata"  Created
+ Container opspilot-full-test-f11-verified-oidc-1  Creating
+ Container opspilot-full-test-f11-verified-postgres-1  Creating
+ Container opspilot-full-test-f11-verified-postgres-1  Created
+ Container opspilot-full-test-f11-verified-oidc-1  Created
+ Container opspilot-full-test-f11-verified-oidc-1  Starting
+ Container opspilot-full-test-f11-verified-postgres-1  Starting
+ Container opspilot-full-test-f11-verified-oidc-1  Started
+ Container opspilot-full-test-f11-verified-postgres-1  Started
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-oidc-1  Waiting
+ Container opspilot-full-test-f11-verified-oidc-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f11-verified-collector-1  Creating
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-jaeger-1  Creating
+ Container opspilot-full-test-f11-verified-mcp-1  Creating
+ Container opspilot-full-test-f11-verified-api-1  Creating
+ Container opspilot-full-test-f11-verified-mcp-1  Created
+ Container opspilot-full-test-f11-verified-jaeger-1  Created
+ Container opspilot-full-test-f11-verified-api-1  Created
+ Container opspilot-full-test-f11-verified-web-1  Creating
+ Container opspilot-full-test-f11-verified-collector-1  Created
+ Container opspilot-full-test-f11-verified-web-1  Created
+ Container opspilot-full-test-f11-verified-jaeger-1  Starting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-collector-1  Starting
+ Container opspilot-full-test-f11-verified-collector-1  Started
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-api-1  Starting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-mcp-1  Starting
+ Container opspilot-full-test-f11-verified-jaeger-1  Started
+ Container opspilot-full-test-f11-verified-api-1  Started
+ Container opspilot-full-test-f11-verified-api-1  Waiting
+ Container opspilot-full-test-f11-verified-mcp-1  Started
+ Container opspilot-full-test-f11-verified-api-1  Healthy
+ Container opspilot-full-test-f11-verified-web-1  Starting
+ Container opspilot-full-test-f11-verified-web-1  Started
+ Container opspilot-full-test-f11-verified-collector-1  Waiting
+ Container opspilot-full-test-f11-verified-api-1  Waiting
+ Container opspilot-full-test-f11-verified-jaeger-1  Waiting
+ Container opspilot-full-test-f11-verified-mcp-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-web-1  Waiting
+ Container opspilot-full-test-f11-verified-mcp-1  Healthy
+ Container opspilot-full-test-f11-verified-api-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-collector-1  Healthy
+ Container opspilot-full-test-f11-verified-jaeger-1  Healthy
+ Container opspilot-full-test-f11-verified-web-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-mcp-1  Running
+ Container opspilot-full-test-f11-verified-api-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-mcp-1  Running
+ Container opspilot-full-test-f11-verified-api-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+173 files already formatted
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-mcp-1  Running
+ Container opspilot-full-test-f11-verified-api-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+Success: no issues found in 115 source files
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-mcp-1  Running
+ Container opspilot-full-test-f11-verified-api-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+...........ssss.....................s............................ssss... [ 20%]
+........................................................................ [ 40%]
+........................................................................ [ 60%]
+........................................................................ [ 80%]
+........................................................................ [100%]
+351 passed, 9 skipped in 306.38s (0:05:06)
+{"passed": true, "security_events": 332, "event_kinds": ["grant.consumed", "grant.issued", "revision.current_changed"], "payloads": "IDs/version/hash/key metadata only; no JWT", "least_privilege": "domain cannot approve/issue/revoke; audit delete denied"}
+{"passed": true, "operations": {"create_ticket": {"committed_objects": 56, "all_receipts_consistent": true, "force_rls": true}, "add_ticket_comment": {"committed_objects": 9, "all_receipts_consistent": true, "force_rls": true}, "notify_manager": {"committed_objects": 11, "all_receipts_consistent": true, "force_rls": true}, "plan_gate": {"plans": 8, "bounded": true, "verified_receipts_consistent": true, "domain_direct_plan_access": false, "body_free_plan_events": 55}}, "scope": "isolated local F11; full ASVS L2 remains NOT_MET"}
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-mcp-1  Running
+ Container opspilot-full-test-f11-verified-worker-1  Creating
+ Container opspilot-full-test-f11-verified-worker2-1  Creating
+ Container opspilot-full-test-f11-verified-worker-1  Created
+ Container opspilot-full-test-f11-verified-worker2-1  Created
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-worker-1  Starting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-worker2-1  Starting
+ Container opspilot-full-test-f11-verified-worker2-1  Started
+ Container opspilot-full-test-f11-verified-worker-1  Started
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-api-1  Running
+ Container opspilot-full-test-f11-verified-web-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-api-1  Waiting
+ Container opspilot-full-test-f11-verified-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 14 tests using 1 worker
+
+  ✓   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (10.8s)
+  ✓   2 ../tests/e2e/greenshop.spec.ts:32:5 › GreenShop: live trail, evidence, immutable refresh, double click and verified ticket (10.9s)
+  ✓   3 ../tests/e2e/greenshop.spec.ts:93:5 › Reject creates no ticket and keeps the card visible (5.3s)
+  ✓   4 ../tests/e2e/greenshop.spec.ts:116:5 › polling reconnects without overlapping reads or losing the URL (16.0s)
+  ✓   5 ../tests/e2e/greenshop.spec.ts:152:5 › lost decision response reconciles the server decision before retry (5.4s)
+  ✓   6 ../tests/e2e/greenshop.spec.ts:175:5 › narrow viewport, plain text sources and readable partial results (6.1s)
+  ✓   7 ../tests/e2e/greenshop.spec.ts:212:5 › status-only completes without an approval card; terminal polling stops (6.4s)
+  ✓   8 ../tests/e2e/greenshop.spec.ts:230:5 › missing run and failed/unknown snapshots never display verified success (3.8s)
+  ✓   9 ../tests/e2e/greenshop.spec.ts:265:5 › a lost create response reuses the client request ID (5.4s)
+  ✓  10 ../tests/e2e/greenshop.spec.ts:304:5 › unknown and partial projections stay visibly unverified; snapshot mode is authoritative (4.0s)
+  ✓  11 ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout (1.4s)
+  ✓  12 ../tests/e2e/identity.spec.ts:46:5 › OIDC login never auto-provisions a membership (766ms)
+  ✓  13 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: approve ticket, opposite inbox, concrete comment wave (7.4s)
+  ✓  14 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: reject ticket, opposite inbox, concrete comment wave (6.9s)
+
+  14 passed (1.6m)
+ Container opspilot-full-test-f11-verified-worker-1  Stopping
+ Container opspilot-full-test-f11-verified-worker2-1  Stopping
+ Container opspilot-full-test-f11-verified-worker2-1  Stopped
+ Container opspilot-full-test-f11-verified-worker-1  Stopped
+ Container opspilot-full-test-f11-verified-api-1  Stopping
+ Container opspilot-full-test-f11-verified-api-1  Stopped
+.....                                                                    [100%]
+5 passed in 61.72s (0:01:01)
+...                                                                      [100%]
+3 passed in 42.96s
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c: Pulling from aquasec/trivy
+Digest: sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Status: Image is up to date for aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+ Downloaded pygments
+ Downloaded pip
+Installed 29 packages in 39ms
+realpath: --: No such file or directory
+No known vulnerabilities found
+Runtime image HIGH/CRITICAL gate and package audits passed; all scan findings preserved.
+E01: True actions_verified []
+E02: True rejected []
+E03: True actions_verified []
+E04: True diagnosis_only []
+E05: True insufficient_context []
+E06: True None []
+2026-10-28 19:38:30.276 | WARNING  | opspilot.mcp_server.tools_read:call_tool:252 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-28 19:38:30.846 | WARNING  | opspilot.mcp_server.tools_read:call_tool:252 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-28 19:38:31.561 | WARNING  | opspilot.mcp_server.tools_read:call_tool:252 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+E07: True partial []
+E08: True partial []
+E09: True partial []
+E10: True blocked []
+E11: True rejected []
+E12: True budget_exhausted []
+ Container opspilot-full-test-f11-verified-jaeger-1  Stopping
+ Container opspilot-full-test-f11-verified-worker-1  Stopping
+ Container opspilot-full-test-f11-verified-collector-1  Stopping
+ Container opspilot-full-test-f11-verified-web-1  Stopping
+ Container opspilot-full-test-f11-verified-oidc-1  Stopping
+ Container opspilot-full-test-f11-verified-worker2-1  Stopping
+ Container opspilot-full-test-f11-verified-worker2-1  Stopped
+ Container opspilot-full-test-f11-verified-worker-1  Stopped
+ Container opspilot-full-test-f11-verified-mcp-1  Stopping
+ Container opspilot-full-test-f11-verified-collector-1  Stopped
+ Container opspilot-full-test-f11-verified-jaeger-1  Stopped
+ Container opspilot-full-test-f11-verified-oidc-1  Stopped
+ Container opspilot-full-test-f11-verified-mcp-1  Stopped
+ Container opspilot-full-test-f11-verified-web-1  Stopped
+ Container opspilot-full-test-f11-verified-api-1  Stopping
+ Container opspilot-full-test-f11-verified-api-1  Stopped
+ Container opspilot-full-test-f11-verified-postgres-1  Stopping
+ Container opspilot-full-test-f11-verified-postgres-1  Stopped

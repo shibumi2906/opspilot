@@ -1,0 +1,32 @@
+{
+  "containers_removed": true,
+  "networks_removed": true,
+  "volumes_retained": true,
+  "images_retained": true,
+  "projects": {
+    "opspilot-full-test-f11-release": {
+      "containers": 0,
+      "networks": 0,
+      "retained_volumes": [
+        "opspilot-full-test-f11-release_oidcdata",
+        "opspilot-full-test-f11-release_pgdata"
+      ]
+    },
+    "opspilot-full-test-f11-verified": {
+      "containers": 0,
+      "networks": 0,
+      "retained_volumes": [
+        "opspilot-full-test-f11-verified_oidcdata",
+        "opspilot-full-test-f11-verified_pgdata"
+      ]
+    },
+    "opspilot-full-security-f11": {
+      "containers": 0,
+      "networks": 0,
+      "retained_volumes": [
+        "opspilot-full-security-f11_oidcdata",
+        "opspilot-full-security-f11_pgdata"
+      ]
+    }
+  }
+}

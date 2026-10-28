@@ -99,3 +99,11 @@ F10 local change gate passed: [contracts](../full/f10-security-contracts.md),
 package/whole-requirement closure remains with accountable owners. F10 contributions are recorded
 separately in all affected backlog rows. Retention, managed storage/keys, deployment and complete
 L2 acceptance remain their future gates; full L2 is NOT_MET.
+
+
+F11 local change gate passed: [contracts](../full/f11-security-contracts.md),
+[measured acceptance](../full/evidence/f11/checks.json). SEC-03/07 bound local DAG/approval waves,
+per-action capability/dependency checks, durable verification quota and queue handoff are verified.
+SEC-01/10 change review and scans also pass in this local scope. Full requirement closure,
+remaining quotas/fairness, manager/storage/production controls remain accountable future work;
+all253 requirement identities/baseline assessments are preserved and full L2 remains NOT_MET.

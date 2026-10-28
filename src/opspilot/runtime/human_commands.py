@@ -141,6 +141,13 @@ async def finalize_cancel(service: "RunService", run_id: UUID) -> bool:
         run = await session.get(AgentRun, run_id)
         if run is None or not run.cancellation:
             return False
+        from opspilot.db.models_plans import PlanSlot
+
+        await session.execute(
+            update(PlanSlot)
+            .where(PlanSlot.run_id == run_id, PlanSlot.status == "prepared")
+            .values(status="cancelled")
+        )
         actions = list(await session.scalars(select(Action).where(Action.run_id == run_id)))
         effects: list[dict[str, Any]] = [
             {"action_id": str(a.id), "status": a.execution_status, "result": a.execution_result}
@@ -154,7 +161,21 @@ async def finalize_cancel(service: "RunService", run_id: UUID) -> bool:
             else "Run cancelled; completed effects are preserved.",
             "action_summary": "; ".join(
                 f"{item['action_id']}: {item['status']}"
-                + (f"; ticket {item['result']['ticket_id']}" if item["result"] else "")
+                + (
+                    "; object "
+                    + str(
+                        next(
+                            (
+                                v
+                                for k, v in item["result"].items()
+                                if k in {"ticket_id", "comment_id", "notification_id"}
+                            ),
+                            "",
+                        )
+                    )
+                    if item["result"]
+                    else ""
+                )
                 for item in effects
             )
             if effects

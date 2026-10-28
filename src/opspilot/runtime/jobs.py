@@ -13,6 +13,16 @@ from opspilot.tenancy.session import TenantSession
 async def enqueue(
     session: TenantSession, run_id: UUID, kind: str, action_id: UUID | None = None
 ) -> None:
+    # A later wave can be decided after its checkpoint but before this worker acknowledges.
+    if kind == "resume":
+        queued = await session.execute(
+            text("""UPDATE workflow.command_jobs
+          SET next_action_id=:a WHERE tenant_id=:t AND run_id=:r AND kind='resume'
+          AND status='running' AND action_id IS DISTINCT FROM :a RETURNING id"""),
+            {"a": action_id, "t": require_tenant(), "r": run_id},
+        )
+        if queued.first() is not None:
+            return
     # The caller owns the run/decision transaction; never commit here.
     await session.execute(
         text("""INSERT INTO workflow.command_jobs
@@ -81,12 +91,25 @@ async def finish(engine: AsyncEngine, job: dict[str, Any], *, failed: bool = Fal
     async with engine.begin() as conn:
         await conn.execute(text("SELECT workflow.check_fence(:r)"), {"r": job["run_id"]})
         changed = await conn.execute(
-            text("""UPDATE workflow.command_jobs SET status=:status,
-          available_at=clock_timestamp()+:delay*interval '1 second',
-          finished_at=CASE WHEN :finished THEN clock_timestamp() ELSE NULL END,error_code=:error
+            text("""UPDATE workflow.command_jobs SET
+          status=CASE WHEN NOT :failed AND next_action_id IS NOT NULL
+            THEN 'pending' ELSE :status END,
+          action_id=CASE WHEN NOT :failed AND next_action_id IS NOT NULL
+            THEN next_action_id ELSE action_id END,
+          next_action_id=CASE WHEN NOT :failed THEN NULL ELSE next_action_id END,
+          available_at=CASE WHEN NOT :failed AND next_action_id IS NOT NULL THEN clock_timestamp()
+            ELSE clock_timestamp()+:delay*interval '1 second' END,
+          attempts=CASE WHEN NOT :failed AND next_action_id IS NOT NULL THEN 0 ELSE attempts END,
+          claim_owner=CASE WHEN NOT :failed AND next_action_id IS NOT NULL
+            THEN NULL ELSE claim_owner END,
+          claim_epoch=CASE WHEN NOT :failed AND next_action_id IS NOT NULL
+            THEN NULL ELSE claim_epoch END,
+          finished_at=CASE WHEN NOT :failed AND next_action_id IS NOT NULL THEN NULL
+            WHEN :finished THEN clock_timestamp() ELSE NULL END,error_code=:error
           WHERE id=:id AND tenant_id=:t AND status='running' AND claim_owner=:o AND claim_epoch=:e
           RETURNING id"""),
             {
+                "failed": failed,
                 "status": "dead" if dead else "pending" if failed else "done",
                 "delay": min(60, 2 ** job["attempts"]),
                 "finished": dead or not failed,

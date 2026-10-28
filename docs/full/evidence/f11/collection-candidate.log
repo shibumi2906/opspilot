@@ -1,0 +1,106 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-oidc-1  Running
+ Container opspilot-full-test-f11-release-oidc-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-oidc-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f11-release-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f11-release-collector-1  Running
+ Container opspilot-full-test-f11-release-jaeger-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Recreate
+ Container opspilot-full-test-f11-release-web-1  Stopping
+ Container opspilot-full-test-f11-release-web-1  Stopped
+ Container opspilot-full-test-f11-release-api-1  Recreate
+ Container opspilot-full-test-f11-release-mcp-1  Recreated
+ Container opspilot-full-test-f11-release-api-1  Recreated
+ Container opspilot-full-test-f11-release-web-1  Recreate
+ Container opspilot-full-test-f11-release-web-1  Recreated
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-mcp-1  Starting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-api-1  Starting
+ Container opspilot-full-test-f11-release-mcp-1  Started
+ Container opspilot-full-test-f11-release-api-1  Started
+ Container opspilot-full-test-f11-release-api-1  Waiting
+ Container opspilot-full-test-f11-release-api-1  Healthy
+ Container opspilot-full-test-f11-release-web-1  Starting
+ Container opspilot-full-test-f11-release-web-1  Started
+ Container opspilot-full-test-f11-release-mcp-1  Waiting
+ Container opspilot-full-test-f11-release-web-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-api-1  Waiting
+ Container opspilot-full-test-f11-release-collector-1  Waiting
+ Container opspilot-full-test-f11-release-jaeger-1  Waiting
+ Container opspilot-full-test-f11-release-collector-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-jaeger-1  Healthy
+ Container opspilot-full-test-f11-release-mcp-1  Healthy
+ Container opspilot-full-test-f11-release-api-1  Healthy
+ Container opspilot-full-test-f11-release-web-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+173 files already formatted
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+Success: no issues found in 115 source files
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+
+==================================== ERRORS ====================================
+_______________ ERROR collecting tests/unit/test_mixed_plans.py ________________
+import file mismatch:
+imported module 'test_mixed_plans' has this __file__ attribute:
+  /app/tests/integration/test_mixed_plans.py
+which is not the same as the test file we want to collect:
+  /app/tests/unit/test_mixed_plans.py
+HINT: remove __pycache__ / .pyc files and/or use a unique basename for your test file modules
+=========================== short test summary info ============================
+ERROR tests/unit/test_mixed_plans.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 2.61s
+exit status 2
+ Container opspilot-full-test-f11-release-oidc-1  Stopping
+ Container opspilot-full-test-f11-release-collector-1  Stopping
+ Container opspilot-full-test-f11-release-jaeger-1  Stopping
+ Container opspilot-full-test-f11-release-mcp-1  Stopping
+ Container opspilot-full-test-f11-release-web-1  Stopping
+ Container opspilot-full-test-f11-release-jaeger-1  Stopped
+ Container opspilot-full-test-f11-release-collector-1  Stopped
+ Container opspilot-full-test-f11-release-web-1  Stopped
+ Container opspilot-full-test-f11-release-api-1  Stopping
+ Container opspilot-full-test-f11-release-mcp-1  Stopped
+ Container opspilot-full-test-f11-release-oidc-1  Stopped
+ Container opspilot-full-test-f11-release-api-1  Stopped
+ Container opspilot-full-test-f11-release-postgres-1  Stopping
+ Container opspilot-full-test-f11-release-postgres-1  Stopped

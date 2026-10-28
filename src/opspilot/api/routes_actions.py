@@ -48,6 +48,10 @@ async def revise(logical_id: UUID, body: RevisionChange, request: Request) -> di
                 select(Action).where(Action.id == logical.current_revision_id).with_for_update()
             )
             assert old is not None
+            if old.plan_binding:
+                raise Conflict(
+                    "Bound plan intents are immutable; completed effects cannot be replanned"
+                )
             arguments = body.arguments.model_dump(mode="json")
             try:
                 WRITE_TOOLS[old.tool_name].arguments.model_validate(

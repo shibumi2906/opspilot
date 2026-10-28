@@ -18,7 +18,7 @@ export function ApprovalCard({
   const pending = action.approval_status === "pending";
   const expired = Date.parse(action.expires_at) <= Date.now();
   return (
-    <section className="approval-panel" data-testid="approval-card">
+    <section className="approval-panel" data-testid="approval-card" data-action-key={action.key}>
       <SectionHeader
         number="03"
         title="One proposed action"

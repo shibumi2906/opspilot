@@ -5,7 +5,7 @@ from zoneinfo import ZoneInfo
 
 from opspilot.agent.policy import forbidden_request
 from opspilot.agent.state import AgentState, Classification, InvestigationDecision
-from opspilot.contracts.actions import PlanDecision
+from opspilot.contracts.planning import PlanDecision
 from opspilot.contracts.reports import Analysis, Hypothesis
 from opspilot.llm.base import Completion, Operation, Usage
 
@@ -111,6 +111,9 @@ class ScriptedProvider:
                 missing_checks=context["missing_checks"],
             ).model_dump()
         else:
-            output = PlanDecision(proposal=context["canonical_proposal"]).model_dump(mode="json")
+            output = PlanDecision(
+                proposal=None if context.get("canonical_plan") else context["canonical_proposal"],
+                plan=context.get("canonical_plan"),
+            ).model_dump(mode="json")
         # Scripted mode makes no provider request and incurs no model token usage.
         return Completion(output=output, usage=Usage(input_tokens=0, output_tokens=0))

@@ -32,6 +32,9 @@ export interface TicketArguments {
   evidence_ids: string[];
 }
 export interface Action {
+  wave?: number;
+  key?: string;
+  plan_status?: string;
   action_id: string;
   tool_name: "create_ticket" | "add_ticket_comment" | "notify_manager";
   arguments: TicketArguments | {
@@ -47,11 +50,12 @@ export interface Action {
   revision_hash: string;
   expires_at: string;
   approval_status: "pending" | "approved" | "rejected" | "expired" | "revoked" | "superseded";
-  execution_status: "not_started" | "succeeded" | "failed" | "unknown";
+  execution_status: "not_started" | "succeeded" | "failed" | "unknown" | "skipped_dependency";
   result: { ticket_id?: string; comment_id?: string; notification_id?: string; created_at: string; replayed: boolean } | null;
   verification: { status: string };
 }
 export interface Report {
+  effects?: {action_id:string|null;key?:string;tool_name?:string;status:string;approval_status?:string;verification_status?:string;wave?:number}[];
   summary: string;
   facts: { statement: string; evidence_ids: string[] }[];
   hypotheses: Hypothesis[];
@@ -106,6 +110,8 @@ export interface RunSnapshot {
   evidence: Evidence[];
   hypotheses: Hypothesis[];
   missing_checks: string[];
+  plan?: {plan_id:string;version:number;hash:string;wave:number;nodes:{slot_id:string;key:string;tool_name:string;status:string;dependencies:string[];wave:number;action_id:string|null}[]} | null;
+  actions?: Action[];
   action: Action | null;
   report: Report | null;
   error: { code: string; message?: string } | null;

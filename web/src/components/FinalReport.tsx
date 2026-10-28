@@ -35,7 +35,7 @@ export function FinalReport({
       </span>
       <h2>
         {report.outcome === "actions_verified"
-          ? "Ticket verified."
+          ? (snapshot.plan ? "Plan verified." : "Ticket verified.")
           : report.outcome === "rejected"
             ? "Decision respected."
             : "Review the findings."}
@@ -53,7 +53,10 @@ export function FinalReport({
       ) : (
         <p>No confirmed diagnosis is available.</p>
       )}
-      <h3>Ticket creation</h3>
+      {snapshot.plan && <section aria-label="Per-action results"><h3>Action results</h3><ul>{report.effects?.map((effect,index)=><li key={effect.key ?? effect.action_id ?? index}>
+        {effect.key} · {effect.tool_name}: {effect.status}; decision {effect.approval_status}; verification {effect.verification_status}
+      </li>)}</ul></section>}
+      <h3>{snapshot.plan ? "Plan execution" : "Ticket creation"}</h3>
       <p>{report.action_summary}</p>
       {report.ticket_id && (
         <p className="ticket-id mono" data-testid="created-ticket-id">

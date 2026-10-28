@@ -44,7 +44,7 @@ async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
                     raise RuntimeError("Command run missing")
             if await finalize_cancel(service, run.id):
                 pass
-            elif run.workflow_version != "full-graph-v1":
+            elif run.workflow_version not in {"full-graph-v1", "full-graph-v2"}:
                 await service.fail(run.id, "UNSUPPORTED_WORKFLOW_VERSION")
             elif run.state_schema_version != 1:
                 await service.fail(run.id, "CHECKPOINT_UNSUPPORTED")

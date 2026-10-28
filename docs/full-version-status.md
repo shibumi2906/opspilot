@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 28 октября 2026 года. **F01–F10 завершены; F11–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 28 октября 2026 года. **F01–F11 завершены; F12–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F11 — mixed plans/dependencies/approval waves. Не начат.**
+**Следующий этап: F12 — freshness/expiry/revocation/replan. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F11 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F12 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -63,7 +63,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F08 | done | Durable typed clarification и cancellation | [evidence](full/evidence/f08/README.md); commit subject: `feat(full): implement F08 durable clarification and cancellation` | [SEC-00: local baseline](security/hardening/status.md) |
 | F09 | done | Immutable revisions, version/TTL, independent signed persisted grants, exact MCP authorization | [evidence](full/evidence/f09/README.md); commit subject: `feat(full-f09): bind immutable revisions to signed execution grants` | [SEC-01/02/03/04/05/06](security/asvs-l2-implementation-plan.md) |
 | F10 | done | Три local write-tools, atomic receipts, exact verification и tenant/object/recipient scope | [evidence](full/evidence/f10/README.md) | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
-| F11 | not_started | Mixed plans/dependencies/approval waves | — | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
+| F11 | done | Bounded mixed DAG, independent decisions, sequential approved subset, dependent skip и concrete comment wave | [evidence](full/evidence/f11/README.md) | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
 | F12 | not_started | Freshness/expiry/revocation/replan | — | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
 | F13 | not_started | SSE replay/reconnect и авторизация | — | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
 | F14 | not_started | Полный UI/история/inbox/admin | — | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
@@ -521,3 +521,45 @@ scanner downloads были; remote CI, real provider и production deployment н
 Blockers F10 отсутствуют. Локальный stage commit subject:
 `feat(full-f10): implement local ticket comment and internal inbox operations`.
 Следующий F11 остаётся not_started; выполнен только F10.
+
+
+## F11 — mixed plans, dependencies и approval waves
+
+28 октября 2026. Canonical Full worktree/ветка `codex/opspilot-full` сохранены;
+base F10 `efc6f1b`. Schema `0013_mixed_plans`; mixed requests закреплены за
+`full-graph-v2`, прежние v1/checkpoints и single-action path поддерживаются.
+State/DTO/revision schema1, checkpoint SDK migration9 не переинтерпретируются.
+
+Реализованы typed bounded DAG (до3 actions/2 waves), immutable per-run plan и stable business
+intent slots. У каждой concrete action своя revision/decision/grant; Core и MCP независимо
+проверяют plan membership, завершённость решений wave и verified dependency receipts.
+Approved subset исполняется последовательно, rejected/unknown prerequisites дают skipped
+ dependents. Comment materializes только после verified ticket, получает новый exact ticket ID
+и отдельную approval card/decision wave. Replay plan переиспользует intents; изменение plan
+не повторяет succeeded effects. Per-action verification резерв до3 чтений хранится в БД.
+Durable resume successor закрывает race второй wave с ack текущей job.
+API/UI показывают каждую decision/execution/verification; partial plan не выдаётся за global success.
+
+SEC-01/03/07/10: [contracts](full/f11-security-contracts.md), scoped contributions в ASVS backlog;
+все253 IDs/levels/baseline assessments сохранены, whole-norm closure не заявляется, L2 NOT_MET.
+[Evidence](full/evidence/f11/README.md): backend **351 passed/9 dedicated skips**, дополнительные
+mixed cancellation **2 passed** на том же application image; focused8 входят в backend.
+Browser/OIDC **14/14**, queue process **5**, fencing kill/stop/partition **3**, TLS/MFA **8+11**,
+scripted evals **12/12**, unauthorized/duplicate/false verified writes0. Ruff/format/mypy115,
+TypeScript/Vite, runtime app/web SCA0, Python/npm audit0 проходят.
+Реальный child-worker crash между actions и гонка next-wave decision/ack проверены.
+
+Исправлены и сохранены красные кандидаты: unfenced updated_at на partial decision,
+pytest module collision, SQL NULL vs JSON null в legacy binding. Fresh verified project
+`opspilot-full-test-f11-verified`, DB `opspilot_full_test`, published ports отсутствуют.
+Runtime115 source files совпадают с проверенным image; evals честно отмечают dirty snapshot.
+
+Dev Full upgrade012→013 сохранил counts и SHA-256 прежних domain objects/actions/receipts.
+Live v1 read-only и v2 mixed run с2 approval waves/3 verified receipts прошли; replay вернул
+тот же run. MCP13 tools, UI8091/API8011 HTTP200, два workers healthy.
+MVP184 source/media/docs/env fingerprints, main/HEAD, image tags и volume metadata/content
+совпали с baseline; исходный checkout чист. Test/lab containers/networks удалены, volumes/images
+сохранены. Application calls только local synthetic OIDC/PostgreSQL/MCP; paid/vendor writes0.
+Remote CI, real provider и production deployment не выполнялись. F12 не начинался.
+Blockers F11 отсутствуют. Отдельный local commit subject:
+`feat(full-f11): implement bounded mixed plans and approval waves`.

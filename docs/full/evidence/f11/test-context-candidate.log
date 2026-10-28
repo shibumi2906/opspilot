@@ -1,0 +1,67 @@
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+F
+=================================== FAILURES ===================================
+_ test_mixed_subset_dependencies_and_concrete_second_wave[approve-reject-expected0] _
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f81091d6c10>
+ticket_choice = 'approve', inbox_choice = 'reject'
+expected = {'ticket': 'verified', 'inbox': 'rejected', 'comment': 'verified'}
+
+    @pytest.mark.parametrize(
+        "ticket_choice,inbox_choice,expected",
+        [
+            ("approve", "reject", {"ticket": "verified", "inbox": "rejected", "comment": "verified"}),
+            (
+                "reject",
+                "approve",
+                {"ticket": "rejected", "inbox": "verified", "comment": "skipped_dependency"},
+            ),
+            (
+                "reject",
+                "reject",
+                {"ticket": "rejected", "inbox": "rejected", "comment": "skipped_dependency"},
+            ),
+        ],
+    )
+    async def test_mixed_subset_dependencies_and_concrete_second_wave(
+        integration_settings, admin_engine, ticket_choice, inbox_choice, expected
+    ):
+        service, run, value = await pending(integration_settings)
+        try:
+            assert value["status"] == "waiting_for_approval", value
+            assert value["plan"]["wave"] == 1 and len(value["plan"]["nodes"]) == 3
+            assert len(value["actions"]) == 2 and all(
+                a["tool_name"] != "add_ticket_comment" for a in value["actions"]
+            )
+            actions = {a["key"]: a for a in value["actions"]}
+            first = await choose(service, run, actions["ticket"], ticket_choice)
+            assert first["status"] == "waiting_for_approval"
+            assert not await process_one(service, run)
+            assert await counts(admin_engine, run) == {
+                "tickets": 0,
+                "ticket_comments": 0,
+                "notifications": 0,
+            }
+            # A single sibling approval cannot issue any capability before its wave is decided.
+            if ticket_choice == "approve":
+                a = actions["ticket"]
+                async with (
+                    execution_lease(service.engine, run, integration_settings),
+>                   pytest.raises(DBAPIError),
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^
+                ):
+E               TypeError: 'RaisesExc' object does not support the asynchronous context manager protocol
+
+tests/integration/test_mixed_plans.py:99: TypeError
+=========================== short test summary info ============================
+FAILED tests/integration/test_mixed_plans.py::test_mixed_subset_dependencies_and_concrete_second_wave[approve-reject-expected0]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 4.15s
+exit status 1

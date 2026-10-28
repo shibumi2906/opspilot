@@ -119,6 +119,7 @@ async def issue(settings: Settings, operation: dict[str, str]) -> str:
                 or action.arguments_hash != operation["hash"]
             ):
                 raise AuthError("GRANT_INVALID")
+            await session.execute(text("SELECT workflow.check_plan_action(:a)"), {"a": action.id})
             logical = await session.get(LogicalAction, action.logical_action_id)
             approval = await session.scalar(
                 select(Approval).where(Approval.action_id == action.id).with_for_update()

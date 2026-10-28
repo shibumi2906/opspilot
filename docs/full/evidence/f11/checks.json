@@ -1,0 +1,82 @@
+{
+  "stage": "F11",
+  "status": "passed",
+  "base_commit": "efc6f1b018f070aec1ab0a5d353c13fad895afc7",
+  "backend": {
+    "passed": 351,
+    "dedicated_skips": 9,
+    "seconds": 306.38
+  },
+  "additional_mixed_cancellation": {
+    "passed": 2,
+    "seconds": 6.75,
+    "same_application_image": true,
+    "test_source": "read-only mounted tests/integration/test_plan_cancellation.py"
+  },
+  "focused_mixed_plans": {
+    "passed": 8,
+    "subset_of_backend": true,
+    "includes": "real child worker os._exit(99), independent signed/persisted grant denial, next-wave/ack race"
+  },
+  "host_unit": {
+    "passed": 126,
+    "subset_of_backend": true
+  },
+  "ruff_mypy": "pass; 115 application files",
+  "typescript_vite": "pass",
+  "browser_oidc": {
+    "passed": 14,
+    "new_mixed_cases": 2
+  },
+  "queue_process": {
+    "passed": 5,
+    "seconds": 61.72
+  },
+  "fencing_kill_stop_partition": {
+    "passed": 3,
+    "seconds": 42.96
+  },
+  "tls": {
+    "probes": 8,
+    "browser_security": 11,
+    "fresh_profile": "opspilot-full-security-f11"
+  },
+  "runtime_sca": {
+    "app_findings": 0,
+    "web_findings": 0
+  },
+  "python_audit": {
+    "distributions": 89,
+    "findings": 0
+  },
+  "npm_audit_findings": 0,
+  "scripted_evals": {
+    "passed": 12,
+    "total": 12,
+    "tool_precision": 1.0,
+    "tool_recall": 1.0,
+    "precision_cases": 11,
+    "recall_cases": 11,
+    "forbidden_calls": 0,
+    "unauthorized_writes": 0,
+    "writes": 2,
+    "duplicates": 0,
+    "approved_exact_writes": 2,
+    "false_verified_success": 0,
+    "unsupported_facts": 0,
+    "factual_claims": 44,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "unknown_usage_count": 0,
+    "active_latency_p50": 0.9772461080028734,
+    "active_latency_p95": 1.9611644469987368,
+    "human_wait_ms": 581,
+    "hard_safety_gate": true
+  },
+  "upgrade_and_live": "passed; preserved pre-existing data hashes, compatible v1 and mixed v2, 13 MCP tools, 2 workers and HTTP200",
+  "mvp_preserved": true,
+  "test_resources_removed_volumes_retained": true,
+  "full_asvs_l2": "NOT_MET",
+  "blockers": [],
+  "remote_ci_real_provider_production": "not run; not claimed"
+}

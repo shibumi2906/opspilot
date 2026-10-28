@@ -67,7 +67,8 @@ class Action(TenantOwned, Base):
             name="ck_actions_tool",
         ),
         CheckConstraint(
-            "execution_status IN ('not_started', 'succeeded', 'failed', 'unknown')",
+            "execution_status IN ('not_started', 'succeeded', 'failed', "
+            "'unknown', 'skipped_dependency')",
             name="ck_actions_execution_status",
         ),
         {"schema": "workflow"},
@@ -77,6 +78,7 @@ class Action(TenantOwned, Base):
     logical_action_id: Mapped[UUID] = mapped_column()
     revision_number: Mapped[int] = mapped_column(default=1)
     plan_version: Mapped[int] = mapped_column(default=1)
+    plan_binding: Mapped[dict[str, Any] | None] = mapped_column(JSONB(none_as_null=True))
     revision_document: Mapped[dict[str, Any]] = mapped_column(JSONB)
     revision_hash: Mapped[str] = mapped_column(String(64))
     expires_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

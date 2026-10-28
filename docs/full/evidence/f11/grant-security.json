@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "security_events": 332,
+  "event_kinds": [
+    "grant.consumed",
+    "grant.issued",
+    "revision.current_changed"
+  ],
+  "payloads": "IDs/version/hash/key metadata only; no JWT",
+  "least_privilege": "domain cannot approve/issue/revoke; audit delete denied"
+}

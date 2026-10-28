@@ -25,6 +25,7 @@ def document(
     expires: datetime,
     plan_version: int = 1,
     tool: str = "create_ticket",
+    plan_binding: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if tool not in {"create_ticket", "add_ticket_comment", "notify_manager"}:
         raise ValueError("Unsupported local operation")
@@ -33,7 +34,7 @@ def document(
         target["ticket"] = str(arguments["ticket_id"])
     if tool == "notify_manager":
         target["recipient"] = str(arguments["recipient_id"])
-    return {
+    result = {
         "schema_version": 1,
         "tenant": tenant,
         "run": run,
@@ -53,6 +54,11 @@ def document(
         "expires_at": expires.astimezone(UTC).isoformat(),
     }
 
+    if plan_binding is not None:
+        result["plan"] = plan_binding
+        result["dependencies"] = plan_binding["dependencies"]
+    return result
+
 
 def valid_revision(action: Any) -> bool:
     expected = document(
@@ -65,6 +71,7 @@ def valid_revision(action: Any) -> bool:
         arguments=action.arguments,
         expires=action.expires_at,
         tool=action.tool_name,
+        plan_binding=getattr(action, "plan_binding", None),
     )
     return bool(
         action.revision_document == expected and action.revision_hash == canonical_hash(expected)

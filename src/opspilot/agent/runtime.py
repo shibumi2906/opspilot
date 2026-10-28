@@ -38,6 +38,7 @@ class Runtime:
         self.provider = provider
         self.budget = budget
         self.client = MCPClient(settings)
+        self.plan_verification_action: UUID | None = None
 
     async def llm(
         self, operation: Operation, context: dict[str, Any], model: type[T], state: AgentState
@@ -118,7 +119,13 @@ class Runtime:
             from opspilot.runtime.human_commands import check_cancelled
 
             await check_cancelled(self.settings)
-            self.budget.begin_read(verification=verification)
+            if verification and self.plan_verification_action is not None:
+                from opspilot.runtime.plans import reserve_verification
+
+                self.budget.check()
+                await reserve_verification(self.plan_verification_action)
+            else:
+                self.budget.begin_read(verification=verification)
             key = f"{call_id}:{attempt}"
             state.setdefault("tool_calls", {})[key] = {
                 "started_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),

@@ -46,19 +46,25 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
             ):
                 async with service.engine.begin() as conn:
                     await conn.execute(text("SELECT workflow.record_recovery(:r)"), {"r": run_id})
-                graph = build_graph(
-                    Runtime(service.settings, ScriptedProvider(), Budget(BudgetLimits())), saver
-                )
                 async with AsyncSession(service.engine) as session:
                     run = await session.get(AgentRun, run_id)
                     assert run is not None
                     row = (
-                        await session.execute(
-                            select(Action, Approval)
-                            .join(Approval, Approval.action_id == Action.id)
-                            .where(Action.run_id == run_id, Action.superseded_at.is_(None))
-                        )
-                    ).one_or_none()
+                        None
+                        if run.workflow_version == "full-graph-v2"
+                        else (
+                            await session.execute(
+                                select(Action, Approval)
+                                .join(Approval, Approval.action_id == Action.id)
+                                .where(Action.run_id == run_id, Action.superseded_at.is_(None))
+                            )
+                        ).one_or_none()
+                    )
+                graph = build_graph(
+                    Runtime(service.settings, ScriptedProvider(), Budget(BudgetLimits())),
+                    saver,
+                    version=run.workflow_version,
+                )
                 config: RunnableConfig = {"configurable": {"thread_id": str(run_id)}}
                 saved = await graph.aget_state(config)
                 values = saved.values
@@ -69,6 +75,16 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                     or values.get("mode") not in {"scripted", "real"}
                 ):
                     raise ValueError("Unsupported checkpoint binding")
+                if (
+                    values
+                    and values.get("workflow_version", "full-graph-v1") != run.workflow_version
+                ):
+                    raise ValueError("Pinned workflow/checkpoint mismatch")
+                if run.workflow_version == "full-graph-v2":
+                    from opspilot.runtime.plans import recover_plan
+
+                    if await recover_plan(service, run, saved, values):
+                        continue
                 valid = (
                     row is not None
                     and (

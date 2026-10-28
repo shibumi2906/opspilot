@@ -7,10 +7,10 @@ from typing import Any
 import httpx
 from pydantic import BaseModel
 
-from opspilot.agent.prompts import SYSTEM_PROMPT
+from opspilot.agent.prompts import F11_PLAN_RULE, SYSTEM_PROMPT
 from opspilot.agent.state import Classification
 from opspilot.config import Settings
-from opspilot.contracts.actions import PlanDecision
+from opspilot.contracts.planning import PlanDecision
 from opspilot.contracts.reports import Analysis
 from opspilot.llm.base import Completion, Operation, ProviderFailure, Usage
 from opspilot.mcp_client.registry import READ_TOOLS
@@ -68,7 +68,7 @@ class RealProvider:
         payload: dict[str, Any] = {
             "model": self.model,
             "store": False,
-            "instructions": SYSTEM_PROMPT,
+            "instructions": SYSTEM_PROMPT + ("\n" + F11_PLAN_RULE if operation == "plan" else ""),
             "input": [
                 {
                     "role": "user",

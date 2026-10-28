@@ -280,6 +280,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -316,6 +328,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -352,6 +376,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -422,6 +458,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -526,6 +574,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -664,6 +724,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -700,6 +772,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -770,6 +854,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -908,6 +1004,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -993,6 +1101,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1044,6 +1164,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1095,6 +1227,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1146,6 +1290,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1197,6 +1353,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1248,6 +1416,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1299,6 +1479,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1350,6 +1542,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1401,6 +1605,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1452,6 +1668,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -1495,7 +1723,19 @@
           "evidence": "../full/evidence/f09/README.md",
           "source_manifest": "../full/evidence/f09/source-tree.json"
         }
-      ]
+      ],
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
+      }
     },
     {
       "id": "v5.0.0-3.2.1",
@@ -1973,6 +2213,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2077,6 +2329,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2180,6 +2444,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2215,6 +2491,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2250,6 +2538,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2285,6 +2585,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2321,6 +2633,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2357,6 +2681,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2393,6 +2729,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2429,6 +2777,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2465,6 +2825,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2501,6 +2873,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2537,6 +2921,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2573,6 +2969,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2609,6 +3017,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2645,6 +3065,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2681,6 +3113,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2717,6 +3161,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2753,6 +3209,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2789,6 +3257,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -2825,6 +3305,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3482,6 +3974,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3518,6 +4022,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3554,6 +4070,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3590,6 +4118,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3626,6 +4166,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3662,6 +4214,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3698,6 +4262,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3734,6 +4310,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3770,6 +4358,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -3833,6 +4433,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4417,6 +5029,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4470,6 +5094,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4523,6 +5159,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4576,6 +5224,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4629,6 +5289,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4682,6 +5354,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4735,6 +5419,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4787,6 +5483,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4839,6 +5547,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4891,6 +5611,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4943,6 +5675,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -4995,6 +5739,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5047,6 +5803,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5099,6 +5867,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5216,6 +5996,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5252,6 +6044,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5288,6 +6092,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5324,6 +6140,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5360,6 +6188,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5639,6 +6479,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -5810,6 +6662,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -6469,6 +7333,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -6647,6 +7523,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7526,6 +8414,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7575,6 +8475,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7624,6 +8536,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7674,6 +8598,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7724,6 +8660,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7774,6 +8722,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7823,6 +8783,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7872,6 +8844,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7921,6 +8905,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -7970,6 +8966,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8019,6 +9027,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8068,6 +9088,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8117,6 +9149,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8825,6 +9869,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8861,6 +9917,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8897,6 +9965,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8933,6 +10013,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -8969,6 +10061,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -9005,6 +10109,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     },
     {
@@ -9041,6 +10157,18 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f11_scope_review": {
+        "ref": "../full/f11-security-contracts.md",
+        "implementation_refs": [
+          "../../src/opspilot/runtime/plans.py",
+          "../../migrations/versions/0013_mixed_plans.py",
+          "../../src/opspilot/contracts/plans.py"
+        ],
+        "verification_ref": "../full/evidence/f11/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
+        "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
       }
     }
   ],
@@ -9056,5 +10184,11 @@
     "evidence": "../full/evidence/f10/checks.json",
     "source_manifest": "../full/evidence/f10/source-tree.json",
     "whole_requirement_acceptance": "not claimed; accountable stages and full L2 NOT_MET retained"
+  },
+  "f11_local_gate": {
+    "status": "passed",
+    "evidence": "../full/evidence/f11/checks.json",
+    "source_manifest": "../full/evidence/f11/source-tree.json",
+    "whole_requirement_acceptance": "not claimed; full L2 NOT_MET and accountable owners unchanged"
   }
 }

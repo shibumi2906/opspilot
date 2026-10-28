@@ -36,8 +36,13 @@ Node = Callable[[AgentState, Runtime], Awaitable[None]]
 
 
 def build_graph(
-    runtime: Runtime, checkpointer: BaseCheckpointSaver[Any]
+    runtime: Runtime, checkpointer: BaseCheckpointSaver[Any], *, version: str = "full-graph-v1"
 ) -> CompiledStateGraph[Any, Any, Any, Any]:
+    from opspilot.runtime.plans import VERSION, report_node, step_node, wait_node
+
+    if version not in {"full-graph-v1", VERSION}:
+        raise ValueError("Unsupported pinned workflow")
+
     def guarded(name: str, node: Node) -> Callable[[AgentState], Awaitable[AgentState]]:
         async def invoke(current: AgentState) -> AgentState:
             state = copy.deepcopy(current)
@@ -46,13 +51,29 @@ def build_graph(
             try:
                 if name != "report":
                     await check_cancelled(runtime.settings)
-                if name not in {"report", "approval", "execute", "verify"}:
+                if name not in {
+                    "report",
+                    "approval",
+                    "execute",
+                    "verify",
+                    "plan_step",
+                    "plan_wait",
+                    "plan_report",
+                }:
                     runtime.budget.check()
                 with span(
                     "graph.node." + name, run_id=state["run_id"], action_id=state.get("action_id")
                 ):
                     await node(state, runtime)
-                if name not in {"report", "approval", "execute", "verify"}:
+                if name not in {
+                    "report",
+                    "approval",
+                    "execute",
+                    "verify",
+                    "plan_step",
+                    "plan_wait",
+                    "plan_report",
+                }:
                     runtime.budget.check()
             except RunCancelled:
                 state.update({"outcome": "cancelled", "clarification": None})
@@ -120,6 +141,26 @@ def build_graph(
         ("report", report),
     ):
         builder.add_node(name, RunnableLambda(guarded(name, node)))
+    if version == VERSION:
+        for name, node in (
+            ("plan_step", step_node),
+            ("plan_wait", wait_node),
+            ("plan_report", report_node),
+        ):
+            builder.add_node(name, RunnableLambda(guarded(name, node)))
+        builder.add_conditional_edges(
+            "plan_step",
+            lambda s: (
+                "plan_report"
+                if s.get("plan_done") or s.get("outcome")
+                else "plan_wait"
+                if s.get("plan_waiting")
+                else "plan_step"
+            ),
+            {n: n for n in ("plan_report", "plan_wait", "plan_step")},
+        )
+        builder.add_edge("plan_wait", "plan_step")
+        builder.add_edge("plan_report", END)
     builder.add_edge(START, "classify")
     for name, next_name in (
         ("classify", "resolve_customer"),
@@ -177,8 +218,18 @@ def build_graph(
     )
     builder.add_conditional_edges(
         "prepare_approval",
-        lambda state: "report" if state.get("outcome") else "approval",
-        {"report": "report", "approval": "approval"},
+        lambda state: (
+            "report"
+            if state.get("outcome")
+            else "plan_step"
+            if version == VERSION and state.get("plan_id")
+            else "approval"
+        ),
+        {
+            "report": "report",
+            "approval": "approval",
+            **({"plan_step": "plan_step"} if version == VERSION else {}),
+        },
     )
     builder.add_conditional_edges(
         "approval",

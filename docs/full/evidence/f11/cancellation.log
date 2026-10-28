@@ -1,0 +1,9 @@
+ Container opspilot-full-test-f11-verified-postgres-1  Running
+ Container opspilot-full-test-f11-verified-api-1  Running
+ Container opspilot-full-test-f11-verified-mcp-1  Running
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Waiting
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+ Container opspilot-full-test-f11-verified-postgres-1  Healthy
+..                                                                       [100%]
+2 passed in 6.75s

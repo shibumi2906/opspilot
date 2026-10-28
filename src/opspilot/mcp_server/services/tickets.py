@@ -57,6 +57,7 @@ async def local_write(
             or action.arguments_hash != payload_hash(arguments)
         ):
             raise WriteDenied("PAYLOAD_MISMATCH")
+        await session.execute(text("SELECT workflow.check_plan_action(:a)"), {"a": action.id})
         logical = await session.get(LogicalAction, action.logical_action_id)
         if (
             logical is None

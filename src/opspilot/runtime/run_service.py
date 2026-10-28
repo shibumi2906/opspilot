@@ -166,13 +166,14 @@ class RunService:
                     "human_wait_ms": 0,
                 },
             )
-            row = (
+            rows = (
                 await session.execute(
                     select(Action, Approval)
                     .join(Approval, Action.id == Approval.action_id)
                     .where(Action.run_id == run_id, Action.superseded_at.is_(None))
                 )
-            ).one_or_none()
+            ).all()
+            row = rows[0] if rows else None
             public["action"] = (
                 None
                 if row is None
@@ -196,6 +197,17 @@ class RunService:
                 end = row.Approval.decided_at or datetime.now(UTC)
                 public["usage"]["human_wait_ms"] = max(
                     0, round((end - row.Approval.created_at).total_seconds() * 1000)
+                )
+            from opspilot.runtime.plans import projection
+
+            public["plan"], public["actions"] = await projection(session, run_id)
+            if public["plan"]:
+                public["usage"]["verification_reads"] = public["plan"]["verification_reads"]
+                public["usage"]["read_calls"] += public["plan"]["verification_reads"]
+            if public["plan"] and public["actions"]:
+                public["action"] = next(
+                    (a for a in public["actions"] if a["approval_status"] == "pending"),
+                    public["actions"][0],
                 )
             public["traces"] = []
         available = False
@@ -237,7 +249,9 @@ class RunService:
             require_recent(self.settings)
         async with self.lock(run_id):
             async with AsyncSession(self.engine) as session, session.begin():
-                run = await session.get(AgentRun, run_id)
+                run = await session.scalar(
+                    select(AgentRun).where(AgentRun.id == run_id).with_for_update()
+                )
                 if run is None:
                     raise LookupError("Run not found")
                 row = (
@@ -308,10 +322,21 @@ class RunService:
                     row.Approval.self_approval_exception = same
                 row.Approval.decision = choice
                 row.Approval.decided_at = now
-                run.status = "running"
-                run.updated_at = datetime.now(UTC)
                 await session.flush()
-                await enqueue(session, run_id, "resume", body.action_id)
+                from opspilot.runtime.plans import pending_wave
+
+                if row.Action.plan_binding:
+                    wave, actions, pending = await pending_wave(session, run_id)
+                    if wave != row.Action.plan_binding["wave"] or body.action_id not in {
+                        a.id for a in actions
+                    }:
+                        raise Conflict("Decision outside current approval wave")
+                else:
+                    pending = False
+                run.status = "waiting_for_approval" if pending else "running"
+                if not pending:
+                    run.updated_at = datetime.now(UTC)
+                    await enqueue(session, run_id, "resume", body.action_id)
         return await self.snapshot(run_id)
 
     @persisted_worker
@@ -364,6 +389,12 @@ class RunService:
                     runtime = Runtime(runtime_settings, provider, budget)
                     async with AsyncSession(self.engine) as session:
                         run = await session.get(AgentRun, run_id)
+                        if (
+                            run is None
+                            or values.get("workflow_version", "full-graph-v1")
+                            != run.workflow_version
+                        ):
+                            raise ValueError("Pinned workflow/checkpoint mismatch")
                         form = (run.clarification or {}) if run else {}
                         answer = {**form.get("answer", {}), "answered_at": form.get("answered_at")}
                         linked = run.public_snapshot.get("trace_context") if run else None
@@ -374,7 +405,9 @@ class RunService:
                         action_id=str(action_id),
                     ):
                         continuation_context = carrier().get("traceparent")
-                        state = await build_graph(runtime, saver).ainvoke(
+                        state = await build_graph(
+                            runtime, saver, version=run.workflow_version if run else "full-graph-v1"
+                        ).ainvoke(
                             None
                             if continuation
                             else Command(

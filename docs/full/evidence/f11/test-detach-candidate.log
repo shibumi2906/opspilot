@@ -1,0 +1,141 @@
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+F
+=================================== FAILURES ===================================
+_ test_mixed_subset_dependencies_and_concrete_second_wave[approve-reject-expected0] _
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f44dc11b690>
+ticket_choice = 'approve', inbox_choice = 'reject'
+expected = {'ticket': 'verified', 'inbox': 'rejected', 'comment': 'verified'}
+
+    @pytest.mark.parametrize(
+        "ticket_choice,inbox_choice,expected",
+        [
+            ("approve", "reject", {"ticket": "verified", "inbox": "rejected", "comment": "verified"}),
+            (
+                "reject",
+                "approve",
+                {"ticket": "rejected", "inbox": "verified", "comment": "skipped_dependency"},
+            ),
+            (
+                "reject",
+                "reject",
+                {"ticket": "rejected", "inbox": "rejected", "comment": "skipped_dependency"},
+            ),
+        ],
+    )
+    async def test_mixed_subset_dependencies_and_concrete_second_wave(
+        integration_settings, admin_engine, ticket_choice, inbox_choice, expected
+    ):
+        service, run, value = await pending(integration_settings)
+        try:
+            assert value["status"] == "waiting_for_approval", value
+            assert value["plan"]["wave"] == 1 and len(value["plan"]["nodes"]) == 3
+            assert len(value["actions"]) == 2 and all(
+                a["tool_name"] != "add_ticket_comment" for a in value["actions"]
+            )
+            actions = {a["key"]: a for a in value["actions"]}
+            first = await choose(service, run, actions["ticket"], ticket_choice)
+            assert first["status"] == "waiting_for_approval"
+            assert not await process_one(service, run)
+            assert await counts(admin_engine, run) == {
+                "tickets": 0,
+                "ticket_comments": 0,
+                "notifications": 0,
+            }
+            # A single sibling approval cannot issue any capability before its wave is decided.
+            if ticket_choice == "approve":
+                a = actions["ticket"]
+                async with execution_lease(service.engine, run, integration_settings):
+                    with pytest.raises(DBAPIError):
+                        await issue(
+                            integration_settings,
+                            {
+                                "run": str(run),
+                                "action": a["action_id"],
+                                "hash": payload_hash(a["arguments"]),
+                                "tool": "create_ticket",
+                            },
+                        )
+            await choose(service, run, actions["inbox"], inbox_choice)
+            await process_one(service, run)
+            value = await service.snapshot(run)
+            if ticket_choice == "approve":
+                assert value["status"] == "waiting_for_approval", value
+                assert value["plan"]["wave"] == 2
+                card = next(a for a in value["actions"] if a["tool_name"] == "add_ticket_comment")
+                root = next(a for a in value["actions"] if a["key"] == "ticket")
+                assert card["arguments"]["ticket_id"] == root["result"]["ticket_id"]
+                assert card["approval_status"] == "pending" and card["action_id"] != root["action_id"]
+                assert (await counts(admin_engine, run))["ticket_comments"] == 0
+                # Fresh service object verifies the wave is restored from checkpoint/ledger.
+                await service.close()
+                service = RunService(integration_settings)
+                await choose(service, run, card, "approve")
+                await process_one(service, run)
+                value = await service.snapshot(run)
+            assert value["status"] == "completed", value
+            assert {n["key"]: n["status"] for n in value["plan"]["nodes"]} == expected
+            assert value["outcome"] == (
+                "rejected"
+                if ticket_choice == inbox_choice == "reject"
+                else "actions_partially_verified"
+            )
+            assert value["report"]["verification_status"] != "verified"
+            assert {e["key"]: e["status"] for e in value["report"]["effects"]} == expected
+            before = await counts(admin_engine, run)
+            async with execution_lease(service.engine, run, integration_settings):
+                async with TenantSession(service.engine) as session, session.begin():
+                    plan = await session.scalar(select(RunPlan).where(RunPlan.run_id == run))
+                    same = await prepare_plan(
+                        session, run, MixedPlan.model_validate(plan.document), integration_settings
+                    )
+                    assert same.id == plan.id
+                async with TenantSession(service.engine) as session, session.begin():
+>                   altered = dict(plan.document)
+                                   ^^^^^^^^^^^^^
+
+tests/integration/test_mixed_plans.py:143:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py:569: in __get__
+    return self.impl.get(state, dict_)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py:1096: in get
+    value = self._fire_loader_callables(state, key, passive)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/attributes.py:1126: in _fire_loader_callables
+    return state._load_expired(state, passive)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/state.py:828: in _load_expired
+    self.manager.expired_attribute_loader(self, toload, passive)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+mapper = <Mapper at 0x7f44dc0e5340; RunPlan>
+state = <sqlalchemy.orm.state.InstanceState object at 0x7f44daf4ce30>
+attribute_names = {'document', 'document_hash', 'id', 'run_id', 'tenant_id'}
+passive = symbol('PASSIVE_OFF')
+
+    def load_scalar_attributes(mapper, state, attribute_names, passive):
+        """initiate a column-based attribute refresh operation."""
+
+        # assert mapper is _state_mapper(state)
+        session = state.session
+        if not session:
+>           raise orm_exc.DetachedInstanceError(
+                "Instance %s is not bound to a Session; "
+                "attribute refresh operation cannot proceed" % (state_str(state))
+            )
+E           sqlalchemy.orm.exc.DetachedInstanceError: Instance <RunPlan at 0x7f44dad7f5f0> is not bound to a Session; attribute refresh operation cannot proceed (Background on this error at: https://sqlalche.me/e/20/bhk3)
+
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/loading.py:1607: DetachedInstanceError
+=========================== short test summary info ============================
+FAILED tests/integration/test_mixed_plans.py::test_mixed_subset_dependencies_and_concrete_second_wave[approve-reject-expected0]
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 6.25s
+exit status 1

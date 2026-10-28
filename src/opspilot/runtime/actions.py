@@ -27,6 +27,7 @@ async def new_revision(
     arguments: dict[str, Any],
     settings: Settings,
     tool: str = "create_ticket",
+    plan_binding: dict[str, Any] | None = None,
 ) -> Action:
     now = await session.scalar(select(func.clock_timestamp()))
     assert now is not None
@@ -42,6 +43,7 @@ async def new_revision(
         arguments=arguments,
         expires=expires,
         tool=tool,
+        plan_binding=plan_binding,
     )
     action = Action(
         id=revision,
@@ -50,6 +52,7 @@ async def new_revision(
         revision_number=logical.version,
         plan_version=logical.version,
         revision_document=doc,
+        plan_binding=plan_binding,
         revision_hash=canonical_hash(doc),
         expires_at=expires,
         tool_name=tool,
@@ -78,6 +81,8 @@ async def prepare(
     settings: Settings | None = None,
     *,
     tool: str = "create_ticket",
+    plan_binding: dict[str, Any] | None = None,
+    intent_id: UUID | None = None,
 ) -> Action:
     from opspilot.mcp_client.registry import WRITE_TOOLS
 
@@ -88,22 +93,31 @@ async def prepare(
     )
     action = await session.scalar(
         select(Action)
-        .where(Action.run_id == run_id, Action.superseded_at.is_(None))
+        .where(
+            Action.run_id == run_id,
+            Action.superseded_at.is_(None),
+            *([Action.logical_action_id == intent_id] if intent_id else []),
+        )
         .order_by(Action.created_at.desc())
         .limit(1)
     )
     if action:
         if (
-            action.tool_name != tool
+            action.plan_binding != plan_binding
+            or action.tool_name != tool
             or action.arguments_hash != payload_hash(arguments)
             or action.arguments != arguments
         ):
             raise Conflict("Immutable action differs from replay")
         return action
-    logical = LogicalAction(id=uuid4(), run_id=run_id, current_revision_id=uuid4(), version=1)
+    logical = LogicalAction(
+        id=intent_id or uuid4(), run_id=run_id, current_revision_id=uuid4(), version=1
+    )
     session.add(logical)
     await session.flush()
-    return await new_revision(session, logical, arguments, settings or Settings(), tool)
+    return await new_revision(
+        session, logical, arguments, settings or Settings(), tool, plan_binding
+    )
 
 
 async def expire_approvals(service: Any) -> None:

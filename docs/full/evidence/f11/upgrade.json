@@ -1,0 +1,25 @@
+{
+  "after": {
+    "schema": "0013_mixed_plans",
+    "tickets": 2,
+    "comments": 0,
+    "notifications": 0,
+    "receipts": 2,
+    "tickets_sha256": "62149d218b70b6fcd230fc32f1fdfec2cb1ba2261f54690c3451afc5fafb0290",
+    "comments_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "notifications_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actions_sha256": "435d63d1b33a5094585f02e0afb29080f8114abc7878c12a9c7248fdc0db2107"
+  },
+  "preserved": true,
+  "before": {
+    "schema": "0012_local_operations",
+    "tickets": 2,
+    "comments": 0,
+    "notifications": 0,
+    "receipts": 2,
+    "tickets_sha256": "62149d218b70b6fcd230fc32f1fdfec2cb1ba2261f54690c3451afc5fafb0290",
+    "comments_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "notifications_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actions_sha256": "435d63d1b33a5094585f02e0afb29080f8114abc7878c12a9c7248fdc0db2107"
+  }
+}

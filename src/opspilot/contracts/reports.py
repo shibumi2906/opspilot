@@ -8,6 +8,7 @@ from opspilot.contracts.common import StrictModel
 Outcome = Literal[
     "cancelled",
     "actions_verified",
+    "actions_partially_verified",
     "unknown_outcome",
     "rejected",
     "diagnosis_only",

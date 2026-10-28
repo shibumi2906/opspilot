@@ -29,6 +29,12 @@ class InvestigationDecision(StrictModel):
 
 
 class AgentState(TypedDict, total=False):
+    workflow_version: str
+    proposed_plan: dict[str, Any] | None
+    plan_id: str
+    plan_wave: int
+    plan_waiting: list[str]
+    plan_done: bool
     clarification: dict[str, Any] | None
     clarification_round: int
     timezone: str

@@ -1,0 +1,9 @@
+ Container opspilot-full-test-f11-release-postgres-1  Running
+ Container opspilot-full-test-f11-release-api-1  Running
+ Container opspilot-full-test-f11-release-mcp-1  Running
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Waiting
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+ Container opspilot-full-test-f11-release-postgres-1  Healthy
+........                                                                 [100%]
+8 passed in 30.95s

@@ -254,18 +254,24 @@ function Workspace() {
               selected={selected}
               onSelect={selectEvidence}
             />
-            {snapshot?.action ? (
-              <ApprovalCard
-                canApprove={identity?.roles.includes("approver") ?? false}
-                action={snapshot.action}
-                waiting={
-                  snapshot.status === "waiting_for_approval" && !run.error
-                }
-                busy={run.deciding}
-                onDecision={run.decide}
-                onSelect={selectEvidence}
-              />
-            ) : (
+                          {snapshot?.plan && <section aria-label="Plan outcomes" data-testid="plan-outcomes">
+                <h2>Action plan</h2>
+                <p>Review each action separately. A dependent comment needs a new decision after its ticket is verified.</p>
+                <ul>{snapshot.plan.nodes.map(node=><li key={node.slot_id} data-testid={`plan-node-${node.key}`}>
+                  <strong>{node.key}</strong> · {node.tool_name} · {node.status} · Approval step {node.wave}
+                </li>)}</ul>
+              </section>}
+              {snapshot?.action ? (
+                <>{(snapshot.plan ? snapshot.actions ?? [] : [snapshot.action]).map(action=><ApprovalCard
+                  key={action.action_id}
+                  canApprove={identity?.roles.includes("approver") ?? false}
+                  action={action}
+                  waiting={snapshot.status === "waiting_for_approval" && !run.error && (!snapshot.plan || snapshot.plan.wave === action.wave)}
+                  busy={run.deciding}
+                  onDecision={(choice)=>run.decide(choice,action)}
+                  onSelect={selectEvidence}
+                />)}</>
+) : (
               <section className="empty-action">
                 <span className="outline-symbol" aria-hidden="true">
                   ◇

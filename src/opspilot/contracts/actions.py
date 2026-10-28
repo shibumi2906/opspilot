@@ -19,10 +19,6 @@ class TicketProposal(StrictModel):
         return sorted(set(value))
 
 
-class PlanDecision(StrictModel):
-    proposal: TicketProposal | None
-
-
 class CommentProposal(StrictModel):
     customer_id: UUID
     ticket_id: UUID

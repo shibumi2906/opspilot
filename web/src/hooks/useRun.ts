@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, ApiError, errorMessage, newRequestId } from "../api/client";
-import type { Decision, RunSnapshot } from "../api/types";
+import type { Action, Decision, RunSnapshot } from "../api/types";
 const validId = (id: string) =>
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
 const terminal = (status?: string) =>
@@ -127,12 +127,13 @@ export function useRun() {
       setCreating(false);
     }
   };
-  const decide = async (choice: Decision) => {
+  const decide = async (choice: Decision, action?: Action) => {
+    const selected = action ?? snapshot?.action;
     if (
       decisionLock.current ||
-      !snapshot?.action ||
+      !snapshot || !selected ||
       snapshot.status !== "waiting_for_approval" ||
-      snapshot.action.approval_status !== "pending"
+      selected.approval_status !== "pending"
     )
       return;
     decisionLock.current = true;
@@ -140,7 +141,7 @@ export function useRun() {
     setMutationError(null);
     const id = snapshot.run_id;
     try {
-      await api.decide(id, snapshot.action.action_id, choice, snapshot.action.expected_version);
+      await api.decide(id, selected.action_id, choice, selected.expected_version);
     } catch {
       if (currentRun.current === id)
         setMutationError(
