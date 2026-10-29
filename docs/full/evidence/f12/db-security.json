@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "operations": {
+    "create_ticket": {
+      "committed_objects": 292,
+      "all_receipts_consistent": true,
+      "force_rls": true
+    },
+    "add_ticket_comment": {
+      "committed_objects": 61,
+      "all_receipts_consistent": true,
+      "force_rls": true
+    },
+    "notify_manager": {
+      "committed_objects": 85,
+      "all_receipts_consistent": true,
+      "force_rls": true
+    },
+    "plan_gate": {
+      "plans": 63,
+      "bounded": true,
+      "verified_receipts_consistent": true,
+      "domain_direct_plan_access": false,
+      "body_free_plan_events": 465
+    },
+    "freshness_gate": {
+      "replanned_runs": 44,
+      "run_replan_bound": 1,
+      "verification_bound_per_action": 3,
+      "budget_force_rls": true,
+      "duplicate_succeeded_logical_intents": 0,
+      "domain_direct_budget_access": false
+    }
+  },
+  "scope": "isolated local F12; full ASVS L2 remains NOT_MET"
+}

@@ -1,0 +1,474 @@
+ Network opspilot-full-test-f12-final_default  Creating
+ Network opspilot-full-test-f12-final_default  Created
+Existing independent Full service key ring preserved
+ Volume "opspilot-full-test-f12-final_pgdata"  Creating
+ Volume "opspilot-full-test-f12-final_pgdata"  Created
+ Volume "opspilot-full-test-f12-final_oidcdata"  Creating
+ Volume "opspilot-full-test-f12-final_oidcdata"  Created
+ Container opspilot-full-test-f12-final-oidc-1  Creating
+ Container opspilot-full-test-f12-final-postgres-1  Creating
+ Container opspilot-full-test-f12-final-oidc-1  Created
+ Container opspilot-full-test-f12-final-postgres-1  Created
+ Container opspilot-full-test-f12-final-oidc-1  Starting
+ Container opspilot-full-test-f12-final-postgres-1  Starting
+ Container opspilot-full-test-f12-final-postgres-1  Started
+ Container opspilot-full-test-f12-final-oidc-1  Started
+ Container opspilot-full-test-f12-final-oidc-1  Waiting
+ Container opspilot-full-test-f12-final-postgres-1  Waiting
+ Container opspilot-full-test-f12-final-oidc-1  Healthy
+ Container opspilot-full-test-f12-final-postgres-1  Healthy
+ Container opspilot-full-test-f12-final-postgres-1  Running
+ Container opspilot-full-test-f12-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f12-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f12-final-jaeger-1  Creating
+ Container opspilot-full-test-f12-final-postgres-1  Running
+ Container opspilot-full-test-f12-final-collector-1  Creating
+ Container opspilot-full-test-f12-final-api-1  Creating
+ Container opspilot-full-test-f12-final-mcp-1  Creating
+ Container opspilot-full-test-f12-final-api-1  Created
+ Container opspilot-full-test-f12-final-web-1  Creating
+ Container opspilot-full-test-f12-final-mcp-1  Created
+ Container opspilot-full-test-f12-final-collector-1  Created
+ Container opspilot-full-test-f12-final-jaeger-1  Created
+ Container opspilot-full-test-f12-final-web-1  Created
+ Container opspilot-full-test-f12-final-jaeger-1  Starting
+ Container opspilot-full-test-f12-final-postgres-1  Waiting
+ Container opspilot-full-test-f12-final-postgres-1  Waiting
+ Container opspilot-full-test-f12-final-collector-1  Starting
+ Container opspilot-full-test-f12-final-postgres-1  Healthy
+ Container opspilot-full-test-f12-final-api-1  Starting
+ Container opspilot-full-test-f12-final-postgres-1  Healthy
+ Container opspilot-full-test-f12-final-mcp-1  Starting
+ Container opspilot-full-test-f12-final-collector-1  Started
+ Container opspilot-full-test-f12-final-jaeger-1  Started
+ Container opspilot-full-test-f12-final-mcp-1  Started
+ Container opspilot-full-test-f12-final-api-1  Started
+ Container opspilot-full-test-f12-final-api-1  Waiting
+ Container opspilot-full-test-f12-final-api-1  Healthy
+ Container opspilot-full-test-f12-final-web-1  Starting
+ Container opspilot-full-test-f12-final-web-1  Started
+ Container opspilot-full-test-f12-final-web-1  Waiting
+ Container opspilot-full-test-f12-final-api-1  Waiting
+ Container opspilot-full-test-f12-final-collector-1  Waiting
+ Container opspilot-full-test-f12-final-postgres-1  Waiting
+ Container opspilot-full-test-f12-final-mcp-1  Waiting
+ Container opspilot-full-test-f12-final-jaeger-1  Waiting
+ Container opspilot-full-test-f12-final-jaeger-1  Healthy
+ Container opspilot-full-test-f12-final-collector-1  Healthy
+ Container opspilot-full-test-f12-final-mcp-1  Healthy
+ Container opspilot-full-test-f12-final-postgres-1  Healthy
+ Container opspilot-full-test-f12-final-api-1  Healthy
+ Container opspilot-full-test-f12-final-web-1  Healthy
+ Container opspilot-full-test-f12-final-postgres-1  Running
+ Container opspilot-full-test-f12-final-mcp-1  Running
+ Container opspilot-full-test-f12-final-api-1  Running
+ Container opspilot-full-test-f12-final-postgres-1  Waiting
+ Container opspilot-full-test-f12-final-postgres-1  Waiting
+ Container opspilot-full-test-f12-final-postgres-1  Healthy
+ Container opspilot-full-test-f12-final-postgres-1  Healthy
+...FFF....F                                                              [100%]
+=================================== FAILURES ===================================
+________ test_project_drift_new_approval_and_run_wide_replan_cap[False] ________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f7bb0b79f50>
+mixed = False
+
+    @pytest.mark.parametrize("mixed", [False, True])
+    async def test_project_drift_new_approval_and_run_wide_replan_cap(
+        integration_settings, admin_engine, mixed
+    ):
+        old_project = await original_project(admin_engine)
+        settings = integration_settings
+        service, run, value = await pending(
+            settings, "Investigate GreenShop and notify manager" if mixed else "Investigate GreenShop"
+        )
+        try:
+            old = value["actions"] if mixed else [value["action"]]
+            for a in old:
+                await choose(service, run, a, "approve")
+            await project(admin_engine, "-new")
+            assert await process_one(service, run)
+            value = await service.snapshot(run)
+>           assert value["status"] == "waiting_for_approval", value
+E           AssertionError: {'mode': 'scripted', 'budget': {'limits': {'reads': 15, 'rounds': 6, 'tokens': 30000, 'llm_attempts': 10, ...}, 'rounds': 2, 'input_tokens': 0, 'llm_attempts': 5, ...}, 'errors': {}, 'run_id': '880a432d-f7e0-4d92-9055-2570731f2c37', ...}
+E           assert 'running' == 'waiting_for_approval'
+E
+E             - waiting_for_approval
+E             + running
+
+tests/integration/test_freshness.py:100: AssertionError
+________ test_project_drift_new_approval_and_run_wide_replan_cap[True] _________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f7bb09f65d0>
+mixed = True
+
+    @pytest.mark.parametrize("mixed", [False, True])
+    async def test_project_drift_new_approval_and_run_wide_replan_cap(
+        integration_settings, admin_engine, mixed
+    ):
+        old_project = await original_project(admin_engine)
+        settings = integration_settings
+        service, run, value = await pending(
+            settings, "Investigate GreenShop and notify manager" if mixed else "Investigate GreenShop"
+        )
+        try:
+            old = value["actions"] if mixed else [value["action"]]
+            for a in old:
+                await choose(service, run, a, "approve")
+            await project(admin_engine, "-new")
+            assert await process_one(service, run)
+            value = await service.snapshot(run)
+>           assert value["status"] == "waiting_for_approval", value
+E           AssertionError: {'mode': 'scripted', 'budget': {'limits': {'reads': 15, 'rounds': 6, 'tokens': 30000, 'llm_attempts': 10, ...}, 'rounds': 2, 'input_tokens': 0, 'llm_attempts': 5, ...}, 'errors': {}, 'run_id': '604f1578-6daa-468e-a5e6-fad893fd2670', ...}
+E           assert 'running' == 'waiting_for_approval'
+E
+E             - waiting_for_approval
+E             + running
+
+tests/integration/test_freshness.py:100: AssertionError
+_______________ test_independent_mcp_rechecks_after_signed_grant _______________
+  + Exception Group Traceback (most recent call last):
+  |   File "/app/tests/integration/test_freshness.py", line 160, in test_independent_mcp_rechecks_after_signed_grant
+  |     denied = await rpc(settings, args)
+  |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_action_grants.py", line 51, in rpc
+  |   File "/usr/local/lib/python3.12/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/app/.venv/lib/python3.12/site-packages/opspilot/mcp_client/client.py", line 54, in session
+  |     async with streamable_http_client(self.settings.mcp_url, http_client=http) as streams:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/usr/local/lib/python3.12/contextlib.py", line 231, in __aexit__
+  |     await self.gen.athrow(value)
+  |   File "/app/.venv/lib/python3.12/site-packages/mcp/client/streamable_http.py", line 672, in streamable_http_client
+  |     async with anyio.create_task_group() as tg:
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   File "/app/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+  |     raise BaseExceptionGroup(
+  | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+  +-+---------------- 1 ----------------
+    | Exception Group Traceback (most recent call last):
+    |   File "/app/.venv/lib/python3.12/site-packages/mcp/client/streamable_http.py", line 695, in streamable_http_client
+    |     yield (
+    |   File "/app/.venv/lib/python3.12/site-packages/opspilot/mcp_client/client.py", line 56, in session
+    |     async with ClientSession(
+    |                ^^^^^^^^^^^^^^
+    |   File "/app/.venv/lib/python3.12/site-packages/mcp/shared/session.py", line 238, in __aexit__
+    |     return await self._task_group.__aexit__(exc_type, exc_val, exc_tb)
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/app/.venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 847, in __aexit__
+    |     raise BaseExceptionGroup(
+    | ExceptionGroup: unhandled errors in a TaskGroup (1 sub-exception)
+    +-+---------------- 1 ----------------
+      | Traceback (most recent call last):
+      |   File "/app/.venv/lib/python3.12/site-packages/opspilot/mcp_client/client.py", line 62, in session
+      |     yield session, str(initialized.protocolVersion)
+      |   File "C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_action_grants.py", line 52, in rpc
+      |   File "/app/.venv/lib/python3.12/site-packages/opspilot/mcp_client/client.py", line 87, in call
+      |     result = ToolResult.model_validate(response.structuredContent)
+      |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      |   File "/app/.venv/lib/python3.12/site-packages/pydantic/main.py", line 790, in model_validate
+      |     return cls.__pydantic_validator__.validate_python(
+      |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      | pydantic_core._pydantic_core.ValidationError: 1 validation error for ToolResult
+      |   Input should be a valid dictionary or instance of ToolResult [type=model_type, input_value=None, input_type=NoneType]
+      |     For further information visit https://errors.pydantic.dev/2.14/v/model_type
+      +------------------------------------
+________________ test_changed_recipient_needs_own_new_approval _________________
+
+self = <sqlalchemy.engine.base.Connection object at 0x7f7bb0246180>
+dialect = <sqlalchemy.dialects.postgresql.psycopg.PGDialectAsync_psycopg object at 0x7f7bb031de80>
+context = <sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x7f7bb11c4a40>
+statement = <sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x7f7bb0338350>
+parameters = [{'a': UUID('d51f2ce8-f205-4569-9489-05e854d529b5')}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+
+        effective_parameters: Optional[_AnyExecuteParams]
+
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+
+        if self._echo:
+            self._log_info(str_statement)
+
+            stats = context._get_cache_stats()
+
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1976:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute
+    cursor.execute(statement, parameters)
+.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py:642: in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.AsyncCursor [closed] [BAD] at 0x7f7bb10ab590>
+query = 'SELECT workflow.check_plan_action(%(a)s)'
+params = {'a': UUID('d51f2ce8-f205-4569-9489-05e854d529b5')}, prepare = None
+binary = None
+
+    async def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            async with self._conn.lock:
+                await self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.SerializationFailure: PLAN_BINDING_DENIED
+E           CONTEXT:  PL/pgSQL function workflow.check_plan_action(uuid) line 18 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/cursor_async.py:117: SerializationFailure
+
+The above exception was the direct cause of the following exception:
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f7bafdb2110>
+
+    async def test_changed_recipient_needs_own_new_approval(integration_settings, admin_engine):
+        from opspilot.db.models_workflow import Action
+        from opspilot.runtime.freshness import replace
+        from opspilot.tenancy.session import TenantSession
+
+        service, run, value = await pending(
+            integration_settings, "Investigate GreenShop and notify manager"
+        )
+        try:
+            old = next(a for a in value["actions"] if a["key"] == "inbox")
+            for card in value["actions"]:
+                await choose(service, run, card, "approve")
+            async with admin_engine.connect() as conn:
+                recipient = await conn.scalar(
+                    text(
+                        "SELECT user_id FROM identity.tenant_memberships WHERE tenant_id=:t "
+                        "AND user_id<>:old ORDER BY user_id LIMIT 1"
+                    ),
+                    {"t": require_tenant(), "old": UUID(old["arguments"]["recipient_id"])},
+                )
+            async with execution_lease(service.engine, run, integration_settings):
+                async with TenantSession(service.engine) as session, session.begin():
+                    a = await session.get(Action, UUID(old["action_id"]))
+                    new = await replace(
+                        session,
+                        a,
+                        {**a.arguments, "recipient_id": str(recipient)},
+                        integration_settings,
+                    )
+                    new_id = new.id
+                with pytest.raises(AuthError):
+>                   await issue(
+                        integration_settings,
+                        {
+                            "run": str(run),
+                            "action": str(new_id),
+                            "tool": "notify_manager",
+                            "hash": payload_hash({**old["arguments"], "recipient_id": str(recipient)}),
+                        },
+                    )
+
+tests/integration/test_freshness.py:341:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.12/site-packages/opspilot/security/grants.py:122: in issue
+    await session.execute(text("SELECT workflow.check_plan_action(:a)"), {"a": action.id})
+.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py:449: in execute
+    result = await greenlet_spawn(
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:201: in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2373: in execute
+    return self._execute_internal(
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:2280: in _execute_internal
+    result = conn.execute(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1428: in execute
+    return meth(
+.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1650: in _execute_clauseelement
+    ret = self._execute_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1855: in _execute_context
+    return self._exec_single_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1995: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2372: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1976: in _exec_single_context
+    self.dialect.do_execute(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute
+    cursor.execute(statement, parameters)
+.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py:642: in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.AsyncCursor [closed] [BAD] at 0x7f7bb10ab590>
+query = 'SELECT workflow.check_plan_action(%(a)s)'
+params = {'a': UUID('d51f2ce8-f205-4569-9489-05e854d529b5')}, prepare = None
+binary = None
+
+    async def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            async with self._conn.lock:
+                await self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           sqlalchemy.exc.OperationalError: (psycopg.errors.SerializationFailure) PLAN_BINDING_DENIED
+E           CONTEXT:  PL/pgSQL function workflow.check_plan_action(uuid) line 18 at RAISE
+E           [SQL: SELECT workflow.check_plan_action(%(a)s)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+.venv/lib/python3.12/site-packages/psycopg/cursor_async.py:117: OperationalError
+=========================== short test summary info ============================
+FAILED tests/integration/test_freshness.py::test_project_drift_new_approval_and_run_wide_replan_cap[False]
+FAILED tests/integration/test_freshness.py::test_project_drift_new_approval_and_run_wide_replan_cap[True]
+FAILED tests/integration/test_freshness.py::test_independent_mcp_rechecks_after_signed_grant
+FAILED tests/integration/test_freshness.py::test_changed_recipient_needs_own_new_approval
+4 failed, 7 passed in 26.76s
+exit status 1

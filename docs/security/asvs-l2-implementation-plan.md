@@ -107,3 +107,6 @@ per-action capability/dependency checks, durable verification quota and queue ha
 SEC-01/10 change review and scans also pass in this local scope. Full requirement closure,
 remaining quotas/fairness, manager/storage/production controls remain accountable future work;
 all253 requirement identities/baseline assessments are preserved and full L2 remains NOT_MET.
+
+
+F12 local change gate passed: [contracts](../full/f12-security-contracts.md), [acceptance](../full/evidence/f12/checks.json). SEC-02/03/04: DB-time expiry/revoke/role checks, grant key overlap, uncached preconditions and bounded replacement consent; SEC-01/10 regression and supply-chain gates pass. All253 IDs/levels/baseline assessments/owners remain unchanged. No whole-norm or production L2 acceptance; full L2 remains NOT_MET.

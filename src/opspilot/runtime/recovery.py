@@ -143,6 +143,15 @@ async def recover(service: "RunService", only_run: UUID | None = None) -> None:
                 elif (
                     valid
                     and row is not None
+                    and row.Approval.decision == "pending"
+                    and values.get("action_id") != str(row.Action.id)
+                    and set(saved.next) == {"execute"}
+                ):
+                    # F12 replacement committed before execute checkpoint/interrupt.
+                    await service.resume(run_id, row.Action.id, continuation=True)
+                elif (
+                    valid
+                    and row is not None
                     and row.Approval.decision == "approved"
                     and (row.Action.execution_status == "succeeded" and row.Action.execution_result)
                     and set(saved.next) <= {"execute", "verify", "report"}

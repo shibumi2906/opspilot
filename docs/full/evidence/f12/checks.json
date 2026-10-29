@@ -1,0 +1,38 @@
+{
+  "stage": "F12",
+  "status": "passed",
+  "base_commit": "4d702880727b7e51ec85e1d0e8102dc83457e2d6",
+  "backend": {
+    "passed": 368,
+    "dedicated_skips": 9,
+    "f12_cases": 15,
+    "includes_f10_mcp_regression_cases": 26
+  },
+  "browser_oidc": {
+    "passed": 15,
+    "new_revision_browser_cases": 1
+  },
+  "host_unit": {
+    "passed": 126,
+    "subset_of_backend": true
+  },
+  "queue_process": 5,
+  "fencing_faults": 3,
+  "native_tls_probes": 8,
+  "native_mfa_browser_checks": 11,
+  "scripted_evals": 12,
+  "runtime_high_critical_findings": 0,
+  "package_audit_findings": 0,
+  "application_source_files": 117,
+  "ruff_format_mypy": "passed",
+  "typescript_vite": "passed",
+  "full_l2_status": "NOT_MET",
+  "limits": {
+    "actions_per_plan": 3,
+    "approval_rounds": 2,
+    "replans_per_run": 1,
+    "verification_attempts_per_action": 3,
+    "integration_preconditions": 10,
+    "monitoring_max_age_seconds": 300
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "after": {
+    "schema": "0014_freshness",
+    "tickets": 3,
+    "comments": 1,
+    "notifications": 1,
+    "receipts": 5,
+    "tickets_sha256": "becbd990ff719f7588d2768da80a4227fdb1c85e627c3a0aea22c9ce47600838",
+    "comments_sha256": "bb3a8c6dc63b4cef9e80a9a361fe42ec1756623b087ecd6a94251b0ab371fa72",
+    "notifications_sha256": "e7adc1a849d7f4de4a9dac344f1ad5771ba13fe473211bcb2e88d704c6fbf0be",
+    "actions_sha256": "3a171006b3d20222c124d74a0026eaa477511077c42ca6da1c3e7a1f82212af1"
+  },
+  "preserved": true,
+  "before": {
+    "schema": "0013_mixed_plans",
+    "tickets": 3,
+    "comments": 1,
+    "notifications": 1,
+    "receipts": 5,
+    "tickets_sha256": "becbd990ff719f7588d2768da80a4227fdb1c85e627c3a0aea22c9ce47600838",
+    "comments_sha256": "bb3a8c6dc63b4cef9e80a9a361fe42ec1756623b087ecd6a94251b0ab371fa72",
+    "notifications_sha256": "e7adc1a849d7f4de4a9dac344f1ad5771ba13fe473211bcb2e88d704c6fbf0be",
+    "actions_sha256": "3a171006b3d20222c124d74a0026eaa477511077c42ca6da1c3e7a1f82212af1"
+  }
+}

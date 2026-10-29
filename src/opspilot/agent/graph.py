@@ -30,6 +30,7 @@ from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
 from opspilot.llm.base import ProviderFailure
 from opspilot.runtime.human_commands import RunCancelled, check_cancelled
+from opspilot.security.freshness import PreconditionsChanged
 from opspilot.telemetry import span
 
 Node = Callable[[AgentState, Runtime], Awaitable[None]]
@@ -75,6 +76,9 @@ def build_graph(
                     "plan_report",
                 }:
                     runtime.budget.check()
+            except PreconditionsChanged as exc:
+                state["outcome"] = "partial"
+                state.setdefault("errors", {})[name] = {"code": exc.code, "node": name}
             except RunCancelled:
                 state.update({"outcome": "cancelled", "clarification": None})
             except BudgetExceeded:
@@ -238,8 +242,14 @@ def build_graph(
     )
     builder.add_conditional_edges(
         "execute",
-        lambda state: "report" if state.get("outcome") else "verify",
-        {"report": "report", "verify": "verify"},
+        lambda state: (
+            "report"
+            if state.get("outcome")
+            else "approval"
+            if state.get("freshness_reapproval")
+            else "verify"
+        ),
+        {"report": "report", "verify": "verify", "approval": "approval"},
     )
     builder.add_edge("verify", "report")
     builder.add_edge("report", END)

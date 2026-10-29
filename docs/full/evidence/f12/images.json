@@ -1,0 +1,26 @@
+[
+  {
+    "tags": [
+      "opspilot-full/app:f01"
+    ],
+    "id": "sha256:700f9a8baef7534c0af58511eea391a1fcd84efe5e21cbdc2bd47d08a262e486"
+  },
+  {
+    "tags": [
+      "opspilot-full/tests:f01"
+    ],
+    "id": "sha256:67e2b9a79717928e335199e0e47e1e79054c0c2be05c68d9dcc127503ae1af61"
+  },
+  {
+    "tags": [
+      "opspilot-full/web:f01"
+    ],
+    "id": "sha256:f7bccc1fcdbb4eeda6ca2d9609306c2502277bca58f6a5fc65883728dc604a06"
+  },
+  {
+    "tags": [
+      "opspilot-full/e2e:f01"
+    ],
+    "id": "sha256:229f91116acd40b417414f11bb9c6ac337749cc12a9cb68ef994ae8afd0bcc02"
+  }
+]

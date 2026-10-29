@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 28 октября 2026 года. **F01–F11 завершены; F12–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 29 октября 2026 года. **F01–F12 завершены; F13–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F12 — freshness/expiry/revocation/replan. Не начат.**
+**Следующий этап: F13 — SSE replay/reconnect и авторизация. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F12 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F13 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -64,7 +64,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F09 | done | Immutable revisions, version/TTL, independent signed persisted grants, exact MCP authorization | [evidence](full/evidence/f09/README.md); commit subject: `feat(full-f09): bind immutable revisions to signed execution grants` | [SEC-01/02/03/04/05/06](security/asvs-l2-implementation-plan.md) |
 | F10 | done | Три local write-tools, atomic receipts, exact verification и tenant/object/recipient scope | [evidence](full/evidence/f10/README.md) | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
 | F11 | done | Bounded mixed DAG, independent decisions, sequential approved subset, dependent skip и concrete comment wave | [evidence](full/evidence/f11/README.md) | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
-| F12 | not_started | Freshness/expiry/revocation/replan | — | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
+| F12 | done | Uncached preconditions, DB-time expiry/revoke/roles, bounded replacement consent и durable verification quota | [evidence](full/evidence/f12/README.md) | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
 | F13 | not_started | SSE replay/reconnect и авторизация | — | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
 | F14 | not_started | Полный UI/история/inbox/admin | — | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
 | F15 | not_started | Redis/limits/durable usage/cost | — | [SEC-07](security/asvs-l2-implementation-plan.md) |
@@ -563,3 +563,34 @@ MVP184 source/media/docs/env fingerprints, main/HEAD, image tags и volume metad
 Remote CI, real provider и production deployment не выполнялись. F12 не начинался.
 Blockers F11 отсутствуют. Отдельный local commit subject:
 `feat(full-f11): implement bounded mixed plans and approval waves`.
+
+
+## F12 — freshness, expiry, revocation и bounded replan
+
+29 октября 2026. Base F11 `4d70288`; canonical Full worktree/ветка сохранены.
+Schema `0014_freshness`, прежние pinned v1/v2 graphs/checkpoints поддерживаются.
+Core и MCP независимо читают uncached local preconditions; configuration/target rows share-locked
+в effect transaction. Healthy/unknown/timeout не разрешают запись. Возраст monitoring≤5min по DB time; stale/future source timestamps запрещены. Freshness snapshot входит
+в immutable revision digest; публично только bounded status/IDs/role eligibility и fingerprints.
+
+Material drift supersedes старое неисполненное согласие, отзывает grants и требует отдельного
+approval новой revision. Один replan/run, максимум2 approval rounds: DAG уже с2 waves при drift
+останавливает изменившееся действие без третьей wave. Completed/uncertain intents не меняются, succeeded siblings
+сохраняются. DB-time scheduler/TTL/revoke/roles и grant key current/next overlap проверены;
+terminal run не разрешает новые effects. Verification quota3/action отдельно от research,
+персистентна, tenant FORCE RLS и fenced. Реальная авария worker после replan commit до checkpoint
+восстанавливает ожидание нового согласия. API/UI показывают точную новую revision/preconditions.
+
+[Contracts](full/f12-security-contracts.md), [evidence](full/evidence/f12/README.md): backend368/9
+ dedicated skips, OIDC/browser15, queue5, fencing3, TLS/MFA8+11, eval12/12, unauthorized/duplicate/
+false verified0. Ruff/format/mypy117, TypeScript/Vite, runtime HIGH/CRITICAL SCA0 и package audits0.
+Исходные F10 negative assertions сохранены; red candidates и исправления отражены в evidence.
+
+Full013→014 сохранил counts/SHA256 domain objects/actions/receipts. Live v1/v2:2 waves/3 receipts,
+MCP13, request replay без новых effects; UI8091/API8011 HTTP200,2 workers healthy.
+MVP184 fingerprints/main/HEAD/images/volume metadata+content неизменны; исходный checkout чист.
+F12 test/lab containers/networks удалены, volumes/images сохранены. Paid/vendor writes, remote CI,
+production deployment и push0. SEC-02/03/04 и SEC-01/10 scoped gates проходят; все253 ASVS
+IDs/levels/baseline assessments/owners сохранены, full L2 NOT_MET. Только F12 выполнен; F13 не начат.
+Blockers отсутствуют. Отдельный local commit subject:
+`feat(full-f12): enforce freshness and bounded reapproval`.

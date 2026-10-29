@@ -130,6 +130,10 @@ async def issue(settings: Settings, operation: dict[str, str]) -> str:
             if (
                 run is None
                 or run.actor_id != actor_id()
+                or (
+                    run.status not in {"running", "waiting_for_approval"}
+                    and action.execution_status != "succeeded"
+                )
                 or logical is None
                 or logical.current_revision_id != action.id
                 or action.superseded_at
@@ -152,6 +156,12 @@ async def issue(settings: Settings, operation: dict[str, str]) -> str:
                 not settings.allow_demo_self_approval or not approval.self_approval_exception
             ):
                 raise AuthError("APPROVAL_REQUIRED")
+            from opspilot.security.freshness import PreconditionsChanged, check
+
+            try:
+                await check(session, action, settings)
+            except PreconditionsChanged as exc:
+                raise AuthError(exc.code) from None
             ref, key = await asyncio.to_thread(
                 FileGrantKeys(
                     settings.service_private_dir, settings.service_public_keys

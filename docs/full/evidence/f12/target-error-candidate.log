@@ -1,0 +1,171 @@
+ Network opspilot-full-test-f12-acceptance_default  Creating
+ Network opspilot-full-test-f12-acceptance_default  Created
+Existing independent Full service key ring preserved
+ Volume "opspilot-full-test-f12-acceptance_oidcdata"  Creating
+ Volume "opspilot-full-test-f12-acceptance_oidcdata"  Created
+ Volume "opspilot-full-test-f12-acceptance_pgdata"  Creating
+ Volume "opspilot-full-test-f12-acceptance_pgdata"  Created
+ Container opspilot-full-test-f12-acceptance-oidc-1  Creating
+ Container opspilot-full-test-f12-acceptance-postgres-1  Creating
+ Container opspilot-full-test-f12-acceptance-oidc-1  Created
+ Container opspilot-full-test-f12-acceptance-postgres-1  Created
+ Container opspilot-full-test-f12-acceptance-postgres-1  Starting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Starting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Started
+ Container opspilot-full-test-f12-acceptance-postgres-1  Started
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Waiting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-collector-1  Creating
+ Container opspilot-full-test-f12-acceptance-mcp-1  Creating
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Creating
+ Container opspilot-full-test-f12-acceptance-api-1  Creating
+ Container opspilot-full-test-f12-acceptance-collector-1  Created
+ Container opspilot-full-test-f12-acceptance-api-1  Created
+ Container opspilot-full-test-f12-acceptance-web-1  Creating
+ Container opspilot-full-test-f12-acceptance-mcp-1  Created
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Created
+ Container opspilot-full-test-f12-acceptance-web-1  Created
+ Container opspilot-full-test-f12-acceptance-collector-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-mcp-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Starting
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Started
+ Container opspilot-full-test-f12-acceptance-collector-1  Started
+ Container opspilot-full-test-f12-acceptance-api-1  Started
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-mcp-1  Started
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-web-1  Starting
+ Container opspilot-full-test-f12-acceptance-web-1  Started
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-mcp-1  Waiting
+ Container opspilot-full-test-f12-acceptance-collector-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-web-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-collector-1  Healthy
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Healthy
+ Container opspilot-full-test-f12-acceptance-mcp-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-web-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+...............................FFFF..FF                                  [100%]
+=================================== FAILURES ===================================
+________ test_unknown_targets_never_write[add_ticket_comment-ticket_id] ________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fbac9a82790>
+kind = 'add_ticket_comment', field = 'ticket_id'
+
+>   ???
+E   AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('41184f11-eedd-4fa3-bc82-dd7a40c3f49e'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False))
+E   assert (not False and 'GRANT_REQUIRED' == 'NOT_FOUND'
+E    +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('41184f11-eedd-4fa3-bc82-dd7a40c3f49e'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False)).ok
+E
+E     - NOT_FOUND
+E     + GRANT_REQUIRED)
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_local_operations.py:286: AssertionError
+________ test_unknown_targets_never_write[notify_manager-recipient_id] _________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fbaca492dd0>
+kind = 'notify_manager', field = 'recipient_id'
+
+>   ???
+E   AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('93d80c6a-4fdd-4f2d-a580-cb98f8424407'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False))
+E   assert (not False and 'GRANT_REQUIRED' == 'NOT_FOUND'
+E    +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('93d80c6a-4fdd-4f2d-a580-cb98f8424407'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False)).ok
+E
+E     - NOT_FOUND
+E     + GRANT_REQUIRED)
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_local_operations.py:286: AssertionError
+_________ test_foreign_existing_targets_and_reads[add_ticket_comment] __________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fbac9825f50>
+kind = 'add_ticket_comment'
+
+>   ???
+E   AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('722af60f-3d13-444f-81f5-62a2330aea43'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False))
+E   assert (not False and 'GRANT_REQUIRED' == 'NOT_FOUND'
+E    +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('722af60f-3d13-444f-81f5-62a2330aea43'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False)).ok
+E
+E     - NOT_FOUND
+E     + GRANT_REQUIRED)
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_local_operations.py:324: AssertionError
+___________ test_foreign_existing_targets_and_reads[notify_manager] ____________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fbac9e52ad0>
+kind = 'notify_manager'
+
+>   ???
+E   AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('2812c5e6-73e6-4f23-be22-96c8496c61c5'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False))
+E   assert (not False and 'GRANT_REQUIRED' == 'NOT_FOUND'
+E    +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('2812c5e6-73e6-4f23-be22-96c8496c61c5'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False)).ok
+E
+E     - NOT_FOUND
+E     + GRANT_REQUIRED)
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_local_operations.py:324: AssertionError
+__________________ test_live_recipient_revalidation[disabled] __________________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fbac9a45cd0>
+change = 'disabled'
+
+>   ???
+E   AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('3b81ce96-564e-4228-bed9-dd445b65078d'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False))
+E   assert (not False and 'GRANT_REQUIRED' == 'NOT_FOUND'
+E    +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('3b81ce96-564e-4228-bed9-dd445b65078d'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False)).ok
+E
+E     - NOT_FOUND
+E     + GRANT_REQUIRED)
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_local_operations.py:418: AssertionError
+__________________ test_live_recipient_revalidation[removed] ___________________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fbaca9c2510>
+change = 'removed'
+
+>   ???
+E   AssertionError: ToolResult(schema_version=1, ok=False, tool_call_id=UUID('dcee1143-41d1-4c03-8db0-8749a773b6d1'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False))
+E   assert (not False and 'GRANT_REQUIRED' == 'NOT_FOUND'
+E    +  where False = ToolResult(schema_version=1, ok=False, tool_call_id=UUID('dcee1143-41d1-4c03-8db0-8749a773b6d1'), observed_at=datetime...sources=[], error=ToolError(code='GRANT_REQUIRED', message='Write authorization or payload rejected', retryable=False)).ok
+E
+E     - NOT_FOUND
+E     + GRANT_REQUIRED)
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_local_operations.py:418: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_local_operations.py::test_unknown_targets_never_write[add_ticket_comment-ticket_id]
+FAILED tests/integration/test_local_operations.py::test_unknown_targets_never_write[notify_manager-recipient_id]
+FAILED tests/integration/test_local_operations.py::test_foreign_existing_targets_and_reads[add_ticket_comment]
+FAILED tests/integration/test_local_operations.py::test_foreign_existing_targets_and_reads[notify_manager]
+FAILED tests/integration/test_local_operations.py::test_live_recipient_revalidation[disabled]
+FAILED tests/integration/test_local_operations.py::test_live_recipient_revalidation[removed]
+6 failed, 33 passed in 69.91s (0:01:09)
+exit status 1

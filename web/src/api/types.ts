@@ -32,6 +32,12 @@ export interface TicketArguments {
   evidence_ids: string[];
 }
 export interface Action {
+  preconditions?: {
+    configuration?: string;
+    unavailable?: string;
+    integrations: {id: string; type: string; project_fingerprint: string}[];
+    observations: {integration: string; status: string; credential: string}[];
+  };
   wave?: number;
   key?: string;
   plan_status?: string;

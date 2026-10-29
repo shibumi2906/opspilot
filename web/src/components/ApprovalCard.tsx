@@ -43,6 +43,15 @@ export function ApprovalCard({
         </span>
       </div>
       <p>Revision {action.expected_version} · Approval expires <time dateTime={action.expires_at}>{new Date(action.expires_at).toLocaleString()}</time>{expired && pending ? " · Expired; refresh the saved decision." : ""}</p>
+      {action.expected_version > 1 && pending && <p role="status">A previous revision was superseded. Review these saved fields and preconditions before a new decision.</p>}
+      {action.preconditions && <details className="integrity" data-testid="action-preconditions">
+        <summary>Saved preconditions</summary>
+        {action.preconditions.unavailable && <p>Preconditions unavailable: {action.preconditions.unavailable}. Execution is blocked.</p>}
+        <p>Configuration fingerprint: <span className="mono">{action.preconditions.configuration}</span></p>
+        {action.preconditions.integrations.map(i => <p key={i.id}>{i.type} · {i.id} · Project fingerprint: <span className="mono">{i.project_fingerprint}</span></p>)}
+        {action.preconditions.observations.map(o => <p key={o.integration}>{o.integration}: {o.status} · Credential: {o.credential}</p>)}
+        <p>Fresh checks run again before execution. Changed conditions require a new decision; healthy or unknown conditions stop dispatch.</p>
+      </details>}
       <dl className="payload">
         <dt>Customer ID</dt>
         <dd className="mono" data-testid="ticket-customer">

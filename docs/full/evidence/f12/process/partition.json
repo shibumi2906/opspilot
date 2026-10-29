@@ -1,0 +1,10 @@
+{
+  "fault": "partition",
+  "run": "111b07d4-8f46-401c-bd4f-3d4957355ce3",
+  "old_epoch": 1,
+  "final_epoch": 4,
+  "outcome": "actions_verified",
+  "tickets": 1,
+  "stale_boundaries": 8,
+  "held_sdk_transaction": false
+}

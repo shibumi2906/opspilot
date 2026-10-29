@@ -1,11 +1,11 @@
 """Human revision and revocation commands; effects remain exclusively MCP-owned."""
 
 from typing import Any
-from uuid import UUID, uuid4
+from uuid import UUID
 
 from fastapi import APIRouter, Request
 from pydantic import ValidationError
-from sqlalchemy import func, select, text
+from sqlalchemy import select, text
 
 from opspilot.auth.context import AuthError, actor_id, require_role
 from opspilot.auth.session_routes import require_recent
@@ -13,8 +13,9 @@ from opspilot.contracts.api import RevisionChange, RevokeApproval
 from opspilot.contracts.public import public_snapshot
 from opspilot.db.models_workflow import Action, AgentRun, Approval, LogicalAction
 from opspilot.mcp_client.registry import WRITE_TOOLS
-from opspilot.runtime.actions import Conflict, new_revision
+from opspilot.runtime.actions import Conflict
 from opspilot.runtime.fencing import execution_lease
+from opspilot.runtime.freshness import replace
 from opspilot.runtime.jobs import enqueue
 from opspilot.tenancy.session import TenantSession
 
@@ -48,10 +49,6 @@ async def revise(logical_id: UUID, body: RevisionChange, request: Request) -> di
                 select(Action).where(Action.id == logical.current_revision_id).with_for_update()
             )
             assert old is not None
-            if old.plan_binding:
-                raise Conflict(
-                    "Bound plan intents are immutable; completed effects cannot be replanned"
-                )
             arguments = body.arguments.model_dump(mode="json")
             try:
                 WRITE_TOOLS[old.tool_name].arguments.model_validate(
@@ -67,7 +64,7 @@ async def revise(logical_id: UUID, body: RevisionChange, request: Request) -> di
                 old.execution_status != "not_started"
                 or run.cancellation
                 or run.status not in {"waiting_for_approval", "running"}
-                or logical.version >= 10
+                or logical.version >= 2
             ):
                 raise Conflict("Revision cannot change an executed/uncertain/closed intent")
             if (
@@ -77,26 +74,7 @@ async def revise(logical_id: UUID, body: RevisionChange, request: Request) -> di
                 raise AuthError("REVISION_SCOPE_FORBIDDEN")
             if arguments == old.arguments:
                 return public_snapshot(await service.snapshot(run_id))
-            approval = await session.scalar(
-                select(Approval).where(Approval.action_id == old.id).with_for_update()
-            )
-            assert approval is not None
-            if approval.decision not in {"pending", "approved"}:
-                raise Conflict("Approval terminal")
-            approval.decision = "superseded"
-            old.superseded_at = await session.scalar(select(func.clock_timestamp()))
-            await session.execute(
-                text(
-                    "UPDATE workflow.execution_grants SET revoked_at=clock_timestamp() WHERE "
-                    "revision_id=:a AND tenant_id=identity.current_tenant() AND "
-                    "revoked_at IS NULL"
-                ),
-                {"a": old.id},
-            )
-            logical.version += 1
-            logical.current_revision_id = uuid4()
-            await session.flush()
-            await new_revision(session, logical, arguments, service.settings, old.tool_name)
+            await replace(session, old, arguments, service.settings)
             run.status = "waiting_for_approval"
             await session.execute(
                 text(

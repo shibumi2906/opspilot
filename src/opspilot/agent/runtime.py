@@ -119,11 +119,16 @@ class Runtime:
             from opspilot.runtime.human_commands import check_cancelled
 
             await check_cancelled(self.settings)
-            if verification and self.plan_verification_action is not None:
+            if verification:
                 from opspilot.runtime.plans import reserve_verification
 
                 self.budget.check()
-                await reserve_verification(self.plan_verification_action)
+                if self.plan_verification_action is not None:
+                    await reserve_verification(self.plan_verification_action)
+                else:
+                    from opspilot.runtime.freshness import reserve_verification as reserve_single
+
+                    await reserve_single(UUID(state["action_id"]))
             else:
                 self.budget.begin_read(verification=verification)
             key = f"{call_id}:{attempt}"

@@ -1,0 +1,305 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f12-acceptance-oidc-1  Created
+ Container opspilot-full-test-f12-acceptance-postgres-1  Created
+ Container opspilot-full-test-f12-acceptance-oidc-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Starting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Started
+ Container opspilot-full-test-f12-acceptance-postgres-1  Started
+ Container opspilot-full-test-f12-acceptance-oidc-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Created
+ Container opspilot-full-test-f12-acceptance-collector-1  Created
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Recreate
+ Container opspilot-full-test-f12-acceptance-web-1  Stopping
+ Container opspilot-full-test-f12-acceptance-web-1  Stopped
+ Container opspilot-full-test-f12-acceptance-api-1  Recreate
+ Container opspilot-full-test-f12-acceptance-mcp-1  Recreated
+ Container opspilot-full-test-f12-acceptance-api-1  Recreated
+ Container opspilot-full-test-f12-acceptance-web-1  Created
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-collector-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-mcp-1  Starting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Starting
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Started
+ Container opspilot-full-test-f12-acceptance-collector-1  Started
+ Container opspilot-full-test-f12-acceptance-mcp-1  Started
+ Container opspilot-full-test-f12-acceptance-api-1  Started
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-web-1  Starting
+ Container opspilot-full-test-f12-acceptance-web-1  Started
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Waiting
+ Container opspilot-full-test-f12-acceptance-web-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-mcp-1  Waiting
+ Container opspilot-full-test-f12-acceptance-collector-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Healthy
+ Container opspilot-full-test-f12-acceptance-collector-1  Healthy
+ Container opspilot-full-test-f12-acceptance-mcp-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-web-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+............................................F.                           [100%]
+=================================== FAILURES ===================================
+_ test_execution_faults_and_verification[missing_ticket-unknown_outcome-unknown-1] _
+
+service = <tests.worker_helpers.RunService object at 0x7fc91562af30>
+run_id = UUID('e187d851-522a-4923-8af4-6d4c10b9d24f')
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_ticket_execution.py:19:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+delay = 0.02, result = None
+
+    async def sleep(delay, result=None):
+        """Coroutine that completes after a given time (in seconds)."""
+        if delay <= 0:
+            await __sleep0()
+            return result
+
+        loop = events.get_running_loop()
+        future = loop.create_future()
+        h = loop.call_later(delay,
+                            futures._set_result_unless_cancelled,
+                            future, result)
+        try:
+>           return await future
+                   ^^^^^^^^^^^^
+E           asyncio.exceptions.CancelledError
+
+/usr/local/lib/python3.12/asyncio/tasks.py:665: CancelledError
+
+The above exception was the direct cause of the following exception:
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fc914152110>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fc913eae6f0>
+fault = 'missing_ticket', outcome = 'unknown_outcome', verification = 'unknown'
+ticket_count = 1
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_ticket_execution.py:71:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_ticket_execution.py:14: in settle
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Timeout [expired]>
+exc_type = <class 'asyncio.exceptions.CancelledError'>
+exc_val = CancelledError(), exc_tb = <traceback object at 0x7fc913af3e00>
+
+    async def __aexit__(
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_val: Optional[BaseException],
+        exc_tb: Optional[TracebackType],
+    ) -> Optional[bool]:
+        assert self._state in (_State.ENTERED, _State.EXPIRING)
+
+        if self._timeout_handler is not None:
+            self._timeout_handler.cancel()
+            self._timeout_handler = None
+
+        if self._state is _State.EXPIRING:
+            self._state = _State.EXPIRED
+
+            if self._task.uncancel() <= self._cancelling and exc_type is exceptions.CancelledError:
+                # Since there are no new cancel requests, we're
+                # handling this.
+>               raise TimeoutError from exc_val
+E               TimeoutError
+
+/usr/local/lib/python3.12/asyncio/timeouts.py:115: TimeoutError
+------------------------------ Captured log call -------------------------------
+ERROR    asyncio:base_events.py:1833 Task exception was never retrieved
+future: <Task finished name='Task-5253' coro=<process_one() done, defined at /app/.venv/lib/python3.12/site-packages/opspilot/runtime/worker.py:24> exception=OperationalError('(psycopg.errors.SerializationFailure) STALE_EXECUTION_FENCE\nCONTEXT:  PL/pgSQL function workflow.check_fence(uuid) line 11 at RAISE')>
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 642, in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/psycopg/cursor_async.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SerializationFailure: STALE_EXECUTION_FENCE
+CONTEXT:  PL/pgSQL function workflow.check_fence(uuid) line 11 at RAISE
+SQL statement "SELECT workflow.check_fence(r)"
+PL/pgSQL function workflow.fence_worker_write() line 39 at PERFORM
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/runtime/worker.py", line 52, in process_one
+    await service.execute(
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/auth/execution.py", line 52, in wrapped
+    return await method(self, run, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/runtime/run_service.py", line 87, in execute
+    await run_investigation(
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/telemetry.py", line 100, in invoke
+    return await function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/agent/service.py", line 108, in run_investigation
+    await session.execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 449, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2373, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/orm/bulk_persistence.py", line 1676, in orm_execute_statement
+    return super().orm_execute_statement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1428, in execute
+    return meth(
+           ^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1650, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1855, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1995, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2372, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 642, in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/psycopg/cursor_async.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.OperationalError: (psycopg.errors.SerializationFailure) STALE_EXECUTION_FENCE
+CONTEXT:  PL/pgSQL function workflow.check_fence(uuid) line 11 at RAISE
+SQL statement "SELECT workflow.check_fence(r)"
+PL/pgSQL function workflow.fence_worker_write() line 39 at PERFORM
+[SQL: UPDATE workflow.agent_runs SET status=%(status)s::VARCHAR WHERE workflow.agent_runs.id = %(id_1)s::UUID AND workflow.agent_runs.tenant_id = %(tenant_1)s::UUID]
+[SQL parameters hidden due to hide_parameters=True]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 642, in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/psycopg/cursor_async.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SerializationFailure: STALE_EXECUTION_FENCE
+CONTEXT:  PL/pgSQL function workflow.check_fence(uuid) line 11 at RAISE
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/runtime/worker.py", line 61, in process_one
+    await finish(service.engine, job, failed=True)
+  File "/app/.venv/lib/python3.12/site-packages/opspilot/runtime/jobs.py", line 92, in finish
+    await conn.execute(text("SELECT workflow.check_fence(:r)"), {"r": job["run_id"]})
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 658, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1428, in execute
+    return meth(
+           ^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1650, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1855, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1995, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2372, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 642, in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/psycopg/cursor_async.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.OperationalError: (psycopg.errors.SerializationFailure) STALE_EXECUTION_FENCE
+CONTEXT:  PL/pgSQL function workflow.check_fence(uuid) line 11 at RAISE
+[SQL: SELECT workflow.check_fence(%(r)s)]
+[SQL parameters hidden due to hide_parameters=True]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+=========================== short test summary info ============================
+FAILED tests/integration/test_ticket_execution.py::test_execution_faults_and_verification[missing_ticket-unknown_outcome-unknown-1]
+1 failed, 45 passed in 113.00s (0:01:53)
+exit status 1

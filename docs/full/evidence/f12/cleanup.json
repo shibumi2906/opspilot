@@ -1,0 +1,32 @@
+{
+  "containers_removed": true,
+  "docker_restart_required": false,
+  "volumes_retained": {
+    "opspilot-full-test-f12-release": [
+      "opspilot-full-test-f12-release_oidcdata",
+      "opspilot-full-test-f12-release_pgdata"
+    ],
+    "opspilot-full-test-f12-final": [
+      "opspilot-full-test-f12-final_oidcdata",
+      "opspilot-full-test-f12-final_pgdata"
+    ],
+    "opspilot-full-security-f12-final": [
+      "opspilot-full-security-f12-final_oidcdata",
+      "opspilot-full-security-f12-final_pgdata"
+    ],
+    "opspilot-full-test-f12-acceptance": [
+      "opspilot-full-test-f12-acceptance_oidcdata",
+      "opspilot-full-test-f12-acceptance_pgdata"
+    ],
+    "opspilot-full-security-f12": [
+      "opspilot-full-security-f12_oidcdata",
+      "opspilot-full-security-f12_pgdata"
+    ],
+    "opspilot-full-test-f12-verified": [
+      "opspilot-full-test-f12-verified_oidcdata",
+      "opspilot-full-test-f12-verified_pgdata"
+    ]
+  },
+  "images_retained": true,
+  "networks_removed": true
+}

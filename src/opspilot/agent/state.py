@@ -29,6 +29,7 @@ class InvestigationDecision(StrictModel):
 
 
 class AgentState(TypedDict, total=False):
+    freshness_reapproval: bool
     workflow_version: str
     proposed_plan: dict[str, Any] | None
     plan_id: str

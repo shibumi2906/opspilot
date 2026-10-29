@@ -23,6 +23,9 @@ class ToolError(StrictModel):
         "GRANT_INVALID",
         "GRANT_REPLAY",
         "APPROVAL_EXPIRED",
+        "PRECONDITIONS_CHANGED",
+        "PRECONDITIONS_UNKNOWN",
+        "ACTION_NO_LONGER_REQUIRED",
     ]
     message: str
     retryable: bool = False

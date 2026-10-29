@@ -1,0 +1,58 @@
+ Network opspilot-full-security-f12-final_default  Creating
+ Network opspilot-full-security-f12-final_default  Created
+ Container opspilot-full-security-f12-final-oidc-1  Creating
+ Container opspilot-full-security-f12-final-postgres-1  Creating
+ Container opspilot-full-security-f12-final-oidc-1  Created
+ Container opspilot-full-security-f12-final-postgres-1  Created
+ Container opspilot-full-security-f12-final-oidc-1  Starting
+ Container opspilot-full-security-f12-final-postgres-1  Starting
+ Container opspilot-full-security-f12-final-postgres-1  Started
+ Container opspilot-full-security-f12-final-oidc-1  Started
+ Container opspilot-full-security-f12-final-postgres-1  Waiting
+ Container opspilot-full-security-f12-final-oidc-1  Waiting
+ Container opspilot-full-security-f12-final-oidc-1  Healthy
+ Container opspilot-full-security-f12-final-postgres-1  Healthy
+ Container opspilot-full-security-f12-final-postgres-1  Running
+ Container opspilot-full-security-f12-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-security-f12-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-security-f12-final-postgres-1  Running
+ Container opspilot-full-security-f12-final-worker-1  Creating
+ Container opspilot-full-security-f12-final-mcp-1  Creating
+ Container opspilot-full-security-f12-final-api-1  Creating
+ Container opspilot-full-security-f12-final-mcp-1  Created
+ Container opspilot-full-security-f12-final-worker-1  Created
+ Container opspilot-full-security-f12-final-api-1  Created
+ Container opspilot-full-security-f12-final-web-1  Creating
+ Container opspilot-full-security-f12-final-web-1  Created
+ Container opspilot-full-security-f12-final-postgres-1  Waiting
+ Container opspilot-full-security-f12-final-postgres-1  Waiting
+ Container opspilot-full-security-f12-final-postgres-1  Waiting
+ Container opspilot-full-security-f12-final-postgres-1  Healthy
+ Container opspilot-full-security-f12-final-worker-1  Starting
+ Container opspilot-full-security-f12-final-postgres-1  Healthy
+ Container opspilot-full-security-f12-final-api-1  Starting
+ Container opspilot-full-security-f12-final-postgres-1  Healthy
+ Container opspilot-full-security-f12-final-mcp-1  Starting
+ Container opspilot-full-security-f12-final-worker-1  Started
+ Container opspilot-full-security-f12-final-api-1  Started
+ Container opspilot-full-security-f12-final-api-1  Waiting
+ Container opspilot-full-security-f12-final-mcp-1  Started
+ Container opspilot-full-security-f12-final-api-1  Healthy
+ Container opspilot-full-security-f12-final-web-1  Starting
+ Container opspilot-full-security-f12-final-web-1  Started
+ Container opspilot-full-security-f12-final-mcp-1  Waiting
+ Container opspilot-full-security-f12-final-worker-1  Waiting
+ Container opspilot-full-security-f12-final-postgres-1  Waiting
+ Container opspilot-full-security-f12-final-api-1  Waiting
+ Container opspilot-full-security-f12-final-web-1  Waiting
+ Container opspilot-full-security-f12-final-mcp-1  Healthy
+ Container opspilot-full-security-f12-final-web-1  Healthy
+ Container opspilot-full-security-f12-final-worker-1  Healthy
+ Container opspilot-full-security-f12-final-postgres-1  Healthy
+ Container opspilot-full-security-f12-final-api-1  Healthy
+{"passed": true, "checks": ["IdP discovery is ready on the pinned trusted TLS issuer", "Effective provider RS256 signing keys are at least RSA 3072", "TLS UI/API policy present on public success and authentication denial", "Untrusted CA and wrong TLS hostname rejected without bypass", "API MCP and IdP do not serve plaintext HTTP", "MCP requires signed request context over TLS", "Database verifies TLS peer; application role cannot delete security audit", "PostgreSQL rejects non-TLS network authentication"], "database_tls": "TLSv1.3"}
+callback status 303
+{"passed":true,"checks":["password alone cannot establish application session","invalid OTP denied","password + one-time TOTP creates Secure HttpOnly host cookie","provider userinfo validates live MFA session over trusted TLS","own session inventory exposes metadata only","offline private UI clears at its server deadline (short deadline response fixture)","offline sign-out clears private DOM immediately without claiming server revocation","authorized run accepted in hardened profile","operator cannot approve; separate fresh-MFA approver completes signed TLS MCP action with verified outcome","IdP account disable revokes existing BFF session on next request","re-enabling IdP account cannot resurrect revoked BFF session"]}
+Local TLS/MFA lab verified; production ASVS L2 acceptance remains separate.

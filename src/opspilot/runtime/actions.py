@@ -33,6 +33,14 @@ async def new_revision(
     assert now is not None
     expires = now + timedelta(seconds=settings.approval_ttl_seconds)
     revision = logical.current_revision_id
+    from opspilot.security.freshness import PreconditionsChanged, snapshot
+
+    try:
+        fresh = await snapshot(session, logical.run_id, arguments, settings)
+    except PreconditionsChanged as exc:
+        # An explicit unavailable marker is never an executable precondition.
+        # Keep preview/legacy MCP negative tests possible; both grant gates still deny.
+        fresh = {"unavailable": exc.code}
     doc = document(
         tenant=str(require_tenant()),
         run=str(logical.run_id),
@@ -44,6 +52,7 @@ async def new_revision(
         expires=expires,
         tool=tool,
         plan_binding=plan_binding,
+        freshness=fresh,
     )
     action = Action(
         id=revision,

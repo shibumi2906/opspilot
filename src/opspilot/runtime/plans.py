@@ -341,6 +341,9 @@ async def step_node(state: Any, runtime: Any) -> None:
     state["execution_result"] = None
     state["verification_result"] = None
     await execute(state, runtime)
+    if state.get("freshness_reapproval"):
+        state["freshness_reapproval"] = False
+        return
     if state.get("execution_result"):
         runtime.plan_verification_action = action_id
         try:
@@ -463,6 +466,7 @@ async def projection(
                 "arguments": a.arguments,
                 "arguments_hash": a.arguments_hash,
                 "revision_hash": a.revision_hash,
+                "preconditions": a.revision_document.get("freshness"),
                 "expected_version": p.version,
                 "expires_at": p.expires_at.isoformat(),
                 "approval_status": p.decision,

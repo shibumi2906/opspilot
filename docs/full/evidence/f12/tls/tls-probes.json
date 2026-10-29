@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "IdP discovery is ready on the pinned trusted TLS issuer",
+    "Effective provider RS256 signing keys are at least RSA 3072",
+    "TLS UI/API policy present on public success and authentication denial",
+    "Untrusted CA and wrong TLS hostname rejected without bypass",
+    "API MCP and IdP do not serve plaintext HTTP",
+    "MCP requires signed request context over TLS",
+    "Database verifies TLS peer; application role cannot delete security audit",
+    "PostgreSQL rejects non-TLS network authentication"
+  ],
+  "database_tls": "TLSv1.3"
+}

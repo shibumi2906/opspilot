@@ -49,6 +49,11 @@ async def saved_action(state: AgentState, runtime: Runtime) -> dict[str, Any]:
 
 
 async def execute(state: AgentState, runtime: Runtime) -> None:
+    state["freshness_reapproval"] = False
+    from opspilot.runtime.freshness import before_dispatch
+
+    if not await before_dispatch(state, runtime):
+        return
     # Human wait is excluded by the resume runtime; active processing still has a limit.
     try:
         runtime.budget.check()

@@ -1,0 +1,104 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f12-acceptance-oidc-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-oidc-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Running
+ Container opspilot-full-test-f12-acceptance-collector-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-web-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-collector-1  Waiting
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Waiting
+ Container opspilot-full-test-f12-acceptance-mcp-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-web-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-collector-1  Healthy
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-web-1  Healthy
+ Container opspilot-full-test-f12-acceptance-mcp-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+177 files already formatted
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+Success: no issues found in 117 source files
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+...........ssss.....................s............................ssss... [ 19%]
+........................................................................ [ 38%]
+........................................................................ [ 57%]
+........F............................................................... [ 76%]
+........................................................................ [ 96%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+_ test_execution_faults_and_verification[verify_reserve-actions_verified-verified-1] _
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f93cb406490>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f93ca1621b0>
+fault = 'verify_reserve', outcome = 'actions_verified'
+verification = 'verified', ticket_count = 1
+
+>   ???
+E   assert 7 == 8
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_ticket_execution.py:83: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_ticket_execution.py::test_execution_faults_and_verification[verify_reserve-actions_verified-verified-1]
+1 failed, 365 passed, 9 skipped in 376.96s (0:06:16)
+exit status 1
+ Container opspilot-full-test-f12-acceptance-web-1  Stopping
+ Container opspilot-full-test-f12-acceptance-collector-1  Stopping
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Stopping
+ Container opspilot-full-test-f12-acceptance-oidc-1  Stopping
+ Container opspilot-full-test-f12-acceptance-mcp-1  Stopping
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Stopped
+ Container opspilot-full-test-f12-acceptance-collector-1  Stopped
+ Container opspilot-full-test-f12-acceptance-oidc-1  Stopped
+ Container opspilot-full-test-f12-acceptance-mcp-1  Stopped
+ Container opspilot-full-test-f12-acceptance-web-1  Stopped
+ Container opspilot-full-test-f12-acceptance-api-1  Stopping
+ Container opspilot-full-test-f12-acceptance-api-1  Stopped
+ Container opspilot-full-test-f12-acceptance-postgres-1  Stopping
+ Container opspilot-full-test-f12-acceptance-postgres-1  Stopped

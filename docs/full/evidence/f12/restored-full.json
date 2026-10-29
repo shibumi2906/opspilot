@@ -1,0 +1,9 @@
+{
+  "schema": "0014_freshness",
+  "api": 200,
+  "ui": 200,
+  "workers": [
+    "worker",
+    "worker2"
+  ]
+}

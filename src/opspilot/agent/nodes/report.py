@@ -70,6 +70,12 @@ async def report(state: AgentState, runtime: Runtime) -> None:
                 "Локальная операция записана и проверена.",
                 "Local operation persisted and verified.",
             )
+    if "ACTION_NO_LONGER_REQUIRED" in state.get("missing_checks", []):
+        action_summary = (
+            "Действие не выполнено: свежая проверка показала healthy."
+            if ru
+            else "Action not executed: fresh precondition check returned healthy."
+        )
     result = Report(
         summary=summaries[outcome][0 if ru else 1],
         facts=facts,

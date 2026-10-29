@@ -75,6 +75,10 @@ async def local_write(
         if (
             run is None
             or run.actor_id != actor_id()
+            or (
+                run.status not in {"running", "waiting_for_approval"}
+                and action.execution_status != "succeeded"
+            )
             or approval.decided_by is None
             or approval.decided_at is None
         ):
@@ -93,11 +97,11 @@ async def local_write(
         assert now is not None
         if now >= approval.expires_at or now >= action.expires_at:
             raise WriteDenied("APPROVAL_EXPIRED")
-        try:
-            await consume(session, action, approval, run, settings)
-        except AuthError as exc:
-            raise WriteDenied(exc.code) from None
         if action.execution_result is not None:
+            try:
+                await consume(session, action, approval, run, settings)
+            except AuthError as exc:
+                raise WriteDenied(exc.code) from None
             if action.execution_status != "succeeded":
                 raise WriteDenied("STATE_CONFLICT")
             return (
@@ -160,6 +164,16 @@ async def local_write(
             assert isinstance(args, CreateTicketArgs)
             ticket = Ticket(id=uuid4(), originating_action_id=action.id, **arguments)
             id_field = "ticket_id"
+        from opspilot.security.freshness import PreconditionsChanged, check
+
+        try:
+            await check(session, action, settings)
+        except PreconditionsChanged as exc:
+            raise WriteDenied(exc.code) from None
+        try:
+            await consume(session, action, approval, run, settings)
+        except AuthError as exc:
+            raise WriteDenied(exc.code) from None
         session.add(ticket)
         await session.flush()
         if after_insert is not None:

@@ -183,6 +183,7 @@ class RunService:
                     "arguments": row.Action.arguments,
                     "arguments_hash": row.Action.arguments_hash,
                     "revision_hash": row.Action.revision_hash,
+                    "preconditions": row.Action.revision_document.get("freshness"),
                     "logical_action_id": str(row.Action.logical_action_id),
                     "revision_id": str(row.Action.id),
                     "expected_version": row.Approval.version,
@@ -201,9 +202,33 @@ class RunService:
             from opspilot.runtime.plans import projection
 
             public["plan"], public["actions"] = await projection(session, run_id)
+            single_reads = await session.scalar(
+                text(
+                    "SELECT coalesce(sum(attempts),0) FROM workflow.action_read_budgets "
+                    "WHERE tenant_id=identity.current_tenant() AND run_id=:r"
+                ),
+                {"r": run_id},
+            )
+            public["usage"]["verification_reads"] = int(single_reads or 0)
+            public["usage"]["read_calls"] += int(single_reads or 0)
+            public["replan_count"] = await session.scalar(
+                text(
+                    "SELECT replan_count FROM workflow.agent_runs WHERE id=:r "
+                    "AND tenant_id=identity.current_tenant()"
+                ),
+                {"r": run_id},
+            )
             if public["plan"]:
                 public["usage"]["verification_reads"] = public["plan"]["verification_reads"]
                 public["usage"]["read_calls"] += public["plan"]["verification_reads"]
+            if isinstance(public.get("budget"), dict):
+                # Legacy diagnostic total; durable quotas remain independently authoritative.
+                public["budget"] = {
+                    **public["budget"],
+                    "research_read_attempts": run.usage.get("read_attempts", 0),
+                    "verification_attempts": public["usage"]["verification_reads"],
+                    "read_attempts": public["usage"]["read_calls"],
+                }
             if public["plan"] and public["actions"]:
                 public["action"] = next(
                     (a for a in public["actions"] if a["approval_status"] == "pending"),

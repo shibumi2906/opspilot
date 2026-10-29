@@ -11,6 +11,7 @@ from opspilot.auth.http import denial
 from opspilot.config import Settings
 from opspilot.runtime.actions import Conflict
 from opspilot.security.audit import record
+from opspilot.security.freshness import PreconditionsChanged
 from opspilot.security.http import response_headers
 
 
@@ -62,6 +63,7 @@ def install_errors(app: FastAPI, settings: Settings) -> None:
     app.add_exception_handler(DBAPIError, database_error)
     app.add_exception_handler(AuthError, access_denied)
     app.add_exception_handler(Conflict, conflict)
+    app.add_exception_handler(PreconditionsChanged, conflict)
     app.add_exception_handler(RunConflict, conflict)
     app.add_exception_handler(LookupError, missing)
     app.add_exception_handler(RequestValidationError, invalid)

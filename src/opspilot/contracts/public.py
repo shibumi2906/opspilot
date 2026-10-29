@@ -53,10 +53,11 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
             item["facts"]["integrations"] = [
                 pick(v, "integration_id integration_type") for v in facts["integrations"][:100]
             ]
+    result["replan_count"] = value.get("replan_count", 0)
     result["usage"] = pick(
         value.get("usage", {}),
         "llm_calls read_calls input_tokens output_tokens "
-        "unknown_usage_count active_ms human_wait_ms",
+        "unknown_usage_count active_ms human_wait_ms verification_reads",
     )
     result["error"] = pick(value["error"], "code message") if value.get("error") else None
     report = value.get("report")
@@ -112,6 +113,18 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
             if action.get("result")
             else None
         )
+        fresh = action.get("preconditions")
+        if fresh:
+            result["action"]["preconditions"] = pick(
+                fresh,
+                "configuration customer ticket ticket_status recipient recipient_roles unavailable",
+            )
+            result["action"]["preconditions"]["integrations"] = [
+                pick(i, "id type project_fingerprint") for i in fresh.get("integrations", [])[:10]
+            ]
+            result["action"]["preconditions"]["observations"] = [
+                pick(i, "integration status credential") for i in fresh.get("observations", [])[:10]
+            ]
         result["action"]["verification"] = pick(action.get("verification", {}), "status")
     if value.get("plan"):
         result["plan"] = pick(value["plan"], "plan_id version hash wave")

@@ -1,0 +1,435 @@
+Compose now can delegate build to bake for better performances
+Just set COMPOSE_BAKE=true
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [api internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.06kB 0.0s done
+#1 DONE 0.0s
+
+#2 [admin internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.06kB 0.0s done
+#2 DONE 0.1s
+
+#3 [mcp internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.06kB done
+#3 DONE 0.1s
+
+#4 [admin internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#4 DONE 0.1s
+
+#5 [admin internal] load .dockerignore
+#5 transferring context: 316B done
+#5 DONE 0.0s
+
+#6 [api internal] load .dockerignore
+#6 transferring context: 316B done
+#6 DONE 0.1s
+
+#7 [mcp internal] load .dockerignore
+#7 transferring context: 316B done
+#7 DONE 0.1s
+
+#8 [mcp app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#8 DONE 0.0s
+
+#9 [api internal] load build context
+#9 transferring context: 237.76kB 0.0s done
+#9 DONE 0.1s
+
+#10 [mcp internal] load build context
+#10 transferring context: 237.76kB 0.0s done
+#10 DONE 0.1s
+
+#11 [admin internal] load build context
+#11 transferring context: 110.79kB 0.1s done
+#11 DONE 0.1s
+
+#12 [api app-build  2/12] WORKDIR /app
+#12 CACHED
+
+#13 [api app-build  3/12] RUN apk --no-cache upgrade
+#13 CACHED
+
+#14 [api app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#14 CACHED
+
+#15 [api app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#15 CACHED
+
+#16 [admin app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#16 CACHED
+
+#17 [admin app-build  7/12] COPY src ./src
+#17 ...
+
+#16 [mcp app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#16 CACHED
+
+#17 [api app-build  7/12] COPY src ./src
+#17 DONE 0.2s
+
+#18 [mcp app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#18 0.709    Building opspilot @ file:///app
+#18 1.693       Built opspilot @ file:///app
+#18 1.702 Prepared 1 package in 997ms
+#18 1.703 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#18 1.703          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#18 1.703          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#18 1.710 Installed 1 package in 7ms
+#18 1.710  + opspilot==0.1.0 (from file:///app)
+#18 DONE 1.8s
+
+#19 [mcp app-build  9/12] COPY alembic.ini ./
+#19 DONE 0.1s
+
+#20 [api app-build 10/12] COPY migrations ./migrations
+#20 DONE 0.1s
+
+#21 [api app-build 11/12] RUN uv pip uninstall --system pip
+#21 0.385 Using Python 3.12.16 environment at: /usr/local
+#21 0.470 Uninstalled 1 package in 131ms
+#21 0.470  - pip==25.0.1
+#21 DONE 0.5s
+
+#22 [mcp app-build 12/12] RUN adduser -D -u 10001 opspilot
+#22 DONE 0.5s
+
+#23 [api runtime 1/1] RUN uv pip uninstall --system uv
+#23 0.746 Using Python 3.12.16 environment at: /usr/local
+#23 0.757 Uninstalled 1 package in 235ms
+#23 0.757  - uv==0.13.4
+#23 DONE 0.8s
+
+#24 [api] exporting to image
+#24 exporting layers
+#24 exporting layers 0.3s done
+#24 writing image sha256:6b34468cc6b4788ec3d51b8e38624da4c4522f325eac179d1596478f67c9d208 done
+#24 naming to docker.io/opspilot-full/app:f01 0.0s done
+#24 DONE 0.5s
+
+#25 [mcp] exporting to image
+#25 exporting layers 0.3s done
+#25 writing image sha256:87e296152ce49ad00a4b2830c4dc9c2bc0a5e3422792768e0659d8e7b599fe74 0.0s done
+#25 naming to docker.io/opspilot-full/app:f01 0.0s done
+#25 DONE 0.5s
+
+#26 [admin] exporting to image
+#26 exporting layers 0.3s done
+#26 writing image sha256:4f56d33b6031d7d3676e865dfe03f2b6c17d40d586291c9f11308ce9dd1f5717 0.0s done
+#26 naming to docker.io/opspilot-full/app:f01 0.0s done
+#26 DONE 0.5s
+
+#27 [api] resolving provenance for metadata file
+#27 ...
+
+#28 [admin] resolving provenance for metadata file
+#28 DONE 0.1s
+
+#27 [api] resolving provenance for metadata file
+#27 DONE 0.1s
+
+#29 [mcp] resolving provenance for metadata file
+#29 DONE 0.0s
+
+#30 [web internal] load build definition from Dockerfile
+#30 transferring dockerfile: 850B done
+#30 DONE 0.0s
+
+#31 [worker2 internal] load build definition from Dockerfile
+#31 transferring dockerfile: 1.06kB done
+#31 DONE 0.1s
+
+#32 [worker internal] load build definition from Dockerfile
+#32 transferring dockerfile: 1.06kB done
+#32 DONE 0.1s
+
+#33 [tests internal] load build definition from Dockerfile
+#33 transferring dockerfile: 1.06kB done
+#33 DONE 0.1s
+
+#34 [worker2 internal] load .dockerignore
+#34 transferring context: 316B 0.0s done
+#34 DONE 0.1s
+
+#4 [tests internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#4 DONE 0.2s
+
+#8 [tests app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#8 DONE 0.0s
+
+#35 [tests internal] load .dockerignore
+#35 transferring context: 316B 0.0s done
+#35 DONE 0.1s
+
+#36 [worker internal] load .dockerignore
+#36 transferring context: 316B 0.0s done
+#36 DONE 0.1s
+
+#37 [tests internal] load build context
+#37 ...
+
+#8 [worker app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#8 DONE 0.0s
+
+#38 [worker2 internal] load build context
+#38 transferring context: 18.17kB 0.0s done
+#38 DONE 0.1s
+
+#14 [worker2 app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#14 CACHED
+
+#39 [worker2 app-build 12/12] RUN adduser -D -u 10001 opspilot
+#39 CACHED
+
+#40 [worker2 app-build  7/12] COPY src ./src
+#40 CACHED
+
+#41 [worker2 app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#41 CACHED
+
+#42 [worker2 app-build 10/12] COPY migrations ./migrations
+#42 CACHED
+
+#43 [worker2 app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#43 CACHED
+
+#44 [worker2 app-build 11/12] RUN uv pip uninstall --system pip
+#44 CACHED
+
+#45 [worker2 app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#45 CACHED
+
+#46 [worker2 app-build  9/12] COPY alembic.ini ./
+#46 CACHED
+
+#12 [worker2 app-build  2/12] WORKDIR /app
+#12 CACHED
+
+#13 [worker2 app-build  3/12] RUN apk --no-cache upgrade
+#13 CACHED
+
+#47 [worker runtime 1/1] RUN uv pip uninstall --system uv
+#47 CACHED
+
+#48 [worker internal] load build context
+#48 transferring context: 18.17kB 0.0s done
+#48 DONE 0.1s
+
+#37 [tests internal] load build context
+#37 transferring context: 1.36MB 0.1s done
+#37 DONE 0.1s
+
+#49 [worker2] exporting to image
+#49 exporting layers done
+#49 writing image sha256:f04851f46ec51980a1d276ccb101d8636650bce38153beda6c035ac433eb624c 0.0s done
+#49 naming to docker.io/opspilot-full/app:f01 0.0s done
+#49 DONE 0.1s
+
+#50 [worker] exporting to image
+#50 exporting layers done
+#50 writing image sha256:4d5ca93ec8e024531b3735d83a50c0ae2162f45213b4737a2936aa0d83b2f60d 0.1s done
+#50 naming to docker.io/opspilot-full/app:f01 0.0s done
+#50 DONE 0.2s
+
+#39 [tests app-build 12/12] RUN adduser -D -u 10001 opspilot
+#39 CACHED
+
+#51 [tests app-build 11/12] RUN uv pip uninstall --system pip
+#51 CACHED
+
+#52 [tests app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#52 CACHED
+
+#53 [tests app-build  7/12] COPY src ./src
+#53 CACHED
+
+#54 [tests app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#54 CACHED
+
+#55 [tests app-build 12/12] RUN adduser -D -u 10001 opspilot
+#55 CACHED
+
+#56 [tests app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#56 CACHED
+
+#13 [tests app-build  3/12] RUN apk --no-cache upgrade
+#13 CACHED
+
+#14 [tests app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#14 CACHED
+
+#57 [tests app-build  9/12] COPY alembic.ini ./
+#57 CACHED
+
+#58 [tests app-build 10/12] COPY migrations ./migrations
+#58 CACHED
+
+#12 [tests app-build  2/12] WORKDIR /app
+#12 CACHED
+
+#59 [tests tests 1/3] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
+#59 ...
+
+#60 [worker2] resolving provenance for metadata file
+#60 DONE 0.1s
+
+#61 [worker] resolving provenance for metadata file
+#61 DONE 0.0s
+
+#62 [web internal] load metadata for docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#62 DONE 2.0s
+
+#59 [tests tests 1/3] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
+#59 0.500 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#59 0.500          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#59 0.500          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#59 ...
+
+#63 [web internal] load metadata for docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#63 DONE 2.0s
+
+#64 [web internal] load .dockerignore
+#64 transferring context: 316B done
+#64 DONE 0.0s
+
+#65 [web build 1/6] FROM docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#65 DONE 0.0s
+
+#66 [web runtime 1/4] FROM docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#66 DONE 0.0s
+
+#67 [web internal] load build context
+#67 transferring context: 146.40kB 0.0s done
+#67 DONE 0.1s
+
+#68 [web build 3/6] COPY web/package.json web/package-lock.json ./
+#68 CACHED
+
+#69 [web build 2/6] WORKDIR /app/web
+#69 CACHED
+
+#70 [web build 4/6] RUN npm ci --no-audit --no-fund
+#70 CACHED
+
+#59 [tests tests 1/3] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
+#59 1.562 Installed 10 packages in 1.06s
+#59 1.562  + iniconfig==2.3.1
+#59 1.562  + librt==0.16.0
+#59 1.562  + mypy==1.20.2
+#59 1.562  + mypy-extensions==1.1.0
+#59 1.562  + pathspec==1.1.1
+#59 1.562  + pluggy==1.7.0
+#59 1.562  + pygments==2.21.0
+#59 1.562  + pytest==9.1.1
+#59 1.562  + pytest-asyncio==1.4.0
+#59 1.562  + ruff==0.17.1
+#59 DONE 1.7s
+
+#71 [web build 5/6] COPY web/ ./
+#71 DONE 0.2s
+
+#72 [tests tests 2/3] COPY tests ./tests
+#72 DONE 0.3s
+
+#73 [web build 6/6] RUN npm run build
+#73 ...
+
+#74 [tests tests 3/3] COPY docs/full/state-transitions.json ./docs/full/state-transitions.json
+#74 DONE 0.3s
+
+#75 [tests] exporting to image
+#75 exporting layers 0.5s done
+#75 writing image sha256:e91aa13c222b6b3a42a4cbe29a28d64745ce0f84cf3191942496de477f27e28b done
+#75 naming to docker.io/opspilot-full/tests:f01 0.0s done
+#75 DONE 0.5s
+
+#73 [web build 6/6] RUN npm run build
+#73 0.930
+#73 0.930 > opspilot-web@0.1.0 build
+#73 0.930 > node node_modules/typescript/bin/tsc --noEmit && node node_modules/vite/bin/vite.js build
+#73 0.930
+#73 ...
+
+#76 [tests] resolving provenance for metadata file
+#76 DONE 0.0s
+
+#73 [web build 6/6] RUN npm run build
+#73 1.657 vite v8.3.4 building client environment for production...
+#73 1.667 transforming...
+#73 1.834 ✓ 27 modules transformed.
+#73 1.911 rendering chunks...
+#73 1.945 computing gzip size...
+#73 1.950 dist/index.html                   0.61 kB │ gzip:  0.37 kB
+#73 1.950 dist/assets/index-BPG31Q5r.css   15.91 kB │ gzip:  4.41 kB
+#73 1.950 dist/assets/index-Cukqmr6w.js   251.19 kB │ gzip: 77.58 kB
+#73 1.950
+#73 1.950 ✓ built in 293ms
+#73 DONE 2.0s
+
+#77 [web runtime 2/4] RUN apk --no-cache upgrade
+#77 CACHED
+
+#78 [web runtime 3/4] COPY web/nginx.conf /etc/nginx/conf.d/default.conf
+#78 CACHED
+
+#79 [web runtime 4/4] COPY --from=build /app/web/dist /usr/share/nginx/html
+#79 DONE 0.1s
+
+#80 [web] exporting to image
+#80 exporting layers 0.1s done
+#80 writing image sha256:f7bccc1fcdbb4eeda6ca2d9609306c2502277bca58f6a5fc65883728dc604a06 done
+#80 naming to docker.io/opspilot-full/web:f01 0.0s done
+#80 DONE 0.1s
+
+#81 [web] resolving provenance for metadata file
+#81 DONE 0.0s
+
+#82 [e2e internal] load build definition from Dockerfile
+#82 transferring dockerfile: 850B done
+#82 DONE 0.0s
+
+#83 [e2e internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf
+#83 DONE 0.8s
+
+#84 [e2e internal] load .dockerignore
+#84 transferring context: 316B 0.0s done
+#84 DONE 0.0s
+
+#85 [e2e e2e 1/6] FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf
+#85 DONE 0.0s
+
+#86 [e2e internal] load build context
+#86 transferring context: 168.13kB 0.0s done
+#86 DONE 0.0s
+
+#87 [e2e e2e 3/6] COPY web/package.json web/package-lock.json ./
+#87 CACHED
+
+#88 [e2e e2e 2/6] WORKDIR /app/web
+#88 CACHED
+
+#89 [e2e e2e 4/6] RUN npm ci --no-audit --no-fund
+#89 CACHED
+
+#90 [e2e e2e 5/6] COPY web/ ./
+#90 DONE 0.1s
+
+#91 [e2e e2e 6/6] COPY tests/e2e/ /app/tests/e2e/
+#91 DONE 0.1s
+
+#92 [e2e] exporting to image
+#92 exporting layers 0.1s done
+#92 writing image sha256:229f91116acd40b417414f11bb9c6ac337749cc12a9cb68ef994ae8afd0bcc02 0.0s done
+#92 naming to docker.io/opspilot-full/e2e:f01 0.0s done
+#92 DONE 0.2s
+
+#93 [e2e] resolving provenance for metadata file
+#93 DONE 0.0s
+ admin  Built
+ api  Built
+ e2e  Built
+ mcp  Built
+ tests  Built
+ web  Built
+ worker  Built
+ worker2  Built

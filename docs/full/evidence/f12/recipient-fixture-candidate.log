@@ -1,0 +1,112 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f12-acceptance-oidc-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-oidc-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-oidc-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f12-acceptance-collector-1  Running
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-web-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-collector-1  Waiting
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Waiting
+ Container opspilot-full-test-f12-acceptance-web-1  Waiting
+ Container opspilot-full-test-f12-acceptance-mcp-1  Waiting
+ Container opspilot-full-test-f12-acceptance-collector-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-jaeger-1  Healthy
+ Container opspilot-full-test-f12-acceptance-api-1  Healthy
+ Container opspilot-full-test-f12-acceptance-web-1  Healthy
+ Container opspilot-full-test-f12-acceptance-mcp-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Running
+ Container opspilot-full-test-f12-acceptance-api-1  Running
+ Container opspilot-full-test-f12-acceptance-mcp-1  Running
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f12-acceptance-postgres-1  Healthy
+..........F............................                                  [100%]
+=================================== FAILURES ===================================
+________________ test_changed_recipient_needs_own_new_approval _________________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fb7043db310>
+
+    async def test_changed_recipient_needs_own_new_approval(integration_settings, admin_engine):
+        from opspilot.db.models_workflow import Action
+        from opspilot.runtime.freshness import replace
+        from opspilot.tenancy.session import TenantSession
+
+        service, run, value = await pending(
+            integration_settings, "Investigate GreenShop and notify manager"
+        )
+        try:
+            old = next(a for a in value["actions"] if a["key"] == "inbox")
+            for card in value["actions"]:
+                await choose(service, run, card, "approve")
+            async with admin_engine.connect() as conn:
+                recipient = await conn.scalar(
+                    text(
+                        "SELECT user_id FROM identity.tenant_memberships WHERE tenant_id=:t "
+                        "AND user_id<>:old ORDER BY user_id LIMIT 1"
+                    ),
+                    {"t": require_tenant(), "old": UUID(old["arguments"]["recipient_id"])},
+                )
+            async with execution_lease(service.engine, run, integration_settings):
+                async with TenantSession(service.engine) as session, session.begin():
+                    a = await session.get(Action, UUID(old["action_id"]))
+                    new = await replace(
+                        session,
+                        a,
+                        {**a.arguments, "recipient_id": str(recipient)},
+                        integration_settings,
+                    )
+                    new_id = new.id
+                with pytest.raises((AuthError, DBAPIError)):
+                    await issue(
+                        integration_settings,
+                        {
+                            "run": str(run),
+                            "action": str(new_id),
+                            "tool": "notify_manager",
+                            "hash": payload_hash({**old["arguments"], "recipient_id": str(recipient)}),
+                        },
+                    )
+            await process_one(service, run)
+            fresh = await service.snapshot(run)
+            assert fresh["status"] == "waiting_for_approval", fresh
+            card = next(a for a in fresh["actions"] if a["key"] == "inbox")
+            assert card["approval_status"] == "pending" and card["arguments"]["recipient_id"] == str(
+                recipient
+            )
+            assert (await counts(admin_engine, run))["notifications"] == 0
+            await choose(service, run, card, "approve")
+            await process_one(service, run)
+>           assert (await service.snapshot(run))["outcome"] == "actions_verified"
+E           AssertionError: assert 'actions_partially_verified' == 'actions_verified'
+E
+E             - actions_verified
+E             + actions_partially_verified
+E             ?        ++++++++++
+
+tests/integration/test_freshness.py:361: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_freshness.py::test_changed_recipient_needs_own_new_approval
+1 failed, 38 passed in 79.06s (0:01:19)
+exit status 1

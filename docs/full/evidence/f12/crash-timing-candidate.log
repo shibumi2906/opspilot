@@ -1,0 +1,125 @@
+ Network opspilot-full-test-f12-release_default  Creating
+ Network opspilot-full-test-f12-release_default  Created
+Existing independent Full service key ring preserved
+ Volume "opspilot-full-test-f12-release_oidcdata"  Creating
+ Volume "opspilot-full-test-f12-release_oidcdata"  Created
+ Volume "opspilot-full-test-f12-release_pgdata"  Creating
+ Volume "opspilot-full-test-f12-release_pgdata"  Created
+ Container opspilot-full-test-f12-release-postgres-1  Creating
+ Container opspilot-full-test-f12-release-oidc-1  Creating
+ Container opspilot-full-test-f12-release-postgres-1  Created
+ Container opspilot-full-test-f12-release-oidc-1  Created
+ Container opspilot-full-test-f12-release-postgres-1  Starting
+ Container opspilot-full-test-f12-release-oidc-1  Starting
+ Container opspilot-full-test-f12-release-postgres-1  Started
+ Container opspilot-full-test-f12-release-oidc-1  Started
+ Container opspilot-full-test-f12-release-oidc-1  Waiting
+ Container opspilot-full-test-f12-release-postgres-1  Waiting
+ Container opspilot-full-test-f12-release-oidc-1  Healthy
+ Container opspilot-full-test-f12-release-postgres-1  Healthy
+ Container opspilot-full-test-f12-release-postgres-1  Running
+ Container opspilot-full-test-f12-release-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f12-release-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f12-release-jaeger-1  Creating
+ Container opspilot-full-test-f12-release-postgres-1  Running
+ Container opspilot-full-test-f12-release-collector-1  Creating
+ Container opspilot-full-test-f12-release-api-1  Creating
+ Container opspilot-full-test-f12-release-mcp-1  Creating
+ Container opspilot-full-test-f12-release-collector-1  Created
+ Container opspilot-full-test-f12-release-mcp-1  Created
+ Container opspilot-full-test-f12-release-api-1  Created
+ Container opspilot-full-test-f12-release-web-1  Creating
+ Container opspilot-full-test-f12-release-jaeger-1  Created
+ Container opspilot-full-test-f12-release-web-1  Created
+ Container opspilot-full-test-f12-release-collector-1  Starting
+ Container opspilot-full-test-f12-release-postgres-1  Waiting
+ Container opspilot-full-test-f12-release-jaeger-1  Starting
+ Container opspilot-full-test-f12-release-postgres-1  Waiting
+ Container opspilot-full-test-f12-release-jaeger-1  Started
+ Container opspilot-full-test-f12-release-postgres-1  Healthy
+ Container opspilot-full-test-f12-release-mcp-1  Starting
+ Container opspilot-full-test-f12-release-postgres-1  Healthy
+ Container opspilot-full-test-f12-release-api-1  Starting
+ Container opspilot-full-test-f12-release-collector-1  Started
+ Container opspilot-full-test-f12-release-mcp-1  Started
+ Container opspilot-full-test-f12-release-api-1  Started
+ Container opspilot-full-test-f12-release-api-1  Waiting
+ Container opspilot-full-test-f12-release-api-1  Healthy
+ Container opspilot-full-test-f12-release-web-1  Starting
+ Container opspilot-full-test-f12-release-web-1  Started
+ Container opspilot-full-test-f12-release-mcp-1  Waiting
+ Container opspilot-full-test-f12-release-postgres-1  Waiting
+ Container opspilot-full-test-f12-release-jaeger-1  Waiting
+ Container opspilot-full-test-f12-release-api-1  Waiting
+ Container opspilot-full-test-f12-release-collector-1  Waiting
+ Container opspilot-full-test-f12-release-web-1  Waiting
+ Container opspilot-full-test-f12-release-api-1  Healthy
+ Container opspilot-full-test-f12-release-collector-1  Healthy
+ Container opspilot-full-test-f12-release-mcp-1  Healthy
+ Container opspilot-full-test-f12-release-jaeger-1  Healthy
+ Container opspilot-full-test-f12-release-postgres-1  Healthy
+ Container opspilot-full-test-f12-release-web-1  Healthy
+ Container opspilot-full-test-f12-release-postgres-1  Running
+ Container opspilot-full-test-f12-release-mcp-1  Running
+ Container opspilot-full-test-f12-release-api-1  Running
+ Container opspilot-full-test-f12-release-postgres-1  Waiting
+ Container opspilot-full-test-f12-release-postgres-1  Waiting
+ Container opspilot-full-test-f12-release-postgres-1  Healthy
+ Container opspilot-full-test-f12-release-postgres-1  Healthy
+...........F                                                             [100%]
+=================================== FAILURES ===================================
+_________ test_process_crash_after_replan_commit_requires_new_consent __________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f9e915eb650>
+
+    async def test_process_crash_after_replan_commit_requires_new_consent(
+        integration_settings, admin_engine
+    ):
+        import asyncio
+        import sys
+
+        original = await original_project(admin_engine)
+        settings = integration_settings
+        args = await single(settings)
+        await approve(settings, args)
+        service = RunService(settings)
+        try:
+            await project(admin_engine, "-crash")
+            code = """
+    import asyncio,os
+    from uuid import UUID
+    from opspilot.config import Settings
+    from opspilot.runtime.run_service import RunService
+    from opspilot.runtime.worker import process_one
+    from opspilot.tenancy.context import tenant_scope
+    import opspilot.runtime.freshness as fresh
+    async def crash(action):os._exit(99)
+    fresh.after_replanned=crash
+    async def main():
+     s=Settings().model_copy(update={'worker_lease_seconds':3,'worker_heartbeat_seconds':1})
+     r=RunService(s)
+     with tenant_scope(s.local_demo_tenant):await process_one(r,UUID('RUN_ID'))
+    asyncio.run(main())
+    """.replace("RUN_ID", str(args.run_id))
+            child = await asyncio.create_subprocess_exec(
+                sys.executable,
+                "-c",
+                code,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.PIPE,
+            )
+            _, stderr = await asyncio.wait_for(child.communicate(), 30)
+            assert child.returncode == 99, stderr.decode()[-200:]
+            assert await count(admin_engine, args) == 0
+            await asyncio.sleep(3.2)
+>           assert await process_one(service, args.run_id)
+E           assert False
+
+tests/integration/test_freshness.py:417: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_freshness.py::test_process_crash_after_replan_commit_requires_new_consent
+1 failed, 11 passed in 39.83s
+exit status 1

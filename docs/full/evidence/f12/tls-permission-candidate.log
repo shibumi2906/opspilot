@@ -1,0 +1,67 @@
+Isolated TLS/MFA lab generated. Credentials remain ignored; CA not installed in OS.
+ Network opspilot-full-security-f12_default  Creating
+ Network opspilot-full-security-f12_default  Created
+ Volume "opspilot-full-security-f12_pgdata"  Creating
+ Volume "opspilot-full-security-f12_pgdata"  Created
+ Volume "opspilot-full-security-f12_oidcdata"  Creating
+ Volume "opspilot-full-security-f12_oidcdata"  Created
+ Container opspilot-full-security-f12-postgres-1  Creating
+ Container opspilot-full-security-f12-oidc-1  Creating
+ Container opspilot-full-security-f12-oidc-1  Created
+ Container opspilot-full-security-f12-postgres-1  Created
+ Container opspilot-full-security-f12-oidc-1  Starting
+ Container opspilot-full-security-f12-postgres-1  Starting
+ Container opspilot-full-security-f12-postgres-1  Started
+ Container opspilot-full-security-f12-oidc-1  Started
+ Container opspilot-full-security-f12-oidc-1  Waiting
+ Container opspilot-full-security-f12-postgres-1  Waiting
+ Container opspilot-full-security-f12-oidc-1  Healthy
+ Container opspilot-full-security-f12-postgres-1  Healthy
+ Container opspilot-full-security-f12-postgres-1  Running
+ Container opspilot-full-security-f12-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-security-f12-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-security-f12-postgres-1  Running
+ Container opspilot-full-security-f12-worker-1  Creating
+ Container opspilot-full-security-f12-mcp-1  Creating
+ Container opspilot-full-security-f12-api-1  Creating
+ Container opspilot-full-security-f12-api-1  Created
+ Container opspilot-full-security-f12-web-1  Creating
+ Container opspilot-full-security-f12-worker-1  Created
+ Container opspilot-full-security-f12-mcp-1  Created
+ Container opspilot-full-security-f12-web-1  Created
+ Container opspilot-full-security-f12-postgres-1  Waiting
+ Container opspilot-full-security-f12-postgres-1  Waiting
+ Container opspilot-full-security-f12-postgres-1  Waiting
+ Container opspilot-full-security-f12-postgres-1  Healthy
+ Container opspilot-full-security-f12-api-1  Starting
+ Container opspilot-full-security-f12-postgres-1  Healthy
+ Container opspilot-full-security-f12-mcp-1  Starting
+ Container opspilot-full-security-f12-postgres-1  Healthy
+ Container opspilot-full-security-f12-worker-1  Starting
+ Container opspilot-full-security-f12-mcp-1  Started
+ Container opspilot-full-security-f12-worker-1  Started
+ Container opspilot-full-security-f12-api-1  Started
+ Container opspilot-full-security-f12-api-1  Waiting
+ Container opspilot-full-security-f12-api-1  Healthy
+ Container opspilot-full-security-f12-web-1  Starting
+ Container opspilot-full-security-f12-web-1  Started
+ Container opspilot-full-security-f12-web-1  Waiting
+ Container opspilot-full-security-f12-api-1  Waiting
+ Container opspilot-full-security-f12-worker-1  Waiting
+ Container opspilot-full-security-f12-postgres-1  Waiting
+ Container opspilot-full-security-f12-mcp-1  Waiting
+ Container opspilot-full-security-f12-web-1  Healthy
+ Container opspilot-full-security-f12-api-1  Healthy
+ Container opspilot-full-security-f12-worker-1  Healthy
+ Container opspilot-full-security-f12-mcp-1  Healthy
+ Container opspilot-full-security-f12-postgres-1  Healthy
+Traceback (most recent call last):
+  File "/work/scripts/security_local_probe.py", line 12, in <module>
+    ca = ssl.create_default_context(cafile="/lab/ca.crt")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/ssl.py", line 707, in create_default_context
+    context.load_verify_locations(cafile, capath, cadata)
+PermissionError: [Errno 13] Permission denied
+exit status 1
