@@ -1,0 +1,70 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-oidc-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f13-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f13-final-collector-1  Running
+ Container opspilot-full-test-f13-final-jaeger-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-web-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-jaeger-1  Waiting
+ Container opspilot-full-test-f13-final-collector-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-web-1  Waiting
+ Container opspilot-full-test-f13-final-mcp-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-collector-1  Healthy
+ Container opspilot-full-test-f13-final-jaeger-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-mcp-1  Healthy
+ Container opspilot-full-test-f13-final-web-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+E501 Line too long (106 > 100)
+   --> tests/integration/test_sse.py:291:101
+    |
+289 |                     text(
+290 |                         "SELECT pg_terminate_backend(pid) FROM pg_locks WHERE locktype='advisory' "
+291 |                         "AND classid::bigint=:classid AND objid::bigint=:objid AND objsubid=1 AND granted"
+    |                                                                                                     ^^^^^^
+292 |                     ),
+293 |                     {"classid": (key >> 32) & 0xFFFFFFFF, "objid": key & 0xFFFFFFFF},
+    |
+
+Found 1 error.
+exit status 1
+ Container opspilot-full-test-f13-final-oidc-1  Stopping
+ Container opspilot-full-test-f13-final-mcp-1  Stopping
+ Container opspilot-full-test-f13-final-collector-1  Stopping
+ Container opspilot-full-test-f13-final-jaeger-1  Stopping
+ Container opspilot-full-test-f13-final-web-1  Stopping
+ Container opspilot-full-test-f13-final-web-1  Stopped
+ Container opspilot-full-test-f13-final-api-1  Stopping
+ Container opspilot-full-test-f13-final-jaeger-1  Stopped
+ Container opspilot-full-test-f13-final-collector-1  Stopped
+ Container opspilot-full-test-f13-final-mcp-1  Stopped
+ Container opspilot-full-test-f13-final-oidc-1  Stopped
+ Container opspilot-full-test-f13-final-api-1  Stopped
+ Container opspilot-full-test-f13-final-postgres-1  Stopping
+ Container opspilot-full-test-f13-final-postgres-1  Stopped

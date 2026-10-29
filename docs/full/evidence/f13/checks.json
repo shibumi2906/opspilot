@@ -1,0 +1,61 @@
+{
+  "stage": "F13",
+  "status": "passed",
+  "base_commit": "abfaf767c0b394d2a80f24b888eb07573c33cfd0",
+  "focused_sse_f07": 25,
+  "host_unit": {
+    "passed": 129,
+    "subset_of_backend": true
+  },
+  "application_source_files": 119,
+  "image_matches_source": true,
+  "all_253_asvs_ids_levels_baseline_owners_preserved": true,
+  "full_l2_status": "NOT_MET",
+  "backend": {
+    "passed": 382,
+    "dedicated_skips": 9,
+    "sse_cases": 14,
+    "includes_existing_f07_assertions": true
+  },
+  "browser_oidc": {
+    "passed": 17,
+    "new_sse_cases": 2
+  },
+  "queue_process": 5,
+  "fencing_faults": 3,
+  "native_tls_probes": 8,
+  "native_mfa_browser_checks": 13,
+  "idp_disable_sse_revocation_ms": 886,
+  "scripted_evals": {
+    "passed": 12,
+    "total": 12,
+    "hard_safety_gate": true,
+    "unauthorized_writes": 0,
+    "duplicates": 0,
+    "false_verified_success": 0
+  },
+  "runtime_high_critical_findings": 0,
+  "package_audit_findings": 0,
+  "ruff_format_mypy": "passed",
+  "typescript_vite": "passed",
+  "live_full_oidc_sse_api_restart": "passed",
+  "full_data_counts_sha256_preserved": true,
+  "mvp_preserved": true,
+  "limits": {
+    "global_streams": 8,
+    "tenant_streams": 4,
+    "actor_streams": 2,
+    "batch_events": 64,
+    "max_replay_lag": 256,
+    "frame_bytes": 16384,
+    "auth_deadline_seconds": 5,
+    "lease_check_seconds": 1,
+    "send_deadline_seconds": 3,
+    "derived_established_revoke_bound_seconds": 26,
+    "recheck_sleep_seconds": 1,
+    "poll_fallback_seconds": [
+      5,
+      10
+    ]
+  }
+}

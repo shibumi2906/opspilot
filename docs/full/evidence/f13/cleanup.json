@@ -1,0 +1,10 @@
+{
+  "test_projects": [
+    "opspilot-full-test-f13-acceptance",
+    "opspilot-full-test-f13-final",
+    "opspilot-full-security-f13-final"
+  ],
+  "development_full_running": true,
+  "containers_and_networks_removed": true,
+  "volumes_and_images_retained": true
+}

@@ -1,0 +1,10 @@
+# Isolate the browser runner from the host IPC namespace and bound its heap/container.
+# Combine only with the Full test profile; application limits are unchanged.
+services:
+  e2e:
+    ipc: private
+    shm_size: 256m
+    mem_limit: 1g
+    memswap_limit: 1g
+    environment:
+      NODE_OPTIONS: --max-old-space-size=256

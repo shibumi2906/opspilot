@@ -1,0 +1,113 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-oidc-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f13-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-collector-1  Running
+ Container opspilot-full-test-f13-final-jaeger-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-web-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-mcp-1  Waiting
+ Container opspilot-full-test-f13-final-jaeger-1  Waiting
+ Container opspilot-full-test-f13-final-web-1  Waiting
+ Container opspilot-full-test-f13-final-collector-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-web-1  Healthy
+ Container opspilot-full-test-f13-final-mcp-1  Healthy
+ Container opspilot-full-test-f13-final-collector-1  Healthy
+ Container opspilot-full-test-f13-final-jaeger-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+181 files already formatted
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+Success: no issues found in 119 source files
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+...........ssss.....................s............................ssss... [ 18%]
+........................................................................ [ 36%]
+........................................................................ [ 55%]
+........................................F.F............................. [ 73%]
+........................................................................ [ 92%]
+..............................                                           [100%]
+=================================== FAILURES ===================================
+__________ test_replay_authorization_bound_cursors_and_private_state ___________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fc8e5454710>
+
+>   ???
+E   AssertionError: {"error":{"schema_version":1,"request_id":"10d14630-37c0-47f3-bfbd-f29cfad1b4e5","code":"INVALID_CURSOR","message":"Access denied","retryable":false}}
+E   assert 400 == 200
+E    +  where 400 = <Response [400 Bad Request]>.status_code
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_transactional_events.py:257: AssertionError
+__________________ test_bounded_history_reset_and_stale_fence __________________
+
+integration_settings = Settings(otel_endpoint=None, jaeger_query_url='http://jaeger:16686', jaeger_url=None, worker_lease_seconds=30.0, worke...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = <sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7fc8e535d8d0>
+
+>   ???
+E   KeyError: 'next_cursor'
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_transactional_events.py:351: KeyError
+=========================== short test summary info ============================
+FAILED tests/integration/test_transactional_events.py::test_replay_authorization_bound_cursors_and_private_state
+FAILED tests/integration/test_transactional_events.py::test_bounded_history_reset_and_stale_fence
+2 failed, 379 passed, 9 skipped in 526.93s (0:08:46)
+exit status 1
+ Container opspilot-full-test-f13-final-oidc-1  Stopping
+ Container opspilot-full-test-f13-final-web-1  Stopping
+ Container opspilot-full-test-f13-final-jaeger-1  Stopping
+ Container opspilot-full-test-f13-final-collector-1  Stopping
+ Container opspilot-full-test-f13-final-mcp-1  Stopping
+ Container opspilot-full-test-f13-final-collector-1  Stopped
+ Container opspilot-full-test-f13-final-jaeger-1  Stopped
+ Container opspilot-full-test-f13-final-oidc-1  Stopped
+ Container opspilot-full-test-f13-final-mcp-1  Stopped
+ Container opspilot-full-test-f13-final-web-1  Stopped
+ Container opspilot-full-test-f13-final-api-1  Stopping
+ Container opspilot-full-test-f13-final-api-1  Stopped
+ Container opspilot-full-test-f13-final-postgres-1  Stopping
+ Container opspilot-full-test-f13-final-postgres-1  Stopped

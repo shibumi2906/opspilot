@@ -1,0 +1,279 @@
+Compose now can delegate build to bake for better performances
+Just set COMPOSE_BAKE=true
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [mcp internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.06kB 0.0s done
+#1 DONE 0.1s
+
+#2 [api internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.06kB 0.0s done
+#2 DONE 0.1s
+
+#3 [api internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#3 DONE 3.9s
+
+#4 [api internal] load .dockerignore
+#4 transferring context: 316B done
+#4 DONE 0.0s
+
+#5 [mcp internal] load .dockerignore
+#5 transferring context: 316B 0.0s done
+#5 DONE 0.1s
+
+#6 [mcp app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#6 DONE 0.0s
+
+#7 [mcp internal] load build context
+#7 transferring context: 1.47MB 0.1s done
+#7 DONE 0.1s
+
+#8 [api internal] load build context
+#8 transferring context: 41.09kB 0.0s done
+#8 DONE 0.1s
+
+#9 [api app-build  2/12] WORKDIR /app
+#9 CACHED
+
+#10 [api app-build  3/12] RUN apk --no-cache upgrade
+#10 CACHED
+
+#11 [api app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#11 CACHED
+
+#12 [api app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#12 CACHED
+
+#13 [mcp app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#13 CACHED
+
+#14 [mcp app-build  7/12] COPY src ./src
+#14 DONE 0.2s
+
+#15 [mcp app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#15 0.636    Building opspilot @ file:///app
+#15 1.902       Built opspilot @ file:///app
+#15 1.915 Prepared 1 package in 1.28s
+#15 1.917 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#15 1.917          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#15 1.917          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#15 1.927 Installed 1 package in 11ms
+#15 1.927  + opspilot==0.1.0 (from file:///app)
+#15 DONE 2.0s
+
+#16 [api app-build  9/12] COPY alembic.ini ./
+#16 DONE 0.1s
+
+#17 [mcp app-build 10/12] COPY migrations ./migrations
+#17 DONE 0.1s
+
+#18 [api app-build 11/12] RUN uv pip uninstall --system pip
+#18 0.588 Using Python 3.12.16 environment at: /usr/local
+#18 0.732 Uninstalled 1 package in 199ms
+#18 0.732  - pip==25.0.1
+#18 DONE 0.8s
+
+#19 [api app-build 12/12] RUN adduser -D -u 10001 opspilot
+#19 DONE 0.8s
+
+#20 [api runtime 1/1] RUN uv pip uninstall --system uv
+#20 0.644 Using Python 3.12.16 environment at: /usr/local
+#20 0.650 Uninstalled 1 package in 186ms
+#20 0.650  - uv==0.13.4
+#20 DONE 0.7s
+
+#21 [mcp] exporting to image
+#21 exporting layers
+#21 exporting layers 0.3s done
+#21 ...
+
+#22 [api] exporting to image
+#22 exporting layers 0.3s done
+#22 writing image sha256:bfc2b3b3a667856c9be72f03b949f57407c59531d9ae5071bbd46da068215ba4 done
+#22 naming to docker.io/opspilot-full/app:f01 0.0s done
+#22 DONE 0.5s
+
+#21 [mcp] exporting to image
+#21 writing image sha256:d981ce2241b30c03ac4996dee9470df8ebd97bb56532668507f7cc72bd651e32 0.0s done
+#21 naming to docker.io/opspilot-full/app:f01 0.0s done
+#21 DONE 0.5s
+
+#23 [api] resolving provenance for metadata file
+#23 DONE 0.0s
+
+#24 [mcp] resolving provenance for metadata file
+#24 DONE 0.0s
+
+#25 [tests internal] load build definition from Dockerfile
+#25 transferring dockerfile: 1.06kB done
+#25 DONE 0.0s
+
+#3 [tests internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#3 DONE 3.9s
+
+#26 [tests internal] load .dockerignore
+#26 transferring context: 316B done
+#26 DONE 0.0s
+
+#6 [tests app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#6 DONE 0.0s
+
+#27 [tests internal] load build context
+#27 transferring context: 1.39MB 0.1s done
+#27 DONE 0.1s
+
+#10 [tests app-build  3/12] RUN apk --no-cache upgrade
+#10 CACHED
+
+#28 [tests app-build  9/12] COPY alembic.ini ./
+#28 CACHED
+
+#9 [tests app-build  2/12] WORKDIR /app
+#9 CACHED
+
+#11 [tests app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#11 CACHED
+
+#29 [tests app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#29 CACHED
+
+#30 [tests app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#30 CACHED
+
+#31 [tests app-build 10/12] COPY migrations ./migrations
+#31 CACHED
+
+#32 [tests app-build 11/12] RUN uv pip uninstall --system pip
+#32 CACHED
+
+#33 [tests app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#33 CACHED
+
+#34 [tests app-build  7/12] COPY src ./src
+#34 CACHED
+
+#35 [tests app-build 12/12] RUN adduser -D -u 10001 opspilot
+#35 CACHED
+
+#36 [tests tests 1/3] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
+#36 0.370 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#36 0.370          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#36 0.370          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#36 1.304 Installed 10 packages in 937ms
+#36 1.304  + iniconfig==2.3.1
+#36 1.304  + librt==0.16.0
+#36 1.304  + mypy==1.20.2
+#36 1.304  + mypy-extensions==1.1.0
+#36 1.304  + pathspec==1.1.1
+#36 1.304  + pluggy==1.7.0
+#36 1.304  + pygments==2.21.0
+#36 1.304  + pytest==9.1.1
+#36 1.304  + pytest-asyncio==1.4.0
+#36 1.304  + ruff==0.17.1
+#36 DONE 1.4s
+
+#37 [tests tests 2/3] COPY tests ./tests
+#37 DONE 0.1s
+
+#38 [tests tests 3/3] COPY docs/full/state-transitions.json ./docs/full/state-transitions.json
+#38 DONE 0.1s
+
+#39 [tests] exporting to image
+#39 exporting layers 0.6s done
+#39 writing image sha256:8d686d64f95043692a8c690ce5293705dc00507194e73fc249b1f511c2348818 0.0s done
+#39 naming to docker.io/opspilot-full/tests:f01 0.0s done
+#39 DONE 0.7s
+
+#40 [tests] resolving provenance for metadata file
+#40 DONE 0.0s
+ api  Built
+ mcp  Built
+ tests  Built
+ Container opspilot-full-test-f13-final-jaeger-1  Created
+ Container opspilot-full-test-f13-final-postgres-1  Created
+ Container opspilot-full-test-f13-final-oidc-1  Created
+ Container opspilot-full-test-f13-final-collector-1  Created
+ Container opspilot-full-test-f13-final-mcp-1  Recreate
+ Container opspilot-full-test-f13-final-web-1  Stopping
+ Container opspilot-full-test-f13-final-web-1  Stopped
+ Container opspilot-full-test-f13-final-api-1  Recreate
+ Container opspilot-full-test-f13-final-mcp-1  Recreated
+ Container opspilot-full-test-f13-final-api-1  Recreated
+ Container opspilot-full-test-f13-final-web-1  Created
+ Container opspilot-full-test-f13-final-jaeger-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Starting
+ Container opspilot-full-test-f13-final-collector-1  Starting
+ Container opspilot-full-test-f13-final-oidc-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Started
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-collector-1  Started
+ Container opspilot-full-test-f13-final-jaeger-1  Started
+ Container opspilot-full-test-f13-final-oidc-1  Started
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-mcp-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Starting
+ Container opspilot-full-test-f13-final-mcp-1  Started
+ Container opspilot-full-test-f13-final-api-1  Started
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-web-1  Starting
+ Container opspilot-full-test-f13-final-web-1  Started
+ Container opspilot-full-test-f13-final-mcp-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Waiting
+ Container opspilot-full-test-f13-final-collector-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-web-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-jaeger-1  Waiting
+ Container opspilot-full-test-f13-final-mcp-1  Healthy
+ Container opspilot-full-test-f13-final-collector-1  Healthy
+ Container opspilot-full-test-f13-final-jaeger-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-oidc-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-web-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+============================= test session starts ==============================
+platform linux -- Python 3.12.16, pytest-9.1.1, pluggy-1.7.0 -- /app/.venv/bin/python
+rootdir: /app
+configfile: pyproject.toml
+plugins: anyio-4.15.1, langsmith-0.14.11, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 24 items
+
+tests/integration/test_sse.py::test_snapshot_subscribe_handoff_reconnect_and_scope PASSED [  4%]
+tests/integration/test_sse.py::test_stream_revocation_within_30_seconds[logout] PASSED [  8%]
+tests/integration/test_sse.py::test_stream_revocation_within_30_seconds[expiry] PASSED [ 12%]
+tests/integration/test_sse.py::test_stream_revocation_within_30_seconds[idle] PASSED [ 16%]
+tests/integration/test_sse.py::test_stream_revocation_within_30_seconds[disable] PASSED [ 20%]
+tests/integration/test_sse.py::test_stream_revocation_within_30_seconds[membership] PASSED [ 25%]
+tests/integration/test_sse.py::test_stream_revocation_within_30_seconds[tenant] PASSED [ 29%]
+tests/integration/test_sse.py::test_actor_capacity_releases_after_disconnect PASSED [ 33%]
+tests/integration/test_sse.py::test_compacted_cursor_reset_then_authoritative_resume PASSED [ 37%]
+tests/integration/test_sse.py::test_real_api_process_restart_preserves_cursor PASSED [ 41%]
+tests/unit/test_sse_protocol.py::test_cursor_binds_session_actor_tenant_run_and_bounds PASSED [ 45%]
+tests/unit/test_sse_protocol.py::test_frames_encode_newlines_and_enforce_memory_bound PASSED [ 50%]
+tests/unit/test_sse_protocol.py::test_slow_asgi_reader_disconnects_within_send_deadline PASSED [ 54%]
+tests/integration/test_transactional_events.py::test_atomic_state_event_audit_outbox_rollback PASSED [ 58%]
+tests/integration/test_transactional_events.py::test_concurrent_sequence_and_duplicate_out_of_order_delivery PASSED [ 62%]
+tests/integration/test_transactional_events.py::test_receipt_recovery_projection_and_audit_explain_run PASSED [ 66%]
+tests/integration/test_transactional_events.py::test_runtime_cannot_mutate_event_storage[run_events] PASSED [ 70%]
+tests/integration/test_transactional_events.py::test_runtime_cannot_mutate_event_storage[run_audit] PASSED [ 75%]
+tests/integration/test_transactional_events.py::test_runtime_cannot_mutate_event_storage[run_streams] PASSED [ 79%]
+tests/integration/test_transactional_events.py::test_runtime_cannot_mutate_event_storage[event_outbox] PASSED [ 83%]
+tests/integration/test_transactional_events.py::test_runtime_cannot_mutate_event_storage[event_delivery] PASSED [ 87%]
+tests/integration/test_transactional_events.py::test_replay_authorization_bound_cursors_and_private_state PASSED [ 91%]
+tests/integration/test_transactional_events.py::test_committed_create_survives_process_death_before_publication PASSED [ 95%]
+tests/integration/test_transactional_events.py::test_bounded_history_reset_and_stale_fence PASSED [100%]
+
+======================== 24 passed in 61.30s (0:01:01) =========================

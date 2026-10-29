@@ -1,0 +1,116 @@
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f13-final-postgres-1  Created
+ Container opspilot-full-test-f13-final-oidc-1  Created
+ Container opspilot-full-test-f13-final-oidc-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Started
+ Container opspilot-full-test-f13-final-oidc-1  Started
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Waiting
+ Container opspilot-full-test-f13-final-oidc-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f13-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f13-final-jaeger-1  Created
+ Container opspilot-full-test-f13-final-collector-1  Created
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Created
+ Container opspilot-full-test-f13-final-api-1  Created
+ Container opspilot-full-test-f13-final-web-1  Created
+ Container opspilot-full-test-f13-final-jaeger-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-collector-1  Starting
+ Container opspilot-full-test-f13-final-jaeger-1  Started
+ Container opspilot-full-test-f13-final-collector-1  Started
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-mcp-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Starting
+ Container opspilot-full-test-f13-final-mcp-1  Started
+ Container opspilot-full-test-f13-final-api-1  Started
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-web-1  Starting
+ Container opspilot-full-test-f13-final-web-1  Started
+ Container opspilot-full-test-f13-final-mcp-1  Waiting
+ Container opspilot-full-test-f13-final-collector-1  Waiting
+ Container opspilot-full-test-f13-final-jaeger-1  Waiting
+ Container opspilot-full-test-f13-final-web-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-jaeger-1  Healthy
+ Container opspilot-full-test-f13-final-mcp-1  Healthy
+ Container opspilot-full-test-f13-final-collector-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-web-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+181 files already formatted
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+Success: no issues found in 119 source files
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+...........ssss.....................s............................ssss... [ 18%]
+........................................................................ [ 36%]
+........................................................................ [ 55%]
+........................................................................ [ 73%]
+........................................................................ [ 92%]
+...............................                                          [100%]
+382 passed, 9 skipped in 610.74s (0:10:10)
+{"passed": true, "security_events": 1426, "event_kinds": ["grant.consumed", "grant.issued", "revision.current_changed"], "payloads": "IDs/version/hash/key metadata only; no JWT", "least_privilege": "domain cannot approve/issue/revoke; audit delete denied"}
+{"passed": true, "operations": {"create_ticket": {"committed_objects": 234, "all_receipts_consistent": true, "force_rls": true}, "add_ticket_comment": {"committed_objects": 36, "all_receipts_consistent": true, "force_rls": true}, "notify_manager": {"committed_objects": 56, "all_receipts_consistent": true, "force_rls": true}, "plan_gate": {"plans": 56, "bounded": true, "verified_receipts_consistent": true, "domain_direct_plan_access": false, "body_free_plan_events": 419}, "freshness_gate": {"replanned_runs": 24, "run_replan_bound": 1, "verification_bound_per_action": 3, "budget_force_rls": true, "duplicate_succeeded_logical_intents": 0, "domain_direct_budget_access": false}}, "scope": "isolated local F12; full ASVS L2 remains NOT_MET"}
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-mcp-1  Running
+ Container opspilot-full-test-f13-final-worker-1  Creating
+ Container opspilot-full-test-f13-final-worker2-1  Creating
+ Container opspilot-full-test-f13-final-worker2-1  Created
+ Container opspilot-full-test-f13-final-worker-1  Created
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-worker-1  Starting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-worker2-1  Starting
+ Container opspilot-full-test-f13-final-worker-1  Started
+ Container opspilot-full-test-f13-final-worker2-1  Started
+ Container opspilot-full-test-f13-final-postgres-1  Running
+ Container opspilot-full-test-f13-final-api-1  Running
+ Container opspilot-full-test-f13-final-web-1  Running
+ Container opspilot-full-test-f13-final-postgres-1  Waiting
+ Container opspilot-full-test-f13-final-postgres-1  Healthy
+ Container opspilot-full-test-f13-final-api-1  Waiting
+ Container opspilot-full-test-f13-final-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test

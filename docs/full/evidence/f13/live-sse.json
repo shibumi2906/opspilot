@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "run_id": "55fae9cc-214a-4753-93c0-591d6651d88c",
+  "status": "completed",
+  "outcome": "diagnosis_only",
+  "real_oidc": true,
+  "cookie_sse": true,
+  "header_cursor": true,
+  "url_credentials": false,
+  "api_restart_reconnect": true,
+  "private_dom_cleared": true,
+  "synthetic": true,
+  "vendor_writes": 0
+}

@@ -106,12 +106,42 @@ try {
    checks.push('operator cannot approve; separate fresh-MFA approver completes signed TLS MCP action with verified outcome');
  } finally {await approvalContext.close();}
 
+ // Keep an authenticated TLS stream open independently of /auth/me requests.
+ const streamStatus=await page.evaluate(async path=>{
+   const snapshot=await (await fetch(path)).json();
+   const response=await fetch(path+'/events',{headers:{'Last-Event-ID':snapshot.latest_event_id,'Accept':'text/event-stream'}});
+   if(response.status!==200 || !response.body) return response.status;
+   const reader=response.body.getReader();
+   window.__sseRevocation=(async()=>{
+     const decoder=new TextDecoder();let buffer='';
+     try {
+       while(true){
+         const {done,value}=await reader.read();if(done)return false;
+         buffer+=decoder.decode(value,{stream:true});
+         if(buffer.includes('event: access_lost'))return true;
+         if(buffer.length>32768)buffer=buffer.slice(-16384);
+       }
+     } finally {await reader.cancel();}
+   })();
+   return response.status;
+ },created.body.snapshot_url);
+ assert.equal(streamStatus,200);
+ checks.push('cookie-authenticated SSE over native trusted TLS has no URL credentials');
+
  // Direct IdP administrative disable must invalidate an existing BFF session.
  const tokenResponse=await fetch(issuer+'/realms/master/protocol/openid-connect/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({client_id:'admin-cli',grant_type:'password',username:'security-admin',password:credentials.admin})});
  assert.equal(tokenResponse.status,200);const adminToken=(await tokenResponse.json()).access_token;
  const userId='00000000-0000-0000-0000-000000002711';
  const disable=await fetch(issuer+'/admin/realms/opspilot/users/'+userId,{method:'PUT',headers:{Authorization:'Bearer '+adminToken,'Content-Type':'application/json'},body:JSON.stringify({enabled:false})});
  assert.equal(disable.status,204);
+ const revokedAt=Date.now();
+ const streamRevoked=await page.evaluate(async()=>await Promise.race([
+   window.__sseRevocation,
+   new Promise(resolve=>setTimeout(()=>resolve(false),29000)),
+ ]));
+ const sseRevocationMilliseconds=Date.now()-revokedAt;
+ assert.equal(streamRevoked,true);assert(sseRevocationMilliseconds<=30000);
+ checks.push('IdP disable closes existing TLS SSE within30s without polling /auth/me');
  const disabled=await page.evaluate(async()=> (await fetch('/auth/me')).status);
  const enable=await fetch(issuer+'/admin/realms/opspilot/users/'+userId,{method:'PUT',headers:{Authorization:'Bearer '+adminToken,'Content-Type':'application/json'},body:JSON.stringify({enabled:true})});
  assert.equal(enable.status,204);
@@ -120,7 +150,7 @@ try {
  const denied=await page.evaluate(async()=> (await fetch('/auth/me')).status);
  assert.equal(denied,401);
  checks.push('re-enabling IdP account cannot resurrect revoked BFF session');
- writeFileSync('/reports/browser.json',JSON.stringify({passed:true,checks,browserCertificatePolicy:'two pinned generated leaf SPKIs; no global ignoreHTTPS; Node validates CA',synthetic:true},null,2));
+ writeFileSync('/reports/browser.json',JSON.stringify({passed:true,checks,sseRevocationMilliseconds,browserCertificatePolicy:'two pinned generated leaf SPKIs; no global ignoreHTTPS; Node validates CA',synthetic:true},null,2));
  console.log(JSON.stringify({passed:true,checks}));
 } catch(e){console.error('Security browser check failed:',e.message);process.exitCode=1;}
 finally{await browser.close();}

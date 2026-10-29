@@ -85,6 +85,7 @@ export interface Step {
 export interface RunSnapshot {
   dto_version: number;
   snapshot_version: number;
+  latest_event_id?: string;
   traces?: { label: string; url: string }[];
   schema_version: number;
   run_id: string;

@@ -1,0 +1,10 @@
+{
+  "api_restart_reconnect": true,
+  "workers": [
+    "worker",
+    "worker2"
+  ],
+  "schema": "0014_freshness",
+  "api": 200,
+  "ui": 200
+}

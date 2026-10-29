@@ -1,0 +1,25 @@
+{
+  "before": {
+    "schema": "0014_freshness",
+    "tickets": 4,
+    "comments": 2,
+    "notifications": 2,
+    "receipts": 8,
+    "tickets_sha256": "4b6a5b02eb0860ae6639c092949459e89ba67621a2a344d0b636d5c8f9eda82d",
+    "comments_sha256": "a146b5dc70e141bd1f5c764bb36898081a12047f0df1717038f436a731b50393",
+    "notifications_sha256": "9e241829db6ce3cd2d220cd46c439565ef6c93c1d24795926eec963b7cb5dfee",
+    "actions_sha256": "249e50865bcff0e6f0d8dd74a00f9372d66fae96350f238387dd8ae6df5a7e17"
+  },
+  "preserved": true,
+  "after": {
+    "schema": "0014_freshness",
+    "tickets": 4,
+    "comments": 2,
+    "notifications": 2,
+    "receipts": 8,
+    "tickets_sha256": "4b6a5b02eb0860ae6639c092949459e89ba67621a2a344d0b636d5c8f9eda82d",
+    "comments_sha256": "a146b5dc70e141bd1f5c764bb36898081a12047f0df1717038f436a731b50393",
+    "notifications_sha256": "9e241829db6ce3cd2d220cd46c439565ef6c93c1d24795926eec963b7cb5dfee",
+    "actions_sha256": "249e50865bcff0e6f0d8dd74a00f9372d66fae96350f238387dd8ae6df5a7e17"
+  }
+}

@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 29 октября 2026 года. **F01–F12 завершены; F13–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 29 октября 2026 года. **F01–F13 завершены; F14–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F13 — SSE replay/reconnect и авторизация. Не начат.**
+**Следующий этап: F14 — полный UI/история/inbox/admin. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F13 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F14 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -65,7 +65,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F10 | done | Три local write-tools, atomic receipts, exact verification и tenant/object/recipient scope | [evidence](full/evidence/f10/README.md) | [SEC-03/06/08](security/asvs-l2-implementation-plan.md) |
 | F11 | done | Bounded mixed DAG, independent decisions, sequential approved subset, dependent skip и concrete comment wave | [evidence](full/evidence/f11/README.md) | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
 | F12 | done | Uncached preconditions, DB-time expiry/revoke/roles, bounded replacement consent и durable verification quota | [evidence](full/evidence/f12/README.md) | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
-| F13 | not_started | SSE replay/reconnect и авторизация | — | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
+| F13 | done | Authenticated DB SSE/replay/reset, live revocation, bounded streams и browser reconnect | [evidence](full/evidence/f13/README.md) | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
 | F14 | not_started | Полный UI/история/inbox/admin | — | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
 | F15 | not_started | Redis/limits/durable usage/cost | — | [SEC-07](security/asvs-l2-implementation-plan.md) |
 | F16 | not_started | Traces/metrics/operator diagnostics | — | [SEC-05](security/asvs-l2-implementation-plan.md) |
@@ -594,3 +594,46 @@ production deployment и push0. SEC-02/03/04 и SEC-01/10 scoped gates прох�
 IDs/levels/baseline assessments/owners сохранены, full L2 NOT_MET. Только F12 выполнен; F13 не начат.
 Blockers отсутствуют. Отдельный local commit subject:
 `feat(full-f12): enforce freshness and bounded reapproval`.
+
+
+## F13 — authenticated SSE replay/reconnect и авторизация
+
+29 октября 2026. Canonical Full worktree
+`C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`,
+ветка `codex/opspilot-full`; base F12 `abfaf76`. Schema `0014_freshness`, pinned v1/v2 graphs,
+state/DTO1 и checkpoint SDK9 сохранены; migrations нет. Новый cursor protocol v1.
+Graph blob `05efb29565b989d831ced8bc2acdc11750b88efb`, policy blob
+`d7c0a37ffd28b02b344ce88a6c0639d4bf94b315` не менялись относительно F12.
+
+SSE выбирается `Accept: text/event-stream`; прежний bounded JSON replay F07 сохранён.
+Согласованные snapshot_version/latest_event_id и DB replay закрывают snapshot→subscribe gap;
+compaction/gaps дают reset/snapshot recovery. MAC cursor привязан к session/actor/tenant/run,
+передаётся в Last-Event-ID, URL secrets не создаются. Session/expiry/disable/membership/owner/roles
+перепроверяются без cache. Shared DB reservations8/4/2 (global/tenant/actor), batch64, replay lag256,
+frame16KiB, lease health1s и send deadline3s; потеря физического reservation закрывает поток.
+Клиент дедуплицирует sequences, использует один serial snapshot reader, bounded polling5–10s,
+сохраняет terminal/not-found UX и очищает private DOM при потере доступа.
+
+[Contracts](full/f13-security-contracts.md), [evidence](full/evidence/f13/README.md),
+[checks](full/evidence/f13/checks.json): backend382/9 dedicated skips, focused25 (subset), host unit129
+(subset), real OIDC/Chromium17, queue5, fencing3, TLS8+MFA/browser13, scripted eval12/12,
+unauthorized/duplicate/false verified writes0. IdP disable закрыл живой TLS SSE за886ms без polling
+/auth/me. Ruff/format/mypy119, TypeScript/Vite, runtime HIGH/CRITICAL SCA0, Python/npm audits0.
+SEC-02/07/08 и общие SEC-01/10 gates проходят; все253 ASVS IDs/levels/baseline assessments/owners
+сохранены, whole-norm closure не заявляется; полный L2 NOT_MET.
+
+Full rollout сохранил counts/SHA256 прежних domain objects/actions/receipts и schema0014.
+Live real OIDC read-only run завершился diagnosis_only; header cursor, SSE reconnect после реального
+restart Full API и logout/private DOM reset проверены. UI8091/API8011 HTTP200,2 workers healthy.
+MVP184 fingerprints/source/env/main/HEAD/images/volume metadata+content совпали с baseline;
+исходный checkout чист. F13 test/lab containers/networks удалены, volumes/images сохранены.
+
+Два Docker Engine500 прервали инфраструктурные candidates; restart был явно разрешён владельцем.
+Stale Docker runtime socket сохранён в резервной папке; engine восстановлен. E2E runner получил
+private IPC и memory bounds. Исправлены collection name collision, F07 JSON/SSE negotiation,
+составная send/revoke граница и лишние/параллельные browser snapshot reads; прежние assertions
+не ослаблены. Failed/interrupted candidates сохранены в evidence. Application traffic — только
+local synthetic OIDC/PostgreSQL/MCP; dependency/scanner downloads были. Paid/vendor writes,
+remote CI, production deployment и push0. Blockers F13 отсутствуют. Только F13 выполнен;
+F14 не начинался. Local stage commit subject:
+`feat(full-f13): add authorized bounded SSE replay and reconnect`.

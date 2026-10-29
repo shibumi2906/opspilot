@@ -291,7 +291,14 @@ async def replay(
 @router.get("/runs/{run_id}/events")
 async def events(
     run_id: UUID, request: Request, limit: int = Query(50, ge=1, le=100), cursor: str | None = None
-) -> dict[str, Any]:
+) -> Any:
+    if any(
+        item.split(";", 1)[0].strip().lower() == "text/event-stream"
+        for item in request.headers.get("accept", "").split(",")
+    ):
+        from opspilot.api.routes_events import events as stream_events
+
+        return await stream_events(run_id, request)
     return await replay(run_id, request, "events", limit, cursor)
 
 

@@ -27,7 +27,11 @@ async def get_run(run_id: UUID, request: Request) -> dict[str, Any]:
         "operator" in user.roles and value["actor_id"] == str(user.user_id)
     ):
         raise AuthError("NOT_FOUND", 404)
-    return public_snapshot(value)
+    from opspilot.api.event_cursor import encode
+
+    result = public_snapshot(value)
+    result["latest_event_id"] = encode(request, run_id, value["snapshot_version"])
+    return result
 
 
 @router.post("/{run_id}/decision", status_code=202)

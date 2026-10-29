@@ -1,0 +1,115 @@
+ Container opspilot-full-oidc-1  Recreate
+ Container opspilot-full-postgres-1  Recreate
+ Container opspilot-full-postgres-1  Recreated
+ Container opspilot-full-oidc-1  Recreated
+ Container opspilot-full-postgres-1  Starting
+ Container opspilot-full-oidc-1  Starting
+ Container opspilot-full-postgres-1  Started
+ Container opspilot-full-oidc-1  Started
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-oidc-1  Waiting
+ Container opspilot-full-oidc-1  Healthy
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-worker2-1  Stopping
+ Container opspilot-full-worker-1  Stopping
+ Container opspilot-full-worker-1  Stopped
+ Container opspilot-full-worker2-1  Stopped
+ Container opspilot-full-mcp-1  Stopping
+ Container opspilot-full-api-1  Stopping
+ Container opspilot-full-mcp-1  Stopped
+ Container opspilot-full-api-1  Stopped
+ Container opspilot-full-jaeger-1  Recreate
+ Container opspilot-full-collector-1  Recreate
+ Container opspilot-full-postgres-1  Running
+ Container opspilot-full-mcp-1  Recreate
+ Container opspilot-full-web-1  Stopping
+ Container opspilot-full-mcp-1  Recreated
+ Container opspilot-full-collector-1  Recreated
+ Container opspilot-full-web-1  Stopped
+ Container opspilot-full-api-1  Recreate
+ Container opspilot-full-jaeger-1  Recreated
+ Container opspilot-full-api-1  Recreated
+ Container opspilot-full-web-1  Recreate
+ Container opspilot-full-web-1  Recreated
+ Container opspilot-full-collector-1  Starting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-jaeger-1  Starting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-collector-1  Started
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-api-1  Starting
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-mcp-1  Starting
+ Container opspilot-full-jaeger-1  Started
+ Container opspilot-full-api-1  Started
+ Container opspilot-full-mcp-1  Started
+ Container opspilot-full-api-1  Waiting
+ Container opspilot-full-api-1  Healthy
+ Container opspilot-full-web-1  Starting
+ Container opspilot-full-web-1  Started
+ Container opspilot-full-api-1  Waiting
+ Container opspilot-full-jaeger-1  Waiting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-collector-1  Waiting
+ Container opspilot-full-web-1  Waiting
+ Container opspilot-full-mcp-1  Waiting
+ Container opspilot-full-collector-1  Healthy
+ Container opspilot-full-mcp-1  Healthy
+ Container opspilot-full-api-1  Healthy
+ Container opspilot-full-jaeger-1  Healthy
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-web-1  Healthy
+ Container opspilot-full-jaeger-1  Running
+ Container opspilot-full-oidc-1  Running
+ Container opspilot-full-collector-1  Running
+ Container opspilot-full-postgres-1  Running
+ Container opspilot-full-mcp-1  Running
+ Container opspilot-full-api-1  Running
+ Container opspilot-full-web-1  Running
+ Container opspilot-full-worker-1  Recreate
+ Container opspilot-full-worker2-1  Recreate
+ Container opspilot-full-worker-1  Recreated
+ Container opspilot-full-worker2-1  Recreated
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-api-1  Waiting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-worker-1  Starting
+ Container opspilot-full-api-1  Healthy
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-worker2-1  Starting
+ Container opspilot-full-worker-1  Started
+ Container opspilot-full-worker2-1  Started
+ Container opspilot-full-worker2-1  Waiting
+ Container opspilot-full-oidc-1  Waiting
+ Container opspilot-full-collector-1  Waiting
+ Container opspilot-full-mcp-1  Waiting
+ Container opspilot-full-jaeger-1  Waiting
+ Container opspilot-full-api-1  Waiting
+ Container opspilot-full-worker-1  Waiting
+ Container opspilot-full-web-1  Waiting
+ Container opspilot-full-postgres-1  Waiting
+ Container opspilot-full-worker2-1  Healthy
+ Container opspilot-full-worker-1  Healthy
+ Container opspilot-full-mcp-1  Healthy
+ Container opspilot-full-oidc-1  Healthy
+ Container opspilot-full-collector-1  Healthy
+ Container opspilot-full-api-1  Healthy
+ Container opspilot-full-jaeger-1  Healthy
+ Container opspilot-full-postgres-1  Healthy
+ Container opspilot-full-web-1  Healthy
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+page.waitForResponse: Timeout 30000ms exceeded while waiting for event "response"
+    at C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\scripts\smoke-full-f13.mjs:38:28 {
+  log: [],
+  name: 'TimeoutError'
+}
+
+Node.js v24.18.0

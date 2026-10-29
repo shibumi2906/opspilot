@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { api, ApiError, errorMessage, newRequestId } from "../api/client";
+import { watchRun, type StreamSnapshot } from "../api/stream";
+import { AUTH_LOST } from "../api/privacy";
 import type { Action, Decision, RunSnapshot } from "../api/types";
 const validId = (id: string) =>
   /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
@@ -16,7 +18,10 @@ export function useRun() {
   const [mutationError, setMutationError] = useState<string | null>(null);
   const [creating, setCreating] = useState(false);
   const [deciding, setDeciding] = useState(false);
-  const [nonce, setNonce] = useState(0);
+  const streamSnapshot = useRef<StreamSnapshot | false | null>(null);
+  const streamGeneration = useRef(0);
+  const snapshotListeners = useRef(new Set<() => void>());
+  const wake = useRef<((version?: number) => void) | null>(null);
   const createLock = useRef(false),
     decisionLock = useRef(false),
     reconcile = useRef(false);
@@ -24,11 +29,12 @@ export function useRun() {
   const pollEpoch = useRef(0);
   const currentRun = useRef(runId);
   currentRun.current = runId;
-  const refresh = useCallback(() => setNonce((n) => n + 1), []);
+  const refresh = useCallback(() => wake.current?.(), []);
   const changeRun = useCallback((id: string | null, push = true) => {
     currentRun.current = id;
     setRunId(id);
     setSnapshot(null);
+    streamSnapshot.current = null;
     setError(null);
     setMutationError(null);
     decisionLock.current = false;
@@ -51,16 +57,23 @@ export function useRun() {
   useEffect(() => {
     if (!runId) return;
     if (!validId(runId)) {
+      streamSnapshot.current = false;
       setError(
         "This investigation link is invalid. Start a new investigation.",
       );
       return;
     }
     let disposed = false,
+      inFlight = false,
+      forceRead = false,
+      wantedVersion = -1,
       failures = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
     const controller = new AbortController();
     const poll = async () => {
+      if (disposed || inFlight) return;
+      inFlight = true;
+      forceRead = false;
       let done = false;
       const epoch = pollEpoch.current;
       try {
@@ -68,7 +81,21 @@ export function useRun() {
           runId,
           AbortSignal.any([controller.signal, AbortSignal.timeout(15000)]),
         );
-        if (disposed || epoch !== pollEpoch.current) return;
+        if (disposed) return;
+        if (epoch !== pollEpoch.current) {
+          forceRead = true;
+          return;
+        }
+        streamSnapshot.current =
+          typeof value.latest_event_id === "string" &&
+          Number.isSafeInteger(value.snapshot_version)
+            ? {
+                cursor: value.latest_event_id,
+                sequence: value.snapshot_version,
+                generation: ++streamGeneration.current,
+              }
+            : null;
+        snapshotListeners.current.forEach((notify) => notify());
         setSnapshot(value);
         setError(null);
         failures = 0;
@@ -81,11 +108,17 @@ export function useRun() {
             setMutationError(null);
         }
       } catch (reason) {
-        if (disposed || epoch !== pollEpoch.current) return;
+        if (disposed) return;
+        if (epoch !== pollEpoch.current) {
+          forceRead = true;
+          return;
+        }
         if (
           reason instanceof ApiError &&
           [401, 403, 404].includes(reason.status)
         ) {
+          streamSnapshot.current = false;
+          snapshotListeners.current.forEach((notify) => notify());
           setSnapshot(null);
           setMutationError(null);
         }
@@ -93,23 +126,102 @@ export function useRun() {
         failures++;
         if (reason instanceof ApiError && [404, 422].includes(reason.status))
           done = true;
+      } finally {
+        inFlight = false;
+        if (!disposed) {
+          const current = streamSnapshot.current;
+          if (done && current === false) {
+            wantedVersion = -1;
+            forceRead = false;
+          }
+          const again =
+            forceRead ||
+            (wantedVersion >= 0 &&
+              (!current || current.sequence < wantedVersion));
+          if (again || !done)
+            timer = setTimeout(
+              poll,
+              again
+                ? 1000
+                : Math.min(
+                    10000,
+                    5000 * 2 ** Math.max(0, Math.min(failures, 2) - 1),
+                  ),
+            );
+        }
       }
-      if (!disposed && !done)
-        timer = setTimeout(
-          poll,
-          Math.min(5000, 1000 * 2 ** Math.min(failures, 3)),
-        );
     };
+    const requestRead = (version?: number) => {
+      if (disposed) return;
+      const current = streamSnapshot.current;
+      if (current === false) return;
+      if (version !== undefined && current && version <= current.sequence)
+        return;
+      if (version === undefined) forceRead = true;
+      else wantedVersion = Math.max(wantedVersion, version);
+      clearTimeout(timer);
+      if (!inFlight) void poll();
+    };
+    wake.current = requestRead;
     void poll();
     const online = () => refresh();
     window.addEventListener("online", online);
     return () => {
       disposed = true;
+      if (wake.current === requestRead) wake.current = null;
       controller.abort();
       clearTimeout(timer);
       window.removeEventListener("online", online);
     };
-  }, [runId, nonce, refresh]);
+  }, [runId, refresh]);
+  useEffect(() => {
+    const lost = () => {
+      pollEpoch.current++;
+      changeRun(null, false);
+    };
+    window.addEventListener(AUTH_LOST, lost);
+    return () => window.removeEventListener(AUTH_LOST, lost);
+  }, [changeRun]);
+  useEffect(() => {
+    if (!runId || !validId(runId)) return;
+    const controller = new AbortController();
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    let wanted = -1,
+      force = false;
+    const changed = (version?: number) => {
+      const current = streamSnapshot.current;
+      if (current === false) return;
+      if (version !== undefined && current && version <= current.sequence)
+        return;
+      if (version === undefined) force = true;
+      else wanted = Math.max(wanted, version);
+      if (timer) return;
+      timer = setTimeout(() => {
+        timer = undefined;
+        const current = streamSnapshot.current;
+        if (force || !current || wanted > current.sequence)
+          wake.current?.(force ? undefined : wanted);
+        force = false;
+        wanted = -1;
+      }, 1000);
+    };
+    void watchRun(
+      runId,
+      controller.signal,
+      changed,
+      () => streamSnapshot.current,
+      (notify) => {
+        snapshotListeners.current.add(notify);
+        return () => {
+          snapshotListeners.current.delete(notify);
+        };
+      },
+    );
+    return () => {
+      controller.abort();
+      clearTimeout(timer);
+    };
+  }, [runId]);
   const start = async (text: string) => {
     if (createLock.current) return;
     createLock.current = true;
@@ -131,7 +243,8 @@ export function useRun() {
     const selected = action ?? snapshot?.action;
     if (
       decisionLock.current ||
-      !snapshot || !selected ||
+      !snapshot ||
+      !selected ||
       snapshot.status !== "waiting_for_approval" ||
       selected.approval_status !== "pending"
     )
@@ -141,7 +254,12 @@ export function useRun() {
     setMutationError(null);
     const id = snapshot.run_id;
     try {
-      await api.decide(id, selected.action_id, choice, selected.expected_version);
+      await api.decide(
+        id,
+        selected.action_id,
+        choice,
+        selected.expected_version,
+      );
     } catch {
       if (currentRun.current === id)
         setMutationError(

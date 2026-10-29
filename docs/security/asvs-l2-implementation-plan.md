@@ -110,3 +110,12 @@ all253 requirement identities/baseline assessments are preserved and full L2 rem
 
 
 F12 local change gate passed: [contracts](../full/f12-security-contracts.md), [acceptance](../full/evidence/f12/checks.json). SEC-02/03/04: DB-time expiry/revoke/role checks, grant key overlap, uncached preconditions and bounded replacement consent; SEC-01/10 regression and supply-chain gates pass. All253 IDs/levels/baseline assessments/owners remain unchanged. No whole-norm or production L2 acceptance; full L2 remains NOT_MET.
+
+
+F13 local change gate passed: [contracts](../full/f13-security-contracts.md),
+[acceptance](../full/evidence/f13/checks.json). SEC-02/07/08: cookie-authenticated DB SSE,
+session/actor/tenant/run-bound header cursors, uncached revocation and object authorization,
+bounded replay/reset/send/connections with fail-closed reservation health, private DOM reset and
+serialized snapshot recovery. Native TLS/MFA IdP-disable SSE revocation measured886ms; backend382,
+browser17, queue5, fencing3, TLS8+13, scripted12 and SEC-01/10 supply-chain/regression gates pass.
+All253 IDs/levels/baseline assessments/owners remain unchanged; no whole-norm closure. Full L2 NOT_MET.

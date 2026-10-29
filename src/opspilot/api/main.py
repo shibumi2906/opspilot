@@ -29,12 +29,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         app.state.identity = IdentityStore(settings)
         app.state.engine = create_engine(settings.database_url("workflow"))
+        app.state.streams_engine = create_engine(settings.database_url("workflow"))
         app.state.mcp = MCPClient(settings)
         app.state.runs = RunService(settings)
         try:
             yield
         finally:
             await app.state.runs.close()
+            await app.state.streams_engine.dispose()
             await app.state.engine.dispose()
             await app.state.identity.engine.dispose()
 

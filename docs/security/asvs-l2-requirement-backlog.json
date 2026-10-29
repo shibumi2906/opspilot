@@ -40,6 +40,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -74,6 +81,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -108,6 +122,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -142,6 +163,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -176,6 +204,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -210,6 +245,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -244,6 +286,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -304,6 +353,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -364,6 +420,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -424,6 +487,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -458,6 +528,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -518,6 +595,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -552,6 +636,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -586,6 +677,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -646,6 +744,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -680,6 +785,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -714,6 +826,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -748,6 +867,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -808,6 +934,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -868,6 +1001,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -902,6 +1042,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -962,6 +1109,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -996,6 +1150,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -1030,6 +1191,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -1064,6 +1232,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -1124,6 +1299,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -1158,6 +1340,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -1963,6 +2152,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "3 actions/2 waves, immutable intent ledger and plan-bound grants, independent MCP dependency/wave gate, DB verification quota, durable resume successor, per-action privacy/outcomes and v1 compatibility",
         "review": "local scoped implementation/evidence reviewed; existing baseline, owner-reviewed N/A and future operational gates retained"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -1997,6 +2193,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2031,6 +2234,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2065,6 +2275,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2099,6 +2316,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2133,6 +2357,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2167,6 +2398,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2201,6 +2439,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2235,6 +2480,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2269,6 +2521,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2303,6 +2562,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2337,6 +2603,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2371,6 +2644,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2405,6 +2685,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2465,6 +2752,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2499,6 +2793,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2533,6 +2834,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2593,6 +2901,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2627,6 +2942,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2661,6 +2983,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -2957,6 +3286,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3017,6 +3353,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3077,6 +3420,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3137,6 +3487,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3197,6 +3554,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3257,6 +3621,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3317,6 +3688,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3377,6 +3755,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3437,6 +3822,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3497,6 +3889,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3557,6 +3956,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3617,6 +4023,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3677,6 +4090,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3737,6 +4157,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3797,6 +4224,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3836,6 +4270,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3875,6 +4316,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3914,6 +4362,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3953,6 +4408,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -3992,6 +4454,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4031,6 +4500,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4070,6 +4546,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4109,6 +4592,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4148,6 +4638,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4187,6 +4684,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4226,6 +4730,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4265,6 +4776,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4304,6 +4822,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4343,6 +4868,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4382,6 +4914,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4421,6 +4960,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4460,6 +5006,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4499,6 +5052,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4538,6 +5098,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4577,6 +5144,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4616,6 +5190,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4655,6 +5236,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4694,6 +5282,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4754,6 +5349,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4814,6 +5416,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4874,6 +5483,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4934,6 +5550,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -4994,6 +5617,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5054,6 +5684,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5114,6 +5751,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5174,6 +5818,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5234,6 +5885,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5273,6 +5931,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5333,6 +5998,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5372,6 +6044,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5412,6 +6091,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5452,6 +6138,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5492,6 +6185,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5532,6 +6232,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5572,6 +6279,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5612,6 +6326,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5652,6 +6373,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5692,6 +6420,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5732,6 +6467,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5772,6 +6514,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5812,6 +6561,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5852,6 +6608,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5892,6 +6655,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5932,6 +6702,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -5972,6 +6749,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -6012,6 +6796,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -6052,6 +6843,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -6092,6 +6890,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7202,6 +8007,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7241,6 +8053,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7280,6 +8099,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7340,6 +8166,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7400,6 +8233,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7460,6 +8300,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7520,6 +8367,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7580,6 +8434,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7619,6 +8480,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7658,6 +8526,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7697,6 +8572,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7736,6 +8618,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7775,6 +8664,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7814,6 +8710,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7853,6 +8756,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7892,6 +8802,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7931,6 +8848,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -7991,6 +8915,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8030,6 +8961,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8069,6 +9007,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8108,6 +9053,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8147,6 +9099,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8186,6 +9145,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8246,6 +9212,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8285,6 +9258,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8324,6 +9304,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8363,6 +9350,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8402,6 +9396,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -8441,6 +9442,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -9121,6 +10129,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -9347,6 +10362,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10133,6 +11155,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10167,6 +11196,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10201,6 +11237,13 @@
         "verification_ref": "../full/evidence/f10/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Requirement-specific primary owner, future operational gates and owner-reviewed N/A remain mandatory; F10 scoped evidence does not close the full norm"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10274,6 +11317,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10347,6 +11397,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10420,6 +11477,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10494,6 +11558,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10568,6 +11639,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10642,6 +11720,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10715,6 +11800,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10788,6 +11880,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10861,6 +11960,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -10934,6 +12040,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -11007,6 +12120,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -11080,6 +12200,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -11153,6 +12280,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -11885,6 +13019,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -11945,6 +13086,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -12005,6 +13153,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -12065,6 +13220,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -12125,6 +13287,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -12185,6 +13354,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     },
     {
@@ -12245,6 +13421,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f13_scope_review": {
+        "ref": "../full/f13-security-contracts.md",
+        "implementation": "Cookie-authenticated DB SSE and unchanged bounded JSON replay; session/actor/tenant/run cursors; uncached access; bounded replay/send/concurrency with fail-closed physical-reservation health; serialized authoritative snapshot reader and private DOM reset",
+        "verification_ref": "../full/evidence/f13/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
       }
     }
   ],
