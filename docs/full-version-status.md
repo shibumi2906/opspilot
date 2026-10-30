@@ -8,8 +8,8 @@ Portfolio MVP завершён отдельно; его статус — [implem
 
 ## Где выполнять работу
 
-Канонический tracker находится в Full worktree:
-`C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent`,
+Канонический tracker находится в Full checkout:
+`C:\Users\user\Desktop\code\Ops`,
 ветка `codex/opspilot-full`, planning base `f9f8d79f572a575dd0f86c40986e7ae13ebb45c9`.
 В исходном MVP checkout создан игнорируемый `.tools/opspilot-full-workspace.json` с путём,
 веткой, base_commit, compose_project и status_file, без credentials.
@@ -17,6 +17,11 @@ Portfolio MVP завершён отдельно; его статус — [implem
 
 До проверки изоляции запрещены миграции, сборка образов и изменение приложения ради Full.
 MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохраняются.
+
+Копия Ops подготовлена 30 октября 2026 года из F15 `4733998`. Это самостоятельный Git-репозиторий.
+Предыдущий Full worktree сохранён по прежнему пути; новые этапы выполнять в Ops.
+Путь к MVP берётся из ignored `.tools/opspilot-full-workspace.json → mvp_path`,
+а не выводится из расположения `.git`. Подготовка workspace не начинает F16.
 
 ## Текущая очередь
 
@@ -717,3 +722,22 @@ Hardened unit fixtures изолированы от integration Redis settings; �
 assertions/timeouts сохранены. Paid/vendor writes, remote CI, production deploy и push0.
 F16 не начат. Blockers F15 отсутствуют. Отдельный local commit subject:
 `feat(full-f15): add durable admission budgets and scoped Redis caching`.
+
+
+## Подготовка рабочего checkout Ops — без начала F16
+
+30 октября 2026. По запросу владельца подготовлена самостоятельная копия Full в
+C:\Users\user\Desktop\code\Ops на ветке codex/opspilot-full из F15 4733998.
+Git objects скопированы без hardlinks/alternates; исходные MVP и Full checkout сохранены.
+Ignored locator MVP теперь указывает на Ops. Локальные env/ключи/Redis secrets/baselines и
+последний TLS lab перенесены без ротации; отдельные Python/web зависимости созданы по locks.
+F15 runner принимает явный -MvpPath и читает local locator для independent checkout.
+
+[Инструкция](../START-HERE.md), [проверки](ops-workspace-checks.json). Bind mounts действующего
+opspilot-full переподключены к Ops. Schema0016, counts/SHA256 12 таблиц и runtime image IDs
+сохранены; миграции/seed не запускались. UI/API HTTP200, два workers healthy. Real OIDC,
+scripted status run и refresh с прежними usage counters прошли. Source/image proof123 Python
+и36 UI files, TypeScript и PowerShell parsers, Git integrity и MVP isolation проходят.
+Секреты остаются ignored; paid calls/vendor writes/push0. F16 и будущие этапы не начаты;
+full ASVS L2 NOT_MET. Локальный служебный commit subject:
+chore(workspace): prepare independent Ops continuation checkout.

@@ -1,4 +1,4 @@
-param([switch]$SkipBuild, [ValidatePattern('^opspilot-full-test-[a-z0-9-]+$')][string]$Project = 'opspilot-full-test-f15-acceptance', [string]$ComposeOverride = 'compose.full.f13-checks.yaml')
+param([switch]$SkipBuild, [string]$MvpPath = '', [ValidatePattern('^opspilot-full-test-[a-z0-9-]+$')][string]$Project = 'opspilot-full-test-f15-acceptance', [string]$ComposeOverride = 'compose.full.f13-checks.yaml')
 $EnvFile = '.env'
 $ErrorActionPreference = 'Stop'
 $env:COMPOSE_PARALLEL_LIMIT='1'
@@ -14,8 +14,17 @@ New-Item -ItemType Directory -Force docs/full/evidence/f15/process, docs/full/ev
 $keysPath=Join-Path (Get-Location) '.tools/service-keys'
 New-Item -ItemType Directory -Force $keysPath | Out-Null
 if ([Environment]::OSVersion.Platform -eq 'Unix') { & chmod 0777 $keysPath }
-$commonGit=(& git rev-parse --path-format=absolute --git-common-dir).Trim()
-& ./scripts/check-full-isolation.ps1 -MvpPath (Split-Path -Parent $commonGit) -ReportPath docs/full/evidence/f15/mvp-before-gates.json
+if (-not $MvpPath) {
+    $locatorPath = Join-Path (Get-Location) '.tools/opspilot-full-workspace.json'
+    if (Test-Path -LiteralPath $locatorPath) {
+        $MvpPath = (Get-Content -Raw -LiteralPath $locatorPath | ConvertFrom-Json).mvp_path
+    }
+}
+if (-not $MvpPath) {
+    $commonGit=(& git rev-parse --path-format=absolute --git-common-dir).Trim()
+    $MvpPath=Split-Path -Parent $commonGit
+}
+& ./scripts/check-full-isolation.ps1 -MvpPath $MvpPath -ReportPath docs/full/evidence/f15/mvp-before-gates.json
 if($LASTEXITCODE){throw 'MVP prerequisite'}
 & .venv/Scripts/python.exe scripts/setup-full-f15-cache.py --test
 if($LASTEXITCODE){throw 'Private test cache preparation'}

@@ -1,9 +1,11 @@
-# OpsPilot Full development worktree
+# OpsPilot Full — Ops workspace
 
-Canonical progress: [docs/full-version-status.md](docs/full-version-status.md).
-Full setup, isolation and checks: [docs/full/architecture.md](docs/full/architecture.md).
-Use `compose.full.yaml` and `scripts/test-full-f07.ps1`; this checkout is isolated from Portfolio MVP.
-The inherited README below is historical MVP documentation; its old resource names are not Full commands.
+Начните с [START-HERE.md](START-HERE.md). В этой папке находится самостоятельная рабочая копия
+с Git-историей Full до F15 и отдельным локальным окружением.
+
+Канонический статус: [docs/full-version-status.md](docs/full-version-status.md).
+F01–F15 завершены; следующий F16 ещё не начат. Full ASVS L2 остаётся NOT_MET.
+Текущие команды Full и путь MVP описаны в START-HERE; старый MVP README ниже исторический.
 
 ---
 
