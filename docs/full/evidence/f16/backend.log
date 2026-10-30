@@ -1,0 +1,18 @@
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-5ea6ac98a501 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-5ea6ac98a501 Created 
+...........ssss.....................s............................ssss... [ 16%]
+.........................s.s............................................ [ 33%]
+........................................................................ [ 50%]
+........................................................................ [ 67%]
+........................................................................ [ 84%]
+...................................................................      [100%]
+416 passed, 11 skipped in 726.68s (0:12:06)

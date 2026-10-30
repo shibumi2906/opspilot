@@ -1,13 +1,16 @@
 name: opspilot-full
-
-x-app: &app
+x-app:
   image: opspilot-full/app:f01
-  build:
+  build: &id001
     context: .
     target: runtime
   init: true
-
-x-common-env: &common-env
+  logging: &id002
+    driver: local
+    options:
+      max-size: 5m
+      max-file: '3'
+x-common-env:
   APP_ENV: ${APP_ENV:-local}
   LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
   SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
@@ -23,8 +26,11 @@ x-common-env: &common-env
   SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
   CLARIFICATION_TTL_SECONDS: ${CLARIFICATION_TTL_SECONDS:-86400}
   LLM_MODE: ${LLM_MODE:-scripted}
-  OTEL_ENDPOINT: http://collector:4318/v1/traces
-
+  OTEL_ENDPOINT: https://collector:4318/v1/traces
+  TELEMETRY_CA_FILE: /run/observability/ca.crt
+  TELEMETRY_CERT_FILE: /run/observability/client.crt
+  TELEMETRY_KEY_FILE: /run/observability/client.key
+  TELEMETRY_TOKEN_FILE: /run/observability/token
 services:
   redis:
     image: opspilot-full/redis:f15
@@ -32,58 +38,98 @@ services:
       context: .
       dockerfile: infra/full/Dockerfile
       target: redis
-    user: "10001:10001"
-    command: [redis-server, /usr/local/etc/redis/redis.conf]
+    user: 10001:10001
+    command:
+    - redis-server
+    - /usr/local/etc/redis/redis.conf
     read_only: true
-    cap_drop: [ALL]
-    security_opt: ["no-new-privileges:true"]
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
     mem_limit: 96m
     volumes:
-      - ./infra/cache/redis.conf:/usr/local/etc/redis/redis.conf:ro
-      - ./.tools/cache/redis.acl:/run/cache/redis.acl:ro
-      - ./.tools/cache/password:/run/cache/password:ro
+    - ./infra/cache/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    - ./.tools/cache/redis.acl:/run/cache/redis.acl:ro
+    - ./.tools/cache/password:/run/cache/password:ro
     healthcheck:
-      test: [CMD-SHELL, 'REDISCLI_AUTH="$$(cat /run/cache/password)" redis-cli --user cache ping | grep -q PONG']
+      test:
+      - CMD-SHELL
+      - REDISCLI_AUTH="$$(cat /run/cache/password)" redis-cli --user cache ping |
+        grep -q PONG
       interval: 5s
       timeout: 3s
       retries: 10
-
   service-keys:
-    <<: *app
-    profiles: [tools]
-    command: [python, -m, opspilot.cli.service_keys, /keys]
+    image: opspilot-full/app:f01
+    build: *id001
+    init: true
+    profiles:
+    - tools
+    command:
+    - python
+    - -m
+    - opspilot.cli.service_keys
+    - /keys
     volumes:
-      - ./.tools/service-keys:/keys
-
+    - ./.tools/service-keys:/keys
+    logging: *id002
   oidc:
     image: opspilot-full/oidc:f03
     build:
       context: .
       dockerfile: infra/identity/Dockerfile
-    command: [start-dev, --import-realm]
+    command:
+    - start-dev
+    - --import-realm
     mem_limit: 1g
     environment:
       KC_HOSTNAME: http://127.0.0.1:${OIDC_PORT:-8181}
       KC_BOOTSTRAP_ADMIN_USERNAME: opspilot-local-admin
-      KC_BOOTSTRAP_ADMIN_PASSWORD: ${OIDC_BOOTSTRAP_PASSWORD:?Generate Full identity secrets}
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${OIDC_BOOTSTRAP_PASSWORD:?Generate Full identity
+        secrets}
       OIDC_DEMO_PASSWORD: ${OIDC_DEMO_PASSWORD:?Generate Full identity secrets}
       APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
     ports:
-      - 127.0.0.1:${OIDC_PORT:-8181}:8080
+    - 127.0.0.1:${OIDC_PORT:-8181}:8080
     volumes:
-      - oidcdata:/opt/keycloak/data
-      - ./infra/identity/password-blacklists:/opt/keycloak/data/password-blacklists:ro
-
+    - oidcdata:/opt/keycloak/data
+    - ./infra/identity/password-blacklists:/opt/keycloak/data/password-blacklists:ro
   collector:
-    image: opspilot-full/collector:f01
-    build:
-      context: .
-      dockerfile: infra/full/Dockerfile
-      target: collector
-    command: ["--config=/etc/otelcol/config.yaml"]
+    image: opspilot-full/app:f01
+    init: true
+    user: 10001:10001
+    command:
+    - python
+    - -m
+    - opspilot.observability.collector
+    read_only: true
+    cap_drop:
+    - ALL
+    security_opt:
+    - no-new-privileges:true
+    tmpfs:
+    - /tmp
+    mem_limit: 192m
+    logging: *id002
     volumes:
-      - ./infra/otel/collector.yaml:/etc/otelcol/config.yaml:ro
-
+    - telemetry_data:/var/lib/opspilot-observability
+    - telemetry_seal:/var/lib/opspilot-seals
+    - ./.tools/observability/collector:/run/observability:ro
+    healthcheck:
+      test:
+      - CMD
+      - python
+      - -c
+      - import pathlib,time; p=pathlib.Path('/var/lib/opspilot-observability/ready');
+        assert p.exists() and time.time()-p.stat().st_mtime<10
+      interval: 5s
+      timeout: 3s
+      retries: 15
+    networks:
+      default:
+        aliases:
+        - collector-wrong
   jaeger:
     image: opspilot-full/jaeger:f01
     build:
@@ -91,10 +137,9 @@ services:
       dockerfile: infra/full/Dockerfile
       target: jaeger
     environment:
-      COLLECTOR_OTLP_ENABLED: "true"
-    ports:
-      - 127.0.0.1:${JAEGER_PORT:-16696}:16686
-
+      COLLECTOR_OTLP_ENABLED: 'true'
+    profiles:
+    - legacy-traces
   postgres:
     image: opspilot-full/postgres:f01
     build:
@@ -107,29 +152,49 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Fill POSTGRES_PASSWORD in .env}
       WORKFLOW_DB_PASSWORD: ${WORKFLOW_DB_PASSWORD:?Fill WORKFLOW_DB_PASSWORD in .env}
       DOMAIN_DB_PASSWORD: ${DOMAIN_DB_PASSWORD:?Fill DOMAIN_DB_PASSWORD in .env}
-      CHECKPOINT_DB_PASSWORD: ${CHECKPOINT_DB_PASSWORD:?Fill CHECKPOINT_DB_PASSWORD in .env}
+      CHECKPOINT_DB_PASSWORD: ${CHECKPOINT_DB_PASSWORD:?Fill CHECKPOINT_DB_PASSWORD
+        in .env}
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+    - pgdata:/var/lib/postgresql/data
+    - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
     healthcheck:
-      test: [CMD-SHELL, pg_isready -U ops_migration -d opspilot_full]
+      test:
+      - CMD-SHELL
+      - pg_isready -U ops_migration -d opspilot_full
       interval: 2s
       timeout: 3s
       retries: 30
-
   api:
-    <<: *app
+    image: opspilot-full/app:f01
+    build: *id001
+    init: true
     volumes:
-      - ./.tools/service-keys/private/current.pem:/run/service-private/current.pem:ro
-      - ./.tools/service-keys/private/next.pem:/run/service-private/next.pem:ro
+    - ./.tools/service-keys/private/current.pem:/run/service-private/current.pem:ro
+    - ./.tools/service-keys/private/next.pem:/run/service-private/next.pem:ro
+    - ./.tools/observability/api:/run/observability:ro
     environment:
-      <<: *common-env
+      APP_ENV: ${APP_ENV:-local}
+      LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
+      SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
+      GRANT_ACTIVE_KID: ${GRANT_ACTIVE_KID:-grant-current}
+      APPROVAL_TTL_SECONDS: ${APPROVAL_TTL_SECONDS:-900}
+      GRANT_TTL_SECONDS: ${GRANT_TTL_SECONDS:-60}
+      APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
+      OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
+      OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: ${ALLOW_DEMO_SELF_APPROVAL:-true}
+      MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
+      SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
+      SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
+      CLARIFICATION_TTL_SECONDS: ${CLARIFICATION_TTL_SECONDS:-86400}
+      LLM_MODE: ${LLM_MODE:-scripted}
+      OTEL_ENDPOINT: https://collector:4318/v1/traces
       SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY:?Generate Full identity secrets}
       IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
-      JAEGER_URL: http://127.0.0.1:${JAEGER_PORT:-16696}
+      JAEGER_URL: ''
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
       OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
@@ -138,29 +203,57 @@ services:
       AGENT_MAX_ROUNDS: ${AGENT_MAX_ROUNDS:-6}
       AGENT_MAX_TOKENS: ${AGENT_MAX_TOKENS:-30000}
       AGENT_ACTIVE_SECONDS: ${AGENT_ACTIVE_SECONDS:-120}
+      TELEMETRY_CA_FILE: /run/observability/ca.crt
+      TELEMETRY_CERT_FILE: /run/observability/client.crt
+      TELEMETRY_KEY_FILE: /run/observability/client.key
+      TELEMETRY_TOKEN_FILE: /run/observability/token
     ports:
-      - 127.0.0.1:${API_PORT:-8011}:8000
+    - 127.0.0.1:${API_PORT:-8011}:8000
     depends_on:
-      postgres: {condition: service_healthy}
+      postgres:
+        condition: service_healthy
     healthcheck:
-      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=8)"]
+      test:
+      - CMD
+      - python
+      - -c
+      - import urllib.request; urllib.request.urlopen('http://localhost:8000/health',
+        timeout=8)
       interval: 10s
       timeout: 10s
       retries: 10
-
-  worker: &worker
-    <<: *app
+    logging: *id002
+  worker:
+    image: opspilot-full/app:f01
+    build: *id001
+    init: true
     restart: on-failure
     volumes:
-      - ./.tools/service-keys/private:/run/service-private:ro
-    environment:
-      <<: *common-env
+    - ./.tools/service-keys/private:/run/service-private:ro
+    - ./.tools/observability/worker:/run/observability:ro
+    environment: &id003
+      APP_ENV: ${APP_ENV:-local}
+      LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
+      SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
+      GRANT_ACTIVE_KID: ${GRANT_ACTIVE_KID:-grant-current}
+      APPROVAL_TTL_SECONDS: ${APPROVAL_TTL_SECONDS:-900}
+      GRANT_TTL_SECONDS: ${GRANT_TTL_SECONDS:-60}
+      APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
+      OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
+      OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: ${ALLOW_DEMO_SELF_APPROVAL:-true}
+      MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
+      SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
+      SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
+      CLARIFICATION_TTL_SECONDS: ${CLARIFICATION_TTL_SECONDS:-86400}
+      LLM_MODE: ${LLM_MODE:-scripted}
+      OTEL_ENDPOINT: https://collector:4318/v1/traces
       WORKER_LEASE_SECONDS: ${WORKER_LEASE_SECONDS:-30}
       WORKER_HEARTBEAT_SECONDS: ${WORKER_HEARTBEAT_SECONDS:-10}
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full
       CHECKPOINT_DATABASE_URL: postgresql+psycopg://ops_checkpoint:${CHECKPOINT_DB_PASSWORD}@postgres/opspilot_full?options=-csearch_path%3Dcheckpoints
       MCP_URL: http://mcp:8001/mcp
-      JAEGER_URL: http://127.0.0.1:${JAEGER_PORT:-16696}
+      JAEGER_URL: ''
       OPENAI_API_KEY: ${OPENAI_API_KEY:-}
       OPENAI_MODEL: ${OPENAI_MODEL:-}
       OPENAI_REASONING_EFFORT: ${OPENAI_REASONING_EFFORT:-low}
@@ -169,31 +262,76 @@ services:
       AGENT_MAX_ROUNDS: ${AGENT_MAX_ROUNDS:-6}
       AGENT_MAX_TOKENS: ${AGENT_MAX_TOKENS:-30000}
       AGENT_ACTIVE_SECONDS: ${AGENT_ACTIVE_SECONDS:-120}
-    command: [python, -m, opspilot.runtime.worker]
+      TELEMETRY_CA_FILE: /run/observability/ca.crt
+      TELEMETRY_CERT_FILE: /run/observability/client.crt
+      TELEMETRY_KEY_FILE: /run/observability/client.key
+      TELEMETRY_TOKEN_FILE: /run/observability/token
+    command: &id004
+    - python
+    - -m
+    - opspilot.runtime.worker
     stop_grace_period: 180s
-    depends_on:
-      postgres: {condition: service_healthy}
-      mcp: {condition: service_started}
-
+    depends_on: &id005
+      postgres:
+        condition: service_healthy
+      mcp:
+        condition: service_started
+    logging: *id002
   worker2:
-    <<: *worker
-
-  mcp:
-    <<: *app
+    image: opspilot-full/app:f01
+    build: *id001
+    init: true
+    restart: on-failure
     volumes:
-      - ./.tools/cache/password:/run/cache/password:ro
-      - ./.tools/cache/signing-key:/run/cache/signing-key:ro
-      - ./.tools/service-keys/public:/run/service-public:ro
-    command: [python, -m, opspilot.mcp_server.main]
+    - ./.tools/service-keys/private:/run/service-private:ro
+    - ./.tools/observability/worker:/run/observability:ro
+    environment: *id003
+    command: *id004
+    stop_grace_period: 180s
+    depends_on: *id005
+    logging: *id002
+  mcp:
+    image: opspilot-full/app:f01
+    build: *id001
+    init: true
+    volumes:
+    - ./.tools/cache/password:/run/cache/password:ro
+    - ./.tools/cache/signing-key:/run/cache/signing-key:ro
+    - ./.tools/service-keys/public:/run/service-public:ro
+    - ./.tools/observability/mcp:/run/observability:ro
+    command:
+    - python
+    - -m
+    - opspilot.mcp_server.main
     environment:
-      <<: *common-env
+      APP_ENV: ${APP_ENV:-local}
+      LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
+      SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
+      GRANT_ACTIVE_KID: ${GRANT_ACTIVE_KID:-grant-current}
+      APPROVAL_TTL_SECONDS: ${APPROVAL_TTL_SECONDS:-900}
+      GRANT_TTL_SECONDS: ${GRANT_TTL_SECONDS:-60}
+      APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
+      OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
+      OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: ${ALLOW_DEMO_SELF_APPROVAL:-true}
+      MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
+      SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
+      SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
+      CLARIFICATION_TTL_SECONDS: ${CLARIFICATION_TTL_SECONDS:-86400}
+      LLM_MODE: ${LLM_MODE:-scripted}
+      OTEL_ENDPOINT: https://collector:4318/v1/traces
       REDIS_URL: redis://redis:6379/0
       REDIS_PASSWORD_FILE: /run/cache/password
       CACHE_SIGNING_KEY_FILE: /run/cache/signing-key
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full
+      TELEMETRY_CA_FILE: /run/observability/ca.crt
+      TELEMETRY_CERT_FILE: /run/observability/client.crt
+      TELEMETRY_KEY_FILE: /run/observability/client.key
+      TELEMETRY_TOKEN_FILE: /run/observability/token
     depends_on:
-      postgres: {condition: service_healthy}
-
+      postgres:
+        condition: service_healthy
+    logging: *id002
   web:
     image: opspilot-full/web:f01
     build:
@@ -201,26 +339,70 @@ services:
       dockerfile: web/Dockerfile
       target: runtime
     ports:
-      - 127.0.0.1:${WEB_PORT:-8091}:80
+    - 127.0.0.1:${WEB_PORT:-8091}:80
     depends_on:
-      api: {condition: service_healthy}
+      api:
+        condition: service_healthy
     healthcheck:
-      test: [CMD, wget, -q, -O, /dev/null, http://127.0.0.1/]
+      test:
+      - CMD
+      - wget
+      - -q
+      - -O
+      - /dev/null
+      - http://127.0.0.1/
       interval: 5s
       timeout: 3s
       retries: 20
-
+    logging: *id002
   admin:
-    <<: *app
-    profiles: [tools]
+    image: opspilot-full/app:f01
+    build: *id001
+    init: true
+    profiles:
+    - tools
     environment:
-      <<: *common-env
+      APP_ENV: ${APP_ENV:-local}
+      LOCAL_DEMO_TENANT: ${LOCAL_DEMO_TENANT:-aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa}
+      SERVICE_ACTIVE_KID: ${SERVICE_ACTIVE_KID:-current}
+      GRANT_ACTIVE_KID: ${GRANT_ACTIVE_KID:-grant-current}
+      APPROVAL_TTL_SECONDS: ${APPROVAL_TTL_SECONDS:-900}
+      GRANT_TTL_SECONDS: ${GRANT_TTL_SECONDS:-60}
+      APP_ORIGIN: ${APP_ORIGIN:-http://127.0.0.1:8091}
+      OIDC_ISSUER: http://127.0.0.1:${OIDC_PORT:-8181}/realms/opspilot
+      OIDC_INTERNAL_ISSUER: http://oidc:8080/realms/opspilot
+      ALLOW_DEMO_SELF_APPROVAL: ${ALLOW_DEMO_SELF_APPROVAL:-true}
+      MCP_SERVICE_TOKEN: ${MCP_SERVICE_TOKEN:?Fill MCP_SERVICE_TOKEN in .env}
+      SCENARIO_ID: ${SCENARIO_ID:-greenshop_expired}
+      SCENARIO_CLOCK: ${SCENARIO_CLOCK:-2026-10-18T09:00:00Z}
+      CLARIFICATION_TTL_SECONDS: ${CLARIFICATION_TTL_SECONDS:-86400}
+      LLM_MODE: ${LLM_MODE:-scripted}
       IDENTITY_DB_PASSWORD: ${IDENTITY_DB_PASSWORD:?Generate Full identity secrets}
       MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full
     depends_on:
-      postgres: {condition: service_healthy}
-    command: [alembic, upgrade, head]
-
+      postgres:
+        condition: service_healthy
+    command:
+    - alembic
+    - upgrade
+    - head
+    logging: *id002
+  telemetry-init:
+    image: opspilot-full/app:f01
+    profiles:
+    - tools
+    user: 0:0
+    command:
+    - python
+    - -m
+    - opspilot.observability.init
+    volumes:
+    - telemetry_data:/var/lib/opspilot-observability
+    - telemetry_seal:/var/lib/opspilot-seals
+    network_mode: none
+    logging: *id002
 volumes:
-  oidcdata:
-  pgdata:
+  oidcdata: null
+  pgdata: null
+  telemetry_data: {}
+  telemetry_seal: {}

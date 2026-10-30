@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 30 октября 2026 года. **F01–F15 завершены; F16–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 30 октября 2026 года. **F01–F16 завершены; F17–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F16 — observability и operator diagnostics. Не начат.**
+**Следующий этап: F17 — retention/rotation и Full Core acceptance. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -39,7 +39,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F16 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F17 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -73,7 +73,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F13 | done | Authenticated DB SSE/replay/reset, live revocation, bounded streams и browser reconnect | [evidence](full/evidence/f13/README.md) | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
 | F14 | done | Ролевой workspace, history/inbox/admin/audit, exact revision/TTL, scoped export | [evidence](full/evidence/f14/README.md) | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
 | F15 | done | Scoped Redis, durable quotas/fair admission, retry usage и versioned cost | [evidence](full/evidence/f15/README.md) | [SEC-07](security/asvs-l2-implementation-plan.md) |
-| F16 | not_started | Traces/metrics/operator diagnostics | — | [SEC-05](security/asvs-l2-implementation-plan.md) |
+| F16 | done | Protected traces/logs/metrics, durable job/epoch links и scoped operator diagnostics | [evidence](full/evidence/f16/README.md) | [SEC-05](security/asvs-l2-implementation-plan.md) |
 | F17 | not_started | Retention/rotation/Full Core acceptance | — | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | not_started | Adapters и signed durable ingress | — | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
 | F19 | not_started | Authorized Prometheus read connector | — | [SEC-09](security/asvs-l2-implementation-plan.md) |
@@ -741,3 +741,39 @@ scripted status run и refresh с прежними usage counters прошли. 
 Секреты остаются ignored; paid calls/vendor writes/push0. F16 и будущие этапы не начаты;
 full ASVS L2 NOT_MET. Локальный служебный commit subject:
 chore(workspace): prepare independent Ops continuation checkout.
+
+## F16 — observability и operator diagnostics
+
+Статус: done. База a06d1a7 (F15 4733998), независимый Ops checkout; MVP сохранён.
+[Результаты](full/evidence/f16/checks.json), [SEC-05 contracts](full/f16-security-contracts.md),
+[runbook](full/f16-observability-runbook.md), [evidence](full/evidence/f16/README.md).
+
+API/job/worker epoch, graph, LLM, signed MCP, adapters, verification и reconciliation связаны
+trace IDs/parent links. Команды хранят traceparent и initial/claim timestamps в0017_observability.
+Два отдельных worker processes подтверждают новый epoch/trace при продолжении и завершённый
+span/освобождённый lease на human pause. SSE tracing завершается на headers; idle worker/SSE
+SQL polling не создаёт root traces, активные SQL/error spans и database-failure diagnostics сохранены.
+
+Collector: native mTLS + role tokens, private port, source/ingress positive schema, bounded
+queues/requests/storage/retention, non-root/read-only/caps-drop, metadata HMAC chain и отдельный
+sealed head. Verify/read/append используют защищённые SQLite snapshots/transactions.
+Реальные outage/tamper/paired recovery и sentinel probes прошли; private forensic copies сохранены.
+Nginx error/access diagnostics продолжают работать и не выводят secret/URI/header/body.
+Dashboard проверяет live role/tenant/actor через SQL и показывает scoped queue/lease/wait/active/
+budget/unknown/error metadata и проверенные alert conditions; это project thresholds, не SLO/paging.
+
+Frozen backend422/11 dedicated skips; targeted21; HTTP/journal units38; browser23;
+queue5, fencing3, provider crash1, Redis stop/recreate1; native TLS8 +collector12 +Redis6 +
+MFA14 +IdP policy4; scripted eval12/12, hard safety true, unauthorized/duplicate/false success0.
+Ruff/format/mypy131, TypeScript/Vite и PowerShell parsers проходят; source/image131 Python
+и38 UI/browser files совпадают. Runtime app/web/Redis raw HIGH/CRITICAL0, Python/npm0;
+IdP raw4, applicable0 по fresh exact-image assessment, без ignore/removal/risk acceptance.
+
+Dev Full обновлён0016→0017; counts/SHA legacy projections всех12 таблиц совпали до запуска
+workers; только три новые command columns исключены из legacy projection. Реальные OIDC,
+scripted worker, refresh, diagnostics и readiness прошли. Live images совпадают со scans.
+MVP184 files/env, branch/HEAD, images и volume metadata/content совпали с baseline.
+ASVS253 inherited fields/owners/N/A сохранены:141 scoped и16 primary contributions, без
+whole-requirement closure; полный L2 NOT_MET. Production anchors/PKI/secrets/clock/retention/
+paging/load остаются открытыми operational gates. Paid calls/vendor writes/push0; F17 не начат.
+Отдельный local commit subject: feat(full-f16): add protected telemetry and scoped operator diagnostics.

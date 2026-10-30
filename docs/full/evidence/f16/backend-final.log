@@ -1,0 +1,114 @@
+MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.
+Ignored Full Redis credentials prepared; existing password/signing key preserved
+Private telemetry credentials ready; existing identities and integrity key preserved
+ Container opspilot-full-test-f16-r1-service-keys-run-67b9e3ce9e30 Creating 
+ Container opspilot-full-test-f16-r1-service-keys-run-67b9e3ce9e30 Created 
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f16-r1-oidc-1 Running 
+ Container opspilot-full-test-f16-r1-redis-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-redis-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-oidc-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-oidc-1 Healthy 
+ Container opspilot-full-test-f16-r1-redis-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-admin-run-e8a77d2ab95e Creating 
+ Container opspilot-full-test-f16-r1-admin-run-e8a77d2ab95e Created 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-admin-run-f1b24103cf6f Creating 
+ Container opspilot-full-test-f16-r1-admin-run-f1b24103cf6f Created 
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-admin-run-a7e5683382b2 Creating 
+ Container opspilot-full-test-f16-r1-admin-run-a7e5683382b2 Created 
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f16-r1-worker-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker-1 Stopped 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopped 
+ Container opspilot-full-test-f16-r1-telemetry-init-run-a6e3b0288278 Creating 
+ Container opspilot-full-test-f16-r1-telemetry-init-run-a6e3b0288278 Created 
+ Container opspilot-full-test-f16-r1-collector-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-web-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-collector-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-mcp-1 Waiting 
+ Container opspilot-full-test-f16-r1-web-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-collector-1 Healthy 
+ Container opspilot-full-test-f16-r1-web-1 Healthy 
+ Container opspilot-full-test-f16-r1-mcp-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-944985085303 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-944985085303 Created 
+All checks passed!
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-9eaec175f959 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-9eaec175f959 Created 
+198 files already formatted
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-330f2778f76d Creating 
+ Container opspilot-full-test-f16-r1-tests-run-330f2778f76d Created 
+Success: no issues found in 131 source files
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-754cc689ff2f Creating 
+ Container opspilot-full-test-f16-r1-tests-run-754cc689ff2f Created 
+...........ssss.....................s............................ssss... [ 16%]
+.........................s.s............................................ [ 33%]
+........................................................................ [ 49%]
+........................................................................ [ 66%]
+........................................................................ [ 83%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+422 passed, 11 skipped in 690.61s (0:11:30)

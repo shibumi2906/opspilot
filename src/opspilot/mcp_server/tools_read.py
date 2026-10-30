@@ -41,6 +41,7 @@ from opspilot.telemetry import traced
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
+@traced("adapter.call")
 async def read_tool(
     name: str, args: Any, engine: AsyncEngine, settings: Settings
 ) -> tuple[dict[str, Any], list[Source]] | None:
@@ -180,6 +181,9 @@ def register_read_tools(
     async def call_tool(name: str, arguments: dict[str, Any]) -> CallToolResult:
         if name not in ALL_TOOLS:
             raise ValueError("Unknown read tool")
+        from opentelemetry import trace
+
+        trace.get_current_span().set_attribute("tool_name", name)
         contract = ALL_TOOLS[name]
         try:
             args = contract.arguments.model_validate(arguments)

@@ -1,0 +1,17 @@
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-web-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-web-1 Waiting 
+ Container opspilot-full-test-f16-r1-web-1 Healthy 
+ Container opspilot-full-test-f16-r1-e2e-run-5a9f8afe1c19 Creating 
+ Container opspilot-full-test-f16-r1-e2e-run-5a9f8afe1c19 Created 
+
+Running 1 test using 1 worker
+
+  ✓  1 ../tests/e2e/observability.spec.ts:2:5 › operator diagnostics shows real scoped state and trace command IDs (10.8s)
+
+  1 passed (12.3s)

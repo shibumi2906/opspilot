@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "changed_service_fields": {
+    "redis": [],
+    "service-keys": [
+      "logging"
+    ],
+    "oidc": [],
+    "collector": [
+      "build",
+      "cap_drop",
+      "command",
+      "healthcheck",
+      "image",
+      "init",
+      "logging",
+      "mem_limit",
+      "networks",
+      "read_only",
+      "security_opt",
+      "tmpfs",
+      "user",
+      "volumes"
+    ],
+    "jaeger": [
+      "ports",
+      "profiles"
+    ],
+    "postgres": [],
+    "api": [
+      "environment",
+      "logging",
+      "volumes"
+    ],
+    "worker": [
+      "environment",
+      "logging",
+      "volumes"
+    ],
+    "worker2": [
+      "environment",
+      "logging",
+      "volumes"
+    ],
+    "mcp": [
+      "environment",
+      "logging",
+      "volumes"
+    ],
+    "web": [
+      "logging"
+    ],
+    "admin": [
+      "environment",
+      "logging"
+    ]
+  },
+  "unrelated_service_contracts_preserved": true,
+  "public_telemetry_ports": 0
+}

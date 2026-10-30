@@ -1,3 +1,6 @@
+from contextlib import nullcontext
+
+from opentelemetry import trace
 from sqlalchemy import event, text
 from sqlalchemy.engine import make_url
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
@@ -61,7 +64,9 @@ def create_engine(url: str) -> AsyncEngine:
 
     @event.listens_for(engine.sync_engine, "before_cursor_execute")
     def before(conn, cursor, statement, parameters, context, executemany):  # type: ignore[no-untyped-def]
-        manager = span("db.operation")
+        # Idle queue/SSE polls have no live recorded operation. Their failures
+        # retain worker/API diagnostics; they must not flood the receiver with roots.
+        manager = span("db.operation") if trace.get_current_span().is_recording() else nullcontext()
         context._opspilot_span = manager
         manager.__enter__()
 
@@ -74,6 +79,7 @@ def create_engine(url: str) -> AsyncEngine:
         if context.execution_context is not None:
             manager = getattr(context.execution_context, "_opspilot_span", None)
             if manager is not None:
-                manager.__exit__(None, None, None)
+                error = context.original_exception
+                manager.__exit__(type(error), error, error.__traceback__)
 
     return engine

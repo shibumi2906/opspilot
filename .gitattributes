@@ -1,2 +1,3 @@
 infra/identity/password-blacklists/common-passwords.txt text eol=lf
 infra/identity/*.java text eol=lf
+web/safe-nginx.sh text eol=lf

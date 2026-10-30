@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "mode": "recovered",
+  "collector_available": true,
+  "alert_codes": [
+    "QUEUE_AGE"
+  ]
+}

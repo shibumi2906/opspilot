@@ -83,6 +83,7 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8001,
         access_log=False,
+        log_config=None,
         log_level="warning",
         ssl_certfile=settings.tls_cert_file,
         ssl_keyfile=settings.tls_key_file,

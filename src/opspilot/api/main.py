@@ -93,6 +93,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from opspilot.api.routes_workspace import router as workspace_router
 
     app.include_router(workspace_router)
+    from opspilot.api.routes_diagnostics import router as diagnostics_router
+
+    app.include_router(diagnostics_router)
     return app
 
 
@@ -108,6 +111,7 @@ if __name__ == "__main__":
         host="0.0.0.0",
         port=8000,
         access_log=False,
+        log_config=None,
         log_level="warning",
         ssl_certfile=settings.tls_cert_file,
         ssl_keyfile=settings.tls_key_file,

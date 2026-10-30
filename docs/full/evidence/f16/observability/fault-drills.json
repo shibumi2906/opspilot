@@ -1,0 +1,11 @@
+{
+  "outage": "collector-outage.json",
+  "native_probe": "collector-native.json",
+  "forensics_preserved_privately": true,
+  "paired_restore": true,
+  "nginx_access_retained": true,
+  "tamper": "collector-tampered.json",
+  "passed": true,
+  "nginx_error_category": "UPSTREAM_UNAVAILABLE",
+  "sentinel_absent_in_journal_and_docker_logs": true
+}

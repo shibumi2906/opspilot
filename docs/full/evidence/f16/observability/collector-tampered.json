@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "mode": "tampered",
+  "collector_available": false,
+  "alert_codes": [
+    "COLLECTOR_INTEGRITY_FAILED",
+    "QUEUE_AGE",
+    "TELEMETRY_EXPORT_FAILED"
+  ]
+}

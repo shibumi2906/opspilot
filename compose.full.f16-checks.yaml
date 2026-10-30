@@ -1,0 +1,24 @@
+services:
+  api:
+    volumes:
+    - ./.tools/observability-test/api:/run/observability:ro
+  worker:
+    volumes:
+    - ./.tools/observability-test/worker:/run/observability:ro
+  worker2:
+    volumes:
+    - ./.tools/observability-test/worker:/run/observability:ro
+  mcp:
+    volumes:
+    - ./.tools/observability-test/mcp:/run/observability:ro
+  tests:
+    volumes:
+    - ./.tools/observability-test/api:/run/observability:ro
+    - ./.tools/observability-test/probe:/run/observability-probe:ro
+    - ./.tools/observability-test/worker:/run/observability-worker:ro
+    environment:
+      OTEL_ENDPOINT: https://collector:4318/v1/traces
+      TELEMETRY_CA_FILE: /run/observability/ca.crt
+      TELEMETRY_CERT_FILE: /run/observability/client.crt
+      TELEMETRY_KEY_FILE: /run/observability/client.key
+      TELEMETRY_TOKEN_FILE: /run/observability/token

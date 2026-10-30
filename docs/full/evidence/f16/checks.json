@@ -1,0 +1,75 @@
+{
+  "stage": "F16",
+  "status": "passed",
+  "base_commit": "a06d1a7",
+  "verified_at_utc": "2026-10-30T19:52:02.048011+00:00",
+  "backend": {
+    "passed": 422,
+    "dedicated_skips": 11
+  },
+  "targeted_final": 21,
+  "http_journal_units": 38,
+  "browser_oidc": 23,
+  "queue_process": 5,
+  "fencing_faults": 3,
+  "provider_crash_after_dispatch": 1,
+  "real_redis_outage_restart": 1,
+  "collector_native_probes": 12,
+  "hardened_collector_native_probes": 12,
+  "collector_real_outage_tamper_paired_restore": true,
+  "nginx_error_diagnostics_retained": true,
+  "sentinel_absent_in_journal_logs_exports": true,
+  "native_tls_probes": 8,
+  "native_redis_tls_checks": 6,
+  "native_mfa_browser_checks": 14,
+  "idp_policy_checks": 4,
+  "scripted_evals": {
+    "passed": 12,
+    "total": 12,
+    "hard_safety_gate": true,
+    "unauthorized_writes": 0,
+    "duplicates": 0,
+    "false_verified_success": 0
+  },
+  "application_source_files": 131,
+  "ui_source_files": 38,
+  "image_matches_source": true,
+  "live_images_match_scans": true,
+  "runtime_image_ids": {
+    "app": "sha256:1eeb4dc8b2bfaf9cac2a88d08267779a908ec6e572d253f74dd53e70470f9f8d",
+    "web": "sha256:6073f7124da1b0678f690c3e69a164184c7481df1c6aec94158be47dfc34bc25",
+    "redis": "sha256:b0a677b0c45469064e80efeec8c2a7e4f64653de8ae97942f8daaab1a30000dc",
+    "oidc": "sha256:5b68f96aef31f4aa90faf44b27e40c9c3f6757e44437302b089975aa824f2b78"
+  },
+  "runtime_sca": {
+    "raw_high_critical": {
+      "app": 0,
+      "web": 0,
+      "redis": 0,
+      "oidc": 4
+    },
+    "oidc_applicable_high_critical": 0,
+    "scanner_ignore": false,
+    "metadata_removal": false,
+    "risk_acceptance": false
+  },
+  "package_audit_findings": 0,
+  "local_full_schema": "0017_observability",
+  "preserved_full_tables": 12,
+  "full_legacy_data_counts_sha256_preserved": true,
+  "mvp_preserved": true,
+  "asvs_requirements": 253,
+  "asvs_protected_fields_preserved": true,
+  "f16_scope_reviews": 141,
+  "f16_primary_reviews": 16,
+  "whole_requirement_closure": false,
+  "full_l2_status": "NOT_MET",
+  "paid_calls": 0,
+  "vendor_writes": 0,
+  "push": false,
+  "next_stage": "F17 not_started",
+  "limitations": [
+    "Local metadata-only scoped acceptance; no measured production SLO or paging delivery",
+    "Host/key compromise, external anchors, managed PKI/secrets, deployment-wide retention/clock/backup/load evidence remain open"
+  ]
+}

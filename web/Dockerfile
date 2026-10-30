@@ -9,6 +9,9 @@ FROM nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77
 RUN apk --no-cache upgrade
 COPY web/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/web/dist /usr/share/nginx/html
+COPY web/safe-nginx.sh /usr/local/bin/opspilot-nginx
+RUN chmod 755 /usr/local/bin/opspilot-nginx
+CMD ["/usr/local/bin/opspilot-nginx"]
 EXPOSE 80
 
 FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf AS e2e

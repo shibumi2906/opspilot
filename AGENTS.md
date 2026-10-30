@@ -2,9 +2,9 @@
 
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
-  The tracker is authoritative; F01–F15 are done, F16 is not started.
-- Implement only the stage explicitly requested by the user. This workspace preparation does
-  not authorize starting F16, F17, paid calls, external writes, production deployment or push.
+  The tracker is authoritative; F01–F16 are done; F17 is not started.
+- Implement only the stage explicitly requested by the user. Completion of F16 does
+  not authorize starting F17, paid calls, external writes, production deployment or push.
 - Preserve the Portfolio MVP checkout at C:/Users/user/Desktop/code/AI Incident & Operations Agent:
   tracked files, .env, branch/HEAD, images and persistent volumes. The ignored workspace locator
   may be updated when relocating Full. Run the existing isolation gate before builds/migrations.
@@ -16,7 +16,7 @@
   same opspilot-full project or delete the old checkout while any bind mounts still reference it.
 - Credentials, local private keys, cache secrets, TLS lab state and backups are ignored local
   files. Never print, commit or upload them; preserve existing keys instead of rotating at setup.
-- F15 app acceptance is documented under docs/full/evidence/f15. New work needs its own scoped
+- F16 acceptance is documented under docs/full/evidence/f16; earlier stage evidence remains historical. New work needs its own scoped
   checks and evidence; do not overwrite historical reports merely for workspace checks.
 - Include the stage's ASVS/SEC work plus common SEC-01/10 checks. Preserve all 253 protected ASVS
   identities/owners/baseline/N/A fields. Local scoped gates do not imply full L2 compliance.

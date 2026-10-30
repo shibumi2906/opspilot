@@ -57,6 +57,39 @@ class Settings(BaseSettings):
         return self
 
     otel_endpoint: str | None = None
+    telemetry_ca_file: str | None = None
+    telemetry_cert_file: str | None = None
+    telemetry_key_file: str | None = None
+    telemetry_token_file: str | None = None
+
+    @model_validator(mode="after")
+    def verified_telemetry(self) -> Self:
+        if self.otel_endpoint:
+            value = urlsplit(self.otel_endpoint)
+            if (
+                value.scheme != "https"
+                or not value.hostname
+                or value.username
+                or value.password
+                or value.query
+                or value.fragment
+                or value.path != "/v1/traces"
+            ):
+                raise ValueError("Telemetry requires an explicit trusted HTTPS traces origin")
+            for filename in (
+                self.telemetry_ca_file,
+                self.telemetry_cert_file,
+                self.telemetry_key_file,
+                self.telemetry_token_file,
+            ):
+                if not filename or not Path(filename).is_absolute() or not Path(filename).is_file():
+                    raise ValueError("Independent telemetry TLS and service credentials required")
+            assert self.telemetry_token_file is not None
+            token = Path(self.telemetry_token_file).read_text().strip()
+            if len(token) != 64 or any(c not in "0123456789abcdef" for c in token):
+                raise ValueError("Strong telemetry service credential required")
+        return self
+
     jaeger_query_url: str = "http://jaeger:16686"
     jaeger_url: str | None = None
 

@@ -2,8 +2,10 @@ from opspilot.agent.nodes.execute import saved_action
 from opspilot.agent.runtime import Runtime
 from opspilot.agent.state import AgentState
 from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.telemetry import traced
 
 
+@traced("verification.read")
 async def verify(state: AgentState, runtime: Runtime) -> None:
     execution = state.get("execution_result")
     state["verification_result"] = {"status": "unknown"}

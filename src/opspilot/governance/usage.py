@@ -36,6 +36,9 @@ async def reserve(
             },
         )
     if not admitted:
+        from opspilot.observability.client import count
+
+        count("budget_denials", "source")
         raise BudgetExceeded("Durable resource reservation denied")
 
 

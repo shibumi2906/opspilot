@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "mode": "outage",
+  "collector_available": false,
+  "alert_codes": [
+    "COLLECTOR_UNAVAILABLE",
+    "QUEUE_AGE",
+    "TELEMETRY_EXPORT_FAILED"
+  ]
+}

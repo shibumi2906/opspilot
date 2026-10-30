@@ -1,5 +1,8 @@
 # Always combine with compose.full.yaml and the distinct project name opspilot-full-test.
 services:
+  collector:
+    volumes:
+      - ./.tools/observability-test/collector:/run/observability:ro
   redis:
     volumes:
       - ./.tools/cache-test/redis.acl:/run/cache/redis.acl:ro

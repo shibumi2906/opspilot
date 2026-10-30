@@ -20,6 +20,7 @@ from opspilot.llm.base import Operation, Provider, ProviderFailure, Usage
 from opspilot.llm.real import RealProvider
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_client.registry import READ_TOOLS
+from opspilot.observability.client import count
 from opspilot.runtime.fencing import ensure_current
 from opspilot.telemetry import span
 
@@ -75,6 +76,7 @@ class Runtime:
                 tokens=tokens,
                 timeout_ms=max(0, round(timeout * 1000)),
             )
+            count("llm_attempts", "llm")
             started = time.monotonic()
             usage = Usage()
             state.setdefault("llm_calls", {})[call_id] = {
@@ -151,6 +153,7 @@ class Runtime:
 
             await check_cancelled(self.settings)
             if verification:
+                count("mcp_calls", "verification")
                 from opspilot.runtime.plans import reserve_verification
 
                 if self.plan_verification_action is not None:
@@ -160,6 +163,7 @@ class Runtime:
 
                     await reserve_single(UUID(state["action_id"]))
             else:
+                count("mcp_calls", "mcp")
                 self.budget.begin_read(verification=verification)
                 await reserve("read")
             key = f"{call_id}:{attempt}"
@@ -177,6 +181,7 @@ class Runtime:
                     async with self.client.session() as (session, _):
                         result = await self.client.call(session, name, arguments)
             except Exception:
+                count("upstream_errors", "mcp")
                 # Transport exceptions may contain headers or DSNs. Persist only a safe code.
                 result = ToolResult(
                     ok=False,

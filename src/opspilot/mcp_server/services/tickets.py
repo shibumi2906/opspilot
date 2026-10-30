@@ -17,6 +17,7 @@ from opspilot.mcp_client.registry import WRITE_TOOLS
 from opspilot.runtime.actions import payload_hash
 from opspilot.security.grants import consume
 from opspilot.security.revisions import valid_revision
+from opspilot.telemetry import traced
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
 
@@ -25,6 +26,7 @@ class WriteDenied(Exception):
         self.code = code
 
 
+@traced("adapter.call")
 async def local_write(
     engine: AsyncEngine,
     args: CreateTicketArgs | AddTicketCommentArgs | NotifyManagerArgs,

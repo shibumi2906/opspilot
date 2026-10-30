@@ -7,6 +7,7 @@ import httpx
 from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 from mcp.types import Tool
+from opentelemetry.trace import Status, StatusCode
 
 from opspilot.auth.context import AuthError
 from opspilot.auth.service_context import action_context, mint
@@ -82,9 +83,14 @@ class MCPClient:
             .arguments.model_validate(arguments)
             .model_dump(mode="json", by_alias=True)
         )
-        with span("mcp.client.tool", tool_name=name):
+        with span("mcp.client.tool", tool_name=name) as current:
             response = await session.call_tool(name, arguments)
-        result = ToolResult.model_validate(response.structuredContent)
+            result = ToolResult.model_validate(response.structuredContent)
+            current.set_attribute("status", "ok" if result.ok else "error")
+            if not result.ok:
+                current.set_status(Status(StatusCode.ERROR))
+                if result.error:
+                    current.set_attribute("error_code", result.error.code)
         if bool(response.isError) == result.ok:
             raise ValueError("Inconsistent MCP error status")
         if result.ok:

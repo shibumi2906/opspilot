@@ -1,0 +1,332 @@
+MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.
+Ignored Full Redis credentials prepared; existing password/signing key preserved
+Private telemetry credentials ready; existing identities and integrity key preserved
+ Container opspilot-full-test-f16-r1-service-keys-run-67b9e3ce9e30 Creating 
+ Container opspilot-full-test-f16-r1-service-keys-run-67b9e3ce9e30 Created 
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f16-r1-oidc-1 Running 
+ Container opspilot-full-test-f16-r1-redis-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-redis-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-oidc-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-oidc-1 Healthy 
+ Container opspilot-full-test-f16-r1-redis-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-admin-run-e8a77d2ab95e Creating 
+ Container opspilot-full-test-f16-r1-admin-run-e8a77d2ab95e Created 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-admin-run-f1b24103cf6f Creating 
+ Container opspilot-full-test-f16-r1-admin-run-f1b24103cf6f Created 
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-admin-run-a7e5683382b2 Creating 
+ Container opspilot-full-test-f16-r1-admin-run-a7e5683382b2 Created 
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f16-r1-worker-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker-1 Stopped 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopped 
+ Container opspilot-full-test-f16-r1-telemetry-init-run-a6e3b0288278 Creating 
+ Container opspilot-full-test-f16-r1-telemetry-init-run-a6e3b0288278 Created 
+ Container opspilot-full-test-f16-r1-collector-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-web-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-collector-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-mcp-1 Waiting 
+ Container opspilot-full-test-f16-r1-web-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-collector-1 Healthy 
+ Container opspilot-full-test-f16-r1-web-1 Healthy 
+ Container opspilot-full-test-f16-r1-mcp-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-944985085303 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-944985085303 Created 
+All checks passed!
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-9eaec175f959 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-9eaec175f959 Created 
+198 files already formatted
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-330f2778f76d Creating 
+ Container opspilot-full-test-f16-r1-tests-run-330f2778f76d Created 
+Success: no issues found in 131 source files
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-754cc689ff2f Creating 
+ Container opspilot-full-test-f16-r1-tests-run-754cc689ff2f Created 
+...........ssss.....................s............................ssss... [ 16%]
+.........................s.s............................................ [ 33%]
+........................................................................ [ 49%]
+........................................................................ [ 66%]
+........................................................................ [ 83%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+422 passed, 11 skipped in 690.61s (0:11:30)
+ Container opspilot-full-test-f16-r1-admin-run-cdf6d2eeb370 Creating 
+ Container opspilot-full-test-f16-r1-admin-run-cdf6d2eeb370 Created 
+{"passed": true, "security_events": 1207, "event_kinds": ["grant.consumed", "grant.issued", "revision.current_changed"], "payloads": "IDs/version/hash/key metadata only; no JWT", "least_privilege": "domain cannot approve/issue/revoke; audit delete denied"}
+ Container opspilot-full-test-f16-r1-admin-run-ef59e14b359c Creating 
+ Container opspilot-full-test-f16-r1-admin-run-ef59e14b359c Created 
+{"passed": true, "operations": {"create_ticket": {"committed_objects": 192, "all_receipts_consistent": true, "force_rls": true}, "add_ticket_comment": {"committed_objects": 28, "all_receipts_consistent": true, "force_rls": true}, "notify_manager": {"committed_objects": 47, "all_receipts_consistent": true, "force_rls": true}, "plan_gate": {"plans": 46, "bounded": true, "verified_receipts_consistent": true, "domain_direct_plan_access": false, "body_free_plan_events": 344}, "freshness_gate": {"replanned_runs": 20, "run_replan_bound": 1, "verification_bound_per_action": 3, "budget_force_rls": true, "duplicate_succeeded_logical_intents": 0, "domain_direct_budget_access": false}}, "scope": "isolated local F12; full ASVS L2 remains NOT_MET"}
+ Container opspilot-full-test-f16-r1-tests-run-6555813487e1 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-6555813487e1 Created 
+.                                                                        [100%]
+1 passed, 13 deselected in 6.97s
+ Container opspilot-full-test-f16-r1-redis-1 Stopping 
+ Container opspilot-full-test-f16-r1-redis-1 Stopped 
+ Container opspilot-full-test-f16-r1-tests-run-3ed0de765534 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-3ed0de765534 Created 
+.                                                                        [100%]
+1 passed, 13 deselected in 2.48s
+ Container opspilot-full-test-f16-r1-redis-1 Recreate 
+ Container opspilot-full-test-f16-r1-redis-1 Recreated 
+ Container opspilot-full-test-f16-r1-redis-1 Starting 
+ Container opspilot-full-test-f16-r1-redis-1 Started 
+ Container opspilot-full-test-f16-r1-redis-1 Waiting 
+ Container opspilot-full-test-f16-r1-redis-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-0bfaf499d532 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-0bfaf499d532 Created 
+{"passed": true, "checks": 12}
+ Container opspilot-full-test-f16-r1-collector-1 Stopping 
+ Container opspilot-full-test-f16-r1-collector-1 Stopped 
+ Container opspilot-full-test-f16-r1-tests-run-12d58d6a62cf Creating 
+ Container opspilot-full-test-f16-r1-tests-run-12d58d6a62cf Created 
+{"passed": true, "mode": "outage"}
+ Container opspilot-full-test-f16-r1-collector-run-c28259c53fce Creating 
+ Container opspilot-full-test-f16-r1-collector-run-c28259c53fce Created 
+ Container opspilot-full-test-f16-r1-collector-1 Starting 
+ Container opspilot-full-test-f16-r1-collector-1 Started 
+ Container opspilot-full-test-f16-r1-collector-1 Waiting 
+ Container opspilot-full-test-f16-r1-collector-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-761b01830e45 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-761b01830e45 Created 
+{"passed": true, "mode": "recovered"}
+ Container opspilot-full-test-f16-r1-collector-run-8e8cd268805d Creating 
+ Container opspilot-full-test-f16-r1-collector-run-8e8cd268805d Created 
+ Container opspilot-full-test-f16-r1-tests-run-5718fd730124 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-5718fd730124 Created 
+{"passed": true, "mode": "tampered"}
+ Container opspilot-full-test-f16-r1-collector-1 Stopping 
+ Container opspilot-full-test-f16-r1-collector-1 Stopped 
+ Container opspilot-full-test-f16-r1-collector-run-e18b288a9394 Creating 
+ Container opspilot-full-test-f16-r1-collector-run-e18b288a9394 Created 
+ Container opspilot-full-test-f16-r1-collector-run-bf75d89d5d88 Creating 
+ Container opspilot-full-test-f16-r1-collector-run-bf75d89d5d88 Created 
+Verified original journal/seal restored; corrupt copy preserved privately
+ Container opspilot-full-test-f16-r1-collector-1 Starting 
+ Container opspilot-full-test-f16-r1-collector-1 Started 
+ Container opspilot-full-test-f16-r1-collector-1 Waiting 
+ Container opspilot-full-test-f16-r1-collector-1 Healthy 
+ Container opspilot-full-test-f16-r1-tests-run-9245b0767952 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-9245b0767952 Created 
+{"passed": true, "mode": "recovered"}
+ Container opspilot-full-test-f16-r1-api-1 Stopping 
+ Container opspilot-full-test-f16-r1-api-1 Stopped 
+ Container opspilot-full-test-f16-r1-tests-run-3834d9ee5443 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-3834d9ee5443 Created 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Starting 
+ Container opspilot-full-test-f16-r1-api-1 Started 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-web-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-oidc-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-web-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-oidc-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-web-1 Healthy 
+ Container opspilot-full-test-f16-r1-oidc-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-mcp-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-worker2-1 Starting 
+ Container opspilot-full-test-f16-r1-worker2-1 Started 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-worker-1 Starting 
+ Container opspilot-full-test-f16-r1-worker-1 Started 
+ Container opspilot-full-test-f16-r1-admin-run-5218f55b6de5 Creating 
+ Container opspilot-full-test-f16-r1-admin-run-5218f55b6de5 Created 
+Isolated test queue drained before browser acceptance
+ Container opspilot-full-test-f16-r1-web-1 Running 
+ Container opspilot-full-test-f16-r1-api-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Running 
+ Container opspilot-full-test-f16-r1-postgres-1 Waiting 
+ Container opspilot-full-test-f16-r1-postgres-1 Healthy 
+ Container opspilot-full-test-f16-r1-api-1 Waiting 
+ Container opspilot-full-test-f16-r1-api-1 Healthy 
+ Container opspilot-full-test-f16-r1-web-1 Waiting 
+ Container opspilot-full-test-f16-r1-web-1 Healthy 
+ Container opspilot-full-test-f16-r1-e2e-run-a41759bebb2f Creating 
+ Container opspilot-full-test-f16-r1-e2e-run-a41759bebb2f Created 
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 23 tests using 1 worker
+
+  ✓   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (12.1s)
+  ✓   2 ../tests/e2e/freshness-revision.spec.ts:3:5 › bound mixed intent edit needs a new exact revision decision (14.2s)
+  ✓   3 ../tests/e2e/governance.spec.ts:3:5 › durable usage survives refresh; unknown cost never renders as zero (5.0s)
+  ✓   4 ../tests/e2e/greenshop.spec.ts:32:5 › GreenShop: live trail, evidence, immutable refresh, double click and verified ticket (11.4s)
+  ✓   5 ../tests/e2e/greenshop.spec.ts:93:5 › Reject creates no ticket and keeps the card visible (10.7s)
+  ✓   6 ../tests/e2e/greenshop.spec.ts:116:5 › polling reconnects without overlapping reads or losing the URL (30.2s)
+  ✓   7 ../tests/e2e/greenshop.spec.ts:152:5 › lost decision response reconciles the server decision before retry (11.0s)
+  ✓   8 ../tests/e2e/greenshop.spec.ts:175:5 › narrow viewport, plain text sources and readable partial results (8.8s)
+  ✓   9 ../tests/e2e/greenshop.spec.ts:212:5 › status-only completes without an approval card; terminal polling stops (8.5s)
+  ✓  10 ../tests/e2e/greenshop.spec.ts:230:5 › missing run and failed/unknown snapshots never display verified success (7.8s)
+  ✓  11 ../tests/e2e/greenshop.spec.ts:265:5 › a lost create response reuses the client request ID (11.6s)
+  ✓  12 ../tests/e2e/greenshop.spec.ts:304:5 › unknown and partial projections stay visibly unverified; snapshot mode is authoritative (9.6s)
+  ✓  13 ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout (2.4s)
+  ✓  14 ../tests/e2e/identity.spec.ts:46:5 › OIDC login never auto-provisions a membership (1.3s)
+  ✓  15 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: approve ticket, opposite inbox, concrete comment wave (16.5s)
+  ✓  16 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: reject ticket, opposite inbox, concrete comment wave (11.3s)
+  ✓  17 ../tests/e2e/observability.spec.ts:2:5 › operator diagnostics shows real scoped state and trace command IDs (8.3s)
+  ✓  18 ../tests/e2e/sse.spec.ts:3:5 › SSE reconnect after offline converges and remote logout clears private DOM (10.1s)
+  ✓  19 ../tests/e2e/sse.spec.ts:52:5 › duplicate replay and reset only refresh authoritative state, without repeating a mutation (8.0s)
+  ✓  20 ../tests/e2e/workspace-roles.spec.ts:13:5 › admin controls and auditor view are separated; mobile keyboard navigation (5.0s)
+  ✓  21 ../tests/e2e/workspace.spec.ts:3:5 › workspace clarification, cancellation, history and scoped download (8.3s)
+  ✓  22 ../tests/e2e/workspace.spec.ts:44:5 › workspace revision and private notification render hostile text safely (15.5s)
+  ✓  23 ../tests/e2e/workspace.spec.ts:89:5 › expiry disables decisions without a reload and unknown state exposes reconciliation (12.0s)
+
+  23 passed (4.0m)
+ Container opspilot-full-test-f16-r1-worker2-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopped 
+ Container opspilot-full-test-f16-r1-worker-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker-1 Stopped 
+ Container opspilot-full-test-f16-r1-api-1 Stopping 
+ Container opspilot-full-test-f16-r1-api-1 Stopped 
+ Container opspilot-full-test-f16-r1-tests-run-15392d10f80c Creating 
+ Container opspilot-full-test-f16-r1-tests-run-15392d10f80c Created 
+.....                                                                    [100%]
+5 passed in 75.51s (0:01:15)
+ Container opspilot-full-test-f16-r1-tests-run-e8acb2fd5506 Creating 
+ Container opspilot-full-test-f16-r1-tests-run-e8acb2fd5506 Created 
+...                                                                      [100%]
+3 passed in 54.93s
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c: Pulling from aquasec/trivy
+Digest: sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Status: Image is up to date for aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Downloading pygments (1.2MiB)
+Downloading pip (1.7MiB)
+ Downloaded pygments
+ Downloaded pip
+Installed 29 packages in 57ms
+realpath: --: No such file or directory
+No known vulnerabilities found
+Runtime image HIGH/CRITICAL gate and package audits passed; all scan findings preserved.
+2026-10-30T19:48:26Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-30T19:48:27Z	INFO	Detected OS	family="debian" version="13.7"
+2026-10-30T19:48:27Z	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=25
+2026-10-30T19:48:27Z	INFO	Number of language-specific files	num=1
+2026-10-30T19:48:27Z	INFO	[jar] Detecting vulnerabilities...
+2026-10-30T19:48:27Z	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+Verified raw HIGH/CRITICAL=4; applicable=0 for exact image sha256:5b68f96aef31f4aa90faf44b27e40c9c3f6757e44437302b089975aa824f2b78
+2026-10-30T19:48:41Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-30T19:48:41Z	INFO	Detected OS	family="alpine" version="3.23.7"
+2026-10-30T19:48:41Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.23" repository="3.23" pkg_num=23
+2026-10-30T19:48:41Z	INFO	Number of language-specific files	num=0
+F15 app/web/Redis runtime image and package gates passed; raw IdP applicability retained separately.
+ Container opspilot-full-test-f16-r1-evals-run-e9ce2379244a Creating 
+ Container opspilot-full-test-f16-r1-evals-run-e9ce2379244a Created 
+E01: True actions_verified []
+E02: True rejected []
+E03: True actions_verified []
+E04: True diagnosis_only []
+E05: True insufficient_context []
+E06: True None []
+2026-10-30 19:49:07.832 | WARNING  | opspilot.mcp_server.tools_read:call_tool:283 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-30 19:49:07.963 | WARNING  | opspilot.mcp_server.tools_read:call_tool:283 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-30 19:49:08.170 | WARNING  | opspilot.mcp_server.tools_read:call_tool:283 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+E07: True partial []
+E08: True partial []
+E09: True partial []
+E10: True blocked []
+E11: True rejected []
+E12: True budget_exhausted []
+ Container opspilot-full-test-f16-r1-worker-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker-1 Stopped 
+ Container opspilot-full-test-f16-r1-redis-1 Stopping 
+ Container opspilot-full-test-f16-r1-redis-1 Stopped 
+ Container opspilot-full-test-f16-r1-web-1 Stopping 
+ Container opspilot-full-test-f16-r1-web-1 Stopped 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopping 
+ Container opspilot-full-test-f16-r1-worker2-1 Stopped 
+ Container opspilot-full-test-f16-r1-collector-1 Stopping 
+ Container opspilot-full-test-f16-r1-collector-1 Stopped 
+ Container opspilot-full-test-f16-r1-oidc-1 Stopping 
+ Container opspilot-full-test-f16-r1-oidc-1 Stopped 
+ Container opspilot-full-test-f16-r1-api-1 Stopping 
+ Container opspilot-full-test-f16-r1-api-1 Stopped 
+ Container opspilot-full-test-f16-r1-mcp-1 Stopping 
+ Container opspilot-full-test-f16-r1-mcp-1 Stopped 
+ Container opspilot-full-test-f16-r1-postgres-1 Stopping 
+ Container opspilot-full-test-f16-r1-postgres-1 Stopped 

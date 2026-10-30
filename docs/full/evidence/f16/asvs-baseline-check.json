@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "base": "a06d1a7",
+  "requirements": 253,
+  "all_inherited_fields_preserved": true,
+  "scope_reviews": 141,
+  "primary_reviews": 16,
+  "whole_requirement_closure": false,
+  "full_l2_status": "NOT_MET"
+}

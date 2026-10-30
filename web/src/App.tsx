@@ -1,3 +1,4 @@
+import { DiagnosticsPanel } from "./DiagnosticsPanel";
 import { WorkspaceViews } from "./WorkspaceViews";
 import { RunControls, RevisionControls } from "./RunControls";
 import { AuthGate, useIdentity } from "./AuthGate";
@@ -32,6 +33,7 @@ function Workspace() {
       ? ["history"]
       : []),
     "inbox",
+    ...(identity?.roles.some(r=>["operator","admin","auditor"].includes(r))?["diagnostics"]:[]),
     ...(identity?.roles.includes("auditor") ? ["audit"] : []),
     ...(identity?.roles.includes("admin") ? ["admin"] : []),
   ];
@@ -129,6 +131,7 @@ function Workspace() {
                   inbox: "Inbox",
                   audit: "Audit",
                   admin: "Administration",
+                  diagnostics: "Diagnostics",
                 }[item]
               }
             </button>
@@ -193,7 +196,7 @@ function Workspace() {
             </button>
           </div>
         )}
-        {view !== "investigate" ? (
+        {view === "diagnostics" ? <DiagnosticsPanel /> : view !== "investigate" ? (
           <WorkspaceViews
             key={view}
             view={view}

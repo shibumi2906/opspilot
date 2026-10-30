@@ -18,12 +18,14 @@ from opspilot.db.models_workflow import Action, AgentRun, Approval
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import payload_hash
 from opspilot.runtime.fencing import execution_lease
+from opspilot.telemetry import traced
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
 if TYPE_CHECKING:
     from opspilot.runtime.run_service import RunService
 
 
+@traced("reconciliation.check")
 async def recover(service: "RunService", only_run: UUID | None = None) -> None:
     async with AsyncSession(service.engine) as session:
         ids = list(

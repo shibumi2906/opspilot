@@ -2,21 +2,24 @@
 
 import asyncio
 import signal
+import time
 from uuid import UUID
 
 from loguru import logger
+from opentelemetry.context import Context
 from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.config import Settings
 from opspilot.contracts.api import CreateRun
 from opspilot.db.models_workflow import AgentRun
 from opspilot.logging import configure_logging
+from opspilot.observability.client import count
 from opspilot.runtime.events import publish_pending
 from opspilot.runtime.fencing import Fence, execution_lease
 from opspilot.runtime.jobs import claim, finish, reap
 from opspilot.runtime.recovery import recover
 from opspilot.runtime.run_service import RunService
-from opspilot.telemetry import configure
+from opspilot.telemetry import configure, span
 from opspilot.tenancy.context import tenant_scope
 from opspilot.tenancy.session import TenantSession
 
@@ -36,34 +39,55 @@ async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
     )
     if job is None:
         return False
-    async with execution_lease(
-        service.engine,
-        job["run_id"],
-        service.settings,
-        Fence(job["run_id"], job["claim_owner"], job["claim_epoch"]),
+    started = time.monotonic()
+    with span(
+        "command.process",
+        parent=Context(),
+        linked=job.get("traceparent"),
+        run_id=str(job["run_id"]),
+        job_id=str(job["id"]),
+        worker_epoch=job["claim_epoch"],
+        tenant_id=str(job["tenant_id"]),
+        actor_id=str(job["actor_id"]),
     ):
-        try:
-            async with TenantSession(service.engine) as session:
-                run = await session.get(AgentRun, job["run_id"])
-                if run is None:
-                    raise RuntimeError("Command run missing")
-            if await finalize_cancel(service, run.id):
-                pass
-            elif run.workflow_version not in {"full-graph-v1", "full-graph-v2"}:
-                await service.fail(run.id, "UNSUPPORTED_WORKFLOW_VERSION")
-            elif run.state_schema_version != 1:
-                await service.fail(run.id, "CHECKPOINT_UNSUPPORTED")
-            elif run.status == "queued" and job["kind"] == "start":
-                await service.execute(
-                    run.id, CreateRun(request=run.request, client_request_id=run.client_request_id)
-                )
-            elif run.status in {"queued", "running", "waiting_for_approval", "waiting_for_input"}:
-                await recover(service, run.id)
-            await finalize_cancel(service, run.id)
-            await finish(service.engine, job)
-        except Exception:
-            # No raw provider details persist. Cancellation leaves a running job for restart.
-            await finish(service.engine, job, failed=True)
+        async with execution_lease(
+            service.engine,
+            job["run_id"],
+            service.settings,
+            Fence(job["run_id"], job["claim_owner"], job["claim_epoch"]),
+        ):
+            try:
+                async with TenantSession(service.engine) as session:
+                    run = await session.get(AgentRun, job["run_id"])
+                    if run is None:
+                        raise RuntimeError("Command run missing")
+                from opentelemetry import trace
+
+                trace.get_current_span().set_attribute("actor_id", str(run.actor_id))
+                if await finalize_cancel(service, run.id):
+                    pass
+                elif run.workflow_version not in {"full-graph-v1", "full-graph-v2"}:
+                    await service.fail(run.id, "UNSUPPORTED_WORKFLOW_VERSION")
+                elif run.state_schema_version != 1:
+                    await service.fail(run.id, "CHECKPOINT_UNSUPPORTED")
+                elif run.status == "queued" and job["kind"] == "start":
+                    await service.execute(
+                        run.id,
+                        CreateRun(request=run.request, client_request_id=run.client_request_id),
+                    )
+                elif run.status in {
+                    "queued",
+                    "running",
+                    "waiting_for_approval",
+                    "waiting_for_input",
+                }:
+                    await recover(service, run.id)
+                await finalize_cancel(service, run.id)
+                await finish(service.engine, job)
+            except Exception:
+                # No raw provider details persist. Cancellation leaves a running job for restart.
+                await finish(service.engine, job, failed=True)
+    count("job_duration_ms", "jobs", round((time.monotonic() - started) * 1000))
     return True
 
 
@@ -81,6 +105,7 @@ async def serve(settings: Settings, stop: asyncio.Event) -> None:
                         worked = bool(await publish_pending(service.engine)) or worked
                     except (SQLAlchemyError, OSError):
                         # No claim is forgotten: unacknowledged work remains fenced for the reaper.
+                        count("upstream_errors", "database")
                         logger.warning("worker_database_unavailable")
                         try:
                             await asyncio.wait_for(stop.wait(), 0.5)

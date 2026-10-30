@@ -51,6 +51,8 @@ for kid in ("grant-current", "grant-next"):
         .decode()
     )
 (OUT / "service-public/grants.json").write_text(json.dumps(grant_ring))
+from opspilot.observability.provision import prepare
+prepare(OUT / "observability")
 now = datetime.now(timezone.utc)
 
 
@@ -273,6 +275,11 @@ def service(role, dbs):
         files.update(redis_password="/secrets/redis.password", cache_signing_key="/secrets/cache-signing.key")
         env["SECRET_FILES"] = json.dumps(files)
         vol += ["./redis.password:/secrets/redis.password:ro", "./cache-signing.key:/secrets/cache-signing.key:ro"]
+    if role in ["api","worker","mcp"]:
+        env.update(OTEL_ENDPOINT="https://collector:4318/v1/traces",
+                   TELEMETRY_CA_FILE="/run/observability/ca.crt",TELEMETRY_CERT_FILE="/run/observability/client.crt",
+                   TELEMETRY_KEY_FILE="/run/observability/client.key",TELEMETRY_TOKEN_FILE="/run/observability/token")
+        vol += ["./observability/"+role+":/run/observability:ro"]
     return {
         "image": "opspilot-full/app:f01",
         "init": True,
@@ -287,6 +294,21 @@ def service(role, dbs):
 
 
 services = {}
+services["telemetry-init"] = {
+    "image":"opspilot-full/app:f01","profiles":["tools"],"user":"0:0","network_mode":"none",
+    "command":["python","-m","opspilot.observability.init"],
+    "volumes":["telemetry_data:/var/lib/opspilot-observability","telemetry_seal:/var/lib/opspilot-seals"]}
+services["collector"] = {
+    "image":"opspilot-full/app:f01","user":"10001:10001","read_only":True,
+    "cap_drop":["ALL"],"security_opt":["no-new-privileges:true"],"tmpfs":["/tmp"],"mem_limit":"192m",
+    "command":["python","-m","opspilot.observability.collector"],
+    "volumes":["telemetry_data:/var/lib/opspilot-observability","telemetry_seal:/var/lib/opspilot-seals",
+               "./observability/collector:/run/observability:ro"],
+    "healthcheck":{"test":["CMD","python","-c",
+        "import pathlib,time;p=pathlib.Path('/var/lib/opspilot-observability/ready');assert p.exists() and time.time()-p.stat().st_mtime<10"],
+        "interval":"5s","timeout":"3s","retries":15},
+    "logging":{"driver":"local","options":{"max-size":"5m","max-file":"3"}},
+    "networks":{"default":{"aliases":["collector-wrong"]}}}
 services["redis"] = {
     "image": "opspilot-full/redis:f15", "user": "10001:10001", "read_only": True,
     "cap_drop": ["ALL"], "security_opt": ["no-new-privileges:true"], "mem_limit": "96m",
@@ -331,6 +353,7 @@ services["postgres"] = {
 }
 services["oidc"] = {
     "image": "opspilot-full/oidc:f03",
+    "mem_limit": "1g",
     "command": [
         "start",
         "--import-realm",
@@ -407,7 +430,7 @@ services["browser"] = {
         {
             "name": "opspilot-full-security",
             "services": services,
-            "volumes": {"pgdata": {}, "oidcdata": {}},
+            "volumes": {"pgdata": {}, "oidcdata": {}, "telemetry_data": {}, "telemetry_seal": {}},
         },
         indent=2,
     )

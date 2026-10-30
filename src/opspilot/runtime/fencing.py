@@ -105,6 +105,9 @@ async def pulse(
         while True:
             await asyncio.sleep(settings.worker_heartbeat_seconds)
             if not await heartbeat(engine, fence, settings.worker_lease_seconds):
+                from opspilot.observability.client import count
+
+                count("lease_losses", "jobs")
                 task.cancel()
                 return
     except asyncio.CancelledError:

@@ -3,7 +3,6 @@ from datetime import UTC, datetime
 from typing import Any
 from uuid import UUID, uuid4
 
-import httpx
 from langchain_core.runnables import RunnableConfig
 from langgraph.types import Command
 from psycopg import Error as PsycopgError
@@ -25,7 +24,6 @@ from opspilot.llm.real import RealProvider
 from opspilot.llm.scripted import ScriptedProvider
 from opspilot.runtime.actions import Conflict
 from opspilot.runtime.jobs import enqueue
-from opspilot.security.tls import client_context
 from opspilot.telemetry import carrier, span
 from opspilot.tenancy.session import TenantSession as AsyncSession
 
@@ -53,6 +51,9 @@ class RunService:
 
     async def create(self, body: CreateRun) -> dict[str, Any]:
         run_id = uuid4()
+        from opentelemetry import trace
+
+        trace.get_current_span().set_attribute("run_id", str(run_id))
         result = await run_investigation(
             self.settings,
             body.request,
@@ -263,32 +264,10 @@ class RunService:
                     public["actions"][0],
                 )
             public["traces"] = []
-        available = False
-        if self.settings.jaeger_url and public.get("trace_context"):
-            try:
-                async with httpx.AsyncClient(
-                    timeout=0.3, trust_env=False, verify=client_context(self.settings)
-                ) as client:
-                    available = (
-                        await client.get(self.settings.jaeger_query_url + "/api/services")
-                    ).is_success
-            except httpx.HTTPError:
-                pass
-        if available and self.settings.jaeger_url:
-            for label, key in (
-                ("Investigation", "trace_context"),
-                ("Continuation", "continuation_context"),
-            ):
-                context = public.get(key)
-                if context:
-                    public["traces"].append(
-                        {
-                            "label": label,
-                            "url": self.settings.jaeger_url.rstrip("/")
-                            + "/trace/"
-                            + context.split("-")[1],
-                        }
-                    )
+        if self.settings.otel_endpoint and public.get("trace_context"):
+            public["traces"] = [
+                {"label": "Operator diagnostics", "url": f"/?view=diagnostics&run_id={run_id}"}
+            ]
         public.pop("trace_context", None)
         public.pop("continuation_context", None)
         return public

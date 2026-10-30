@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "checks": {
+    "missing_client_certificate": true,
+    "untrusted_server_ca": true,
+    "hostname_mismatch": true,
+    "invalid_bearer_rejected": true,
+    "write_identity_cannot_read": true,
+    "body_media_query_bounds": true,
+    "native_mtls": true,
+    "ingress_redaction": true,
+    "metrics_positive_schema": true,
+    "source_clock_warning": true,
+    "protected_read": true,
+    "synthetic_records": 2
+  }
+}

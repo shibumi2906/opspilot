@@ -6,6 +6,8 @@ from uuid import UUID, uuid4
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from opspilot.observability.client import count
+from opspilot.telemetry import carrier
 from opspilot.tenancy.context import require_tenant
 from opspilot.tenancy.session import TenantSession
 
@@ -13,22 +15,32 @@ from opspilot.tenancy.session import TenantSession
 async def enqueue(
     session: TenantSession, run_id: UUID, kind: str, action_id: UUID | None = None
 ) -> None:
+    from opentelemetry import trace
+
+    trace.get_current_span().set_attribute("run_id", str(run_id))
     # A later wave can be decided after its checkpoint but before this worker acknowledges.
     if kind == "resume":
         queued = await session.execute(
             text("""UPDATE workflow.command_jobs
-          SET next_action_id=:a WHERE tenant_id=:t AND run_id=:r AND kind='resume'
+          SET next_action_id=:a,traceparent=:trace
+          WHERE tenant_id=:t AND run_id=:r AND kind='resume'
           AND status='running' AND action_id IS DISTINCT FROM :a RETURNING id"""),
-            {"a": action_id, "t": require_tenant(), "r": run_id},
+            {
+                "a": action_id,
+                "t": require_tenant(),
+                "r": run_id,
+                "trace": carrier().get("traceparent"),
+            },
         )
         if queued.first() is not None:
             return
     # The caller owns the run/decision transaction; never commit here.
     await session.execute(
         text("""INSERT INTO workflow.command_jobs
-        (id,tenant_id,run_id,kind,action_id) VALUES(:id,:tenant,:run,:kind,:action)
+        (id,tenant_id,run_id,kind,action_id,traceparent)
+        VALUES(:id,:tenant,:run,:kind,:action,:trace)
         ON CONFLICT(tenant_id,run_id,kind) DO UPDATE SET
-action_id=EXCLUDED.action_id,status='pending',attempts=0,available_at=clock_timestamp(),
+action_id=EXCLUDED.action_id,traceparent=EXCLUDED.traceparent,status='pending',attempts=0,available_at=clock_timestamp(),
         finished_at=NULL,claim_owner=NULL,claim_epoch=NULL
         WHERE workflow.command_jobs.kind='resume' AND workflow.command_jobs.status IN
 ('done','dead')
@@ -39,6 +51,7 @@ action_id=EXCLUDED.action_id,status='pending',attempts=0,available_at=clock_time
             "run": run_id,
             "kind": kind,
             "action": action_id,
+            "trace": carrier().get("traceparent"),
         },
     )
 
@@ -56,7 +69,9 @@ async def claim(
         row = (
             (
                 await conn.execute(
-                    text("""SELECT * FROM workflow.command_jobs j
+                    text("""SELECT j.*,(SELECT actor_id FROM workflow.agent_runs a
+          WHERE a.tenant_id=j.tenant_id AND a.id=j.run_id) AS actor_id
+          FROM workflow.command_jobs j
           WHERE tenant_id=:t AND status='pending' AND available_at<=clock_timestamp()
           AND (CAST(:r AS uuid) IS NULL OR run_id=:r)
           AND NOT EXISTS(SELECT 1 FROM workflow.run_execution_leases l WHERE l.tenant_id=j.tenant_id
@@ -86,6 +101,7 @@ async def claim(
         job.update(attempts=row["attempts"] + 1, claim_owner=fence.owner, claim_epoch=fence.epoch)
         await conn.execute(
             text("""UPDATE workflow.command_jobs SET status='running',
+          first_claimed_at=COALESCE(first_claimed_at,clock_timestamp()),claimed_at=clock_timestamp(),
           attempts=:a,claim_owner=:o,claim_epoch=:e,error_code=NULL
           WHERE id=:id AND tenant_id=:t"""),
             {
@@ -96,6 +112,7 @@ async def claim(
                 "t": require_tenant(),
             },
         )
+        count("job_claims", "jobs")
         return job
 
 
@@ -204,4 +221,6 @@ async def reap(engine: AsyncEngine, run_id: UUID | None = None) -> int:
               lease_until=clock_timestamp() WHERE tenant_id=:t AND run_id=:r"""),
                 {"t": require_tenant(), "r": row["run_id"]},
             )
+        if rows:
+            count("lease_losses", "jobs", len(rows))
         return len(rows)
