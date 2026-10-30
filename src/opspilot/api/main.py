@@ -55,6 +55,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             "mode": settings.llm_mode,
             "model_id": settings.openai_model if settings.llm_mode == "real" else None,
             "synthetic": True,
+            "source": "synthetic",
+            "account_url": settings.oidc_issuer + "/account/",
             "scenario_clock": settings.scenario_clock.isoformat(),
             "timezone": "Asia/Jerusalem",
         }
@@ -88,6 +90,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from opspilot.api.routes_authorized import router as authorized_router
 
     app.include_router(authorized_router)
+    from opspilot.api.routes_workspace import router as workspace_router
+
+    app.include_router(workspace_router)
     return app
 
 

@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 29 октября 2026 года. **F01–F13 завершены; F14–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 30 октября 2026 года. **F01–F14 завершены; F15–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F14 — полный UI/история/inbox/admin. Не начат.**
+**Следующий этап: F15 — cache, admission, quotas и стоимость. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F14 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F15 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -66,7 +66,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F11 | done | Bounded mixed DAG, independent decisions, sequential approved subset, dependent skip и concrete comment wave | [evidence](full/evidence/f11/README.md) | [SEC-03/07](security/asvs-l2-implementation-plan.md) |
 | F12 | done | Uncached preconditions, DB-time expiry/revoke/roles, bounded replacement consent и durable verification quota | [evidence](full/evidence/f12/README.md) | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
 | F13 | done | Authenticated DB SSE/replay/reset, live revocation, bounded streams и browser reconnect | [evidence](full/evidence/f13/README.md) | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
-| F14 | not_started | Полный UI/история/inbox/admin | — | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
+| F14 | done | Ролевой workspace, history/inbox/admin/audit, exact revision/TTL, scoped export | [evidence](full/evidence/f14/README.md) | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
 | F15 | not_started | Redis/limits/durable usage/cost | — | [SEC-07](security/asvs-l2-implementation-plan.md) |
 | F16 | not_started | Traces/metrics/operator diagnostics | — | [SEC-05](security/asvs-l2-implementation-plan.md) |
 | F17 | not_started | Retention/rotation/Full Core acceptance | — | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
@@ -637,3 +637,45 @@ local synthetic OIDC/PostgreSQL/MCP; dependency/scanner downloads были. Paid
 remote CI, production deployment и push0. Blockers F13 отсутствуют. Только F13 выполнен;
 F14 не начинался. Local stage commit subject:
 `feat(full-f13): add authorized bounded SSE replay and reconnect`.
+
+
+## F14 — полный пользовательский workspace и администрирование
+
+29–30 октября 2026. Full worktree/ветка сохранены; base F13 `2fe6613`.
+Migration `0014_freshness` → `0015_workspace`: FORCE-RLS inbox read markers, immutable UI commands,
+connector controls и narrowly granted fixed-search-path functions. History/cursor filters,
+clarification, Cancel/refresh, mixed decisions/revisions/revoke/TTL, unknown/partial reconciliation,
+recipient inbox, role-scoped memberships/session/account controls, connector CAS, redacted audit
+и bounded metadata exports доступны из браузера. Mode/source/actor/точная revision показаны;
+технические grants и credentials в продуктовые формы не вынесены.
+
+[Contracts](full/f14-security-contracts.md), [evidence](full/evidence/f14/README.md),
+[checks](full/evidence/f14/checks.json): backend387/9 dedicated skips, browser21, queue5, fencing3,
+native TLS8+MFA/browser14, отдельные IdP policy4, scripted eval12/12. Unauthorized/duplicate/
+false verified writes0; IdP disable закрыл TLS SSE за605ms. Ruff/format/mypy120, TypeScript/Vite,
+PowerShell parsers проходят. Source/image proof:120 Python,35 UI files и3 served assets.
+
+IdP обновлён до pinned Keycloak26.8.1 с security-fixed Java21, checksum-pinned Guava33.7.2,
+проверенным default truststore и парольным blocklist/history/length policy. App/web raw H/C0,
+package audits0. IdP raw4 HIGH сохранены: точный digest/слои/ELF libuuid и отсутствие затронутого
+libmount/nsenter подтверждают неприменимость этих source-package находок. Applicable H/C0;
+ignore, удаление metadata и risk acceptance не использованы. Все253 ASVS IDs/levels/baseline/
+owners/NA fields сохранены;174 scoped gates прошли,103 primary whole-norm reviews остаются
+открытыми. Production recovery/mail/factor-change notifications/admin MFA остаются F23 gates;
+full ASVS L2 NOT_MET.
+
+После прерывания миграция уже была committed в БД; повторно не выполнялась. Counts/SHA256
+прежних tickets/comments/notifications/actions/receipts совпали с committed F13 snapshot.
+Quiesced private IdP backup сохранён под ignored `.tools`, архив проверен. Обновлены только
+reviewed realm policy keys; live OIDC smoke подтвердил clarification/cancel/history/export/inbox,
+admin connector disable/enable с восстановлением и отдельный auditor view, без ручного admin SQL.
+UI8091/API8011 HTTP200;2 workers запущены, runtime image IDs совпали с прошедшими scan images.
+MVP184 source/env fingerprints/main/HEAD/images/volume metadata+content неизменны; checkout чист.
+
+Docker Engine/IPC failures прерывали инфраструктурные candidates; Desktop restart был разрешён
+владельцем, stale IPC сохранён отдельно без reset/data/volume удаления. В custom IdP исправлены
+heap bounds и явный container bind, затем повторены все21 browser и native TLS/MFA gates.
+Failed/interrupted candidates сохранены, assertions не ослаблялись. F14 test/lab containers и
+networks удалены; volumes/images сохранены. Paid/vendor writes, remote CI, production deploy,
+push0. F15 не начат. Blockers F14 отсутствуют. Отдельный local commit subject:
+`feat(full-f14): complete scoped operations workspace and administration`.

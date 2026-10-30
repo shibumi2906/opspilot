@@ -1,0 +1,111 @@
+ Container opspilot-full-test-f14-final-jaeger-1  Created
+ Container opspilot-full-test-f14-final-collector-1  Created
+ Container opspilot-full-test-f14-final-postgres-1  Created
+ Container opspilot-full-test-f14-final-mcp-1  Created
+ Container opspilot-full-test-f14-final-api-1  Created
+ Container opspilot-full-test-f14-final-web-1  Created
+ Container opspilot-full-test-f14-final-worker2-1  Created
+ Container opspilot-full-test-f14-final-worker-1  Created
+ Container opspilot-full-test-f14-final-oidc-1  Recreate
+ Container opspilot-full-test-f14-final-oidc-1  Recreated
+ Container opspilot-full-test-f14-final-postgres-1  Starting
+ Container opspilot-full-test-f14-final-jaeger-1  Starting
+ Container opspilot-full-test-f14-final-collector-1  Starting
+ Container opspilot-full-test-f14-final-oidc-1  Starting
+ Container opspilot-full-test-f14-final-collector-1  Started
+ Container opspilot-full-test-f14-final-oidc-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-jaeger-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-mcp-1  Starting
+ Container opspilot-full-test-f14-final-api-1  Starting
+ Container opspilot-full-test-f14-final-mcp-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Started
+ Container opspilot-full-test-f14-final-api-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-worker-1  Starting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-worker2-1  Starting
+ Container opspilot-full-test-f14-final-worker2-1  Started
+ Container opspilot-full-test-f14-final-worker-1  Started
+ Container opspilot-full-test-f14-final-api-1  Healthy
+ Container opspilot-full-test-f14-final-web-1  Starting
+ Container opspilot-full-test-f14-final-web-1  Started
+ Container opspilot-full-test-f14-final-mcp-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Waiting
+ Container opspilot-full-test-f14-final-jaeger-1  Waiting
+ Container opspilot-full-test-f14-final-worker2-1  Waiting
+ Container opspilot-full-test-f14-final-collector-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-oidc-1  Waiting
+ Container opspilot-full-test-f14-final-web-1  Waiting
+ Container opspilot-full-test-f14-final-worker-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Healthy
+ Container opspilot-full-test-f14-final-mcp-1  Healthy
+ Container opspilot-full-test-f14-final-worker-1  Healthy
+ Container opspilot-full-test-f14-final-worker2-1  Healthy
+ Container opspilot-full-test-f14-final-collector-1  Healthy
+ Container opspilot-full-test-f14-final-jaeger-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-web-1  Healthy
+ Container opspilot-full-test-f14-final-oidc-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Running
+ Container opspilot-full-test-f14-final-api-1  Running
+ Container opspilot-full-test-f14-final-web-1  Running
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-api-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 21 tests using 1 worker
+
+  ✓   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (12.8s)
+  ✓   2 ../tests/e2e/freshness-revision.spec.ts:3:5 › bound mixed intent edit needs a new exact revision decision (11.7s)
+  ✓   3 ../tests/e2e/greenshop.spec.ts:32:5 › GreenShop: live trail, evidence, immutable refresh, double click and verified ticket (9.7s)
+  ✓   4 ../tests/e2e/greenshop.spec.ts:93:5 › Reject creates no ticket and keeps the card visible (7.7s)
+  ✓   5 ../tests/e2e/greenshop.spec.ts:116:5 › polling reconnects without overlapping reads or losing the URL (28.0s)
+  ✓   6 ../tests/e2e/greenshop.spec.ts:152:5 › lost decision response reconciles the server decision before retry (9.1s)
+  ✓   7 ../tests/e2e/greenshop.spec.ts:175:5 › narrow viewport, plain text sources and readable partial results (9.7s)
+  ✓   8 ../tests/e2e/greenshop.spec.ts:212:5 › status-only completes without an approval card; terminal polling stops (8.9s)
+  ✓   9 ../tests/e2e/greenshop.spec.ts:230:5 › missing run and failed/unknown snapshots never display verified success (7.1s)
+  ✓  10 ../tests/e2e/greenshop.spec.ts:265:5 › a lost create response reuses the client request ID (8.8s)
+  ✓  11 ../tests/e2e/greenshop.spec.ts:304:5 › unknown and partial projections stay visibly unverified; snapshot mode is authoritative (6.5s)
+  ✓  12 ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout (1.9s)
+  ✓  13 ../tests/e2e/identity.spec.ts:46:5 › OIDC login never auto-provisions a membership (952ms)
+  ✓  14 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: approve ticket, opposite inbox, concrete comment wave (12.8s)
+  ✓  15 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: reject ticket, opposite inbox, concrete comment wave (10.8s)
+  ✓  16 ../tests/e2e/sse.spec.ts:3:5 › SSE reconnect after offline converges and remote logout clears private DOM (7.4s)
+  ✓  17 ../tests/e2e/sse.spec.ts:52:5 › duplicate replay and reset only refresh authoritative state, without repeating a mutation (5.3s)
+  ✓  18 ../tests/e2e/workspace-roles.spec.ts:13:5 › admin controls and auditor view are separated; mobile keyboard navigation (4.1s)
+  ✓  19 ../tests/e2e/workspace.spec.ts:3:5 › workspace clarification, cancellation, history and scoped download (7.0s)
+  ✓  20 ../tests/e2e/workspace.spec.ts:44:5 › workspace revision and private notification render hostile text safely (11.7s)
+  ✓  21 ../tests/e2e/workspace.spec.ts:89:5 › expiry disables decisions without a reload and unknown state exposes reconciliation (10.0s)
+
+  21 passed (3.3m)
+ Container opspilot-full-test-f14-final-jaeger-1  Stopping
+ Container opspilot-full-test-f14-final-oidc-1  Stopping
+ Container opspilot-full-test-f14-final-collector-1  Stopping
+ Container opspilot-full-test-f14-final-web-1  Stopping
+ Container opspilot-full-test-f14-final-worker2-1  Stopping
+ Container opspilot-full-test-f14-final-worker-1  Stopping
+ Container opspilot-full-test-f14-final-collector-1  Stopped
+ Container opspilot-full-test-f14-final-web-1  Stopped
+ Container opspilot-full-test-f14-final-api-1  Stopping
+ Container opspilot-full-test-f14-final-worker2-1  Stopped
+ Container opspilot-full-test-f14-final-worker-1  Stopped
+ Container opspilot-full-test-f14-final-mcp-1  Stopping
+ Container opspilot-full-test-f14-final-api-1  Stopped
+ Container opspilot-full-test-f14-final-oidc-1  Stopped
+ Container opspilot-full-test-f14-final-mcp-1  Stopped
+ Container opspilot-full-test-f14-final-postgres-1  Stopping
+ Container opspilot-full-test-f14-final-postgres-1  Stopped
+ Container opspilot-full-test-f14-final-jaeger-1  Stopped

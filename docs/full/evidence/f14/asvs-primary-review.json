@@ -1,0 +1,1138 @@
+{
+  "standard": "OWASP ASVS 5.0.0",
+  "primary_f14_requirements": 103,
+  "full_l2_status": "NOT_MET",
+  "reviews": [
+    {
+      "id": "v5.0.0-1.1.1",
+      "section": "Encoding and Sanitization Architecture",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.1.2",
+      "section": "Encoding and Sanitization Architecture",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.2.1",
+      "section": "Injection Prevention",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.2.2",
+      "section": "Injection Prevention",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.2.3",
+      "section": "Injection Prevention",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.2.4",
+      "section": "Injection Prevention",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.2.5",
+      "section": "Injection Prevention",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.2.9",
+      "section": "Injection Prevention",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.3.2",
+      "section": "Sanitization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.3.3",
+      "section": "Sanitization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.3.5",
+      "section": "Sanitization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.3.6",
+      "section": "Sanitization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.3.7",
+      "section": "Sanitization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.3.10",
+      "section": "Sanitization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.4.1",
+      "section": "Memory, String, and Unmanaged Code",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.4.2",
+      "section": "Memory, String, and Unmanaged Code",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.4.3",
+      "section": "Memory, String, and Unmanaged Code",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-1.5.2",
+      "section": "Safe Deserialization",
+      "implementation_refs": [
+        "web/src/WorkspaceViews.tsx",
+        "web/src/RunControls.tsx",
+        "src/opspilot/api/routes_workspace.py",
+        "tests/integration/test_workspace_ui.py"
+      ],
+      "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+    },
+    {
+      "id": "v5.0.0-3.2.1",
+      "section": "Unintended Content Interpretation",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.2.2",
+      "section": "Unintended Content Interpretation",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.3.1",
+      "section": "Cookie Setup",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.3.2",
+      "section": "Cookie Setup",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.3.3",
+      "section": "Cookie Setup",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.3.4",
+      "section": "Cookie Setup",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.4.1",
+      "section": "Browser Security Mechanism Headers",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.4.2",
+      "section": "Browser Security Mechanism Headers",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.4.3",
+      "section": "Browser Security Mechanism Headers",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.4.4",
+      "section": "Browser Security Mechanism Headers",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.4.5",
+      "section": "Browser Security Mechanism Headers",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.4.6",
+      "section": "Browser Security Mechanism Headers",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.5.1",
+      "section": "Browser Origin Separation",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.5.3",
+      "section": "Browser Origin Separation",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.5.4",
+      "section": "Browser Origin Separation",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.7.1",
+      "section": "Other Browser Security Considerations",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-3.7.2",
+      "section": "Other Browser Security Considerations",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-6.1.1",
+      "section": "Authentication Documentation",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.1.2",
+      "section": "Authentication Documentation",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.1.3",
+      "section": "Authentication Documentation",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.1",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.2",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.3",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.4",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.5",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.6",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.7",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.8",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.9",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.10",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.11",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.2.12",
+      "section": "Password Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.3.1",
+      "section": "General Authentication Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.3.2",
+      "section": "General Authentication Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.3.3",
+      "section": "General Authentication Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.3.4",
+      "section": "General Authentication Security",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.4.1",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.4.2",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.4.3",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.4.4",
+      "section": "Authentication Factor Lifecycle and Recovery",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.8.2",
+      "section": "Authentication with an Identity Provider",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-6.8.4",
+      "section": "Authentication with an Identity Provider",
+      "implementation_refs": [
+        "infra/identity/opspilot-realm.json",
+        "infra/identity/password-blacklists/source.json",
+        "scripts/security_local_browser.mjs",
+        "web/src/SessionControls.tsx"
+      ],
+      "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+    },
+    {
+      "id": "v5.0.0-7.1.1",
+      "section": "Session Management Documentation",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.1.2",
+      "section": "Session Management Documentation",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.1.3",
+      "section": "Session Management Documentation",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.2.1",
+      "section": "Fundamental Session Management Security",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.2.2",
+      "section": "Fundamental Session Management Security",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.2.3",
+      "section": "Fundamental Session Management Security",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.2.4",
+      "section": "Fundamental Session Management Security",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.3.1",
+      "section": "Session Timeout",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.3.2",
+      "section": "Session Timeout",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.4.1",
+      "section": "Session Termination",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.4.2",
+      "section": "Session Termination",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.4.3",
+      "section": "Session Termination",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.4.4",
+      "section": "Session Termination",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.4.5",
+      "section": "Session Termination",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.5.1",
+      "section": "Defenses Against Session Abuse",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.5.2",
+      "section": "Defenses Against Session Abuse",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.6.1",
+      "section": "Federated Re-authentication",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-7.6.2",
+      "section": "Federated Re-authentication",
+      "implementation_refs": [
+        "src/opspilot/auth/store.py",
+        "web/src/AuthGate.tsx",
+        "web/src/SessionControls.tsx",
+        "scripts/security_local_browser.mjs"
+      ],
+      "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+    },
+    {
+      "id": "v5.0.0-10.1.1",
+      "section": "Generic OAuth and OIDC Security",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.1.2",
+      "section": "Generic OAuth and OIDC Security",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.2.1",
+      "section": "OAuth Client",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.1",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.2",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.3",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.4",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.5",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.6",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.7",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.8",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.9",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.4.11",
+      "section": "OAuth Authorization Server",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.5.1",
+      "section": "OIDC Client",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.5.2",
+      "section": "OIDC Client",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.5.3",
+      "section": "OIDC Client",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.5.4",
+      "section": "OIDC Client",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.6.1",
+      "section": "OpenID Provider",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.6.2",
+      "section": "OpenID Provider",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.7.1",
+      "section": "Consent Management",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.7.2",
+      "section": "Consent Management",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-10.7.3",
+      "section": "Consent Management",
+      "implementation_refs": [
+        "src/opspilot/auth/oidc.py",
+        "src/opspilot/auth/session_routes.py",
+        "infra/identity/opspilot-realm.json"
+      ],
+      "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+    },
+    {
+      "id": "v5.0.0-14.3.1",
+      "section": "Client-side Data Protection",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-14.3.2",
+      "section": "Client-side Data Protection",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    },
+    {
+      "id": "v5.0.0-14.3.3",
+      "section": "Client-side Data Protection",
+      "implementation_refs": [
+        "web/src/api/client.ts",
+        "web/src/AuthGate.tsx",
+        "infra/security/nginx.conf",
+        "tests/e2e/workspace.spec.ts",
+        "tests/e2e/workspace-roles.spec.ts"
+      ],
+      "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+    }
+  ]
+}

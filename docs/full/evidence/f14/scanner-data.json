@@ -1,0 +1,27 @@
+{
+  "registry": "public.ecr.aws/aquasecurity",
+  "vulnerability_db": {
+    "digest": "sha256:ff88ee61a5b540674f8c0210ce7aa2338896f8289bd0daaa51d22c9097f09cac",
+    "bytes": 135494092,
+    "metadata": {
+      "Version": 2,
+      "NextUpdate": "2026-10-30T13:09:46.269822928Z",
+      "UpdatedAt": "2026-10-29T13:09:46.269823229Z",
+      "DownloadedAt": "2026-10-29T14:08:42.522511Z"
+    }
+  },
+  "java_index": {
+    "digest": "sha256:d238e0e00832976bc4c8e53ab2a99657d586832d3f2709af424a8186e6a5fa79",
+    "bytes": 991026356,
+    "metadata": {
+      "Version": 1,
+      "NextUpdate": "2026-11-01T01:08:14.598233916Z",
+      "UpdatedAt": "2026-10-29T01:08:14.598234036Z",
+      "DownloadedAt": "2026-10-29T14:08:42.522511Z"
+    }
+  },
+  "sha256_verified_before_unpack": true,
+  "partial_download_accepted": false,
+  "verified_cache_installed_at": "2026-10-29T14:08:42.522511Z",
+  "bookkeeping": "DownloadedAt set to actual verified cache installation time; upstream UpdatedAt and NextUpdate preserved"
+}

@@ -1196,3 +1196,23 @@ footer {
 
 .identity-bar { display:flex; flex-wrap:wrap; gap:1rem; align-items:center; padding:1rem 2rem; background:#eef5f1; color:#153b32; }
 .identity-bar select, .identity-bar button { padding:.5rem; }
+
+.workspace-nav { display:flex; flex-wrap:wrap; gap:.6rem; margin-bottom:1rem; }
+.workspace-nav button { min-height:44px; padding:.5rem 1rem; border:1px solid #436257; border-radius:6px; background:#fff; color:#153b32; }
+.workspace-nav button[aria-current=page] { background:#153b32; color:white; }
+.workspace-view,.run-controls { padding:1.5rem; margin-bottom:1rem; overflow-wrap:anywhere; }
+.workspace-view form,.run-controls form,.revision-controls form { display:grid; gap:.75rem; }
+.workspace-view label,.run-controls label,.revision-controls label { display:grid; gap:.4rem; }
+.workspace-view input:not([type=checkbox]),.workspace-view select,.run-controls select,.run-controls input,.revision-controls input,.revision-controls textarea,.revision-controls select { width:100%; max-width:100%; padding:.65rem; box-sizing:border-box; border:1px solid #536f64; border-radius:4px; background:white; color:#153b32; }
+.workspace-view fieldset label { display:inline-flex; align-items:center; margin:.4rem; }
+.workspace-view button,.run-controls button,.revision-controls button { min-height:44px; padding:.55rem .85rem; margin:.3rem; border:1px solid #436257; border-radius:5px; background:#eef5f1; color:#153b32; }
+.workspace-list { list-style:none; padding:0; display:grid; gap:1rem; }
+.workspace-list li { padding:1rem; border:1px solid #b4c7bd; border-radius:5px; overflow-wrap:anywhere; }
+.filter-form { grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+.preserve-text { white-space:pre-wrap; overflow-wrap:anywhere; }
+.revision-controls { padding:1rem; background:#f2f6f3; overflow-wrap:anywhere; }
+.identity-bar { overflow-wrap:anywhere; }
+.identity-bar span,.identity-bar label { max-width:100%; }
+.account-help { overflow-wrap:anywhere; }
+:focus-visible { outline:3px solid #865200; outline-offset:3px; }
+@media(max-width:600px) { .workspace-view,.run-controls { padding:1rem; } .identity-bar{padding:1rem;} .filter-form {grid-template-columns:1fr;} }

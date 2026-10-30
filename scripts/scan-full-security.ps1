@@ -1,17 +1,24 @@
-param([string]$ReportDir='docs/full/evidence/f09/security')
+param([string]$ReportDir='docs/full/evidence/f09/security', [string]$CacheVolume='')
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 $scanner='aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c'
 New-Item -ItemType Directory -Force $ReportDir,'.tools/trivy-cache' | Out-Null
 $reports=(Resolve-Path -LiteralPath $ReportDir).Path
 $cache=(Resolve-Path -LiteralPath '.tools/trivy-cache').Path
+if($CacheVolume){if($CacheVolume -notmatch '^opspilot-full-[a-z0-9-]+$'){throw 'Full cache volume name required'}; $cache=$CacheVolume}
 & docker pull $scanner
 if($LASTEXITCODE){throw 'Pinned image scanner unavailable; security gate blocked'}
 foreach($name in @('app','web')){
     $archive=Join-Path (Get-Location) ".tools/f09-scan-$name.tar"
     & docker image save -o $archive "opspilot-full/${name}:f01"
     if($LASTEXITCODE){throw "Image inventory unavailable: $name"}
-    & docker run --rm -v "${archive}:/artifact/image.tar:ro" -v "${reports}:/reports" -v "${cache}:/root/.cache/trivy" $scanner --quiet image --timeout 20m --input /artifact/image.tar --scanners vuln --format json --output "/reports/$name-image.json"
+    $inputPath='/artifact/image.tar'
+    if($CacheVolume){
+        & docker run --rm --network none --user 0 --entrypoint cp -v "${archive}:/source/image.tar:ro" -v "${cache}:/cache" opspilot-full/app:f01 /source/image.tar "/cache/$name-image.tar"
+        if($LASTEXITCODE){throw 'Scanner archive staging failed'}
+        $inputPath="/root/.cache/trivy/$name-image.tar"
+    }
+    & docker run --rm -v "${archive}:/artifact/image.tar:ro" -v "${reports}:/reports" -v "${cache}:/root/.cache/trivy" $scanner --quiet image --db-repository public.ecr.aws/aquasecurity/trivy-db:2 --timeout 20m --input $inputPath --scanners vuln --format json --output "/reports/$name-image.json"
     if($LASTEXITCODE){throw "Image scanner failed for $name; no passing claim"}
     $result=Get-Content -Raw -LiteralPath (Join-Path $reports "$name-image.json") | ConvertFrom-Json
     $blocking=@($result.Results | ForEach-Object { $_.Vulnerabilities } | Where-Object { $_ -and $_.Severity -in @('HIGH','CRITICAL') })

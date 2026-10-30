@@ -1,0 +1,21 @@
+// Local Full only; real OIDC/browser, synthetic destinations, no SQL setup.
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {chromium} from '../web/node_modules/playwright/index.mjs';
+const env=Object.fromEntries(readFileSync('.env','utf8').split(/\r?\n/).filter(l=>l.includes('=')&&!l.startsWith('#')).map(l=>{const i=l.indexOf('=');return[l.slice(0,i),l.slice(i+1).replace(/^["']|["']$/g,'')]}));
+const origin=env.APP_ORIGIN??'http://127.0.0.1:8091';assert(['http://127.0.0.1:8091','http://localhost:8091'].includes(origin));
+const browser=await chromium.launch({headless:true,...(process.platform==='win32'?{channel:'msedge'}:{})});
+const checks=[];
+async function login(name){const context=await browser.newContext({baseURL:origin});const page=await context.newPage();page.setDefaultTimeout(30000);await page.goto('/');await page.getByRole('link',{name:'Sign in',exact:true}).click();await page.locator('#username').fill(name);await page.locator('#password').fill(env.OIDC_DEMO_PASSWORD);await page.locator('#kc-login').click();await page.getByLabel('Tenant',{exact:true}).selectOption('aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa');await page.getByTestId('model-mode').waitFor();return{context,page}}
+try{
+ const {context,page}=await login('demo');
+ await page.getByLabel('What needs attention?').fill('Investigate Green');await page.getByRole('button',{name:'Start investigation',exact:true}).click();await page.getByLabel('Choose customer').selectOption({index:1});await page.getByRole('button',{name:'Submit clarification'}).click();await page.getByTestId('approval-card').waitFor();await page.reload();await page.getByRole('button',{name:'Cancel investigation',exact:true}).click();
+ for(let n=0;n<60;n++){if((await page.getByRole('region',{name:'Investigation controls'}).innerText()).includes('cancelled'))break;await page.waitForTimeout(500)}
+ assert((await page.getByRole('region',{name:'Investigation controls'}).innerText()).includes('cancelled'));checks.push('clarification / refresh / cancellation');
+ const download=page.waitForEvent('download');await page.getByRole('button',{name:'Download investigation metadata'}).click();assert.equal((await download).suggestedFilename(),'opspilot-export.json');
+ await page.getByRole('button',{name:'History',exact:true}).click();await page.getByRole('heading',{name:'Investigation history'}).waitFor();await page.getByRole('button',{name:'Investigate Green',exact:true}).first().waitFor();checks.push('history / scoped metadata export');
+ await page.getByRole('button',{name:'Inbox',exact:true}).click();await page.getByRole('heading',{name:'Private inbox'}).waitFor();checks.push('private recipient inbox');await context.close();
+ const adm=await login('admin');await adm.page.getByRole('button',{name:'Administration',exact:true}).click();await adm.page.getByRole('heading',{name:'Tenant administration'}).waitFor();assert.equal(await adm.page.getByRole('button',{name:'History',exact:true}).count(),0);const connection=adm.page.getByRole('region',{name:'Tenant administration'}).locator('.workspace-list > li').first();await connection.getByRole('button',{name:'Disable connection',exact:true}).click();await connection.getByRole('button',{name:'Enable connection',exact:true}).click();await connection.getByRole('button',{name:'Disable connection',exact:true}).waitFor();checks.push('live admin connector CAS / restored enabled / no run-reading role');await adm.context.close();
+ const aud=await login('auditor');await aud.page.getByRole('button',{name:'Audit',exact:true}).click();await aud.page.getByRole('heading',{name:'Tenant audit'}).waitFor();await aud.page.getByText('security.connector_config_changed',{exact:false}).first().waitFor();assert.equal(await aud.page.getByRole('button',{name:'Administration',exact:true}).count(),0);checks.push('redacted audit contains admin change / separate role');await aud.context.close();
+ const report={passed:true,checks,real_oidc:true,synthetic:true,manual_admin_sql:false,vendor_writes:0};writeFileSync('docs/full/evidence/f14/live-workspace.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report));
+}finally{await browser.close()}

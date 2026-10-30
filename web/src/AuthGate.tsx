@@ -28,6 +28,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
+  const [switchingTenant, setSwitchingTenant] = useState(false);
   const mutating = useRef(false);
   useEffect(() => {
     void fetch("/auth/me", { cache: "no-store" })
@@ -110,6 +111,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
     mutating.current = true;
     setBusy(true);
     const token = me?.csrf_token ?? "";
+    if (path === "/auth/tenant") setSwitchingTenant(true);
     if (path === "/auth/logout") {
       setSigningOut(true);
       clearPrivateState();
@@ -124,6 +126,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
       });
     } catch {
       setSigningOut(false);
+      setSwitchingTenant(false);
       mutating.current = false;
       setBusy(false);
       setError(
@@ -135,6 +138,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
     }
     if (!r.ok) {
       setSigningOut(false);
+      setSwitchingTenant(false);
       mutating.current = false;
       setBusy(false);
       setError("Access denied. Refresh your session and permissions.");
@@ -168,8 +172,7 @@ export function AuthGate({ children }: { children: ReactNode }) {
     <Identity.Provider value={me}>
       <div className="identity-bar">
         <span>
-          Actor {me.user_id.slice(0, 8)} ·{" "}
-          {me.roles.join(", ") || "No tenant selected"}
+          Actor {me.user_id} · {me.roles.join(", ") || "No tenant selected"}
         </span>
         <label>
           Tenant{" "}
@@ -202,7 +205,9 @@ export function AuthGate({ children }: { children: ReactNode }) {
         )}
       </div>
       {error && <p role="alert">{error}</p>}
-      {me.memberships.length === 0 ? (
+      {switchingTenant ? (
+        <main role="status">Switching tenant...</main>
+      ) : me.memberships.length === 0 ? (
         <main>
           <h1>No authorized memberships</h1>
           <p>Contact your tenant administrator.</p>

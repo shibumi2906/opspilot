@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "checks": [
+    "clarification / refresh / cancellation",
+    "history / scoped metadata export",
+    "private recipient inbox",
+    "live admin connector CAS / restored enabled / no run-reading role",
+    "redacted audit contains admin change / separate role"
+  ],
+  "real_oidc": true,
+  "synthetic": true,
+  "manual_admin_sql": false,
+  "vendor_writes": 0
+}

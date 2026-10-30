@@ -1,0 +1,149 @@
+ Container opspilot-full-test-f14-focus2-postgres-1  Running
+ Container opspilot-full-test-f14-focus2-api-1  Running
+ Container opspilot-full-test-f14-focus2-web-1  Running
+ Container opspilot-full-test-f14-focus2-postgres-1  Waiting
+ Container opspilot-full-test-f14-focus2-postgres-1  Healthy
+ Container opspilot-full-test-f14-focus2-api-1  Waiting
+ Container opspilot-full-test-f14-focus2-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 21 tests using 1 worker
+
+  ✓   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (20.2s)
+  ✓   2 ../tests/e2e/freshness-revision.spec.ts:3:5 › bound mixed intent edit needs a new exact revision decision (15.8s)
+  ✓   3 ../tests/e2e/greenshop.spec.ts:32:5 › GreenShop: live trail, evidence, immutable refresh, double click and verified ticket (10.8s)
+  ✓   4 ../tests/e2e/greenshop.spec.ts:93:5 › Reject creates no ticket and keeps the card visible (14.2s)
+  ✓   5 ../tests/e2e/greenshop.spec.ts:116:5 › polling reconnects without overlapping reads or losing the URL (36.1s)
+  ✓   6 ../tests/e2e/greenshop.spec.ts:152:5 › lost decision response reconciles the server decision before retry (14.0s)
+  ✓   7 ../tests/e2e/greenshop.spec.ts:175:5 › narrow viewport, plain text sources and readable partial results (13.5s)
+  ✓   8 ../tests/e2e/greenshop.spec.ts:212:5 › status-only completes without an approval card; terminal polling stops (9.2s)
+  ✓   9 ../tests/e2e/greenshop.spec.ts:230:5 › missing run and failed/unknown snapshots never display verified success (7.0s)
+  ✓  10 ../tests/e2e/greenshop.spec.ts:265:5 › a lost create response reuses the client request ID (11.2s)
+  ✓  11 ../tests/e2e/greenshop.spec.ts:304:5 › unknown and partial projections stay visibly unverified; snapshot mode is authoritative (9.6s)
+  ✓  12 ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout (2.1s)
+  ✓  13 ../tests/e2e/identity.spec.ts:46:5 › OIDC login never auto-provisions a membership (1.5s)
+  ✓  14 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: approve ticket, opposite inbox, concrete comment wave (13.2s)
+  ✓  15 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: reject ticket, opposite inbox, concrete comment wave (11.8s)
+  ✓  16 ../tests/e2e/sse.spec.ts:3:5 › SSE reconnect after offline converges and remote logout clears private DOM (14.7s)
+  ✓  17 ../tests/e2e/sse.spec.ts:52:5 › duplicate replay and reset only refresh authoritative state, without repeating a mutation (13.5s)
+  ✓  18 ../tests/e2e/workspace-roles.spec.ts:13:5 › admin controls and auditor view are separated; mobile keyboard navigation (24.3s)
+  ✘  19 ../tests/e2e/workspace.spec.ts:3:5 › workspace clarification, cancellation, history and scoped download (42.2s)
+  ✘  20 ../tests/e2e/workspace.spec.ts:44:5 › workspace revision and private notification render hostile text safely (47.8s)
+  ✘  21 ../tests/e2e/workspace.spec.ts:86:5 › expiry disables decisions without a reload and unknown state exposes reconciliation (29.2s)
+
+
+  1) ../tests/e2e/workspace.spec.ts:3:5 › workspace clarification, cancellation, history and scoped download
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('region', { name: 'Investigation controls' })
+    Expected substring: "cancelled"
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('region', { name: 'Investigation controls' }) with timeout 20000ms
+      - waiting for getByRole('region', { name: 'Investigation controls' })
+
+
+      39 |   await expect(
+      40 |     page.getByRole("region", { name: "Investigation controls" }),
+    > 41 |   ).toContainText("cancelled");
+         |     ^
+      42 | });
+      43 |
+      44 | test("workspace revision and private notification render hostile text safely", async ({
+        at /app/tests/e2e/workspace.spec.ts:41:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/workspace-workspace-clarif-d264d-history-and-scoped-download/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/workspace-workspace-clarif-d264d-history-and-scoped-download/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/workspace-workspace-clarif-d264d-history-and-scoped-download/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/workspace-workspace-clarif-d264d-history-and-scoped-download/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) ../tests/e2e/workspace.spec.ts:44:5 › workspace revision and private notification render hostile text safely
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for locator('[data-action-key="inbox"]').getByRole('button', { name: 'Approve action', exact: true })
+
+
+      67 |   await inbox
+      68 |     .getByRole("button", { name: "Approve action", exact: true })
+    > 69 |     .click();
+         |      ^
+      70 |   await expect(page.getByTestId("plan-node-inbox")).toContainText("verified");
+      71 |   await page.getByRole("button", { name: "Inbox", exact: true }).click();
+      72 |   const list = page.getByRole("region", { name: "Private inbox" });
+        at /app/tests/e2e/workspace.spec.ts:69:6
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/workspace-workspace-revisi-b529e--render-hostile-text-safely/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/workspace-workspace-revisi-b529e--render-hostile-text-safely/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/workspace-workspace-revisi-b529e--render-hostile-text-safely/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/workspace-workspace-revisi-b529e--render-hostile-text-safely/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) ../tests/e2e/workspace.spec.ts:86:5 › expiry disables decisions without a reload and unknown state exposes reconciliation
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByTestId('approval-card')
+    Expected: visible
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByTestId('approval-card') with timeout 20000ms
+      - waiting for getByTestId('approval-card')
+
+
+      91 |     .getByRole("button", { name: "Start investigation", exact: true })
+      92 |     .click();
+    > 93 |   await expect(page.getByTestId("approval-card")).toBeVisible();
+         |                                                   ^
+      94 |   const id = new URL(page.url()).searchParams.get("run_id")!;
+      95 |   const snapshot = await (await page.request.get(`/api/v2/runs/${id}`)).json();
+      96 |   // UI clock boundary fixture only; real DB-time expiry/security is covered by F12 integration tests.
+        at /app/tests/e2e/workspace.spec.ts:93:51
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/workspace-expiry-disables--1bc79-tate-exposes-reconciliation/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/workspace-expiry-disables--1bc79-tate-exposes-reconciliation/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/workspace-expiry-disables--1bc79-tate-exposes-reconciliation/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/workspace-expiry-disables--1bc79-tate-exposes-reconciliation/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    ../tests/e2e/workspace.spec.ts:3:5 › workspace clarification, cancellation, history and scoped download
+    ../tests/e2e/workspace.spec.ts:44:5 › workspace revision and private notification render hostile text safely
+    ../tests/e2e/workspace.spec.ts:86:5 › expiry disables decisions without a reload and unknown state exposes reconciliation
+  18 passed (6.4m)
+exit status 1

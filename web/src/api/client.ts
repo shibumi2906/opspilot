@@ -46,10 +46,19 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ request: text, client_request_id: key }),
     }),
-  decide: (id: string, actionId: string, decision: Decision, expectedVersion: number) =>
+  decide: (
+    id: string,
+    actionId: string,
+    decision: Decision,
+    expectedVersion: number,
+  ) =>
     request(`/api/v2/runs/${encodeURIComponent(id)}/decision`, {
       method: "POST",
-      body: JSON.stringify({ action_id: actionId, decision, expected_version: expectedVersion }),
+      body: JSON.stringify({
+        action_id: actionId,
+        decision,
+        expected_version: expectedVersion,
+      }),
     }),
 };
 export function errorMessage(error: unknown): string {
@@ -80,4 +89,23 @@ export function newRequestId(): string {
     hex.slice(16, 20),
     hex.slice(20),
   ].join("-");
+}
+
+export const privateRequest = request;
+export async function downloadExport(path: string) {
+  const response = await fetch(path, {
+    cache: "no-store",
+    signal: AbortSignal.timeout(15000),
+  });
+  if ([401, 403].includes(response.status)) clearPrivateState();
+  if (!response.ok) throw new ApiError(response.status, "EXPORT_UNAVAILABLE");
+  const blob = await response.blob();
+  if (blob.size > 65536 || !blob.type.startsWith("application/json"))
+    throw new Error("Invalid export");
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "opspilot-export.json";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }

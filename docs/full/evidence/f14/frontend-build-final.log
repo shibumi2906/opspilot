@@ -1,0 +1,125 @@
+Compose now can delegate build to bake for better performances
+Just set COMPOSE_BAKE=true
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [web internal] load build definition from Dockerfile
+#1 transferring dockerfile: 850B done
+#1 DONE 0.0s
+
+#2 [web internal] load metadata for docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#2 ...
+
+#3 [web internal] load metadata for docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#3 ...
+
+#2 [web internal] load metadata for docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#2 DONE 11.0s
+
+#3 [web internal] load metadata for docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#3 DONE 11.0s
+
+#4 [web internal] load .dockerignore
+#4 transferring context: 316B done
+#4 DONE 0.0s
+
+#5 [web build 1/6] FROM docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#5 DONE 0.0s
+
+#6 [web runtime 1/4] FROM docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#6 DONE 0.0s
+
+#7 [web internal] load build context
+#7 transferring context: 11.41kB 0.0s done
+#7 DONE 0.0s
+
+#8 [web build 2/6] WORKDIR /app/web
+#8 CACHED
+
+#9 [web build 3/6] COPY web/package.json web/package-lock.json ./
+#9 CACHED
+
+#10 [web build 4/6] RUN npm ci --no-audit --no-fund
+#10 CACHED
+
+#11 [web build 5/6] COPY web/ ./
+#11 DONE 0.1s
+
+#12 [web build 6/6] RUN npm run build
+#12 1.076
+#12 1.076 > opspilot-web@0.1.0 build
+#12 1.076 > node node_modules/typescript/bin/tsc --noEmit && node node_modules/vite/bin/vite.js build
+#12 1.076
+#12 2.684 vite v8.3.4 building client environment for production...
+#12 2.753 transforming...
+#12 3.012 ✓ 30 modules transformed.
+#12 3.152 rendering chunks...
+#12 3.238 computing gzip size...
+#12 3.245 dist/index.html                   0.61 kB │ gzip:  0.37 kB
+#12 3.245 dist/assets/index-B9BC6uAE.css   17.72 kB │ gzip:  4.81 kB
+#12 3.245 dist/assets/index-Dn8P_Toc.js   270.34 kB │ gzip: 82.44 kB
+#12 3.245
+#12 3.246 ✓ built in 561ms
+#12 DONE 3.4s
+
+#13 [web runtime 2/4] RUN apk --no-cache upgrade
+#13 CACHED
+
+#14 [web runtime 3/4] COPY web/nginx.conf /etc/nginx/conf.d/default.conf
+#14 CACHED
+
+#15 [web runtime 4/4] COPY --from=build /app/web/dist /usr/share/nginx/html
+#15 DONE 0.2s
+
+#16 [web] exporting to image
+#16 exporting layers
+#16 exporting layers 0.2s done
+#16 writing image sha256:38cea1df5a9eb9d9c19553a96fee1330e49b6ad3fadb8f526903218441d2ad06 0.0s done
+#16 naming to docker.io/opspilot-full/web:f01 0.0s done
+#16 DONE 0.3s
+
+#17 [web] resolving provenance for metadata file
+#17 DONE 0.0s
+
+#18 [e2e internal] load build definition from Dockerfile
+#18 transferring dockerfile: 850B done
+#18 DONE 0.0s
+
+#19 [e2e internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf
+#19 DONE 1.0s
+
+#20 [e2e internal] load .dockerignore
+#20 transferring context: 316B done
+#20 DONE 0.0s
+
+#21 [e2e e2e 1/6] FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf
+#21 DONE 0.0s
+
+#22 [e2e internal] load build context
+#22 transferring context: 34.74kB 0.0s done
+#22 DONE 0.0s
+
+#23 [e2e e2e 2/6] WORKDIR /app/web
+#23 CACHED
+
+#24 [e2e e2e 3/6] COPY web/package.json web/package-lock.json ./
+#24 CACHED
+
+#25 [e2e e2e 4/6] RUN npm ci --no-audit --no-fund
+#25 CACHED
+
+#26 [e2e e2e 5/6] COPY web/ ./
+#26 DONE 0.2s
+
+#27 [e2e e2e 6/6] COPY tests/e2e/ /app/tests/e2e/
+#27 DONE 0.2s
+
+#28 [e2e] exporting to image
+#28 exporting layers 0.5s done
+#28 writing image sha256:a892a45bdf42642ccb09f4b5ba9aaea4fa91b135f8b415f0beba188b517b45c2 0.0s done
+#28 naming to docker.io/opspilot-full/e2e:f01 0.0s done
+#28 DONE 0.6s
+
+#29 [e2e] resolving provenance for metadata file
+#29 DONE 0.1s
+ e2e  Built
+ web  Built

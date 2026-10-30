@@ -117,7 +117,7 @@ realm.update(
     maxFailureWaitSeconds=900,
     minimumQuickLoginWaitSeconds=60,
     quickLoginCheckMilliSeconds=1000,
-    passwordPolicy="length(15) and notUsername(undefined) and notEmail(undefined)",
+    passwordPolicy='length(15) and maxLength(128) and notUsername(undefined) and notEmail(undefined) and passwordHistory(5) and passwordBlacklist(common-passwords.txt) and maxAuthAge(0)',
     accessTokenLifespan=900,
     ssoSessionIdleTimeout=900,
     ssoSessionMaxLifespan=3600,
@@ -325,6 +325,7 @@ services["oidc"] = {
     },
     "volumes": [
         "oidcdata:/opt/keycloak/data",
+        "../../infra/identity/password-blacklists:/opt/keycloak/data/password-blacklists:ro",
         "./realm.json:/opt/keycloak/data/import/opspilot-realm.json:ro",
     ]
     + mounts("idp.opspilot.localhost.crt", "idp.opspilot.localhost.key"),

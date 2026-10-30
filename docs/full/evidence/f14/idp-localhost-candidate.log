@@ -1,0 +1,86 @@
+ Container opspilot-full-test-f14-final-collector-1  Created
+ Container opspilot-full-test-f14-final-jaeger-1  Created
+ Container opspilot-full-test-f14-final-oidc-1  Recreate
+ Container opspilot-full-test-f14-final-postgres-1  Created
+ Container opspilot-full-test-f14-final-api-1  Created
+ Container opspilot-full-test-f14-final-mcp-1  Created
+ Container opspilot-full-test-f14-final-worker-1  Running
+ Container opspilot-full-test-f14-final-worker2-1  Running
+ Container opspilot-full-test-f14-final-oidc-1  Recreated
+ Container opspilot-full-test-f14-final-jaeger-1  Starting
+ Container opspilot-full-test-f14-final-oidc-1  Starting
+ Container opspilot-full-test-f14-final-collector-1  Starting
+ Container opspilot-full-test-f14-final-postgres-1  Starting
+ Container opspilot-full-test-f14-final-oidc-1  Started
+ Container opspilot-full-test-f14-final-jaeger-1  Started
+ Container opspilot-full-test-f14-final-collector-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-mcp-1  Starting
+ Container opspilot-full-test-f14-final-api-1  Starting
+ Container opspilot-full-test-f14-final-api-1  Started
+ Container opspilot-full-test-f14-final-api-1  Waiting
+ Container opspilot-full-test-f14-final-mcp-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-api-1  Healthy
+ Container opspilot-full-test-f14-final-web-1  Starting
+ Container opspilot-full-test-f14-final-web-1  Started
+ Container opspilot-full-test-f14-final-worker-1  Waiting
+ Container opspilot-full-test-f14-final-worker2-1  Waiting
+ Container opspilot-full-test-f14-final-oidc-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-web-1  Waiting
+ Container opspilot-full-test-f14-final-collector-1  Waiting
+ Container opspilot-full-test-f14-final-jaeger-1  Waiting
+ Container opspilot-full-test-f14-final-mcp-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Healthy
+ Container opspilot-full-test-f14-final-worker-1  Healthy
+ Container opspilot-full-test-f14-final-mcp-1  Healthy
+ Container opspilot-full-test-f14-final-worker2-1  Healthy
+ Container opspilot-full-test-f14-final-jaeger-1  Healthy
+ Container opspilot-full-test-f14-final-collector-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-web-1  Healthy
+ Container opspilot-full-test-f14-final-oidc-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Running
+ Container opspilot-full-test-f14-final-api-1  Running
+ Container opspilot-full-test-f14-final-web-1  Running
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-api-1  Waiting
+ Container opspilot-full-test-f14-final-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 21 tests using 1 worker
+
+  ✘   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (45.2s)
+  ✘   2 ../tests/e2e/freshness-revision.spec.ts:3:5 › bound mixed intent edit needs a new exact revision decision (45.2s)
+exit status 143
+ Container opspilot-full-test-f14-final-worker-1  Stopping
+ Container opspilot-full-test-f14-final-collector-1  Stopping
+ Container opspilot-full-test-f14-final-worker2-1  Stopping
+ Container opspilot-full-test-f14-final-jaeger-1  Stopping
+ Container opspilot-full-test-f14-final-oidc-1  Stopping
+ Container opspilot-full-test-f14-final-web-1  Stopping
+ Container opspilot-full-test-f14-final-collector-1  Stopped
+ Container opspilot-full-test-f14-final-web-1  Stopped
+ Container opspilot-full-test-f14-final-api-1  Stopping
+ Container opspilot-full-test-f14-final-jaeger-1  Stopped
+ Container opspilot-full-test-f14-final-oidc-1  Stopped
+ Container opspilot-full-test-f14-final-api-1  Stopped
+ Container opspilot-full-test-f14-final-worker2-1  Stopped
+ Container opspilot-full-test-f14-final-worker-1  Stopped
+ Container opspilot-full-test-f14-final-mcp-1  Stopping
+ Container opspilot-full-test-f14-final-mcp-1  Stopped
+ Container opspilot-full-test-f14-final-postgres-1  Stopping
+ Container opspilot-full-test-f14-final-postgres-1  Stopped

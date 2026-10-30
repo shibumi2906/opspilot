@@ -10,11 +10,11 @@ from uuid import UUID, uuid4
 
 from fastapi import APIRouter, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
-from sqlalchemy import func, select, text, tuple_
+from sqlalchemy import func, or_, select, text, tuple_
 
 from opspilot.api.routes_runs import get_run
 from opspilot.auth.context import AuthError, principal, require_role
-from opspilot.db.models_workflow import AgentRun
+from opspilot.db.models_workflow import Action, AgentRun
 from opspilot.runtime.run_service import RunService
 from opspilot.tenancy.session import TenantSession
 
@@ -74,6 +74,10 @@ async def history(
     limit: int = Query(20, ge=1, le=50),
     cursor: str | None = None,
     status: str | None = Query(None, max_length=40),
+    q: str = Query("", max_length=200),
+    customer_id: UUID | None = None,
+    since: datetime | None = None,
+    until: datetime | None = None,
 ) -> dict[str, Any]:
     user = principal()
     if user.tenant_id is None or not user.roles & {"operator", "approver", "auditor"}:
@@ -83,11 +87,39 @@ async def history(
         filters.append(AgentRun.actor_id == user.user_id)
     if status is not None:
         filters.append(AgentRun.status == status)
+    if since and until and since > until:
+        raise AuthError("INVALID_RANGE", 400)
+    if any(v and v.tzinfo is None for v in (since, until)):
+        raise AuthError("INVALID_RANGE", 400)
+    if q:
+        filters.append(func.lower(AgentRun.request).contains(q.casefold(), autoescape=True))
+    if customer_id:
+        filters.append(
+            or_(
+                AgentRun.public_snapshot["customer_id"].astext == str(customer_id),
+                select(Action.id)
+                .where(
+                    Action.tenant_id == user.tenant_id,
+                    Action.run_id == AgentRun.id,
+                    Action.arguments["customer_id"].astext == str(customer_id),
+                )
+                .exists(),
+            )
+        )
+    if since:
+        filters.append(AgentRun.created_at >= since)
+    if until:
+        filters.append(AgentRun.created_at <= until)
+    binding = (
+        json.dumps([status, q, str(customer_id), str(since), str(until)])
+        if q or customer_id or since or until
+        else status
+    )
     service = cast(RunService, request.app.state.runs)
     async with TenantSession(service.engine) as session:
         count = await session.scalar(select(func.count()).select_from(AgentRun).where(*filters))
         if cursor:
-            after = cursor_decode(request, cursor, status)
+            after = cursor_decode(request, cursor, binding)
             filters.append(tuple_(AgentRun.created_at, AgentRun.id) < after)
         rows = list(
             await session.scalars(
@@ -101,6 +133,8 @@ async def history(
         {
             "run_id": str(r.id),
             "status": r.status,
+            "request": r.request[:200],
+            "customer_id": r.public_snapshot.get("customer_id"),
             "outcome": r.outcome,
             "actor_id": str(r.actor_id),
             "created_at": r.created_at.isoformat(),
@@ -109,7 +143,7 @@ async def history(
     ]
     next_cursor = (
         cursor_encode(
-            request, [rows[limit - 1].created_at.isoformat(), str(rows[limit - 1].id)], status
+            request, [rows[limit - 1].created_at.isoformat(), str(rows[limit - 1].id)], binding
         )
         if len(rows) > limit
         else None
@@ -120,7 +154,9 @@ async def history(
 @router.get("/runs/{run_id}/actions")
 async def actions(run_id: UUID, request: Request) -> dict[str, Any]:
     snapshot = await get_run(run_id, request)
-    return {"items": [snapshot["action"]] if snapshot.get("action") else []}
+    return {
+        "items": snapshot.get("actions") or ([snapshot["action"]] if snapshot.get("action") else [])
+    }
 
 
 @router.get("/runs/{run_id}/evidence/{evidence_id}")
@@ -139,6 +175,9 @@ async def evidence(run_id: UUID, evidence_id: str, request: Request) -> dict[str
 class MembershipChange(BaseModel):
     model_config = ConfigDict(extra="forbid")
     roles: list[Literal["operator", "approver", "auditor", "admin"]] = Field(max_length=4)
+    expected_roles: list[Literal["operator", "approver", "auditor", "admin"]] | None = Field(
+        default=None, max_length=4
+    )
 
 
 @router.get("/admin/memberships")
@@ -170,6 +209,12 @@ async def update_membership(
         raise AuthError("SELF_ESCALATION_FORBIDDEN")
     store = request.app.state.identity
     async with store.engine.begin() as conn:
+        await conn.execute(
+            text(
+                "SELECT pg_advisory_xact_lock(hashtextextended('memberships:'||CAST(:t AS text),0))"
+            ),
+            {"t": actor.tenant_id},
+        )
         live = await conn.scalar(
             text("SELECT identity.lock_role(:u,:t,'admin')"),
             {"t": actor.tenant_id, "u": actor.user_id},
@@ -180,6 +225,41 @@ async def update_membership(
             text("SELECT EXISTS(SELECT 1 FROM identity.users WHERE id=:u)"), {"u": user_id}
         ):
             raise AuthError("NOT_FOUND", 404)
+        if await conn.scalar(
+            text(
+                "SELECT EXISTS(SELECT 1 FROM identity.tenant_memberships WHERE "
+                "user_id=:u AND tenant_id<>:t) AND NOT EXISTS(SELECT 1 FROM "
+                "identity.tenant_memberships WHERE user_id=:u AND tenant_id=:t)"
+            ),
+            {"u": user_id, "t": actor.tenant_id},
+        ):
+            raise AuthError("NOT_FOUND", 404)
+        current = set(
+            await conn.scalars(
+                text(
+                    "SELECT role FROM identity.tenant_memberships WHERE tenant_id=:t AND user_id=:u"
+                ),
+                {"t": actor.tenant_id, "u": user_id},
+            )
+        )
+        from opspilot.runtime.actions import Conflict
+
+        if body.expected_roles is not None and current != set(body.expected_roles):
+            raise Conflict("Membership changed; reload before editing")
+        if (
+            "admin" in current
+            and "admin" not in roles
+            and await conn.scalar(
+                text(
+                    "SELECT count(*) FROM identity.tenant_memberships m JOIN "
+                    "identity.users u ON u.id=m.user_id WHERE m.tenant_id=:t AND "
+                    "m.role='admin' AND u.disabled_at IS NULL"
+                ),
+                {"t": actor.tenant_id},
+            )
+            <= 1
+        ):
+            raise Conflict("The last enabled tenant administrator cannot be removed")
         await conn.execute(
             text("DELETE FROM identity.tenant_memberships WHERE tenant_id=:t AND user_id=:u"),
             {"t": actor.tenant_id, "u": user_id},

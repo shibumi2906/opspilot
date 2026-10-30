@@ -131,6 +131,30 @@ try {
  // Direct IdP administrative disable must invalidate an existing BFF session.
  const tokenResponse=await fetch(issuer+'/realms/master/protocol/openid-connect/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({client_id:'admin-cli',grant_type:'password',username:'security-admin',password:credentials.admin})});
  assert.equal(tokenResponse.status,200);const adminToken=(await tokenResponse.json()).access_token;
+
+ // Separate IdP policy evidence; synthetic account only, no email delivery or real users.
+ const adminHeaders={Authorization:'Bearer '+adminToken,'Content-Type':'application/json'};
+ const realmResponse=await fetch(issuer+'/admin/realms/opspilot',{headers:adminHeaders});
+ assert.equal(realmResponse.status,200);const realm=await realmResponse.json();
+ for(const policy of ['length(15)','maxLength(128)','passwordHistory(5)','passwordBlacklist(common-passwords.txt)']) assert(realm.passwordPolicy.includes(policy));
+ assert.equal(realm.registrationAllowed,false);assert.equal(realm.resetPasswordAllowed,false);
+ assert(realm.bruteForceProtected && realm.eventsEnabled && realm.adminEventsEnabled);
+ const tempName='f14-policy-'+randomUUID();
+ const policyCreated=await fetch(issuer+'/admin/realms/opspilot/users',{method:'POST',headers:adminHeaders,body:JSON.stringify({username:tempName,enabled:true})});
+ assert.equal(policyCreated.status,201);
+ const tempURL=policyCreated.headers.get('location');assert(tempURL?.startsWith(issuer+'/admin/realms/opspilot/users/'));
+ const outcomes=[];
+ try {
+   const setPassword=async(value)=>fetch(tempURL+'/reset-password',{method:'PUT',headers:adminHeaders,body:JSON.stringify({type:'password',value,temporary:false})});
+   for(const [name,value] of [['minimum length','short'],['maximum length','X'.repeat(129)],['compromised password','123456789012345']]) {
+     const response=await setPassword(value);assert.equal(response.status,400,name);outcomes.push(name+' rejected');
+   }
+   const first='F14-'+randomUUID()+'-First',second='F14-'+randomUUID()+'-Second';
+   assert.equal((await setPassword(first)).status,204);assert.equal((await setPassword(second)).status,204);
+   assert.equal((await setPassword(first)).status,400);outcomes.push('password history reuse rejected');
+ } finally {assert.equal((await fetch(tempURL,{method:'DELETE',headers:adminHeaders})).status,204);}
+ writeFileSync('/reports/idp-policy.json',JSON.stringify({passed:true,provider:'pinned Keycloak image',synthetic:true,passwordPolicy:realm.passwordPolicy,checks:outcomes,registrationAllowed:realm.registrationAllowed,resetPasswordAllowed:realm.resetPasswordAllowed,bruteForceProtected:realm.bruteForceProtected,eventsEnabled:realm.eventsEnabled,limitations:['Local self-service reset disabled; SMTP delivery and production recovery notification not tested','Production administrator MFA and managed recovery remain deployment obligations']},null,2));
+ checks.push('separate IdP password length, denylist, history and fail-closed recovery policy probe');
  const userId='00000000-0000-0000-0000-000000002711';
  const disable=await fetch(issuer+'/admin/realms/opspilot/users/'+userId,{method:'PUT',headers:{Authorization:'Bearer '+adminToken,'Content-Type':'application/json'},body:JSON.stringify({enabled:false})});
  assert.equal(disable.status,204);

@@ -3,6 +3,8 @@ export interface PublicConfig {
   mode: Mode;
   model_id: string | null;
   synthetic: boolean;
+  source?: "synthetic" | "staging" | "live";
+  account_url?: string;
   scenario_clock: string;
   timezone: string;
 }
@@ -86,6 +88,7 @@ export interface RunSnapshot {
   dto_version: number;
   snapshot_version: number;
   latest_event_id?: string;
+  actor_id?: string;
   traces?: { label: string; url: string }[];
   schema_version: number;
   run_id: string;

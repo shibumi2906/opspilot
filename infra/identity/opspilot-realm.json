@@ -120,5 +120,15 @@
         }
       ]
     }
-  ]
+  ],
+  "passwordPolicy": "length(15) and maxLength(128) and notUsername(undefined) and notEmail(undefined) and passwordHistory(5) and passwordBlacklist(common-passwords.txt) and maxAuthAge(0)",
+  "bruteForceProtected": true,
+  "failureFactor": 5,
+  "waitIncrementSeconds": 60,
+  "maxFailureWaitSeconds": 900,
+  "minimumQuickLoginWaitSeconds": 60,
+  "eventsEnabled": true,
+  "adminEventsEnabled": true,
+  "adminEventsDetailsEnabled": false,
+  "eventsExpiration": 604800
 }

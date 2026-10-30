@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "case": "unknown-cve",
+      "rejected": true,
+      "reason": "Unexpected HIGH/CRITICAL finding set; manual investigation required"
+    },
+    {
+      "case": "different-package",
+      "rejected": true,
+      "reason": "Unexpected affected package/version"
+    },
+    {
+      "case": "different-image",
+      "rejected": true,
+      "reason": "Scan/archive image mismatch"
+    }
+  ]
+}

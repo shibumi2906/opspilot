@@ -250,6 +250,7 @@ def project(state: dict[str, Any]) -> dict[str, Any]:
             "model_id",
             "language",
             "candidates",
+            "customer_id",
             "evidence",
             "hypotheses",
             "missing_checks",

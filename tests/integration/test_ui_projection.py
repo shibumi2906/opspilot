@@ -53,6 +53,16 @@ async def test_public_config_has_no_secrets(integration_settings):
         response = await client.get(os.environ["TEST_API_URL"] + "/api/v2/config")
     assert response.status_code == 200
     body = response.json()
-    assert set(body) == {"mode", "model_id", "synthetic", "scenario_clock", "timezone"}
+    assert body["source"] == "synthetic"
+    assert body["account_url"] == integration_settings.oidc_issuer.rstrip("/") + "/account/"
+    assert set(body) == {
+        "mode",
+        "model_id",
+        "synthetic",
+        "scenario_clock",
+        "timezone",
+        "source",
+        "account_url",
+    }
     assert body["mode"] == "scripted" and body["synthetic"] is True
     assert integration_settings.mcp_service_token.get_secret_value() not in response.text

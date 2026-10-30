@@ -1,0 +1,1 @@
+Java 21.0.13+9-LTS; verified Guava SHA-256 b530942257fb935f8b2cfaa5f8eb5bd59c555fd8e8d01b8ce98912e077ea606c; trusted roots 148; compromised CA absent

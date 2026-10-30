@@ -1,0 +1,683 @@
+Compose now can delegate build to bake for better performances
+Just set COMPOSE_BAKE=true
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [jaeger internal] load build definition from Dockerfile
+#1 transferring dockerfile: 402B 0.0s done
+#1 DONE 0.1s
+
+#2 [jaeger internal] load metadata for docker.io/jaegertracing/all-in-one:1.66.0@sha256:9864182b4e01350fcc64631bdba5f4085f87daae9d477a04c25d9cb362e787a9
+#2 DONE 0.0s
+
+#3 [postgres internal] load build definition from Dockerfile
+#3 transferring dockerfile: 402B 0.0s done
+#3 DONE 0.1s
+
+#4 [postgres internal] load metadata for docker.io/library/postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+#4 DONE 0.0s
+
+#5 [oidc internal] load build definition from Dockerfile
+#5 transferring dockerfile: 361B done
+#5 DONE 0.1s
+
+#6 [oidc internal] load metadata for quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9
+#6 DONE 0.0s
+
+#7 [collector internal] load build definition from Dockerfile
+#7 transferring dockerfile: 402B done
+#7 DONE 0.1s
+
+#8 [collector internal] load metadata for docker.io/otel/opentelemetry-collector:0.120.0@sha256:1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06
+#8 DONE 0.0s
+
+#9 [collector internal] load .dockerignore
+#9 transferring context: 33B
+#9 transferring context: 316B done
+#9 DONE 0.1s
+
+#10 [jaeger internal] load .dockerignore
+#10 transferring context: 316B 0.0s done
+#10 DONE 0.1s
+
+#11 [oidc internal] load .dockerignore
+#11 transferring context: 316B done
+#11 DONE 0.1s
+
+#12 [postgres internal] load .dockerignore
+#12 transferring context: 316B done
+#12 DONE 0.1s
+
+#13 [jaeger jaeger 1/1] FROM docker.io/jaegertracing/all-in-one:1.66.0@sha256:9864182b4e01350fcc64631bdba5f4085f87daae9d477a04c25d9cb362e787a9
+#13 CACHED
+
+#14 [postgres postgres 1/1] FROM docker.io/library/postgres:16-bookworm@sha256:0ea6700a3b4f0ae6ce746519073558aed4d88a79d8d07622a9a644946c7319c4
+#14 CACHED
+
+#15 [oidc 1/3] FROM quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9
+#15 DONE 0.0s
+
+#16 [collector collector 1/1] FROM docker.io/otel/opentelemetry-collector:0.120.0@sha256:1daa4312b48312dbae2d543e67b77e897dd5d9c48e7651d1416cdb417026ad06
+#16 CACHED
+
+#17 [collector] exporting to image
+#17 exporting layers done
+#17 writing image sha256:c6bcf6911c536496256188ba13a02b0bb9021576bbed37770c9ca2ebafc8fb33 0.0s done
+#17 naming to docker.io/opspilot-full/collector:f01
+#17 naming to docker.io/opspilot-full/collector:f01 0.0s done
+#17 DONE 0.2s
+
+#18 [oidc internal] load build context
+#18 transferring context: 822.71kB 0.1s done
+#18 DONE 0.1s
+
+#15 [oidc 1/3] FROM quay.io/keycloak/keycloak:26.2.5@sha256:4883630ef9db14031cde3e60700c9a9a8eaf1b5c24db1589d6a2d43de38ba2a9
+#15 CACHED
+
+#19 [jaeger] exporting to image
+#19 exporting layers done
+#19 writing image sha256:3c84c7c3cbf289e0d44cad4d26bc096956ae9e9d9f473f9915b6fb448518e12b 0.0s done
+#19 naming to docker.io/opspilot-full/jaeger:f01 0.1s done
+#19 DONE 0.2s
+
+#20 [postgres] exporting to image
+#20 exporting layers done
+#20 writing image sha256:e8b457d124cc70d51e08773eaeec7088172689c88a062a9c5db47dd5f7522fdf 0.0s done
+#20 naming to docker.io/opspilot-full/postgres:f01 0.1s done
+#20 DONE 0.2s
+
+#21 [oidc 2/3] COPY infra/identity/opspilot-realm.json /opt/keycloak/data/import/opspilot-realm.json
+#21 DONE 0.2s
+
+#22 [oidc 3/3] COPY infra/identity/password-blacklists/common-passwords.txt /opt/keycloak/data/password-blacklists/common-passwords.txt
+#22 DONE 0.6s
+
+#23 [oidc] exporting to image
+#23 ...
+
+#24 [jaeger] resolving provenance for metadata file
+#24 DONE 0.2s
+
+#25 [collector] resolving provenance for metadata file
+#25 DONE 0.1s
+
+#26 [postgres] resolving provenance for metadata file
+#26 DONE 0.0s
+
+#23 [oidc] exporting to image
+#23 exporting layers 0.2s done
+#23 writing image sha256:3d7f62187686a749fdf7f044ab1e3b04da7dc8a8315dd6b5fc705e87a9b7ca21
+#23 writing image sha256:3d7f62187686a749fdf7f044ab1e3b04da7dc8a8315dd6b5fc705e87a9b7ca21 0.3s done
+#23 naming to docker.io/opspilot-full/oidc:f03
+#23 naming to docker.io/opspilot-full/oidc:f03 0.1s done
+#23 DONE 0.7s
+
+#27 [oidc] resolving provenance for metadata file
+#27 DONE 0.0s
+
+#28 [api internal] load build definition from Dockerfile
+#28 transferring dockerfile: 1.06kB 0.0s done
+#28 DONE 0.2s
+
+#29 [mcp internal] load build definition from Dockerfile
+#29 transferring dockerfile: 1.06kB 0.0s done
+#29 DONE 0.1s
+
+#30 [mcp internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#30 DONE 2.6s
+
+#31 [api internal] load .dockerignore
+#31 transferring context: 316B done
+#31 DONE 0.1s
+
+#32 [mcp internal] load .dockerignore
+#32 transferring context: 316B 0.0s done
+#32 DONE 0.0s
+
+#33 [api app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#33 DONE 0.0s
+
+#34 [api internal] load build context
+#34 transferring context: 1.49MB 0.1s done
+#34 DONE 0.2s
+
+#35 [mcp internal] load build context
+#35 transferring context: 1.49MB 0.1s done
+#35 DONE 0.2s
+
+#36 [api app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#36 CACHED
+
+#37 [api app-build  2/12] WORKDIR /app
+#37 CACHED
+
+#38 [api app-build  3/12] RUN apk --no-cache upgrade
+#38 CACHED
+
+#39 [api app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#39 CACHED
+
+#40 [api app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#40 CACHED
+
+#40 [mcp app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#40 CACHED
+
+#41 [mcp app-build  7/12] COPY src ./src
+#41 DONE 0.3s
+
+#42 [api app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#42 0.554    Building opspilot @ file:///app
+#42 1.754       Built opspilot @ file:///app
+#42 1.772 Prepared 1 package in 1.22s
+#42 1.774 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#42 1.774          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#42 1.774          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#42 1.788 Installed 1 package in 15ms
+#42 1.788  + opspilot==0.1.0 (from file:///app)
+#42 DONE 1.9s
+
+#43 [mcp app-build  9/12] COPY alembic.ini ./
+#43 DONE 0.2s
+
+#44 [mcp app-build 10/12] COPY migrations ./migrations
+#44 DONE 0.2s
+
+#45 [api app-build 11/12] RUN uv pip uninstall --system pip
+#45 0.454 Using Python 3.12.16 environment at: /usr/local
+#45 0.577 Uninstalled 1 package in 172ms
+#45 0.577  - pip==25.0.1
+#45 DONE 0.6s
+
+#46 [api app-build 12/12] RUN adduser -D -u 10001 opspilot
+#46 DONE 0.6s
+
+#47 [api runtime 1/1] RUN uv pip uninstall --system uv
+#47 0.747 Using Python 3.12.16 environment at: /usr/local
+#47 0.760 Uninstalled 1 package in 161ms
+#47 0.760  - uv==0.13.4
+#47 DONE 0.8s
+
+#48 [mcp] exporting to image
+#48 exporting layers
+#48 ...
+
+#49 [api] exporting to image
+#49 exporting layers 0.4s done
+#49 writing image sha256:b78b8c8fe2f09245a8059454e08d0961ff67b2cfd8a1f76efa09fd94294413ef 0.0s done
+#49 naming to docker.io/opspilot-full/app:f01 0.0s done
+#49 DONE 0.5s
+
+#48 [mcp] exporting to image
+#48 exporting layers 0.4s done
+#48 writing image sha256:5bc6f44f53a57abc499743612fb77babf8c391c1126b596be1a8d5f941ba5a9e done
+#48 naming to docker.io/opspilot-full/app:f01 0.0s done
+#48 DONE 0.5s
+
+#50 [api] resolving provenance for metadata file
+#50 DONE 0.1s
+
+#51 [mcp] resolving provenance for metadata file
+#51 DONE 0.0s
+
+#52 [tests internal] load build definition from Dockerfile
+#52 transferring dockerfile: 30B 0.0s
+#52 transferring dockerfile: 1.06kB 0.0s done
+#52 DONE 0.1s
+
+#53 [web internal] load build definition from Dockerfile
+#53 transferring dockerfile: 850B 0.1s done
+#53 DONE 0.1s
+
+#30 [tests internal] load metadata for docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#30 DONE 2.6s
+
+#54 [web internal] load metadata for docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#54 ...
+
+#55 [tests internal] load .dockerignore
+#55 transferring context: 316B done
+#55 DONE 0.0s
+
+#33 [tests app-build  1/12] FROM docker.io/library/python:3.12-alpine3.23@sha256:e0e17c55a255d32e515d3ae66577578f2a439ebe92cd4a8b69fc29421bbdba7d
+#33 DONE 0.0s
+
+#56 [tests internal] load build context
+#56 transferring context: 1.42MB 0.2s done
+#56 DONE 0.2s
+
+#57 [tests app-build  8/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-editable
+#57 CACHED
+
+#58 [tests app-build  7/12] COPY src ./src
+#58 CACHED
+
+#59 [tests app-build  9/12] COPY alembic.ini ./
+#59 CACHED
+
+#60 [tests app-build 11/12] RUN uv pip uninstall --system pip
+#60 CACHED
+
+#38 [tests app-build  3/12] RUN apk --no-cache upgrade
+#38 CACHED
+
+#37 [tests app-build  2/12] WORKDIR /app
+#37 CACHED
+
+#61 [tests app-build 10/12] COPY migrations ./migrations
+#61 CACHED
+
+#62 [tests app-build  5/12] COPY pyproject.toml uv.lock README.md ./
+#62 CACHED
+
+#63 [tests app-build  6/12] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-dev --no-install-project
+#63 CACHED
+
+#39 [tests app-build  4/12] RUN pip install --no-cache-dir uv==0.13.4
+#39 CACHED
+
+#64 [tests app-build 12/12] RUN adduser -D -u 10001 opspilot
+#64 CACHED
+
+#65 [tests tests 1/3] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
+#65 0.556 warning: Failed to hardlink files; falling back to full copy. This may lead to degraded performance.
+#65 0.557          If the cache and target directories are on different filesystems, hardlinking may not be supported.
+#65 0.557          If this is intentional, set `export UV_LINK_MODE=copy` or use `--link-mode=copy` to suppress this warning.
+#65 ...
+
+#66 [web internal] load metadata for docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#66 DONE 1.3s
+
+#54 [web internal] load metadata for docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#54 DONE 1.4s
+
+#67 [web internal] load .dockerignore
+#67 transferring context: 316B done
+#67 DONE 0.0s
+
+#68 [web build 1/6] FROM docker.io/library/node:24.18.0-bookworm-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d
+#68 DONE 0.0s
+
+#69 [web runtime 1/4] FROM docker.io/library/nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5
+#69 DONE 0.0s
+
+#70 [web internal] load build context
+#70 transferring context: 186.90kB 0.0s done
+#70 DONE 0.1s
+
+#71 [web build 3/6] COPY web/package.json web/package-lock.json ./
+#71 CACHED
+
+#72 [web build 2/6] WORKDIR /app/web
+#72 CACHED
+
+#73 [web build 4/6] RUN npm ci --no-audit --no-fund
+#73 CACHED
+
+#74 [web build 5/6] COPY web/ ./
+#74 DONE 0.2s
+
+#65 [tests tests 1/3] RUN --mount=type=cache,target=/root/.cache/uv uv sync --frozen --no-editable
+#65 1.880 Installed 10 packages in 1.33s
+#65 1.880  + iniconfig==2.3.1
+#65 1.880  + librt==0.16.0
+#65 1.880  + mypy==1.20.2
+#65 1.880  + mypy-extensions==1.1.0
+#65 1.880  + pathspec==1.1.1
+#65 1.880  + pluggy==1.7.0
+#65 1.880  + pygments==2.21.0
+#65 1.880  + pytest==9.1.1
+#65 1.880  + pytest-asyncio==1.4.0
+#65 1.880  + ruff==0.17.1
+#65 DONE 2.0s
+
+#75 [tests tests 2/3] COPY tests ./tests
+#75 DONE 0.2s
+
+#76 [web build 6/6] RUN npm run build
+#76 ...
+
+#77 [tests tests 3/3] COPY docs/full/state-transitions.json ./docs/full/state-transitions.json
+#77 DONE 0.2s
+
+#78 [tests] exporting to image
+#78 exporting layers 0.8s done
+#78 writing image sha256:aad10c52987695f98137070614f8c94d68e30bf64007f6408eae14f1a930298a done
+#78 naming to docker.io/opspilot-full/tests:f01 0.0s done
+#78 DONE 0.8s
+
+#76 [web build 6/6] RUN npm run build
+#76 1.340
+#76 1.340 > opspilot-web@0.1.0 build
+#76 1.340 > node node_modules/typescript/bin/tsc --noEmit && node node_modules/vite/bin/vite.js build
+#76 1.340
+#76 ...
+
+#79 [tests] resolving provenance for metadata file
+#79 DONE 0.0s
+
+#76 [web build 6/6] RUN npm run build
+#76 2.531 vite v8.3.4 building client environment for production...
+#76 2.607 transforming...
+#76 2.860 ✓ 30 modules transformed.
+#76 3.034 rendering chunks...
+#76 3.209 computing gzip size...
+#76 3.227 dist/index.html                   0.61 kB │ gzip:  0.37 kB
+#76 3.227 dist/assets/index-B9BC6uAE.css   17.72 kB │ gzip:  4.81 kB
+#76 3.227 dist/assets/index-B0qfkE6k.js   269.86 kB │ gzip: 82.28 kB
+#76 3.227
+#76 3.228 ✓ built in 696ms
+#76 DONE 3.3s
+
+#80 [web runtime 2/4] RUN apk --no-cache upgrade
+#80 CACHED
+
+#81 [web runtime 3/4] COPY web/nginx.conf /etc/nginx/conf.d/default.conf
+#81 CACHED
+
+#82 [web runtime 4/4] COPY --from=build /app/web/dist /usr/share/nginx/html
+#82 CACHED
+
+#83 [web] exporting to image
+#83 exporting layers done
+#83 writing image sha256:58d42e4e495b919626be8a376a35110b7f6d8fa887157048fbc5c2e7585601d2 done
+#83 naming to docker.io/opspilot-full/web:f01 0.0s done
+#83 DONE 0.1s
+
+#84 [web] resolving provenance for metadata file
+#84 DONE 0.0s
+
+#85 [e2e internal] load build definition from Dockerfile
+#85 transferring dockerfile: 850B done
+#85 DONE 0.0s
+
+#86 [e2e internal] load metadata for mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf
+#86 DONE 2.6s
+
+#87 [e2e internal] load .dockerignore
+#87 transferring context: 316B done
+#87 DONE 0.0s
+
+#88 [e2e e2e 1/6] FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf
+#88 DONE 0.0s
+
+#89 [e2e internal] load build context
+#89 transferring context: 187.29kB 0.0s done
+#89 DONE 0.1s
+
+#90 [e2e e2e 3/6] COPY web/package.json web/package-lock.json ./
+#90 CACHED
+
+#91 [e2e e2e 2/6] WORKDIR /app/web
+#91 CACHED
+
+#92 [e2e e2e 4/6] RUN npm ci --no-audit --no-fund
+#92 CACHED
+
+#93 [e2e e2e 5/6] COPY web/ ./
+#93 DONE 0.2s
+
+#94 [e2e e2e 6/6] COPY tests/e2e/ /app/tests/e2e/
+#94 DONE 0.1s
+
+#95 [e2e] exporting to image
+#95 exporting layers 0.1s done
+#95 writing image sha256:287e2906af17f3066a39f55fdccd10f7215763e3e9d2085d25b805065fe4cd8b done
+#95 naming to docker.io/opspilot-full/e2e:f01 0.0s done
+#95 DONE 0.2s
+
+#96 [e2e] resolving provenance for metadata file
+#96 DONE 0.0s
+ api  Built
+ collector  Built
+ e2e  Built
+ jaeger  Built
+ mcp  Built
+ oidc  Built
+ postgres  Built
+ tests  Built
+ web  Built
+ Network opspilot-full-test-f14-acceptance_default  Creating
+ Network opspilot-full-test-f14-acceptance_default  Created
+Existing independent Full service key ring preserved
+ Volume "opspilot-full-test-f14-acceptance_pgdata"  Creating
+ Volume "opspilot-full-test-f14-acceptance_pgdata"  Created
+ Volume "opspilot-full-test-f14-acceptance_oidcdata"  Creating
+ Volume "opspilot-full-test-f14-acceptance_oidcdata"  Created
+ Container opspilot-full-test-f14-acceptance-postgres-1  Creating
+ Container opspilot-full-test-f14-acceptance-oidc-1  Creating
+ Container opspilot-full-test-f14-acceptance-postgres-1  Created
+ Container opspilot-full-test-f14-acceptance-oidc-1  Created
+ Container opspilot-full-test-f14-acceptance-postgres-1  Starting
+ Container opspilot-full-test-f14-acceptance-oidc-1  Starting
+ Container opspilot-full-test-f14-acceptance-postgres-1  Started
+ Container opspilot-full-test-f14-acceptance-oidc-1  Started
+ Container opspilot-full-test-f14-acceptance-postgres-1  Waiting
+ Container opspilot-full-test-f14-acceptance-oidc-1  Waiting
+ Container opspilot-full-test-f14-acceptance-oidc-1  Healthy
+ Container opspilot-full-test-f14-acceptance-postgres-1  Healthy
+ Container opspilot-full-test-f14-acceptance-postgres-1  Running
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 642, in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/psycopg/cursor_async.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.SyntaxError: syntax error at or near "timestamp"
+LINE 86:     RETURNS TABLE(event_id uuid,timestamp timestamptz,run_id...
+                                         ^
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/config.py", line 1039, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/config.py", line 1029, in main
+    self.run_cmd(cfg, options)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/config.py", line 963, in run_cmd
+    fn(
+  File "/app/.venv/lib/python3.12/site-packages/alembic/command.py", line 487, in upgrade
+    script.run_env()
+  File "/app/.venv/lib/python3.12/site-packages/alembic/script/base.py", line 550, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/app/.venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 114, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 132, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/app/migrations/env.py", line 39, in <module>
+    asyncio.run(run_online())
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/migrations/env.py", line 24, in run_online
+    await connection.run_sync(run_migrations)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 887, in run_sync
+    return await greenlet_spawn(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/migrations/env.py", line 18, in run_migrations
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/app/.venv/lib/python3.12/site-packages/alembic/runtime/environment.py", line 970, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/runtime/migration.py", line 616, in run_migrations
+    step.migration_fn(**kw)
+  File "/app/migrations/versions/0015_workspace.py", line 11, in upgrade
+    op.execute("""
+  File "<string>", line 8, in execute
+  File "<string>", line 3, in execute
+  File "/app/.venv/lib/python3.12/site-packages/alembic/operations/ops.py", line 2645, in execute
+    return operations.invoke(op)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/operations/base.py", line 448, in invoke
+    return fn(self, operation)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/operations/toimpl.py", line 256, in execute_sql
+    operations.migration_context.impl.execute(
+  File "/app/.venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 259, in execute
+    self._exec(sql, execution_options)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 252, in _exec
+    return conn.execute(construct, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1428, in execute
+    return meth(
+           ^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1650, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1855, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1995, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2372, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1976, in _exec_single_context
+    self.dialect.do_execute(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 964, in do_execute
+    cursor.execute(statement, parameters)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py", line 642, in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/psycopg/cursor_async.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.ProgrammingError: (psycopg.errors.SyntaxError) syntax error at or near "timestamp"
+LINE 86:     RETURNS TABLE(event_id uuid,timestamp timestamptz,run_id...
+                                         ^
+[SQL:
+    CREATE TABLE domain.connector_controls (
+      tenant_id uuid NOT NULL DEFAULT identity.current_tenant(), integration_id uuid NOT NULL,
+      enabled boolean NOT NULL, version integer NOT NULL CHECK(version>0),
+      PRIMARY KEY(tenant_id,integration_id),
+      FOREIGN KEY(tenant_id,integration_id) REFERENCES domain.customer_integrations(tenant_id,id));
+    ALTER TABLE domain.connector_controls ENABLE ROW LEVEL SECURITY;
+    ALTER TABLE domain.connector_controls FORCE ROW LEVEL SECURITY;
+    CREATE POLICY tenant_scope ON domain.connector_controls USING(tenant_id=identity.current_tenant()) WITH CHECK(tenant_id=identity.current_tenant());
+    CREATE TABLE workflow.notification_reads (
+      tenant_id uuid NOT NULL DEFAULT identity.current_tenant(), user_id uuid NOT NULL REFERENCES identity.users(id),
+      notification_id uuid NOT NULL, read_at timestamptz NOT NULL DEFAULT clock_timestamp(),
+      PRIMARY KEY(tenant_id,user_id,notification_id),
+      FOREIGN KEY(tenant_id,notification_id) REFERENCES domain.notifications(tenant_id,id));
+    CREATE TABLE workflow.ui_commands (
+      tenant_id uuid NOT NULL, actor_id uuid NOT NULL REFERENCES identity.users(id),command_id uuid NOT NULL,
+      payload jsonb NOT NULL CHECK(octet_length(payload::text)<1024),result jsonb NOT NULL CHECK(octet_length(result::text)<2048),
+      PRIMARY KEY(tenant_id,actor_id,command_id));
+    ALTER TABLE workflow.notification_reads ENABLE ROW LEVEL SECURITY;
+    ALTER TABLE workflow.notification_reads FORCE ROW LEVEL SECURITY;
+    ALTER TABLE workflow.ui_commands ENABLE ROW LEVEL SECURITY;
+    ALTER TABLE workflow.ui_commands FORCE ROW LEVEL SECURITY;
+    CREATE POLICY recipient_scope ON workflow.notification_reads USING(tenant_id=identity.current_tenant() AND user_id=NULLIF(current_setting('app.actor_id',true),'')::uuid);
+    CREATE POLICY actor_scope ON workflow.ui_commands USING(tenant_id=identity.current_tenant() AND actor_id=NULLIF(current_setting('app.actor_id',true),'')::uuid);
+    CREATE FUNCTION workflow.workspace_connectors() RETURNS TABLE(id uuid,customer_id uuid,type text,enabled boolean,version integer)
+    LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$
+    BEGIN
+      IF NOT identity.lock_role(NULLIF(current_setting('app.actor_id',true),'')::uuid,identity.current_tenant(),'admin') THEN RETURN; END IF;
+      RETURN QUERY SELECT i.id,i.customer_id,i.integration_type::text,COALESCE(c.enabled,true),COALESCE(c.version,0)
+        FROM domain.customer_integrations i LEFT JOIN domain.connector_controls c ON c.tenant_id=i.tenant_id AND c.integration_id=i.id
+        WHERE i.tenant_id=identity.current_tenant() ORDER BY i.id LIMIT 501;
+    END $$;
+    CREATE FUNCTION workflow.workspace_inbox(before_time timestamptz,before_id uuid,n integer)
+    RETURNS TABLE(id uuid,customer_id uuid,body text,created_at timestamptz,read_at timestamptz,run_id uuid)
+    LANGUAGE sql SECURITY DEFINER SET search_path=pg_catalog AS $$
+      SELECT x.id,x.customer_id,x.body,x.created_at,r.read_at,
+        CASE WHEN ar.actor_id=NULLIF(current_setting('app.actor_id',true),'')::uuid OR EXISTS(SELECT 1 FROM identity.tenant_memberships m WHERE m.tenant_id=x.tenant_id AND m.user_id=x.recipient_id AND m.role IN ('auditor','approver')) THEN a.run_id ELSE NULL END
+      FROM domain.notifications x JOIN workflow.actions a ON a.tenant_id=x.tenant_id AND a.id=x.originating_action_id
+      JOIN workflow.agent_runs ar ON ar.tenant_id=a.tenant_id AND ar.id=a.run_id
+      LEFT JOIN workflow.notification_reads r ON r.tenant_id=x.tenant_id AND r.notification_id=x.id AND r.user_id=x.recipient_id
+      WHERE x.tenant_id=identity.current_tenant() AND x.recipient_id=NULLIF(current_setting('app.actor_id',true),'')::uuid
+      AND EXISTS(SELECT 1 FROM identity.tenant_memberships m JOIN identity.users u ON u.id=m.user_id WHERE m.tenant_id=x.tenant_id AND m.user_id=x.recipient_id AND u.disabled_at IS NULL)
+      AND (before_time IS NULL OR (x.created_at,x.id)<(before_time,before_id))
+      ORDER BY x.created_at DESC,x.id DESC LIMIT LEAST(GREATEST(n,1),51)
+    $$;
+    CREATE FUNCTION workflow.workspace_command(kind text,target uuid,expected integer,desired boolean,cmd uuid) RETURNS jsonb
+    LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$
+    DECLARE t uuid=identity.current_tenant(); u uuid=NULLIF(current_setting('app.actor_id',true),'')::uuid;
+      payload jsonb=jsonb_build_object('kind',kind,'target',target,'expected',expected,'desired',desired);
+      prior record; control record; output jsonb; stamp timestamptz;
+    BEGIN
+      IF kind NOT IN ('read','connector') OR t IS NULL OR u IS NULL THEN RETURN NULL; END IF;
+      PERFORM pg_advisory_xact_lock(hashtextextended(t::text||u::text||cmd::text,0));
+      IF kind='read' THEN
+        IF NOT EXISTS(SELECT 1 FROM domain.notifications x JOIN identity.users a ON a.id=x.recipient_id
+          WHERE x.tenant_id=t AND x.id=target AND x.recipient_id=u AND a.disabled_at IS NULL
+          AND EXISTS(SELECT 1 FROM identity.tenant_memberships m WHERE m.tenant_id=t AND m.user_id=u)) THEN RETURN NULL; END IF;
+      ELSE
+        IF NOT identity.lock_role(u,t,'admin') THEN RETURN NULL; END IF;
+        PERFORM 1 FROM domain.customer_integrations WHERE tenant_id=t AND id=target FOR UPDATE;
+        IF NOT FOUND THEN RETURN NULL; END IF;
+      END IF;
+      SELECT * INTO prior FROM workflow.ui_commands WHERE tenant_id=t AND actor_id=u AND command_id=cmd;
+      IF FOUND THEN
+        IF prior.payload<>payload THEN RETURN jsonb_build_object('conflict',true); END IF;
+        RETURN prior.result;
+      END IF;
+      IF kind='read' THEN
+        INSERT INTO workflow.notification_reads(tenant_id,user_id,notification_id) VALUES(t,u,target) ON CONFLICT DO NOTHING;
+        SELECT read_at INTO stamp FROM workflow.notification_reads WHERE tenant_id=t AND user_id=u AND notification_id=target;
+        output=jsonb_build_object('ok',true,'read_at',stamp);
+      ELSE
+        SELECT * INTO control FROM domain.connector_controls WHERE tenant_id=t AND integration_id=target FOR UPDATE;
+        IF COALESCE(control.version,0)<>expected THEN RETURN jsonb_build_object('conflict',true); END IF;
+        INSERT INTO domain.connector_controls VALUES(t,target,desired,1) ON CONFLICT(tenant_id,integration_id)
+          DO UPDATE SET enabled=EXCLUDED.enabled,version=connector_controls.version+1 RETURNING * INTO control;
+        output=jsonb_build_object('id',target,'enabled',control.enabled,'version',control.version);
+      END IF;
+      INSERT INTO workflow.ui_commands VALUES(t,u,cmd,payload,output);
+      INSERT INTO identity.security_events(id,actor_id,tenant_id,kind,details) VALUES(gen_random_uuid(),u,t,
+        CASE WHEN kind='read' THEN 'notification_read' ELSE 'connector_config_changed' END,jsonb_build_object('target_id',target,'command_id',cmd));
+      RETURN output;
+    END $$;
+    CREATE INDEX security_events_workspace ON identity.security_events(tenant_id,created_at DESC,id DESC);
+    CREATE FUNCTION workflow.workspace_security_events(before_time timestamptz,before_id uuid,n integer)
+    RETURNS TABLE(event_id uuid,timestamp timestamptz,run_id uuid,sequence bigint,type text,actor_id uuid,reason_code text)
+    LANGUAGE sql SECURITY DEFINER SET search_path=pg_catalog AS $$
+      SELECT s.id,s.created_at,NULL::uuid,NULL::bigint,'security.'||s.kind,s.actor_id,s.kind
+      FROM identity.security_events s WHERE s.tenant_id=identity.current_tenant()
+      AND identity.lock_role(NULLIF(current_setting('app.actor_id',true),'')::uuid,identity.current_tenant(),'auditor')
+      AND (before_time IS NULL OR (s.created_at,s.id)<(before_time,before_id))
+      ORDER BY s.created_at DESC,s.id DESC LIMIT LEAST(GREATEST(n,1),101)
+    $$;
+    REVOKE ALL ON FUNCTION workflow.workspace_security_events(timestamptz,uuid,integer) FROM PUBLIC;
+    GRANT EXECUTE ON FUNCTION workflow.workspace_security_events(timestamptz,uuid,integer) TO ops_workflow;
+    REVOKE ALL ON FUNCTION workflow.workspace_connectors(),workflow.workspace_inbox(timestamptz,uuid,integer),workflow.workspace_command(text,uuid,integer,boolean,uuid) FROM PUBLIC;
+    GRANT EXECUTE ON FUNCTION workflow.workspace_connectors(),workflow.workspace_inbox(timestamptz,uuid,integer),workflow.workspace_command(text,uuid,integer,boolean,uuid) TO ops_workflow;
+    ]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+exit status 1
+ Container opspilot-full-test-f14-acceptance-oidc-1  Stopping
+ Container opspilot-full-test-f14-acceptance-postgres-1  Stopping
+ Container opspilot-full-test-f14-acceptance-postgres-1  Stopped
+ Container opspilot-full-test-f14-acceptance-oidc-1  Stopped

@@ -1,0 +1,9 @@
+{
+  "ui": 200,
+  "api": 200,
+  "workers": [
+    "worker",
+    "worker2"
+  ],
+  "schema": "0015_workspace"
+}

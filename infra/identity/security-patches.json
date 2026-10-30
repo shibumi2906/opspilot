@@ -1,0 +1,41 @@
+{
+  "keycloak": "26.8.1",
+  "runtime": "gcr.io/distroless/java21-debian13:debug-nonroot@sha256:15c4db7f53d5fde12d97a9e73b54db4986b407dc4f5f7202647728167f0b9a6d",
+  "java25_supported_source": "https://www.keycloak.org/docs/26.8.0/release_notes/",
+  "findings": [
+    "CVE-2026-91403",
+    "CVE-2026-91415",
+    "CVE-2026-102554"
+  ],
+  "java_sources": [
+    "https://security-tracker.debian.org/tracker/CVE-2026-91403",
+    "https://security-tracker.debian.org/tracker/CVE-2026-91415"
+  ],
+  "guava": {
+    "version": "33.7.2-jre",
+    "url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/33.7.2-jre/guava-33.7.2-jre.jar",
+    "sha256": "b530942257fb935f8b2cfaa5f8eb5bd59c555fd8e8d01b8ce98912e077ea606c",
+    "advisory": "https://github.com/google/guava/security/advisories/GHSA-xxph-c9ww-hj94",
+    "classpath_filename": "com.google.guava.guava-33.6.0-jre.jar",
+    "reason": "Keep the vendor bootstrap classpath path; embedded Maven metadata and bytes are the fixed33.7.2-jre artifact."
+  },
+  "acceptance": "Raw findings retained; no package metadata removal or scanner ignore. Final scan, runtime/Guava/truststore probe and OIDC/native TLS checks required.",
+  "java_package": "openjdk-21-jre-headless=21.0.13+9-1~deb13u2",
+  "build_base": "debian:trixie-slim@sha256:f6b08b09a05725f9431502d3b5714f5c4576e82c1a84fa1debe0c24a7e0c3ec4",
+  "runtime_probe": "infra/identity/OpsIdentityProbe.java",
+  "launcher": "Static BusyBox POSIX shell from the pinned debug image runs unchanged vendor kc.sh; readiness/runtime assertions use a compiled Java probe.",
+  "rejected_candidates": {
+    "keycloak_unmodified_high": 3,
+    "rhel25_high": 15,
+    "debian_full_high": 43
+  },
+  "component_applicability": {
+    "raw_high_critical": 4,
+    "applicable_high_critical": 0,
+    "evidence": "docs/full/evidence/f14/security/vulnerability-applicability.json",
+    "verification": "scripts/check-f14-idp-applicability.py",
+    "scope": "Exact image/library SHA and four util-linux source-attributed CVEs only; affected libmount/nsenter code absent; no ASVS N/A or risk acceptance"
+  },
+  "container_bind": "Explicit KC_HTTP_HOST=0.0.0.0; published local host ports remain loopback",
+  "heap": "64MiB initial / 512MiB maximum"
+}

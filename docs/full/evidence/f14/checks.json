@@ -1,0 +1,75 @@
+{
+  "stage": "F14",
+  "status": "passed",
+  "base_commit": "2fe6613f950845e6a2aa5bdd11ea9395b4055179",
+  "verified_dates": "2026-10-29/2026-10-30",
+  "backend": {
+    "passed": 387,
+    "dedicated_skips": 9,
+    "workspace_cases": 5
+  },
+  "focused_backend": {
+    "passed": 16,
+    "subset_of_backend": true
+  },
+  "browser_oidc": {
+    "passed": 21,
+    "existing_cases_preserved": 17,
+    "new_workspace_cases": 4,
+    "expiry_unknown_boundary_fixtures_labelled": true
+  },
+  "queue_process": 5,
+  "fencing_faults": 3,
+  "native_tls_probes": 8,
+  "native_mfa_browser_checks": 14,
+  "distinct_idp_policy_checks": 4,
+  "idp_disable_sse_revocation_ms": 605,
+  "scripted_evals": {
+    "passed": 12,
+    "total": 12,
+    "hard_safety_gate": true,
+    "unauthorized_writes": 0,
+    "duplicates": 0,
+    "false_verified_success": 0
+  },
+  "application_source_files": 120,
+  "ui_source_files": 35,
+  "web_asset_files": 3,
+  "image_matches_source": true,
+  "live_images_match_scans": true,
+  "ruff_format_mypy": "passed",
+  "typescript_vite": "passed",
+  "powershell_parsers": "passed",
+  "runtime_sca": {
+    "app_raw_high_critical": 0,
+    "web_raw_high_critical": 0,
+    "oidc_raw_high_critical": 4,
+    "oidc_applicable_high_critical": 0,
+    "oidc_exact_component_assessment": "security/vulnerability-applicability.json",
+    "scanner_ignore": false,
+    "metadata_removal": false,
+    "risk_acceptance": false
+  },
+  "package_audit_findings": 0,
+  "local_full_schema": "0015_workspace",
+  "full_data_counts_sha256_preserved": true,
+  "interrupted_rollout_recovered": true,
+  "local_idp_backup": "ignored private archive; sha256/readability evidence in idp-backup.json",
+  "live_full_workspace": "passed",
+  "mvp_preserved": true,
+  "asvs_requirements": 253,
+  "asvs_protected_fields_preserved": true,
+  "f14_scope_reviews": 174,
+  "f14_primary_reviews": 103,
+  "whole_requirement_closure": false,
+  "full_l2_status": "NOT_MET",
+  "limitations": [
+    "Production mail/recovery identity verification/factor-change notifications/admin-plane MFA remain deployment obligations",
+    "Scoped local acceptance; no production, real/holdout model or remote-CI passing claim"
+  ],
+  "paid_calls": 0,
+  "vendor_writes": 0,
+  "production_deployments": 0,
+  "pushes": 0,
+  "future_stages_started": false
+}

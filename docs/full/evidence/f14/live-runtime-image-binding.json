@@ -1,0 +1,35 @@
+{
+  "matched": true,
+  "services": {
+    "api": {
+      "image": "sha256:9eee2c97c164c8c8c4a4edd6101ac6f0310a74621cda4c88f9c7b7c4a32d5086",
+      "running": true,
+      "health": "healthy"
+    },
+    "web": {
+      "image": "sha256:38cea1df5a9eb9d9c19553a96fee1330e49b6ad3fadb8f526903218441d2ad06",
+      "running": true,
+      "health": "healthy"
+    },
+    "oidc": {
+      "image": "sha256:5b68f96aef31f4aa90faf44b27e40c9c3f6757e44437302b089975aa824f2b78",
+      "running": true,
+      "health": "healthy"
+    },
+    "mcp": {
+      "image": "sha256:9eee2c97c164c8c8c4a4edd6101ac6f0310a74621cda4c88f9c7b7c4a32d5086",
+      "running": true,
+      "health": null
+    },
+    "worker": {
+      "image": "sha256:9eee2c97c164c8c8c4a4edd6101ac6f0310a74621cda4c88f9c7b7c4a32d5086",
+      "running": true,
+      "health": null
+    },
+    "worker2": {
+      "image": "sha256:9eee2c97c164c8c8c4a4edd6101ac6f0310a74621cda4c88f9c7b7c4a32d5086",
+      "running": true,
+      "health": null
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "quiesced_pre_upgrade_backup": true,
+  "ignored_private_archive": ".tools/f14-oidc-before.tgz",
+  "bytes": 431726,
+  "sha256": "6959a16972a1001d59327fe7968bd4eb0705e25d9d4a7cdb865b20251cf7d34f",
+  "archive_readable": true,
+  "contents_exported": false,
+  "credentials_exported": false
+}

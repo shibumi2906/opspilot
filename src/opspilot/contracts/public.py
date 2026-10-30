@@ -120,7 +120,8 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
                 "configuration customer ticket ticket_status recipient recipient_roles unavailable",
             )
             result["action"]["preconditions"]["integrations"] = [
-                pick(i, "id type project_fingerprint") for i in fresh.get("integrations", [])[:10]
+                pick(i, "id type project_fingerprint control_version")
+                for i in fresh.get("integrations", [])[:10]
             ]
             result["action"]["preconditions"]["observations"] = [
                 pick(i, "integration status credential") for i in fresh.get("observations", [])[:10]

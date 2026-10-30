@@ -1,0 +1,2 @@
+infra/identity/password-blacklists/common-passwords.txt text eol=lf
+infra/identity/*.java text eol=lf

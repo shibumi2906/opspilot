@@ -119,3 +119,15 @@ bounded replay/reset/send/connections with fail-closed reservation health, priva
 serialized snapshot recovery. Native TLS/MFA IdP-disable SSE revocation measured886ms; backend382,
 browser17, queue5, fencing3, TLS8+13, scripted12 and SEC-01/10 supply-chain/regression gates pass.
 All253 IDs/levels/baseline assessments/owners remain unchanged; no whole-norm closure. Full L2 NOT_MET.
+
+
+F14 local change gate passed: [contracts](../full/f14-security-contracts.md),
+[acceptance](../full/evidence/f14/checks.json). SEC-02/06/08 covers role/tenant-bound history,
+recipient inbox, session/admin UX, connector CAS/freshness, safe rendering and bounded private
+exports. Backend387, OIDC/browser21, queue5, fencing3, TLS8+MFA14 and distinct IdP policy4 pass;
+IdP-disable SSE revocation605ms. SEC-01/10 includes raw OS/JAR scans and exact artifact applicability:
+IdP raw4 HIGH util-linux source-attributed findings are retained; verified libuuid-only image
+contains no affected libmount/nsenter code. No ignore, metadata removal or risk acceptance.
+All253 protected identities/baseline assessments/owners/NA fields are preserved. Scoped reviews174
+pass;103 primary rows retain whole-requirement verification open. Production recovery delivery,
+factor notifications and administrator-plane MFA remain F23 obligations; full L2 NOT_MET.

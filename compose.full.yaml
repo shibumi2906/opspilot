@@ -50,6 +50,7 @@ services:
       - 127.0.0.1:${OIDC_PORT:-8181}:8080
     volumes:
       - oidcdata:/opt/keycloak/data
+      - ./infra/identity/password-blacklists:/opt/keycloak/data/password-blacklists:ro
 
   collector:
     image: opspilot-full/collector:f01

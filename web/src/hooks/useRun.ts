@@ -279,6 +279,10 @@ export function useRun() {
   };
   return {
     runId,
+    open: (id: string) => {
+      if (id === currentRun.current) refresh();
+      else changeRun(id);
+    },
     snapshot,
     error,
     mutationError,

@@ -1,0 +1,11 @@
+{
+  "base_commit": "2fe6613f950845e6a2aa5bdd11ea9395b4055179",
+  "dirty_f14_source": true,
+  "images": {
+    "opspilot-full/app:f01": "sha256:9eee2c97c164c8c8c4a4edd6101ac6f0310a74621cda4c88f9c7b7c4a32d5086",
+    "opspilot-full/web:f01": "sha256:38cea1df5a9eb9d9c19553a96fee1330e49b6ad3fadb8f526903218441d2ad06",
+    "opspilot-full/oidc:f03": "sha256:5b68f96aef31f4aa90faf44b27e40c9c3f6757e44437302b089975aa824f2b78",
+    "opspilot-full/e2e:f01": "sha256:a892a45bdf42642ccb09f4b5ba9aaea4fa91b135f8b415f0beba188b517b45c2",
+    "opspilot-full/tests:f01": "sha256:cd2a11f5585be4c2be58088620516f8cf53a0c1dcf3689dffef23cfa2927fe4c"
+  }
+}

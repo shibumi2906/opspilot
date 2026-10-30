@@ -1,0 +1,37 @@
+ Container opspilot-full-test-f14-final-postgres-1  Created
+ Container opspilot-full-test-f14-final-mcp-1  Created
+ Container opspilot-full-test-f14-final-postgres-1  Starting
+ Container opspilot-full-test-f14-final-postgres-1  Started
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+ Container opspilot-full-test-f14-final-mcp-1  Starting
+ Container opspilot-full-test-f14-final-mcp-1  Started
+ Container opspilot-full-test-f14-final-mcp-1  Waiting
+ Container opspilot-full-test-f14-final-postgres-1  Waiting
+ Container opspilot-full-test-f14-final-mcp-1  Healthy
+ Container opspilot-full-test-f14-final-postgres-1  Healthy
+...                                                                      [100%]
+3 passed in 81.55s (0:01:21)
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c: Pulling from aquasec/trivy
+Digest: sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Status: Image is up to date for aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+2026-10-29T14:08:40Z	FATAL	Fatal error	run error: init error: DB error: failed to download vulnerability DB: OCI artifact error: failed to download vulnerability DB: failed to download artifact from public.ecr.aws/aquasecurity/trivy-db:2: oci download error: copy error: context canceled
+ Container opspilot-full-test-f14-final-collector-1  Stopping
+ Container opspilot-full-test-f14-final-oidc-1  Stopping
+ Container opspilot-full-test-f14-final-jaeger-1  Stopping
+ Container opspilot-full-test-f14-final-worker-1  Stopping
+ Container opspilot-full-test-f14-final-web-1  Stopping
+ Container opspilot-full-test-f14-final-worker2-1  Stopping
+ Container opspilot-full-test-f14-final-oidc-1  Stopped
+ Container opspilot-full-test-f14-final-collector-1  Stopped
+ Container opspilot-full-test-f14-final-web-1  Stopped
+ Container opspilot-full-test-f14-final-api-1  Stopping
+ Container opspilot-full-test-f14-final-jaeger-1  Stopped
+ Container opspilot-full-test-f14-final-worker2-1  Stopped
+ Container opspilot-full-test-f14-final-worker-1  Stopped
+ Container opspilot-full-test-f14-final-mcp-1  Stopping
+ Container opspilot-full-test-f14-final-api-1  Stopped
+ Container opspilot-full-test-f14-final-mcp-1  Stopped
+ Container opspilot-full-test-f14-final-postgres-1  Stopping
+ Container opspilot-full-test-f14-final-postgres-1  Stopped
