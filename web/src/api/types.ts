@@ -130,6 +130,14 @@ export interface RunSnapshot {
   usage: {
     llm_calls: number;
     read_calls: number;
+    cached_input_tokens?: number | null;
+    reserved_tokens?: number;
+    known_spend_usd?: number;
+    reserved_spend_usd?: number;
+    cost_usd?: number | null;
+    cost_status?: "known" | "partial";
+    unknown_usage_count?: number;
+    price_versions?: string[];
     input_tokens: number | null;
     output_tokens: number | null;
     active_ms: number;

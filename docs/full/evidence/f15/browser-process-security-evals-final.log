@@ -1,0 +1,186 @@
+MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.
+Ignored Full Redis credentials prepared; existing password/signing key preserved
+ Container opspilot-full-test-f15-r3-collector-1  Created
+ Container opspilot-full-test-f15-r3-postgres-1  Created
+ Container opspilot-full-test-f15-r3-oidc-1  Created
+ Container opspilot-full-test-f15-r3-redis-1  Created
+ Container opspilot-full-test-f15-r3-jaeger-1  Created
+ Container opspilot-full-test-f15-r3-api-1  Created
+ Container opspilot-full-test-f15-r3-mcp-1  Created
+ Container opspilot-full-test-f15-r3-web-1  Created
+ Container opspilot-full-test-f15-r3-redis-1  Starting
+ Container opspilot-full-test-f15-r3-jaeger-1  Starting
+ Container opspilot-full-test-f15-r3-collector-1  Starting
+ Container opspilot-full-test-f15-r3-oidc-1  Starting
+ Container opspilot-full-test-f15-r3-postgres-1  Starting
+ Container opspilot-full-test-f15-r3-collector-1  Started
+ Container opspilot-full-test-f15-r3-jaeger-1  Started
+ Container opspilot-full-test-f15-r3-postgres-1  Started
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-redis-1  Started
+ Container opspilot-full-test-f15-r3-oidc-1  Started
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-api-1  Starting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-mcp-1  Starting
+ Container opspilot-full-test-f15-r3-api-1  Started
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-mcp-1  Started
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+ Container opspilot-full-test-f15-r3-web-1  Starting
+ Container opspilot-full-test-f15-r3-web-1  Started
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-oidc-1  Waiting
+ Container opspilot-full-test-f15-r3-jaeger-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-collector-1  Waiting
+ Container opspilot-full-test-f15-r3-redis-1  Waiting
+ Container opspilot-full-test-f15-r3-web-1  Waiting
+ Container opspilot-full-test-f15-r3-mcp-1  Waiting
+ Container opspilot-full-test-f15-r3-jaeger-1  Healthy
+ Container opspilot-full-test-f15-r3-mcp-1  Healthy
+ Container opspilot-full-test-f15-r3-collector-1  Healthy
+ Container opspilot-full-test-f15-r3-redis-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+ Container opspilot-full-test-f15-r3-oidc-1  Healthy
+ Container opspilot-full-test-f15-r3-web-1  Healthy
+ Container opspilot-full-test-f15-r3-oidc-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-web-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+ Container opspilot-full-test-f15-r3-web-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-oidc-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+ Container opspilot-full-test-f15-r3-web-1  Healthy
+ Container opspilot-full-test-f15-r3-oidc-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-mcp-1  Running
+ Container opspilot-full-test-f15-r3-worker-1  Created
+ Container opspilot-full-test-f15-r3-worker2-1  Created
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-worker2-1  Starting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-worker-1  Starting
+ Container opspilot-full-test-f15-r3-worker2-1  Started
+ Container opspilot-full-test-f15-r3-worker-1  Started
+Isolated test queue drained before browser acceptance
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-web-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+
+> opspilot-web@0.1.0 test:e2e
+> node node_modules/@playwright/test/cli.js test
+
+
+Running 22 tests using 1 worker
+
+  ✓   1 ../tests/e2e/authorization.spec.ts:2:5 › real OIDC tenant B investigation, approval and verification remain isolated (10.3s)
+  ✓   2 ../tests/e2e/freshness-revision.spec.ts:3:5 › bound mixed intent edit needs a new exact revision decision (11.3s)
+  ✓   3 ../tests/e2e/governance.spec.ts:3:5 › durable usage survives refresh; unknown cost never renders as zero (3.1s)
+  ✓   4 ../tests/e2e/greenshop.spec.ts:32:5 › GreenShop: live trail, evidence, immutable refresh, double click and verified ticket (8.3s)
+  ✓   5 ../tests/e2e/greenshop.spec.ts:93:5 › Reject creates no ticket and keeps the card visible (7.7s)
+  ✓   6 ../tests/e2e/greenshop.spec.ts:116:5 › polling reconnects without overlapping reads or losing the URL (26.2s)
+  ✓   7 ../tests/e2e/greenshop.spec.ts:152:5 › lost decision response reconciles the server decision before retry (11.9s)
+  ✓   8 ../tests/e2e/greenshop.spec.ts:175:5 › narrow viewport, plain text sources and readable partial results (14.9s)
+  ✓   9 ../tests/e2e/greenshop.spec.ts:212:5 › status-only completes without an approval card; terminal polling stops (8.0s)
+  ✓  10 ../tests/e2e/greenshop.spec.ts:230:5 › missing run and failed/unknown snapshots never display verified success (5.6s)
+  ✓  11 ../tests/e2e/greenshop.spec.ts:265:5 › a lost create response reuses the client request ID (6.9s)
+  ✓  12 ../tests/e2e/greenshop.spec.ts:304:5 › unknown and partial projections stay visibly unverified; snapshot mode is authoritative (3.9s)
+  ✓  13 ../tests/e2e/identity.spec.ts:9:5 › real OIDC PKCE session, authorized tenant switch, no browser tokens and logout (1.3s)
+  ✓  14 ../tests/e2e/identity.spec.ts:46:5 › OIDC login never auto-provisions a membership (646ms)
+  ✓  15 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: approve ticket, opposite inbox, concrete comment wave (10.8s)
+  ✓  16 ../tests/e2e/mixed-plans.spec.ts:4:7 › mixed plan: reject ticket, opposite inbox, concrete comment wave (9.4s)
+  ✓  17 ../tests/e2e/sse.spec.ts:3:5 › SSE reconnect after offline converges and remote logout clears private DOM (7.8s)
+  ✓  18 ../tests/e2e/sse.spec.ts:52:5 › duplicate replay and reset only refresh authoritative state, without repeating a mutation (3.8s)
+  ✓  19 ../tests/e2e/workspace-roles.spec.ts:13:5 › admin controls and auditor view are separated; mobile keyboard navigation (2.5s)
+  ✓  20 ../tests/e2e/workspace.spec.ts:3:5 › workspace clarification, cancellation, history and scoped download (7.9s)
+  ✓  21 ../tests/e2e/workspace.spec.ts:44:5 › workspace revision and private notification render hostile text safely (8.9s)
+  ✓  22 ../tests/e2e/workspace.spec.ts:89:5 › expiry disables decisions without a reload and unknown state exposes reconciliation (9.5s)
+
+  22 passed (3.0m)
+ Container opspilot-full-test-f15-r3-worker-1  Stopping
+ Container opspilot-full-test-f15-r3-worker2-1  Stopping
+ Container opspilot-full-test-f15-r3-worker-1  Stopped
+ Container opspilot-full-test-f15-r3-worker2-1  Stopped
+ Container opspilot-full-test-f15-r3-api-1  Stopping
+ Container opspilot-full-test-f15-r3-api-1  Stopped
+.....                                                                    [100%]
+5 passed in 58.89s
+...                                                                      [100%]
+3 passed in 45.42s
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c: Pulling from aquasec/trivy
+Digest: sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Status: Image is up to date for aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+docker.io/aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c
+Downloading pip (1.7MiB)
+Downloading pygments (1.2MiB)
+ Downloaded pygments
+ Downloaded pip
+Installed 29 packages in 72ms
+realpath: --: No such file or directory
+No known vulnerabilities found
+Runtime image HIGH/CRITICAL gate and package audits passed; all scan findings preserved.
+2026-10-30T09:57:30Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-30T09:57:31Z	INFO	Detected OS	family="debian" version="13.7"
+2026-10-30T09:57:31Z	INFO	[debian] Detecting vulnerabilities...	os_version="13" pkg_num=25
+2026-10-30T09:57:31Z	INFO	Number of language-specific files	num=1
+2026-10-30T09:57:31Z	INFO	[jar] Detecting vulnerabilities...
+2026-10-30T09:57:32Z	WARN	Using severities from other vendors for some vulnerabilities. Read https://trivy.dev/docs/v0.76/guide/scanner/vulnerability#severity-selection for details.
+Verified raw HIGH/CRITICAL=4; applicable=0 for exact image sha256:5b68f96aef31f4aa90faf44b27e40c9c3f6757e44437302b089975aa824f2b78
+2026-10-30T09:57:41Z	INFO	[vuln] Vulnerability scanning is enabled
+2026-10-30T09:57:41Z	INFO	Detected OS	family="alpine" version="3.23.7"
+2026-10-30T09:57:41Z	INFO	[alpine] Detecting vulnerabilities...	os_version="3.23" repository="3.23" pkg_num=23
+2026-10-30T09:57:41Z	INFO	Number of language-specific files	num=0
+F15 app/web/Redis runtime image and package gates passed; raw IdP applicability retained separately.
+E01: True actions_verified []
+E02: True rejected []
+E03: True actions_verified []
+E04: True diagnosis_only []
+E05: True insufficient_context []
+E06: True None []
+2026-10-30 09:58:05.368 | WARNING  | opspilot.mcp_server.tools_read:call_tool:279 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-30 09:58:05.492 | WARNING  | opspilot.mcp_server.tools_read:call_tool:279 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+2026-10-30 09:58:05.679 | WARNING  | opspilot.mcp_server.tools_read:call_tool:279 - tool_failed tool=get_service_status code=MONITORING_TIMEOUT
+E07: True partial []
+E08: True partial []
+E09: True partial []
+E10: True blocked []
+E11: True rejected []
+E12: True budget_exhausted []
+ Container opspilot-full-test-f15-r3-oidc-1  Stopping
+ Container opspilot-full-test-f15-r3-jaeger-1  Stopping
+ Container opspilot-full-test-f15-r3-redis-1  Stopping
+ Container opspilot-full-test-f15-r3-worker-1  Stopping
+ Container opspilot-full-test-f15-r3-web-1  Stopping
+ Container opspilot-full-test-f15-r3-worker2-1  Stopping
+ Container opspilot-full-test-f15-r3-collector-1  Stopping
+ Container opspilot-full-test-f15-r3-worker2-1  Stopped
+ Container opspilot-full-test-f15-r3-worker-1  Stopped
+ Container opspilot-full-test-f15-r3-mcp-1  Stopping
+ Container opspilot-full-test-f15-r3-redis-1  Stopped
+ Container opspilot-full-test-f15-r3-collector-1  Stopped
+ Container opspilot-full-test-f15-r3-mcp-1  Stopped
+ Container opspilot-full-test-f15-r3-web-1  Stopped
+ Container opspilot-full-test-f15-r3-api-1  Stopping
+ Container opspilot-full-test-f15-r3-api-1  Stopped
+ Container opspilot-full-test-f15-r3-postgres-1  Stopping
+ Container opspilot-full-test-f15-r3-jaeger-1  Stopped
+ Container opspilot-full-test-f15-r3-oidc-1  Stopped
+ Container opspilot-full-test-f15-r3-postgres-1  Stopped

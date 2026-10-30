@@ -1,0 +1,90 @@
+Isolated TLS/MFA lab generated. Credentials remain ignored; CA not installed in OS.
+ Network opspilot-full-security-f15-final_default  Creating
+ Network opspilot-full-security-f15-final_default  Created
+ Volume "opspilot-full-security-f15-final_pgdata"  Creating
+ Volume "opspilot-full-security-f15-final_pgdata"  Created
+ Volume "opspilot-full-security-f15-final_oidcdata"  Creating
+ Volume "opspilot-full-security-f15-final_oidcdata"  Created
+ Container opspilot-full-security-f15-final-oidc-1  Creating
+ Container opspilot-full-security-f15-final-redis-1  Creating
+ Container opspilot-full-security-f15-final-postgres-1  Creating
+ Container opspilot-full-security-f15-final-postgres-1  Created
+ Container opspilot-full-security-f15-final-redis-1  Created
+ Container opspilot-full-security-f15-final-oidc-1  Created
+ Container opspilot-full-security-f15-final-redis-1  Starting
+ Container opspilot-full-security-f15-final-oidc-1  Starting
+ Container opspilot-full-security-f15-final-postgres-1  Starting
+ Container opspilot-full-security-f15-final-redis-1  Started
+ Container opspilot-full-security-f15-final-oidc-1  Started
+ Container opspilot-full-security-f15-final-postgres-1  Started
+ Container opspilot-full-security-f15-final-oidc-1  Waiting
+ Container opspilot-full-security-f15-final-postgres-1  Waiting
+ Container opspilot-full-security-f15-final-redis-1  Waiting
+ Container opspilot-full-security-f15-final-redis-1  Healthy
+ Container opspilot-full-security-f15-final-postgres-1  Healthy
+ Container opspilot-full-security-f15-final-oidc-1  Healthy
+ Container opspilot-full-security-f15-final-postgres-1  Running
+ Container opspilot-full-security-f15-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-security-f15-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-security-f15-final-postgres-1  Running
+ Container opspilot-full-security-f15-final-worker-1  Creating
+ Container opspilot-full-security-f15-final-api-1  Creating
+ Container opspilot-full-security-f15-final-mcp-1  Creating
+ Container opspilot-full-security-f15-final-mcp-1  Created
+ Container opspilot-full-security-f15-final-worker-1  Created
+ Container opspilot-full-security-f15-final-api-1  Created
+ Container opspilot-full-security-f15-final-web-1  Creating
+ Container opspilot-full-security-f15-final-web-1  Created
+ Container opspilot-full-security-f15-final-postgres-1  Waiting
+ Container opspilot-full-security-f15-final-postgres-1  Waiting
+ Container opspilot-full-security-f15-final-postgres-1  Waiting
+ Container opspilot-full-security-f15-final-postgres-1  Healthy
+ Container opspilot-full-security-f15-final-mcp-1  Starting
+ Container opspilot-full-security-f15-final-postgres-1  Healthy
+ Container opspilot-full-security-f15-final-postgres-1  Healthy
+ Container opspilot-full-security-f15-final-api-1  Starting
+ Container opspilot-full-security-f15-final-worker-1  Starting
+ Container opspilot-full-security-f15-final-mcp-1  Started
+ Container opspilot-full-security-f15-final-api-1  Started
+ Container opspilot-full-security-f15-final-api-1  Waiting
+ Container opspilot-full-security-f15-final-worker-1  Started
+ Container opspilot-full-security-f15-final-api-1  Healthy
+ Container opspilot-full-security-f15-final-web-1  Starting
+ Container opspilot-full-security-f15-final-web-1  Started
+ Container opspilot-full-security-f15-final-mcp-1  Waiting
+ Container opspilot-full-security-f15-final-web-1  Waiting
+ Container opspilot-full-security-f15-final-worker-1  Waiting
+ Container opspilot-full-security-f15-final-postgres-1  Waiting
+ Container opspilot-full-security-f15-final-api-1  Waiting
+ Container opspilot-full-security-f15-final-mcp-1  Healthy
+ Container opspilot-full-security-f15-final-api-1  Healthy
+ Container opspilot-full-security-f15-final-postgres-1  Healthy
+ Container opspilot-full-security-f15-final-worker-1  Healthy
+ Container opspilot-full-security-f15-final-web-1  Healthy
+{"passed": true, "checks": ["IdP discovery is ready on the pinned trusted TLS issuer", "Effective provider RS256 signing keys are at least RSA 3072", "TLS UI/API policy present on public success and authentication denial", "Untrusted CA and wrong TLS hostname rejected without bypass", "API MCP and IdP do not serve plaintext HTTP", "MCP requires signed request context over TLS", "Database verifies TLS peer; application role cannot delete security audit", "PostgreSQL rejects non-TLS network authentication"], "database_tls": "TLSv1.3"}
+Traceback (most recent call last):
+  File "/work/scripts/probe-full-f15-redis.py", line 92, in <module>
+    asyncio.run(main())
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/work/scripts/probe-full-f15-redis.py", line 18, in main
+    env = Settings()
+          ^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/pydantic_settings/main.py", line 292, in __init__
+    super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+  File "/app/.venv/lib/python3.12/site-packages/pydantic/main.py", line 280, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+  Value error, Invalid or ambiguous secret file configuration [type=value_error]
+    For further information visit https://errors.pydantic.dev/2.14/v/value_error
+exit status 1

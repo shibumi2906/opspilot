@@ -1,0 +1,248 @@
+ Container opspilot-full-test-f15-postgres-1  Running
+Traceback (most recent call last):
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1824, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1422, in _init_compiled
+    compiled.construct_params(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/compiler.py", line 2000, in construct_params
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: A value is required for bind parameter '6' (Background on this error at: https://sqlalche.me/e/20/cd3x)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/app/.venv/bin/alembic", line 10, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/config.py", line 1039, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/config.py", line 1029, in main
+    self.run_cmd(cfg, options)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/config.py", line 963, in run_cmd
+    fn(
+  File "/app/.venv/lib/python3.12/site-packages/alembic/command.py", line 487, in upgrade
+    script.run_env()
+  File "/app/.venv/lib/python3.12/site-packages/alembic/script/base.py", line 550, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/app/.venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 114, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 132, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/app/migrations/env.py", line 39, in <module>
+    asyncio.run(run_online())
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/app/migrations/env.py", line 24, in run_online
+    await connection.run_sync(run_migrations)
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 887, in run_sync
+    return await greenlet_spawn(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 203, in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/migrations/env.py", line 18, in run_migrations
+    context.run_migrations()
+  File "<string>", line 8, in run_migrations
+  File "/app/.venv/lib/python3.12/site-packages/alembic/runtime/environment.py", line 970, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/runtime/migration.py", line 616, in run_migrations
+    step.migration_fn(**kw)
+  File "/app/migrations/versions/0016_governance.py", line 88, in upgrade
+    op.execute("""
+  File "<string>", line 8, in execute
+  File "<string>", line 3, in execute
+  File "/app/.venv/lib/python3.12/site-packages/alembic/operations/ops.py", line 2645, in execute
+    return operations.invoke(op)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/operations/base.py", line 448, in invoke
+    return fn(self, operation)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/alembic/operations/toimpl.py", line 256, in execute_sql
+    operations.migration_context.impl.execute(
+  File "/app/.venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 259, in execute
+    self._exec(sql, execution_options)
+  File "/app/.venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 252, in _exec
+    return conn.execute(construct, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1428, in execute
+    return meth(
+           ^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1650, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1830, in _execute_context
+    self._handle_dbapi_exception(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2372, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1824, in _execute_context
+    context = constructor(
+              ^^^^^^^^^^^^
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1422, in _init_compiled
+    compiled.construct_params(
+  File "/app/.venv/lib/python3.12/site-packages/sqlalchemy/sql/compiler.py", line 2000, in construct_params
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.StatementError: (sqlalchemy.exc.InvalidRequestError) A value is required for bind parameter '6'
+[SQL:
+INSERT INTO workflow.usage_reservations(tenant_id,run_id,actor_id,limits,base_usage,reads,rounds,llm,active_seconds)
+SELECT tenant_id,id,actor_id,COALESCE(usage->'limits',usage->'command'->'limits',
+ '{"rounds"%(6)s,"reads"%(15)s,"llm_attempts"%(10)s,"tokens"%(30000)s,"active_seconds"%(120)s,"recursion_limit"%(60)s}'::jsonb),
+ usage,COALESCE((usage->>'read_attempts')::int,0),COALESCE((usage->>'rounds')::int,0),
+ COALESCE((usage->>'llm_attempts')::int,0),COALESCE((usage->>'active_seconds')::numeric,0)
+FROM workflow.agent_runs;
+CREATE FUNCTION workflow.init_usage() RETURNS trigger LANGUAGE plpgsql SECURITY DEFINER
+ SET search_path=pg_catalog AS $$ BEGIN
+ INSERT INTO workflow.usage_reservations(tenant_id,run_id,actor_id,limits)
+ VALUES(NEW.tenant_id,NEW.id,NEW.actor_id,COALESCE(NEW.usage->'command'->'limits',
+ '{"rounds"%(6)s,"reads"%(15)s,"llm_attempts"%(10)s,"tokens"%(30000)s,"active_seconds"%(120)s,"recursion_limit"%(60)s}'::jsonb));
+ RETURN NEW; END $$;
+CREATE TRIGGER init_usage AFTER INSERT ON workflow.agent_runs FOR EACH ROW EXECUTE FUNCTION workflow.init_usage();
+CREATE FUNCTION workflow.usage_snapshot(target uuid) RETURNS jsonb LANGUAGE plpgsql SECURITY DEFINER
+ SET search_path=pg_catalog AS $$
+DECLARE r record; a record; base_unknown integer;
+BEGIN
+ SELECT u.* INTO r FROM workflow.usage_reservations u JOIN workflow.agent_runs g
+ ON g.tenant_id=u.tenant_id AND g.id=u.run_id WHERE u.tenant_id=identity.current_tenant()
+ AND u.run_id=target AND (g.actor_id=identity.current_actor() OR EXISTS(SELECT 1
+ FROM identity.tenant_memberships m WHERE m.tenant_id=u.tenant_id AND m.user_id=identity.current_actor()
+ AND m.role IN ('approver','auditor')));
+ IF NOT FOUND THEN RETURN NULL; END IF;
+ SELECT COALESCE(sum(input_tokens),0) AS input,COALESCE(sum(output_tokens),0) AS output,
+ COALESCE(sum(cached_tokens),0) AS cached, count(*) FILTER(WHERE cached_tokens IS NULL) AS unknown_cached,COALESCE(sum(held_tokens),0) AS held,
+ count(*) FILTER(WHERE status<>'known') AS unknown,
+ count(*) FILTER(WHERE known_cost IS NULL) AS unpriced,
+ COALESCE(sum(known_cost),0) AS known_cost,COALESCE(sum(held_cost),0) AS held_cost,
+ COALESCE(sum(duration_ms),0)/1000.0 AS active,
+ array_agg(DISTINCT price->>'version') FILTER(WHERE price IS NOT NULL) AS versions
+ INTO a FROM workflow.provider_attempts WHERE tenant_id=r.tenant_id AND run_id=target;
+ base_unknown=COALESCE((r.base_usage->>'unknown_usage_count')::int,0);
+ RETURN jsonb_build_object('limits',r.limits,'read_attempts',r.reads,'rounds',r.rounds,
+ 'llm_attempts',r.llm,'input_tokens',a.input+COALESCE((r.base_usage->>'input_tokens')::int,0),
+ 'output_tokens',a.output+COALESCE((r.base_usage->>'output_tokens')::int,0),
+ 'cached_input_tokens',CASE WHEN a.unknown_cached>0 OR base_unknown>0 THEN NULL ELSE a.cached END,'reserved_tokens',a.held+CASE WHEN base_unknown>0 THEN
+ (r.limits->>'tokens')::int ELSE 0 END,'unknown_usage_count',a.unknown+base_unknown,
+ 'active_seconds',GREATEST(r.active_seconds,a.active),'reserved_verify_reads',0,
+ 'known_spend_usd',a.known_cost,'reserved_spend_usd',a.held_cost,
+ 'cost_status',CASE WHEN a.unknown+base_unknown>0 OR a.unpriced>0 OR r.base_usage ? 'llm_attempts'
+ THEN 'partial' ELSE 'known' END,'price_versions',COALESCE(to_jsonb(a.versions),'[]'::jsonb),
+ 'currency','USD');
+END $$;
+CREATE FUNCTION workflow.reserve_resource(target uuid, kind text, identity_id uuid,
+ requested_model text, reserve_tokens integer, timeout_ms integer) RETURNS boolean
+ LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$
+DECLARE r record; p record; price_row record; price_doc jsonb; snapshot jsonb; tokens bigint;
+ cost numeric=0; aggregates record; period timestamptz=clock_timestamp()-interval '1 hour';
+BEGIN
+ PERFORM workflow.check_fence(target);
+ IF NOT identity.lock_role(identity.current_actor(),identity.current_tenant(),'operator') THEN RETURN false; END IF;
+ IF kind NOT IN ('read','round','llm') OR reserve_tokens NOT BETWEEN 0 AND 30000
+ OR timeout_ms NOT BETWEEN 0 AND 30000 OR requested_model IS NULL OR length(requested_model)>200
+ THEN RETURN false; END IF;
+ PERFORM pg_advisory_xact_lock(1801202615);
+ SELECT u.* INTO r FROM workflow.usage_reservations u JOIN workflow.agent_runs g
+ ON g.tenant_id=u.tenant_id AND g.id=u.run_id WHERE u.tenant_id=identity.current_tenant()
+ AND u.run_id=target AND u.actor_id=identity.current_actor()
+ AND g.status IN ('queued','running','waiting_for_input','waiting_for_approval') FOR UPDATE OF u;
+ IF NOT FOUND THEN RETURN false; END IF;
+ SELECT * INTO p FROM workflow.resource_policy WHERE id;
+ snapshot=workflow.usage_snapshot(target);
+ tokens=(snapshot->>'input_tokens')::bigint+(snapshot->>'output_tokens')::bigint+
+ (snapshot->>'reserved_tokens')::bigint;
+ IF kind='read' THEN
+  IF r.reads>=(r.limits->>'reads')::int THEN RETURN false; END IF;
+  UPDATE workflow.usage_reservations SET reads=reads+1 WHERE tenant_id=r.tenant_id AND run_id=target;
+ ELSIF kind='round' THEN
+  IF r.rounds>=(r.limits->>'rounds')::int THEN RETURN false; END IF;
+  UPDATE workflow.usage_reservations SET rounds=rounds+1 WHERE tenant_id=r.tenant_id AND run_id=target;
+ ELSE
+  IF r.llm>=(r.limits->>'llm_attempts')::int OR tokens+reserve_tokens>(r.limits->>'tokens')::int
+  OR (snapshot->>'active_seconds')::numeric >=(r.limits->>'active_seconds')::numeric
+  OR EXISTS(SELECT 1 FROM workflow.provider_attempts WHERE tenant_id=r.tenant_id AND attempt_id=identity_id)
+  THEN RETURN false; END IF;
+  SELECT * INTO price_row FROM workflow.model_prices WHERE model=requested_model
+   AND effective_at<=clock_timestamp() AND valid_until>clock_timestamp()
+   ORDER BY effective_at DESC,version DESC LIMIT 1;
+  IF FOUND THEN price_doc=to_jsonb(price_row);cost=reserve_tokens*
+   GREATEST(price_row.input_per_million,price_row.output_per_million)/1000000; END IF;
+  IF (snapshot->>'known_spend_usd')::numeric+(snapshot->>'reserved_spend_usd')::numeric+cost>p.spend_run
+  THEN RETURN false; END IF;
+  SELECT count(*) AS attempts,
+   count(*) FILTER(WHERE actor_id=r.actor_id) AS actor_attempts,
+   count(*) FILTER(WHERE tenant_id=r.tenant_id) AS tenant_attempts,
+   COALESCE(sum(COALESCE(input_tokens,0)+COALESCE(output_tokens,0)+held_tokens),0) AS tokens,
+   COALESCE(sum(COALESCE(input_tokens,0)+COALESCE(output_tokens,0)+held_tokens) FILTER(WHERE actor_id=r.actor_id),0) AS actor_tokens,
+   COALESCE(sum(COALESCE(input_tokens,0)+COALESCE(output_tokens,0)+held_tokens) FILTER(WHERE tenant_id=r.tenant_id),0) AS tenant_tokens,
+   COALESCE(sum(COALESCE(known_cost,0)+held_cost),0) AS spend,
+   COALESCE(sum(COALESCE(known_cost,0)+held_cost) FILTER(WHERE actor_id=r.actor_id),0) AS actor_spend,
+   COALESCE(sum(COALESCE(known_cost,0)+held_cost) FILTER(WHERE tenant_id=r.tenant_id),0) AS tenant_spend
+   INTO aggregates FROM workflow.provider_attempts WHERE created_at>=period AND model<>'scripted';
+  IF aggregates.attempts>=p.llm_global_hour OR aggregates.actor_attempts>=p.llm_actor_hour
+   OR aggregates.tenant_attempts>=p.llm_tenant_hour OR aggregates.tokens+reserve_tokens>p.tokens_global_hour
+   OR aggregates.actor_tokens+reserve_tokens>p.tokens_actor_hour
+   OR aggregates.tenant_tokens+reserve_tokens>p.tokens_tenant_hour
+   OR aggregates.spend+cost>p.spend_global_hour OR aggregates.actor_spend+cost>p.spend_actor_hour
+   OR aggregates.tenant_spend+cost>p.spend_tenant_hour THEN RETURN false; END IF;
+  INSERT INTO workflow.provider_attempts(tenant_id,run_id,actor_id,attempt_id,epoch,model,
+   tokens_reserved,held_tokens,price,held_cost,duration_ms)
+  VALUES(r.tenant_id,target,r.actor_id,identity_id,current_setting('app.execution_epoch')::bigint,
+   requested_model,reserve_tokens,reserve_tokens,price_doc,cost,timeout_ms);
+  UPDATE workflow.usage_reservations SET llm=llm+1 WHERE tenant_id=r.tenant_id AND run_id=target;
+ END IF;
+ RETURN true;
+END $$;
+CREATE FUNCTION workflow.settle_provider(target uuid, identity_id uuid, inputs integer,
+ outputs integer, cached integer, served text, duration integer) RETURNS boolean
+ LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$
+DECLARE a record; cost numeric; full_usage boolean; matching_price boolean;
+BEGIN
+ PERFORM workflow.check_fence(target);
+ IF inputs<0 OR outputs<0 OR cached<0 OR cached>inputs OR inputs>1000000 OR outputs>1000000
+ OR duration NOT BETWEEN 0 AND 120000 THEN RETURN false; END IF;
+ PERFORM pg_advisory_xact_lock(1801202615);
+ SELECT * INTO a FROM workflow.provider_attempts WHERE tenant_id=identity.current_tenant()
+ AND run_id=target AND attempt_id=identity_id AND actor_id=identity.current_actor() FOR UPDATE;
+ IF NOT FOUND OR a.status<>'started' OR a.epoch<>current_setting('app.execution_epoch')::bigint
+ THEN RETURN false; END IF;
+ full_usage=inputs IS NOT NULL AND outputs IS NOT NULL;
+ matching_price=a.price IS NOT NULL AND EXISTS(SELECT 1 FROM workflow.model_prices
+ WHERE model=served AND version=a.price->>'version'
+ AND input_per_million=(a.price->>'input_per_million')::numeric
+ AND cached_per_million=(a.price->>'cached_per_million')::numeric
+ AND output_per_million=(a.price->>'output_per_million')::numeric);
+ IF full_usage AND cached IS NOT NULL AND matching_price THEN
+ cost=((inputs-cached)*(a.price->>'input_per_million')::numeric+
+ cached*(a.price->>'cached_per_million')::numeric+outputs*(a.price->>'output_per_million')::numeric)/1000000;
+ ELSIF full_usage AND inputs=0 AND outputs=0 AND a.model='scripted' THEN cost=0;
+ END IF;
+ UPDATE workflow.provider_attempts SET input_tokens=inputs,output_tokens=outputs,cached_tokens=cached,
+ served_model=left(served,200),duration_ms=duration,
+ status=CASE WHEN full_usage THEN 'known' ELSE 'unknown' END,
+ held_tokens=CASE WHEN full_usage THEN 0 ELSE GREATEST(0,tokens_reserved-COALESCE(inputs,0)-COALESCE(outputs,0)) END,
+ known_cost=cost,held_cost=CASE WHEN cost IS NOT NULL THEN 0 ELSE held_cost END
+ WHERE tenant_id=a.tenant_id AND attempt_id=identity_id;
+ RETURN true;
+END $$;
+CREATE FUNCTION workflow.record_active(target uuid, elapsed numeric) RETURNS void
+ LANGUAGE plpgsql SECURITY DEFINER SET search_path=pg_catalog AS $$ BEGIN
+ PERFORM workflow.check_fence(target);
+ IF elapsed BETWEEN 0 AND 3600 THEN UPDATE workflow.usage_reservations SET
+ active_seconds=GREATEST(active_seconds,elapsed) WHERE tenant_id=identity.current_tenant()
+ AND run_id=target AND actor_id=identity.current_actor(); END IF;
+END $$;
+]
+(Background on this error at: https://sqlalche.me/e/20/cd3x)
+exit status 1

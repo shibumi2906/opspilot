@@ -31,18 +31,23 @@ class Budget:
         self.input_tokens = 0
         self.output_tokens = 0
         self.unknown_usage_count = 0
+        self.reserved_tokens = 0
+        self.durable: dict[str, Any] = {}
 
     def remaining(self) -> float:
         return self.limits.active_seconds - (self.clock() - self.started)
 
     def check(self) -> None:
-        if self.remaining() <= 0 or self.input_tokens + self.output_tokens >= self.limits.tokens:
+        if (
+            self.remaining() <= 0
+            or self.input_tokens + self.output_tokens + self.reserved_tokens >= self.limits.tokens
+        ):
             raise BudgetExceeded("Active time or token limit reached")
 
     def begin_read(self, *, verification: bool = False) -> None:
         self.check()
-        # One reserved verification read is unavailable during pre-approval investigation.
-        if self.read_attempts >= self.limits.reads - (0 if verification else 1):
+        # F15: research reads have their own durable cap; verification has a per-action reserve.
+        if self.read_attempts >= self.limits.reads:
             raise BudgetExceeded("Read limit reached; verification reserve preserved")
         self.read_attempts += 1
 
@@ -66,6 +71,8 @@ class Budget:
 
     def snapshot(self) -> dict[str, Any]:
         return {
+            **self.durable,
+            "reserved_tokens": self.reserved_tokens,
             "limits": self.limits.model_dump(),
             "rounds": self.rounds,
             "read_attempts": self.read_attempts,

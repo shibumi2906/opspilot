@@ -20,6 +20,13 @@ from opspilot.security.http import SecurityMiddleware
 def hardened(**extra):
     values = dict(
         security_profile="hardened",
+        # These HTTP/identity unit probes do not configure a cache. Do not inherit
+        # the real plaintext development Redis fixture from the integration profile.
+        redis_url=None,
+        redis_password=None,
+        redis_password_file=None,
+        cache_signing_key=None,
+        cache_signing_key_file=None,
         app_origin="https://app.localhost:8443",
         oidc_issuer="https://idp.localhost:8543/realms/opspilot",
         oidc_internal_issuer="https://idp.localhost:8543/realms/opspilot",
@@ -50,6 +57,24 @@ def hardened(**extra):
         dict(identity_database_url="postgresql+psycopg://x:y@postgres/opspilot_full_test"),
         dict(oidc_issuer="https://app.localhost/realm"),
         dict(idp_token_key=None),
+        dict(
+            redis_url="redis://redis:6379/0",
+            redis_password="a" * 64,
+            cache_signing_key="b" * 64,
+            tls_ca_file="/unused/ca.crt",
+        ),
+        dict(
+            redis_url="rediss://redis:6379/0",
+            redis_password="a" * 64,
+            cache_signing_key="b" * 64,
+            tls_ca_file=None,
+        ),
+        dict(
+            redis_url="rediss://redis:6379/0?ssl_cert_reqs=none",
+            redis_password="a" * 64,
+            cache_signing_key="b" * 64,
+            tls_ca_file="/unused/ca.crt",
+        ),
     ],
 )
 def test_hardened_startup_fails_closed(change):

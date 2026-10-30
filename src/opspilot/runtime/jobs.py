@@ -44,7 +44,11 @@ action_id=EXCLUDED.action_id,status='pending',attempts=0,available_at=clock_time
 
 
 async def claim(
-    engine: AsyncEngine, run_id: UUID | None = None, seconds: float = 30
+    engine: AsyncEngine,
+    run_id: UUID | None = None,
+    seconds: float = 30,
+    *,
+    eligible_tenants: tuple[UUID, ...] | None = None,
 ) -> dict[str, Any] | None:
     from opspilot.runtime.fencing import acquire
 
@@ -65,6 +69,15 @@ async def claim(
             .one_or_none()
         )
         if row is None:
+            return None
+        if not await conn.scalar(
+            text("SELECT workflow.worker_slot(:r,:fair,:tenants)"),
+            {
+                "r": row["run_id"],
+                "fair": run_id is None,
+                "tenants": list(eligible_tenants or (require_tenant(),)),
+            },
+        ):
             return None
         fence = await acquire(conn, row["run_id"], uuid4(), seconds)
         if fence is None:

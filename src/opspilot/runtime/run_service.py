@@ -166,6 +166,32 @@ class RunService:
                     "human_wait_ms": 0,
                 },
             )
+            resource = await session.scalar(
+                text("SELECT workflow.usage_snapshot(:r)"), {"r": run_id}
+            )
+            if resource:
+                public["usage"].update(
+                    llm_calls=resource["llm_attempts"],
+                    read_calls=resource["read_attempts"],
+                    input_tokens=None
+                    if resource["unknown_usage_count"]
+                    else resource["input_tokens"],
+                    output_tokens=None
+                    if resource["unknown_usage_count"]
+                    else resource["output_tokens"],
+                    unknown_usage_count=resource["unknown_usage_count"],
+                    cached_input_tokens=resource["cached_input_tokens"],
+                    reserved_tokens=resource["reserved_tokens"],
+                    known_spend_usd=resource["known_spend_usd"],
+                    reserved_spend_usd=resource["reserved_spend_usd"],
+                    cost_usd=resource["known_spend_usd"]
+                    if resource["cost_status"] == "known"
+                    else None,
+                    cost_status=resource["cost_status"],
+                    currency=resource["currency"],
+                    price_versions=resource["price_versions"],
+                    active_ms=round(float(resource["active_seconds"]) * 1000),
+                )
             rows = (
                 await session.execute(
                     select(Action, Approval)
@@ -225,7 +251,9 @@ class RunService:
                 # Legacy diagnostic total; durable quotas remain independently authoritative.
                 public["budget"] = {
                     **public["budget"],
-                    "research_read_attempts": run.usage.get("read_attempts", 0),
+                    "research_read_attempts": resource["read_attempts"]
+                    if resource
+                    else run.usage.get("read_attempts", 0),
                     "verification_attempts": public["usage"]["verification_reads"],
                     "read_attempts": public["usage"]["read_calls"],
                 }

@@ -7,7 +7,10 @@ from opspilot.agent.state import AgentState, InvestigationDecision
 
 
 async def investigate(state: AgentState, runtime: Runtime) -> None:
+    from opspilot.governance.usage import reserve
+
     runtime.budget.begin_round()
+    await reserve("round")
     result = await runtime.llm("investigate", runtime.context(state), InvestigationDecision, state)
     if result.stop and result.calls or not result.stop and not result.calls:
         raise PolicyViolation("Inconsistent investigation decision")

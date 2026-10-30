@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 30 октября 2026 года. **F01–F14 завершены; F15–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 30 октября 2026 года. **F01–F15 завершены; F16–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -20,7 +20,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F15 — cache, admission, quotas и стоимость. Не начат.**
+**Следующий этап: F16 — observability и operator diagnostics. Не начат.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -34,7 +34,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F15 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F16 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -67,7 +67,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F12 | done | Uncached preconditions, DB-time expiry/revoke/roles, bounded replacement consent и durable verification quota | [evidence](full/evidence/f12/README.md) | [SEC-02/03/04](security/asvs-l2-implementation-plan.md) |
 | F13 | done | Authenticated DB SSE/replay/reset, live revocation, bounded streams и browser reconnect | [evidence](full/evidence/f13/README.md) | [SEC-02/07/08](security/asvs-l2-implementation-plan.md) |
 | F14 | done | Ролевой workspace, history/inbox/admin/audit, exact revision/TTL, scoped export | [evidence](full/evidence/f14/README.md) | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
-| F15 | not_started | Redis/limits/durable usage/cost | — | [SEC-07](security/asvs-l2-implementation-plan.md) |
+| F15 | done | Scoped Redis, durable quotas/fair admission, retry usage и versioned cost | [evidence](full/evidence/f15/README.md) | [SEC-07](security/asvs-l2-implementation-plan.md) |
 | F16 | not_started | Traces/metrics/operator diagnostics | — | [SEC-05](security/asvs-l2-implementation-plan.md) |
 | F17 | not_started | Retention/rotation/Full Core acceptance | — | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | not_started | Adapters и signed durable ingress | — | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
@@ -679,3 +679,41 @@ Failed/interrupted candidates сохранены, assertions не ослабля
 networks удалены; volumes/images сохранены. Paid/vendor writes, remote CI, production deploy,
 push0. F15 не начат. Blockers F14 отсутствуют. Отдельный local commit subject:
 `feat(full-f14): complete scoped operations workspace and administration`.
+
+
+## F15 — cache, admission, quotas и стоимость
+
+30 октября 2026. Full worktree/ветка сохранены; base F14 `be246d7`.
+Migration `0015_workspace` → `0016_governance`: protected PostgreSQL resource policy,
+FORCE-RLS reservations/provider attempts, immutable price snapshots, actor quotas across tenants,
+fair bounded worker admission, source limits and transactional per-object cache versions.
+Separate private ACL Redis uses independent HMAC keys, scoped cache/invalidation, TTL and bounded
+fallback; credentials/consent/preconditions/writes/verification are excluded. Research15 и отдельные
+verification3/action; retry, timeout/unknown и process crash не возвращают резервы. UI показывает
+cached tokens, known subtotal, held tokens/spend и null/partial total без фиктивного zero cost.
+
+[Contracts](full/f15-security-contracts.md), [evidence](full/evidence/f15/README.md),
+[checks](full/evidence/f15/checks.json): backend402/11 dedicated skips, browser22, queue5, fencing3,
+provider crash1, real Redis stop/recreate1, native TLS8+Redis6+MFA14+IdP policy4, scripted eval12/12.
+Unauthorized/duplicate/false verified writes0. IdP disable закрыл TLS SSE за344ms.
+Ruff/format/mypy123, TypeScript/Vite и parsers проходят; source/image proof123 Python,36 UI files,
+3 served assets. App/web/Redis raw H/C0; Python/npm audits0. Unchanged IdP raw4 HIGH сохранены с
+повторно проверенным exact-image/component applicable0 proof; ignore/risk acceptance нет.
+253 ASVS protected IDs/levels/baseline/owners/NA fields сохранены;125 scoped reviews проходят,
+1 primary contribution оставляет whole-norm verification открытой. Full L2 NOT_MET.
+
+Local Full migration сохранила counts/SHA256 всех12 прежних domain/workflow tables до запуска
+workers. Live real OIDC scripted status run завершён diagnosis_only; durable usage и honest zero
+API cost пережили browser refresh. UI8091/API8011 HTTP200,2 workers и private Redis запущены;
+runtime image IDs совпадают с прошедшими scans. MVP184 source/env fingerprints/main/HEAD/images/
+volume metadata+content неизменны, исходный checkout чист. Test/lab containers/networks удалены,
+volumes/images сохранены. Docker Desktop/WSL update рекомендован после проверки официальных
+версий; host upgrade не устанавливался, точная причина Engine/IPC сбоев не доказана.
+
+Failed/interrupted candidates сохранены отдельно. Исправлены numeric cast, SQL bind JSON,
+Windows secret line endings, active-only admission и per-object cache invalidation concurrency.
+Hardened unit fixtures изолированы от integration Redis settings; три TLS startup negatives
+добавлены. Browser startup отделён read-only ожиданием обработки backend fixture jobs; прежние
+assertions/timeouts сохранены. Paid/vendor writes, remote CI, production deploy и push0.
+F16 не начат. Blockers F15 отсутствуют. Отдельный local commit subject:
+`feat(full-f15): add durable admission budgets and scoped Redis caching`.

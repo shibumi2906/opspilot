@@ -28,7 +28,12 @@ async def process_one(service: RunService, run_id: UUID | None = None) -> bool:
     await expire_approvals(service)
     await expire(service)
     await reap(service.engine, run_id)
-    job = await claim(service.engine, run_id, service.settings.worker_lease_seconds)
+    job = await claim(
+        service.engine,
+        run_id,
+        service.settings.worker_lease_seconds,
+        eligible_tenants=service.settings.recovery_tenants,
+    )
     if job is None:
         return False
     async with execution_lease(

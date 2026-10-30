@@ -57,7 +57,9 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
     result["usage"] = pick(
         value.get("usage", {}),
         "llm_calls read_calls input_tokens output_tokens "
-        "unknown_usage_count active_ms human_wait_ms verification_reads",
+        "unknown_usage_count active_ms human_wait_ms verification_reads "
+        "cached_input_tokens reserved_tokens known_spend_usd reserved_spend_usd "
+        "cost_usd cost_status currency price_versions",
     )
     result["error"] = pick(value["error"], "code message") if value.get("error") else None
     report = value.get("report")

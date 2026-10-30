@@ -1,0 +1,18 @@
+{
+  "f15_test_lab_containers_remaining": [],
+  "f15_test_lab_networks_remaining": [],
+  "f15_volumes_retained": [
+    "opspilot-full-security-f15-final_oidcdata",
+    "opspilot-full-security-f15-final_pgdata",
+    "opspilot-full-test-f15-acceptance_oidcdata",
+    "opspilot-full-test-f15-acceptance_pgdata",
+    "opspilot-full-test-f15-final_oidcdata",
+    "opspilot-full-test-f15-final_pgdata",
+    "opspilot-full-test-f15-r3_oidcdata",
+    "opspilot-full-test-f15-r3_pgdata",
+    "opspilot-full-test-f15_oidcdata",
+    "opspilot-full-test-f15_pgdata"
+  ],
+  "volume_deletion": false,
+  "image_pruning": false
+}

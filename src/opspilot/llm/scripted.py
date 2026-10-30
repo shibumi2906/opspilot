@@ -116,4 +116,9 @@ class ScriptedProvider:
                 plan=context.get("canonical_plan"),
             ).model_dump(mode="json")
         # Scripted mode makes no provider request and incurs no model token usage.
-        return Completion(output=output, usage=Usage(input_tokens=0, output_tokens=0))
+        return Completion(
+            output=output,
+            usage=Usage(
+                input_tokens=0, output_tokens=0, cached_input_tokens=0, cache_write_tokens=0
+            ),
+        )

@@ -1,0 +1,40 @@
+{
+  "verified_date": "2026-10-30",
+  "verification_precision": "day, catalogue timestamp normalized to UTC midnight",
+  "version": "2026-10-30-standard",
+  "currency": "USD",
+  "project_effective_at": "2026-10-30T00:00:00Z",
+  "valid_until": "2026-11-29T00:00:00Z",
+  "tier": "default only; unknown/expired/other-tier/cache-write prices remain partial",
+  "provider_tier_reference": "https://developers.openai.com/api/reference/python/resources/responses/methods/create",
+  "prompt_cache_reference": "https://developers.openai.com/api/docs/guides/prompt-caching",
+  "entries": [
+    {
+      "models": [
+        "gpt-5-mini",
+        "gpt-5-mini-2025-08-07"
+      ],
+      "per_million": {
+        "input": "0.25",
+        "cached_input": "0.025",
+        "output": "2.00"
+      },
+      "source": "https://developers.openai.com/api/docs/models/gpt-5-mini"
+    },
+    {
+      "models": [
+        "gpt-5.4-mini",
+        "gpt-5.4-mini-2026-03-17"
+      ],
+      "per_million": {
+        "input": "0.75",
+        "cached_input": "0.075",
+        "output": "4.50"
+      },
+      "source": "https://developers.openai.com/api/docs/models/gpt-5.4-mini"
+    }
+  ],
+  "model_default_changed": false,
+  "paid_verification_calls": 0,
+  "invoice_reconciliation_claimed": false
+}

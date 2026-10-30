@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-10-30T10:01:54.1344172Z",
+  "mvp_path": "C:\\Users\\user\\Desktop\\code\\AI Incident & Operations Agent",
+  "mvp_branch": "main",
+  "mvp_head": "f9f8d79f572a575dd0f86c40986e7ae13ebb45c9",
+  "files_including_env": 184,
+  "files_unchanged": true,
+  "image_tags_unchanged": [
+    "opspilot:e2e 8ed4f7d2435f",
+    "opspilot:stage1 2d4e5d16946f",
+    "opspilot:stage1-tests 48a2b837d9a5",
+    "opspilot:web ac58e1df0a2a"
+  ],
+  "volume_metadata_unchanged": true,
+  "mvp_volume_content_unchanged": true,
+  "mvp_volume_fingerprint_sha256": "97F47D99269C266BE17BB0BC36D80B4CC1D42E44CE2411015DAC23C8AC1BEA3F",
+  "note": "Source/env/media fingerprints captured before Full builds. Volume content baseline captured after initial Full setup; no MVP volume was mounted by Full services. Read-only probe only."
+}

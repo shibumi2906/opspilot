@@ -1,5 +1,6 @@
 import asyncio
 import random
+import time
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
 from typing import Any, TypeVar
@@ -14,7 +15,9 @@ from opspilot.agent.state import AgentState
 from opspilot.config import Settings
 from opspilot.contracts.common import ToolError, ToolResult
 from opspilot.contracts.evidence import normalize_evidence
+from opspilot.governance.usage import reserve, settle, synchronize
 from opspilot.llm.base import Operation, Provider, ProviderFailure, Usage
+from opspilot.llm.real import RealProvider
 from opspilot.mcp_client.client import MCPClient
 from opspilot.mcp_client.registry import READ_TOOLS
 from opspilot.runtime.fencing import ensure_current
@@ -50,6 +53,29 @@ class Runtime:
             await check_cancelled(self.settings)
             self.budget.begin_llm()
             call_id = str(uuid4())
+            timeout = min(30, self.budget.remaining())
+            model_id = (
+                self.provider.model
+                if isinstance(self.provider, RealProvider)
+                else self.settings.openai_model
+                if self.settings.llm_mode == "real"
+                else "scripted"
+            )
+            tokens = (
+                self.provider.reservation_tokens(operation, context)
+                if isinstance(self.provider, RealProvider)
+                else min(8192, self.budget.limits.tokens)
+                if self.settings.llm_mode == "real"
+                else 0
+            )
+            await reserve(
+                "llm",
+                UUID(call_id),
+                model=model_id or "unknown",
+                tokens=tokens,
+                timeout_ms=max(0, round(timeout * 1000)),
+            )
+            started = time.monotonic()
             usage = Usage()
             state.setdefault("llm_calls", {})[call_id] = {
                 "operation": operation,
@@ -57,7 +83,7 @@ class Runtime:
                 "status": "started",
             }
             try:
-                async with asyncio.timeout(min(30, self.budget.remaining())):
+                async with asyncio.timeout(timeout):
                     with span(
                         "llm.request", operation=operation, run_id=state["run_id"]
                     ) as current:
@@ -68,6 +94,7 @@ class Runtime:
                 usage = completion.usage
                 if completion.model_id:
                     state["model_id"] = completion.model_id
+                    model_id = completion.model_id
                 output = model.model_validate(completion.output)
             except (ValidationError, ProviderFailure, TimeoutError) as exc:
                 if isinstance(exc, ProviderFailure):
@@ -93,6 +120,10 @@ class Runtime:
                 return output
             finally:
                 self.budget.usage(usage.input_tokens, usage.output_tokens)
+                await settle(
+                    UUID(call_id), usage, model_id, round((time.monotonic() - started) * 1000)
+                )
+                await synchronize(self.budget)
                 state["llm_calls"][call_id]["usage"] = usage.model_dump()
                 self.budget.check()
         raise AssertionError("Unreachable provider attempt")
@@ -122,7 +153,6 @@ class Runtime:
             if verification:
                 from opspilot.runtime.plans import reserve_verification
 
-                self.budget.check()
                 if self.plan_verification_action is not None:
                     await reserve_verification(self.plan_verification_action)
                 else:
@@ -131,6 +161,7 @@ class Runtime:
                     await reserve_single(UUID(state["action_id"]))
             else:
                 self.budget.begin_read(verification=verification)
+                await reserve("read")
             key = f"{call_id}:{attempt}"
             state.setdefault("tool_calls", {})[key] = {
                 "started_at": datetime.now(UTC).isoformat().replace("+00:00", "Z"),
@@ -142,7 +173,7 @@ class Runtime:
                 "status": "started",
             }
             try:
-                async with asyncio.timeout(min(5, self.budget.remaining())):
+                async with asyncio.timeout(5 if verification else min(5, self.budget.remaining())):
                     async with self.client.session() as (session, _):
                         result = await self.client.call(session, name, arguments)
             except Exception:
@@ -179,7 +210,8 @@ class Runtime:
                 for e in normalize_evidence(name, result, UUID(state["run_id"]))
             }
         )
-        self.budget.check()
+        if not verification:
+            self.budget.check()
         return result
 
     def context(self, state: AgentState, operation: Operation = "investigate") -> dict[str, Any]:

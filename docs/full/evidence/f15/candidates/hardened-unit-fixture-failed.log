@@ -1,0 +1,1138 @@
+MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.
+Ignored Full Redis credentials prepared; existing password/signing key preserved
+Existing independent Full service key ring preserved
+ Container opspilot-full-test-f15-r3-oidc-1  Running
+ Container opspilot-full-test-f15-r3-redis-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-redis-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-oidc-1  Waiting
+ Container opspilot-full-test-f15-r3-redis-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-oidc-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f15-r3-collector-1  Running
+ Container opspilot-full-test-f15-r3-jaeger-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-mcp-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-web-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-jaeger-1  Waiting
+ Container opspilot-full-test-f15-r3-web-1  Waiting
+ Container opspilot-full-test-f15-r3-collector-1  Waiting
+ Container opspilot-full-test-f15-r3-mcp-1  Waiting
+ Container opspilot-full-test-f15-r3-api-1  Waiting
+ Container opspilot-full-test-f15-r3-collector-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-mcp-1  Healthy
+ Container opspilot-full-test-f15-r3-web-1  Healthy
+ Container opspilot-full-test-f15-r3-api-1  Healthy
+ Container opspilot-full-test-f15-r3-jaeger-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-mcp-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-mcp-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+187 files already formatted
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-mcp-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+Success: no issues found in 123 source files
+ Container opspilot-full-test-f15-r3-postgres-1  Running
+ Container opspilot-full-test-f15-r3-api-1  Running
+ Container opspilot-full-test-f15-r3-mcp-1  Running
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Waiting
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+ Container opspilot-full-test-f15-r3-postgres-1  Healthy
+...........ssss.....................s............................ssss... [ 17%]
+.........................s.s............................................ [ 35%]
+........................................................................ [ 52%]
+........................................................................ [ 70%]
+..........................................................FFFFFFF.FF.F.. [ 87%]
+..................................................                       [100%]
+=================================== FAILURES ===================================
+___________________ test_host_cookie_has_required_attributes ___________________
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:66:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+_____________ test_oidc_requires_recent_mfa_and_strong_rsa[valid] ______________
+
+change = 'valid'
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:77:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+_________ test_oidc_requires_recent_mfa_and_strong_rsa[password_only] __________
+
+change = 'password_only'
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:77:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+__________ test_oidc_requires_recent_mfa_and_strong_rsa[missing_time] __________
+
+change = 'missing_time'
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:77:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+_____________ test_oidc_requires_recent_mfa_and_strong_rsa[stale] ______________
+
+change = 'stale'
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:77:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+___________ test_oidc_requires_recent_mfa_and_strong_rsa[small_key] ____________
+
+change = 'small_key'
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:77:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+______________ test_http_admission_policies_on_success_and_denial ______________
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:112:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+__________ test_unexpected_failure_is_sanitized_with_response_policy ___________
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:169:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+_________ test_database_run_admission_maps_to_429_without_sql_details __________
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:190:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+_________________ test_sensitive_operations_require_recent_mfa _________________
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:229:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\unit\test_http_security.py:41: in hardened
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+_case_sensitive = None, _nested_model_default_partial_update = None
+_env_prefix = None, _env_prefix_target = None, _env_file = None
+_env_file_encoding = None, _env_file_depth = None, _env_ignore_empty = None
+_env_nested_delimiter = None, _env_nested_max_split = None
+_env_parse_none_str = None, _env_parse_enums = None, _cli_prog_name = None
+_cli_parse_args = None, _cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_show_env_vars = None
+_cli_exit_on_error = None, _cli_prefix = None, _cli_flag_prefix_char = None
+_cli_implicit_flags = None, _cli_ignore_unknown_args = None
+_cli_kebab_case = None, _cli_shortcuts = None, _secrets_dir = None
+_build_sources = None
+values = {'security_profile': 'hardened', 'app_origin': 'https://app.localhost:8443', 'oidc_issuer': 'https://idp.localhost:8543/realms/opspilot', 'oidc_internal_issuer': 'https://idp.localhost:8543/realms/opspilot', ...}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_prefix_target: EnvPrefixTarget | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_file_depth: int | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_show_env_vars: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | Literal['dual', 'toggle'] | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        _build_sources: tuple[tuple[PydanticBaseSettingsSource, ...], dict[str, Any]] | None = None,
+        **values: Any,
+    ) -> None:
+        sources, init_kwargs = (
+            _build_sources
+            if _build_sources is not None
+            else __pydantic_self__.__class__._settings_init_sources(
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_prefix_target=_env_prefix_target,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_file_depth=_env_file_depth,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_show_env_vars=_cli_show_env_vars,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+                _init_kwargs=values,
+            )
+        )
+
+>       super().__init__(**__pydantic_self__.__class__._settings_build_values(sources, init_kwargs))
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for Settings
+E         Value error, Hardened Redis requires verified native TLS [type=value_error]
+E           For further information visit https://errors.pydantic.dev/2.14/v/value_error
+
+.venv/lib/python3.12/site-packages/pydantic_settings/main.py:292: ValidationError
+=========================== short test summary info ============================
+FAILED tests/unit/test_http_security.py::test_host_cookie_has_required_attributes
+FAILED tests/unit/test_http_security.py::test_oidc_requires_recent_mfa_and_strong_rsa[valid]
+FAILED tests/unit/test_http_security.py::test_oidc_requires_recent_mfa_and_strong_rsa[password_only]
+FAILED tests/unit/test_http_security.py::test_oidc_requires_recent_mfa_and_strong_rsa[missing_time]
+FAILED tests/unit/test_http_security.py::test_oidc_requires_recent_mfa_and_strong_rsa[stale]
+FAILED tests/unit/test_http_security.py::test_oidc_requires_recent_mfa_and_strong_rsa[small_key]
+FAILED tests/unit/test_http_security.py::test_http_admission_policies_on_success_and_denial
+FAILED tests/unit/test_http_security.py::test_unexpected_failure_is_sanitized_with_response_policy
+FAILED tests/unit/test_http_security.py::test_database_run_admission_maps_to_429_without_sql_details
+FAILED tests/unit/test_http_security.py::test_sensitive_operations_require_recent_mfa
+10 failed, 389 passed, 11 skipped in 394.27s (0:06:34)
+exit status 1
+ Container opspilot-full-test-f15-r3-jaeger-1  Stopping
+ Container opspilot-full-test-f15-r3-collector-1  Stopping
+ Container opspilot-full-test-f15-r3-web-1  Stopping
+ Container opspilot-full-test-f15-r3-mcp-1  Stopping
+ Container opspilot-full-test-f15-r3-redis-1  Stopping
+ Container opspilot-full-test-f15-r3-oidc-1  Stopping
+ Container opspilot-full-test-f15-r3-collector-1  Stopped
+ Container opspilot-full-test-f15-r3-jaeger-1  Stopped
+ Container opspilot-full-test-f15-r3-redis-1  Stopped
+ Container opspilot-full-test-f15-r3-mcp-1  Stopped
+ Container opspilot-full-test-f15-r3-web-1  Stopped
+ Container opspilot-full-test-f15-r3-api-1  Stopping
+ Container opspilot-full-test-f15-r3-oidc-1  Stopped
+ Container opspilot-full-test-f15-r3-api-1  Stopped
+ Container opspilot-full-test-f15-r3-postgres-1  Stopping
+ Container opspilot-full-test-f15-r3-postgres-1  Stopped

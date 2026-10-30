@@ -15,6 +15,47 @@ from opspilot.tenancy.context import DEMO_TENANT, SECOND_TENANT
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore", hide_input_in_errors=True)
 
+    redis_url: SecretStr | None = None
+    redis_password: SecretStr | None = None
+    cache_signing_key: SecretStr | None = None
+    redis_password_file: str | None = None
+    cache_signing_key_file: str | None = None
+
+    @model_validator(mode="after")
+    def validate_cache(self) -> Self:
+        for target in ("redis_password", "cache_signing_key"):
+            file = getattr(self, target + "_file", None)
+            if file:
+                path = Path(file)
+                if not path.is_absolute() or not path.is_file() or path.stat().st_size > 128:
+                    raise ValueError("Private Redis/cache secret file unavailable")
+                if getattr(self, target):
+                    raise ValueError("Ambiguous cache secret configuration")
+                setattr(self, target, SecretStr(path.read_text().strip()))
+        if self.redis_url:
+            parsed = urlsplit(self.redis_url.get_secret_value())
+            if (
+                parsed.scheme not in {"redis", "rediss"}
+                or not parsed.hostname
+                or parsed.query
+                or parsed.fragment
+                or parsed.username
+                or parsed.password
+            ):
+                raise ValueError("Explicit Redis origin without URL credentials/options required")
+            if self.security_profile == "hardened" and (
+                parsed.scheme != "rediss" or not self.tls_ca_file
+            ):
+                raise ValueError("Hardened Redis requires verified native TLS")
+            if any(
+                not getattr(self, key) or len(getattr(self, key).get_secret_value()) < 64
+                for key in ("redis_password", "cache_signing_key")
+            ):
+                raise ValueError(
+                    "Independent strong Redis password and cache integrity key required"
+                )
+        return self
+
     otel_endpoint: str | None = None
     jaeger_query_url: str = "http://jaeger:16686"
     jaeger_url: str | None = None
@@ -52,9 +93,9 @@ class Settings(BaseSettings):
     oidc_required_acr: str = "2"
     secret_files: dict[str, str] = Field(default_factory=dict)
     idp_token_key: SecretStr | None = None
-    max_actor_active_runs: int = Field(default=1000, ge=1, le=1000)
-    max_tenant_active_runs: int = Field(default=5000, ge=1, le=5000)
-    max_global_active_runs: int = Field(default=10000, ge=1, le=10000)
+    max_actor_active_runs: int = Field(default=8, ge=1, le=1000)
+    max_tenant_active_runs: int = Field(default=64, ge=1, le=5000)
+    max_global_active_runs: int = Field(default=128, ge=1, le=10000)
     login_per_minute: int = Field(default=30, ge=1, le=60)
     actor_requests_per_minute: int = Field(default=600, ge=10, le=1000)
     max_request_bytes: int = Field(default=65536, ge=4096, le=1048576)
@@ -106,6 +147,8 @@ class Settings(BaseSettings):
             "session_signing_key",
             "mcp_service_token",
             "idp_token_key",
+            "redis_password",
+            "cache_signing_key",
             "openai_api_key",
             "identity_database_url",
             "workflow_database_url",

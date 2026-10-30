@@ -33,7 +33,7 @@ def create_app(settings: Settings | None = None) -> ASGIApp:
     configure(settings, "opspilot-mcp")
     engine = create_engine(settings.database_url("domain"))
     server: Server[Any, Any] = Server("OpsPilot", version="0.1.0")
-    register_read_tools(server, settings, engine)
+    cache = register_read_tools(server, settings, engine)
     manager = StreamableHTTPSessionManager(
         app=server,
         stateless=True,
@@ -59,6 +59,7 @@ def create_app(settings: Settings | None = None) -> ASGIApp:
             async with manager.run():
                 yield
         finally:
+            await cache.close()
             await engine.dispose()
 
     app = Starlette(

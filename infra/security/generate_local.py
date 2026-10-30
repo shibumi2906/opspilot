@@ -83,7 +83,7 @@ ca = (
 )
 save_key("ca", ca_key)
 (OUT / "ca.crt").write_bytes(ca.public_bytes(serialization.Encoding.PEM))
-for name in ["postgres", "api", "mcp", "app.opspilot.localhost", "idp.opspilot.localhost"]:
+for name in ["postgres", "redis", "api", "mcp", "app.opspilot.localhost", "idp.opspilot.localhost"]:
     k = key()
     cert = (
         x509.CertificateBuilder()
@@ -101,9 +101,13 @@ for name in ["postgres", "api", "mcp", "app.opspilot.localhost", "idp.opspilot.l
     (OUT / (name + ".crt")).write_bytes(cert.public_bytes(serialization.Encoding.PEM))
 passwords = {
     n: secrets.token_hex(32)
-    for n in ["migration", "workflow", "domain", "checkpoint", "identity", "admin", "user"]
+    for n in ["migration", "workflow", "domain", "checkpoint", "identity", "admin", "user", "redis"]
 }
 (OUT / "credentials.json").write_text(json.dumps(passwords))
+(OUT / "redis.password").write_text(passwords["redis"])
+(OUT / "cache-signing.key").write_text(secrets.token_hex(32))
+(OUT / "redis.acl").write_text("user default off\nuser cache on >" + passwords["redis"] +
+    " ~opspilot-full:* +get +set +incr +expire +eval +ping\n")
 (OUT / "session.key").write_text(secrets.token_hex(48))
 (OUT / "token.key").write_bytes(Fernet.generate_key())
 app = "https://app.opspilot.localhost:8443"
@@ -265,6 +269,10 @@ def service(role, dbs):
         vol += ["./service-private:/run/service-private:ro"]
     if role == "mcp":
         vol += ["./service-public:/run/service-public:ro"]
+        env["REDIS_URL"] = "rediss://redis:6379/0"
+        files.update(redis_password="/secrets/redis.password", cache_signing_key="/secrets/cache-signing.key")
+        env["SECRET_FILES"] = json.dumps(files)
+        vol += ["./redis.password:/secrets/redis.password:ro", "./cache-signing.key:/secrets/cache-signing.key:ro"]
     return {
         "image": "opspilot-full/app:f01",
         "init": True,
@@ -279,6 +287,21 @@ def service(role, dbs):
 
 
 services = {}
+services["redis"] = {
+    "image": "opspilot-full/redis:f15", "user": "10001:10001", "read_only": True,
+    "cap_drop": ["ALL"], "security_opt": ["no-new-privileges:true"], "mem_limit": "96m",
+    "command": ["redis-server", "--port", "0", "--tls-port", "6379",
+                "--tls-cert-file", "/tls/redis.crt", "--tls-key-file", "/tls/redis.key",
+                "--tls-ca-cert-file", "/tls/ca.crt", "--tls-auth-clients", "no",
+                "--tls-protocols", "TLSv1.2 TLSv1.3", "--aclfile", "/run/cache/redis.acl",
+                "--save", "", "--appendonly", "no", "--maxmemory", "64mb",
+                "--maxmemory-policy", "allkeys-lru", "--maxclients", "64", "--timeout", "10"],
+    "volumes": mounts("redis.crt", "redis.key", "ca.crt") +
+               ["./redis.acl:/run/cache/redis.acl:ro", "./redis.password:/run/cache/password:ro"],
+    "networks": {"default": {"aliases": ["redis-wrong"]}},
+    "healthcheck": {"test": ["CMD-SHELL", 'REDISCLI_AUTH="$$(cat /run/cache/password)" redis-cli --tls --cacert /tls/ca.crt -h redis --user cache ping | grep -q PONG'],
+                    "interval": "5s", "timeout": "3s", "retries": 15},
+}
 services["postgres"] = {
     "image": "opspilot-full/postgres:f01",
     "environment": {

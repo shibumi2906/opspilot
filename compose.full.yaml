@@ -26,6 +26,28 @@ x-common-env: &common-env
   OTEL_ENDPOINT: http://collector:4318/v1/traces
 
 services:
+  redis:
+    image: opspilot-full/redis:f15
+    build:
+      context: .
+      dockerfile: infra/full/Dockerfile
+      target: redis
+    user: "10001:10001"
+    command: [redis-server, /usr/local/etc/redis/redis.conf]
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    mem_limit: 96m
+    volumes:
+      - ./infra/cache/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./.tools/cache/redis.acl:/run/cache/redis.acl:ro
+      - ./.tools/cache/password:/run/cache/password:ro
+    healthcheck:
+      test: [CMD-SHELL, 'REDISCLI_AUTH="$$(cat /run/cache/password)" redis-cli --user cache ping | grep -q PONG']
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
   service-keys:
     <<: *app
     profiles: [tools]
@@ -159,10 +181,15 @@ services:
   mcp:
     <<: *app
     volumes:
+      - ./.tools/cache/password:/run/cache/password:ro
+      - ./.tools/cache/signing-key:/run/cache/signing-key:ro
       - ./.tools/service-keys/public:/run/service-public:ro
     command: [python, -m, opspilot.mcp_server.main]
     environment:
       <<: *common-env
+      REDIS_URL: redis://redis:6379/0
+      REDIS_PASSWORD_FILE: /run/cache/password
+      CACHE_SIGNING_KEY_FILE: /run/cache/signing-key
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full
     depends_on:
       postgres: {condition: service_healthy}

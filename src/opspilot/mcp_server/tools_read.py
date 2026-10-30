@@ -1,10 +1,11 @@
 from typing import Any, cast
+from uuid import uuid4
 
 from loguru import logger
 from mcp.server.lowlevel import Server
 from mcp.types import CallToolResult, TextContent, Tool, ToolAnnotations
 from pydantic import ValidationError
-from sqlalchemy import select
+from sqlalchemy import select, text
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.ext.asyncio import AsyncEngine
 
@@ -29,6 +30,7 @@ from opspilot.db.models_domain import (
     Ticket,
     TicketComment,
 )
+from opspilot.governance.cache import ReadCache
 from opspilot.mcp_client.registry import ALL_TOOLS, READ_TOOLS, WRITE_TOOLS
 from opspilot.mcp_server.adapters.monitoring import observe
 from opspilot.mcp_server.authorization import authorize_tool
@@ -155,7 +157,11 @@ async def read_tool(
     ]
 
 
-def register_read_tools(server: Server[Any, Any], settings: Settings, engine: AsyncEngine) -> None:
+def register_read_tools(
+    server: Server[Any, Any], settings: Settings, engine: AsyncEngine
+) -> ReadCache:
+    cache = ReadCache(settings)
+
     @server.list_tools()  # type: ignore[no-untyped-call, untyped-decorator]
     async def list_tools() -> list[Tool]:
         return [
@@ -178,6 +184,23 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
         try:
             args = contract.arguments.model_validate(arguments)
             await authorize_tool(name, args, engine)
+            async with engine.begin() as conn:
+                if not await conn.scalar(text("SELECT workflow.consume_source_budget()")):
+                    raise AuthError("SOURCE_LIMIT", 429)
+                source = await conn.scalar(text("SELECT workflow.cache_source_version()"))
+            if not source or not await cache.rate(source):
+                raise AuthError("SOURCE_LIMIT", 429)
+            cache_scope = cache.context(name, args.model_dump(mode="json", by_alias=True), source)
+            cached = await cache.get(cache_scope)
+            if cached is not None:
+                # Validate the operation-specific schema even after integrity/scope checks.
+                cached.data = contract.data.model_validate(cached.data).model_dump(mode="json")
+                cached.tool_call_id = uuid4()
+                return CallToolResult(
+                    content=[TextContent(type="text", text=cached.model_dump_json())],
+                    structuredContent=cached.model_dump(mode="json"),
+                    isError=False,
+                )
             if name in WRITE_TOOLS:
                 assert isinstance(args, (CreateTicketArgs, AddTicketCommentArgs, NotifyManagerArgs))
             response = (
@@ -219,7 +242,11 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                 ok=False,
                 observed_at=settings.scenario_clock,
                 error=ToolError(
-                    code="NOT_FOUND" if exc.status == 404 else "ACCESS_DENIED",
+                    code="NOT_FOUND"
+                    if exc.status == 404
+                    else "RATE_LIMITED"
+                    if exc.status == 429
+                    else "ACCESS_DENIED",
                     message="Resource not available",
                 ),
             )
@@ -259,8 +286,12 @@ def register_read_tools(server: Server[Any, Any], settings: Settings, engine: As
                     retryable=not stale,
                 ),
             )
+        if result.ok:
+            await cache.put(cache_scope, result)
         return CallToolResult(
             content=[TextContent(type="text", text=result.model_dump_json())],
             structuredContent=result.model_dump(mode="json"),
             isError=not result.ok,
         )
+
+    return cache

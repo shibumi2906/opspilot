@@ -11,6 +11,10 @@ import { FinalReport } from "./components/FinalReport";
 import { RequestForm } from "./components/RequestForm";
 import { RunTimeline } from "./components/RunTimeline";
 import { shortId, Status, time } from "./components/shared";
+function usd(value?: number | null) {
+  if (typeof value !== "number" || !Number.isFinite(value) || value < 0) return "unknown";
+  return value > 0 && value < 0.000001 ? "<0.000001" : value.toFixed(6);
+}
 export default function App() {
   return (
     <AuthGate>
@@ -290,6 +294,16 @@ function Workspace() {
                         {snapshot.usage.input_tokens ?? "unknown"} /{" "}
                         {snapshot.usage.output_tokens ?? "unknown"}
                       </dd>
+                      <dt>Cached input tokens</dt>
+                      <dd>{snapshot.usage.cached_input_tokens ?? "unknown"}</dd>
+                      <dt>Model cost (USD)</dt>
+                      <dd data-testid="model-cost">{snapshot.usage.cost_usd == null ? "Unknown / partial" : usd(snapshot.usage.cost_usd)}</dd>
+                      <dt>Known subtotal (USD)</dt>
+                      <dd>{snapshot.usage.known_spend_usd == null ? "unknown" : usd(snapshot.usage.known_spend_usd)}</dd>
+                      <dt>Unresolved attempts / held tokens</dt>
+                      <dd>{snapshot.usage.unknown_usage_count ?? 0} / {snapshot.usage.reserved_tokens ?? 0}</dd>
+                      <dt>Price version</dt>
+                      <dd>{snapshot.usage.price_versions?.join(", ") || (mode === "scripted" ? "Scripted: no API calls" : "Unpriced")}</dd>
                       <dt>Human wait</dt>
                       <dd>
                         {(snapshot.usage.human_wait_ms / 1000).toFixed(1)} s

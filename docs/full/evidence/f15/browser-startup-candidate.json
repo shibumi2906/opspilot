@@ -1,0 +1,12 @@
+{
+  "accepted": false,
+  "passed": 21,
+  "failed": 1,
+  "failure": "ticket proposal not visible within unchanged 20-second assertion",
+  "run_id": "e640a429-2143-4d00-94ca-57b45dadc69e",
+  "run_created_at": "2026-10-30T09:37:56.168339Z",
+  "command_finished_at": "2026-10-30T09:38:22.452051Z",
+  "backend_fixture_jobs_completed_during_startup": 129,
+  "interval": "2026-10-30T09:37:35Z/2026-10-30T09:38:23Z",
+  "correction": "Read-only wait for preceding test queue to drain before browser runner; assertions/timeouts unchanged"
+}

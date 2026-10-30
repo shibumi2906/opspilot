@@ -64,10 +64,11 @@ class RealProvider:
         self.transport = transport
         self.tls = client_context(settings)
 
-    async def complete(self, operation: Operation, context: dict[str, Any]) -> Completion:
+    def payload(self, operation: Operation, context: dict[str, Any]) -> dict[str, Any]:
         payload: dict[str, Any] = {
             "model": self.model,
             "store": False,
+            "service_tier": "default",
             "instructions": SYSTEM_PROMPT + ("\n" + F11_PLAN_RULE if operation == "plan" else ""),
             "input": [
                 {
@@ -109,6 +110,15 @@ class RealProvider:
                     "strict": True,
                 }
             }
+        return payload
+
+    def reservation_tokens(self, operation: Operation, context: dict[str, Any]) -> int:
+        # UTF8 byte length overestimates visible text token count; include rendered
+        # instructions, tool/schema definitions and an explicit server-overhead margin.
+        return len(json.dumps(self.payload(operation, context), ensure_ascii=False).encode()) + 6048
+
+    async def complete(self, operation: Operation, context: dict[str, Any]) -> Completion:
+        payload = self.payload(operation, context)
         try:
             async with httpx.AsyncClient(
                 transport=self.transport, trust_env=False, timeout=30, verify=self.tls
@@ -135,8 +145,15 @@ class RealProvider:
             body = response.json()
             raw_usage = body.get("usage") or {}
             usage = Usage(
+                standard_pricing=body.get("service_tier") in (None, "default"),
                 input_tokens=raw_usage.get("input_tokens"),
                 output_tokens=raw_usage.get("output_tokens"),
+                cached_input_tokens=(raw_usage.get("input_tokens_details") or {}).get(
+                    "cached_tokens"
+                ),
+                cache_write_tokens=(raw_usage.get("input_tokens_details") or {}).get(
+                    "cache_write_tokens", 0
+                ),
             )
             if body.get("status") != "completed":
                 raise ProviderFailure("INCOMPLETE_RESPONSE", usage=usage)

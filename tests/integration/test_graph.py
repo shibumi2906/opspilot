@@ -176,7 +176,7 @@ async def test_exhausted_budgets_stop_without_proposal(integration_settings, lim
     )
     assert result["outcome"] == "budget_exhausted"
     assert result["proposed_action"] is None
-    assert result["budget"]["read_attempts"] <= limits.reads - 1
+    assert result["budget"]["read_attempts"] <= limits.reads
     assert result["budget"]["llm_attempts"] <= limits.llm_attempts
 
 

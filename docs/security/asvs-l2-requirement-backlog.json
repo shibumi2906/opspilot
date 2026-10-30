@@ -67,6 +67,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -128,6 +135,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -189,6 +203,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -250,6 +271,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -311,6 +339,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -372,6 +407,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -433,6 +475,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -507,6 +556,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -581,6 +637,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -655,6 +718,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -716,6 +786,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -790,6 +867,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -851,6 +935,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -912,6 +1003,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -986,6 +1084,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1047,6 +1152,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1108,6 +1220,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1169,6 +1288,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1243,6 +1369,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1317,6 +1450,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1378,6 +1518,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1452,6 +1599,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1513,6 +1667,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1574,6 +1735,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1635,6 +1803,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1709,6 +1884,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -1770,6 +1952,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Parameterized SQL, strict DTOs, React text and JSON only in changed scope. Absent native/template/XML/file interpretation features need explicit owner applicability review, not a blanket pass."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -2582,6 +2771,29 @@
         "verification_ref": "../full/evidence/f13/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped contribution only; requirement-specific owner, deployment and operational evidence and owner N/A review remain mandatory. Full L2 NOT_MET."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
+      },
+      "f15_primary_review": {
+        "requirement_id": "v5.0.0-2.4.1",
+        "implementation_refs": [
+          "migrations/versions/0016_governance.py",
+          "src/opspilot/governance/usage.py",
+          "src/opspilot/governance/cache.py",
+          "src/opspilot/runtime/jobs.py"
+        ],
+        "verification_refs": [
+          "tests/integration/test_governance.py",
+          "scripts/test-full-f15-redis-restart.ps1",
+          "scripts/probe-full-f15-redis.py"
+        ],
+        "disposition": "durable admission/cache/pricing scoped implementation and negative matrix verified; whole-requirement verification open",
+        "residual": "Production edge policy, sustained load/soak and deployment/operational effectiveness remain accountable F21/F23 gates; local work is not a formal norm pass"
       }
     },
     {
@@ -2644,6 +2856,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -2706,6 +2925,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -2768,6 +2994,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -2830,6 +3063,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -2892,6 +3132,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -2954,6 +3201,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3016,6 +3270,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3078,6 +3339,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3140,6 +3408,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3202,6 +3477,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3264,6 +3546,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3326,6 +3615,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3388,6 +3684,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3462,6 +3765,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3524,6 +3834,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3586,6 +3903,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3660,6 +3984,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3722,6 +4053,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -3784,6 +4122,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4094,6 +4439,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4168,6 +4520,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4242,6 +4601,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4316,6 +4682,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4390,6 +4763,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4464,6 +4844,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4538,6 +4925,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4612,6 +5006,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4686,6 +5087,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4760,6 +5168,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4834,6 +5249,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4908,6 +5330,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -4982,6 +5411,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -5056,6 +5492,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -5130,6 +5573,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -6722,6 +7172,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -6796,6 +7253,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -6870,6 +7334,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -6944,6 +7415,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -7018,6 +7496,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -7092,6 +7577,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -7166,6 +7658,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -7240,6 +7739,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -7314,6 +7820,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -7454,6 +7967,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -10066,6 +10586,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -10140,6 +10667,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -10214,6 +10748,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -10288,6 +10829,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -10362,6 +10910,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -11021,6 +11576,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -11420,6 +11982,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -11800,6 +12369,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -11855,6 +12431,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -11910,6 +12493,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -11965,6 +12555,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12020,6 +12617,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12075,6 +12679,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12130,6 +12741,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12185,6 +12803,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12240,6 +12865,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12295,6 +12927,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12350,6 +12989,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12439,6 +13085,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12494,6 +13147,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12549,6 +13209,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -12679,6 +13346,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13053,6 +13727,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13092,6 +13773,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13268,6 +13956,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13309,6 +14004,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13350,6 +14052,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13391,6 +14100,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13432,6 +14148,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13473,6 +14196,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13535,6 +14265,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13597,6 +14334,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13659,6 +14403,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local browser/TLS headers/cookies and scoped download checks; production origin/storage policies and independent requirement review remain open."
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13746,6 +14497,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13833,6 +14591,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -13920,6 +14685,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14008,6 +14780,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14096,6 +14875,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14184,6 +14970,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14271,6 +15064,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14358,6 +15158,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14445,6 +15252,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14532,6 +15346,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14619,6 +15440,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14706,6 +15534,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -14793,6 +15628,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15539,6 +16381,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15613,6 +16462,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15687,6 +16543,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15761,6 +16624,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15835,6 +16705,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15909,6 +16786,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     },
     {
@@ -15983,6 +16867,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F14 change gate only; no whole-norm or production L2 claim"
+      },
+      "f15_scope_review": {
+        "ref": "../full/f15-security-contracts.md",
+        "implementation": "Fenced pre-dispatch resource ledger, actor/tenant/global capacity and rolling windows, private HMAC scoped source cache with native TLS and database invalidation, honest versioned price/unknown usage projection",
+        "verification_ref": "../full/evidence/f15/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "Scoped F15 contribution only; no production secret-manager, load/soak, billing invoice or full L2 acceptance"
       }
     }
   ],

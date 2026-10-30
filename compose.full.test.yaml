@@ -1,5 +1,9 @@
 # Always combine with compose.full.yaml and the distinct project name opspilot-full-test.
 services:
+  redis:
+    volumes:
+      - ./.tools/cache-test/redis.acl:/run/cache/redis.acl:ro
+      - ./.tools/cache-test/password:/run/cache/password:ro
   oidc:
     ports: !reset []
     environment:
@@ -18,6 +22,9 @@ services:
       WORKER_LEASE_SECONDS: "30"
       WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
+      MAX_ACTOR_ACTIVE_RUNS: "1000"
+      MAX_TENANT_ACTIVE_RUNS: "5000"
+      MAX_GLOBAL_ACTIVE_RUNS: "10000"
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
       ALLOW_DEMO_SELF_APPROVAL: "true"
@@ -32,6 +39,9 @@ services:
       WORKER_LEASE_SECONDS: "30"
       WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
+      MAX_ACTOR_ACTIVE_RUNS: "1000"
+      MAX_TENANT_ACTIVE_RUNS: "5000"
+      MAX_GLOBAL_ACTIVE_RUNS: "10000"
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
       ALLOW_DEMO_SELF_APPROVAL: "true"
@@ -44,10 +54,16 @@ services:
     <<: *test-worker
 
   mcp:
+    volumes:
+      - ./.tools/cache-test/password:/run/cache/password:ro
+      - ./.tools/cache-test/signing-key:/run/cache/signing-key:ro
     environment:
       WORKER_LEASE_SECONDS: "30"
       WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
+      MAX_ACTOR_ACTIVE_RUNS: "1000"
+      MAX_TENANT_ACTIVE_RUNS: "5000"
+      MAX_GLOBAL_ACTIVE_RUNS: "10000"
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
       ALLOW_DEMO_SELF_APPROVAL: "true"
@@ -57,12 +73,17 @@ services:
       WORKER_LEASE_SECONDS: "30"
       WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
+      MAX_ACTOR_ACTIVE_RUNS: "1000"
+      MAX_TENANT_ACTIVE_RUNS: "5000"
+      MAX_GLOBAL_ACTIVE_RUNS: "10000"
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
       ALLOW_DEMO_SELF_APPROVAL: "true"
       MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
   tests:
     volumes:
+      - ./.tools/cache-test/password:/run/cache/password:ro
+      - ./.tools/cache-test/signing-key:/run/cache/signing-key:ro
       - ./.tools/service-keys/private:/run/service-private:ro
       - ./.tools/service-keys/public:/run/service-public:ro
     image: opspilot-full/tests:f01
@@ -74,6 +95,9 @@ services:
       WORKER_LEASE_SECONDS: "30"
       WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
+      MAX_ACTOR_ACTIVE_RUNS: "1000"
+      MAX_TENANT_ACTIVE_RUNS: "5000"
+      MAX_GLOBAL_ACTIVE_RUNS: "10000"
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
       ALLOW_DEMO_SELF_APPROVAL: "true"
@@ -82,6 +106,9 @@ services:
       SESSION_SIGNING_KEY: ${SESSION_SIGNING_KEY}
       IDENTITY_DATABASE_URL: postgresql+psycopg://ops_identity:${IDENTITY_DB_PASSWORD}@postgres/opspilot_full_test
       TEST_API_URL: http://api:8000
+      REDIS_URL: redis://redis:6379/0
+      REDIS_PASSWORD_FILE: /run/cache/password
+      CACHE_SIGNING_KEY_FILE: /run/cache/signing-key
       MIGRATION_DATABASE_URL: postgresql+psycopg://ops_migration:${POSTGRES_PASSWORD}@postgres/opspilot_full_test
       WORKFLOW_DATABASE_URL: postgresql+psycopg://ops_workflow:${WORKFLOW_DB_PASSWORD}@postgres/opspilot_full_test
       DOMAIN_DATABASE_URL: postgresql+psycopg://ops_domain:${DOMAIN_DB_PASSWORD}@postgres/opspilot_full_test
@@ -117,6 +144,9 @@ services:
       WORKER_LEASE_SECONDS: "30"
       WORKER_HEARTBEAT_SECONDS: "10"
       APP_ENV: test
+      MAX_ACTOR_ACTIVE_RUNS: "1000"
+      MAX_TENANT_ACTIVE_RUNS: "5000"
+      MAX_GLOBAL_ACTIVE_RUNS: "10000"
       APP_ORIGIN: http://web
       OIDC_ISSUER: http://oidc:8080/realms/opspilot
       ALLOW_DEMO_SELF_APPROVAL: "true"

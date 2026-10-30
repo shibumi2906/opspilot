@@ -1,0 +1,10 @@
+{
+  "api": 200,
+  "schema": "0016_governance",
+  "ui": 200,
+  "redis": "private authenticated ephemeral cache",
+  "workers": [
+    "worker",
+    "worker2"
+  ]
+}

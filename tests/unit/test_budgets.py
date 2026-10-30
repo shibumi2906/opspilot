@@ -3,13 +3,14 @@ import pytest
 from opspilot.agent.budgets import Budget, BudgetExceeded, BudgetLimits
 
 
-def test_verification_read_is_reserved():
+def test_research_read_cap_is_separate_from_action_verification():
     budget = Budget(BudgetLimits(reads=3))
+    budget.begin_read()
     budget.begin_read()
     budget.begin_read()
     with pytest.raises(BudgetExceeded):
         budget.begin_read()
-    assert budget.read_attempts == 2
+    assert budget.read_attempts == 3
 
 
 @pytest.mark.parametrize("kind", ["round", "llm", "time", "tokens"])

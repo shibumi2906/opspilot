@@ -20,7 +20,9 @@ async def authorize_tool(name: str, args: Any, engine: AsyncEngine) -> None:
         roles = set(
             await conn.scalars(
                 text(
-                    "SELECT role FROM identity.tenant_memberships WHERE tenant_id=:t AND user_id=:u"
+                    "SELECT role FROM identity.tenant_memberships "
+                    "WHERE tenant_id=:t AND user_id=:u "
+                    "AND identity.lock_role(user_id,tenant_id,role)"
                 ),
                 {"t": tenant, "u": user},
             )

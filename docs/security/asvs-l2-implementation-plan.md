@@ -131,3 +131,6 @@ contains no affected libmount/nsenter code. No ignore, metadata removal or risk 
 All253 protected identities/baseline assessments/owners/NA fields are preserved. Scoped reviews174
 pass;103 primary rows retain whole-requirement verification open. Production recovery delivery,
 factor notifications and administrator-plane MFA remain F23 obligations; full L2 NOT_MET.
+
+
+F15 local change gate passed: [contracts](../full/f15-security-contracts.md), [acceptance](../full/evidence/f15/checks.json). SEC-07: PostgreSQL durable actor/tenant/global admission, fenced usage/reservations, fair worker caps and retry/crash accounting; HMAC-scoped disposable Redis cache with transactional invalidation and bounded authenticated TLS fallback. SEC-01/10 regression/supply-chain gates pass: backend402, browser22, queue5, fencing3, provider crash1, Redis restart1, native TLS8+Redis6+MFA14+IdP policy4, scripted eval12/12. App/web/Redis raw H/C0; IdP raw4 retained with exact-image applicable0 proof. All253 protected requirement fields remain;125 scoped reviews and1 primary contribution do not close whole norms. Full L2 remains NOT_MET.

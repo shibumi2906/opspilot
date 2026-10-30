@@ -1,0 +1,19 @@
+{
+  "requirements": 253,
+  "base": "be246d7",
+  "preserved": true,
+  "fields": [
+    "id",
+    "level",
+    "chapter",
+    "section",
+    "baseline_assessment",
+    "security_task",
+    "accountable_stage",
+    "design_before",
+    "recheck_stages",
+    "na_rationale",
+    "owner_review_ref"
+  ],
+  "whole_requirement_closure": false
+}

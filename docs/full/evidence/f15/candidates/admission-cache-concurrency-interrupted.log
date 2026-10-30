@@ -1,0 +1,424 @@
+MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.
+Ignored Full Redis credentials prepared; existing password/signing key preserved
+ Network opspilot-full-test-f15-final_default  Creating
+ Network opspilot-full-test-f15-final_default  Created
+Existing independent Full service key ring preserved
+ Volume "opspilot-full-test-f15-final_pgdata"  Creating
+ Volume "opspilot-full-test-f15-final_pgdata"  Created
+ Volume "opspilot-full-test-f15-final_oidcdata"  Creating
+ Volume "opspilot-full-test-f15-final_oidcdata"  Created
+ Container opspilot-full-test-f15-final-postgres-1  Creating
+ Container opspilot-full-test-f15-final-oidc-1  Creating
+ Container opspilot-full-test-f15-final-redis-1  Creating
+ Container opspilot-full-test-f15-final-redis-1  Created
+ Container opspilot-full-test-f15-final-postgres-1  Created
+ Container opspilot-full-test-f15-final-oidc-1  Created
+ Container opspilot-full-test-f15-final-redis-1  Starting
+ Container opspilot-full-test-f15-final-oidc-1  Starting
+ Container opspilot-full-test-f15-final-postgres-1  Starting
+ Container opspilot-full-test-f15-final-postgres-1  Started
+ Container opspilot-full-test-f15-final-oidc-1  Started
+ Container opspilot-full-test-f15-final-redis-1  Started
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-oidc-1  Waiting
+ Container opspilot-full-test-f15-final-redis-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-redis-1  Healthy
+ Container opspilot-full-test-f15-final-oidc-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Running
+ Container opspilot-full-test-f15-final-postgres-1  Running
+{"tenants": 2, "customers": 6, "incidents": 20, "articles": 10}
+ Container opspilot-full-test-f15-final-postgres-1  Running
+Local synthetic OIDC users/memberships configured; no credentials printed
+ Container opspilot-full-test-f15-final-collector-1  Creating
+ Container opspilot-full-test-f15-final-jaeger-1  Creating
+ Container opspilot-full-test-f15-final-postgres-1  Running
+ Container opspilot-full-test-f15-final-mcp-1  Creating
+ Container opspilot-full-test-f15-final-api-1  Creating
+ Container opspilot-full-test-f15-final-api-1  Created
+ Container opspilot-full-test-f15-final-web-1  Creating
+ Container opspilot-full-test-f15-final-collector-1  Created
+ Container opspilot-full-test-f15-final-mcp-1  Created
+ Container opspilot-full-test-f15-final-jaeger-1  Created
+ Container opspilot-full-test-f15-final-web-1  Created
+ Container opspilot-full-test-f15-final-collector-1  Starting
+ Container opspilot-full-test-f15-final-jaeger-1  Starting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-collector-1  Started
+ Container opspilot-full-test-f15-final-jaeger-1  Started
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-mcp-1  Starting
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-api-1  Starting
+ Container opspilot-full-test-f15-final-mcp-1  Started
+ Container opspilot-full-test-f15-final-api-1  Started
+ Container opspilot-full-test-f15-final-api-1  Waiting
+ Container opspilot-full-test-f15-final-api-1  Healthy
+ Container opspilot-full-test-f15-final-web-1  Starting
+ Container opspilot-full-test-f15-final-web-1  Started
+ Container opspilot-full-test-f15-final-mcp-1  Waiting
+ Container opspilot-full-test-f15-final-jaeger-1  Waiting
+ Container opspilot-full-test-f15-final-web-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-collector-1  Waiting
+ Container opspilot-full-test-f15-final-api-1  Waiting
+ Container opspilot-full-test-f15-final-collector-1  Healthy
+ Container opspilot-full-test-f15-final-api-1  Healthy
+ Container opspilot-full-test-f15-final-jaeger-1  Healthy
+ Container opspilot-full-test-f15-final-mcp-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-web-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Running
+ Container opspilot-full-test-f15-final-mcp-1  Running
+ Container opspilot-full-test-f15-final-api-1  Running
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+All checks passed!
+ Container opspilot-full-test-f15-final-postgres-1  Running
+ Container opspilot-full-test-f15-final-mcp-1  Running
+ Container opspilot-full-test-f15-final-api-1  Running
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+187 files already formatted
+ Container opspilot-full-test-f15-final-postgres-1  Running
+ Container opspilot-full-test-f15-final-mcp-1  Running
+ Container opspilot-full-test-f15-final-api-1  Running
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+Success: no issues found in 123 source files
+ Container opspilot-full-test-f15-final-postgres-1  Running
+ Container opspilot-full-test-f15-final-api-1  Running
+ Container opspilot-full-test-f15-final-mcp-1  Running
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Waiting
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+ Container opspilot-full-test-f15-final-postgres-1  Healthy
+...........ssss.....................s...........F................ssss... [ 17%]
+.........................s.s..............F............................. [ 35%]
+..........................................................
+=================================== FAILURES ===================================
+_____________ test_pinned_graph_and_postgres_saver_are_compatible ______________
+
+self = <sqlalchemy.engine.base.Connection object at 0x7f80529ea210>
+dialect = <sqlalchemy.dialects.postgresql.psycopg.PGDialectAsync_psycopg object at 0x7f80529ea8a0>
+context = <sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x7f80513db020>
+statement = <sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x7f8053b14ef0>
+parameters = [{'id': UUID('f514c247-656e-4d44-83a8-ac3795004c10'), 'actor_id': UUID('11111111-1111-4111-8111-111111111111'), 'client_request_id': UUID('c3171d19-bfe4-4138-926e-79203e5cac97'), 'request': 'Synthetic SDK probe', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -> CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+
+        effective_parameters: Optional[_AnyExecuteParams]
+
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+
+        if self._echo:
+            self._log_info(str_statement)
+
+            stats = context._get_cache_stats()
+
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+                    )
+            elif not effective_parameters and context.no_parameters:
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute_no_params:
+                        if fn(cursor, str_statement, context):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+                    self.dialect.do_execute_no_params(
+                        cursor, str_statement, context
+                    )
+            else:
+                effective_parameters = cast(
+                    "_CoreSingleExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_execute:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+>                   self.dialect.do_execute(
+                        cursor, str_statement, effective_parameters, context
+                    )
+
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1976:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute
+    cursor.execute(statement, parameters)
+.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py:642: in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.AsyncCursor [closed] [BAD] at 0x7f8052466f90>
+query = 'INSERT INTO workflow.agent_runs (id, actor_id, client_request_id, request, request_hash, language, status, outcome, m...::UUID) RETURNING workflow.agent_runs.workflow_version, workflow.agent_runs.created_at, workflow.agent_runs.updated_at'
+params = {'id': UUID('f514c247-656e-4d44-83a8-ac3795004c10'), 'actor_id': UUID('11111111-1111-4111-8111-111111111111'), 'client_request_id': UUID('c3171d19-bfe4-4138-926e-79203e5cac97'), 'request': 'Synthetic SDK probe', ...}
+prepare = None, binary = None
+
+    async def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            async with self._conn.lock:
+                await self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           psycopg.errors.RaiseException: RUN_ADMISSION_LIMIT
+E           CONTEXT:  PL/pgSQL function workflow.admit_run() line 15 at RAISE
+
+.venv/lib/python3.12/site-packages/psycopg/cursor_async.py:117: RaiseException
+
+The above exception was the direct cause of the following exception:
+
+integration_settings = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+
+>   ???
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_checkpoint_compatibility.py:25:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests/tenant_helpers.py:10: in register_probe
+    async with TenantSession(engine) as session, session.begin():
+                                                 ^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py:1885: in __aexit__
+    await greenlet_spawn(
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:203: in greenlet_spawn
+    result = context.switch(value)
+             ^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/util.py:147: in __exit__
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/util.py:145: in __exit__
+    self.commit()
+<string>:2: in commit
+    ???
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:1316: in commit
+    self._prepare_impl()
+<string>:2: in _prepare_impl
+    ???
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:1290: in _prepare_impl
+    self.session.flush()
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4353: in flush
+    self._flush(objects)
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py:4449: in _flush
+    flush_context.execute()
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:465: in execute
+    rec.execute(self)
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py:1234: in _emit_insert_statements
+    result = connection.execute(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1428: in execute
+    return meth(
+.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1650: in _execute_clauseelement
+    ret = self._execute_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1855: in _execute_context
+    return self._exec_single_context(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1995: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:2372: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py:1976: in _exec_single_context
+    self.dialect.do_execute(
+.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py:964: in do_execute
+    cursor.execute(statement, parameters)
+.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/psycopg.py:642: in execute
+    result = self.await_(self._cursor.execute(query, params, **kw))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:132: in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py:196: in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <psycopg.AsyncCursor [closed] [BAD] at 0x7f8052466f90>
+query = 'INSERT INTO workflow.agent_runs (id, actor_id, client_request_id, request, request_hash, language, status, outcome, m...::UUID) RETURNING workflow.agent_runs.workflow_version, workflow.agent_runs.created_at, workflow.agent_runs.updated_at'
+params = {'id': UUID('f514c247-656e-4d44-83a8-ac3795004c10'), 'actor_id': UUID('11111111-1111-4111-8111-111111111111'), 'client_request_id': UUID('c3171d19-bfe4-4138-926e-79203e5cac97'), 'request': 'Synthetic SDK probe', ...}
+prepare = None, binary = None
+
+    async def execute(
+        self,
+        query: Query,
+        params: Params | None = None,
+        *,
+        prepare: bool | None = None,
+        binary: bool | None = None,
+    ) -> Self:
+        """
+        Execute a query or command to the database.
+        """
+        try:
+            async with self._conn.lock:
+                await self._conn.wait(
+                    self._execute_gen(query, params, prepare=prepare, binary=binary)
+                )
+        except e._NO_TRACEBACK as ex:
+>           raise ex.with_traceback(None)
+E           sqlalchemy.exc.ProgrammingError: (psycopg.errors.RaiseException) RUN_ADMISSION_LIMIT
+E           CONTEXT:  PL/pgSQL function workflow.admit_run() line 15 at RAISE
+E           [SQL: INSERT INTO workflow.agent_runs (id, actor_id, client_request_id, request, request_hash, language, status, outcome, mode, scenario_id, scenario_clock, thread_id, state_schema_version, public_snapshot, tool_results, usage, trace_id, tenant_id) VALUES (%(id)s::UUID, %(actor_id)s::UUID, %(client_request_id)s::UUID, %(request)s::VARCHAR, %(request_hash)s::VARCHAR, %(language)s::VARCHAR, %(status)s::VARCHAR, %(outcome)s::VARCHAR, %(mode)s::VARCHAR, %(scenario_id)s::VARCHAR, %(scenario_clock)s::TIMESTAMP WITH TIME ZONE, %(thread_id)s::VARCHAR, %(state_schema_version)s::INTEGER, %(public_snapshot)s::JSONB, %(tool_results)s::JSONB, %(usage)s::JSONB, %(trace_id)s::VARCHAR, %(tenant_id)s::UUID) RETURNING workflow.agent_runs.workflow_version, workflow.agent_runs.created_at, workflow.agent_runs.updated_at]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/f405)
+
+.venv/lib/python3.12/site-packages/psycopg/cursor_async.py:117: ProgrammingError
+_______ test_exhausted_budgets_stop_without_proposal[limits0-provider0] ________
+
+integration_settings = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+limits = BudgetLimits(rounds=6, reads=2, llm_attempts=10, tokens=30000, active_seconds=120, recursion_limit=60)
+provider = <opspilot.llm.scripted.ScriptedProvider object at 0x7f8053bdbd40>
+
+>   ???
+E   assert 2 <= (2 - 1)
+E    +  where 2 = BudgetLimits(rounds=6, reads=2, llm_attempts=10, tokens=30000, active_seconds=120, recursion_limit=60).reads
+
+C:\Users\user\.codex\worktrees\opspilot-full-f01\AI Incident & Operations Agent\tests\integration\test_graph.py:179: AssertionError
+=========================== short test summary info ============================
+FAILED tests/integration/test_checkpoint_compatibility.py::test_pinned_graph_and_postgres_saver_are_compatible
+FAILED tests/integration/test_graph.py::test_exhausted_budgets_stop_without_proposal[limits0-provider0]
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! KeyboardInterrupt !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+/usr/local/lib/python3.12/asyncio/runners.py:157: KeyboardInterrupt
+(to show a full traceback on KeyboardInterrupt use --full-trace)
+2 failed, 189 passed, 11 skipped in 732.26s (0:12:12)
+exit status 2
+ Container opspilot-full-test-f15-final-oidc-1  Stopping
+ Container opspilot-full-test-f15-final-collector-1  Stopping
+ Container opspilot-full-test-f15-final-jaeger-1  Stopping
+ Container opspilot-full-test-f15-final-mcp-1  Stopping
+ Container opspilot-full-test-f15-final-web-1  Stopping
+ Container opspilot-full-test-f15-final-redis-1  Stopping
+ Container opspilot-full-test-f15-final-jaeger-1  Stopped
+ Container opspilot-full-test-f15-final-collector-1  Stopped
+ Container opspilot-full-test-f15-final-redis-1  Stopped
+ Container opspilot-full-test-f15-final-web-1  Stopped
+ Container opspilot-full-test-f15-final-api-1  Stopping
+ Container opspilot-full-test-f15-final-mcp-1  Stopped
+ Container opspilot-full-test-f15-final-oidc-1  Stopped
+ Container opspilot-full-test-f15-final-api-1  Stopped
+ Container opspilot-full-test-f15-final-postgres-1  Stopping
+ Container opspilot-full-test-f15-final-postgres-1  Stopped

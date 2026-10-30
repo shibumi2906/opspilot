@@ -1,0 +1,7 @@
+{
+  "requirements": 253,
+  "f15_primary_reviews": 1,
+  "scoped_reviews": 125,
+  "verification": "local_change_gate_passed; no whole-requirement closure",
+  "full_l2_status": "NOT_MET"
+}

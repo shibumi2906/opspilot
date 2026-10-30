@@ -59,6 +59,7 @@ async def run_investigation(
     if not 1 <= len(request) <= 4000:
         raise ValueError("Request must contain 1–4000 characters")
     mode = mode or settings.llm_mode
+    settings = settings.model_copy(update={"llm_mode": mode})
     limits = limits or configured_limits(settings)
     provider = provider or (RealProvider(settings) if mode == "real" else ScriptedProvider())
     client_request_id = client_request_id or uuid4()

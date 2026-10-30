@@ -47,6 +47,9 @@ def build_graph(
     def guarded(name: str, node: Node) -> Callable[[AgentState], Awaitable[AgentState]]:
         async def invoke(current: AgentState) -> AgentState:
             state = copy.deepcopy(current)
+            from opspilot.governance.usage import synchronize
+
+            await synchronize(runtime.budget)
             started = time.monotonic()
             started_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
             try:
@@ -95,6 +98,7 @@ def build_graph(
                     else "INVALID_MODEL_OUTPUT",
                     "node": name,
                 }
+            await synchronize(runtime.budget, save_elapsed=True)
             state["budget"] = runtime.budget.snapshot()
             steps = state.setdefault("steps", {})
             identity = str(uuid4())
