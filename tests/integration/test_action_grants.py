@@ -24,6 +24,7 @@ from opspilot.runtime.fencing import execution_lease
 from opspilot.runtime.run_service import RunService
 from opspilot.runtime.worker import process_one
 from opspilot.security.grants import issue
+from opspilot.security.keys import grant_keys
 from tests.auth_helpers import session_client
 
 
@@ -109,12 +110,17 @@ async def test_grant_tampering_never_writes(integration_settings, admin_engine, 
                 claims[field] = claims["iat"] - 1
             if field == "kid":
                 kid = "current"
-            key = await asyncio.to_thread(
-                Path(
-                    settings.service_private_dir,
-                    ("current" if field == "kid" else settings.grant_active_kid) + ".pem",
-                ).read_text
-            )
+            if field == "kid":
+                key = await asyncio.to_thread(
+                    Path(settings.service_private_dir, "current.pem").read_bytes
+                )
+            else:
+                # Mutate claims under the actual issuer key, including manager mode.
+                # A missing file or unrelated lab signature would not test claim checks.
+                reference, key = await asyncio.to_thread(
+                    grant_keys(settings).signing_key, kid.split(":")[0]
+                )
+                assert reference.kid == kid
             fake = jwt.encode(
                 claims,
                 key,

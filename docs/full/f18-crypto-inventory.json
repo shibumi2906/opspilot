@@ -1,0 +1,13 @@
+{
+  "stage": "F18",
+  "base": "017b68bb34e85e95013076d570bd14b5519f842b",
+  "inherited_inventory": "f17-crypto-inventory.json",
+  "entries": [
+    {"purpose":"webhook raw-body authentication","algorithm":"HMAC-SHA256","key_bits":256,"owner":"tenant connector operator","reference":"connectors/{tenant}/{connector}/webhook","key_id":"h1/h2 in synthetic lab; bounded 1..3 active kids","rotation":"KV-v2 CAS, overlap, retirement, revoke; producer timestamp window 300s","recovery":"F17 real manager encrypted paired backup; preserve receipt identities","values_committed":false},
+    {"purpose":"synthetic adapter Bearer credential","algorithm":"256-bit random opaque token over verified TLS","owner":"tenant connector operator","reference":"connectors/{tenant}/{connector}/credential","expiration":"unknown; no provider expiration claim","rotation":"operator manager CAS and simulator provisioning; not vendor lifecycle acceptance","values_committed":false},
+    {"purpose":"connector manager access","algorithm":"OpenBao random service token, native TLS","owner":"Full operator","scopes":["credential read only for MCP","webhook read only for ingress"],"ttl":"1h nonrenewable/no default policy","compromise":"revoke token; fail closed; explicit setup refresh","values_committed":false},
+    {"purpose":"synthetic transport test TLS","algorithm":"RSA3072/SHA384 local CA","owner":"isolated lab operator","lifetime":"CA30d/server15d","private_material":"ignored .tools; public CA only in API/MCP client","scope":"synthetic local/test only; production registration denied","values_committed":false},
+    {"purpose":"dedicated ingress DB authentication","algorithm":"256-bit random password; PostgreSQL role constraints","owner":"Full operator","scope":"ops_ingress, NOSUPERUSER/NOBYPASSRLS, no domain/workflow privileges","storage":"ignored fixture or secret file DSN; no API exposure","values_committed":false}
+  ],
+  "whole_ASVS_L2":"NOT_MET"
+}

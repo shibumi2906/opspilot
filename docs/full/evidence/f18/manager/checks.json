@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "acl": [
+    {
+      "role": "mcp",
+      "purpose": "credential",
+      "expected_status": 200,
+      "passed": true
+    },
+    {
+      "role": "mcp",
+      "purpose": "webhook",
+      "expected_status": 403,
+      "passed": true
+    },
+    {
+      "role": "ingress",
+      "purpose": "webhook",
+      "expected_status": 200,
+      "passed": true
+    },
+    {
+      "role": "ingress",
+      "purpose": "credential",
+      "expected_status": 403,
+      "passed": true
+    },
+    {
+      "role": "mcp",
+      "purpose": "1",
+      "expected_status": 403,
+      "passed": true
+    },
+    {
+      "role": "ingress",
+      "purpose": "1",
+      "expected_status": 403,
+      "passed": true
+    },
+    {
+      "role": "mcp",
+      "purpose": "credential",
+      "expected_status": 403,
+      "passed": true
+    },
+    {
+      "role": "ingress",
+      "purpose": "webhook",
+      "expected_status": 403,
+      "passed": true
+    },
+    {
+      "role": "tenant-a",
+      "purpose": "webhook",
+      "expected_status": 403,
+      "passed": true
+    }
+  ],
+  "overlap": true,
+  "retired_h1_denied_h2_accepted": true,
+  "accepted_h1_jobs_processed_after_retirement": true,
+  "original_ring_restored": true,
+  "revoked_service_token_fail_closed": true,
+  "operator_secrets_in_apps": false
+}

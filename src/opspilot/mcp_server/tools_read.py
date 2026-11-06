@@ -1,3 +1,4 @@
+from datetime import UTC, datetime
 from typing import Any, cast
 from uuid import uuid4
 
@@ -31,8 +32,11 @@ from opspilot.db.models_domain import (
     TicketComment,
 )
 from opspilot.governance.cache import ReadCache
+from opspilot.integrations.egress import ConnectorUnavailable
 from opspilot.mcp_client.registry import ALL_TOOLS, READ_TOOLS, WRITE_TOOLS
 from opspilot.mcp_server.adapters.monitoring import observe
+from opspilot.mcp_server.adapters.platform import configured
+from opspilot.mcp_server.adapters.platform import snapshot as connector_snapshot
 from opspilot.mcp_server.authorization import authorize_tool
 from opspilot.mcp_server.services.customers import get_customer
 from opspilot.mcp_server.services.retrieval import search
@@ -137,14 +141,33 @@ async def read_tool(
         )
         if integration is None:
             return None
-    snapshot = observe(settings, args.customer_id, args.integration_id)
+    managed = await configured(engine, args.integration_id)
+    snapshot = (
+        await connector_snapshot(
+            engine,
+            settings,
+            args.customer_id,
+            args.integration_id,
+            probe=name == "get_service_status",
+        )
+        if managed
+        else observe(settings, args.customer_id, args.integration_id)
+    )
     if name == "get_service_status":
         return {k: snapshot[k] for k in ("status", "latest_success_at", "checked_at")}, [
-            Source(source_type="integration_status", source_id=str(args.integration_id))
+            Source(
+                source_type="integration_status",
+                source_id=str(args.integration_id),
+                version="simulator-v1:synthetic" if managed else None,
+            )
         ]
     if name == "get_credential_status":
         return {"status": snapshot["credential_status"], "checked_at": snapshot["checked_at"]}, [
-            Source(source_type="credential_status", source_id=str(args.integration_id))
+            Source(
+                source_type="credential_status",
+                source_id=str(args.integration_id),
+                version="simulator-v1:synthetic" if managed else None,
+            )
         ]
     assert name == "get_integration_events" and isinstance(args, EventsArgs)
     events = sorted(
@@ -154,7 +177,12 @@ async def read_tool(
     )
     selected = events[: args.limit]
     return {"events": selected, "truncated": len(events) > args.limit}, [
-        Source(source_type="integration_event", source_id=str(e["event_id"])) for e in selected
+        Source(
+            source_type="integration_event",
+            source_id=str(e["event_id"]),
+            version="simulator-v1:synthetic" if managed else None,
+        )
+        for e in selected
     ]
 
 
@@ -185,6 +213,7 @@ def register_read_tools(
 
         trace.get_current_span().set_attribute("tool_name", name)
         contract = ALL_TOOLS[name]
+        cacheable = True
         try:
             args = contract.arguments.model_validate(arguments)
             await authorize_tool(name, args, engine)
@@ -195,7 +224,9 @@ def register_read_tools(
             if not source or not await cache.rate(source):
                 raise AuthError("SOURCE_LIMIT", 429)
             cache_scope = cache.context(name, args.model_dump(mode="json", by_alias=True), source)
-            cached = await cache.get(cache_scope)
+            if isinstance(args, IntegrationArgs):
+                cacheable = not await configured(engine, args.integration_id)
+            cached = await cache.get(cache_scope) if cacheable else None
             if cached is not None:
                 # Validate the operation-specific schema even after integrity/scope checks.
                 cached.data = contract.data.model_validate(cached.data).model_dump(mode="json")
@@ -237,7 +268,7 @@ def register_read_tools(
                     sources = [Source(source_type=source_type, source_id=str(data[id_field]))]
                 result = ToolResult(
                     ok=True,
-                    observed_at=settings.scenario_clock,
+                    observed_at=datetime.now(UTC) if not cacheable else settings.scenario_clock,
                     data=contract.data.model_validate(data).model_dump(mode="json"),
                     sources=sources,
                 )
@@ -269,7 +300,7 @@ def register_read_tools(
                 observed_at=settings.scenario_clock,
                 error=ToolError(code="INVALID_ARGUMENTS", message="Invalid tool arguments"),
             )
-        except (SQLAlchemyError, TimeoutError) as exc:
+        except (SQLAlchemyError, TimeoutError, ConnectorUnavailable) as exc:
             stale = getattr(getattr(exc, "orig", None), "sqlstate", None) == "40001"
             code = (
                 "STATE_CONFLICT"
@@ -290,7 +321,7 @@ def register_read_tools(
                     retryable=not stale,
                 ),
             )
-        if result.ok:
+        if result.ok and cacheable:
             await cache.put(cache_scope, result)
         return CallToolResult(
             content=[TextContent(type="text", text=result.model_dump_json())],

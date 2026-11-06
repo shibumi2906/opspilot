@@ -81,6 +81,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -156,6 +163,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -231,6 +245,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -306,6 +327,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -381,6 +409,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -456,6 +491,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -531,6 +573,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -626,6 +675,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -721,6 +777,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -816,6 +879,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -891,6 +961,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -986,6 +1063,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1061,6 +1145,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1136,6 +1227,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1231,6 +1329,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1306,6 +1411,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1381,6 +1493,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1456,6 +1575,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1551,6 +1677,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1646,6 +1779,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1721,6 +1861,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1816,6 +1963,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1891,6 +2045,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -1966,6 +2127,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -2041,6 +2209,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -2136,6 +2311,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -2211,6 +2393,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Strict mapped enums/IDs/extra-field rejection, exact JSON/body/header admission and no producer-controlled URLs.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4136,6 +4325,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4383,6 +4579,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4594,6 +4797,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "HMAC observation cannot become approval or business dispatch; dedicated ingress DB role has no business privileges.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4653,6 +4863,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "HMAC observation cannot become approval or business dispatch; dedicated ingress DB role has no business privileges.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4712,6 +4929,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "HMAC observation cannot become approval or business dispatch; dedicated ingress DB role has no business privileges.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4771,6 +4995,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "HMAC observation cannot become approval or business dispatch; dedicated ingress DB role has no business privileges.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4866,6 +5097,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -4961,6 +5199,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5056,6 +5301,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5151,6 +5403,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5246,6 +5505,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5341,6 +5607,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5436,6 +5709,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5531,6 +5811,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5626,6 +5913,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5721,6 +6015,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5816,6 +6117,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -5911,6 +6219,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -6006,6 +6321,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -6101,6 +6423,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -6196,6 +6525,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -7809,6 +8145,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -7904,6 +8247,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -7999,6 +8349,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8094,6 +8451,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8189,6 +8553,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8284,6 +8655,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8379,6 +8757,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8474,6 +8859,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8569,6 +8961,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -8730,6 +9129,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -11363,6 +11769,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -11458,6 +11871,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -11553,6 +11973,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -11648,6 +12075,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -11743,6 +12177,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -12423,6 +12864,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -12843,6 +13291,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13252,6 +13707,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13336,6 +13798,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13420,6 +13889,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13504,6 +13980,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13588,6 +14071,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13672,6 +14162,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13756,6 +14253,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13840,6 +14344,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -13924,6 +14435,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14008,6 +14526,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14092,6 +14617,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14202,6 +14734,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14286,6 +14825,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14370,6 +14916,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14398,6 +14951,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14426,6 +14986,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14521,6 +15088,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14549,6 +15123,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14577,6 +15158,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14605,6 +15193,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14633,6 +15228,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14661,6 +15263,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14689,6 +15298,13 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "No full ASVS/Pilot closure; unchanged accountable owners and remaining requirement gates.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14744,6 +15360,18 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Registered exact origin, all-answer DNS validation/IP pin/TLS hostname, redirects/proxies off; raw-body HMAC timestamp/key/replay protection and durable job boundary.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f18_primary_review": {
+        "scope": "Native TLS manager service tokens and connector credential authentication; no vendor/default credential claim.",
+        "status": "local contribution; whole requirement open",
+        "remaining": "Vendor-specific F19/F20 and production deployment/independent F23 verification; inherited blockers/owners retained."
       }
     },
     {
@@ -14772,6 +15400,18 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Registered exact origin, all-answer DNS validation/IP pin/TLS hostname, redirects/proxies off; raw-body HMAC timestamp/key/replay protection and durable job boundary.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f18_primary_review": {
+        "scope": "Unique generated connector/ingress credentials and per-service/per-tenant ACL; independent test and Full states.",
+        "status": "local contribution; whole requirement open",
+        "remaining": "Vendor-specific F19/F20 and production deployment/independent F23 verification; inherited blockers/owners retained."
       }
     },
     {
@@ -14800,6 +15440,18 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Registered exact origin, all-answer DNS validation/IP pin/TLS hostname, redirects/proxies off; raw-body HMAC timestamp/key/replay protection and durable job boundary.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f18_primary_review": {
+        "scope": "Dedicated NOSUPERUSER/NOBYPASSRLS ingress role and protected tenant-aware shared lock function; no domain/workflow writes.",
+        "status": "local contribution; whole requirement open",
+        "remaining": "Vendor-specific F19/F20 and production deployment/independent F23 verification; inherited blockers/owners retained."
       }
     },
     {
@@ -14828,6 +15480,18 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Registered exact origin, all-answer DNS validation/IP pin/TLS hostname, redirects/proxies off; raw-body HMAC timestamp/key/replay protection and durable job boundary.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f18_primary_review": {
+        "scope": "Application destination registration, full DNS-answer checks, pinned socket and TLS verification; production network firewall remains F23.",
+        "status": "local contribution; whole requirement open",
+        "remaining": "Vendor-specific F19/F20 and production deployment/independent F23 verification; inherited blockers/owners retained."
       }
     },
     {
@@ -14856,6 +15520,18 @@
         "ref": "../full/f09-security-contracts.md",
         "scope": "implemented create_ticket revision/approval/grant changes; inherited baseline retained",
         "closure": "No whole-application pass; accountable stage and owner N/A review remain mandatory"
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Registered exact origin, all-answer DNS validation/IP pin/TLS hostname, redirects/proxies off; raw-body HMAC timestamp/key/replay protection and durable job boundary.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f18_primary_review": {
+        "scope": "Fixed simulator path/method/scope/response contract and no redirect/proxy/user URL; vendor endpoints and infrastructure egress remain F19/F20/F23.",
+        "status": "local contribution; whole requirement open",
+        "remaining": "Vendor-specific F19/F20 and production deployment/independent F23 verification; inherited blockers/owners retained."
       }
     },
     {
@@ -14924,6 +15600,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -14992,6 +15675,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
         "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Manager-backed per-purpose refs and service/tenant ACL; HMAC256 inventory, overlap/retirement/revoke and no credential fallback.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18421,6 +19111,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18516,6 +19213,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18611,6 +19315,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18706,6 +19417,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18801,6 +19519,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18896,6 +19621,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     },
     {
@@ -18991,6 +19723,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f18_scope_review": {
+        "ref": "../full/f18-security-contracts.md",
+        "scope": "Connector/producer/manager/ingress/processor trust boundaries, abuse cases, source classification and remaining deployment gates documented.",
+        "verification_ref": "../full/evidence/f18/checks.json",
+        "status": "local_change_gate_passed; no whole-requirement closure",
+        "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
       }
     }
   ],

@@ -1,0 +1,401 @@
+{
+  "default_registry_empty": true,
+  "after": {
+    "checkpoints.checkpoint_blobs": {
+      "count": 2930,
+      "sha256": "343957a517344e6e03fcf76fbb7afa44ac4a438a9a0587afe15cdfc038544d94"
+    },
+    "checkpoints.checkpoint_migrations": {
+      "count": 10,
+      "sha256": "9cd84ee59975e3cd626595b9261e9cb397a9a56849a2f044e2abd6aeae2dea71"
+    },
+    "checkpoints.checkpoint_writes": {
+      "count": 6910,
+      "sha256": "705788f4b9906c211aef604dc541a1fc6686089a0b741020a6d297a3a9928745"
+    },
+    "checkpoints.checkpoints": {
+      "count": 244,
+      "sha256": "a1c143a34f12cc27fe06d784ad193b4b7666ac3bafd0ea7c9db74a72db9454c0"
+    },
+    "domain.connector_controls": {
+      "count": 1,
+      "sha256": "1a7f8853aaab4412911d2c352f3940316270b61b3f9aa009fb273631dd2998bd"
+    },
+    "domain.customer_integrations": {
+      "count": 6,
+      "sha256": "ba4b1689df77fd68fd0f2b54f3e52309b4c89524408f75872f32e1d546afe469"
+    },
+    "domain.customers": {
+      "count": 6,
+      "sha256": "2cd885200e65ca2fc7a687643acf0b155a1a5cad2d0494aeb6b094089c99efbc"
+    },
+    "domain.incidents": {
+      "count": 20,
+      "sha256": "c18229fc99ea08e791f948de44ecea071387e34ab7d73ab2a686583ebc55581c"
+    },
+    "domain.knowledge_articles": {
+      "count": 10,
+      "sha256": "b85912539f1f18234972f7596d2a937ebd25f29f591dfcb2f12ef926a8d5a7be"
+    },
+    "domain.notifications": {
+      "count": 2,
+      "sha256": "9e241829db6ce3cd2d220cd46c439565ef6c93c1d24795926eec963b7cb5dfee"
+    },
+    "domain.ticket_comments": {
+      "count": 2,
+      "sha256": "a146b5dc70e141bd1f5c764bb36898081a12047f0df1717038f436a731b50393"
+    },
+    "domain.tickets": {
+      "count": 4,
+      "sha256": "4b6a5b02eb0860ae6639c092949459e89ba67621a2a344d0b636d5c8f9eda82d"
+    },
+    "identity.login_attempts": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "identity.logout_tokens": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "identity.request_budgets": {
+      "count": 3,
+      "sha256": "3cac4f7c2883c26deb9828244b1fda99b498cc4f60e2eb0fff00e18ef23abda8"
+    },
+    "identity.security_events": {
+      "count": 50,
+      "sha256": "45b02b1cb3a969fe653ee2b3b2734fc7c9664d06d760bca4db3f67dde5b42b8f"
+    },
+    "identity.sessions": {
+      "count": 15,
+      "sha256": "47bb1505a37ffb17face5617277ff8b1458f5cdc0fe656209d1d08c13e1c9248"
+    },
+    "identity.tenant_memberships": {
+      "count": 16,
+      "sha256": "d83025465869cb9ff60b6553e151afbbe868ca7c8e971b24c9764a66891fae6c"
+    },
+    "identity.tenants": {
+      "count": 2,
+      "sha256": "8202e668942520ef25bc39bb0e6fd7740f339b49d87f597f8dceab94f9bcbc26"
+    },
+    "identity.users": {
+      "count": 7,
+      "sha256": "e87b9a7c5d94b822a95fa7d6103c46324931ac50e2d43144209e01c38b160cdb"
+    },
+    "schema": "0019_adapters",
+    "workflow.action_read_budgets": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.actions": {
+      "count": 11,
+      "sha256": "6dcb23b59ec163b7373a5599c87f9cb0bc9959eebbba78edcb6cb8e2ddda2a93"
+    },
+    "workflow.agent_runs": {
+      "count": 23,
+      "sha256": "432db1f694f13f94a765973468bc93b516e70bd9962ae97e8da7947b535e35c3"
+    },
+    "workflow.approvals": {
+      "count": 11,
+      "sha256": "7d66ea3f01c8ff3b2d7ae0da9ecc69eea8cdff4f2268ccc375f2b2c59376f38d"
+    },
+    "workflow.cache_generations": {
+      "count": 2,
+      "sha256": "11098bf70ef80044af1aaee075759d4796c11822a173f202260537ba951a79d9"
+    },
+    "workflow.cache_objects": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.command_jobs": {
+      "count": 32,
+      "sha256": "c04433b2e11cee601115634407226f0d848835da2156725d48447110e04e51c0"
+    },
+    "workflow.deletion_tombstones": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.event_delivery": {
+      "count": 23,
+      "sha256": "75d60399d3ffc4fe7d5b44bd546981dd0b2c966d61d52b1d0a0c799b4b4c9cc7"
+    },
+    "workflow.event_outbox": {
+      "count": 318,
+      "sha256": "f1e5648b736f6c90e464dc65fd662b3d986dd3a3bf94be6509931a331fcf2800"
+    },
+    "workflow.execution_grants": {
+      "count": 6,
+      "sha256": "f4b4f781f2c63dabd524631042bfac34d0e3c469f2ce3164f79a15855422f363"
+    },
+    "workflow.human_commands": {
+      "count": 6,
+      "sha256": "a507a006ad6e48b6c502b971510da3a9c27efc90c81aebbedb9ce3408f714fb8"
+    },
+    "workflow.logical_actions": {
+      "count": 11,
+      "sha256": "aedc07d186a4f2347adea23655932c3a528de7eb04535d3ada7d4c090cca608c"
+    },
+    "workflow.model_prices": {
+      "count": 4,
+      "sha256": "b3c8ea8e3ef85faf13627c46c4ad1307ca0744d699d8e3a6093e1d750162a01b"
+    },
+    "workflow.notification_reads": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.plan_slots": {
+      "count": 6,
+      "sha256": "70711d96131fc05ed9473a41148cf428c11d9a15492b1087732ea64f46a56432"
+    },
+    "workflow.provider_attempts": {
+      "count": 30,
+      "sha256": "34b2e453906f501e8c29377fba2304fea14fab270dcd5497b07ebfaab1bee90a"
+    },
+    "workflow.resource_policy": {
+      "count": 1,
+      "sha256": "0059193fd37c9e4868fb7d66510f0e94d2b92d6c5f8b8a9f6d99e2b63d2c332a"
+    },
+    "workflow.retention_jobs": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.run_audit": {
+      "count": 318,
+      "sha256": "ce342897a6420f4f39973915df5f1badd1554ffe1e565057a80f8cab009a7673"
+    },
+    "workflow.run_events": {
+      "count": 318,
+      "sha256": "94b65e1a273df63e3d7e2f97096cfde5d521e9fc89884b7e120f5a25961a18db"
+    },
+    "workflow.run_execution_leases": {
+      "count": 21,
+      "sha256": "1afce0a855e093b82bd7194206494f7a277e45b8bfa51effd109199d93786051"
+    },
+    "workflow.run_plans": {
+      "count": 2,
+      "sha256": "f0fe64785121a9d23545c4fa29f61b1f172dfe53290f6e02f3c19894455fb516"
+    },
+    "workflow.run_streams": {
+      "count": 23,
+      "sha256": "7fd9ded35996e3b171e6dc4cd8ef57f8a7fd1eba8d207ef26a3e19369868868f"
+    },
+    "workflow.source_budgets": {
+      "count": 30,
+      "sha256": "d0931cd0252af5066b3366ea552032f2c2bd5d59b906ceca280f80e959c66269"
+    },
+    "workflow.ui_commands": {
+      "count": 2,
+      "sha256": "00841e70a44a4172e6001c46583e7dc5fcb8079993f04ecac663ce4069a0ad39"
+    },
+    "workflow.usage_reservations": {
+      "count": 23,
+      "sha256": "bf07e81d32acba03c4078f76559f910f1f1c552d33f1168f974e82341e21478c"
+    },
+    "workflow.worker_admission": {
+      "count": 2,
+      "sha256": "89b97bb39438a623c0b1cda654e25b022ab950eb9ea919a9f2a6d3085af1209b"
+    }
+  },
+  "all_legacy_schemas": [
+    "domain",
+    "workflow",
+    "identity",
+    "checkpoints"
+  ],
+  "before": {
+    "checkpoints.checkpoint_blobs": {
+      "count": 2930,
+      "sha256": "343957a517344e6e03fcf76fbb7afa44ac4a438a9a0587afe15cdfc038544d94"
+    },
+    "checkpoints.checkpoint_migrations": {
+      "count": 10,
+      "sha256": "9cd84ee59975e3cd626595b9261e9cb397a9a56849a2f044e2abd6aeae2dea71"
+    },
+    "checkpoints.checkpoint_writes": {
+      "count": 6910,
+      "sha256": "705788f4b9906c211aef604dc541a1fc6686089a0b741020a6d297a3a9928745"
+    },
+    "checkpoints.checkpoints": {
+      "count": 244,
+      "sha256": "a1c143a34f12cc27fe06d784ad193b4b7666ac3bafd0ea7c9db74a72db9454c0"
+    },
+    "domain.connector_controls": {
+      "count": 1,
+      "sha256": "1a7f8853aaab4412911d2c352f3940316270b61b3f9aa009fb273631dd2998bd"
+    },
+    "domain.customer_integrations": {
+      "count": 6,
+      "sha256": "ba4b1689df77fd68fd0f2b54f3e52309b4c89524408f75872f32e1d546afe469"
+    },
+    "domain.customers": {
+      "count": 6,
+      "sha256": "2cd885200e65ca2fc7a687643acf0b155a1a5cad2d0494aeb6b094089c99efbc"
+    },
+    "domain.incidents": {
+      "count": 20,
+      "sha256": "c18229fc99ea08e791f948de44ecea071387e34ab7d73ab2a686583ebc55581c"
+    },
+    "domain.knowledge_articles": {
+      "count": 10,
+      "sha256": "b85912539f1f18234972f7596d2a937ebd25f29f591dfcb2f12ef926a8d5a7be"
+    },
+    "domain.notifications": {
+      "count": 2,
+      "sha256": "9e241829db6ce3cd2d220cd46c439565ef6c93c1d24795926eec963b7cb5dfee"
+    },
+    "domain.ticket_comments": {
+      "count": 2,
+      "sha256": "a146b5dc70e141bd1f5c764bb36898081a12047f0df1717038f436a731b50393"
+    },
+    "domain.tickets": {
+      "count": 4,
+      "sha256": "4b6a5b02eb0860ae6639c092949459e89ba67621a2a344d0b636d5c8f9eda82d"
+    },
+    "identity.login_attempts": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "identity.logout_tokens": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "identity.request_budgets": {
+      "count": 3,
+      "sha256": "3cac4f7c2883c26deb9828244b1fda99b498cc4f60e2eb0fff00e18ef23abda8"
+    },
+    "identity.security_events": {
+      "count": 50,
+      "sha256": "45b02b1cb3a969fe653ee2b3b2734fc7c9664d06d760bca4db3f67dde5b42b8f"
+    },
+    "identity.sessions": {
+      "count": 15,
+      "sha256": "47bb1505a37ffb17face5617277ff8b1458f5cdc0fe656209d1d08c13e1c9248"
+    },
+    "identity.tenant_memberships": {
+      "count": 16,
+      "sha256": "d83025465869cb9ff60b6553e151afbbe868ca7c8e971b24c9764a66891fae6c"
+    },
+    "identity.tenants": {
+      "count": 2,
+      "sha256": "8202e668942520ef25bc39bb0e6fd7740f339b49d87f597f8dceab94f9bcbc26"
+    },
+    "identity.users": {
+      "count": 7,
+      "sha256": "e87b9a7c5d94b822a95fa7d6103c46324931ac50e2d43144209e01c38b160cdb"
+    },
+    "schema": "0018_lifecycle",
+    "workflow.action_read_budgets": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.actions": {
+      "count": 11,
+      "sha256": "6dcb23b59ec163b7373a5599c87f9cb0bc9959eebbba78edcb6cb8e2ddda2a93"
+    },
+    "workflow.agent_runs": {
+      "count": 23,
+      "sha256": "432db1f694f13f94a765973468bc93b516e70bd9962ae97e8da7947b535e35c3"
+    },
+    "workflow.approvals": {
+      "count": 11,
+      "sha256": "7d66ea3f01c8ff3b2d7ae0da9ecc69eea8cdff4f2268ccc375f2b2c59376f38d"
+    },
+    "workflow.cache_generations": {
+      "count": 2,
+      "sha256": "11098bf70ef80044af1aaee075759d4796c11822a173f202260537ba951a79d9"
+    },
+    "workflow.cache_objects": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.command_jobs": {
+      "count": 32,
+      "sha256": "c04433b2e11cee601115634407226f0d848835da2156725d48447110e04e51c0"
+    },
+    "workflow.deletion_tombstones": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.event_delivery": {
+      "count": 23,
+      "sha256": "75d60399d3ffc4fe7d5b44bd546981dd0b2c966d61d52b1d0a0c799b4b4c9cc7"
+    },
+    "workflow.event_outbox": {
+      "count": 318,
+      "sha256": "f1e5648b736f6c90e464dc65fd662b3d986dd3a3bf94be6509931a331fcf2800"
+    },
+    "workflow.execution_grants": {
+      "count": 6,
+      "sha256": "f4b4f781f2c63dabd524631042bfac34d0e3c469f2ce3164f79a15855422f363"
+    },
+    "workflow.human_commands": {
+      "count": 6,
+      "sha256": "a507a006ad6e48b6c502b971510da3a9c27efc90c81aebbedb9ce3408f714fb8"
+    },
+    "workflow.logical_actions": {
+      "count": 11,
+      "sha256": "aedc07d186a4f2347adea23655932c3a528de7eb04535d3ada7d4c090cca608c"
+    },
+    "workflow.model_prices": {
+      "count": 4,
+      "sha256": "b3c8ea8e3ef85faf13627c46c4ad1307ca0744d699d8e3a6093e1d750162a01b"
+    },
+    "workflow.notification_reads": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.plan_slots": {
+      "count": 6,
+      "sha256": "70711d96131fc05ed9473a41148cf428c11d9a15492b1087732ea64f46a56432"
+    },
+    "workflow.provider_attempts": {
+      "count": 30,
+      "sha256": "34b2e453906f501e8c29377fba2304fea14fab270dcd5497b07ebfaab1bee90a"
+    },
+    "workflow.resource_policy": {
+      "count": 1,
+      "sha256": "0059193fd37c9e4868fb7d66510f0e94d2b92d6c5f8b8a9f6d99e2b63d2c332a"
+    },
+    "workflow.retention_jobs": {
+      "count": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "workflow.run_audit": {
+      "count": 318,
+      "sha256": "ce342897a6420f4f39973915df5f1badd1554ffe1e565057a80f8cab009a7673"
+    },
+    "workflow.run_events": {
+      "count": 318,
+      "sha256": "94b65e1a273df63e3d7e2f97096cfde5d521e9fc89884b7e120f5a25961a18db"
+    },
+    "workflow.run_execution_leases": {
+      "count": 21,
+      "sha256": "1afce0a855e093b82bd7194206494f7a277e45b8bfa51effd109199d93786051"
+    },
+    "workflow.run_plans": {
+      "count": 2,
+      "sha256": "f0fe64785121a9d23545c4fa29f61b1f172dfe53290f6e02f3c19894455fb516"
+    },
+    "workflow.run_streams": {
+      "count": 23,
+      "sha256": "7fd9ded35996e3b171e6dc4cd8ef57f8a7fd1eba8d207ef26a3e19369868868f"
+    },
+    "workflow.source_budgets": {
+      "count": 30,
+      "sha256": "d0931cd0252af5066b3366ea552032f2c2bd5d59b906ceca280f80e959c66269"
+    },
+    "workflow.ui_commands": {
+      "count": 2,
+      "sha256": "00841e70a44a4172e6001c46583e7dc5fcb8079993f04ecac663ce4069a0ad39"
+    },
+    "workflow.usage_reservations": {
+      "count": 23,
+      "sha256": "bf07e81d32acba03c4078f76559f910f1f1c552d33f1168f974e82341e21478c"
+    },
+    "workflow.worker_admission": {
+      "count": 2,
+      "sha256": "89b97bb39438a623c0b1cda654e25b022ab950eb9ea919a9f2a6d3085af1209b"
+    }
+  },
+  "timing": "Quiesced before/after migration, all legacy columns hashed; before workers/smoke",
+  "preserved": true
+}

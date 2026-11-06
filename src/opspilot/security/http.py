@@ -78,6 +78,12 @@ class SecurityMiddleware:
             )(scope, receive, protected_send)
 
         headers = scope.get("headers", [])
+        ingress = scope.get("path", "").startswith("/ingress/v1/")
+        maximum = (
+            min(self.settings.max_request_bytes, 16384)
+            if ingress
+            else self.settings.max_request_bytes
+        )
         if scope.get("method") == "TRACE":
             await reject(405, "METHOD_NOT_ALLOWED")
             return
@@ -96,6 +102,9 @@ class SecurityMiddleware:
             b"cookie",
             b"x-opspilot-context",
             b"x-opspilot-grant",
+            b"x-ops-timestamp",
+            b"x-ops-key-id",
+            b"x-ops-signature",
         }
         if any(sum(k.lower() == name for k, _ in headers) > 1 for name in single):
             await reject(400, "AMBIGUOUS_HEADERS")
@@ -107,7 +116,7 @@ class SecurityMiddleware:
                 or lengths
                 and not lengths[0].isdigit()
                 or lengths
-                and (int(lengths[0]) < 0 or int(lengths[0]) > self.settings.max_request_bytes)
+                and (int(lengths[0]) < 0 or int(lengths[0]) > maximum)
             ):
                 raise ValueError()
         except ValueError:
@@ -115,7 +124,7 @@ class SecurityMiddleware:
             return
         chunks = []
         size = 0
-        deadline = asyncio.get_running_loop().time() + 10
+        deadline = asyncio.get_running_loop().time() + (2 if ingress else 10)
         while True:
             try:
                 async with asyncio.timeout_at(deadline):
@@ -127,7 +136,7 @@ class SecurityMiddleware:
                 return
             data = msg.get("body", b"")
             size += len(data)
-            if size > self.settings.max_request_bytes:
+            if size > maximum:
                 await reject(413, "REQUEST_TOO_LARGE")
                 return
             chunks.append(data)

@@ -1,0 +1,1 @@
+Java 21.0.13.0.3+1-alpine-r0; verified Guava SHA-256 b530942257fb935f8b2cfaa5f8eb5bd59c555fd8e8d01b8ce98912e077ea606c; trusted roots 118; compromised CA absent

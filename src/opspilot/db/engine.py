@@ -23,7 +23,7 @@ def create_engine(url: str) -> AsyncEngine:
         raise ValueError("Full requires opspilot_full or opspilot_full_test")
     parsed = make_url(url)
     connect_args = {}
-    if parsed.username in {"ops_workflow", "ops_checkpoint", "ops_domain"}:
+    if parsed.username in {"ops_workflow", "ops_checkpoint", "ops_domain", "ops_ingress"}:
         connect_args["options"] = (
             str(parsed.query.get("options", ""))
             + " -c idle_in_transaction_session_timeout=5000 -c statement_timeout=5000"

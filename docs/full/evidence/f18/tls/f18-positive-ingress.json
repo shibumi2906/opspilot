@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "native_tls_client_edge": true,
+  "verified_tls_edge_api": true,
+  "manager_native_tls_required": true,
+  "database_ssl_verified_full": true,
+  "database_role": "ops_ingress",
+  "cli_without_business_environment": true,
+  "accepted": 202,
+  "replay": 200,
+  "bad_signature": 401,
+  "observations": 1,
+  "privileged_test_mapping_fixture": true,
+  "vendor": false
+}

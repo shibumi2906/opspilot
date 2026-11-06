@@ -134,3 +134,14 @@ factor notifications and administrator-plane MFA remain F23 obligations; full L2
 
 
 F15 local change gate passed: [contracts](../full/f15-security-contracts.md), [acceptance](../full/evidence/f15/checks.json). SEC-07: PostgreSQL durable actor/tenant/global admission, fenced usage/reservations, fair worker caps and retry/crash accounting; HMAC-scoped disposable Redis cache with transactional invalidation and bounded authenticated TLS fallback. SEC-01/10 regression/supply-chain gates pass: backend402, browser22, queue5, fencing3, provider crash1, Redis restart1, native TLS8+Redis6+MFA14+IdP policy4, scripted eval12/12. App/web/Redis raw H/C0; IdP raw4 retained with exact-image applicable0 proof. All253 protected requirement fields remain;125 scoped reviews and1 primary contribution do not close whole norms. Full L2 remains NOT_MET.
+
+
+F18 local change gate passed: [contracts](../full/f18-security-contracts.md),
+[acceptance](../full/evidence/f18/checks.json). SEC-04/09 plus SEC-01/10 cover exact manager
+credential/webhook scopes, synthetic registered HTTPS/IP pinning, bounded transport/breaker,
+raw-body HMAC/key rotation/replay, durable observation receipts/jobs and least-privilege processor.
+Transport33, backend486/44 specialized skips, unit200, browser24, queue5/fencing3, eval12/12;
+native TLS/MFA plus positive ingress/verify-full DB/CLI, six runtime images raw H/C0, no secret matches.
+All253 inherited requirement fields including F17 contributions remain exact;102 new scoped reviews
+and5 primary local contributions do not close whole norms. SEC-09 is in_progress for the full
+application: F19/F20 vendor and F23 production egress/TLS/deployment gates remain. Whole L2 NOT_MET.

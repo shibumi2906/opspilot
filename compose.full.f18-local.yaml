@@ -1,0 +1,73 @@
+# Full dev only: combine with compose.full.yaml and compose.full.f17-local.yaml.
+# setup-full-f18.py --local preserves independent dev keys and writes the private DSN.
+services:
+  api:
+    environment: &ingress-client
+      SECRET_FILES: '{"ingress_database_url":"/run/connectors/ingress.dsn"}'
+      CONNECTOR_MANAGER_URL: https://manager:8200
+      CONNECTOR_MANAGER_CA_FILE: /run/connectors/manager-ca.crt
+      CONNECTOR_MANAGER_TOKEN_FILE: /run/connectors/ingress.token
+      CONNECTOR_SIMULATOR_ORIGIN: https://adapter-simulator:8443
+      CONNECTOR_SIMULATOR_IP: 10.245.22.10
+      CONNECTOR_SIMULATOR_CA_FILE: /run/connectors/simulator-ca.crt
+    volumes:
+      - ./.tools/f18-client-dev/ingress.dsn:/run/connectors/ingress.dsn:ro
+      - ./.tools/f18-client-dev/manager-ca.crt:/run/connectors/manager-ca.crt:ro
+      - ./.tools/f18-client-dev/ingress.token:/run/connectors/ingress.token:ro
+      - ./.tools/f18-client-dev/simulator-ca.crt:/run/connectors/simulator-ca.crt:ro
+  admin:
+    environment:
+      SECRET_FILES: '{"ingress_database_url":"/run/connectors/ingress.dsn"}'
+    volumes:
+      - ./.tools/f18-client-dev/ingress.dsn:/run/connectors/ingress.dsn:ro
+  mcp:
+    networks: [default, adapters]
+    environment:
+      CONNECTOR_MANAGER_URL: https://manager:8200
+      CONNECTOR_MANAGER_CA_FILE: /run/connectors/manager-ca.crt
+      CONNECTOR_MANAGER_TOKEN_FILE: /run/connectors/mcp.token
+      CONNECTOR_SIMULATOR_ORIGIN: https://adapter-simulator:8443
+      CONNECTOR_SIMULATOR_IP: 10.245.22.10
+      CONNECTOR_SIMULATOR_CA_FILE: /run/connectors/simulator-ca.crt
+    volumes:
+      - ./.tools/f18-client-dev/manager-ca.crt:/run/connectors/manager-ca.crt:ro
+      - ./.tools/f18-client-dev/mcp.token:/run/connectors/mcp.token:ro
+      - ./.tools/f18-client-dev/simulator-ca.crt:/run/connectors/simulator-ca.crt:ro
+  ingress-worker:
+    image: opspilot-full/app:f01
+    restart: unless-stopped
+    command: [python, -m, opspilot.cli.ingress_worker]
+    init: true
+    user: 10001:10001
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    tmpfs: [/tmp]
+    environment:
+      APP_ENV: local
+      INGRESS_DATABASE_URL_FILE: /run/ingress.dsn
+    volumes:
+      - ./.tools/f18-client-dev/ingress.dsn:/run/ingress.dsn:ro
+  adapter-simulator:
+    image: opspilot-full/tests:f01
+    command: [python, -m, tests.f18_simulator]
+    profiles: [f18-simulator]
+    user: 10001:10001
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 192m
+    tmpfs: [/tmp]
+    volumes:
+      - ./.tools/f18-simulator-dev:/run/simulator:ro
+    networks:
+      adapters:
+        ipv4_address: 10.245.22.10
+networks:
+  adapters:
+    internal: true
+    ipam:
+      config:
+        - subnet: 10.245.22.0/24
+          ip_range: 10.245.22.128/25

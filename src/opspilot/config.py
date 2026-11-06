@@ -1,3 +1,4 @@
+import ipaddress
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Literal, Self
@@ -169,6 +170,59 @@ class Settings(BaseSettings):
     domain_database_url: SecretStr | None = None
     checkpoint_database_url: SecretStr | None = None
     migration_database_url: SecretStr | None = None
+    ingress_database_url: SecretStr | None = None
+    connector_manager_url: str | None = None
+    connector_manager_ca_file: str | None = None
+    connector_manager_token_file: str | None = None
+    connector_simulator_origin: str | None = None
+    connector_simulator_ip: str | None = None
+    connector_simulator_ca_file: str | None = None
+
+    @model_validator(mode="after")
+    def connector_boundaries(self) -> Self:
+        manager = (
+            self.connector_manager_url,
+            self.connector_manager_ca_file,
+            self.connector_manager_token_file,
+        )
+        if any(manager):
+            if not all(manager):
+                raise ValueError("Complete independent connector manager configuration required")
+            parsed = urlsplit(self.connector_manager_url or "")
+            if (
+                parsed.scheme != "https"
+                or not parsed.hostname
+                or parsed.username
+                or parsed.password
+                or parsed.path
+                or parsed.query
+                or parsed.fragment
+            ):
+                raise ValueError("Connector manager requires a trusted HTTPS origin")
+            for file in manager[1:]:
+                if not file or not Path(file).is_absolute() or not Path(file).is_file():
+                    raise ValueError("Connector manager requires private mounted credential files")
+        simulator = (
+            self.connector_simulator_origin,
+            self.connector_simulator_ip,
+            self.connector_simulator_ca_file,
+        )
+        if any(simulator):
+            if not all(simulator) or self.app_env == "production":
+                raise ValueError("Complete explicit local simulator registration required")
+            address = ipaddress.ip_address(self.connector_simulator_ip or "")
+            if (
+                address.version != 4
+                or address.is_link_local
+                or address.is_multicast
+                or address.is_unspecified
+                or address.is_reserved
+            ):
+                raise ValueError("Unsafe simulator address")
+            if not Path(self.connector_simulator_ca_file or "").is_file():
+                raise ValueError("Simulator CA is required")
+        return self
+
     mcp_url: str = "http://mcp:8001/mcp"
     mcp_service_token: SecretStr = SecretStr("")
     openai_api_key: SecretStr | None = None
@@ -211,6 +265,7 @@ class Settings(BaseSettings):
             "checkpoint_database_url",
             "domain_database_url",
             "migration_database_url",
+            "ingress_database_url",
         }
         for name, file in mapping.items():
             if name not in allowed or value.get(name):
@@ -270,6 +325,7 @@ class Settings(BaseSettings):
             "checkpoint_database_url",
             "domain_database_url",
             "migration_database_url",
+            "ingress_database_url",
         ]:
             dsn = getattr(self, name)
             if dsn and make_url(dsn.get_secret_value()).query.get("sslmode") != "verify-full":
@@ -299,6 +355,7 @@ class Settings(BaseSettings):
         "checkpoint_database_url",
         "migration_database_url",
         "identity_database_url",
+        "ingress_database_url",
     )
     @classmethod
     def validate_dsn(cls, value: SecretStr | None) -> SecretStr | None:
@@ -310,9 +367,16 @@ class Settings(BaseSettings):
         return value
 
     def database_url(
-        self, role: Literal["workflow", "domain", "checkpoint", "migration", "identity"]
+        self, role: Literal["workflow", "domain", "checkpoint", "migration", "identity", "ingress"]
     ) -> str:
         value = getattr(self, f"{role}_database_url")
         if not isinstance(value, SecretStr):
             raise ValueError(f"Missing {role} database URL")
         return value.get_secret_value()
+
+    @field_validator("ingress_database_url")
+    @classmethod
+    def ingress_role(cls, value: SecretStr | None) -> SecretStr | None:
+        if value and make_url(value.get_secret_value()).username != "ops_ingress":
+            raise ValueError("Ingress must use its dedicated non-business database role")
+        return value

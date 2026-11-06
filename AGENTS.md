@@ -2,7 +2,7 @@
 
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
-  The tracker is authoritative; F01–F17 are done; F18–F24 not started.
+  The tracker is authoritative; F01–F18 are done; F19–F24 not started.
 - Implement only the stage explicitly requested by the user. Completion of a stage does
   not authorize starting the next stage, paid calls, external writes, production deployment or push.
 - Preserve the Portfolio MVP checkout at C:/Users/user/Desktop/code/AI Incident & Operations Agent:
@@ -32,3 +32,14 @@
 
 - F17 local scripted Core acceptance is under docs/full/evidence/f17. Full Pilot and
   complete ASVS L2 remain NOT_MET. Preserve historical reports and use scoped evidence.
+
+- F18 acceptance is under docs/full/evidence/f18. Main Full schema is0019_adapters; normal dev
+  requires compose.full.yaml + compose.full.f17-local.yaml + compose.full.f18-local.yaml.
+  Explicit setup-full-f18.py --local refreshes short-lived manager tokens while preserving keys.
+  The default adapter registry is empty; synthetic simulator is an optional profile. No vendor/live gate.
+- The observation worker has only an ingress DSN; keep business/MCP/manager credentials and key
+  mounts out of it. New enrolled tenants require trusted RECOVERY_TENANTS and exact manager ACL.
+- F18 regression keeps negative-fencing backend fixtures intact and uses a fresh browser/process
+  project. Run labs serially on this16GiB host; automatic Docker address pools are exhausted.
+  Dedicated subnet21 is F18 transport,22 optional Full simulator,23 native TLS; check overlap.
+- Full Pilot and complete ASVS L2 remain NOT_MET. F19–F24 require a new user request; no push.

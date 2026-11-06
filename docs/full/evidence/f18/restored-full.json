@@ -1,0 +1,9 @@
+{
+  "observation_worker": "true",
+  "original_full_volume_preserved": true,
+  "schema": "0019_adapters",
+  "default_registry_empty": true,
+  "simulator_profile": "optional; disabled by default",
+  "ui": 200,
+  "api": 200
+}

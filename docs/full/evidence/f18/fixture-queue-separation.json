@@ -1,0 +1,8 @@
+{
+  "backend_passed": 486,
+  "backend_mutation_for_browser_gate": false,
+  "remaining_fixture": {"job_status":"running","run_status":"completed","claim_epoch":2,"lease_epoch":3,"lease_owner":null,"future_lease":false},
+  "interpretation":"Direct backend negative-fencing fixtures can leave an intentionally superseded claim; a global queue-empty precondition is not valid for this database.",
+  "resolution":"Preserve backend database/rows; use a fresh isolated browser/process acceptance database. Production queue code is unchanged by F18.",
+  "browser_database_project":"opspilot-full-test-f18-regression-browser"
+}

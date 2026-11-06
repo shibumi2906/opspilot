@@ -1,0 +1,75 @@
+# Serial, isolated F18 simulator acceptance. No vendor endpoints or external writes.
+services:
+  adapter-simulator:
+    image: opspilot-full/tests:f01
+    command: [python, -m, tests.f18_simulator]
+    user: 10001:10001
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 192m
+    tmpfs: [/tmp]
+    volumes:
+      - ./.tools/f18-simulator:/run/simulator:ro
+    networks:
+      default:
+        ipv4_address: ${F18_SUBNET_PREFIX:-10.245.18}.10
+  api:
+    environment: &ingress-env
+      INGRESS_DATABASE_URL: postgresql+psycopg://ops_ingress:${F18_TEST_INGRESS_PASSWORD:?Prepare F18}@postgres/opspilot_full_test
+      CONNECTOR_MANAGER_URL: https://manager:8200
+      CONNECTOR_MANAGER_CA_FILE: /run/connectors/manager-ca.crt
+      CONNECTOR_MANAGER_TOKEN_FILE: /run/connectors/ingress.token
+      CONNECTOR_SIMULATOR_ORIGIN: https://adapter-simulator:8443
+      CONNECTOR_SIMULATOR_IP: ${F18_SUBNET_PREFIX:-10.245.18}.10
+      CONNECTOR_SIMULATOR_CA_FILE: /run/connectors/simulator-ca.crt
+    volumes:
+      - ./.tools/f18-client/manager-ca.crt:/run/connectors/manager-ca.crt:ro
+      - ./.tools/f18-client/ingress.token:/run/connectors/ingress.token:ro
+      - ./.tools/f18-client/simulator-ca.crt:/run/connectors/simulator-ca.crt:ro
+  mcp:
+    environment:
+      CONNECTOR_MANAGER_URL: https://manager:8200
+      CONNECTOR_MANAGER_CA_FILE: /run/connectors/manager-ca.crt
+      CONNECTOR_MANAGER_TOKEN_FILE: /run/connectors/mcp.token
+      CONNECTOR_SIMULATOR_ORIGIN: https://adapter-simulator:8443
+      CONNECTOR_SIMULATOR_IP: ${F18_SUBNET_PREFIX:-10.245.18}.10
+      CONNECTOR_SIMULATOR_CA_FILE: /run/connectors/simulator-ca.crt
+    volumes:
+      - ./.tools/f18-client/manager-ca.crt:/run/connectors/manager-ca.crt:ro
+      - ./.tools/f18-client/mcp.token:/run/connectors/mcp.token:ro
+      - ./.tools/f18-client/simulator-ca.crt:/run/connectors/simulator-ca.crt:ro
+  tests:
+    environment:
+      <<: *ingress-env
+      F18_CONTRACT: '1'
+      INGRESS_DATABASE_URL: postgresql+psycopg://ops_ingress:${F18_TEST_INGRESS_PASSWORD}@postgres/opspilot_full_test
+    volumes:
+      - ./.tools/f18-client/manager-ca.crt:/run/connectors/manager-ca.crt:ro
+      - ./.tools/f18-client/ingress.token:/run/connectors/ingress.token:ro
+      - ./.tools/f18-client/simulator-ca.crt:/run/connectors/simulator-ca.crt:ro
+      - ./.tools/f18-probe:/run/f18-probe:ro
+  admin:
+    environment:
+      INGRESS_DATABASE_URL: postgresql+psycopg://ops_ingress:${F18_TEST_INGRESS_PASSWORD}@postgres/opspilot_full_test
+  ingress-worker:
+    image: opspilot-full/app:f01
+    command: [python, -m, opspilot.cli.ingress_worker]
+    init: true
+    user: 10001:10001
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    tmpfs: [/tmp]
+    environment:
+      APP_ENV: test
+      INGRESS_DATABASE_URL: postgresql+psycopg://ops_ingress:${F18_TEST_INGRESS_PASSWORD}@postgres/opspilot_full_test
+networks:
+  default:
+    external: false
+    name: ${COMPOSE_PROJECT_NAME}_default
+    ipam:
+      config:
+        - subnet: ${F18_SUBNET_PREFIX:-10.245.18}.0/24
+          ip_range: ${F18_SUBNET_PREFIX:-10.245.18}.128/25

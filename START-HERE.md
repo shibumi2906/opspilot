@@ -1,21 +1,21 @@
 # Продолжение OpsPilot Full
 
-Обновлено 6 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
+Обновлено 7 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
 Это самостоятельный Git-репозиторий, не ссылка на скрытый worktree.
 Сначала откройте эту папку как workspace в редакторе/Codex.
 
 ## Текущее состояние
 
-- Ветка: `codex/opspilot-full`. F16: `6330f32`; F17 — отдельный локальный stage commit (subject в tracker).
+- Ветка: `codex/opspilot-full`. F16: `6330f32`; F17: `017b68b`; F18 — отдельный локальный stage commit (subject в tracker).
 - F13: `2fe6613`; F14: `be246d7`; F12: `abfaf76`.
-- F01–F16 завершены; **F17 завершён: локальный scripted Full Core принят**; F18–F24 не начаты.
+- F01–F18 завершены; **F18 adapter platform/signed ingress принят**; F19–F24 не начаты.
   Перед новым этапом используйте текущий HEAD и канонический tracker.
-- Схема Full: `0018_lifecycle`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
+- Схема Full: `0019_adapters`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
 - [Канонический tracker](docs/full-version-status.md).
 - [Спецификация Full](OpsPilot_Full_Project_Specification.md).
 - [План безопасности SEC-01–12](docs/security/asvs-l2-implementation-plan.md).
 - [Backlog 253 требований](docs/security/asvs-l2-requirement-backlog.json).
-- Полный ASVS L2: **NOT_MET**; завершение F16 означает только принятый scope F16.
+- Полный ASVS L2: **NOT_MET**; завершение F18 означает только принятый scope F18.
 
 ## Разделение папок
 
@@ -51,7 +51,7 @@ PowerShell, из этой папки:
 git status --short
 git log -5 --oneline
 .\scripts\check-ops-workspace.ps1 -CheckMvp
-docker compose --env-file .env -p opspilot-full -f compose.full.yaml -f compose.full.f17-local.yaml ps
+docker compose --env-file .env -p opspilot-full -f compose.full.yaml -f compose.full.f17-local.yaml -f compose.full.f18-local.yaml ps
 ~~~
 
 UI: http://127.0.0.1:8091
@@ -80,7 +80,7 @@ npm.cmd --prefix web ci --no-audit --no-fund
 Обычная проверка или запуск без rebuild и без seed/migrations:
 
 ~~~powershell
-docker compose --env-file .env -p opspilot-full -f compose.full.yaml -f compose.full.f17-local.yaml up -d --wait --no-build postgres redis oidc collector mcp api worker worker2 web
+docker compose --env-file .env -p opspilot-full -f compose.full.yaml -f compose.full.f17-local.yaml -f compose.full.f18-local.yaml up -d --wait --no-build postgres redis oidc collector mcp api worker worker2 web
 ~~~
 
 F17 использует проверенный логический restore в новом PostgreSQL16 volume.
@@ -130,13 +130,9 @@ pinui-rag-api — другой проект. Он ссылается на уда
 
 ## Запрос для продолжения
 
-> Выполни только F16 OpsPilot Full в C:\Users\user\Desktop\code\Ops.
-> Прочитай AGENTS.md, START-HERE.md, спецификацию и канонический docs/full-version-status.md.
-> F15 завершён коммитом 4733998; используй текущий HEAD с подготовкой workspace.
-> MVP: C:\Users\user\Desktop\code\AI Incident & Operations Agent.
-> Сохрани изоляцию MVP, выполни функциональные и security-задачи F16 (SEC-05 плюс SEC-01/10)
-> с целью ASVS L2, проведи проверки, обнови tracker и создай отдельный локальный коммит без push.
-> F17 не начинай. Полный L2 не объявляй выполненным без соответствующих будущих gates.
+F18 завершён. Для следующего этапа нужен отдельный запрос пользователя с явным scope.
+F19–F24 не начинать автоматически; canonical tracker определяет очередь и обязательные gates.
+Один этап — отдельный локальный commit, без push. Исторические отчёты ниже не переписывать.
 
 ## Принятый F16
 
@@ -164,3 +160,30 @@ Collector journal и sealed head находятся в разных named volume
 После замены API container перезапустите `web`, чтобы Nginx обновил upstream DNS.
 Manager tokens обновляются явным setup --local, максимум1 час; ключи setup сохраняет.
 Повторный запуск one-time deploy helper после schema0018 запрещён preflight до остановки сервисов.
+
+## Принятый F18 — текущее состояние
+
+[Evidence](docs/full/evidence/f18/README.md), [checks](docs/full/evidence/f18/checks.json),
+[contracts](docs/full/f18-security-contracts.md), [operations](docs/full/f18-operations.md).
+Backend486/44 dedicated skips, transport33, unit200, browser24, queue5/fencing3, eval12/12;
+native TLS8/collector12/Redis6/MFA14/IdP4 и новый positive ingress/verify-full DB/CLI; raw H/C0
+во всех6 runtime images.253 ASVS inherited rows intact, scoped reviews102/primary contributions5;
+полный ASVS L2 и Pilot NOT_MET, F19–F24 не начаты.
+
+Существующий Full уже на0019:48 legacy tables/columns/counts/SHA256 сохранены после backup/restore,
+default adapter registry пустой. Ingress-worker не имеет business/MCP/manager credentials или key
+mounts. Synthetic simulator optional и не включён по умолчанию; в production он запрещён.
+Для обычного рестарта без seed/migration используйте оба local overrideF17/F18 и сначала:
+
+```powershell
+.venv/Scripts/python.exe scripts/setup-full-f18.py --local
+```
+
+Это сохраняет dev keys/credentials и обновляет только часовые service tokens. Старый F17-only
+setup не обновляет connector-purpose tokens F18. Не повторять one-time deploy helper после0019:
+он откажет preflight до shutdown. Original Full PG volume не подключать к новому libc runtime.
+
+F18 checks: scripts/test-full-f18.ps1 (default r4/subnet21), test-full-f18-regression.ps1
+(отдельные backend и fresh browser/process DB), test-full-f18-tls.ps1 (subnet23). Labs запускать
+последовательно. Fresh networks проверяются на overlap; сохранившиеся старые сети не удалять ради
+автоматического address pool. MVP unchanged, no push/paid calls/vendor writes/production deployment.

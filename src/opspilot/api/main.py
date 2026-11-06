@@ -1,3 +1,4 @@
+import asyncio
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
@@ -32,9 +33,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         app.state.streams_engine = create_engine(settings.database_url("workflow"))
         app.state.mcp = MCPClient(settings)
         app.state.runs = RunService(settings)
+        app.state.ingress_engine = (
+            create_engine(settings.database_url("ingress"))
+            if settings.ingress_database_url
+            else None
+        )
+        app.state.ingress_slots = asyncio.Semaphore(4)
         try:
             yield
         finally:
+            if app.state.ingress_engine:
+                await app.state.ingress_engine.dispose()
             await app.state.runs.close()
             await app.state.streams_engine.dispose()
             await app.state.engine.dispose()
@@ -96,6 +105,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     from opspilot.api.routes_diagnostics import router as diagnostics_router
 
     app.include_router(diagnostics_router)
+    from opspilot.api.routes_adapters import router as adapters_router
+    from opspilot.api.routes_ingress import router as ingress_router
+
+    app.include_router(adapters_router)
+    app.include_router(ingress_router)
     return app
 
 

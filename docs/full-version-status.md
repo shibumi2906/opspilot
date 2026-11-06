@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 6 ноября 2026 года. **F01–F17 завершены; F18–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**F17 завершён: локальный scripted Full Core принят. F18–F24 не начаты; следующий этап требует отдельного запроса. Full Pilot и полный ASVS L2 — NOT_MET.**
+**F18 завершён: adapter platform и replay-safe signed observation ingress приняты в локальном synthetic scope. F19–F24 не начаты. Full Pilot и полный ASVS L2 — NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -39,7 +39,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F18 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F19 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -75,7 +75,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F15 | done | Scoped Redis, durable quotas/fair admission, retry usage и versioned cost | [evidence](full/evidence/f15/README.md) | [SEC-07](security/asvs-l2-implementation-plan.md) |
 | F16 | done | Protected traces/logs/metrics, durable job/epoch links и scoped operator diagnostics | [evidence](full/evidence/f16/README.md) | [SEC-05](security/asvs-l2-implementation-plan.md) |
 | F17 | done | Retention/tombstones, scoped export, real manager rotation/recovery и локальный Full Core acceptance | [evidence](full/evidence/f17/README.md); commit subject: `feat(full): complete F17 lifecycle and Core security acceptance` | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
-| F18 | not_started | Adapters и signed durable ingress | — | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
+| F18 | done | Manager-backed adapters, bounded HTTPS/circuit breaker, signed durable observation ingress и recovery | [evidence](full/evidence/f18/README.md); commit subject: `feat(full): complete F18 adapter platform and signed ingress` | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
 | F19 | not_started | Authorized Prometheus read connector | — | [SEC-09](security/asvs-l2-implementation-plan.md) |
 | F20 | not_started | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
 | F21 | not_started | Fault/concurrency/load/soak evidence | — | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
@@ -823,3 +823,42 @@ model calls, vendor writes, remote CI, production deployment и push не был
 истекают через час и обновляются оператором; production custody/off-host recovery,
 нагрузочный SLA/F21, F18–F24 и полный ASVS L2 остаются вне закрытого scope.
 Отдельный локальный commit subject: `feat(full): complete F17 lifecycle and Core security acceptance`.
+
+
+## F18 — принято 7 ноября 2026 года
+
+Base `017b68bb34e85e95013076d570bd14b5519f842b`; отдельный локальный commit subject
+`feat(full): complete F18 adapter platform and signed ingress`; push не выполняется.
+[Checks](full/evidence/f18/checks.json), [contracts](full/f18-security-contracts.md),
+[operations](full/f18-operations.md), [crypto inventory](full/f18-crypto-inventory.json).
+
+Реализованы tenant-admin CAS config/immutable mapping1, computed credential refs, exact-path real
+manager ACL, bounded HTTP/TLS adapter и persisted circuit breaker. Raw-body HMAC256 с timestamp/kid/
+rotation, constant-time check и immutable event/body identity; receipt+job commit до2xx. Отдельный
+processor обрабатывает только typed synthetic observations, монотонный cursor, quarantine при disable;
+role не имеет domain/workflow privileges, webhook не даёт approval/business write. Public Nginx
+проксирует raw bytes с method/body/time bounds. MCP13, graphs v1/v2, DTO/state1, checkpoint SDK9 прежние.
+
+SEC-04/09 + SEC-01/10: transport33; backend486/44 dedicated skips (33 F18 отдельно +11 inherited),
+unit200; browser24, queue5/fencing3/provider crash1/Redis restart1, eval12/12 (0 unauthorized writes,
+duplicates и false verified success). Native TLS8/collector12/Redis6/MFA14/IdP policy4 плюс позитивный
+F18 HTTPS ingress → manager → verify-full PG/CLI. Manager ACL9 и overlap/retirement/in-flight/revoke.
+Все6 runtime images raw H/C0, package audits pass; artifact/runtime secret matches0.
+
+Все253 inherited ASVS fields/owners/baselines/N/A сохранены; добавлены102 scope reviews и5 primary
+local contributions без whole-norm closure. [Proof](full/evidence/f18/asvs-baseline-check.json).
+Full Pilot/полный L2 остаются NOT_MET; production firewall, vendor/staging/live и последующие gates
+не закрыты. Simulator явно synthetic, write/native-idempotency false, credential expiry unknown.
+
+Main Full мигрирован до0019 после encrypted backup/fresh offline restore и проверки всех48 legacy
+таблиц/columns/counts/SHA256. Default registry пустой, vendor вызовы не включены; отдельный worker
+без business/MCP/manager credentials. UI/API200, реальный OIDC/scripted/refresh smoke принят.
+MVP source/env/branch/HEAD/images/volumes не изменены; исходный Full volume сохранён.
+
+Прежние failed/interrupted проверки не скрыты: stale file-grant tamper harness исправлен на actual
+manager key; FOR SHARE reader privilege исправлен узкой trusted-tenant функцией; browser/process
+вынесены на свежую БД после сохранённого negative-fencing fixture claim. Docker memory/pool limits
+устранены serial gates и явной проверенной native subnet, без reset/удаления данных/сетей.
+Подробнее — [verification history](full/evidence/f18/README.md).
+
+F19–F24 не начаты. Следующий этап требует отдельного запроса пользователя.

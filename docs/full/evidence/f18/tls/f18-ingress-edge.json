@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "native_tls": true,
+  "unsigned_denied": 401,
+  "get_denied": 403,
+  "oversize_denied": 413,
+  "hsts": true,
+  "no_store": true
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "running": true,
+  "non_root": true,
+  "read_only_rootfs": true,
+  "caps_dropped": true,
+  "no_new_privileges": true,
+  "memory_bounded": true,
+  "business_credentials": false,
+  "manager_tokens": false,
+  "private_key_mounts": false,
+  "bind_destinations": [
+    "/run/ingress.dsn"
+  ],
+  "automatic_restart": true,
+  "image": "sha256:00134a7ae9e1232b0243cb27f87ad327e6caa9e22be5e3c24ef8644f6d9d1bfc"
+}
