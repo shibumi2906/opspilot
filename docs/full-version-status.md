@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 30 октября 2026 года. **F01–F16 завершены; F17–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 6 ноября 2026 года. **F01–F17 завершены; F18–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Следующий этап: F17 — retention/rotation и Full Core acceptance. Не начат.**
+**F17 завершён: локальный scripted Full Core принят. F18–F24 не начаты; следующий этап требует отдельного запроса. Full Pilot и полный ASVS L2 — NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -39,7 +39,7 @@ F09 включает предварительные security contracts; F17/F23 
 
 Команда для следующего этапа (пока не выполнять):
 
-> Сделай F17 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
+> Сделай F18 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP.
 
 Затем достаточно:
 
@@ -74,7 +74,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F14 | done | Ролевой workspace, history/inbox/admin/audit, exact revision/TTL, scoped export | [evidence](full/evidence/f14/README.md) | [SEC-02/06/08](security/asvs-l2-implementation-plan.md) |
 | F15 | done | Scoped Redis, durable quotas/fair admission, retry usage и versioned cost | [evidence](full/evidence/f15/README.md) | [SEC-07](security/asvs-l2-implementation-plan.md) |
 | F16 | done | Protected traces/logs/metrics, durable job/epoch links и scoped operator diagnostics | [evidence](full/evidence/f16/README.md) | [SEC-05](security/asvs-l2-implementation-plan.md) |
-| F17 | not_started | Retention/rotation/Full Core acceptance | — | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
+| F17 | done | Retention/tombstones, scoped export, real manager rotation/recovery и локальный Full Core acceptance | [evidence](full/evidence/f17/README.md); commit subject: `feat(full): complete F17 lifecycle and Core security acceptance` | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | not_started | Adapters и signed durable ingress | — | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
 | F19 | not_started | Authorized Prometheus read connector | — | [SEC-09](security/asvs-l2-implementation-plan.md) |
 | F20 | not_started | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
@@ -777,3 +777,49 @@ ASVS253 inherited fields/owners/N/A сохранены:141 scoped и16 primary c
 whole-requirement closure; полный L2 NOT_MET. Production anchors/PKI/secrets/clock/retention/
 paging/load остаются открытыми operational gates. Paid calls/vendor writes/push0; F17 не начат.
 Отдельный local commit subject: feat(full-f16): add protected telemetry and scoped operator diagnostics.
+
+
+### F17 — lifecycle, secrets и локальный Full Core
+
+6 ноября 2026; `C:/Users/user/Desktop/code/Ops`; branch `codex/opspilot-full`; base `6330f32`.
+Схема `0018_lifecycle`; graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
+[Итоговые проверки](full/evidence/f17/checks.json), [контракты](full/f17-security-contracts.md),
+[операции и восстановление](full/f17-operations.md).
+
+Реализованы bounded tenant-admin preview/apply с точным digest, проектные сроки30/90/365,
+удаление evidence/checkpoints/history/human-command payload и tombstones с бессрочным
+сохранением anti-replay идентичностей. Pending/unknown/jobs/leases защищены общей
+maintenance-сериализацией. Экспорт —100 строк allowlisted metadata, без payload/секретов;
+preview/compact/export оставляют body-free administrative audit. Реальный non-dev OpenBao
+с native TLS, ACL и encrypted Raft; rotation/revoke/seal/restart/fresh encrypted restore15/15;
+два реально claimed jobs разных tenant завершают MCP write после rotation ровно один раз.
+
+Security: SEC-04/05/06/10 и общие SEC-01/10. Все253 inherited ASVS-поля/owners/N/A сохранены;
+102 scoped reviews и24 primary contributions проверены в f17_* полях backlog без объявления
+целых требований закрытыми. Crypto/package/image inventory и patch policy сохранены.
+Финальные app/web/Redis/IdP/PostgreSQL/manager exact-image raw HIGH/CRITICAL0;
+Python/npm audits0, исключений CVE0. Устранены новые системные findings в PostgreSQL,
+web и IdP; manager собран с проверенным source backport, metadata не скрыта.
+
+Приёмка объединяет F02–F17: основной backend run451 pass/1 trace failure/11 dedicated skips;
+после исправления bounded collector admission — финальные16/16 lifecycle/observability,
+172 unit, Ruff/format/mypy134; browser24, queue5, fencing3, provider crash1, Redis stop/recreate1,
+native TLS8 + collector12 + Redis6 + MFA/browser14; scripted eval12/12. Первоначальный
+пропуск command trace исследован: новый служебный lock span исключён из detail tracing,
+trace batch повторяется только при доказанном отказе до admission; неизвестные результаты
+не повторяются. Границы очереди, native mTLS, redaction и проверка journal chain сохранены.
+Финальный живой OIDC/scripted smoke с command.process/integrity прошёл.
+
+Существующая Full: encrypted offline physical backup восстановлен исходным образом;
+затем logical restore в новый PostgreSQL16 volume при смене libc. Counts/SHA256 всех15
+legacy tables совпали до/после schema upgrade до запуска workers/smoke. Старый физический
+volume и recovery artifacts сохранены; retention к существующим Full данным не применялся.
+MVP: main/HEAD f9f8d79,184 файлов с env, images и volume metadata/content не изменены.
+Тесты использовали собственные opspilot-full-test-* / security-f17-final2 profiles.
+
+Только scripted/synthetic local calls и публичные software/advisory downloads; платных
+model calls, vendor writes, remote CI, production deployment и push не было. Docker restart
+для восстановления Engine ранее явно разрешён пользователем. Service tokens manager
+истекают через час и обновляются оператором; production custody/off-host recovery,
+нагрузочный SLA/F21, F18–F24 и полный ASVS L2 остаются вне закрытого scope.
+Отдельный локальный commit subject: `feat(full): complete F17 lifecycle and Core security acceptance`.

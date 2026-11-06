@@ -1,0 +1,13 @@
+{
+  "profile": "native TLS/MFA final F17",
+  "images": {
+    "postgres": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+    "redis": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+    "oidc": "sha256:85de69de633d4cfc444186100a7952e33e81c1c9e25724bd0e0269595a0b5971",
+    "collector": "sha256:13d2f08698a850f886de531b4cc9d2d6db2dbef5b8bbedfafb3278a4c8bd7e5f",
+    "api": "sha256:13d2f08698a850f886de531b4cc9d2d6db2dbef5b8bbedfafb3278a4c8bd7e5f",
+    "mcp": "sha256:13d2f08698a850f886de531b4cc9d2d6db2dbef5b8bbedfafb3278a4c8bd7e5f",
+    "worker": "sha256:13d2f08698a850f886de531b4cc9d2d6db2dbef5b8bbedfafb3278a4c8bd7e5f",
+    "web": "sha256:0f88c5215cd2e194d03c29ede9e5bf3e58418005173a9ea9976255c5427e6291"
+  }
+}

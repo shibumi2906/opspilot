@@ -22,6 +22,9 @@ def token_fixture(tmp_path):
         mcp_service_token="a" * 64,
         service_private_dir=str(tmp_path / "private"),
         service_public_keys=str(tmp_path / "public/keys.json"),
+        secret_manager_url=None,
+        secret_manager_ca_file=None,
+        secret_manager_token_file=None,
     )
     provider = FileGrantKeys(settings.service_private_dir, settings.service_public_keys)
     now = datetime.now(UTC)

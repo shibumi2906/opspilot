@@ -403,6 +403,9 @@ services:
     logging: *id002
 volumes:
   oidcdata: null
-  pgdata: null
+  # F17 changes libc runtime. Never attach the preserved pre-F17 physical volume.
+  # Existing Full uses compose.full.f17-local.yaml and its verified logical restore.
+  pgdata:
+    name: ${COMPOSE_PROJECT_NAME:-opspilot-full}_pgdata_f17
   telemetry_data: {}
   telemetry_seal: {}

@@ -1,0 +1,30 @@
+# Isolated test manager is provisioned by scripts/setup-full-f17-manager.py.
+# No recovery shares, root token, CA private key, or server key enter application mounts.
+services:
+  worker: &managed-worker
+    networks: [default]
+    environment:
+      SECRET_MANAGER_URL: https://manager:8200
+      SECRET_MANAGER_CA_FILE: /run/manager-client/ca.crt
+      SECRET_MANAGER_TOKEN_FILE: /run/manager-client/token
+    volumes:
+      - ./.tools/f17-manager/service-private:/run/service-private:ro
+      - ./.tools/f17-manager/ca.crt:/run/manager-client/ca.crt:ro
+      - ./.tools/f17-manager/worker.token:/run/manager-client/token:ro
+  worker2:
+    <<: *managed-worker
+  mcp:
+    networks: [default]
+    environment:
+      SECRET_MANAGER_URL: https://manager:8200
+      SECRET_MANAGER_CA_FILE: /run/manager-client/ca.crt
+      SECRET_MANAGER_TOKEN_FILE: /run/manager-client/token
+    volumes:
+      - ./.tools/f17-manager/ca.crt:/run/manager-client/ca.crt:ro
+      - ./.tools/f17-manager/mcp.token:/run/manager-client/token:ro
+  tests:
+    <<: *managed-worker
+networks:
+  default:
+    external: true
+    name: opspilot-full-test-f17-manager_default

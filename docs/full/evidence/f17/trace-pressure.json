@@ -1,0 +1,10 @@
+{
+  "observed": "Final local smoke during concurrent Java inventory download; business run completed but command.process was absent from the admitted trace view",
+  "run_id": "e52ee0cc-460a-4427-9fe8-5d277d97f0d8",
+  "collector_available": true,
+  "collector_queue_denials": 43,
+  "matching_retained_records": 105,
+  "security_controls_unchanged": true,
+  "durable_job_trace_links_preserved": true,
+  "disposition": "Corrected F17 span amplification and added bounded retry only for explicit pre-admission rejection; final172 units,16 lifecycle/observability cases, native collector/MFA and final local smoke pass. Unknown outcomes are never retried; bounded telemetry remains operational evidence."
+}

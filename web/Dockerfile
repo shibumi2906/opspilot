@@ -6,7 +6,7 @@ COPY web/ ./
 RUN npm run build
 
 FROM nginx:1.30.6-alpine@sha256:970364228b1e4f932abc22d321932816782cca8a20b85a77552a7cfe9acfb3b5 AS runtime
-RUN apk --no-cache upgrade
+RUN apk --no-cache upgrade && apk add --no-cache 'libexpat>=2.10.0-r0'
 COPY web/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/web/dist /usr/share/nginx/html
 COPY web/safe-nginx.sh /usr/local/bin/opspilot-nginx

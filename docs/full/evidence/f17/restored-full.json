@@ -1,0 +1,11 @@
+{
+  "manager_image": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+  "manager_profile": "independent Full TLS/ACL; preserved grant identities",
+  "workers": [
+    "worker",
+    "worker2"
+  ],
+  "ui": 200,
+  "schema": "0018_lifecycle",
+  "api": 200
+}

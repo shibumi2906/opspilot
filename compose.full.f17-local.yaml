@@ -1,0 +1,26 @@
+# Add to compose.full.yaml after scripts/setup-full-f17-manager.py --local.
+# The manager belongs to the same opspilot-full project/network and has independent dev state.
+volumes:
+  pgdata:
+    external: true
+    name: ${FULL_F17_PG_VOLUME:-opspilot-full_f17-not-initialized}
+services:
+  worker: &managed-worker
+    environment:
+      SECRET_MANAGER_URL: https://manager:8200
+      SECRET_MANAGER_CA_FILE: /run/manager-client/ca.crt
+      SECRET_MANAGER_TOKEN_FILE: /run/manager-client/token
+    volumes:
+      - ./.tools/f17-manager-dev/service-private:/run/service-private:ro
+      - ./.tools/f17-manager-dev/ca.crt:/run/manager-client/ca.crt:ro
+      - ./.tools/f17-manager-dev/worker.token:/run/manager-client/token:ro
+  worker2:
+    <<: *managed-worker
+  mcp:
+    environment:
+      SECRET_MANAGER_URL: https://manager:8200
+      SECRET_MANAGER_CA_FILE: /run/manager-client/ca.crt
+      SECRET_MANAGER_TOKEN_FILE: /run/manager-client/token
+    volumes:
+      - ./.tools/f17-manager-dev/ca.crt:/run/manager-client/ca.crt:ro
+      - ./.tools/f17-manager-dev/mcp.token:/run/manager-client/token:ro

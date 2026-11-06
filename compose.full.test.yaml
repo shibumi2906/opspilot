@@ -1,4 +1,7 @@
 # Always combine with compose.full.yaml and the distinct project name opspilot-full-test.
+volumes:
+  pgdata:
+    name: ${COMPOSE_PROJECT_NAME}_pgdata
 services:
   collector:
     volumes:

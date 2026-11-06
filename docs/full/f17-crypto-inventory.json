@@ -1,0 +1,114 @@
+{
+  "scope": "local Full Core; production inventory and custodians revalidated at F23",
+  "version": 1,
+  "entries": [
+    {
+      "purpose": "execution grants",
+      "owner": "worker; MCP public-only",
+      "algorithm": "Ed25519/EdDSA",
+      "reference": "OpenBao core/grants active immutable versions and public key ring",
+      "ttl": "grant <=60 seconds; service access <=1 hour",
+      "rotation": "publish public overlap, immutable private version, switch active",
+      "compromise": "remove public kid; revoke affected service tokens; reconcile persisted operations",
+      "recovery": "encrypted Raft snapshot, separate backup key, 2-of-3 shares; tested fresh restore"
+    },
+    {
+      "purpose": "service context",
+      "owner": "API/worker signer, MCP verifier",
+      "algorithm": "Ed25519/EdDSA",
+      "reference": "independent current/next file keys in existing local profile",
+      "ttl": "60 seconds",
+      "rotation": "current/next overlap; never reuse execution signing keys",
+      "recovery": "preserved independent Full keys; production manager custody F23"
+    },
+    {
+      "purpose": "session/cursor MAC",
+      "owner": "API",
+      "algorithm": "HMAC-SHA256",
+      "reference": "independent Full session signing key",
+      "ttl": "absolute/idle session bounds",
+      "rotation": "revoke sessions and issue new independent key",
+      "recovery": "re-authenticate; never restore a revoked session"
+    },
+    {
+      "purpose": "OIDC token encryption",
+      "owner": "API",
+      "algorithm": "Fernet AES-128-CBC plus HMAC-SHA256",
+      "reference": "independent Full token encryption key",
+      "ttl": "bounded server session",
+      "rotation": "revoke sessions before replacing key",
+      "recovery": "re-authenticate instead of decrypting without the original key"
+    },
+    {
+      "purpose": "cache MAC",
+      "owner": "MCP",
+      "algorithm": "HMAC-SHA256",
+      "reference": "independent private cache signing key",
+      "ttl": "15/60-second cache TTLs",
+      "rotation": "replace key and discard disposable cache",
+      "recovery": "bounded uncached reads; PostgreSQL remains quota authority"
+    },
+    {
+      "purpose": "collector journal/sealed head",
+      "owner": "collector",
+      "algorithm": "HMAC-SHA256",
+      "reference": "independent F16 integrity key and paired journal/seal volumes",
+      "ttl": "bounded configured collector retention",
+      "rotation": "preserve old paired journal/seal and original key; establish reviewed new journal anchor",
+      "recovery": "verified paired backup only; never delete the journal for health"
+    },
+    {
+      "purpose": "manager transport",
+      "owner": "local operator",
+      "algorithm": "TLS >=1.2; RSA-3072; SHA384",
+      "reference": "independent local CA; 30-day server certificate",
+      "ttl": "server30 days; CA90 days",
+      "rotation": "overlap trust anchors then replace certificate; validate peer",
+      "recovery": "separate local CA private custody; real PKI F23"
+    },
+    {
+      "purpose": "manager storage and backup",
+      "owner": "local operator",
+      "algorithm": "AES-256-GCM barrier with96-bit nonces; Shamir2-of-3 unseal; Fernet AES-128-CBC plus HMAC-SHA256 backup envelope",
+      "reference": "Raft volume plus separate ignored recovery key",
+      "ttl": "local drill artifacts preserved; production7 daily/4 weekly F23",
+      "rotation": "manager rekey plus separately versioned backup key; preserve decryptability through expiry",
+      "recovery": "fresh-instance restore and threshold unseal measured by F17 drill",
+      "design_reference": "https://github.com/openbao/openbao/blob/main/website/content/docs/internals/security.mdx"
+    },
+    {
+      "purpose": "revisions/request hashes",
+      "owner": "deterministic core",
+      "algorithm": "SHA256 of canonical versioned documents",
+      "reference": "persisted immutable hashes and deletion tombstones",
+      "ttl": "tombstone identities retained indefinitely; never replay expired authority",
+      "rotation": "version canonical schema explicitly; no secret-key reuse",
+      "recovery": "retain hashes/command and operation identities across restore"
+    },
+    {
+      "purpose": "database/Redis/IdP access",
+      "owner": "separate service roles; local operator",
+      "algorithm": "independent random credentials; native TLS in hardened profile",
+      "reference": "preserved ignored Full development/lab credentials",
+      "ttl": "local synthetic fixture; production short-lived manager integration F23",
+      "rotation": "role-by-role overlap and re-authentication without sharing MVP credentials",
+      "recovery": "independent local backups; production custody/access review F23"
+    },
+    {
+      "purpose": "local PostgreSQL pre-upgrade recovery",
+      "owner": "local operator",
+      "algorithm": "Fernet authenticated encryption of physical archive and logical role/database dumps",
+      "reference": "ignored backup directory and separate recovery key; no plaintext dump artifacts",
+      "ttl": "local recovery artifacts preserved; operational/off-host policy F23",
+      "rotation": "version recovery key; retain older decryptors until associated backups expire",
+      "recovery": "fresh no-network physical restore with original image, then logical restore into new PostgreSQL16 volume;15 legacy table fingerprints checked"
+    }
+  ],
+  "prohibited": [
+    "key values or secret fingerprints in inventory",
+    "cryptographic algorithm chosen by model input",
+    "shared MVP credentials",
+    "automatic replay after erasure",
+    "claiming local file custody is a production secrets manager"
+  ]
+}

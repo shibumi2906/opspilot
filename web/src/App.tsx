@@ -172,6 +172,11 @@ function Workspace() {
             <strong>You</strong> authorize the write
           </span>
         </div>
+        {snapshot?.retention?.evidence_removed && (
+          <div className="connection-banner" role="status">
+            <p>Some content has expired under the project retention policy. Completed operations remain recorded.</p>
+          </div>
+        )}
         {(run.error || run.mutationError || (!config && configError)) && (
           <div className="connection-banner" role="alert">
             <div>

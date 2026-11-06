@@ -85,6 +85,7 @@ export interface Step {
   duration_ms?: number | null;
 }
 export interface RunSnapshot {
+  retention?: { evidence_removed: boolean; history_removed: boolean; audit_removed: boolean };
   dto_version: number;
   snapshot_version: number;
   latest_event_id?: string;

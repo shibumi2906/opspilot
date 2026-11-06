@@ -619,6 +619,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -707,6 +714,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -795,6 +809,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -958,6 +979,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -1196,6 +1224,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -1509,6 +1544,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -1597,6 +1639,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -1760,6 +1809,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -2073,6 +2129,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -4066,6 +4129,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -4306,6 +4376,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -4782,6 +4859,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -4870,6 +4954,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -4958,6 +5049,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5046,6 +5144,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5134,6 +5239,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5222,6 +5334,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5310,6 +5429,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5398,6 +5524,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5486,6 +5619,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5574,6 +5714,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5662,6 +5809,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5750,6 +5904,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5838,6 +5999,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -5926,6 +6094,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -6014,6 +6189,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -7620,6 +7802,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -7708,6 +7897,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -7796,6 +7992,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -7884,6 +8087,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -7972,6 +8182,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -8060,6 +8277,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -8148,6 +8372,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -8236,6 +8467,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -8324,6 +8562,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -8478,6 +8723,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -11104,6 +11356,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -11192,6 +11451,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -11280,6 +11546,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -11368,6 +11641,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -11456,6 +11736,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -12129,6 +12416,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -12542,6 +12836,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -12936,6 +13237,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.1.1",
+        "section": "Cryptographic Inventory and Documentation",
+        "implementation": "Purpose/owner/algorithm/reference/TTL/rotation/compromise/recovery catalogue; no secret values or fingerprints.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13005,6 +13321,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.1.2",
+        "section": "Cryptographic Inventory and Documentation",
+        "implementation": "Purpose/owner/algorithm/reference/TTL/rotation/compromise/recovery catalogue; no secret values or fingerprints.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13074,6 +13405,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.2.1",
+        "section": "Secure Cryptography Implementation",
+        "implementation": "Standard cryptography/JWT/OpenSSL libraries; bounded purpose-specific manager adapter and no manager-to-file fallback.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13143,6 +13489,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.2.2",
+        "section": "Secure Cryptography Implementation",
+        "implementation": "Standard cryptography/JWT/OpenSSL libraries; bounded purpose-specific manager adapter and no manager-to-file fallback.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13212,6 +13573,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.2.3",
+        "section": "Secure Cryptography Implementation",
+        "implementation": "Standard cryptography/JWT/OpenSSL libraries; bounded purpose-specific manager adapter and no manager-to-file fallback.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13281,6 +13657,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.3.1",
+        "section": "Encryption Algorithms",
+        "implementation": "Independent manager barrier and authenticated backup envelope; original threshold shares verified on fresh-instance restore. Production storage remains F23.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13350,6 +13741,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.3.2",
+        "section": "Encryption Algorithms",
+        "implementation": "Independent manager barrier and authenticated backup envelope; original threshold shares verified on fresh-instance restore. Production storage remains F23.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13419,6 +13825,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.3.3",
+        "section": "Encryption Algorithms",
+        "implementation": "Independent manager barrier and authenticated backup envelope; original threshold shares verified on fresh-instance restore. Production storage remains F23.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13488,6 +13909,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.4.1",
+        "section": "Hashing and Hash-based Functions",
+        "implementation": "SHA256 canonical document identities and retained anti-replay tombstones; independent HMAC domains in existing session/cache/collector controls.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13557,6 +13993,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.4.2",
+        "section": "Hashing and Hash-based Functions",
+        "implementation": "SHA256 canonical document identities and retained anti-replay tombstones; independent HMAC domains in existing session/cache/collector controls.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13626,6 +14077,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.4.3",
+        "section": "Hashing and Hash-based Functions",
+        "implementation": "SHA256 canonical document identities and retained anti-replay tombstones; independent HMAC domains in existing session/cache/collector controls.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13729,6 +14195,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -13798,6 +14271,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.5.1",
+        "section": "Random Values",
+        "implementation": "CSPRNG Ed25519/RSA keys and Fernet keys; no deterministic production secrets or copied MVP credentials.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -13867,6 +14355,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-11.6.1",
+        "section": "Public Key Cryptography",
+        "implementation": "Ed25519 exact kid/slot/hash verification, RSA3072 TLS and bounded JWK dependency patch regression.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14011,6 +14514,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -14399,6 +14909,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-13.3.1",
+        "section": "Secret Management",
+        "implementation": "Real TLS OpenBao, read-only worker/MCP/tenant ACLs, short-lived service tokens, rotation/revoke/seal/restart/fresh restore drills.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14452,6 +14977,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-13.3.2",
+        "section": "Secret Management",
+        "implementation": "Real TLS OpenBao, read-only worker/MCP/tenant ACLs, short-lived service tokens, rotation/revoke/seal/restart/fresh restore drills.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14642,6 +15182,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-14.1.1",
+        "section": "Data Protection Documentation",
+        "implementation": "Explicit project retention periods, positive metadata export allowlist, domain/identity/backup boundaries and irreversible erasure notice.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14697,6 +15252,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-14.1.2",
+        "section": "Data Protection Documentation",
+        "implementation": "Explicit project retention periods, positive metadata export allowlist, domain/identity/backup boundaries and irreversible erasure notice.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14752,6 +15322,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-14.2.1",
+        "section": "General Data Protection",
+        "implementation": "Administrative preview CAS, protected pending/unknown/active runs, bounded atomic erasure and immutable tenant-scoped anti-replay ledger.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14807,6 +15392,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-14.2.2",
+        "section": "General Data Protection",
+        "implementation": "Administrative preview CAS, protected pending/unknown/active runs, bounded atomic erasure and immutable tenant-scoped anti-replay ledger.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14862,6 +15462,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-14.2.3",
+        "section": "General Data Protection",
+        "implementation": "Administrative preview CAS, protected pending/unknown/active runs, bounded atomic erasure and immutable tenant-scoped anti-replay ledger.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -14917,6 +15532,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-14.2.4",
+        "section": "General Data Protection",
+        "implementation": "Administrative preview CAS, protected pending/unknown/active runs, bounded atomic erasure and immutable tenant-scoped anti-replay ledger.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -15246,6 +15876,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -15347,6 +15984,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -15448,6 +16092,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -15550,6 +16201,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-15.2.1",
+        "section": "Security Architecture and Dependencies",
+        "implementation": "Pinned source/image/toolchain/locks; raw OS/package/JAR/Go scans, CycloneDX inventory and severity-based blocking patch workflow.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -15652,6 +16318,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-15.2.2",
+        "section": "Security Architecture and Dependencies",
+        "implementation": "Pinned source/image/toolchain/locks; raw OS/package/JAR/Go scans, CycloneDX inventory and severity-based blocking patch workflow.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -15754,6 +16435,21 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f17_primary_review": {
+        "requirement_id": "v5.0.0-15.2.3",
+        "section": "Security Architecture and Dependencies",
+        "implementation": "Pinned source/image/toolchain/locks; raw OS/package/JAR/Go scans, CycloneDX inventory and severity-based blocking patch workflow.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "disposition": "reviewed scoped contribution; whole requirement closure not claimed",
+        "residual": "Production custody, off-host backups/storage/PKI and complete applicable-norm review remain F23/F24; no inherited N/A changed."
       }
     },
     {
@@ -15855,6 +16551,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -15956,6 +16659,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16057,6 +16767,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16158,6 +16875,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16259,6 +16983,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16360,6 +17091,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16461,6 +17199,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16524,6 +17269,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Inventory, access, purpose, retention and owner documented per local layer. Production owners must approve deployed archival/clock/paging policies."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16587,6 +17339,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Safe event/reason/request/actor/run/trace metadata, source UTC and receiver UTC; deployment-wide engine/IdP correlation remains reviewed separately."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16650,6 +17409,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Source and receiver UTC/skew plus DB clock; actual production NTP and host/VM monitoring evidence remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16713,6 +17479,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Fixed-schema structured searchable IDs and bounded enums; cross-platform SIEM ingestion/indexing at production scale remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16776,6 +17549,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Severity/outcome/status/safe error classes retained, proxy error logging remains enabled; exhaustive vendor/OS layer review remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16839,6 +17619,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Source/ingress positive schemas remove payloads/tokens/cookies/SQL/exception text; local sentinel probes do not prove every future integration."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16902,6 +17689,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Existing DB identity/session/membership events plus protected failure export; production IdP/admin event archival and review remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -16965,6 +17759,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Authentication/authorization/service/write denials preserve safe reasons and request IDs; role revocation tested; whole-system bypass matrix remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17028,6 +17829,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Validation, unexpected errors, admission denials, worker/collector/storage failures visible without raw payload; deployment incident coverage remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17091,6 +17899,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Project alert conditions tested with actual queue/fault states and policy thresholds; production paging/on-call delivery and triage exercises remain open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17154,6 +17969,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Positive JSON/protobuf schemas at client and receiver and nginx FIFO categories defeat payload/log injection in changed surfaces; future exporters require review."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17217,6 +18039,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "HMAC record chain/separate sealed head detect data-only tamper/truncation/rollback; host-root/key compromise and independently anchored backups remain open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17280,6 +18109,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Private separate mTLS receiver, role bearer, restricted nonroot volumes and live authorized read; production network/PKI/secret/access administration remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17343,6 +18179,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Generic API errors, safe security codes and allowlisted exception classes, no exception text/stack export; exhaustive downstream/vendor review remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17406,6 +18249,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Bounded exporter queues/deadlines and collector outage recovery do not interrupt core DB admission; load/soak/storage exhaustion at production scale remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17469,6 +18319,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "disposition": "scoped implementation and negative gates verified; whole-requirement verification open",
         "residual": "Collector integrity failure quarantines telemetry; core authorization and fencing stay fail-closed, no unsafe write retries; disaster recovery evidence remains open."
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17557,6 +18414,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17645,6 +18509,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17733,6 +18604,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17821,6 +18699,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17909,6 +18794,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -17997,6 +18889,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     },
     {
@@ -18085,6 +18984,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f17_scope_review": {
+        "ref": "../full/f17-security-contracts.md",
+        "implementation": "Bounded administrative lifecycle and managed signing key custody; preserve prior protected telemetry and authorization boundaries.",
+        "verification_ref": "../full/evidence/f17/checks.json",
+        "status": "verified; final scoped gates passed (2026-11-06)",
+        "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
       }
     }
   ],

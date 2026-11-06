@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "jar_files": 482,
+  "all_Keycloak_JAR_bytes_unchanged": true,
+  "manifest_sha256": "dc9ae6040c76f12432457299100f8b83aa9861b129279b391ab5163bd545e3a5",
+  "purpose": "Independent byte-for-byte JAR continuity across the runtime change; final scan uses the freshly downloaded Java artifact index and current CVE database",
+  "database_documentation": "https://trivy.dev/docs/dev/configuration/db/"
+}

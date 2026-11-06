@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "checks": [
+    "Native TLS with trusted CA and Redis cache ACL password succeeds",
+    "Authenticated scoped HMAC cache read/write over TLS succeeds",
+    "Untrusted Redis CA rejected",
+    "Wrong Redis TLS hostname rejected",
+    "Invalid Redis ACL password rejected",
+    "Plaintext Redis protocol cannot use the native TLS listener"
+  ],
+  "synthetic": true,
+  "plaintext_redis_listener": false
+}

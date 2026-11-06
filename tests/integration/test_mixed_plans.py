@@ -279,7 +279,7 @@ async def test_mcp_independently_denies_valid_signed_grant_before_full_wave(
     from opspilot.db.models_workflow import Action, Approval
     from opspilot.mcp_client.client import MCPClient
     from opspilot.runtime.fencing import current_fence
-    from opspilot.security.keys import FileGrantKeys
+    from opspilot.security.keys import grant_keys
     from opspilot.tenancy.context import require_tenant
 
     settings = integration_settings
@@ -292,9 +292,7 @@ async def test_mcp_independently_denies_valid_signed_grant_before_full_wave(
                 a = await session.get(Action, UUID(card["action_id"]))
                 approval = await session.scalar(select(Approval).where(Approval.action_id == a.id))
                 now = await session.scalar(text("SELECT clock_timestamp()"))
-                ref, key = FileGrantKeys(
-                    settings.service_private_dir, settings.service_public_keys
-                ).signing_key(settings.grant_active_kid)
+                ref, key = grant_keys(settings).signing_key(settings.grant_active_kid)
                 claims = {
                     "ver": 1,
                     "iss": "urn:opspilot:grant:" + settings.app_env,

@@ -125,6 +125,17 @@ class RunService:
             run = await session.get(AgentRun, run_id)
             if run is None:
                 raise LookupError("Run not found")
+            removed = set(
+                (
+                    await session.execute(
+                        text(
+                            "SELECT DISTINCT kind FROM workflow.deletion_tombstones "
+                            "WHERE tenant_id=identity.current_tenant() AND run_id=:r"
+                        ),
+                        {"r": run_id},
+                    )
+                ).scalars()
+            )
             stream = (
                 await session.execute(
                     text("SELECT projection,sequence FROM workflow.run_streams WHERE run_id=:r"),
@@ -193,6 +204,15 @@ class RunService:
                     price_versions=resource["price_versions"],
                     active_ms=round(float(resource["active_seconds"]) * 1000),
                 )
+            if removed:
+                public["retention"] = {
+                    "evidence_removed": "evidence" in removed,
+                    "history_removed": "history" in removed,
+                    "audit_removed": "audit" in removed,
+                }
+            if "history" in removed:
+                public.update(action=None, plan=None, actions=[], traces=[])
+                return public
             rows = (
                 await session.execute(
                     select(Action, Approval)

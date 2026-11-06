@@ -2,9 +2,9 @@
 
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
-  The tracker is authoritative; F01–F16 are done; F17 is not started.
-- Implement only the stage explicitly requested by the user. Completion of F16 does
-  not authorize starting F17, paid calls, external writes, production deployment or push.
+  The tracker is authoritative; F01–F17 are done; F18–F24 not started.
+- Implement only the stage explicitly requested by the user. Completion of a stage does
+  not authorize starting the next stage, paid calls, external writes, production deployment or push.
 - Preserve the Portfolio MVP checkout at C:/Users/user/Desktop/code/AI Incident & Operations Agent:
   tracked files, .env, branch/HEAD, images and persistent volumes. The ignored workspace locator
   may be updated when relocating Full. Run the existing isolation gate before builds/migrations.
@@ -24,3 +24,11 @@
   calls, vendor writes or remote CI by inference. Stage results get a separate local commit.
 - Docker Desktop was updated to 4.97.0 (Engine 29.9.2). Read local host status under .tools.
   The unrelated pinui-rag API references deleted VEKTOR.BD files; do not recreate that project.
+- F17 PostgreSQL changes libc. Never mount preserved opspilot-full_pgdata into the new
+  runtime. Existing Full requires compose.full.f17-local.yaml and FULL_F17_PG_VOLUME
+  selecting its verified logical restore. See docs/full/f17-operations.md.
+- Manager service tokens expire in one hour. Explicit setup --local refreshes dev tokens
+  while preserving keys; test state is separate. Managed workers have no file grant keys.
+
+- F17 local scripted Core acceptance is under docs/full/evidence/f17. Full Pilot and
+  complete ASVS L2 remain NOT_MET. Preserve historical reports and use scoped evidence.

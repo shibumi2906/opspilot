@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "original_volume_preserved": "opspilot-full_pgdata",
+  "new_volume": "opspilot-full-f17-logical-4bceb1989832",
+  "network": "none",
+  "legacy_tables": 15,
+  "fingerprints_equal": true,
+  "encrypted_dumps": true,
+  "postgres_major": 16
+}

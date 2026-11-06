@@ -35,6 +35,7 @@ class FencedPostgresSaver(AsyncPostgresSaver):
         assert isinstance(self.conn, AsyncConnection)
         async with self.lock, self.conn.transaction():
             async with self.conn.cursor(binary=True, row_factory=dict_row) as cur:
+                await cur.execute("SELECT pg_advisory_xact_lock_shared(1801202617)")
                 fence = self.execution_fence
                 if pipeline and fence is None:
                     raise RuntimeError("Checkpoint writes require execution ownership")

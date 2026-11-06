@@ -1,0 +1,751 @@
+{
+  "observed_at_utc": "2026-11-06T15:02:14.499859+00:00",
+  "source_base": "6330f32",
+  "source_dirty": true,
+  "images": [
+    {
+      "reference": "opspilot-full/app:f01",
+      "id": "sha256:13d2f08698a850f886de531b4cc9d2d6db2dbef5b8bbedfafb3278a4c8bd7e5f",
+      "repo_digests": [],
+      "created": "2026-11-06T14:47:23.600185672Z",
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "reference": "opspilot-full/web:f01",
+      "id": "sha256:0f88c5215cd2e194d03c29ede9e5bf3e58418005173a9ea9976255c5427e6291",
+      "repo_digests": [],
+      "created": "2026-11-06T13:57:17.371719591Z",
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "reference": "opspilot-full/redis:f15",
+      "id": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+      "repo_digests": [],
+      "created": "2026-10-26T16:42:40.352300269Z",
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "reference": "opspilot-full/oidc:f03",
+      "id": "sha256:85de69de633d4cfc444186100a7952e33e81c1c9e25724bd0e0269595a0b5971",
+      "repo_digests": [],
+      "created": "2026-11-06T14:09:13.240526615Z",
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "reference": "opspilot-full/postgres:f01",
+      "id": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+      "repo_digests": [],
+      "created": "2026-11-06T13:19:24.055584099Z",
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    {
+      "reference": "opspilot-full/manager:f17",
+      "id": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+      "repo_digests": [],
+      "created": "2026-11-06T09:18:51.41430069Z",
+      "os": "linux",
+      "architecture": "amd64"
+    }
+  ],
+  "python_packages": [
+    {
+      "name": "Mako",
+      "version": "1.4.3"
+    },
+    {
+      "name": "MarkupSafe",
+      "version": "3.0.4"
+    },
+    {
+      "name": "PyJWT",
+      "version": "2.15.1"
+    },
+    {
+      "name": "PyYAML",
+      "version": "6.0.3"
+    },
+    {
+      "name": "SQLAlchemy",
+      "version": "2.0.55"
+    },
+    {
+      "name": "alembic",
+      "version": "1.20.0"
+    },
+    {
+      "name": "annotated-doc",
+      "version": "0.0.5"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0"
+    },
+    {
+      "name": "anyio",
+      "version": "4.15.1"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2"
+    },
+    {
+      "name": "distro",
+      "version": "1.9.0"
+    },
+    {
+      "name": "fastapi",
+      "version": "0.143.3"
+    },
+    {
+      "name": "googleapis-common-protos",
+      "version": "1.75.5"
+    },
+    {
+      "name": "greenlet",
+      "version": "3.5.6"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9"
+    },
+    {
+      "name": "httpcore2",
+      "version": "2.13.1"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1"
+    },
+    {
+      "name": "httpx-sse",
+      "version": "0.4.3"
+    },
+    {
+      "name": "httpx2",
+      "version": "2.13.1"
+    },
+    {
+      "name": "idna",
+      "version": "3.20"
+    },
+    {
+      "name": "jsonpatch",
+      "version": "1.35"
+    },
+    {
+      "name": "jsonpointer",
+      "version": "3.2.1"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "langchain-core",
+      "version": "1.6.12"
+    },
+    {
+      "name": "langchain-protocol",
+      "version": "0.0.19"
+    },
+    {
+      "name": "langgraph",
+      "version": "1.2.16"
+    },
+    {
+      "name": "langgraph-checkpoint",
+      "version": "4.3.0"
+    },
+    {
+      "name": "langgraph-checkpoint-postgres",
+      "version": "3.2.0"
+    },
+    {
+      "name": "langgraph-prebuilt",
+      "version": "1.1.1"
+    },
+    {
+      "name": "langgraph-sdk",
+      "version": "0.4.8"
+    },
+    {
+      "name": "langsmith",
+      "version": "0.14.11"
+    },
+    {
+      "name": "loguru",
+      "version": "0.7.3"
+    },
+    {
+      "name": "mcp",
+      "version": "1.30.0"
+    },
+    {
+      "name": "opentelemetry-api",
+      "version": "1.45.1"
+    },
+    {
+      "name": "opentelemetry-exporter-http-transport",
+      "version": "0.66b1"
+    },
+    {
+      "name": "opentelemetry-exporter-otlp-common",
+      "version": "0.66b1"
+    },
+    {
+      "name": "opentelemetry-exporter-otlp-proto-common",
+      "version": "1.45.1"
+    },
+    {
+      "name": "opentelemetry-exporter-otlp-proto-http",
+      "version": "1.45.1"
+    },
+    {
+      "name": "opentelemetry-proto",
+      "version": "1.45.1"
+    },
+    {
+      "name": "opentelemetry-sdk",
+      "version": "1.45.1"
+    },
+    {
+      "name": "opentelemetry-semantic-conventions",
+      "version": "0.66b1"
+    },
+    {
+      "name": "opspilot",
+      "version": "0.1.0"
+    },
+    {
+      "name": "orjson",
+      "version": "3.13.0"
+    },
+    {
+      "name": "ormsgpack",
+      "version": "1.13.0"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "protobuf",
+      "version": "7.36.2"
+    },
+    {
+      "name": "psycopg",
+      "version": "3.3.6"
+    },
+    {
+      "name": "psycopg-binary",
+      "version": "3.3.6"
+    },
+    {
+      "name": "psycopg-pool",
+      "version": "3.3.3"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.11"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.1"
+    },
+    {
+      "name": "pydantic-settings",
+      "version": "2.16.0"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.1"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.4"
+    },
+    {
+      "name": "python-multipart",
+      "version": "0.0.32"
+    },
+    {
+      "name": "redis",
+      "version": "8.1.0"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2"
+    },
+    {
+      "name": "requests-toolbelt",
+      "version": "1.0.0"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1"
+    },
+    {
+      "name": "sniffio",
+      "version": "1.3.1"
+    },
+    {
+      "name": "sse-starlette",
+      "version": "3.5.0"
+    },
+    {
+      "name": "starlette",
+      "version": "1.8.0"
+    },
+    {
+      "name": "tenacity",
+      "version": "9.2.1"
+    },
+    {
+      "name": "truststore",
+      "version": "0.10.5"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0"
+    },
+    {
+      "name": "uuid_utils",
+      "version": "0.17.1"
+    },
+    {
+      "name": "uvicorn",
+      "version": "0.54.0"
+    },
+    {
+      "name": "websockets",
+      "version": "16.1.1"
+    },
+    {
+      "name": "xxhash",
+      "version": "4.0.1"
+    },
+    {
+      "name": "zstandard",
+      "version": "0.25.0"
+    }
+  ],
+  "node_lock_packages": [
+    {
+      "path": "node_modules/@oxc-project/types",
+      "version": "0.154.0"
+    },
+    {
+      "path": "node_modules/@playwright/test",
+      "version": "1.64.1"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm-eabi",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-android-arm64",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-arm64",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-darwin-x64",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-freebsd-x64",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm-gnueabihf",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-gnu",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-arm64-musl",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-ppc64-gnu",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-s390x-gnu",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-gnu",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-linux-x64-musl",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-openharmony-arm64",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-arm64-msvc",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/binding-win32-x64-msvc",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/@rolldown/pluginutils",
+      "version": "1.0.1"
+    },
+    {
+      "path": "node_modules/@types/node",
+      "version": "26.6.5"
+    },
+    {
+      "path": "node_modules/@types/pg",
+      "version": "8.23.1"
+    },
+    {
+      "path": "node_modules/@types/react",
+      "version": "19.3.0"
+    },
+    {
+      "path": "node_modules/@types/react-dom",
+      "version": "19.3.0"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-aix-ppc64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-darwin-arm64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-darwin-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-freebsd-arm64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-freebsd-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-arm",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-arm64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-loong64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-mips64el",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-ppc64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-riscv64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-s390x",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-linux-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-netbsd-arm64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-netbsd-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-openbsd-arm64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-openbsd-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-sunos-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-win32-arm64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/@typescript/typescript-win32-x64",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/csstype",
+      "version": "3.2.3"
+    },
+    {
+      "path": "node_modules/detect-libc",
+      "version": "2.1.2"
+    },
+    {
+      "path": "node_modules/fdir",
+      "version": "6.5.0"
+    },
+    {
+      "path": "node_modules/fsevents",
+      "version": "2.3.3"
+    },
+    {
+      "path": "node_modules/lightningcss",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-android-arm64",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-darwin-arm64",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-darwin-x64",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-freebsd-x64",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-linux-arm-gnueabihf",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-linux-arm64-gnu",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-linux-arm64-musl",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-linux-x64-gnu",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-linux-x64-musl",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-win32-arm64-msvc",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/lightningcss-win32-x64-msvc",
+      "version": "1.33.0"
+    },
+    {
+      "path": "node_modules/nanoid",
+      "version": "3.3.20"
+    },
+    {
+      "path": "node_modules/pg",
+      "version": "8.23.1"
+    },
+    {
+      "path": "node_modules/pg-cloudflare",
+      "version": "1.4.1"
+    },
+    {
+      "path": "node_modules/pg-connection-string",
+      "version": "2.14.1"
+    },
+    {
+      "path": "node_modules/pg-int8",
+      "version": "1.0.1"
+    },
+    {
+      "path": "node_modules/pg-pool",
+      "version": "3.14.0"
+    },
+    {
+      "path": "node_modules/pg-protocol",
+      "version": "1.16.1"
+    },
+    {
+      "path": "node_modules/pg-types",
+      "version": "2.2.0"
+    },
+    {
+      "path": "node_modules/pgpass",
+      "version": "1.0.5"
+    },
+    {
+      "path": "node_modules/picocolors",
+      "version": "1.1.1"
+    },
+    {
+      "path": "node_modules/picomatch",
+      "version": "4.0.7"
+    },
+    {
+      "path": "node_modules/playwright",
+      "version": "1.64.1"
+    },
+    {
+      "path": "node_modules/playwright-core",
+      "version": "1.64.1"
+    },
+    {
+      "path": "node_modules/postcss",
+      "version": "8.5.30"
+    },
+    {
+      "path": "node_modules/postgres-array",
+      "version": "2.0.0"
+    },
+    {
+      "path": "node_modules/postgres-bytea",
+      "version": "1.0.1"
+    },
+    {
+      "path": "node_modules/postgres-date",
+      "version": "1.0.7"
+    },
+    {
+      "path": "node_modules/postgres-interval",
+      "version": "1.2.0"
+    },
+    {
+      "path": "node_modules/prettier",
+      "version": "3.9.10"
+    },
+    {
+      "path": "node_modules/react",
+      "version": "19.3.1"
+    },
+    {
+      "path": "node_modules/react-dom",
+      "version": "19.3.1"
+    },
+    {
+      "path": "node_modules/rolldown",
+      "version": "1.2.14"
+    },
+    {
+      "path": "node_modules/scheduler",
+      "version": "0.28.0"
+    },
+    {
+      "path": "node_modules/source-map-js",
+      "version": "1.2.2"
+    },
+    {
+      "path": "node_modules/split2",
+      "version": "4.2.0"
+    },
+    {
+      "path": "node_modules/tinyglobby",
+      "version": "0.2.17"
+    },
+    {
+      "path": "node_modules/typescript",
+      "version": "7.0.2"
+    },
+    {
+      "path": "node_modules/undici-types",
+      "version": "8.9.0"
+    },
+    {
+      "path": "node_modules/vite",
+      "version": "8.3.4"
+    },
+    {
+      "path": "node_modules/xtend",
+      "version": "4.0.2"
+    }
+  ],
+  "artifact_hashes": {
+    "uv.lock": "8fc2beb9f3e1ba079df3cb6972808129069730fe3679ae9ff0e970e7eff6fc6b",
+    "web/package-lock.json": "90ef8d10f93a5e8a9a3e6af62d5881060231f302ba872d7edb02a7e06a417bd9",
+    "Dockerfile": "0387401faa029f72c487c85d8f49fdd3edb79413ab028338e9b682bb8d6b0fb1",
+    "infra/full/Dockerfile": "53bbd5aeaddfc821422090e65d02945cebeec49571736466c87ab0a85cf7432f",
+    "web/Dockerfile": "a00d159109419e9a1452de2fc685a94e03c8d93be22ce29cabf81c2620f9f6fa",
+    "infra/identity/Dockerfile": "fe7cf3870bd5eaea72abbf3b85d2e058fab84cee5229031687b6658221e9a091",
+    "infra/identity/OpsIdentityProbe.java": "89e4f418767b9b6c8b122f8a8006b167ed5845dc02a86aa1fffe09764d0a370c",
+    "compose.full.yaml": "c489c2f8212c9423e8c74eb91245f34cf07e702d0d5442cd988bb56c8547bf02",
+    "compose.full.f17-local.yaml": "f961316458ec98791708a2832b2f81100addb72566cf000786ad7d010aad95d0",
+    "compose.full.f17-checks.yaml": "a5b3c0abf17cf11f2abec587e0e85ef1c6a4a174d06278562f19e82da48c8017",
+    "infra/secrets-manager/Dockerfile": "e222f57a266662caf4805dc81cb5c821d62a08ae4b7e46ee18a6aa8b348141f0",
+    "infra/secrets-manager/patch_jose3.py": "0a497389fa2de1d3d62e6f51e5f130d5e99584f265f0bf5fc216e78d7565f5fa",
+    "infra/secrets-manager/regression_test.go": "e5282119682acda24eea06dd843767e7573d20cf9d5d885f462d14ef81f6b268",
+    "docs/full/f17-crypto-inventory.json": "b96856c5c00ba7a34f4fca3ceb04c28adc5bb8fff31acce3bd7dca133046a0f5"
+  },
+  "patch_policy": "../../f17-security-contracts.md",
+  "secrets_in_inventory": false,
+  "manager_vendor_patch_proof": "security/manager-patch-proof.json",
+  "whole_L2": "NOT_MET"
+}

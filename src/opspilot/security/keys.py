@@ -1,10 +1,13 @@
-"""Purpose/version-bound key contract. F17 can replace the local file provider."""
+"""Purpose/version-bound key contract, with an explicit local-development adapter."""
 
 import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Protocol
+from typing import TYPE_CHECKING, Protocol
+
+if TYPE_CHECKING:
+    from opspilot.config import Settings
 
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
@@ -20,6 +23,18 @@ class KeyReference:
 class GrantKeyProvider(Protocol):
     def signing_key(self, slot: str) -> tuple[KeyReference, bytes]: ...
     def verification_key(self, kid: str) -> bytes: ...
+
+
+def grant_keys(settings: "Settings") -> GrantKeyProvider:
+    if settings.secret_manager_url:
+        from opspilot.security.manager import BaoGrantKeys
+
+        return BaoGrantKeys(
+            settings.secret_manager_url,
+            settings.secret_manager_ca_file or "",
+            settings.secret_manager_token_file or "",
+        )
+    return FileGrantKeys(settings.service_private_dir, settings.service_public_keys)
 
 
 def version(slot: str, key: Ed25519PublicKey) -> str:

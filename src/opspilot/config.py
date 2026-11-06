@@ -107,6 +107,29 @@ class Settings(BaseSettings):
     service_private_dir: str = "/run/service-private"
     service_public_keys: str = "/run/service-public/keys.json"
     service_active_kid: str = "current"
+    secret_manager_url: str | None = None
+    secret_manager_ca_file: str | None = None
+    secret_manager_token_file: str | None = None
+
+    @model_validator(mode="after")
+    def manager_configuration(self) -> Self:
+        values = (
+            self.secret_manager_url,
+            self.secret_manager_ca_file,
+            self.secret_manager_token_file,
+        )
+        if any(values) and not all(values):
+            raise ValueError("Complete secret manager configuration required")
+        if self.secret_manager_url:
+            from opspilot.security.manager import BaoGrantKeys
+
+            BaoGrantKeys(
+                self.secret_manager_url,
+                self.secret_manager_ca_file or "",
+                self.secret_manager_token_file or "",
+            )
+        return self
+
     grant_active_kid: str = Field(default="grant-current", pattern=r"^grant-(current|next)$")
     approval_ttl_seconds: int = Field(default=900, ge=1, le=86400)
     grant_ttl_seconds: int = Field(default=60, ge=1, le=60)

@@ -14,6 +14,10 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         "client_request_id request status mode model_id language "
         "outcome created_at updated_at missing_checks truncated traces",
     )
+    if value.get("retention"):
+        result["retention"] = pick(
+            value["retention"], "evidence_removed history_removed audit_removed"
+        )
     form = value.get("clarification")
     result["clarification"] = pick(form, "id version kind expires_at") if form else None
     if form:
@@ -138,4 +142,7 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
         result["actions"] = [
             public_snapshot({"action": a})["action"] for a in value.get("actions", [])[:3]
         ]
+    if (value.get("retention") or {}).get("history_removed"):
+        result["actions"] = []
+        result["plan"] = None
     return result

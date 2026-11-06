@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "encrypted_backup": true,
+  "separate_backup_key": true,
+  "source_volume": "opspilot-full_pgdata",
+  "source_offline": true,
+  "fresh_restore_volume": "opspilot-full-f17-recovery-32fa23ad5978",
+  "restore_network": "none",
+  "application_workers": 0,
+  "source_schema": "0017_observability",
+  "all_legacy_table_counts_and_hashes_equal": true,
+  "legacy_tables": 15,
+  "backup_size_bytes": 17492152,
+  "scope": "local Core pre-upgrade only; F23 operational/off-host recovery remains open"
+}

@@ -229,6 +229,69 @@ def test_metrics_outage_and_bounded_log_fallback():
     obj.http.close()
 
 
+@pytest.mark.parametrize("outcome", ["rejected", "persistent_rejection", "unknown", "timeout"])
+def test_trace_retry_requires_proven_non_admission(outcome):
+    requests = []
+    accepted = []
+
+    def response(request):
+        requests.append(request.content)
+        if outcome == "timeout":
+            raise httpx.ReadTimeout("synthetic", request=request)
+        if outcome == "unknown":
+            return httpx.Response(503)
+        if len(requests) == 1 or outcome == "persistent_rejection":
+            return httpx.Response(503, headers={"X-OpsPilot-Admission": "rejected"})
+        accepted.append(request.content)
+        return httpx.Response(200)
+
+    obj = fake_exporter(httpx.MockTransport(response))
+    try:
+        message = ParseDict(trace_message(), ExportTraceServiceRequest())
+        assert obj.send("traces", message) == (outcome == "rejected")
+        assert len(requests) == {"rejected": 2, "persistent_rejection": 3}.get(outcome, 1)
+        assert len(accepted) == (1 if outcome == "rejected" else 0)
+        assert all(SENTINEL.encode() not in body for body in requests)
+    finally:
+        obj.http.close()
+
+
+async def test_receiver_marks_only_unsubmitted_batch_retryable(tmp_path, monkeypatch):
+    journal = Journal(tmp_path / "data", tmp_path / "seal", b"a" * 64)
+    entered, release = threading.Event(), threading.Event()
+    append = journal.append
+    committed = []
+
+    def blocked(records):
+        entered.set()
+        assert release.wait(3)
+        append(records)
+        committed.append(True)
+
+    monkeypatch.setattr(journal, "append", blocked)
+    token = "b" * 64
+    app = create_app(journal, {hashlib.sha256(token.encode()).hexdigest(): "opspilot-api"})
+    wire = ParseDict(trace_message(), ExportTraceServiceRequest()).SerializeToString()
+    async with app.router.lifespan_context(app):
+        async with httpx.AsyncClient(
+            transport=httpx.ASGITransport(app),
+            base_url="https://collector",
+            headers={"Authorization": "Bearer " + token, "Content-Type": "application/x-protobuf"},
+        ) as http:
+            pending = [asyncio.create_task(http.post("/v1/traces", content=wire)) for _ in range(4)]
+            try:
+                assert await asyncio.to_thread(entered.wait, 1)
+                await asyncio.sleep(0.05)
+                rejected = await http.post("/v1/traces", content=wire)
+                assert rejected.status_code == 503
+                assert rejected.headers["X-OpsPilot-Admission"] == "rejected"
+            finally:
+                release.set()
+                replies = await asyncio.gather(*pending)
+            assert all(r.status_code == 200 for r in replies)
+            assert len(committed) == 4
+
+
 def test_structured_logging_drops_exception_and_payload():
     output = safe_record(
         {

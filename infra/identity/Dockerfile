@@ -16,14 +16,16 @@ RUN /opt/keycloak/bin/kc.sh build --health-enabled=true
 COPY infra/identity/OpsIdentityProbe.java /tmp/OpsIdentityProbe.java
 RUN mkdir /tmp/opspilot-probes && java -m jdk.compiler/com.sun.tools.javac.Main -source 21 -target 21 -d /tmp/opspilot-probes /tmp/OpsIdentityProbe.java
 
-# The debug variant provides a static POSIX shell for the unchanged vendor kc.sh.
-# Keep the minimal upstream Java filesystem and its original package metadata.
-FROM gcr.io/distroless/java21-debian13:debug-nonroot@sha256:15c4db7f53d5fde12d97a9e73b54db4986b407dc4f5f7202647728167f0b9a6d
+# F17 removes unfixed Debian expat/zlib findings with a supported Java21 runtime.
+# Preserve package metadata and verify the actual JRE, Guava and truststore below.
+FROM alpine:3.24@sha256:3f4d6b32e26703c6082839234f43769d5046b3ac7c910033911d1e71d8cd630a
+RUN apk --no-cache upgrade && apk add --no-cache openjdk21-jre-headless ca-certificates
 COPY --from=prepared --chown=1000:0 /opt/keycloak /opt/keycloak
 COPY --from=prepared --chown=1000:0 /tmp/opspilot-probes /opt/opspilot-probes
 ENV JAVA_OPTS_KC_HEAP="-Xms64m -Xmx512m"
-ENV KC_HTTP_HOST=0.0.0.0 KC_HEALTH_ENABLED=true KC_HTTP_MANAGEMENT_SCHEME=http HOME=/opt/keycloak/data PATH="/busybox:$PATH"
+ENV KC_HTTP_HOST=0.0.0.0 KC_HEALTH_ENABLED=true KC_HTTP_MANAGEMENT_SCHEME=http HOME=/opt/keycloak/data
 WORKDIR /opt/keycloak
 USER 1000:0
-ENTRYPOINT ["/busybox/sh", "/opt/keycloak/bin/kc.sh"]
+RUN /usr/bin/java -Xmx64m -cp /opt/opspilot-probes OpsIdentityProbe
+ENTRYPOINT ["/bin/sh", "/opt/keycloak/bin/kc.sh"]
 HEALTHCHECK --interval=10s --timeout=3s --start-period=180s --retries=30 CMD ["/usr/bin/java", "-Xmx32m", "-cp", "/opt/opspilot-probes", "OpsIdentityProbe", "health"]

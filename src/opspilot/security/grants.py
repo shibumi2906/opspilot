@@ -18,7 +18,7 @@ from opspilot.config import Settings
 from opspilot.db.engine import create_engine
 from opspilot.db.models_workflow import Action, AgentRun, Approval, LogicalAction
 from opspilot.runtime.fencing import current_fence
-from opspilot.security.keys import FileGrantKeys
+from opspilot.security.keys import grant_keys
 from opspilot.security.revisions import valid_revision
 from opspilot.tenancy.context import require_tenant
 from opspilot.tenancy.session import TenantSession
@@ -49,9 +49,7 @@ def verify(token: str, settings: Settings, *, now: datetime) -> dict[str, Any]:
         kid = header.get("kid")
         if not isinstance(kid, str) or len(kid) > 100:
             raise ValueError()
-        key = FileGrantKeys(
-            settings.service_private_dir, settings.service_public_keys
-        ).verification_key(kid)
+        key = grant_keys(settings).verification_key(kid)
         value: dict[str, Any] = jwt.decode(
             token,
             key,
@@ -163,9 +161,7 @@ async def issue(settings: Settings, operation: dict[str, str]) -> str:
             except PreconditionsChanged as exc:
                 raise AuthError(exc.code) from None
             ref, key = await asyncio.to_thread(
-                FileGrantKeys(
-                    settings.service_private_dir, settings.service_public_keys
-                ).signing_key,
+                grant_keys(settings).signing_key,
                 settings.grant_active_kid,
             )
             iat = int(now.timestamp())

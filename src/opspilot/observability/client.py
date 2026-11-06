@@ -79,15 +79,26 @@ class Telemetry:
         clean, _ = sanitize(MessageToDict(message), kind, self.service)
         safe = ParseDict(clean, type(message)())
         try:
-            response = self.http.post(
-                self.endpoint + "/v1/" + kind,
-                content=safe.SerializeToString(),
-                headers={
-                    "Content-Type": "application/x-protobuf",
-                    "Authorization": "Bearer " + self.token,
-                },
-            )
-            accepted = response.status_code == 200
+            for attempt in range(3):
+                response = self.http.post(
+                    self.endpoint + "/v1/" + kind,
+                    content=safe.SerializeToString(),
+                    headers={
+                        "Content-Type": "application/x-protobuf",
+                        "Authorization": "Bearer " + self.token,
+                    },
+                )
+                accepted = response.status_code == 200
+                if (
+                    kind != "traces"
+                    or response.status_code != 503
+                    or response.headers.get("X-OpsPilot-Admission") != "rejected"
+                    or attempt == 2
+                ):
+                    break
+                # The authenticated receiver guarantees this batch was not queued.
+                # Unknown HTTP/commit outcomes must never be retried here.
+                time.sleep(0.05 * (attempt + 1))
         except (httpx.HTTPError, RuntimeError):
             accepted = False
         if accepted:

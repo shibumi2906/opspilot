@@ -1,0 +1,16 @@
+{
+  "database_counters_refunded": false,
+  "before": {
+    "attempts": 832,
+    "held_tokens": 51245,
+    "source_units": 4305
+  },
+  "redis_persistence": false,
+  "passed": true,
+  "cache_container_recreated": true,
+  "after": {
+    "attempts": 832,
+    "held_tokens": 51245,
+    "source_units": 4308
+  }
+}

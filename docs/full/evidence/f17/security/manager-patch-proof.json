@@ -1,0 +1,10 @@
+{
+  "advisory": "CVE-2026-116587",
+  "module": "github.com/go-jose/go-jose/v3@v3.0.5",
+  "upstream_fixed_v4_commit": "a0111f82742fa92bceec9ede40845e73319e6230",
+  "original_jwk_sha256": "79f510a4b97fa2e34ec37932cab57e64dfdc9fa6c314654d1ccc2dd93898a532",
+  "patched_jwk_sha256": "1524b0ac700a31c7fe8f46a87ae904d33eb9fb5913f81ebf9ec1963805ad49cb",
+  "patch_sha256": "0a497389fa2de1d3d62e6f51e5f130d5e99584f265f0bf5fc216e78d7565f5fa",
+  "control": "all RSA operands bounded before Validate; N/D/P/Q/CRT<=4096 bits, E<=32 bits",
+  "metadata_preserved": true
+}

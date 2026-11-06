@@ -1,0 +1,149 @@
+{
+  "stage": "F17",
+  "status": "done",
+  "observed_at_utc": "2026-11-06T14:58:13.413405+00:00",
+  "checkout": "C:/Users/user/Desktop/code/Ops",
+  "branch": "codex/opspilot-full",
+  "base": "6330f32",
+  "commit_subject": "feat(full): complete F17 lifecycle and Core security acceptance",
+  "versions": {
+    "schema": "0018_lifecycle",
+    "graphs": [
+      "full-graph-v1",
+      "full-graph-v2"
+    ],
+    "state_dto": 1,
+    "checkpoint_sdk": 9
+  },
+  "full_core": "accepted local scripted scope",
+  "full_pilot": "NOT_MET",
+  "whole_ASVS_L2": "NOT_MET",
+  "functional": {
+    "retention": "bounded preview/apply digest;30/90/365 project defaults; protected pending/unknown/jobs/leases; erasure and anti-replay tombstones",
+    "export": "tenant-admin-only positive metadata allowlist;100-row bound; body-free administrative audit",
+    "secrets": "native TLS non-dev OpenBao Raft; least-privilege ACL; rotation/revoke/seal/restart/fresh encrypted restore",
+    "inflight_claimed_jobs": 2,
+    "tenants": 2,
+    "workers": 2,
+    "local_write_kinds": [
+      "create_ticket",
+      "add_ticket_comment",
+      "notify_manager"
+    ]
+  },
+  "checks": {
+    "backend_full_initial": {
+      "passed": 451,
+      "failed": 1,
+      "dedicated_skips": 11,
+      "seconds": 948.04,
+      "log": ".tools/f17-core-r8.log"
+    },
+    "final_affected_integration": {
+      "passed": 16,
+      "seconds": 46.66,
+      "log": ".tools/f17-admission-targeted.log",
+      "covers": "both observability continuations, all lifecycle stages, protected states, tenant/auth/export/CAS, maintenance serialization"
+    },
+    "final_unit": {
+      "passed": 172,
+      "log": ".tools/f17-admission-unit.log",
+      "new_cases": "safe bounded retry only on proven non-admission; unknown outcomes never retried; actual saturated journal executor"
+    },
+    "browser": {
+      "passed": 24,
+      "log": ".tools/f17-after-backend-r8.log",
+      "retention_presentation": "fixture; real backend erasure/replay covered independently"
+    },
+    "queue_process": 5,
+    "fencing_process": 3,
+    "provider_crash": 1,
+    "redis_stop_recreate": 1,
+    "manager_real": 15,
+    "manager_claimed_jobs_across_rotation": 2,
+    "native_tls": 8,
+    "native_collector": 12,
+    "native_redis": 6,
+    "native_mfa_browser": 14,
+    "scripted_evals": {
+      "passed": 12,
+      "total": 12,
+      "paid_calls": 0,
+      "real_model_quality_claim": false,
+      "ref": "evals/scripted.json"
+    },
+    "static": {
+      "ruff": "pass",
+      "format": "pass",
+      "mypy_source_files": 134,
+      "powershell_parse": "pass"
+    },
+    "image_scans": {
+      "exact_images": 6,
+      "raw_HIGH_CRITICAL": 0,
+      "exceptions": 0,
+      "ref": "security/summary.json"
+    },
+    "package_audits": {
+      "python": 0,
+      "npm": 0
+    },
+    "asvs": {
+      "protected_rows": 253,
+      "scope_reviews": 102,
+      "primary_contributions": 24,
+      "inherited_fields_preserved": true
+    },
+    "encrypted_physical_restore": "15 legacy table counts/hashes equal with original PostgreSQL image",
+    "logical_libc_restore": "fresh no-network PostgreSQL16 volume;15 table fingerprints equal; original physical volume preserved",
+    "post_migration_preservation": "15 legacy tables unchanged before workers/smoke; schema0018",
+    "final_full_live_smoke": {
+      "passed": true,
+      "ref": "live-diagnostics.json",
+      "log": ".tools/f17-release-smoke.log"
+    },
+    "mvp_isolation": {
+      "passed": true,
+      "ref": "mvp-isolation.json"
+    }
+  },
+  "regression_resolution": {
+    "observed": "bounded collector admission could discard command root batches; redundant new lock spans amplified traffic",
+    "implemented": "internal lock control query does not emit extra span; at most3 trace retries only on authenticated explicit pre-admission rejection; no retry on unknown/commit outcome",
+    "evidence": [
+      "trace-pressure.json",
+      ".tools/f17-admission-unit.log",
+      ".tools/f17-admission-targeted.log",
+      "tls/collector-native.json",
+      "live-diagnostics.json"
+    ],
+    "unresolved_stage_failures": 0
+  },
+  "commands": [
+    "./scripts/test-full-f17.ps1 -Project opspilot-full-test-f17-r8",
+    "./scripts/test-full-f17.ps1 -SkipBuild -AfterBackend -Project opspilot-full-test-f17-r8",
+    "pytest -q tests/unit (final172)",
+    "pytest -q tests/integration/test_observability.py tests/integration/test_lifecycle.py tests/integration/test_lifecycle_serialization.py (isolated r8 final16)",
+    "./scripts/test-full-f17-tls.ps1 -SkipBuild",
+    "./scripts/scan-full-f15-security.ps1 -ReportDir docs/full/evidence/f17/security",
+    "./scripts/scan-full-f17-manager.ps1; ./scripts/scan-full-f17-postgres.ps1",
+    "scripts/test-full-f17-manager.py; scripts/test-full-f17-inflight.py --project opspilot-full-test-f17-r8",
+    "./scripts/deploy-full-f17-local.ps1 -MvpPath <preserved MVP> (one-time upgrade; later normal local override restart)",
+    "node scripts/smoke-full-f17.mjs; ./scripts/check-full-isolation.ps1 -MvpPath <preserved MVP>"
+  ],
+  "limits": [
+    "Local scripted Core acceptance; F18-F24, production/off-host recovery and full ASVS L2 remain open",
+    "Manager service tokens are nonrenewable and expire after one hour; operator setup explicitly refreshes tokens while preserving keys",
+    "No timer retention applied to existing Full; business records and root/tombstone identities remain retained",
+    "Bounded telemetry may still reject traffic under sustained overload; durable job/audit/receipt state is authoritative; no F21 load SLA claim"
+  ],
+  "external_activity": {
+    "public_software_advisory_downloads": true,
+    "paid_model_calls": 0,
+    "vendor_writes": 0,
+    "remote_CI": false,
+    "production_deployment": false,
+    "push": false
+  },
+  "git_snapshot": "Measured before the separate local stage commit; eval report records6330f32 plus dirty_snapshot, not a fabricated future SHA"
+}

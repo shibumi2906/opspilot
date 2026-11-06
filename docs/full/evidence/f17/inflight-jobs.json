@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "processes": 2,
+  "tenants": 2,
+  "results": [
+    {
+      "tenant": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+      "job_claimed": true,
+      "grant_issued_before_rotation": true,
+      "effect_after_rotation": true,
+      "exact_read_verified": true,
+      "writes": 1
+    },
+    {
+      "tenant": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
+      "job_claimed": true,
+      "grant_issued_before_rotation": true,
+      "effect_after_rotation": true,
+      "exact_read_verified": true,
+      "writes": 1
+    }
+  ],
+  "manager_root_or_recovery_material_in_worker_mounts": false,
+  "tokens_in_IPC": false,
+  "unauthorized_writes": 0,
+  "duplicate_writes": 0
+}

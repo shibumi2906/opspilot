@@ -45,6 +45,14 @@ def create_engine(url: str) -> AsyncEngine:
 
     @event.listens_for(engine.sync_engine, "begin")
     def tenant_transaction(connection):  # type: ignore[no-untyped-def]
+        if parsed.username in {"ops_workflow", "ops_checkpoint", "ops_domain"}:
+            # Runtime readers/writers coexist. A bounded administrative compaction
+            # takes the exclusive counterpart before inspecting eligibility.
+            connection.execute(
+                text("SELECT pg_advisory_xact_lock_shared(1801202617)").execution_options(
+                    opspilot_internal_lock=True
+                )
+            )
         tenant = current_tenant()
         fence = current_fence()
         claims = verified_context() or {}
@@ -66,7 +74,10 @@ def create_engine(url: str) -> AsyncEngine:
     def before(conn, cursor, statement, parameters, context, executemany):  # type: ignore[no-untyped-def]
         # Idle queue/SSE polls have no live recorded operation. Their failures
         # retain worker/API diagnostics; they must not flood the receiver with roots.
-        manager = span("db.operation") if trace.get_current_span().is_recording() else nullcontext()
+        recorded = trace.get_current_span().is_recording() and not context.execution_options.get(
+            "opspilot_internal_lock"
+        )
+        manager = span("db.operation") if recorded else nullcontext()
         context._opspilot_span = manager
         manager.__enter__()
 

@@ -21,8 +21,10 @@ public final class OpsIdentityProbe {
             return;
         }
         var version = Runtime.version();
-        if (version.feature() != 21 || version.security() < 13 ||
-            (version.security() == 13 && version.build().orElse(0) < 9)) {
+        // Compare the full version sequence, including downstream update components.
+        // 21.0.13.0.3+1 is newer than 21.0.13+9 despite its lower build suffix.
+        if (version.feature() != 21 ||
+            version.compareTo(Runtime.Version.parse("21.0.13+9")) < 0) {
             throw new IllegalStateException("Security-fixed Java21 required: " + version);
         }
         var artifact = Path.of("/opt/keycloak/lib/lib/main/com.google.guava.guava-33.6.0-jre.jar");

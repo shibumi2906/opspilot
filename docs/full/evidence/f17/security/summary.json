@@ -1,0 +1,97 @@
+{
+  "passed": true,
+  "images": [
+    {
+      "component": "app",
+      "image_id": "sha256:13d2f08698a850f886de531b4cc9d2d6db2dbef5b8bbedfafb3278a4c8bd7e5f",
+      "scan_created": "2026-11-06T14:52:05.538433869Z",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "component": "web",
+      "image_id": "sha256:0f88c5215cd2e194d03c29ede9e5bf3e58418005173a9ea9976255c5427e6291",
+      "scan_created": "2026-11-06T14:52:11.559218543Z",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "component": "redis",
+      "image_id": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+      "scan_created": "2026-11-06T14:53:34.346351954Z",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "component": "oidc",
+      "image_id": "sha256:85de69de633d4cfc444186100a7952e33e81c1c9e25724bd0e0269595a0b5971",
+      "scan_created": "2026-11-06T14:53:22.378658464Z",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 4,
+        "LOW": 1,
+        "UNKNOWN": 0
+      }
+    },
+    {
+      "component": "postgres",
+      "image_id": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+      "scan_created": "2026-11-06T13:19:36.758754338Z",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 1,
+        "LOW": 0,
+        "UNKNOWN": 1
+      }
+    },
+    {
+      "component": "manager",
+      "image_id": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+      "scan_created": "2026-11-06T09:19:20.118517953Z",
+      "findings": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 0,
+        "LOW": 0,
+        "UNKNOWN": 3
+      }
+    }
+  ],
+  "python_dependency_vulnerabilities": 0,
+  "npm_dependency_vulnerabilities": 0,
+  "database_metadata": {
+    "db": {
+      "Version": 2,
+      "NextUpdate": "2026-11-07T06:50:38.697106816Z",
+      "UpdatedAt": "2026-11-06T06:50:38.697107077Z",
+      "DownloadedAt": "2026-11-06T08:16:41.861549365Z"
+    },
+    "java-db": {
+      "Version": 1,
+      "NextUpdate": "2026-11-09T01:10:43.741478889Z",
+      "UpdatedAt": "2026-11-06T01:10:43.741478979Z",
+      "DownloadedAt": "2026-11-06T14:30:23.733751166Z"
+    }
+  },
+  "final_applicability_exceptions": 0,
+  "java_index_refresh": "949MiB refreshed index; first scan deadline expired after download; warm retry and final combined gate passed with fresh databases",
+  "manager_patch_proof": "manager-patch-proof.json",
+  "jar_continuity": "idp-jar-continuity.json"
+}

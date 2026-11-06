@@ -1,16 +1,16 @@
 # Продолжение OpsPilot Full
 
-Подготовлено 30 октября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
+Обновлено 6 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
 Это самостоятельный Git-репозиторий, не ссылка на скрытый worktree.
 Сначала откройте эту папку как workspace в редакторе/Codex.
 
 ## Текущее состояние
 
-- Ветка: `codex/opspilot-full`. Реализация F15: `4733998`.
+- Ветка: `codex/opspilot-full`. F16: `6330f32`; F17 — отдельный локальный stage commit (subject в tracker).
 - F13: `2fe6613`; F14: `be246d7`; F12: `abfaf76`.
-- F01–F16 завершены; **F17 не начат**. F16 — отдельный commit после подготовки workspace.
+- F01–F16 завершены; **F17 завершён: локальный scripted Full Core принят**; F18–F24 не начаты.
   Перед новым этапом используйте текущий HEAD и канонический tracker.
-- Схема Full: `0017_observability`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
+- Схема Full: `0018_lifecycle`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
 - [Канонический tracker](docs/full-version-status.md).
 - [Спецификация Full](OpsPilot_Full_Project_Specification.md).
 - [План безопасности SEC-01–12](docs/security/asvs-l2-implementation-plan.md).
@@ -51,7 +51,7 @@ PowerShell, из этой папки:
 git status --short
 git log -5 --oneline
 .\scripts\check-ops-workspace.ps1 -CheckMvp
-docker compose --env-file .env -p opspilot-full -f compose.full.yaml ps
+docker compose --env-file .env -p opspilot-full -f compose.full.yaml -f compose.full.f17-local.yaml ps
 ~~~
 
 UI: http://127.0.0.1:8091
@@ -80,8 +80,15 @@ npm.cmd --prefix web ci --no-audit --no-fund
 Обычная проверка или запуск без rebuild и без seed/migrations:
 
 ~~~powershell
-docker compose --env-file .env -p opspilot-full -f compose.full.yaml up -d --wait --no-build postgres redis oidc collector mcp api worker worker2 web
+docker compose --env-file .env -p opspilot-full -f compose.full.yaml -f compose.full.f17-local.yaml up -d --wait --no-build postgres redis oidc collector mcp api worker worker2 web
 ~~~
+
+F17 использует проверенный логический restore в новом PostgreSQL16 volume.
+Исходный `opspilot-full_pgdata` сохранён с прежним образом `postgres:f16-before-f17`.
+Не подключайте старый физический volume к новому libc runtime. Local override выбирает
+проверенный volume через ignored `FULL_F17_PG_VOLUME`. Перед запуском обновите часовые
+manager tokens: `.venv/Scripts/python.exe scripts/setup-full-f17-manager.py --local`.
+Setup сохраняет ключи. [F17 operations](docs/full/f17-operations.md).
 
 Существующие volumes, пользователи, grants и данные используются повторно.
 Docker volumes остаются в Docker Desktop; файлы БД не экспортировались в папку Ops.
@@ -148,3 +155,12 @@ Collector journal и sealed head находятся в разных named volume
 
 Повторная полная проверка: scripts/test-full-f16.ps1; hardened: scripts/test-full-f16-tls.ps1.
 Для обычного запуска существующего dev не запускать seed/bootstrap и повторную миграцию.
+
+
+## Принятый F17
+
+[Итоговый evidence](docs/full/evidence/f17/README.md), [проверки](docs/full/evidence/f17/checks.json),
+[операции](docs/full/f17-operations.md). Full Pilot/F18–F24 и полный ASVS L2 остаются NOT_MET.
+После замены API container перезапустите `web`, чтобы Nginx обновил upstream DNS.
+Manager tokens обновляются явным setup --local, максимум1 час; ключи setup сохраняет.
+Повторный запуск one-time deploy helper после schema0018 запрещён preflight до остановки сервисов.

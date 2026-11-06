@@ -1,0 +1,28 @@
+{
+  "profile": "local-native-TLS-OpenBao-2.7.2-opspilot-f17.1-Raft",
+  "checks": [
+    "TLS_worker_sign_MCP_public_verify",
+    "MCP_private_key_ACL_denied",
+    "worker_mutation_and_policy_escalation_denied",
+    "mcp_mutation_and_policy_escalation_denied",
+    "two_tenant_secret_ACLs",
+    "rotation_preserves_inflight_signature_and_uses_new_key",
+    "compromised_key_revoke_denies_inflight",
+    "reversible_safe_active_configuration",
+    "short_lived_access_expires",
+    "compromised_service_access_revoked",
+    "encrypted_snapshot_with_separate_backup_key",
+    "fresh_instance_restores_encrypted_snapshot_and_original_key_identity",
+    "seal_outage_fails_closed_without_file_fallback",
+    "restart_threshold_unseal_recovers_same_keys",
+    "protected_audit_sentinel_and_credentials_HMAC_redacted"
+  ],
+  "executed_at_utc": "2026-11-06T09:24:59.886999+00:00",
+  "source_base": "6330f32",
+  "runtime_image_id": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+  "runtime_version": "OpenBao v2.7.2+opspilot-f17.1",
+  "passed": 15,
+  "full_L2": "NOT_MET",
+  "secrets_in_report": false,
+  "restore_to_fresh_instance": true
+}

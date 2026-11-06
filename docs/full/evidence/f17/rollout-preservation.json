@@ -1,0 +1,130 @@
+{
+  "after": {
+    "checkpoints.checkpoint_blobs": {
+      "count": 2252,
+      "sha256": "e0b6a8126984518c3a452d7e2d6f5302fd0ebd4d46b3db2043f162d90abbe7e9"
+    },
+    "checkpoints.checkpoint_writes": {
+      "count": 5302,
+      "sha256": "20b5ca9b152d69225a3dacca2ac7eb29baaf30605c84f1c92776c92ea4bfd14c"
+    },
+    "checkpoints.checkpoints": {
+      "count": 184,
+      "sha256": "880bf1c2a6433ddcf38f73fa8ea4a691936f6419882384adae2f214709cb7e63"
+    },
+    "domain.connector_controls": {
+      "count": 1,
+      "sha256": "1a7f8853aaab4412911d2c352f3940316270b61b3f9aa009fb273631dd2998bd"
+    },
+    "domain.customer_integrations": {
+      "count": 6,
+      "sha256": "ba4b1689df77fd68fd0f2b54f3e52309b4c89524408f75872f32e1d546afe469"
+    },
+    "domain.customers": {
+      "count": 6,
+      "sha256": "2cd885200e65ca2fc7a687643acf0b155a1a5cad2d0494aeb6b094089c99efbc"
+    },
+    "domain.incidents": {
+      "count": 20,
+      "sha256": "c18229fc99ea08e791f948de44ecea071387e34ab7d73ab2a686583ebc55581c"
+    },
+    "domain.knowledge_articles": {
+      "count": 10,
+      "sha256": "b85912539f1f18234972f7596d2a937ebd25f29f591dfcb2f12ef926a8d5a7be"
+    },
+    "domain.notifications": {
+      "count": 2,
+      "sha256": "9e241829db6ce3cd2d220cd46c439565ef6c93c1d24795926eec963b7cb5dfee"
+    },
+    "domain.ticket_comments": {
+      "count": 2,
+      "sha256": "a146b5dc70e141bd1f5c764bb36898081a12047f0df1717038f436a731b50393"
+    },
+    "domain.tickets": {
+      "count": 4,
+      "sha256": "4b6a5b02eb0860ae6639c092949459e89ba67621a2a344d0b636d5c8f9eda82d"
+    },
+    "schema": "0018_lifecycle",
+    "workflow.actions": {
+      "count": 11,
+      "sha256": "6dcb23b59ec163b7373a5599c87f9cb0bc9959eebbba78edcb6cb8e2ddda2a93"
+    },
+    "workflow.agent_runs": {
+      "count": 17,
+      "sha256": "914e53ad722ac56c1f2805e976d74bc6ef875cba3071799fcbd9a0ddc7e24646"
+    },
+    "workflow.approvals": {
+      "count": 11,
+      "sha256": "7d66ea3f01c8ff3b2d7ae0da9ecc69eea8cdff4f2268ccc375f2b2c59376f38d"
+    },
+    "workflow.command_jobs": {
+      "count": 26,
+      "sha256": "e1cfb49a9abd0d5d26aadd1a50b11843e828de8508fbd170f677d587fdaa3ac7"
+    }
+  },
+  "timing": "After migration, before workers and smoke; all legacy columns included",
+  "preserved": true,
+  "before": {
+    "checkpoints.checkpoint_blobs": {
+      "count": 2252,
+      "sha256": "e0b6a8126984518c3a452d7e2d6f5302fd0ebd4d46b3db2043f162d90abbe7e9"
+    },
+    "checkpoints.checkpoint_writes": {
+      "count": 5302,
+      "sha256": "20b5ca9b152d69225a3dacca2ac7eb29baaf30605c84f1c92776c92ea4bfd14c"
+    },
+    "checkpoints.checkpoints": {
+      "count": 184,
+      "sha256": "880bf1c2a6433ddcf38f73fa8ea4a691936f6419882384adae2f214709cb7e63"
+    },
+    "domain.connector_controls": {
+      "count": 1,
+      "sha256": "1a7f8853aaab4412911d2c352f3940316270b61b3f9aa009fb273631dd2998bd"
+    },
+    "domain.customer_integrations": {
+      "count": 6,
+      "sha256": "ba4b1689df77fd68fd0f2b54f3e52309b4c89524408f75872f32e1d546afe469"
+    },
+    "domain.customers": {
+      "count": 6,
+      "sha256": "2cd885200e65ca2fc7a687643acf0b155a1a5cad2d0494aeb6b094089c99efbc"
+    },
+    "domain.incidents": {
+      "count": 20,
+      "sha256": "c18229fc99ea08e791f948de44ecea071387e34ab7d73ab2a686583ebc55581c"
+    },
+    "domain.knowledge_articles": {
+      "count": 10,
+      "sha256": "b85912539f1f18234972f7596d2a937ebd25f29f591dfcb2f12ef926a8d5a7be"
+    },
+    "domain.notifications": {
+      "count": 2,
+      "sha256": "9e241829db6ce3cd2d220cd46c439565ef6c93c1d24795926eec963b7cb5dfee"
+    },
+    "domain.ticket_comments": {
+      "count": 2,
+      "sha256": "a146b5dc70e141bd1f5c764bb36898081a12047f0df1717038f436a731b50393"
+    },
+    "domain.tickets": {
+      "count": 4,
+      "sha256": "4b6a5b02eb0860ae6639c092949459e89ba67621a2a344d0b636d5c8f9eda82d"
+    },
+    "schema": "0017_observability",
+    "workflow.actions": {
+      "count": 11,
+      "sha256": "6dcb23b59ec163b7373a5599c87f9cb0bc9959eebbba78edcb6cb8e2ddda2a93"
+    },
+    "workflow.agent_runs": {
+      "count": 17,
+      "sha256": "914e53ad722ac56c1f2805e976d74bc6ef875cba3071799fcbd9a0ddc7e24646"
+    },
+    "workflow.approvals": {
+      "count": 11,
+      "sha256": "7d66ea3f01c8ff3b2d7ae0da9ecc69eea8cdff4f2268ccc375f2b2c59376f38d"
+    },
+    "workflow.command_jobs": {
+      "count": 26,
+      "sha256": "e1cfb49a9abd0d5d26aadd1a50b11843e828de8508fbd170f677d587fdaa3ac7"
+    }
+  }
+}

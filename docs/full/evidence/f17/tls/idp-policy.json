@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "provider": "pinned Keycloak image",
+  "synthetic": true,
+  "passwordPolicy": "length(15) and maxLength(128) and notUsername(undefined) and notEmail(undefined) and passwordHistory(5) and passwordBlacklist(common-passwords.txt) and maxAuthAge(0)",
+  "checks": [
+    "minimum length rejected",
+    "maximum length rejected",
+    "compromised password rejected",
+    "password history reuse rejected"
+  ],
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "bruteForceProtected": true,
+  "eventsEnabled": true,
+  "limitations": [
+    "Local self-service reset disabled; SMTP delivery and production recovery notification not tested",
+    "Production administrator MFA and managed recovery remain deployment obligations"
+  ]
+}

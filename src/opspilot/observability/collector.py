@@ -35,6 +35,10 @@ MESSAGES: dict[str, Any] = {
 }
 
 
+class AdmissionBusy(TimeoutError):
+    """No journal operation was submitted; a trace sender may retry safely."""
+
+
 def create_app(journal: Journal, tokens: dict[str, str]) -> FastAPI:
     if not tokens or any(service not in SERVICES for service in tokens.values()):
         raise ValueError("Receiver identity policy required")
@@ -45,7 +49,10 @@ def create_app(journal: Journal, tokens: dict[str, str]) -> FastAPI:
     pool = ThreadPoolExecutor(max_workers=1, thread_name_prefix="collector-journal")
 
     async def bounded(function: Any, *args: Any) -> Any:
-        await asyncio.wait_for(admission.acquire(), 0.2)
+        try:
+            await asyncio.wait_for(admission.acquire(), 0.2)
+        except TimeoutError:
+            raise AdmissionBusy from None
         loop = asyncio.get_running_loop()
         future = loop.run_in_executor(pool, lambda: function(*args))
         future.add_done_callback(lambda done: admission.release())
@@ -143,6 +150,9 @@ def create_app(journal: Journal, tokens: dict[str, str]) -> FastAPI:
                 row["source_clock_skew"] = abs(time.time() - row["end_ns"] / 1e9) > 30
         try:
             await bounded(journal.append, records)
+        except AdmissionBusy:
+            counts["queue_denials"] += 1
+            return Response(status_code=503, headers={"X-OpsPilot-Admission": "rejected"})
         except TimeoutError:
             counts["queue_denials"] += 1
             return Response(status_code=503)
