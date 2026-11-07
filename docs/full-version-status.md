@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19 blocked (локальная часть принята, staging gate открыт); F20–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19 завершён (локальный connector и разрешённый AWS staging проверены); F20–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Локальная часть F19 проверена; F19 overall blocked: пользователь явно отложил отдельный authorized staging endpoint/credentials. F18 — 61dfdfd; F20–F24 не начаты. Full Pilot/ASVS L2 NOT_MET.**
+**F19 завершён: локальный connector и отдельный разрешённый AWS staging проверены. Временные AWS-ресурсы удалены. F20–F24 не начаты и не разрешены этим запросом. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -76,7 +76,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F16 | done | Protected traces/logs/metrics, durable job/epoch links и scoped operator diagnostics | [evidence](full/evidence/f16/README.md) | [SEC-05](security/asvs-l2-implementation-plan.md) |
 | F17 | done | Retention/tombstones, scoped export, real manager rotation/recovery и локальный Full Core acceptance | [evidence](full/evidence/f17/README.md); commit subject: `feat(full): complete F17 lifecycle and Core security acceptance` | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | done | Manager-backed adapters, bounded HTTPS/circuit breaker, signed durable observation ingress и recovery | [evidence](full/evidence/f18/README.md); commit subject: `feat(full): complete F18 adapter platform and signed ingress` | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
-| F19 | blocked | Local Prometheus connector verified; authorized staging deferred | [evidence](full/evidence/f19/README.md); commit subject: `feat(full): implement local F19 Prometheus reads` | [SEC-09](security/asvs-l2-implementation-plan.md) |
+| F19 | done | Scoped Prometheus reads: local contracts plus actual owned AWS staging health, MCP/OIDC UI; temporary resources removed | [local evidence](full/evidence/f19/README.md); [AWS evidence](full/evidence/f19-aws/README.md); local base `c984d6a`; stage commit subject below | [SEC-09](security/asvs-l2-implementation-plan.md) |
 | F20 | not_started | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
 | F21 | not_started | Fault/concurrency/load/soak evidence | — | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
 | F22 | not_started | 50 evals и отдельный real/holdout report | — | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
@@ -885,3 +885,34 @@ source rebuild/x-net0.62.0; final app/Prometheus raw H/C0, Python/npm audits0 vu
 [operations](full/f19-operations.md), [image remediation](full/f19-prometheus-image.md).
 Для F19 done нужен отдельный authorized staging endpoint/credentials/mapping и redacted actual
 version/scope/MCP/UI evidence. Не называть local synthetic series live. F20 не начинался.
+
+
+## F19 — authorized AWS staging completion, 7 ноября 2026
+
+Workspace `C:/Users/user/Desktop/code/Ops`, branch `codex/opspilot-full`, base `c984d6a`.
+По отдельному разрешению владельца использован один временный t3.small/20GiB encrypted gp3/
+public IPv4 в il-central-1, максимум24h/USD5, с последующим удалением. Прежняя запись о deferred
+staging выше историческая; она заменена текущим результатом. F20 не начат.
+
+Настоящий checksum-pinned Prometheus3.16.0 измерял readiness двух принадлежащих staging HTTP
+сервисов с disk write/read/fsync. Это observed staging, а не customer/live delivery data.
+Явные mapping/expected targets, HTTPS с отдельным CA/IP SAN, Basic read auth, operator /32,
+IMDSv2, без instance role и без outbound SG rules. Ключи/credentials только в ignored `.tools`.
+MCP имеет exact read-only test-manager ACL; app/worker не получают upstream secret.
+
+Три полных smoke прогона: healthy, остановленная replica → unavailable, recovery → healthy;
+каждый проверяет auth/tenant scope, absent/stale/partial unknown, unknown credential expiry,
+MCP provenance. Real-OIDC browser1 passed на работающем lab: scripted cost0, no action,
+observed:staging и неизменные evidence после refresh. Два холодных browser запуска дали ошибки
+зависимости; это сохранённое ограничение, не load/soak/reliability acceptance. Transport budgets
+не ослаблялись. Изменение runner добавляет connector readiness smoke перед browser; эта
+последняя перестановка отдельно на удалённом endpoint не перезапускалась после cleanup.
+
+Отдельный test project `opspilot-full-test-f19-aws-r1`, schema0020; main Full остаётся F18/0019,
+без rebuild/seed/migrations. Test volumes сохранены, lab остановлен. SEC-09 scope и SEC-01/10:
+253 inherited ASVS identities/fields сохранены, secret/static/isolation checks отдельные.
+Полный L2/Pilot по-прежнему NOT_MET. [Evidence и ограничения](full/evidence/f19-aws/README.md).
+AWS inventory подтвердил terminated instance, ноль созданных EBS/ENI/VPC/subnet/SG/routes/IGW/keypairs.
+Верхняя оценка compute/disk/IPv4 до credits ~$0.152; billing ещё может запаздывать.
+MVP184 source/env fingerprints, branch/HEAD, images и volumes сохранены. Без push.
+Отдельный stage commit subject: `feat(full): verify F19 authorized AWS staging and cleanup`.

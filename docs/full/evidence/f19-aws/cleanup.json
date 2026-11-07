@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-11-07T20:15:18.887776+00:00",
+  "all_created_resources_removed": true,
+  "remaining_tagged_resources": {
+    "Volumes": 0,
+    "Vpcs": 0,
+    "Subnets": 0,
+    "SecurityGroups": 0,
+    "RouteTables": 0,
+    "InternetGateways": 0,
+    "KeyPairs": 0,
+    "NetworkInterfaces": 0
+  },
+  "instance_states": [
+    "terminated"
+  ],
+  "elapsed_hours_upper_bound": 4.751,
+  "estimated_compute_disk_ipv4_usd_upper_bound": 0.1517,
+  "approved_ceiling_usd": 5,
+  "billing": "estimate before credits, traffic/API/tax extras; final AWS billing delayed; no claim of zero cost",
+  "scope": "only this uniquely tagged F19 run; unrelated resources preserved"
+}

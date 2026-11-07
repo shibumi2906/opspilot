@@ -1,0 +1,30 @@
+# Final override after F19 checks; never start local synthetic prometheus/metric-fixture.
+services:
+  api:
+    volumes:
+      - ./.tools/f19-aws-staging/client/registry.json:/run/prometheus-client/registry.json:ro
+      - ./.tools/f19-aws-staging/client/ca.crt:/run/prometheus-client/ca.crt:ro
+  mcp:
+    volumes:
+      - ./.tools/f19-aws-staging/client:/run/prometheus-client:ro
+  tests:
+    environment:
+      F19_AWS: '1'
+      F19_AWS_EXPECTED: ${F19_AWS_EXPECTED:-healthy}
+      F19_REPORT_DIR: /reports
+    volumes:
+      - ./.tools/f19-aws-staging/client:/run/prometheus-client:ro
+      - ./tests/integration/test_prometheus_staging.py:/app/tests/integration/test_prometheus_staging.py:ro
+      - ./docs/full/evidence/f19-aws:/reports
+  e2e:
+    environment:
+      F19_AWS: '1'
+    volumes:
+      - ./tests/e2e/prometheus-staging.spec.ts:/app/tests/e2e/prometheus-staging.spec.ts:ro
+      - ./docs/full/evidence/f19-aws:/reports
+networks:
+  default:
+    ipam:
+      config: !override
+        - subnet: 10.245.26.0/24
+          ip_range: 10.245.26.128/25

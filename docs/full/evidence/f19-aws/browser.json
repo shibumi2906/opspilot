@@ -1,0 +1,17 @@
+{
+  "checked_at": "2026-11-07T20:08:13.183Z",
+  "passed": true,
+  "tests": 1,
+  "failures": 0,
+  "duration_ms": 7984.045999999999,
+  "checks": [
+    "actual OIDC login",
+    "scripted investigation; LLM cost0",
+    "observed:staging provenance",
+    "healthy service, unknown credential expiry",
+    "observed samples; no delivery-event relabeling",
+    "no action",
+    "provenance and evidence preserved after refresh"
+  ],
+  "limitations": "Two cold-restart attempts failed dependency reads; warm-contour attempt passed. This is not load/soak/reliability acceptance."
+}

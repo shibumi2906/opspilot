@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "checked_at": "2026-11-07T19:44:45.149985+00:00",
+  "classification": "actual owned staging service measurements; not customer/live data",
+  "build": {
+    "version": "3.16.0",
+    "revision": "e2e28adeee2c5883d000fc82aca6008cfbf7e96d",
+    "goVersion": "go1.27.3"
+  },
+  "source_version": "prometheus-mapping1:observed:staging",
+  "status": "healthy",
+  "series": 4,
+  "tenant_scope": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "connector": "e5dc70f7-109b-5e6a-bd31-a2478d326837",
+  "targets": [
+    "primary",
+    "replica"
+  ],
+  "bad_auth": "denied",
+  "foreign_scope": "empty/NOT_FOUND",
+  "stale_absent_partial": "unknown",
+  "credential_expiry": "unknown",
+  "mcp": "passed"
+}

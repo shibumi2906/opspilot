@@ -8,7 +8,7 @@
 
 - Ветка: `codex/opspilot-full`. F16: `6330f32`; F17: `017b68b`; F18 — отдельный локальный stage commit (subject в tracker).
 - F13: `2fe6613`; F14: `be246d7`; F12: `abfaf76`.
-- F01–F18 завершены; **F18 adapter platform/signed ingress принят**; F19: локальная часть проверена, overall blocked на отложенном staging; F20–F24 не начаты.
+- F01–F18 завершены; **F18 adapter platform/signed ingress принят**; F19: локальный connector и разрешённый AWS staging проверены; F20–F24 не начаты.
   Перед новым этапом используйте текущий HEAD и канонический tracker.
 - Схема Full: `0019_adapters`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
 - [Канонический tracker](docs/full-version-status.md).
@@ -204,3 +204,13 @@ matching и253 protected ASVS rows сохранены. Official Prometheus2 HIGH
 БД и subnet25. Не пересобирать dev в новый schema без отдельного сохранения/миграции. Keys/данные
 сохранены, MVP не изменён. Native Prometheus читает synthetic series; пользовательский UI сохраняет
 эту маркировку и не называет их delivery events. Для staging нужен проверенный upstream tenant scope.
+
+
+## F19 — staging завершён 7 ноября 2026
+
+Текущий результат заменяет исторические записи о deferred staging выше.
+[Отдельное AWS evidence](docs/full/evidence/f19-aws/README.md): реальные owned staging measurements,
+MCP healthy/failure/recovery, real-OIDC UI/refresh; временные AWS-ресурсы удалены и проверены.
+Cold-start ошибки зависимости сохранены как ограничение; load/soak acceptance не заявлен.
+Main Full остаётся F18/schema0019, test lab0020 остановлен с сохранением volumes.
+F20 не начат и требует отдельного запроса; без push. Полный ASVS L2/Pilot NOT_MET.

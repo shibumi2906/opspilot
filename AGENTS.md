@@ -2,7 +2,7 @@
 
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
-  The tracker is authoritative; F01–F18 are done; F19 local part verified, overall blocked on deferred staging; F20–F24 not started.
+  The tracker is authoritative; F01–F18 are done; F19 local and authorized AWS staging verified; F20–F24 not started.
 - Implement only the stage explicitly requested by the user. Completion of a stage does
   not authorize starting the next stage, paid calls, external writes, production deployment or push.
 - Preserve the Portfolio MVP checkout at C:/Users/user/Desktop/code/AI Incident & Operations Agent:
@@ -51,3 +51,13 @@
 - F19 final native subnet25; retained initial draft lab24 must not be used as accepted evidence.
   Local Prometheus is checksum-pinned3.16.0 with x/net0.62.0, static discovery, no promtool/UI.
   Official image's2 HIGH were fixed; raw nonblocking findings remain visible, whole L2 NOT_MET.
+
+- F19 AWS staging completed on2026-11-07: docs/full/evidence/f19-aws and docs/full/f19-aws-staging.md.
+  Earlier deferred-staging notes are historical. Temporary EC2/EBS/VPC resources were removed.
+  Cold-restart dependency errors remain documented; full L2/Pilot and F21 reliability NOT_MET.
+  F20 is not authorized. Main Full remains F18/schema0019; AWS lab schema0020 is stopped.
+
+- F19 AWS staging completed on2026-11-07: docs/full/evidence/f19-aws and docs/full/f19-aws-staging.md.
+  Earlier deferred-staging notes are historical. Temporary EC2/EBS/VPC resources were removed.
+  Cold-restart dependency errors remain documented; full L2/Pilot and F21 reliability NOT_MET.
+  F20 is not authorized. Main Full remains F18/schema0019; AWS lab schema0020 is stopped.

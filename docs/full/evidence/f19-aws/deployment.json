@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-07T20:09:36.272136+00:00",
+  "region": "il-central-1",
+  "instance_count": 1,
+  "type": "t3.small",
+  "disk_gib": 20,
+  "encrypted": true,
+  "disk_type": "gp3",
+  "root_delete_on_termination": true,
+  "imds": "v2-required",
+  "instance_role": false,
+  "cpu_credits": "standard",
+  "ingress": "operator /32 ports22,8443",
+  "egress_rules": 0,
+  "shutdown_behavior": "terminate",
+  "launched_at": "2026-11-07T15:30:17+00:00",
+  "binary_sha256": "11ee776a9d19ea543cf5cb3960308d82f5afd9ccc9b352fb5f422acede633271",
+  "classification": "actual owned staging health measurements",
+  "persistent_shutdown_deadline_utc": "2026-11-08T14:30:17Z"
+}
