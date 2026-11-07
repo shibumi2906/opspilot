@@ -1,0 +1,131 @@
+{
+  "stage": "F19",
+  "stage_status": "blocked",
+  "local_part": "complete",
+  "observed_at_utc": "2026-11-07T11:10:13.560257+00:00",
+  "base": "61dfdfd",
+  "commit_subject": "feat(full): implement local F19 Prometheus reads",
+  "authorization": "User explicitly authorized local part and deferred staging target/credentials",
+  "staging_live_gate": "OPEN",
+  "full_pilot": "NOT_MET",
+  "whole_ASVS_L2": "NOT_MET",
+  "schemas": {
+    "isolated_test": "0020_prometheus",
+    "accepted_dev": "0019_adapters"
+  },
+  "checks": {
+    "legacy_regression": {
+      "passed": 527,
+      "dedicated_skips": 74,
+      "seconds": 982.35,
+      "snapshot_ref": "regression/images.json"
+    },
+    "final_patched_native": {
+      "passed": 287,
+      "unit": 257,
+      "native_contracts": 30,
+      "seconds": 76.06,
+      "failed": 0,
+      "log": ".tools/f19-native-patched-final.log"
+    },
+    "real_oidc_browser": {
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "flaky": 0,
+      "seconds": 11.9,
+      "ref": "browser.json",
+      "paid_model_cost_usd": 0
+    },
+    "static": {
+      "ruff": true,
+      "format_python_files": 231,
+      "mypy_source_files": 150
+    },
+    "source_image_match": {
+      "passed": true,
+      "app": 150,
+      "tests": 81,
+      "migrations": 21
+    },
+    "asvs": {
+      "passed": true,
+      "base": "61dfdfd",
+      "protected_requirements": 253,
+      "inherited_fields_preserved": true,
+      "whole_requirement_closure": false,
+      "full_L2": "NOT_MET",
+      "scope_reviews": 85,
+      "primary_reviews": 5
+    },
+    "runtime_secret_mounts": {
+      "passed": true,
+      "containers_checked": 31,
+      "application_mount_checks": 13,
+      "credential_matches": 0,
+      "private_key_matches": 0,
+      "values_exported": false,
+      "log_tail_bound_per_container": 20000
+    },
+    "artifact_secrets": {
+      "changed_artifacts_checked": 61,
+      "credential_matches": 0,
+      "private_key_matches": 0,
+      "secrets_in_report": false,
+      "scope": "actual Full env, inherited and F19 Basic/Auth/control/manager/TLS credentials"
+    },
+    "supply_chain": {
+      "local_high_critical_gate_passed": true,
+      "app": {
+        "raw_counts": {
+          "CRITICAL": 0,
+          "HIGH": 0,
+          "MEDIUM": 1,
+          "LOW": 0,
+          "UNKNOWN": 0
+        },
+        "image_id": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88"
+      },
+      "prometheus": {
+        "raw_counts": {
+          "CRITICAL": 0,
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "LOW": 0,
+          "UNKNOWN": 1
+        },
+        "image_id": "sha256:aa5bbbc1d5632c8deb29592c2f00461142bf158cd621d8e5f241fea163127b01"
+      },
+      "python_npm_audit": true,
+      "upstream_high_occurrences_fixed": 2,
+      "upstream_report": "security/upstream-prometheus-image.json",
+      "fix": "checksum-pinned upstream3.16.0; x/net0.62.0; supported static-only build; no promtool/UI",
+      "ignored_findings": 0,
+      "nonblocking_raw_findings_retained": true
+    },
+    "preservation": {
+      "mvp": true,
+      "f18_six_image_tags": true,
+      "dev_ready": true,
+      "dev_not_migrated_or_seeded": true,
+      "test_profiles_stopped": true
+    }
+  },
+  "external_activity": {
+    "paid_calls": 0,
+    "vendor_writes": 0,
+    "remote_CI": false,
+    "push": false,
+    "production_deployment": false,
+    "public_source_advisory_downloads": true
+  },
+  "limits": [
+    "Local generated series stay synthetic even on a real patched Prometheus server.",
+    "Authorized staging endpoint/credentials/tenant mapping and actual staging version/MCP/UI smoke remain absent by user choice.",
+    "Native Basic Auth has no label-level RLS; staging upstream isolation or trusted gateway needs review.",
+    "Raw MEDIUM(zlib)/UNKNOWN(x/crypto) retained; scoped HIGH/CRITICAL0 does not imply full ASVS compliance.",
+    "Main Full remains accepted F18/schema0019; F19 code/schema/images validated only in isolated tests.",
+    "Test counts overlap. Legacy regression preceded final Prometheus-only/fact-format refinements; final native snapshot and legacy-format unit cover them.",
+    "F20/F21/F22/F23/F24 not started; no load/soak/real-holdout/production recovery or whole-norm closure."
+  ]
+}

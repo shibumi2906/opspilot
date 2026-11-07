@@ -13,7 +13,10 @@ from opspilot.auth.context import AuthError
 from opspilot.config import Settings
 from opspilot.integrations.contracts import AdapterScope
 from opspilot.integrations.egress import ConnectorUnavailable, health
-from opspilot.integrations.secrets import credential
+from opspilot.integrations.prometheus.normalize import normalize
+from opspilot.integrations.prometheus.registry import registration
+from opspilot.integrations.prometheus.transport import query
+from opspilot.integrations.secrets import credential, prometheus_authorization
 from opspilot.tenancy.context import require_tenant
 
 _slots: WeakKeyDictionary[AsyncEngine, asyncio.Semaphore] = WeakKeyDictionary()
@@ -31,7 +34,13 @@ async def configured(engine: AsyncEngine, integration: UUID) -> bool:
 
 
 async def _snapshot(
-    engine: AsyncEngine, settings: Settings, customer: UUID, integration: UUID, *, probe: bool
+    engine: AsyncEngine,
+    settings: Settings,
+    customer: UUID,
+    integration: UUID,
+    *,
+    probe: bool,
+    window: tuple[datetime, datetime] | None = None,
 ) -> dict[str, Any]:
     result: dict[str, Any] = {
         "status": "unknown",
@@ -39,6 +48,7 @@ async def _snapshot(
         "checked_at": datetime.now(UTC),
         "credential_status": "unknown",
         "events": [],
+        "source_version": "simulator-v1:synthetic",
     }
     failed = False
     async with engine.begin() as c:
@@ -63,6 +73,18 @@ async def _snapshot(
         )
         if not config["read_enabled"]:
             raise AuthError("NOT_FOUND", 404)
+        prometheus = None
+        if config["kind"] == "prometheus":
+            prometheus = registration(settings, require_tenant(), config["id"])
+            if (
+                prometheus.customer_id != customer
+                or prometheus.integration_id != integration
+                or prometheus.origin != config["origin"]
+                or prometheus.mapping_hash() != config["mapping_hash"]
+                or prometheus.mapping() != config["adapter_mapping"]
+            ):
+                raise ConnectorUnavailable()
+            result["source_version"] = prometheus.source_version()
         await c.execute(
             text("""INSERT INTO integrations.connector_health(tenant_id,connector_id)
           VALUES(:t,:c) ON CONFLICT DO NOTHING"""),
@@ -80,23 +102,31 @@ async def _snapshot(
             .mappings()
             .one()
         )
-        if probe:
+        if probe or (prometheus is not None and window is not None):
             if state["blocked"]:
                 raise ConnectorUnavailable()
             try:
-                token = await credential(settings, require_tenant(), config["id"])
-                observed = await health(
-                    settings,
-                    config["origin"],
-                    token,
-                    AdapterScope(
-                        tenant_id=require_tenant(),
-                        connector_id=config["id"],
-                        customer_id=customer,
-                        integration_id=integration,
-                    ),
-                )
-                result.update(status=observed.status, checked_at=observed.checked_at)
+                if prometheus is not None:
+                    authorization = await prometheus_authorization(
+                        settings, require_tenant(), config["id"], prometheus.auth_scheme
+                    )
+                    now = datetime.now(UTC).timestamp()
+                    body, step = await query(prometheus, authorization, now, window)
+                    result.update(normalize(prometheus, body, now, window, step=step))
+                else:
+                    token = await credential(settings, require_tenant(), config["id"])
+                    observed = await health(
+                        settings,
+                        config["origin"],
+                        token,
+                        AdapterScope(
+                            tenant_id=require_tenant(),
+                            connector_id=config["id"],
+                            customer_id=customer,
+                            integration_id=integration,
+                        ),
+                    )
+                    result.update(status=observed.status, checked_at=observed.checked_at)
                 await c.execute(
                     text("""UPDATE integrations.connector_health SET failures=0,
                   open_until=NULL,checked_at=clock_timestamp()
@@ -123,23 +153,30 @@ async def _snapshot(
             .mappings()
             .all()
         )
-        result["events"] = [
-            {
-                "event_id": r["event_id"],
-                "occurred_at": r["observed_at"],
-                "http_status": None,
-                "event_type": "synthetic.connector_observation",
-                "summary": "Synthetic connector status: " + r["status"],
-            }
-            for r in rows
-        ]
+        if prometheus is None:
+            result["events"] = [
+                {
+                    "event_id": r["event_id"],
+                    "occurred_at": r["observed_at"],
+                    "http_status": None,
+                    "event_type": "synthetic.connector_observation",
+                    "summary": "Synthetic connector status: " + r["status"],
+                }
+                for r in rows
+            ]
     if failed:
         raise ConnectorUnavailable()
     return result
 
 
 async def snapshot(
-    engine: AsyncEngine, settings: Settings, customer: UUID, integration: UUID, *, probe: bool
+    engine: AsyncEngine,
+    settings: Settings,
+    customer: UUID,
+    integration: UUID,
+    *,
+    probe: bool,
+    window: tuple[datetime, datetime] | None = None,
 ) -> dict[str, Any]:
     slots = _slots.setdefault(engine, asyncio.Semaphore(4))
     try:
@@ -147,6 +184,6 @@ async def snapshot(
     except TimeoutError:
         raise ConnectorUnavailable() from None
     try:
-        return await _snapshot(engine, settings, customer, integration, probe=probe)
+        return await _snapshot(engine, settings, customer, integration, probe=probe, window=window)
     finally:
         slots.release()

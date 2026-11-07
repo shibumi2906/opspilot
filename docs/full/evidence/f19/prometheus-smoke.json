@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "scope": "local real engine, synthetic series; no staging acceptance",
+  "observed_at_utc": "2026-11-07T10:59:26.271546+00:00",
+  "build": {
+    "version": "3.16.0",
+    "revision": "e2e28adeee2c5883d000fc82aca6008cfbf7e96d",
+    "goVersion": "go1.27.3",
+    "buildDate": "20261107-10:48:53"
+  },
+  "tenant_id": "aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa",
+  "customer_id": "00000000-0000-0000-0000-000000000001",
+  "integration_id": "00000000-0000-0000-0000-000000000101",
+  "connector_id": "b1c56aa5-4a59-5b95-b11c-5a0cbc658b77",
+  "origin": "https://prometheus:8443",
+  "targets": [
+    "primary",
+    "replica"
+  ],
+  "auth_scheme": "basic",
+  "source_version": "prometheus-mapping1:synthetic:fixture",
+  "status": "degraded",
+  "series": 4,
+  "stale_sample_check": "unknown",
+  "credential_expiration": "unknown",
+  "staging_live_gate": "OPEN",
+  "secrets_exported": false
+}

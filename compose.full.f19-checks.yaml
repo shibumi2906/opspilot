@@ -1,0 +1,89 @@
+# Local real Prometheus with synthetic series; no staging or production acceptance.
+services:
+  api:
+    image: opspilot-full/app:f19
+    environment: &registry
+      PROMETHEUS_REGISTRY_FILE: /run/prometheus-client/registry.json
+      SCENARIO_CLOCK: ${F19_CLOCK:?Explicit fixture clock}
+    volumes:
+      - ./.tools/f19-client/registry.json:/run/prometheus-client/registry.json:ro
+      - ./.tools/f19-client/ca.crt:/run/prometheus-client/ca.crt:ro
+  mcp:
+    image: opspilot-full/app:f19
+    environment: &prom-env
+      <<: *registry
+      CONNECTOR_MANAGER_URL: https://manager:8200
+      CONNECTOR_MANAGER_CA_FILE: /run/prometheus-client/manager-ca.crt
+      CONNECTOR_MANAGER_TOKEN_FILE: /run/prometheus-client/mcp.token
+    volumes:
+      - ./.tools/f19-client:/run/prometheus-client:ro
+  worker: &worker
+    image: opspilot-full/app:f19
+    environment:
+      SCENARIO_CLOCK: ${F19_CLOCK}
+  worker2:
+    <<: *worker
+  admin:
+    image: opspilot-full/app:f19
+  tests:
+    image: opspilot-full/tests:f19
+    environment:
+      <<: *prom-env
+      F19_CONTRACT: '1'
+      F19_REPORT_DIR: /reports
+    volumes:
+      - ./.tools/f19-client:/run/prometheus-client:ro
+      - ./.tools/f19-probe:/run/f19-probe:ro
+      - ./docs/full/evidence/f19:/reports
+  e2e:
+    environment:
+      F19_CONTRACT: '1'
+    volumes:
+      - ./tests/e2e/prometheus.spec.ts:/app/tests/e2e/prometheus.spec.ts:ro
+  prometheus:
+    image: opspilot-full/prometheus:f19
+    build:
+      context: .
+      dockerfile: infra/prometheus/Dockerfile
+    command: [--config.file=/run/fixture/prometheus.json, --web.config.file=/run/fixture/web.json,
+              --web.listen-address=:8443,
+              --storage.tsdb.path=/tmp/data, --storage.tsdb.retention.time=1h,
+              --query.max-concurrency=4, --query.max-samples=2000, --query.timeout=1s,
+              --web.max-connections=32]
+    user: 10001:10001
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 256m
+    tmpfs: [/tmp]
+    volumes:
+      - ./.tools/f19-server/server.crt:/run/fixture/server.crt:ro
+      - ./.tools/f19-server/server.key:/run/fixture/server.key:ro
+      - ./.tools/f19-server/web-v1.json:/run/fixture/web.json:ro
+      - ./.tools/f19-server/prometheus.json:/run/fixture/prometheus.json:ro
+    networks:
+      default:
+        ipv4_address: ${F19_SUBNET_PREFIX:-10.245.25}.10
+  metric-fixture:
+    image: opspilot-full/tests:f19
+    command: [python, -m, tests.f19_fixture]
+    user: 10001:10001
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 128m
+    tmpfs: [/tmp]
+    volumes:
+      - ./.tools/f19-server:/run/fixture:ro
+    networks:
+      default:
+        ipv4_address: ${F19_SUBNET_PREFIX:-10.245.25}.11
+        aliases: [untrusted-fixture]
+networks:
+  default:
+    external: false
+    name: ${COMPOSE_PROJECT_NAME}_default
+    ipam:
+      config:
+        - subnet: ${F19_SUBNET_PREFIX:-10.245.25}.0/24
+          ip_range: ${F19_SUBNET_PREFIX:-10.245.25}.128/25

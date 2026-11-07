@@ -11,6 +11,7 @@ from opspilot.auth.context import actor_id
 from opspilot.config import Settings
 from opspilot.integrations.contracts import ConfigChange
 from opspilot.integrations.egress import registered
+from opspilot.integrations.prometheus.registry import registration
 from opspilot.runtime.actions import Conflict
 from opspilot.tenancy.context import require_tenant
 
@@ -33,8 +34,23 @@ async def audit(c: AsyncConnection, connector: UUID, kind: str, event: UUID | No
 async def configure(
     engine: AsyncEngine, settings: Settings, connector: UUID, value: ConfigChange
 ) -> dict[str, Any]:
-    registered(settings, value.origin)
     tenant = require_tenant()
+    mapping: dict[str, object] = {}
+    source = "synthetic"
+    if value.kind == "simulator":
+        registered(settings, value.origin)
+        digest = value.mapping_hash()
+    else:
+        reg = registration(settings, tenant, connector)
+        if (reg.origin, reg.customer_id, reg.integration_id) != (
+            value.origin,
+            value.customer_id,
+            value.integration_id,
+        ):
+            from opspilot.integrations.egress import ConnectorUnavailable
+
+            raise ConnectorUnavailable()
+        mapping, digest, source = reg.mapping(), reg.mapping_hash(), reg.dataset
     async with engine.begin() as c:
         await c.execute(text("SELECT pg_advisory_xact_lock(1801202618)"))
         row = (
@@ -52,10 +68,7 @@ async def configure(
         )
         if (row is None and value.expected_version != 0) or (
             row is not None
-            and (
-                row["version"] != value.expected_version
-                or row["mapping_hash"] != value.mapping_hash()
-            )
+            and (row["version"] != value.expected_version or row["mapping_hash"] != digest)
         ):
             raise Conflict("Configuration changed; immutable mapping requires a new connector")
         params = {
@@ -64,7 +77,9 @@ async def configure(
             "customer": value.customer_id,
             "integration": value.integration_id,
             "origin": value.origin,
-            "hash": value.mapping_hash(),
+            "hash": digest,
+            "kind": value.kind,
+            "mapping": json.dumps(mapping),
             "read": value.read_enabled,
             "ingress": value.ingress_enabled,
             "credential": f"connectors/{tenant}/{connector}/credential",
@@ -76,9 +91,9 @@ async def configure(
             await c.execute(
                 text("""INSERT INTO integrations.connector_configs
               (tenant_id,id,customer_id,integration_id,kind,mapping_version,origin,mapping_hash,
-               credential_ref,webhook_ref,read_enabled,ingress_enabled)
-              VALUES(:t,:id,:customer,:integration,'simulator',1,:origin,:hash,:credential,
-               :webhook,:read,:ingress)"""),
+               credential_ref,webhook_ref,read_enabled,ingress_enabled,adapter_mapping)
+              VALUES(:t,:id,:customer,:integration,:kind,1,:origin,:hash,:credential,
+               :webhook,:read,:ingress,CAST(:mapping AS jsonb))"""),
                 params,
             )
         else:
@@ -93,7 +108,7 @@ async def configure(
             "id": str(connector),
             "version": 1 if row is None else row["version"] + 1,
             "mapping_version": 1,
-            "source": "synthetic",
+            "source": source,
             "write_enabled": False,
         }
 

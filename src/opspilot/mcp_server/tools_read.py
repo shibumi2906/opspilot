@@ -149,6 +149,7 @@ async def read_tool(
             args.customer_id,
             args.integration_id,
             probe=name == "get_service_status",
+            window=(args.from_, args.to) if isinstance(args, EventsArgs) else None,
         )
         if managed
         else observe(settings, args.customer_id, args.integration_id)
@@ -158,7 +159,7 @@ async def read_tool(
             Source(
                 source_type="integration_status",
                 source_id=str(args.integration_id),
-                version="simulator-v1:synthetic" if managed else None,
+                version=snapshot.get("source_version") if managed else None,
             )
         ]
     if name == "get_credential_status":
@@ -166,7 +167,7 @@ async def read_tool(
             Source(
                 source_type="credential_status",
                 source_id=str(args.integration_id),
-                version="simulator-v1:synthetic" if managed else None,
+                version=snapshot.get("source_version") if managed else None,
             )
         ]
     assert name == "get_integration_events" and isinstance(args, EventsArgs)
@@ -180,7 +181,7 @@ async def read_tool(
         Source(
             source_type="integration_event",
             source_id=str(e["event_id"]),
-            version="simulator-v1:synthetic" if managed else None,
+            version=snapshot.get("source_version") if managed else None,
         )
         for e in selected
     ]
@@ -196,7 +197,7 @@ def register_read_tools(
         return [
             Tool(
                 name=name,
-                description=f"Synthetic operational data: {name}",
+                description=f"Tenant-scoped operational data: {name}",
                 inputSchema=contract.arguments.model_json_schema(),
                 outputSchema=ToolResult.model_json_schema(),
                 annotations=ToolAnnotations(readOnlyHint=name in READ_TOOLS, destructiveHint=False),

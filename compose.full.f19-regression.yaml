@@ -1,0 +1,8 @@
+# Fresh legacy-regression profile: no Prometheus registration and no changes to dev image tags.
+services:
+  api: {image: 'opspilot-full/app:f19'}
+  mcp: {image: 'opspilot-full/app:f19'}
+  worker: {image: 'opspilot-full/app:f19'}
+  worker2: {image: 'opspilot-full/app:f19'}
+  admin: {image: 'opspilot-full/app:f19'}
+  tests: {image: 'opspilot-full/tests:f19'}

@@ -8,7 +8,7 @@
 
 - Ветка: `codex/opspilot-full`. F16: `6330f32`; F17: `017b68b`; F18 — отдельный локальный stage commit (subject в tracker).
 - F13: `2fe6613`; F14: `be246d7`; F12: `abfaf76`.
-- F01–F18 завершены; **F18 adapter platform/signed ingress принят**; F19–F24 не начаты.
+- F01–F18 завершены; **F18 adapter platform/signed ingress принят**; F19: локальная часть проверена, overall blocked на отложенном staging; F20–F24 не начаты.
   Перед новым этапом используйте текущий HEAD и канонический tracker.
 - Схема Full: `0019_adapters`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
 - [Канонический tracker](docs/full-version-status.md).
@@ -187,3 +187,20 @@ F18 checks: scripts/test-full-f18.ps1 (default r4/subnet21), test-full-f18-regre
 (отдельные backend и fresh browser/process DB), test-full-f18-tls.ps1 (subnet23). Labs запускать
 последовательно. Fresh networks проверяются на overlap; сохранившиеся старые сети не удалять ради
 автоматического address pool. MVP unchanged, no push/paid calls/vendor writes/production deployment.
+
+## F19 — локальный результат, staging отложен
+
+Локальная часть реализована и проверена; F19 overall **blocked**, поскольку пользователь явно
+отложил отдельный authorized staging target/credentials. Следующие этапы не разрешены автоматически.
+[Evidence](docs/full/evidence/f19/README.md), [operations](docs/full/f19-operations.md).
+Отдельный локальный commit subject: `feat(full): implement local F19 Prometheus reads`; без push.
+
+Backend527/74 skips, final native287 (unit257/contracts30), browser1; source/migration/image
+matching и253 protected ASVS rows сохранены. Official Prometheus2 HIGH исправлены source rebuild
+сx/net0.62.0; final app/Prometheus raw H/C0, Python/npm audits пройдены; неблокирующие raw findings
+сохранены. Full Pilot/полный ASVS L2 NOT_MET, staging/live gate открыт.
+
+Основной Full по-прежнему F18/schema0019 и готов; F19/schema0020 использует отдельные test images,
+БД и subnet25. Не пересобирать dev в новый schema без отдельного сохранения/миграции. Keys/данные
+сохранены, MVP не изменён. Native Prometheus читает synthetic series; пользовательский UI сохраняет
+эту маркировку и не называет их delivery events. Для staging нужен проверенный upstream tenant scope.

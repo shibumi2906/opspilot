@@ -32,6 +32,11 @@ async def snapshot(
     observations = []
     try:
         for item in value["integrations"]:
+            if await session.scalar(
+                text("SELECT integrations.has_binding(:i)"), {"i": UUID(item["id"])}
+            ):
+                # The read connector cannot use a synthetic fixture to authorize a mutation.
+                raise PreconditionsChanged("PRECONDITIONS_UNKNOWN")
             observed = monitoring.observe(
                 settings.model_copy(update={"scenario_clock": now}),
                 UUID(arguments["customer_id"]),

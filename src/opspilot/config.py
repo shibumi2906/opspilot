@@ -177,6 +177,7 @@ class Settings(BaseSettings):
     connector_simulator_origin: str | None = None
     connector_simulator_ip: str | None = None
     connector_simulator_ca_file: str | None = None
+    prometheus_registry_file: str | None = None
 
     @model_validator(mode="after")
     def connector_boundaries(self) -> Self:

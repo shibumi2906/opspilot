@@ -145,3 +145,15 @@ native TLS/MFA plus positive ingress/verify-full DB/CLI, six runtime images raw 
 All253 inherited requirement fields including F17 contributions remain exact;102 new scoped reviews
 and5 primary local contributions do not close whole norms. SEC-09 is in_progress for the full
 application: F19/F20 vendor and F23 production egress/TLS/deployment gates remain. Whole L2 NOT_MET.
+
+
+## F19 local change gate; authorized staging deferred
+
+Local fixed/read-only Prometheus queries, metadata/manager ACL, tenant mapping/RLS, bounded range/
+cardinality/body/deadline, TLS/DNS/redirect/error and UI provenance are verified under
+[scoped evidence](../full/evidence/f19/README.md). All253 inherited fields remain exact;85 scoped
+contributions and5 primary reviews close no whole requirement. Original runtime2 HIGH fixed by
+pinned source rebuild/x-net0.62.0; final raw H/C0; nonblocking MEDIUM/UNKNOWN retained in reports.
+Native Prometheus Basic Auth has no label-level RLS; upstream staging isolation/gateway needs
+review. User explicitly deferred staging target/access, so F19 overall blocked. F20/F23/whole L2
+remain open. Main dev stays accepted F18/schema0019; schema0020 is isolated-test-only.

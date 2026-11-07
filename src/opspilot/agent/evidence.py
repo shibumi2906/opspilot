@@ -51,15 +51,26 @@ def canonical_facts(state: AgentState) -> list[dict[str, Any]]:
     for identity, evidence in state.get("evidence", {}).items():
         data = evidence["facts"]
         source = evidence["source_type"]
+        prometheus = (evidence.get("source_version") or "").startswith("prometheus-mapping1:")
         statement = None
         if source == "integration_status":
             statement = ("Статус интеграции: " if ru else "Integration status: ") + data["status"]
+            if prometheus:
+                synthetic = ":synthetic:" in evidence["source_version"]
+                statement = (
+                    ("Синтетические метрики: " if ru else "Synthetic metrics: ")
+                    if synthetic
+                    else ("Наблюдение метрик: " if ru else "Observed metrics: ")
+                ) + statement
         elif source == "credential_status":
             statement = ("Статус credential: " if ru else "Credential status: ") + data["status"]
         elif source == "integration_event":
-            statement = ("Событие доставки: " if ru else "Delivery event: ") + str(
-                data.get("http_status")
-            )
+            if prometheus and data.get("event_type", "").startswith("prometheus.metric."):
+                statement = data["summary"]
+            else:
+                statement = ("Событие доставки: " if ru else "Delivery event: ") + str(
+                    data.get("http_status")
+                )
         elif source == "incident":
             statement = ("Исторический инцидент: " if ru else "Historical incident: ") + data[
                 "summary"

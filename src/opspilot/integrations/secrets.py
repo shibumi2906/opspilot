@@ -1,5 +1,6 @@
 """Separate service ACLs for connector credentials versus webhook verification keys."""
 
+import base64
 import json
 import re
 import ssl
@@ -91,3 +92,28 @@ async def webhook_key(settings: Settings, tenant: UUID, connector: UUID, kid: st
     if not isinstance(value, str) or not re.fullmatch(r"[a-f0-9]{64}", value):
         raise ConnectorUnavailable()
     return bytes.fromhex(value)
+
+
+async def prometheus_authorization(
+    settings: Settings, tenant: UUID, connector: UUID, scheme: str
+) -> str:
+    record = await read(settings, tenant, connector, "credential")
+    if record.get("tenant_id") != str(tenant) or record.get("connector_id") != str(connector):
+        raise ConnectorUnavailable()
+    if scheme == "bearer":
+        token = record.get("token")
+        if not isinstance(token, str) or not re.fullmatch(r"[a-zA-Z0-9._~+/=-]{32,512}", token):
+            raise ConnectorUnavailable()
+        return "Bearer " + token
+    username, password = record.get("username"), record.get("password")
+    if (
+        scheme != "basic"
+        or not isinstance(username, str)
+        or not isinstance(password, str)
+        or not re.fullmatch(r"[a-zA-Z0-9_.-]{1,128}", username)
+        or not 32 <= len(password) <= 512
+        or not password.isascii()
+        or any(ord(c) < 33 or ord(c) == 127 for c in password)
+    ):
+        raise ConnectorUnavailable()
+    return "Basic " + base64.b64encode((username + ":" + password).encode()).decode()

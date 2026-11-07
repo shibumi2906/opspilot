@@ -1,0 +1,11 @@
+{
+  "base": "61dfdfd",
+  "images": {
+    "opspilot-full/app:f19": "sha256:f012e688ef5d9fb402954e4afe5c60004fb86afc42dcefc1e45e768a5787ab95",
+    "opspilot-full/tests:f19": "sha256:dd1b5d0448940211bab1f6fed725a3b8828e0d0cdedad7417b66083ece0f00ab"
+  },
+  "passed": 527,
+  "dedicated_skips": 74,
+  "seconds": 982.35,
+  "profile": "fresh no-binding legacy regression; before final Prometheus-only selector/parser and fixture refinements"
+}

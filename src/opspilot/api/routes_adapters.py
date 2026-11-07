@@ -20,7 +20,7 @@ async def configs(request: Request) -> dict[str, object]:
             (
                 await c.execute(
                     text("""SELECT id,customer_id,integration_id,kind,mapping_version,
-          version,read_enabled,ingress_enabled FROM integrations.connector_configs
+          version,read_enabled,ingress_enabled,adapter_mapping FROM integrations.connector_configs
           ORDER BY id LIMIT 100""")
                 )
             )
@@ -28,7 +28,14 @@ async def configs(request: Request) -> dict[str, object]:
             .all()
         )
     return {
-        "items": [{**dict(r), "source": "synthetic", "write_enabled": False} for r in rows],
+        "items": [
+            {
+                **{k: v for k, v in r.items() if k != "adapter_mapping"},
+                "source": r["adapter_mapping"].get("dataset", "synthetic"),
+                "write_enabled": False,
+            }
+            for r in rows
+        ],
         "capabilities": CAPABILITIES,
     }
 

@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19 blocked (локальная часть принята, staging gate открыт); F20–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**F18 завершён: adapter platform и replay-safe signed observation ingress приняты в локальном synthetic scope. F19–F24 не начаты. Full Pilot и полный ASVS L2 — NOT_MET.**
+**Локальная часть F19 проверена; F19 overall blocked: пользователь явно отложил отдельный authorized staging endpoint/credentials. F18 — 61dfdfd; F20–F24 не начаты. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -76,7 +76,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F16 | done | Protected traces/logs/metrics, durable job/epoch links и scoped operator diagnostics | [evidence](full/evidence/f16/README.md) | [SEC-05](security/asvs-l2-implementation-plan.md) |
 | F17 | done | Retention/tombstones, scoped export, real manager rotation/recovery и локальный Full Core acceptance | [evidence](full/evidence/f17/README.md); commit subject: `feat(full): complete F17 lifecycle and Core security acceptance` | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | done | Manager-backed adapters, bounded HTTPS/circuit breaker, signed durable observation ingress и recovery | [evidence](full/evidence/f18/README.md); commit subject: `feat(full): complete F18 adapter platform and signed ingress` | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
-| F19 | not_started | Authorized Prometheus read connector | — | [SEC-09](security/asvs-l2-implementation-plan.md) |
+| F19 | blocked | Local Prometheus connector verified; authorized staging deferred | [evidence](full/evidence/f19/README.md); commit subject: `feat(full): implement local F19 Prometheus reads` | [SEC-09](security/asvs-l2-implementation-plan.md) |
 | F20 | not_started | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
 | F21 | not_started | Fault/concurrency/load/soak evidence | — | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
 | F22 | not_started | 50 evals и отдельный real/holdout report | — | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
@@ -861,4 +861,27 @@ manager key; FOR SHARE reader privilege исправлен узкой trusted-te
 устранены serial gates и явной проверенной native subnet, без reset/удаления данных/сетей.
 Подробнее — [verification history](full/evidence/f18/README.md).
 
-F19–F24 не начаты. Следующий этап требует отдельного запроса пользователя.
+На завершение F18: F19–F24 не начаты. Актуальное состояние F19 приведено ниже.
+
+## F19 — локальная часть принята; staging gate открыт
+
+Пользователь явно разрешил локальную часть и отложил staging. Код/schema0020 проверены только
+в изолированных test projects, app/tests/prometheus:f19. Main Full остаётся F18/schema0019,
+все6 принятых runtime tags сохранены. MVP неизменён; push/paid calls/vendor writes/remote CI нет.
+
+Fixed scoped queries, expected-target/sample-age normalization, unknown expiry/absent/stale/partial,
+bounded ranges/cardinality/body/deadlines, immutable mapping и manager-backed read credentials.
+Настоящий Prometheus3.16.0 читает synthetic series; UI/MCP/facts сохраняют provenance и не выдают
+metric samples за delivery events. Native Basic Auth не даёт upstream label RLS — staging scope
+требует отдельной проверки tenant-isolated source/gateway.
+
+Backend527/74 dedicated skips; final patched native287 (unit257 + contracts30), browser1;
+Ruff/format231, mypy150; source/image150 app/81 tests/21 migrations; ASVS253 inherited fields intact,
+scoped contributions85/primary5. Original Prometheus image с2 HIGH исправлен checksum-pinned
+source rebuild/x-net0.62.0; final app/Prometheus raw H/C0, Python/npm audits0 vulnerabilities.
+Неблокирующие raw MEDIUM(zlib)/UNKNOWN(x/crypto) сохранены; полный L2 NOT_MET.
+
+[Checks](full/evidence/f19/checks.json), [contracts](full/f19-security-contracts.md),
+[operations](full/f19-operations.md), [image remediation](full/f19-prometheus-image.md).
+Для F19 done нужен отдельный authorized staging endpoint/credentials/mapping и redacted actual
+version/scope/MCP/UI evidence. Не называть local synthetic series live. F20 не начинался.

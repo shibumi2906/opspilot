@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "observed_at_utc": "2026-11-07T11:02:13.379513+00:00",
+  "base": "61dfdfd",
+  "new_images": {
+    "opspilot-full/app:f19": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88",
+    "opspilot-full/tests:f19": "sha256:898e83690695bfa44e9e31dc543acd3d2fa265d31fde790f74fed98432515269",
+    "opspilot-full/prometheus:f19": "sha256:aa5bbbc1d5632c8deb29592c2f00461142bf158cd621d8e5f241fea163127b01"
+  },
+  "accepted_f18_tags_unchanged": {
+    "opspilot-full/app:f01": "sha256:00134a7ae9e1232b0243cb27f87ad327e6caa9e22be5e3c24ef8644f6d9d1bfc",
+    "opspilot-full/web:f01": "sha256:5fda05e2b6ade0b6b026b0aa7bc5fdb7b30b2015f89c9e0b1d89829e22fb3d6c",
+    "opspilot-full/redis:f15": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+    "opspilot-full/oidc:f03": "sha256:85de69de633d4cfc444186100a7952e33e81c1c9e25724bd0e0269595a0b5971",
+    "opspilot-full/postgres:f01": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+    "opspilot-full/manager:f17": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61"
+  },
+  "dev_runtime": {
+    "schema": "0019_adapters"
+  },
+  "new_schema_test_only": "0020_prometheus",
+  "certificates": {
+    "ca": {
+      "sha256": "ce0e33195815f9ae5b4da55158cbc20bd27a3bfcec99f5b2217eec06d5188dab",
+      "signature": "sha384",
+      "public_key": "RSAPublicKey",
+      "public_key_bits": 3072,
+      "not_after": "2026-12-07T09:55:20+00:00"
+    },
+    "fixture_server": {
+      "sha256": "30fa1c63eeca06f2ea1f7a3ede4fad71bab17c3b47523942593f270836f58ad3",
+      "signature": "sha384",
+      "public_key": "RSAPublicKey",
+      "public_key_bits": 3072,
+      "not_after": "2026-11-22T09:55:20+00:00"
+    }
+  },
+  "basic_fixture": "distinct 256-bit random per-connector passwords; bcrypt12 hashes; TLS only",
+  "prometheus_digest": "sha256:e04987641b57704f408e31f6373ba4138ecf27cb4a165d24aabb6c38fddd0f06",
+  "paid_calls": 0,
+  "vendor_writes": 0,
+  "staging_live_gate": "OPEN",
+  "secrets_exported": false
+}

@@ -2,7 +2,7 @@
 
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
-  The tracker is authoritative; F01–F18 are done; F19–F24 not started.
+  The tracker is authoritative; F01–F18 are done; F19 local part verified, overall blocked on deferred staging; F20–F24 not started.
 - Implement only the stage explicitly requested by the user. Completion of a stage does
   not authorize starting the next stage, paid calls, external writes, production deployment or push.
 - Preserve the Portfolio MVP checkout at C:/Users/user/Desktop/code/AI Incident & Operations Agent:
@@ -43,3 +43,11 @@
   project. Run labs serially on this16GiB host; automatic Docker address pools are exhausted.
   Dedicated subnet21 is F18 transport,22 optional Full simulator,23 native TLS; check overlap.
 - Full Pilot and complete ASVS L2 remain NOT_MET. F19–F24 require a new user request; no push.
+
+- F19 local evidence: docs/full/evidence/f19. User explicitly deferred authorized staging, so F19
+  overall stays blocked; do not infer F20 authorization. Native synthetic Prometheus is not live.
+- Main Full still F18/schema0019; schema0020 is test-only. F19 app/tests/prometheus:f19 tags are
+  separate; do not implicitly rebuild/reseed/migrate dev. See docs/full/f19-operations.md.
+- F19 final native subnet25; retained initial draft lab24 must not be used as accepted evidence.
+  Local Prometheus is checksum-pinned3.16.0 with x/net0.62.0, static discovery, no promtool/UI.
+  Official image's2 HIGH were fixed; raw nonblocking findings remain visible, whole L2 NOT_MET.
