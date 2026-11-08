@@ -1,0 +1,2259 @@
+{
+  "stage": "F22",
+  "mode": "scripted",
+  "timestamp": "2026-11-08T13:11:21.057685+00:00",
+  "commit": "e1674e6",
+  "dirty_snapshot": true,
+  "prompt_sha256": "1566cbe45437bbbd7fa721d83a7f0a66f8fa1e15bb978ecb2324afce414cdf70",
+  "dependencies": {
+    "langgraph": "1.2.16",
+    "mcp": "1.30.0",
+    "psycopg": "3.3.6",
+    "httpx": "0.28.1"
+  },
+  "cases": [
+    {
+      "id": "F01",
+      "repeat": 1,
+      "split": "dev",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "3bf652be-e243-4bf4-8964-65c0364a36ee",
+        "client_request_id": "34945087-3fec-4677-84e3-62a5f64d4726",
+        "request": "Check status for BlueMarket",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "en",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:21.882747Z",
+        "updated_at": "2026-11-08T13:11:24.253608Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=3bf652be-e243-4bf4-8964-65c0364a36ee"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "385b43c0-b9ff-4b22-804a-95bf33df68f1",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:22.522138Z",
+            "duration_ms": 109
+          },
+          {
+            "id": "76e07fda-1581-47a4-aa6a-61f5dd39f490",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:22.660487Z",
+            "duration_ms": 524
+          },
+          {
+            "id": "59cd69dd-0595-46c6-a06e-dae5fbee5ffe",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:23.209089Z",
+            "duration_ms": 114
+          },
+          {
+            "id": "49b3ff85-4d59-446c-b5dc-3f5c3daa6ad4",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:23.346264Z",
+            "duration_ms": 319
+          },
+          {
+            "id": "c4d7ab25-b1a2-4a76-9df8-57ab783e3a61",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:23.697461Z",
+            "duration_ms": 110
+          },
+          {
+            "id": "e22162ef-60f7-4390-82de-fdb7169e12f5",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:23.834543Z",
+            "duration_ms": 26
+          },
+          {
+            "id": "53762a08-0f7e-495e-979f-bd62f192cd30",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:23.895255Z",
+            "duration_ms": 23
+          },
+          {
+            "id": "2aa33e9e-ad5f-47df-b163-cf72253da927",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:23.957955Z",
+            "duration_ms": 22
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_280f15cc9ced74dcc06e05ac8bcb6ecd3bef3905372cc7c1b18676533f716728",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000002",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000002\",\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000002",
+              "name": "BlueMarket"
+            }
+          },
+          {
+            "evidence_id": "ev_4bacc5bb2bfac5e9166ff795da826c0eae436aab16215f343ecb91b7d5705bba",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000002",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000002\",\"integrations\":[{\"integration_id\":\"00000000-0000-0000-0000-000000000102\",\"integration_type\":\"shopify\"}],\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000002",
+              "name": "BlueMarket",
+              "integrations": [
+                {
+                  "integration_id": "00000000-0000-0000-0000-000000000102",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          },
+          {
+            "evidence_id": "ev_9377aa62bfe11b541d4368a5966fff4fd9d816156520c92dc81945aef464322f",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "00000000-0000-0000-0000-000000000102",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1772,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "Read-only diagnosis complete; observations are available.",
+          "missing_checks": [],
+          "action_summary": "No ticket was created.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "Integration status: healthy",
+              "evidence_ids": [
+                "ev_9377aa62bfe11b541d4368a5966fff4fd9d816156520c92dc81945aef464322f"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsIjA5YmIyNjFlLTQ2MzUtNGY3Yy04MGU2LTI1NjY4MzQ2YjMwNyIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImFhYWFhYWFhLWFhYWEtNGFhYS04YWFhLWFhYWFhYWFhYWFhYSIsIjNiZjY1MmJlLWUyNDMtNGJmNC04OTY0LTY1YzAzNjRhMzZlZSIsMTFd.7ccd24fec16f4a96586ccc8f463679840c7a86d7cd01921543b72cce108bc0bc"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F02",
+      "repeat": 1,
+      "split": "dev",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "2f0a7044-8b62-41b8-82cc-0f767f101882",
+        "client_request_id": "3635fc63-d726-428c-a816-e1c0568a41ca",
+        "request": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c \u0441\u0442\u0430\u0442\u0443\u0441 BlueMarket",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "ru",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:24.962563Z",
+        "updated_at": "2026-11-08T13:11:27.886242Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=2f0a7044-8b62-41b8-82cc-0f767f101882"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "f2feada5-ffc4-4922-a10a-09be3a6c5361",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:25.512653Z",
+            "duration_ms": 111
+          },
+          {
+            "id": "b3ee925b-b88b-42a3-a35b-d78bd200983b",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:25.659998Z",
+            "duration_ms": 671
+          },
+          {
+            "id": "319ed44f-24fb-492d-bd46-d268460a4697",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:26.359423Z",
+            "duration_ms": 118
+          },
+          {
+            "id": "99e6cc42-bf02-4c3c-b0d4-03e12a8d57ca",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:26.504203Z",
+            "duration_ms": 286
+          },
+          {
+            "id": "a362f9de-8f26-4276-b717-2035cfa4f6e3",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:26.814633Z",
+            "duration_ms": 95
+          },
+          {
+            "id": "9c6f92a4-9f4f-4b8e-bf23-09e1308eefb6",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:26.974181Z",
+            "duration_ms": 111
+          },
+          {
+            "id": "ac9e06e1-220b-44b1-b804-cac0d8c6a5f5",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:27.236540Z",
+            "duration_ms": 174
+          },
+          {
+            "id": "5e8983e5-41f9-4e73-b2a3-a070ab03dda3",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:27.606538Z",
+            "duration_ms": 68
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_950cd706625798bbbec3c00e7dd4541e5f78fbf6294008ed63305a582bc22daf",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"58d3799e-b6ad-5994-806b-df74ff5e7517\",\"integrations\":[{\"integration_id\":\"6c653529-b6a0-5a57-ac68-30b15492ccb4\",\"integration_type\":\"shopify\"}],\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+              "name": "BlueMarket",
+              "integrations": [
+                {
+                  "integration_id": "6c653529-b6a0-5a57-ac68-30b15492ccb4",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          },
+          {
+            "evidence_id": "ev_ba08c6b7b527378202a816b560f5fc666b5738e471d579fbf25e9e6c376de784",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"58d3799e-b6ad-5994-806b-df74ff5e7517\",\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+              "name": "BlueMarket"
+            }
+          },
+          {
+            "evidence_id": "ev_d909d752bfe7df2d2b5f0b362e9fed6d9a65aecf244b29584a97df2788941a3b",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "6c653529-b6a0-5a57-ac68-30b15492ccb4",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 2422,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430; \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f.",
+          "missing_checks": [],
+          "action_summary": "\u0422\u0438\u043a\u0435\u0442 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credential \u043d\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0451\u043d; \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0442\u043e\u043a\u0430 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 \u043d\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u043e.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+              "evidence_ids": [
+                "ev_d909d752bfe7df2d2b5f0b362e9fed6d9a65aecf244b29584a97df2788941a3b"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsImNjYWFlNzkzLWY1OGMtNGZhZC04YmIxLTRhYmY0ZDlhOWRkOSIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImJiYmJiYmJiLWJiYmItNGJiYi04YmJiLWJiYmJiYmJiYmJiYiIsIjJmMGE3MDQ0LThiNjItNDFiOC04MmNjLTBmNzY3ZjEwMTg4MiIsMTFd.7fc0f708f504d5e8fd4d3287bf5aad8e392be307db7bff4e8c97d299ff7cba60"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F03",
+      "repeat": 1,
+      "split": "dev",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "a2c7f034-d8b0-4c4d-8f4e-810c4e142845",
+        "client_request_id": "f7286a65-55fe-4b9d-8c6b-d798770b3e1c",
+        "request": "Check status for GreenShop",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "en",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:29.307051Z",
+        "updated_at": "2026-11-08T13:11:31.290985Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=a2c7f034-d8b0-4c4d-8f4e-810c4e142845"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "416e91d0-269b-4314-9ff0-a00e862c1e53",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:29.805543Z",
+            "duration_ms": 90
+          },
+          {
+            "id": "66335794-d86c-4074-ad1f-e66ed2a71ae7",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:29.923581Z",
+            "duration_ms": 682
+          },
+          {
+            "id": "2f00914d-eae6-4ebb-80ff-4fbc89c0498e",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:30.625243Z",
+            "duration_ms": 102
+          },
+          {
+            "id": "4a09bd8f-1201-451c-844f-846458b739f0",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:30.750373Z",
+            "duration_ms": 254
+          },
+          {
+            "id": "e7c88458-13e5-45ad-89ea-ddb88f38bfdf",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:31.021674Z",
+            "duration_ms": 66
+          },
+          {
+            "id": "b822fc0b-b72e-4af8-b681-ad3b3d68e9cb",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:31.107577Z",
+            "duration_ms": 49
+          },
+          {
+            "id": "d5423c2d-9808-45cb-80d7-5e43f355ff4b",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:31.185543Z",
+            "duration_ms": 19
+          },
+          {
+            "id": "8e599823-82a3-4cf8-9ef8-bc084bc8bf09",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:31.233876Z",
+            "duration_ms": 17
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_1271e84f4e55c7a7e948a1a09d2c98f3a6783bf436639e1ea5a37398042c5838",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000001",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000001\",\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000001",
+              "name": "GreenShop"
+            }
+          },
+          {
+            "evidence_id": "ev_a0bf4ce9bdbef2b862162d148a43702dbffca841d2527e30a3296219cd7c51fa",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "00000000-0000-0000-0000-000000000101",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          },
+          {
+            "evidence_id": "ev_e6b67764a495d90bb2374c184c48341cbd7ab4e5014679ba6d07d45e7adf4661",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000003",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000003\",\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000003",
+              "name": "GreenShop EU"
+            }
+          },
+          {
+            "evidence_id": "ev_ee730ed68093ac3c2506f379066c2a10ec40f75ebcac7dc19791d37749fea2f4",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000001",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000001\",\"integrations\":[{\"integration_id\":\"00000000-0000-0000-0000-000000000101\",\"integration_type\":\"shopify\"}],\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000001",
+              "name": "GreenShop",
+              "integrations": [
+                {
+                  "integration_id": "00000000-0000-0000-0000-000000000101",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1681,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "Read-only diagnosis complete; observations are available.",
+          "missing_checks": [],
+          "action_summary": "No ticket was created.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "Integration status: healthy",
+              "evidence_ids": [
+                "ev_a0bf4ce9bdbef2b862162d148a43702dbffca841d2527e30a3296219cd7c51fa"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsImMxNjVhYzg2LWNhYzktNDY1MC05YTM4LWYxNjRjN2NmMzhmZiIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImFhYWFhYWFhLWFhYWEtNGFhYS04YWFhLWFhYWFhYWFhYWFhYSIsImEyYzdmMDM0LWQ4YjAtNGM0ZC04ZjRlLTgxMGM0ZTE0Mjg0NSIsMTFd.a9ad840df415f5c6d5bc470e99867f40612526574623790298b8a1d37b1a3988"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F04",
+      "repeat": 1,
+      "split": "holdout",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "af60c6e5-c571-4ba3-b95d-26b2d087be46",
+        "client_request_id": "d9e460a5-dcac-4779-a68f-3f2a9b8e02fc",
+        "request": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c \u0441\u0442\u0430\u0442\u0443\u0441 GreenShop",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "ru",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:31.835128Z",
+        "updated_at": "2026-11-08T13:11:33.701909Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=af60c6e5-c571-4ba3-b95d-26b2d087be46"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "a01ac838-fd10-488e-bddc-ece13510b774",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:32.276069Z",
+            "duration_ms": 75
+          },
+          {
+            "id": "e1a27ec8-e530-4022-aeb5-c0c528a6e8b7",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:32.369124Z",
+            "duration_ms": 520
+          },
+          {
+            "id": "f19bfd81-bfec-4164-9509-ee0667a8039c",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:32.909442Z",
+            "duration_ms": 78
+          },
+          {
+            "id": "59ba1904-20a5-4095-b2c2-2aff32f808e7",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:33.157143Z",
+            "duration_ms": 269
+          },
+          {
+            "id": "4cfc8b68-da51-4e01-a9cc-123fa6cd1414",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:33.444456Z",
+            "duration_ms": 59
+          },
+          {
+            "id": "1d0f6389-eb5a-4e22-a7f6-576321722aac",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:33.519891Z",
+            "duration_ms": 40
+          },
+          {
+            "id": "787b58ae-67d9-4067-99c9-d9c7a735f3c5",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:33.588201Z",
+            "duration_ms": 18
+          },
+          {
+            "id": "98f7aa34-2dd9-49b8-9f84-5640b89b08af",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:33.643275Z",
+            "duration_ms": 17
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_0b6386ecf4390f8e7196603ffb6ecf8fac9d00cab08b199376a953b2c3c5be2a",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"d7c92e72-039a-5f5c-bca6-38f1bbdb6337\",\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+              "name": "GreenShop EU"
+            }
+          },
+          {
+            "evidence_id": "ev_23888c09eae432fe0383a66e537191184662257fc9947353f2fe4cecc64b7c59",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "8a0f443e-8e95-50a2-b0b4-e66687e5baeb",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          },
+          {
+            "evidence_id": "ev_5da24f311a07b2a8af808849f16fa3d7e1c47862fb7d8639a147b164822a010a",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"fa8cca13-84fe-537c-ba7e-4b5db81e4c66\",\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+              "name": "GreenShop"
+            }
+          },
+          {
+            "evidence_id": "ev_929fd3c17501037425c28c9bd764dc90a6af04cc314df1101b0adfc846b977aa",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"fa8cca13-84fe-537c-ba7e-4b5db81e4c66\",\"integrations\":[{\"integration_id\":\"8a0f443e-8e95-50a2-b0b4-e66687e5baeb\",\"integration_type\":\"shopify\"}],\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+              "name": "GreenShop",
+              "integrations": [
+                {
+                  "integration_id": "8a0f443e-8e95-50a2-b0b4-e66687e5baeb",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1615,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430; \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f.",
+          "missing_checks": [],
+          "action_summary": "\u0422\u0438\u043a\u0435\u0442 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credential \u043d\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0451\u043d; \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0442\u043e\u043a\u0430 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 \u043d\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u043e.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+              "evidence_ids": [
+                "ev_23888c09eae432fe0383a66e537191184662257fc9947353f2fe4cecc64b7c59"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsIjlkNGJkM2FiLTNmMWEtNGRmMS04MDg0LTY0MDFlZTRiMWE1OCIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImJiYmJiYmJiLWJiYmItNGJiYi04YmJiLWJiYmJiYmJiYmJiYiIsImFmNjBjNmU1LWM1NzEtNGJhMy1iOTVkLTI2YjJkMDg3YmU0NiIsMTFd.a7818848fba9adf7837f6703787e01fd8ed0da76fcb315a1121319bf70c48796"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F05",
+      "repeat": 1,
+      "split": "holdout",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "00d71b68-df3f-4aac-837f-8b9ff63043b1",
+        "client_request_id": "64b84ece-30b0-486e-997a-58a68d5bdc5f",
+        "request": "Check status for GreenShop EU",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "en",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:34.205241Z",
+        "updated_at": "2026-11-08T13:11:36.012938Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=00d71b68-df3f-4aac-837f-8b9ff63043b1"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "5c452b44-1f46-4275-b2b0-6dde0fe0e87b",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:34.688395Z",
+            "duration_ms": 95
+          },
+          {
+            "id": "17f16502-acce-4ddd-ade8-b479fa1c0a5e",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:34.809310Z",
+            "duration_ms": 531
+          },
+          {
+            "id": "1d05d673-e537-4bb3-917a-dc8603c4b686",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:35.362181Z",
+            "duration_ms": 87
+          },
+          {
+            "id": "1e3bb846-505f-4a61-bd33-cb58bf956223",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:35.469202Z",
+            "duration_ms": 237
+          },
+          {
+            "id": "6eb10083-2827-4018-abaf-ed2c5da9ff19",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:35.730919Z",
+            "duration_ms": 66
+          },
+          {
+            "id": "b1095c9e-9569-4aec-b178-5f3c2be2d7b9",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:35.815983Z",
+            "duration_ms": 65
+          },
+          {
+            "id": "8c5e317b-4d5d-439c-8017-fffa9eff1f1e",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:35.900619Z",
+            "duration_ms": 23
+          },
+          {
+            "id": "2b97914b-877f-4cf5-b18b-e5ffd756ec62",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:35.952246Z",
+            "duration_ms": 16
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_2661554dce09f5603fcedad34631d3c464b1cfdaf389accf87e418c2e0ab314d",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000003",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000003\",\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000003",
+              "name": "GreenShop EU"
+            }
+          },
+          {
+            "evidence_id": "ev_5717091e09c38a93be64910b5fab72599bb4faea642ce7af65ea5b27e61717ff",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "00000000-0000-0000-0000-000000000103",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          },
+          {
+            "evidence_id": "ev_9a9c7e17cdd3af8abc875f388e3318c44beb8a59f254ec707a49344dbe3415b5",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000003",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000003\",\"integrations\":[{\"integration_id\":\"00000000-0000-0000-0000-000000000103\",\"integration_type\":\"shopify\"}],\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000003",
+              "name": "GreenShop EU",
+              "integrations": [
+                {
+                  "integration_id": "00000000-0000-0000-0000-000000000103",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1536,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "Read-only diagnosis complete; observations are available.",
+          "missing_checks": [],
+          "action_summary": "No ticket was created.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "Integration status: healthy",
+              "evidence_ids": [
+                "ev_5717091e09c38a93be64910b5fab72599bb4faea642ce7af65ea5b27e61717ff"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsImFmZjJkZGM2LWY0YWUtNDJmYS1hZDczLWViZWYyYTczYzk2ZCIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImFhYWFhYWFhLWFhYWEtNGFhYS04YWFhLWFhYWFhYWFhYWFhYSIsIjAwZDcxYjY4LWRmM2YtNGFhYy04MzdmLThiOWZmNjMwNDNiMSIsMTFd.fd40f27289d596e4b9e45d52d8e8c5d4c9f5509fc3dc686433896d9139535262"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F06",
+      "repeat": 1,
+      "split": "dev",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "51e272f3-7567-4b18-9038-4e0fd52ff4ee",
+        "client_request_id": "2cad8a27-17bf-4389-ab4f-a5f6210f303b",
+        "request": "Check status for BlueMarket",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "en",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:36.596682Z",
+        "updated_at": "2026-11-08T13:11:40.165579Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=51e272f3-7567-4b18-9038-4e0fd52ff4ee"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "bbb24b6d-25b5-4e16-9b85-e5fdf2bc6d7f",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:37.277032Z",
+            "duration_ms": 368
+          },
+          {
+            "id": "dd409ea6-aced-4f52-8656-ab067469e651",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:37.770535Z",
+            "duration_ms": 1337
+          },
+          {
+            "id": "4770a54f-bbc1-4d2f-86d8-2fc808674baf",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:39.146053Z",
+            "duration_ms": 171
+          },
+          {
+            "id": "2036cf60-8262-4826-9087-61a30f39cf4d",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:39.362705Z",
+            "duration_ms": 364
+          },
+          {
+            "id": "457182de-b3d0-445c-8a51-f25c0bd89bcb",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:39.749360Z",
+            "duration_ms": 89
+          },
+          {
+            "id": "3432685e-4c89-4ea7-8898-5fb6f771db7f",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:39.893246Z",
+            "duration_ms": 42
+          },
+          {
+            "id": "227c7015-a7c4-43b7-9569-e52bb0c6c601",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:39.974042Z",
+            "duration_ms": 29
+          },
+          {
+            "id": "dc8c2098-ed8f-4b79-8273-39b144f035bc",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:40.060938Z",
+            "duration_ms": 32
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_72bb8003e8a98028858ba396ad013b98df581f98fba6eefde85700a6d6eb72c4",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "6c653529-b6a0-5a57-ac68-30b15492ccb4",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          },
+          {
+            "evidence_id": "ev_c892764ae9568e6abee11e6bcc61998f2c2730e2b04636a9f20ddce0a691b33c",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"58d3799e-b6ad-5994-806b-df74ff5e7517\",\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+              "name": "BlueMarket"
+            }
+          },
+          {
+            "evidence_id": "ev_d9e54b0a72d9de7666ba045ed735b91947c5d27788d8b844e98f6086f68c1370",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"58d3799e-b6ad-5994-806b-df74ff5e7517\",\"integrations\":[{\"integration_id\":\"6c653529-b6a0-5a57-ac68-30b15492ccb4\",\"integration_type\":\"shopify\"}],\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "58d3799e-b6ad-5994-806b-df74ff5e7517",
+              "name": "BlueMarket",
+              "integrations": [
+                {
+                  "integration_id": "6c653529-b6a0-5a57-ac68-30b15492ccb4",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 3281,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "Read-only diagnosis complete; observations are available.",
+          "missing_checks": [],
+          "action_summary": "No ticket was created.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "Integration status: healthy",
+              "evidence_ids": [
+                "ev_72bb8003e8a98028858ba396ad013b98df581f98fba6eefde85700a6d6eb72c4"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsIjQ1YTNlN2IxLTQxZjAtNGY0My1hNTMzLTVjNTFmOGQyMWExMSIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImJiYmJiYmJiLWJiYmItNGJiYi04YmJiLWJiYmJiYmJiYmJiYiIsIjUxZTI3MmYzLTc1NjctNGIxOC05MDM4LTRlMGZkNTJmZjRlZSIsMTFd.69c6f8a03a09ece14e4fd8fa7ac6bb7bb4eab8533f196495f8d883ab7f3e0e50"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F07",
+      "repeat": 1,
+      "split": "dev",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "889f093f-1206-441e-9b5e-69abe0835be1",
+        "client_request_id": "88f9203d-b622-48c0-ae81-18a52db65837",
+        "request": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c \u0441\u0442\u0430\u0442\u0443\u0441 BlueMarket",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "ru",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:40.796157Z",
+        "updated_at": "2026-11-08T13:11:42.750008Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=889f093f-1206-441e-9b5e-69abe0835be1"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "b21e4bbf-cf47-48e5-be55-098aa7aa8f18",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:41.387205Z",
+            "duration_ms": 82
+          },
+          {
+            "id": "cc3806ec-9e7e-4176-b9bc-9928ac48f2c5",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:41.490116Z",
+            "duration_ms": 519
+          },
+          {
+            "id": "860acfa6-bcb0-483d-87f5-d344e58281fb",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:42.028401Z",
+            "duration_ms": 105
+          },
+          {
+            "id": "8dc35990-7791-4f35-b156-7506d4c994bc",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:42.158286Z",
+            "duration_ms": 251
+          },
+          {
+            "id": "6d1762d3-5d74-4c09-a0ab-5a1808523818",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:42.426648Z",
+            "duration_ms": 85
+          },
+          {
+            "id": "97063e1c-a6fb-402b-9291-31722940e0ee",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:42.533299Z",
+            "duration_ms": 27
+          },
+          {
+            "id": "5d2531e6-d1cc-4d15-8385-3b12f461b574",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:42.591667Z",
+            "duration_ms": 18
+          },
+          {
+            "id": "eff00a2f-8522-492e-b962-7510d1832869",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:42.645016Z",
+            "duration_ms": 18
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_44a793c67ef92e31def319cf88c8e80cccd224f5d33f33877b46ee3a946ef73c",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "00000000-0000-0000-0000-000000000102",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          },
+          {
+            "evidence_id": "ev_54156033439a9df5fb611f8216947540ce001fe9404bc0a9d04818dce790e0ad",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000002",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000002\",\"integrations\":[{\"integration_id\":\"00000000-0000-0000-0000-000000000102\",\"integration_type\":\"shopify\"}],\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000002",
+              "name": "BlueMarket",
+              "integrations": [
+                {
+                  "integration_id": "00000000-0000-0000-0000-000000000102",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          },
+          {
+            "evidence_id": "ev_674e181edf155b2db8aa6e420e8d4844b14d578b598a9ac63205c1a0577babc5",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000002",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000002\",\"name\":\"BlueMarket\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000002",
+              "name": "BlueMarket"
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1637,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430; \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f.",
+          "missing_checks": [],
+          "action_summary": "\u0422\u0438\u043a\u0435\u0442 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credential \u043d\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0451\u043d; \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0442\u043e\u043a\u0430 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 \u043d\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u043e.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+              "evidence_ids": [
+                "ev_44a793c67ef92e31def319cf88c8e80cccd224f5d33f33877b46ee3a946ef73c"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsIjM4ODJjZGRkLTdjNjItNGY2ZC1iOWIyLWVjNDA4YWUzODJiNiIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImFhYWFhYWFhLWFhYWEtNGFhYS04YWFhLWFhYWFhYWFhYWFhYSIsIjg4OWYwOTNmLTEyMDYtNDQxZS05YjVlLTY5YWJlMDgzNWJlMSIsMTFd.48a66ed3548ed201f635f73fa2391e7976a64dde201184d480037416d61f43a6"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F08",
+      "repeat": 1,
+      "split": "dev",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "cbe776a4-3a07-4e62-ae82-dcef41f5d5ae",
+        "client_request_id": "fcdd8fc1-dd71-4d5d-af05-7b8a3694b92e",
+        "request": "Check status for GreenShop",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "en",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:43.253233Z",
+        "updated_at": "2026-11-08T13:11:45.510678Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=cbe776a4-3a07-4e62-ae82-dcef41f5d5ae"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "32eedbf9-b6f3-4104-afe8-70c8773202f1",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:43.758219Z",
+            "duration_ms": 99
+          },
+          {
+            "id": "910d8aa0-d098-4e0c-80dd-9dce389405b5",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:43.878822Z",
+            "duration_ms": 854
+          },
+          {
+            "id": "8a78d259-1fcf-4ca2-9721-c02c859f66ab",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:44.757754Z",
+            "duration_ms": 119
+          },
+          {
+            "id": "fc32527a-2ac3-46b4-a33e-f44ae17738ec",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:44.903356Z",
+            "duration_ms": 273
+          },
+          {
+            "id": "19d95988-432e-4c3d-9a66-f12c4cb157e0",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:45.200459Z",
+            "duration_ms": 74
+          },
+          {
+            "id": "cb0dc1e1-7c93-4121-be4a-201f7dca061b",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:45.292187Z",
+            "duration_ms": 21
+          },
+          {
+            "id": "bfd052bd-bcaf-4122-976e-7bb948e7b596",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:45.370767Z",
+            "duration_ms": 22
+          },
+          {
+            "id": "259f1443-15e1-440c-bf22-a0220568296c",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:45.440995Z",
+            "duration_ms": 24
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_299fcdd0ba4bc2436e4ba48916c1cd00b6e7a89c7569ff0c0bb4831eea33f5db",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "8a0f443e-8e95-50a2-b0b4-e66687e5baeb",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          },
+          {
+            "evidence_id": "ev_434e16ddfc7a18c5ab333c9cffeb36be8e246995ab77c711482518fd00c584d4",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"fa8cca13-84fe-537c-ba7e-4b5db81e4c66\",\"integrations\":[{\"integration_id\":\"8a0f443e-8e95-50a2-b0b4-e66687e5baeb\",\"integration_type\":\"shopify\"}],\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+              "name": "GreenShop",
+              "integrations": [
+                {
+                  "integration_id": "8a0f443e-8e95-50a2-b0b4-e66687e5baeb",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          },
+          {
+            "evidence_id": "ev_852508d0dff27d3659c1e6dad0e94c17880077b83afb9527ad9fe37c13ab6ae3",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"fa8cca13-84fe-537c-ba7e-4b5db81e4c66\",\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "fa8cca13-84fe-537c-ba7e-4b5db81e4c66",
+              "name": "GreenShop"
+            }
+          },
+          {
+            "evidence_id": "ev_94ab189377fa37370fd7775501aed689c2e458498ddcacc123d228a42f80c5cf",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"d7c92e72-039a-5f5c-bca6-38f1bbdb6337\",\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+              "name": "GreenShop EU"
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1951,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "Read-only diagnosis complete; observations are available.",
+          "missing_checks": [],
+          "action_summary": "No ticket was created.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "Integration status: healthy",
+              "evidence_ids": [
+                "ev_299fcdd0ba4bc2436e4ba48916c1cd00b6e7a89c7569ff0c0bb4831eea33f5db"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsImJlOWQwNzNiLTY1MzctNDdmYS04N2Q4LTYxY2UxZmUxYmQxMSIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImJiYmJiYmJiLWJiYmItNGJiYi04YmJiLWJiYmJiYmJiYmJiYiIsImNiZTc3NmE0LTNhMDctNGU2Mi1hZTgyLWRjZWY0MWY1ZDVhZSIsMTFd.e4c90a94ddf9c75ea5dcfa534bab63a8d393d016879997756009a96c767288d4"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F09",
+      "repeat": 1,
+      "split": "holdout",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "dd3ced20-b68f-444a-be39-8c0dbde24d00",
+        "client_request_id": "fd738ddc-0695-4b9a-8564-801516378fb1",
+        "request": "\u041f\u0440\u043e\u0432\u0435\u0440\u044c \u0441\u0442\u0430\u0442\u0443\u0441 GreenShop",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "ru",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:46.071250Z",
+        "updated_at": "2026-11-08T13:11:49.205878Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=dd3ced20-b68f-444a-be39-8c0dbde24d00"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "cb4366b9-0ca0-411e-8fae-97a1b1e88291",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:46.467514Z",
+            "duration_ms": 98
+          },
+          {
+            "id": "3c08d45c-4943-4d9a-a10a-095496d300ac",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:46.590309Z",
+            "duration_ms": 896
+          },
+          {
+            "id": "d99c4c00-a3e9-4616-907a-85bdef221a7c",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:47.633902Z",
+            "duration_ms": 317
+          },
+          {
+            "id": "b78bdfdd-9629-41c1-8c52-2287a3fe512a",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:48.039280Z",
+            "duration_ms": 571
+          },
+          {
+            "id": "9cb655ee-3ed2-49fd-8274-83ebf6f9fdae",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:48.671300Z",
+            "duration_ms": 285
+          },
+          {
+            "id": "dabe879c-1e06-454f-8c3d-b6509b7e6012",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:48.980282Z",
+            "duration_ms": 22
+          },
+          {
+            "id": "0b93fb94-487c-4c30-9204-9e45b2b75bdb",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:49.060307Z",
+            "duration_ms": 21
+          },
+          {
+            "id": "7961db30-b4c7-4532-af59-f0a69b25f1cd",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:49.125407Z",
+            "duration_ms": 25
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_01f2dd0a5190893c9788931661f7ab4de2596ee4aee579939c8f3b4dfef6f347",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000003",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000003\",\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000003",
+              "name": "GreenShop EU"
+            }
+          },
+          {
+            "evidence_id": "ev_1867d7cf82164cddfc79b49eeb9717642a8219e7fc3bb5c319c79117845f9a68",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000001",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000001\",\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000001",
+              "name": "GreenShop"
+            }
+          },
+          {
+            "evidence_id": "ev_807b173c416d2606ba1cb90c82e582b4f5bda5af1a435a475e8e5f3ff57910cd",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "00000000-0000-0000-0000-000000000001",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"00000000-0000-0000-0000-000000000001\",\"integrations\":[{\"integration_id\":\"00000000-0000-0000-0000-000000000101\",\"integration_type\":\"shopify\"}],\"name\":\"GreenShop\"}",
+            "facts": {
+              "customer_id": "00000000-0000-0000-0000-000000000001",
+              "name": "GreenShop",
+              "integrations": [
+                {
+                  "integration_id": "00000000-0000-0000-0000-000000000101",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          },
+          {
+            "evidence_id": "ev_bebed015c9de0db68d6abb4ca125324925657f60bbbf3fec34bbf1bea1cc78ef",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "00000000-0000-0000-0000-000000000101",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 2877,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "\u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430; \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430\u0431\u043b\u044e\u0434\u0435\u043d\u0438\u044f.",
+          "missing_checks": [],
+          "action_summary": "\u0422\u0438\u043a\u0435\u0442 \u043d\u0435 \u0441\u043e\u0437\u0434\u0430\u043d.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credential \u043d\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0451\u043d; \u0432\u043e\u0441\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u043f\u043e\u0442\u043e\u043a\u0430 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 \u043d\u0435 \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043d\u043e.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+              "evidence_ids": [
+                "ev_bebed015c9de0db68d6abb4ca125324925657f60bbbf3fec34bbf1bea1cc78ef"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsIjMxYjA4N2NhLWMyZjUtNGY1MC1iYjQ4LTc3YjRiOTNmMDAyZCIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImFhYWFhYWFhLWFhYWEtNGFhYS04YWFhLWFhYWFhYWFhYWFhYSIsImRkM2NlZDIwLWI2OGYtNDQ0YS1iZTM5LThjMGRiZGUyNGQwMCIsMTFd.9a4e6deddfc478705ccdeee0aee47b48dea7b2f63772a13980e15e7b5f5bef96"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    },
+    {
+      "id": "F10",
+      "repeat": 1,
+      "split": "holdout",
+      "category": "lookup",
+      "asvs_ids": [
+        "v5.0.0-16.1.1"
+      ],
+      "passed": false,
+      "setup_error": null,
+      "errors": [
+        "EXECUTION_AssertionError"
+      ],
+      "usage": null,
+      "snapshot": {
+        "schema_version": 1,
+        "dto_version": 1,
+        "snapshot_version": 11,
+        "actor_id": "e98ba073-4414-5731-b8ce-32d817df62fb",
+        "run_id": "349b9f9f-a688-4c4e-80ba-6063ad8eebb9",
+        "client_request_id": "dd62cc1c-8ab1-4a26-8312-e8bba794b98a",
+        "request": "Check status for GreenShop EU",
+        "status": "completed",
+        "mode": "scripted",
+        "model_id": null,
+        "language": "en",
+        "outcome": "diagnosis_only",
+        "created_at": "2026-11-08T13:11:49.943496Z",
+        "updated_at": "2026-11-08T13:11:51.873300Z",
+        "missing_checks": [],
+        "truncated": false,
+        "traces": [
+          {
+            "label": "Operator diagnostics",
+            "url": "/?view=diagnostics&run_id=349b9f9f-a688-4c4e-80ba-6063ad8eebb9"
+          }
+        ],
+        "clarification": null,
+        "cancellation": null,
+        "timeline": [
+          {
+            "id": "84f960cb-3315-45ec-a5c9-5badb75e1c59",
+            "sequence": 1,
+            "node": "classify",
+            "type": "ai",
+            "status": "completed",
+            "summary": "classify",
+            "started_at": "2026-11-08T13:11:50.388181Z",
+            "duration_ms": 112
+          },
+          {
+            "id": "f6bd8883-f2d1-4909-b810-d4a8da0ccd3e",
+            "sequence": 2,
+            "node": "resolve_customer",
+            "type": "core",
+            "status": "completed",
+            "summary": "resolve_customer",
+            "started_at": "2026-11-08T13:11:50.522989Z",
+            "duration_ms": 528
+          },
+          {
+            "id": "6587d44b-e2c7-4589-9372-53c9841de3f7",
+            "sequence": 3,
+            "node": "investigate",
+            "type": "ai",
+            "status": "completed",
+            "summary": "investigate",
+            "started_at": "2026-11-08T13:11:51.070214Z",
+            "duration_ms": 132
+          },
+          {
+            "id": "66c04649-382d-407d-a315-6aade3f01c0a",
+            "sequence": 4,
+            "node": "execute_reads",
+            "type": "core",
+            "status": "completed",
+            "summary": "execute_reads",
+            "started_at": "2026-11-08T13:11:51.240095Z",
+            "duration_ms": 260
+          },
+          {
+            "id": "cef1b394-24f4-4bb9-ae7d-6558fd0cb0c2",
+            "sequence": 5,
+            "node": "reason",
+            "type": "ai",
+            "status": "completed",
+            "summary": "reason",
+            "started_at": "2026-11-08T13:11:51.520101Z",
+            "duration_ms": 75
+          },
+          {
+            "id": "098b0896-637e-4e4e-8cf2-496621cab2a9",
+            "sequence": 6,
+            "node": "plan",
+            "type": "ai",
+            "status": "completed",
+            "summary": "plan",
+            "started_at": "2026-11-08T13:11:51.615621Z",
+            "duration_ms": 43
+          },
+          {
+            "id": "13337664-a7df-4a46-84d5-174ec8878542",
+            "sequence": 7,
+            "node": "risk_check",
+            "type": "core",
+            "status": "completed",
+            "summary": "risk_check",
+            "started_at": "2026-11-08T13:11:51.701342Z",
+            "duration_ms": 39
+          },
+          {
+            "id": "9973e5b3-43b2-404c-af45-6429a50b5bb7",
+            "sequence": 8,
+            "node": "report",
+            "type": "core",
+            "status": "completed",
+            "summary": "report",
+            "started_at": "2026-11-08T13:11:51.788946Z",
+            "duration_ms": 36
+          }
+        ],
+        "hypotheses": [],
+        "evidence": [
+          {
+            "evidence_id": "ev_3bf6de171941dbe4883cee007c8ce4b717f6511e7f110e708d7f66ff1ed1ace6",
+            "tool_name": "find_customers",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"d7c92e72-039a-5f5c-bca6-38f1bbdb6337\",\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+              "name": "GreenShop EU"
+            }
+          },
+          {
+            "evidence_id": "ev_4fefc7d4e6fcdb5755292692779d29868c7fdafb06886e72133a8d19f76012a6",
+            "tool_name": "get_customer",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "customer",
+            "source_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+            "source_version": null,
+            "excerpt": "{\"customer_id\":\"d7c92e72-039a-5f5c-bca6-38f1bbdb6337\",\"integrations\":[{\"integration_id\":\"6a73ccbc-e9e0-5a11-aad4-c9ee79ec165f\",\"integration_type\":\"shopify\"}],\"name\":\"GreenShop EU\"}",
+            "facts": {
+              "customer_id": "d7c92e72-039a-5f5c-bca6-38f1bbdb6337",
+              "name": "GreenShop EU",
+              "integrations": [
+                {
+                  "integration_id": "6a73ccbc-e9e0-5a11-aad4-c9ee79ec165f",
+                  "integration_type": "shopify"
+                }
+              ]
+            }
+          },
+          {
+            "evidence_id": "ev_ea0f5c4b11074ce09e5f6870a0eae698937a6d7bb92706ee35dcff86c573b0f1",
+            "tool_name": "get_service_status",
+            "observed_at": "2026-10-18T09:00:00Z",
+            "source_type": "integration_status",
+            "source_id": "6a73ccbc-e9e0-5a11-aad4-c9ee79ec165f",
+            "source_version": null,
+            "excerpt": "{\"checked_at\":\"2026-10-18T09:00:00Z\",\"latest_success_at\":\"2026-10-18T08:59:00Z\",\"status\":\"healthy\"}",
+            "facts": {
+              "status": "healthy",
+              "latest_success_at": "2026-10-18T08:59:00Z",
+              "checked_at": "2026-10-18T09:00:00Z"
+            }
+          }
+        ],
+        "replan_count": 0,
+        "usage": {
+          "llm_calls": 3,
+          "read_calls": 3,
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "unknown_usage_count": 0,
+          "active_ms": 1640,
+          "human_wait_ms": 0,
+          "verification_reads": 0,
+          "cached_input_tokens": 0,
+          "reserved_tokens": 0,
+          "known_spend_usd": 0,
+          "reserved_spend_usd": 0,
+          "cost_usd": 0,
+          "cost_status": "known",
+          "currency": "USD",
+          "price_versions": []
+        },
+        "error": null,
+        "report": {
+          "summary": "Read-only diagnosis complete; observations are available.",
+          "missing_checks": [],
+          "action_summary": "No ticket was created.",
+          "ticket_id": null,
+          "verification_status": "not_started",
+          "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+          "outcome": "diagnosis_only",
+          "facts": [
+            {
+              "statement": "Integration status: healthy",
+              "evidence_ids": [
+                "ev_ea0f5c4b11074ce09e5f6870a0eae698937a6d7bb92706ee35dcff86c573b0f1"
+              ]
+            }
+          ],
+          "hypotheses": [],
+          "effects": [],
+          "cancelled_actions": []
+        },
+        "action": null,
+        "latest_event_id": "WzEsIjhkNDVhZDY1LWY5Y2ItNDg1MC1hYzFiLTM4MGMxOWZlMjAxOSIsImU5OGJhMDczLTQ0MTQtNTczMS1iOGNlLTMyZDgxN2RmNjJmYiIsImJiYmJiYmJiLWJiYmItNGJiYi04YmJiLWJiYmJiYmJiYmJiYiIsIjM0OWI5ZjlmLWE2ODgtNGM0ZS04MGJhLTYwNjNhZDhlZWJiOSIsMTFd.ff4a15a13d04113b6279ff9b00b2120235b4328366b1c6e41b3851e3737e39b4"
+      },
+      "db": null,
+      "model_spend_usd": 0
+    }
+  ],
+  "provenance": {},
+  "paid_calls": 0,
+  "vendor_calls": 0,
+  "transport": "ASGI BFF HTTP + native MCP TCP; in-process durable worker",
+  "human_claim_review": "pending",
+  "holdout_unseen": false,
+  "summary": {
+    "planned_distinct": 50,
+    "planned_runs": 50,
+    "recorded_runs": 10,
+    "distinct_recorded": 10,
+    "first_pass_denominator": 10,
+    "first_pass_passed": 0,
+    "passed": 0,
+    "setup_errors": 0,
+    "complete_unique_schedule": false,
+    "scripted_gate": false,
+    "human_review": "pending",
+    "holdout_unseen": false,
+    "real_gate": "blocked",
+    "remote_ci": "not_run",
+    "release_gate": "NOT_MET",
+    "actual_model_spend_usd": 0,
+    "blockers": [
+      "Real 90-run authorization absent; paid calls forbidden",
+      "Human claim/hypothesis review pending",
+      "Remote CI not executed",
+      "F20 dispatch/one-attempt/reconciliation incomplete; real Jira deferred",
+      "F21 manager HIGH CVE-2026-78661 remains unresolved"
+    ]
+  }
+}

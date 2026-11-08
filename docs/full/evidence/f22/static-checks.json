@@ -1,0 +1,96 @@
+{
+  "checks": [
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src/opspilot/evals/full.py",
+        "tests/f22_lab.py",
+        "tests/unit/test_full_eval.py",
+        "scripts/setup-full-f22-manager.py",
+        "scripts/scan-full-f22-secrets.py",
+        "scripts/record-full-f22.py"
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src/opspilot/evals/full.py",
+        "tests/f22_lab.py",
+        "tests/unit/test_full_eval.py",
+        "scripts/setup-full-f22-manager.py",
+        "scripts/scan-full-f22-secrets.py",
+        "scripts/record-full-f22.py"
+      ],
+      "exit_code": 0,
+      "output": "6 files already formatted\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "mypy",
+        "src/opspilot/evals/full.py",
+        "--follow-imports=silent"
+      ],
+      "exit_code": 0,
+      "output": "Success: no issues found in 1 source file\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": ""
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src/opspilot/evals/full.py",
+        "tests/f22_lab.py",
+        "tests/unit/test_full_eval.py",
+        "scripts/setup-full-f22-manager.py",
+        "scripts/scan-full-f22-secrets.py",
+        "scripts/record-full-f22.py"
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src/opspilot/evals/full.py",
+        "tests/f22_lab.py",
+        "tests/unit/test_full_eval.py",
+        "scripts/setup-full-f22-manager.py",
+        "scripts/scan-full-f22-secrets.py",
+        "scripts/record-full-f22.py"
+      ],
+      "exit_code": 0,
+      "output": "6 files already formatted\n"
+    }
+  ],
+  "passed": true,
+  "shell_syntax": {
+    "bash_n": true,
+    "powershell_parse": true,
+    "remote_execution": false
+  }
+}

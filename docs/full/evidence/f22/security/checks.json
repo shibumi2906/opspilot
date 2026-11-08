@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-11-08T13:22:40.3466325Z",
+  "scanner": "aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
+  "python_audit_exit": 0,
+  "passed": false,
+  "images": [
+    {
+      "id": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88",
+      "image": "opspilot-full/app:f19",
+      "high_critical": 0,
+      "name": "app",
+      "archive_config_verified": true
+    },
+    {
+      "id": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+      "image": "opspilot-full/redis:f15",
+      "high_critical": 0,
+      "name": "redis",
+      "archive_config_verified": true
+    },
+    {
+      "id": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+      "image": "opspilot-full/postgres:f01",
+      "high_critical": 0,
+      "name": "postgres",
+      "archive_config_verified": true
+    },
+    {
+      "id": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+      "image": "opspilot-full/manager:f17",
+      "high_critical": 1,
+      "name": "manager",
+      "archive_config_verified": true
+    }
+  ],
+  "scope": "F22 runtime images and test Python dependencies; no web or IdP runtime was started by this lab. Existing archives verified against actual image config hashes; fresh advisory scan."
+}

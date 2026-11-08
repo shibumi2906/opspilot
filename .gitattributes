@@ -2,3 +2,5 @@ infra/identity/password-blacklists/common-passwords.txt text eol=lf
 infra/identity/*.java text eol=lf
 web/safe-nginx.sh text eol=lf
 infra/secrets-manager/* text eol=lf
+src/opspilot/evals/full-cases.json text eol=lf
+scripts/test-full-f22-ci.sh text eol=lf

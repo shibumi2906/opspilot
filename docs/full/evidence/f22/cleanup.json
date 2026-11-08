@@ -1,0 +1,37 @@
+{
+  "containers": [
+    {
+      "project": "opspilot-full-test-f22-r1",
+      "name": "/opspilot-full-test-f22-r1-mcp-1",
+      "running": false,
+      "image": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88"
+    },
+    {
+      "project": "opspilot-full-test-f22-r1",
+      "name": "/opspilot-full-test-f22-r1-collector-1",
+      "running": false,
+      "image": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88"
+    },
+    {
+      "project": "opspilot-full-test-f22-r1",
+      "name": "/opspilot-full-test-f22-r1-redis-1",
+      "running": false,
+      "image": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c"
+    },
+    {
+      "project": "opspilot-full-test-f22-r1",
+      "name": "/opspilot-full-test-f22-r1-postgres-1",
+      "running": false,
+      "image": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74"
+    },
+    {
+      "project": "opspilot-full-test-f22-r1-manager",
+      "name": "/opspilot-full-test-f22-r1-manager-manager-1",
+      "running": false,
+      "image": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61"
+    }
+  ],
+  "running": 0,
+  "images_networks_volumes_preserved": true,
+  "unrelated_projects_selected": false
+}

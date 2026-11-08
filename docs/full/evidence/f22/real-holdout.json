@@ -1,0 +1,20 @@
+{
+  "status": "blocked",
+  "planned_distinct": 50,
+  "dev_runs": 30,
+  "holdout_runs": 60,
+  "planned_runs": 90,
+  "recorded_runs": 0,
+  "setup_errors": 0,
+  "setup_attempted": false,
+  "model": null,
+  "prompt_sha256": "1566cbe45437bbbd7fa721d83a7f0a66f8fa1e15bb978ecb2324afce414cdf70",
+  "actual_spend_usd": 0,
+  "provider_calls": 0,
+  "unknown_usage_count": 0,
+  "holdout_unseen": false,
+  "exposure": "Public corpus inspected during implementation, no prompt tuning performed",
+  "reason": "Owner forbids paid calls; real execution not authorized",
+  "human_review": "pending",
+  "remote_ci": "not_run"
+}

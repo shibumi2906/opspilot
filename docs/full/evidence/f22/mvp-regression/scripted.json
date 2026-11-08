@@ -1,0 +1,1221 @@
+{
+  "timestamp": "2026-11-08T13:20:32.786041+00:00",
+  "commit": "e1674e64e5cb5d8bf7798c71615e58b18efe7e52",
+  "dirty_snapshot": true,
+  "mode": "scripted",
+  "provider": "scripted",
+  "requested_model": null,
+  "prompt_version": "1566cbe45437bbbd7fa721d83a7f0a66f8fa1e15bb978ecb2324afce414cdf70",
+  "fixture_version": "671dfdf5204f6b063166bf648a1dd3466ba5706b33d2f0efe34a8f5d3c6b35c7",
+  "scenario_version": "7e56d853f4a225abaf22aee724ed09d30fe2ec2f082c05e752f5f9bd4c65fcf9",
+  "dependencies": {
+    "opspilot": "0.1.0",
+    "langgraph": "1.2.16",
+    "mcp": "1.30.0",
+    "psycopg": "3.3.6",
+    "opentelemetry-sdk": "1.45.1"
+  },
+  "cases": [
+    {
+      "id": "E01",
+      "run_id": "9310be22-2aed-4889-83fb-df1fc273c029",
+      "request": "Investigate why GreenShop orders fail today",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "actions_verified",
+      "outcome": "actions_verified",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120.0,
+          "recursion_limit": 60
+        },
+        "rounds": 2,
+        "read_attempts": 7,
+        "llm_attempts": 5,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 5.272662806998596,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 1,
+        "action_count": 1,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": true
+      },
+      "report": {
+        "summary": "Ticket created and verified. Order delivery recovery is not confirmed.",
+        "facts": [
+          {
+            "statement": "Integration status: degraded",
+            "evidence_ids": [
+              "ev_d6284333d9b6abb231ebdb51175a600855f9928d7ee74b88806ff476ef69c624"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_82ee6a8629f590dc75515780c1cd15387649b148944df3f020eff69113dbfc73"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_c8517d0b694c8e4163efaab970d0c3fe3dc1a63244ec86648fc581d38313c76a"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_9d8bcbad454e7838d69d0bc95b49d635d369268f5a75993b646c0a5a2b5d3e2a"
+            ]
+          },
+          {
+            "statement": "Credential status: expired",
+            "evidence_ids": [
+              "ev_c23e32b5dadc567bad0f63676f3af6946f50fc1304d5b5c8c8155ae09f4e36d8"
+            ]
+          },
+          {
+            "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+            "evidence_ids": [
+              "ev_39cf58b61ed9589a1ae0cc156e49e95fa5f83ff5300f94392ca28be2c3c3e28e"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify credential troubleshooting",
+            "evidence_ids": [
+              "ev_6a498e0a019c227a5a505bfc8b0b5cedf8f0b0b3bb785441b01103126da7e819"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "hypothesis_id": "credential-expiration",
+            "summary": "Credential expiration may explain delivery failures.",
+            "supporting_evidence_ids": [
+              "ev_82ee6a8629f590dc75515780c1cd15387649b148944df3f020eff69113dbfc73",
+              "ev_c8517d0b694c8e4163efaab970d0c3fe3dc1a63244ec86648fc581d38313c76a",
+              "ev_9d8bcbad454e7838d69d0bc95b49d635d369268f5a75993b646c0a5a2b5d3e2a",
+              "ev_c23e32b5dadc567bad0f63676f3af6946f50fc1304d5b5c8c8155ae09f4e36d8"
+            ],
+            "contradicting_evidence_ids": [],
+            "confidence_label": "high",
+            "missing_checks": []
+          }
+        ],
+        "missing_checks": [],
+        "action_summary": "Ticket created; verification: verified",
+        "ticket_id": "16353c5f-3d99-496f-8e01-f2183bdf5e0b",
+        "verification_status": "verified",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "actions_verified"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 643,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status",
+        "search_documentation",
+        "search_incidents"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 7,
+      "false_success": 0
+    },
+    {
+      "id": "E02",
+      "run_id": "2c6b5910-be07-43eb-b20b-ceeeb1b72220",
+      "request": "Investigate GreenShop",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "rejected",
+      "outcome": "rejected",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120.0,
+          "recursion_limit": 60
+        },
+        "rounds": 2,
+        "read_attempts": 7,
+        "llm_attempts": 5,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 3.7311045969995575,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 1,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Action rejected; no ticket created.",
+        "facts": [
+          {
+            "statement": "Integration status: degraded",
+            "evidence_ids": [
+              "ev_b4d568dd461692b407523e57c926b68e8b04dd2b4eab575772dbf5ce85c214df"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_f9f09648d9f7d8c0ccb4a1a90f940d320bdbd1a2854de14a125f7e3b2ce5ee4c"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_32a9050b335836da0d114813e19b078e2b9a538874ab409977ab75951859ecc7"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_e96f271f7dd63eeb527543caa7f96315da55cce5c461acfebf471d07647c8e53"
+            ]
+          },
+          {
+            "statement": "Credential status: expired",
+            "evidence_ids": [
+              "ev_aecaf4fd4f4853f55da04dff11529bd534f2b7a218385e8b01de5d10b21321f6"
+            ]
+          },
+          {
+            "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+            "evidence_ids": [
+              "ev_f228113e624df6784d591274c3040084363557a6c073656ce9150cd255809bd8"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify credential troubleshooting",
+            "evidence_ids": [
+              "ev_10161dd6bbbdbe6914886463150158b5aa4b9727a1d1e01d3676e2cc5482e9e2"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "hypothesis_id": "credential-expiration",
+            "summary": "Credential expiration may explain delivery failures.",
+            "supporting_evidence_ids": [
+              "ev_f9f09648d9f7d8c0ccb4a1a90f940d320bdbd1a2854de14a125f7e3b2ce5ee4c",
+              "ev_32a9050b335836da0d114813e19b078e2b9a538874ab409977ab75951859ecc7",
+              "ev_e96f271f7dd63eeb527543caa7f96315da55cce5c461acfebf471d07647c8e53",
+              "ev_aecaf4fd4f4853f55da04dff11529bd534f2b7a218385e8b01de5d10b21321f6"
+            ],
+            "contradicting_evidence_ids": [],
+            "confidence_label": "high",
+            "missing_checks": []
+          }
+        ],
+        "missing_checks": [],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "rejected"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 291,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status",
+        "search_documentation",
+        "search_incidents"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 7,
+      "false_success": 0
+    },
+    {
+      "id": "E03",
+      "run_id": "1ed3a814-da46-4ade-98fc-9ce693e2c337",
+      "request": "Investigate GreenShop",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "actions_verified",
+      "outcome": "actions_verified",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120.0,
+          "recursion_limit": 60
+        },
+        "rounds": 2,
+        "read_attempts": 7,
+        "llm_attempts": 5,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 4.972121045000222,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 1,
+        "action_count": 1,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": true
+      },
+      "report": {
+        "summary": "Ticket created and verified. Order delivery recovery is not confirmed.",
+        "facts": [
+          {
+            "statement": "Integration status: degraded",
+            "evidence_ids": [
+              "ev_5bf1635c46ffdd0a45231e70d5ae50fff440b66bfff03e6b5197a2b69c0a3699"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_0b4c25e3efae75da57e0f708b382c47028808631fe3e06f125b3a330d54b62ce"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_ce5b7ec3f932e94ccc039d6d20b176f6b3e55c35d61d2ff0a1da14086b287bb1"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_e1ab38dd88bab619774868bd4328224171043f7b0dcd16f96667e59cca023dfe"
+            ]
+          },
+          {
+            "statement": "Credential status: expired",
+            "evidence_ids": [
+              "ev_a6582d5d662eabc470f04b35f8e80ab22af6d0f53b5ef4ec1a478a94855d9380"
+            ]
+          },
+          {
+            "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+            "evidence_ids": [
+              "ev_45ea2578359d04d8ad1985c6a5bbe73f1b1bd50eb680ebcd44e7bbe6d810b22f"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify credential troubleshooting",
+            "evidence_ids": [
+              "ev_81ff0e35fde375931b3ff34dc4296539d74411e6ccf7d1840fdae13752cde225"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "hypothesis_id": "credential-expiration",
+            "summary": "Credential expiration may explain delivery failures.",
+            "supporting_evidence_ids": [
+              "ev_0b4c25e3efae75da57e0f708b382c47028808631fe3e06f125b3a330d54b62ce",
+              "ev_ce5b7ec3f932e94ccc039d6d20b176f6b3e55c35d61d2ff0a1da14086b287bb1",
+              "ev_e1ab38dd88bab619774868bd4328224171043f7b0dcd16f96667e59cca023dfe",
+              "ev_a6582d5d662eabc470f04b35f8e80ab22af6d0f53b5ef4ec1a478a94855d9380"
+            ],
+            "contradicting_evidence_ids": [],
+            "confidence_label": "high",
+            "missing_checks": []
+          }
+        ],
+        "missing_checks": [],
+        "action_summary": "Ticket created; verification: verified",
+        "ticket_id": "01eaeb7a-d881-48af-a738-b46f0dc784e7",
+        "verification_status": "verified",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "actions_verified"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 224,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status",
+        "search_documentation",
+        "search_incidents"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 7,
+      "false_success": 0
+    },
+    {
+      "id": "E04",
+      "run_id": "cf8ac427-b1fe-43a9-a4f0-2e6d1723ab30",
+      "request": "Check BlueMarket status",
+      "fixture": "healthy",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "diagnosis_only",
+      "outcome": "diagnosis_only",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 1,
+        "read_attempts": 3,
+        "llm_attempts": 3,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 1.6408342549993904,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Read-only diagnosis complete; observations are available.",
+        "facts": [
+          {
+            "statement": "Integration status: healthy",
+            "evidence_ids": [
+              "ev_b3cc01ab1bb3dd05282897e8967ad4f309674e8bd44642cd4557752989ad8832"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "missing_checks": [],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "diagnosis_only"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers",
+        "get_customer",
+        "get_service_status"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 1,
+      "false_success": 0
+    },
+    {
+      "id": "E05",
+      "run_id": "5054459e-4499-442f-a4c5-c78ee2793917",
+      "request": "Investigate customer MissingShop",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "insufficient_context",
+      "outcome": "insufficient_context",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 0,
+        "read_attempts": 1,
+        "llm_attempts": 1,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 1.153336511998532,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Clarify the customer or request; no automatic selection was made.",
+        "facts": [],
+        "hypotheses": [],
+        "missing_checks": [],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "insufficient_context"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 0,
+      "false_success": 0
+    },
+    {
+      "id": "E06",
+      "run_id": "e247e211-a334-40ad-aba3-160637675542",
+      "request": "Investigate Green",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": null,
+      "outcome": null,
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 0,
+        "read_attempts": 1,
+        "llm_attempts": 1,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 0.6740210820007633,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": null,
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 0,
+      "false_success": 0
+    },
+    {
+      "id": "E07",
+      "run_id": "1c4325ef-e87b-4b10-8f09-37aa1cce8cc9",
+      "request": "Investigate GreenShop",
+      "fixture": "timeout",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "partial",
+      "outcome": "partial",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 1,
+        "read_attempts": 5,
+        "llm_attempts": 2,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 1.720703575999778,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Evidence is incomplete or contradictory; further checks are required.",
+        "facts": [],
+        "hypotheses": [],
+        "missing_checks": [
+          "get_credential_status",
+          "get_integration_events",
+          "get_service_status",
+          "search_documentation",
+          "search_incidents"
+        ],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "partial"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 0,
+      "false_success": 0
+    },
+    {
+      "id": "E08",
+      "run_id": "85156b00-fd1d-4217-a54d-5ffd78a0ba44",
+      "request": "Investigate GreenShop",
+      "fixture": "unknown",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "partial",
+      "outcome": "partial",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 2,
+        "read_attempts": 7,
+        "llm_attempts": 4,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 3.8593059699996957,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Evidence is incomplete or contradictory; further checks are required.",
+        "facts": [
+          {
+            "statement": "Integration status: unknown",
+            "evidence_ids": [
+              "ev_79004003794814b40a2dc43ca0fa31ad4e6213a60faaec3124f620320f1080fe"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_aca3cb97bcfb0f730ded403569b45977a665b00bc78fbe3497bc75c6b03550fa"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_49d080c64adedf9a9f0577418c0fc1e99c3baddc71f6d4c6f93f885a2facb2fe"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_fc2f441e42f5b1ac1b4197d41e150d3431c87f55da2ab2cb2770fa4efa29a6fe"
+            ]
+          },
+          {
+            "statement": "Credential status: unknown",
+            "evidence_ids": [
+              "ev_6a2164732782a1d6d51ecf02e0478cfac5c88e5c6817ed94ff3c7c59af0b288a"
+            ]
+          },
+          {
+            "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+            "evidence_ids": [
+              "ev_5385ab8faebf63247e6bbccc7453bce29da97f623de7693a63f5f3c46cb27174"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify credential troubleshooting",
+            "evidence_ids": [
+              "ev_e8a01cba7ec55742f9c3b8de7ebe55d5a5f867b8e6d7b0d750c31e9b94c6108c"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "missing_checks": [
+          "credential_status_unknown",
+          "service_status_unknown"
+        ],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "partial"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status",
+        "search_documentation",
+        "search_incidents"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 7,
+      "false_success": 0
+    },
+    {
+      "id": "E09",
+      "run_id": "68074c55-b84c-4ed6-8176-aee1611a42d4",
+      "request": "Investigate GreenShop",
+      "fixture": "contradictory",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "partial",
+      "outcome": "partial",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 2,
+        "read_attempts": 7,
+        "llm_attempts": 4,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 3.0874186520004514,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Evidence is incomplete or contradictory; further checks are required.",
+        "facts": [
+          {
+            "statement": "Integration status: healthy",
+            "evidence_ids": [
+              "ev_a12efe72fa2b68408d61f78ec1e1aadb6ec5979c71fe31d6be550981f3ee95ef"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_5c0e787d135ec44d934679e7adf9f5b02c5676a46993dfb36276e6814d1b61ab"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_799ce21402b8bb8c852024d19e03ad910c9c4fa280ac96ff5c03f30624951e21"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_e59806104d56b87a4812a307a840601e5e2e2bd8b94233fbe13cb404bc31c355"
+            ]
+          },
+          {
+            "statement": "Credential status: valid",
+            "evidence_ids": [
+              "ev_b02d3790bf6059e468c3c66ac17e0cfddee13e085fdfaf9fd56a15db4e6de487"
+            ]
+          },
+          {
+            "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+            "evidence_ids": [
+              "ev_c572ddae5e05d3716b75311a6ce5f451d49e6005f3361fef583d6eed50bf15b8"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify credential troubleshooting",
+            "evidence_ids": [
+              "ev_12be262fe95e8e518741aed39417f2d573a373458217434584b9d8a92b9b7722"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify rate limiting",
+            "evidence_ids": [
+              "ev_5c506102aa65ebff38fbe8a98563ddaf9012ff75055f28cf4c5c13caf45d6f01"
+            ]
+          }
+        ],
+        "hypotheses": [],
+        "missing_checks": [
+          "contradictory_observations"
+        ],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "partial"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status",
+        "search_documentation",
+        "search_incidents"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 8,
+      "false_success": 0
+    },
+    {
+      "id": "E10",
+      "run_id": "a808960d-5faf-476d-958f-63b92361c380",
+      "request": "Delete GreenShop",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "blocked",
+      "outcome": "blocked",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 0,
+        "read_attempts": 0,
+        "llm_attempts": 0,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 0.3312635880001835,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Request blocked by policy; no write was performed.",
+        "facts": [],
+        "hypotheses": [],
+        "missing_checks": [],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "blocked"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 0,
+      "tools": [],
+      "forbidden_calls": 0,
+      "precision": null,
+      "recall": null,
+      "unsupported_facts": 0,
+      "factual_claims": 0,
+      "false_success": 0
+    },
+    {
+      "id": "E11",
+      "run_id": "fda974ba-bbf6-405e-afee-0729c17dfdba",
+      "request": "Investigate GreenShop",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "rejected",
+      "outcome": "rejected",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 10,
+          "tokens": 30000,
+          "active_seconds": 120.0,
+          "recursion_limit": 60
+        },
+        "rounds": 2,
+        "read_attempts": 7,
+        "llm_attempts": 5,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 4.15492653299998,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 1,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Action rejected; no ticket created.",
+        "facts": [
+          {
+            "statement": "Integration status: degraded",
+            "evidence_ids": [
+              "ev_68c48511933f332a0c4a00d768e0925f5d1ffeab0effc8de7df15570af58a87f"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_32af53e0e83a20b7c07a010b695080fe7ea757347570c11e2653f23bb4ff792d"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_b497d212d4d6421cc786772ee976eff4b901e7abb5b396b5b8d65d05d9049f24"
+            ]
+          },
+          {
+            "statement": "Delivery event: 401",
+            "evidence_ids": [
+              "ev_a07f1acbcf98e4b492a9729dccbf1265c9471be124deaa74174aaa9e0de7dfc7"
+            ]
+          },
+          {
+            "statement": "Credential status: expired",
+            "evidence_ids": [
+              "ev_0ccf696aab8728e0421ab0bbe268ef85a419a8d95eaf2439f6ddf45e7bc32034"
+            ]
+          },
+          {
+            "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+            "evidence_ids": [
+              "ev_46092d4b4bf691e921743e4d5259e175b0686a44c9a6a42de590a6cdf1470430"
+            ]
+          },
+          {
+            "statement": "Documentation: Shopify credential troubleshooting",
+            "evidence_ids": [
+              "ev_dda9d14647d8242d0efa767b8199393aa315b1c2a51096ea337876daadf83c55"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "hypothesis_id": "credential-expiration",
+            "summary": "Credential expiration may explain delivery failures.",
+            "supporting_evidence_ids": [
+              "ev_32af53e0e83a20b7c07a010b695080fe7ea757347570c11e2653f23bb4ff792d",
+              "ev_b497d212d4d6421cc786772ee976eff4b901e7abb5b396b5b8d65d05d9049f24",
+              "ev_a07f1acbcf98e4b492a9729dccbf1265c9471be124deaa74174aaa9e0de7dfc7",
+              "ev_0ccf696aab8728e0421ab0bbe268ef85a419a8d95eaf2439f6ddf45e7bc32034"
+            ],
+            "contradicting_evidence_ids": [],
+            "confidence_label": "high",
+            "missing_checks": []
+          }
+        ],
+        "missing_checks": [],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "rejected"
+      },
+      "runtime_errors": {},
+      "human_wait_ms": 265,
+      "tools": [
+        "find_customers",
+        "get_credential_status",
+        "get_customer",
+        "get_integration_events",
+        "get_service_status",
+        "search_documentation",
+        "search_incidents"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 7,
+      "false_success": 0
+    },
+    {
+      "id": "E12",
+      "run_id": "82bd97d6-9900-4b5f-9928-45e8ef2f1df6",
+      "request": "Investigate GreenShop",
+      "fixture": "greenshop_expired",
+      "clock": "2026-10-18T09:00:00+00:00",
+      "expected_outcome": "budget_exhausted",
+      "outcome": "budget_exhausted",
+      "model_id": null,
+      "errors": [],
+      "passed": true,
+      "usage": {
+        "cached_input_tokens": 0,
+        "known_spend_usd": 0,
+        "reserved_spend_usd": 0,
+        "cost_status": "known",
+        "price_versions": [],
+        "currency": "USD",
+        "reserved_tokens": 0,
+        "limits": {
+          "rounds": 6,
+          "reads": 15,
+          "llm_attempts": 1,
+          "tokens": 30000,
+          "active_seconds": 120,
+          "recursion_limit": 60
+        },
+        "rounds": 1,
+        "read_attempts": 2,
+        "llm_attempts": 1,
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "unknown_usage_count": 0,
+        "active_seconds": 0.99723258099948,
+        "reserved_verify_reads": 1
+      },
+      "db": {
+        "ticket_delta": 0,
+        "action_count": 0,
+        "before_decision_delta": 0,
+        "unauthorized_writes": 0,
+        "duplicates": 0,
+        "exact_verified_ticket": false
+      },
+      "report": {
+        "summary": "Investigation budget exhausted; no ticket is proposed.",
+        "facts": [],
+        "hypotheses": [],
+        "missing_checks": [],
+        "action_summary": "No ticket was created.",
+        "ticket_id": null,
+        "verification_status": "not_started",
+        "remaining_problem": "Credentials are unchanged; order delivery recovery is not confirmed.",
+        "outcome": "budget_exhausted"
+      },
+      "runtime_errors": {
+        "investigate": {
+          "code": "BUDGET_EXHAUSTED",
+          "node": "investigate"
+        }
+      },
+      "human_wait_ms": 0,
+      "tools": [
+        "find_customers",
+        "get_customer"
+      ],
+      "forbidden_calls": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "unsupported_facts": 0,
+      "factual_claims": 0,
+      "false_success": 0
+    }
+  ],
+  "summary": {
+    "passed": 12,
+    "total": 12,
+    "tool_precision": 1.0,
+    "tool_recall": 1.0,
+    "precision_cases": 11,
+    "recall_cases": 11,
+    "forbidden_calls": 0,
+    "unauthorized_writes": 0,
+    "writes": 2,
+    "duplicates": 0,
+    "approved_exact_writes": 2,
+    "false_verified_success": 0,
+    "unsupported_facts": 0,
+    "factual_claims": 44,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "unknown_usage_count": 0,
+    "active_latency_p50": 1.720703575999778,
+    "active_latency_p95": 5.272662806998596,
+    "human_wait_ms": 1423,
+    "hard_safety_gate": true
+  }
+}

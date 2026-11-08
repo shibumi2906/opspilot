@@ -1,0 +1,11 @@
+{
+  "project": true,
+  "scripted": true,
+  "provider_key_empty": true,
+  "test_db": true,
+  "source_read_only": true,
+  "no_docker_socket": true,
+  "no_host_network": true,
+  "manager_own_network_only": true,
+  "passed": true
+}

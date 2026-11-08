@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 8 ноября 2026 года. **F01–F19 завершены; F20 blocked, реальные Jira проверки отложены владельцем; F21 local resilience измерен, overall blocked на F20 и manager security finding; F22–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 8 ноября 2026 года. **F01–F19 завершены; F20 blocked, реальные Jira проверки отложены владельцем; F21 local resilience измерен, overall blocked на F20 и manager security finding; F22 local scripted выполнен, overall blocked; F23–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**F19 завершён. F20 остаётся blocked; владелец отложил реальные Jira checks. По отдельному явному запросу проведены F21 local fault/concurrency/load/soak; общий статус blocked, см. evidence и security finding. F22–F24 не начинать автоматически. Full Pilot/ASVS L2 NOT_MET.**
+**F19 завершён. F20 остаётся blocked; владелец отложил реальные Jira checks. По отдельному явному запросу проведены F21 local fault/concurrency/load/soak; общий статус blocked, см. evidence и security finding. F22 отдельно разрешён владельцем; local scripted принят, общий статус blocked. F23–F24 не начинать автоматически. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -79,7 +79,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F19 | done | Scoped Prometheus reads: local contracts plus actual owned AWS staging health, MCP/OIDC UI; temporary resources removed | [local evidence](full/evidence/f19/README.md); [AWS evidence](full/evidence/f19-aws/README.md); local base `c984d6a`; stage commit subject below | [SEC-09](security/asvs-l2-implementation-plan.md) |
 | F20 | blocked | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
 | F21 | blocked | Local load/soak/recovery measured; F20 boundaries and manager HIGH remain | [evidence](full/evidence/f21/README.md); commit subject below | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
-| F22 | not_started | 50 evals и отдельный real/holdout report | — | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
+| F22 | blocked | 50/50 local scripted + 12/12 MVP; real/human/CI/security/dependencies NOT_MET | [evidence](full/evidence/f22/README.md) | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
 | F23 | not_started | Pilot deployment/TLS/backup/restore | — | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
 | F24 | not_started | Full Pilot release и traceability | — | [SEC-01/10/11/12](security/asvs-l2-implementation-plan.md) |
 
@@ -1009,3 +1009,40 @@ Full L2/Pilot NOT_MET; F22 не начат. MVP184 files/env/head/images/volume 
 Все F21 контейнеры остановлены; images/networks/volumes сохранены, чужие проекты не выбирались.
 Paid/vendor calls/remote CI/push0. Отдельный локальный commit subject:
 `feat(full-f21): measure bounded load recovery and repair admission bottlenecks`.
+
+## F22 — 50 scripted evals и release gates, 8 ноября 2026
+
+Base `e1674e6`; Ops / `codex/opspilot-full`. Владелец отдельно разрешил F22,
+несмотря на blockers F20/F21. [Evidence](full/evidence/f22/README.md),
+[checks](full/evidence/f22/checks.json), [контракты](full/f22-eval-contracts.md).
+Общий статус **blocked**, не done; F20/F21 не закрыты, F23/F24 не начаты.
+
+Зафиксирован отдельный Full corpus50:10 lookup/status,12 investigations,8 approval,
+8 policy/injection/access,6 infrastructure,6 ambiguity. Split30dev/20holdout и SHA256
+записаны до выполнения; prompt tuning0. Holdout публичный/просмотренный, **не unseen**.
+Final scripted50/50, DB/metrics denominator50,210 factual claims,7 exact approved ticket
+writes;0unsupported/false-verified/forbidden/unauthorized/duplicate/pre-decision writes.
+Исходные12 MVP cases и runner/assertions/schema/report сохранены, regression12/12 отдельно.
+Mixed-plan dependencies/outcomes/cancellation10/10 отдельно, eval safety/accounting/real-denial
+guards5/5. Failed partial/diagnostic attempts сохранены; первоначальный harness не имел
+persisted actor при чтении checkpoint, исправлен существующим execution_scope без обхода RLS.
+
+ASGI BFF middleware/roles/CSRF, fixture sessions, два tenant, native TCP MCP,
+реальные PostgreSQL roles/RLS/Redis/manager, in-process durable worker claim/finish.
+50cases используют single-ticket v1; v2 effects подтверждены отдельной regression.
+Не заявляются новый process-isolation/IdP login/live connector quality или F20 Jira boundaries.
+Snapshots, source labels, selected/verification reads, per-action/jobs/DB predicates,
+usage/spend и source/harness/fixture/prompt/dependency/lock provenance сохранены.
+
+Real report:0/90 (30dev+20holdout×3), paid calls запрещены; человеческая ревизия
+claims/hypotheses pending. Отдельный ручной CI workflow подготовлен, remote CI не запускался.
+SEC-01/10/11:253 полных ASVS backlog rows неизменны, Ruff/format/scoped mypy/config passed,
+secret scan0matches, Python audit0, app/PostgreSQL/Redis0HIGH/CRITICAL. Manager сохраняет
+HIGH CVE-2026-78661/x/net0.61.0, fix0.62.0; gate NOT_MET без exception.
+
+Изолированный r1/subnet34/schema0021 и собственный manager остановлены; volumes/images/networks
+сохранены. Main Full остаётся F18/schema0019 без restart/build/migration/seed. MVP184 файлов,
+env/head/images/volume metadata/content проверены после работы и сохранены. Jira/vendor/paid
+calls, remote CI, push0. F20 dispatch/one-attempt/reconciliation и реальные Jira gates остаются
+не закрыты; F21 functional passed, overall blocked. Full Pilot/whole L2 **NOT_MET**.
+Отдельный локальный commit subject: `feat(full-f22): add frozen Full eval corpus and honest release gates`.

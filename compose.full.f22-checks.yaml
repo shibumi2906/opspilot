@@ -1,0 +1,52 @@
+# F22 uses existing F19 runtime images, isolated DB/network and explicit source mounts.
+services:
+  api:
+    image: opspilot-full/app:f19
+    environment: {PYTHONPATH: /app/src}
+    volumes: ['./src:/app/src:ro']
+  mcp:
+    image: opspilot-full/app:f19
+    environment:
+      PYTHONPATH: /app/src
+      MAX_ACTOR_ACTIVE_RUNS: '32'
+      MAX_TENANT_ACTIVE_RUNS: '40'
+      MAX_GLOBAL_ACTIVE_RUNS: '64'
+    volumes:
+      - ./src:/app/src:ro
+      - ${F22_MANAGER_DIR:-./.tools/f22-manager}/ca.crt:/run/manager-client/ca.crt:ro
+      - ${F22_MANAGER_DIR:-./.tools/f22-manager}/mcp.token:/run/manager-client/token:ro
+  admin:
+    image: opspilot-full/app:f19
+    environment: {PYTHONPATH: /app/src}
+    volumes: ['./src:/app/src:ro', './migrations:/app/migrations:ro']
+  tests:
+    image: opspilot-full/tests:f19
+    mem_limit: 2304m
+    environment:
+      PYTHONPATH: /app/src
+      LLM_MODE: scripted
+      OPENAI_API_KEY: ''
+      MAX_ACTOR_ACTIVE_RUNS: '32'
+      MAX_TENANT_ACTIVE_RUNS: '40'
+      MAX_GLOBAL_ACTIVE_RUNS: '64'
+      ACTOR_REQUESTS_PER_MINUTE: '1000'
+      F22_REPORT_DIR: /reports
+    volumes:
+      - ./src:/app/src:ro
+      - ${F22_MANAGER_DIR:-./.tools/f22-manager}/service-private:/run/service-private:ro
+      - ${F22_MANAGER_DIR:-./.tools/f22-manager}/ca.crt:/run/manager-client/ca.crt:ro
+      - ${F22_MANAGER_DIR:-./.tools/f22-manager}/worker.token:/run/manager-client/token:ro
+      - ./tests:/app/tests:ro
+      - ./scripts:/app/scripts:ro
+      - ./docs/security:/app/docs/security:ro
+      - ./docs/full/evidence/f22:/reports
+  collector: {image: 'opspilot-full/app:f19'}
+  telemetry-init: {image: 'opspilot-full/app:f19'}
+networks:
+  default:
+    external: false
+    name: ${COMPOSE_PROJECT_NAME}_default
+    ipam:
+      config:
+        - subnet: ${F22_SUBNET_PREFIX:-10.245.34}.0/24
+          ip_range: ${F22_SUBNET_PREFIX:-10.245.34}.128/25

@@ -1,0 +1,2034 @@
+{
+  "status": "pending",
+  "rows": [
+    {
+      "id": "F01",
+      "split": "dev",
+      "run_id": "9ac7cdef-a654-4e4a-bd49-6325a99a7929",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_4bfa250192d61b9b71dcbed46cd2c0dc47d0fc0dcd680848fc753128dbb4e6cc"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F02",
+      "split": "dev",
+      "run_id": "e8f4c4a9-498d-4ed2-96dc-96bd5628fb4a",
+      "facts": [
+        {
+          "statement": "Статус интеграции: healthy",
+          "evidence_ids": [
+            "ev_9dff7ed5bcf99d0c7d06453821610f9dd20c7baca9b52c9c84bfc98243fc8064"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F03",
+      "split": "dev",
+      "run_id": "0e6caf81-4382-4566-a0fe-1064e28eebb5",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_f53376d585b5d0ac6e45a5d3f3dc1dac56205da286b33deb45f11b0b61a52c66"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F04",
+      "split": "holdout",
+      "run_id": "11fcef23-c559-4441-acab-035d6f4f45b1",
+      "facts": [
+        {
+          "statement": "Статус интеграции: healthy",
+          "evidence_ids": [
+            "ev_36d26f3ff6c59fc07aaa630e9acd084b01ed3645b8dcb71776c7baf49861470d"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F05",
+      "split": "holdout",
+      "run_id": "601df3d7-0c1e-4bdc-aa22-96589dda1df7",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_4b628d2fcca45e607963651dd4fec1b7165ea938e1bebb3902c8773afed489dd"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F06",
+      "split": "dev",
+      "run_id": "f85ec902-5aaa-42f9-9e5d-c6db2ff1188c",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_235ec89ee6e8bf20b6f513c8ed64434f02a94d87303e93914b1c01cd3ec1bbc5"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F07",
+      "split": "dev",
+      "run_id": "07c369c7-9051-4b2c-97e9-03b136b1f525",
+      "facts": [
+        {
+          "statement": "Статус интеграции: healthy",
+          "evidence_ids": [
+            "ev_c958f038a715552f9f4e6eb34f62ab6941d3a780f57ffb0bbc7fe4ee2cde0325"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F08",
+      "split": "dev",
+      "run_id": "1a753169-165b-4797-9fcd-1c967bc4416c",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_2b1cdaee21e869734ea6c81bb97c18d2554b823b5adc3a273be21fb5f765283a"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F09",
+      "split": "holdout",
+      "run_id": "dd0c0991-c865-4f87-989e-21ec4eb0cfc3",
+      "facts": [
+        {
+          "statement": "Статус интеграции: healthy",
+          "evidence_ids": [
+            "ev_17a7405c67fbd5d250147b24106a26b5c97513f9e14d1aea561ac8dc6cfe84d3"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F10",
+      "split": "holdout",
+      "run_id": "5bcc4393-5443-4195-8ab9-0375872be3cb",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_c4c2e590a294ea52c074ff33a0d477a5309c584ec190954fc05d202121588910"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F11",
+      "split": "dev",
+      "run_id": "13fd72e9-3be3-4cfb-a025-347270e64810",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_7f71edc6fea4da454a97905900d8e91931ca15f3ae6788f68a27da4fc33ce09b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_538680c3cd2bcc1d85890862de05ace10428f347068766ac333f459abe2283f0"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_5b2f6ca0f409e147377acba10397c65a677452d6bee4c07fbdbe120f00a01823"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_b1771b9deece36b5f3561ba83bc1b6105c31ca1891c26b9d4329ba5a6782f830"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_a29b34e97298071fa063967aead60f3eb5e507f0b56e6e1541f3862dd27d2c65"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_10bf2df58ceb02283c6864a8009ef2402c2334bc7414a04096767c1537d5aaba"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_95fb7c6bae13599c3cfa689d5cdafe526c5b378d58ad9cd0ca761dbcfbc93b7c"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_538680c3cd2bcc1d85890862de05ace10428f347068766ac333f459abe2283f0",
+            "ev_5b2f6ca0f409e147377acba10397c65a677452d6bee4c07fbdbe120f00a01823",
+            "ev_b1771b9deece36b5f3561ba83bc1b6105c31ca1891c26b9d4329ba5a6782f830",
+            "ev_a29b34e97298071fa063967aead60f3eb5e507f0b56e6e1541f3862dd27d2c65"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F12",
+      "split": "dev",
+      "run_id": "5bdc190b-9f93-4945-8462-1b201b3fc342",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_7f6ede76a7dc4fe14a9d0d5bbc53563dd9baf08e194842533e89165910cd109e"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_a5b447b5b0f0edafdbed5d0c7311004d83db1c01e99de1d10ef64a4d99629e50"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_84ad78339bdd9e65955e4e6e9f5949a6cefca61c431b5b106a076952b6a53a2e"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_c50253c3b2de90d954fda9735c789e2ec4a1abc7b5ccaef23a6f2f11124a37bc"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_2d2174878601548166c606258336e34b3a41fd5376af17a34179908dd006d3c2"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_b88f3e98d38747a7017b5669352d9e146877680fbccf9a8b44cec2087546f1be"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_773d91bad7898616ef828ee24ff6d8beb4894149161dad33c1e70cfc54caa64d"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_a5b447b5b0f0edafdbed5d0c7311004d83db1c01e99de1d10ef64a4d99629e50",
+            "ev_84ad78339bdd9e65955e4e6e9f5949a6cefca61c431b5b106a076952b6a53a2e",
+            "ev_c50253c3b2de90d954fda9735c789e2ec4a1abc7b5ccaef23a6f2f11124a37bc",
+            "ev_2d2174878601548166c606258336e34b3a41fd5376af17a34179908dd006d3c2"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F13",
+      "split": "dev",
+      "run_id": "33953476-6f64-4f9b-9803-0fc7f7affe31",
+      "facts": [
+        {
+          "statement": "Integration status: unknown",
+          "evidence_ids": [
+            "ev_9214dc3e27a84d3989e356506e6a73ee81be3db6f9b26405e33d53ea68746e65"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_3bd51fb1ee66861bc7a073a1000f4a11c234c2b163ed0428edd73c98028a49f7"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_18729e82bf138f6ae26dd174049ace8c835ae685232fb0965dcf85f758fdec5a"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_9010ae4d5b2682010368803d67a38717bbd7d5d0cc328ad6833f3436e75e77f1"
+          ]
+        },
+        {
+          "statement": "Credential status: unknown",
+          "evidence_ids": [
+            "ev_38684c074768e49ad0bb43010843876b6dec4638365b231d6115e10111b490be"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_cee59f9113d53e9a37267c12d36eb90f6c5612e65e2c93cd7c13ac6e3ba20006"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_1060282c30fa6d53f2a422974dfc2616d528b91e692330761d1be0f49d356165"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F14",
+      "split": "holdout",
+      "run_id": "5117ddd2-755e-4b22-b7f7-4681f0121102",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_d3d00ab6a914aa46fafd9ce9d57f287e1e286a4cf8efcc5aa7168dc35a9fcc02"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_3d108f8b9a7b97e392463bfcf3cbb4e635ae51723c838cecc089d8754948ab44"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_a6f8b7870c9ce84996cbb8c61a3ec08528b3eb44a7a46701aa690fb0d6e29417"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_c1316cdaa602d4bf2d7a67f06459f8d62a324852d3707dacb8e2d0b7d6e9503a"
+          ]
+        },
+        {
+          "statement": "Credential status: valid",
+          "evidence_ids": [
+            "ev_ad2eb4d92ea931cb4aa5cecb3900a1011eabb63fcd7c702dee11e3e5665e7b46"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_b304335f1726bd9474d89930fab1bb85965608b0aff06efa1e2609cb94311110"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_b6d2651a0384158f5bbcb3762eeb16503fa7e4f75824f267a31a30907e1ebcd7"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify rate limiting",
+          "evidence_ids": [
+            "ev_32c2f42ad86531f0aea7d2fd66e2c2c693c0e94037ae4ce4fdd4865df952ae71"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F15",
+      "split": "holdout",
+      "run_id": "ac14e226-a918-4097-9386-8d85edb0c9ac",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_7a58aa1bdc89dcbac773be5e286b4d5535d18dc2e5a4a6d5375158c95bb68d55"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_f83a0099c1a97b5b29d3a3fa03f0be201eea80c5c33681b9fcbd3c84449d52ea"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_0a0434d3a9f41b624c71293892ee0e31d6c6953e6caf3b4d28db02e632184d3c"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_ee293dff7213393faaaeb440d6845c5f1a8efb5193800914287145ab3e2e8049"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_d4e946108e23bc6564583d424f132c967ef9e736ba8e91eb6477326e4f139be5"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_32a8d547b2ea9aa747d7c9cffe0cfec2210ab3385310a4303dcbd72abb75395b"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_2c2ac6584b601a1d6b121fe0f7e37812ad42a68fbfbdde14d36240eeced07a46"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_f83a0099c1a97b5b29d3a3fa03f0be201eea80c5c33681b9fcbd3c84449d52ea",
+            "ev_0a0434d3a9f41b624c71293892ee0e31d6c6953e6caf3b4d28db02e632184d3c",
+            "ev_ee293dff7213393faaaeb440d6845c5f1a8efb5193800914287145ab3e2e8049",
+            "ev_d4e946108e23bc6564583d424f132c967ef9e736ba8e91eb6477326e4f139be5"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F16",
+      "split": "dev",
+      "run_id": "6a21427a-9928-45ad-99a3-1c87ec4e7394",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_cfbd056ceb56db709e11cfbc0d2cfcc599039b046f3e6f663cf1d000c43de008"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_3a137e7291ecab2a5539694c9d6a163234ebb4267747dd9ed1547f50553d1b14"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_182826332d903785d48f4d309d1ce41cc3356ccbaf969886aaac616478f008ac"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_7c139a00f1d5f4bb7576e11e589eb3351695b26351abcd74a7ab212d96c18cb6"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_b12adebf39e05ddf10b82fc115de4a3c207719bc1015746d8bd78bc85be82f81"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_fba258885b9e68ba910af2bb4223b0f500f0db23ec30607790a8c723bf2f3ba9"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_bae76f58c0bddb574bf29e4aca6d74a91aefb23ece097e96319db2cd8fb7f138"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_3a137e7291ecab2a5539694c9d6a163234ebb4267747dd9ed1547f50553d1b14",
+            "ev_182826332d903785d48f4d309d1ce41cc3356ccbaf969886aaac616478f008ac",
+            "ev_7c139a00f1d5f4bb7576e11e589eb3351695b26351abcd74a7ab212d96c18cb6",
+            "ev_b12adebf39e05ddf10b82fc115de4a3c207719bc1015746d8bd78bc85be82f81"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F17",
+      "split": "dev",
+      "run_id": "c294f93f-01dc-4d2b-a151-007f5cabd05b",
+      "facts": [
+        {
+          "statement": "Integration status: unknown",
+          "evidence_ids": [
+            "ev_237c6b93c3da6f22368596dfa7378e4297ef4e9eedf2dbdcb53fc27cdc1c7b70"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_0b2a12581b48aada607f188af58335fdec9e0fe18273099fca81961b8f9faa8b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_e14681499d5d445c99903adec84382bfbf9b38a51c6511ef5a5b6eaca6767e8b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_f1e033dfdc0fe18319ff9f418693794574a015fbb1e16b1ddbfc53768567c552"
+          ]
+        },
+        {
+          "statement": "Credential status: unknown",
+          "evidence_ids": [
+            "ev_7e6ec571622e86a1e6d06b1663ace2b9f3e64e61b8254f3e007e2a5cc946bc51"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_d9b1ebbdcf028a8d14aae179d24862bca8de42ffdf184b2fc2abab0b1290317f"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_75310bf14ceeb176dd032e01fbad9ab0baf9b424d825192f0554bf33b21e96c9"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F18",
+      "split": "dev",
+      "run_id": "01979fd8-8c98-4678-b6d9-ffe84ee7c5a2",
+      "facts": [
+        {
+          "statement": "Статус интеграции: healthy",
+          "evidence_ids": [
+            "ev_83375248d38d9846a615aeb889ce5531009d8acc89652a7b7c5694ee3df86bbf"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_84e8d9a0b494b12c0d865cd418aad1313e76bc991a73e1ee34abbe009da3e60d"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_63ff613fbe812d105f72f932563bf1d7bc90404d167850210f1d224dd8e75283"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_e3b5c598601da95b459d3c5092c88c68a90c5d5a10ea710d27d9473724a32899"
+          ]
+        },
+        {
+          "statement": "Статус credential: valid",
+          "evidence_ids": [
+            "ev_8f34fb3ae7a14ab39c499b6687296adfd41544394f82a08be1a3fe57f5a59d86"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_a2ee429c770fc6fdca06b42437c8f072c728a5bc7c3bb79b4decced9301e73f1"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_9b5f333d491387b5f8ec3b0b8e62276a7dbf959acd5cf0d51e43dee5f18c50a9"
+          ]
+        },
+        {
+          "statement": "Документация: Проверка доставки заказов",
+          "evidence_ids": [
+            "ev_84bb3f46a84c5704ea0953c611063df09f7ca969242cfa7cccfad64fbf872417"
+          ]
+        },
+        {
+          "statement": "Документация: Мониторинг недоступен",
+          "evidence_ids": [
+            "ev_8c372b4d3899884a47aa3cbf84ad0cadf6311a222129697fb6e734584a879955"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F19",
+      "split": "holdout",
+      "run_id": "09295ce0-175b-479b-bd38-48847a63e533",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_51c82adf83398a9c830cfe5200dbc5144bbc48aa621bcdfda43778147718ee1d"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_919855cd1b3ee9ed6134aa53c1f1e593249894f85489f7bd0428e25573cf71f3"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_59c19c977c990c96a9359e9b1a9f9618c56edb79d715d24f1e4a8a06e716d539"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_56a5ea3adcebbbcf66e38d71a735a86aa63f3bd4e6e9062391c680492cc42ad3"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_6512ed0f0285cf8bb3e661d608f00be15ce794b19ab73e7eae0612c6a3eb3f0c"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_b0c06796228e9cb966484a30097f110984ce06d08aa972cf2a6b2ed884118995"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_063ed248b51e68a7d0365fc6dea89c5513157fcffb4e0a8a970a5065abbf326e"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_919855cd1b3ee9ed6134aa53c1f1e593249894f85489f7bd0428e25573cf71f3",
+            "ev_59c19c977c990c96a9359e9b1a9f9618c56edb79d715d24f1e4a8a06e716d539",
+            "ev_56a5ea3adcebbbcf66e38d71a735a86aa63f3bd4e6e9062391c680492cc42ad3",
+            "ev_6512ed0f0285cf8bb3e661d608f00be15ce794b19ab73e7eae0612c6a3eb3f0c"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F20",
+      "split": "holdout",
+      "run_id": "b1051211-eb71-47de-aee1-427be11f5c79",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_3472b7a9897f79f8c12a29b684dcdc76ed08089050fb917997356bec73207886"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_fa580e4d1141b2196a7dfe6c089b71aee83a5a3a1385d5a902ab0daf2c0d05c4"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_fbfbf41e7588d9e38b5698eb675b9257f7f640b965070a9075550929ec51139d"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_5f6221e725c13ec59d05dd3056868819bfcc54632c24644b05ab33c441ac94b3"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_4f0dfd0ab7bd20b8f51909dfd3410a53902aee2276016adf0b26622926be020c"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_4b5f2bfce512f37e9d06999ba75c36cd92b7935b4732e662e38ba788be7f2f65"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_125482231fb827364cce271fa54f091d1f139c5bda56518abfecef32926791a6"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_fa580e4d1141b2196a7dfe6c089b71aee83a5a3a1385d5a902ab0daf2c0d05c4",
+            "ev_fbfbf41e7588d9e38b5698eb675b9257f7f640b965070a9075550929ec51139d",
+            "ev_5f6221e725c13ec59d05dd3056868819bfcc54632c24644b05ab33c441ac94b3",
+            "ev_4f0dfd0ab7bd20b8f51909dfd3410a53902aee2276016adf0b26622926be020c"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F21",
+      "split": "dev",
+      "run_id": "26921c02-8695-4522-83c2-25b28da0799a",
+      "facts": [
+        {
+          "statement": "Статус интеграции: unknown",
+          "evidence_ids": [
+            "ev_62104d30cce038f91170332f1836f4a0c38b68239017d8be93c8b74a30819ce4"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_ee26b286ad7eb1bedb061d7941d059b3b7c3acfb47bd503b288736bc7169b0cd"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_bd9c36d71ff751b899fe1030943f23f0fa3f46a04f29dac87fddde2d9e7b5a63"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_828838f435159f37b90ea91413667ccd672576afcce71e01ebc8e3a80b386ec2"
+          ]
+        },
+        {
+          "statement": "Статус credential: unknown",
+          "evidence_ids": [
+            "ev_504bf0d1e62345fa314c19962cc5251a8c62941593fa9aa559c78022ecea7446"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_327d88c44b7278890e5637ea02acb5307384375296e146144b8ec244d7a21b38"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_4cb177b90e7cf7a95733dbaa87a18f761546ebc920af3e569858c2c00055ae2f"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F22",
+      "split": "dev",
+      "run_id": "91f30f75-dbef-4434-bfb1-820c505e5f5e",
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_ccb92758d9f122432c9d3c7cc25905935d05721a66d21393029a3b0d99d9ef9c"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_cb50278d667a016ea0206ce664a25b5c47a2e336f26157573a97bf94af84309c"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_e96b9cbe04e0a5c70ac9f831898b98b08ad61f6d301b619ea9e621053ea53af1"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_9579778b8bc35e2610185bf193b45889dba0d94d0e93354e2cfdefc31d3ec968"
+          ]
+        },
+        {
+          "statement": "Credential status: valid",
+          "evidence_ids": [
+            "ev_203d388079a48f77a6ca1e9dce3430cd2d691bc1ed46a286a93af3c78a30d384"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_eb0a2af600ee92d48d2711d39eab51744481bb10c31bae270203b695d4a6b002"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_d3f971e31f45adb81cb05ca5bf023072a049370b33e5516c4020cca807cd07c7"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify rate limiting",
+          "evidence_ids": [
+            "ev_49db61b2d920ddc9c1e4a5aac27ee210f7108e960b00ca399acccd0682fcb46b"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F23",
+      "split": "dev",
+      "run_id": "aaf2e5d6-4dd7-4177-b91a-5e149c1e623f",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_5a5499274113b22fad79239619f8ba58ce2e7965d28d26bef0d726a2f689f3bd"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_cca19313ba4e395078f6987ddb773ac254a98b135ec64bab46a42a0f4726d3fc"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_c711605faf68c77266271bc288874099136035f3ce0cc0ac71f4449e8efc51cb"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_0bb735bdc4ba8caa32dd08289fb12de81ea6303a400bf9474f0ac96ec25326c1"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_ddb2cc65faf816977b12398886fdf999ce94c5d77ad2afd24139fe61c53e388a"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_a08969ae4a44fd7a988959a05474cfedce04f3b088588b73ad0e1cea39609d62"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_0ac88723d66d92cbb9c2f6b1665d8dcdd42e3288d69f7ed21fff75658670ae44"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_cca19313ba4e395078f6987ddb773ac254a98b135ec64bab46a42a0f4726d3fc",
+            "ev_c711605faf68c77266271bc288874099136035f3ce0cc0ac71f4449e8efc51cb",
+            "ev_0bb735bdc4ba8caa32dd08289fb12de81ea6303a400bf9474f0ac96ec25326c1",
+            "ev_ddb2cc65faf816977b12398886fdf999ce94c5d77ad2afd24139fe61c53e388a"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F24",
+      "split": "holdout",
+      "run_id": "d3d8a9cb-4219-415c-b6be-0b006bfb05c3",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_9142158bba5c4c8f50f31d6b578025a78f5a5a9c1347fee7646e4d6fb67edc80"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_ee4eeeffb8dbfce363488c1f0b47c49c52df8e5f2004cb118be5e4ae42e3d23e"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_efbd0e7012c465d61c1a6e346fc4985092c1821392e7f052ffced08c3ed12b5d"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_d9ef5d116d8a5fd6472b15726922a116c6a643e6b8d6003df8cc8aba7913670f"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_da8f924289ab8a6033bd14634070184a737924747b2da3c18fc94e37ec445e7f"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_0b58e83d1db80e2ec01d1e36a5079ee02700bf89728d32e330246c2a3fc7c2e3"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_d1024b6f5b5c7dab4651d0e64b70956d2536c5a14e69b0451b7d3f090da04e38"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_ee4eeeffb8dbfce363488c1f0b47c49c52df8e5f2004cb118be5e4ae42e3d23e",
+            "ev_efbd0e7012c465d61c1a6e346fc4985092c1821392e7f052ffced08c3ed12b5d",
+            "ev_d9ef5d116d8a5fd6472b15726922a116c6a643e6b8d6003df8cc8aba7913670f",
+            "ev_da8f924289ab8a6033bd14634070184a737924747b2da3c18fc94e37ec445e7f"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F25",
+      "split": "holdout",
+      "run_id": "57652277-1338-4d58-a015-4093ba84de1d",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_df590151213fed6fa0ac6b5ecb60072bc67adf801043aa681fc025a956a1c74a"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_a1161f1c4a31173e334cce6c6fa41b606680bbe8845439820c837fd6cbd1deea"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_6de0780cc3c2a63541b244cff7da8c41e00c460a6b588914cef1119ec2b9635c"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_0d16367f72e98ed1f618492dba261adc9330074bc7695a791403ff4ddc1af6c1"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_e8db5d06e511a1900aed419bc3170487e629d0e421034f7c87dabdcc71d56802"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_83537c4558747c4e02e6d1dbf76726b65b64d4907817ee05525a96cc516f66b1"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_49226137ce69891f2aa933858c0fdeaf513874fc5d41727ed691466c392fae26"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_a1161f1c4a31173e334cce6c6fa41b606680bbe8845439820c837fd6cbd1deea",
+            "ev_6de0780cc3c2a63541b244cff7da8c41e00c460a6b588914cef1119ec2b9635c",
+            "ev_0d16367f72e98ed1f618492dba261adc9330074bc7695a791403ff4ddc1af6c1",
+            "ev_e8db5d06e511a1900aed419bc3170487e629d0e421034f7c87dabdcc71d56802"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F26",
+      "split": "dev",
+      "run_id": "727bbd03-1dc0-4cd3-aba6-46b8e31ff64c",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_7098e7f968f94522cf930211106022d8ddae7f8f5c21b77cfb0f81822bdacf55"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_5e6a6ad2ecc59ca6a305a951a5ad34c8de89979d294e6c613ca85e01c5ea1ef5"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_a6f4d4aaf17f91d3fd088c3d6088d04d47638a0108192c13a08e9a270ca7289e"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_6bc38d3a77357f91c0b5da95d7a21023e2b625e55666eb965ccffdbae2ab4a28"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_c08502515e95f3c688dd80010d6b0aff38890689819e821fd92730023128e2a5"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_c739af5b3c1997563b3e27fc37e3419ebda80d36ea25a2499ddd86ef744be9dd"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_ad94c9e94bd1c2209263c1c68d2e91b6adfc4845a1f5c0d33835ecafa665a251"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_5e6a6ad2ecc59ca6a305a951a5ad34c8de89979d294e6c613ca85e01c5ea1ef5",
+            "ev_a6f4d4aaf17f91d3fd088c3d6088d04d47638a0108192c13a08e9a270ca7289e",
+            "ev_6bc38d3a77357f91c0b5da95d7a21023e2b625e55666eb965ccffdbae2ab4a28",
+            "ev_c08502515e95f3c688dd80010d6b0aff38890689819e821fd92730023128e2a5"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F27",
+      "split": "dev",
+      "run_id": "148198aa-0771-4f9e-8bbb-51bea3f3b974",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_cbe6c962bbe67f0b9fe6f21b9ec5371c3f1a8b58774f755bf54c3f434a5c49ab"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_745c9bb998ce9a5a0a689b3cd3c21eab0b590d739543d1e281ce8375f13fcad8"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_3778306962efa7ef16681f9cd432047faa50d43379d82b7fe0e4d07017ea852d"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_2783931d1e1d312b398ae31f1de875c015ae1f852f5f5c0d9dd3ded1a02fb0e2"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_93929ba22802871d1de01ebacb64bab5a9aae632186ac2968cf6558c227f7a65"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_2488fcb421e7f1ca95c46db368919420ba080eb85707d4a6de97630379898f6c"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_fd61d69890fd756fe83709f6c351c305439c6482e3e24cc1934ba022b59a34fd"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_745c9bb998ce9a5a0a689b3cd3c21eab0b590d739543d1e281ce8375f13fcad8",
+            "ev_3778306962efa7ef16681f9cd432047faa50d43379d82b7fe0e4d07017ea852d",
+            "ev_2783931d1e1d312b398ae31f1de875c015ae1f852f5f5c0d9dd3ded1a02fb0e2",
+            "ev_93929ba22802871d1de01ebacb64bab5a9aae632186ac2968cf6558c227f7a65"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F28",
+      "split": "dev",
+      "run_id": "435e59cc-cd00-4e7f-9093-18ca9373e0fc",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_1c41b4346fa68269e6d58ac875f7b86698bc19f58ab3217020020e1e22cea78c"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_a0396710dfeb8a7998a6b44b2618b39bc6f75d570a6cc66ec7feede1d8db624f"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_8f21e5e69f80f6549c2116a4f83e91875f4138e953ab83835fd7324ce8d551ca"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_2b443df84fbfe1e8184eda43838ca45dccc0c036894eb771fd2dc9810155b71d"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_85be47c4acb9ff2603e4636d2395998d64e66851e4a82951880cbc92d6e88f24"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_89d43b46bd0306b9874ccc8a6762969b1b96b5387a07009cdb9a5530fa1ff0ec"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_cbcd307bfcd89ca6fffb9f52787c859dd6f8f36c87f3fea7e2b71f6515891b14"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_a0396710dfeb8a7998a6b44b2618b39bc6f75d570a6cc66ec7feede1d8db624f",
+            "ev_8f21e5e69f80f6549c2116a4f83e91875f4138e953ab83835fd7324ce8d551ca",
+            "ev_2b443df84fbfe1e8184eda43838ca45dccc0c036894eb771fd2dc9810155b71d",
+            "ev_85be47c4acb9ff2603e4636d2395998d64e66851e4a82951880cbc92d6e88f24"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F29",
+      "split": "holdout",
+      "run_id": "e3c101f7-fb0b-40a6-b5fb-fb49c0fb5231",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_2cf128e77f549dee8aed1180abe037071519b886ad73a8ce1a1a1bb18b1b4a92"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_1c92b2905f3ddd18769ac22f10fac08dccda0893f9f65b4b4381788848a9cc0f"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_076b5b340d26590e848d196d08c2c6f34143b8cd8f40cc1b459db8f7e51371a2"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_2b692fd9fbeb27343b074eb1e14d448a92cf4ba7bc00a8435adc955cb1e2a593"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_a15bcf11e0f79c00b99a1e88bc6381e19b1c92e584a201d1a354cd4568558191"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_8617849149f18eed1b5290bb9b70c7cc6b03091a0562eb689ccd63bd3b939417"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_f22c7438bf4500312fecaec4a6972974b7316197d9f37bad190ff5c7087264ac"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_1c92b2905f3ddd18769ac22f10fac08dccda0893f9f65b4b4381788848a9cc0f",
+            "ev_076b5b340d26590e848d196d08c2c6f34143b8cd8f40cc1b459db8f7e51371a2",
+            "ev_2b692fd9fbeb27343b074eb1e14d448a92cf4ba7bc00a8435adc955cb1e2a593",
+            "ev_a15bcf11e0f79c00b99a1e88bc6381e19b1c92e584a201d1a354cd4568558191"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F30",
+      "split": "holdout",
+      "run_id": "f0120893-181c-441a-a455-8b4de1b79062",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_1425b35297ba6ae6462979e426a804e29fcabe3ff23b8d81996000e885c34c94"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_023beb8647585a7397fdb665fef7bcc8efa397fd4ceba9406ceccad7dec352b0"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_c6ca9f4c95d78c5e7630f566309f9a233b79d83f55783563a3398a7ae7a4636d"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_c4005ce457455ff63a75e76590e05bc92d1a4f48dcf098a10d7dd18d0829dfda"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_41d3706dad5ffb0cbf585431927e69b463ef967857e2dfb85979223d36a8c859"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_3b367d53ad61d96fd2723eb4c5a2843f78626a9a42561c564e3a757b4e86909d"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_106c270bd769123935ecb6e40ba299fd660740d832421da3dcaa03616e9ff0b5"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_023beb8647585a7397fdb665fef7bcc8efa397fd4ceba9406ceccad7dec352b0",
+            "ev_c6ca9f4c95d78c5e7630f566309f9a233b79d83f55783563a3398a7ae7a4636d",
+            "ev_c4005ce457455ff63a75e76590e05bc92d1a4f48dcf098a10d7dd18d0829dfda",
+            "ev_41d3706dad5ffb0cbf585431927e69b463ef967857e2dfb85979223d36a8c859"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F31",
+      "split": "dev",
+      "run_id": "4ac8e395-fa46-44fc-bf62-9732d2ecf3b5",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F32",
+      "split": "dev",
+      "run_id": "dca827a6-3a33-498d-8b32-a21c11fbaa13",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F33",
+      "split": "dev",
+      "run_id": "b4b0b8b6-4f38-43c2-a804-08b939d3320f",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_451a119e24533b6d63c296127e899031f81710110673810f8b72b6791747d4d0"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_efe5d2d3304840e4a0157babaf611f3ef3372a448062c9668cdcf5d5a4a9f933"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_6fe06f33ca8d9504b79b7d39dd84241c53b0f924210a54701c0e7fac2c36d212"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_5694a9b8f479431788c8f07ced759eca4ef19fa951696ffe01fd00f2115fab5b"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_60b122803591ad19d0fd089bdd699f4ccdcefda3c3f924a25fc3553a78c95b0e"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_1e43c4e83591e3cb40cc25fc0e4d4e16aa749b7d920d9e5996ef681cf2424fdb"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_ca10261ece46c3dca091230a3bde101f365cb42c8299aba74200a131c059cffc"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_efe5d2d3304840e4a0157babaf611f3ef3372a448062c9668cdcf5d5a4a9f933",
+            "ev_6fe06f33ca8d9504b79b7d39dd84241c53b0f924210a54701c0e7fac2c36d212",
+            "ev_5694a9b8f479431788c8f07ced759eca4ef19fa951696ffe01fd00f2115fab5b",
+            "ev_60b122803591ad19d0fd089bdd699f4ccdcefda3c3f924a25fc3553a78c95b0e"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F34",
+      "split": "holdout",
+      "run_id": "340fc8e7-1f32-456a-a6cd-ece5bea7b82a",
+      "facts": [
+        {
+          "statement": "Статус интеграции: degraded",
+          "evidence_ids": [
+            "ev_361ceda324f09d057e42e180bc95c0d47c37c9e3dc5c6a0e0c2edabe0a943ec9"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_18d02c241ddd82d9b08dac976f1727002d4f7acb326e6a39cc02759643d0fe9e"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_4979161e6f076256374487bf013da3ab737e29f1b4ebd8d5e10f38aaf5f079ad"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_4001bfb71e58be44840c64b20db52241ac374367ac924ece3afcc3c9a04296f2"
+          ]
+        },
+        {
+          "statement": "Статус credential: expired",
+          "evidence_ids": [
+            "ev_ad98ec5666f18ca2cc6a27f3d28a2ac4185af5cadf0295ee27009fd896824cb4"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_65f2093b60a32611befacaa925d5fb826d11aacfe78b784accd5325178519a7e"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_f2f34219cea8aefe5a008106f3e059a1d822761619042c752120a49ce9f0f41b"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Истечение credential могло вызвать отказы доставки.",
+          "supporting_evidence_ids": [
+            "ev_18d02c241ddd82d9b08dac976f1727002d4f7acb326e6a39cc02759643d0fe9e",
+            "ev_4979161e6f076256374487bf013da3ab737e29f1b4ebd8d5e10f38aaf5f079ad",
+            "ev_4001bfb71e58be44840c64b20db52241ac374367ac924ece3afcc3c9a04296f2",
+            "ev_ad98ec5666f18ca2cc6a27f3d28a2ac4185af5cadf0295ee27009fd896824cb4"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F35",
+      "split": "holdout",
+      "run_id": "599679b3-4a2e-49bc-8069-7755cdbe180b",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_fe41bfa5228c507b758008f5d19148376a198d46e0e9ed0ef179a183930a3774"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_d7ce8fd30cbed3b5f0816c588cd1421ac03eb7c87aefd46d33f47b2c95a79d10"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_e254b2239e43c0378759bace5146915b5bae576ff3781e95eb106b669bf133e7"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_4e4ecf42bff70bcb2626dc31a9dc8db421050ab2f560c4854479c1813b629de5"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_eb13b5fa5c2ea0db59a402873a7483329732e26b158b1c6ec27b24da825a0f21"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_705bde48ac441cf073f11db60045fee6a3fffe61f9f750d2e537eb452c1c2993"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_a8fffd891bddf6c733e56cba17792bd50800b9d3c6a51703f717841f734feb6d"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_d7ce8fd30cbed3b5f0816c588cd1421ac03eb7c87aefd46d33f47b2c95a79d10",
+            "ev_e254b2239e43c0378759bace5146915b5bae576ff3781e95eb106b669bf133e7",
+            "ev_4e4ecf42bff70bcb2626dc31a9dc8db421050ab2f560c4854479c1813b629de5",
+            "ev_eb13b5fa5c2ea0db59a402873a7483329732e26b158b1c6ec27b24da825a0f21"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F36",
+      "split": "dev",
+      "run_id": "d4f47718-5ed0-4811-b6c6-b298d8435e28",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_a79fccc43bef1efe59add7872efc321c7185818228a42ee97ae7c850e504cf31"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_e48e9894684b483fa52ecdae6a56ff608930f2d9705b85a40da2fa261755009a"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_b05c2eff344514ca3ff3b5c8c55eacf2ccb1c3788b3e2edf3d48f945016eb422"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_48b3e772da48778a78bf9e2a9ea5290d49ebd1e9f7ccc8f223b8d75bc984aa09"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_2e8da0741db8805659aef740e53a9e8e69dca182c8ea674f7dc766989a460e7f"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_58e3c6d87a6baf1953f00bf16a367db973639e5c0f9333bfa31dfae5b233ab60"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_7459d6d6c18a56938fc83c915e9bc1dc8fc24b57a7624916922359e0a7c98725"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_e48e9894684b483fa52ecdae6a56ff608930f2d9705b85a40da2fa261755009a",
+            "ev_b05c2eff344514ca3ff3b5c8c55eacf2ccb1c3788b3e2edf3d48f945016eb422",
+            "ev_48b3e772da48778a78bf9e2a9ea5290d49ebd1e9f7ccc8f223b8d75bc984aa09",
+            "ev_2e8da0741db8805659aef740e53a9e8e69dca182c8ea674f7dc766989a460e7f"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F37",
+      "split": "dev",
+      "run_id": "0595585e-ee8b-457a-9f80-bed74d0ad33a",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_fec5c2ded8c606a6fa65706dafb1914097d048282bdbd31483ae3992a83b3b71"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_1565051e7518cbb92538303e3aecc410897ec6e334883c4ca6008bedaf410664"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_b6abf236365d91983cd709f0b9bf3873bd525dca6ecd63248743b31a95dfc2fe"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_6683cb2024d24d1a48266236cfce32bda56ea5f6ce355605c42b89e879284297"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_37a370a1b0d1aa5b320c227f9fcf00438f77fb3885fd49ceb9a71747787cff8f"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_5da18c8825ac6d87da5791e12113543548680a712887ecfa6c5dd7f67a7ba6ae"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_89beafbb5b6319fee08da8610fae08379b93bafd304d51563c07053f38efe126"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_1565051e7518cbb92538303e3aecc410897ec6e334883c4ca6008bedaf410664",
+            "ev_b6abf236365d91983cd709f0b9bf3873bd525dca6ecd63248743b31a95dfc2fe",
+            "ev_6683cb2024d24d1a48266236cfce32bda56ea5f6ce355605c42b89e879284297",
+            "ev_37a370a1b0d1aa5b320c227f9fcf00438f77fb3885fd49ceb9a71747787cff8f"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F38",
+      "split": "dev",
+      "run_id": "aa35d9c6-3601-4c97-894f-7e97554d2b3a",
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_6c105e14b5d09087955817e366365023977ff23f2f049819d32804e06a43ff30"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_70c3dd85faf6b0b99c538d003ab33d43c3d5ae575227def9c6796863203c725b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_639ca262c1dd9dbc97fe752d47a7554fd990060b52d6c67633c516c091e42666"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_cef6a24617e530a4113a0a0dc6acf3bb46a4e1370942cb8f5acc175c070d8a03"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_ef9fc679460797142415c790d0a2ee694bf008220ae71db196f4034d9a63e474"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_8c9d44810d9e84aa5aacd4ca8f1649d284dff70f40477ce9414b66fec9ff1de6"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_ced356829f94e690792a012db1b1f642b0f49012b6fbd0c0f3b9b89fc74d39ab"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "credential-expiration",
+          "summary": "Credential expiration may explain delivery failures.",
+          "supporting_evidence_ids": [
+            "ev_70c3dd85faf6b0b99c538d003ab33d43c3d5ae575227def9c6796863203c725b",
+            "ev_639ca262c1dd9dbc97fe752d47a7554fd990060b52d6c67633c516c091e42666",
+            "ev_cef6a24617e530a4113a0a0dc6acf3bb46a4e1370942cb8f5acc175c070d8a03",
+            "ev_ef9fc679460797142415c790d0a2ee694bf008220ae71db196f4034d9a63e474"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F39",
+      "split": "holdout",
+      "run_id": "2bb523a1-0d9e-4a22-a474-f0efa7775b40",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F40",
+      "split": "holdout",
+      "run_id": "83b52848-c66a-45a1-a772-9b8213f48977",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F41",
+      "split": "dev",
+      "run_id": "fc60b142-7f5c-4154-b7b6-62f5b0ed9e8e",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F42",
+      "split": "dev",
+      "run_id": "792bbe3e-ec16-46f5-9d47-5574a2c6b5a8",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F43",
+      "split": "dev",
+      "run_id": "d549c344-3946-4bcc-80fd-0fccf14388ef",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F44",
+      "split": "holdout",
+      "run_id": "b7f83fdd-109f-468a-8ac2-1cdc436545af",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F45",
+      "split": "holdout",
+      "run_id": "34189ba6-ff96-4fa2-a2fe-041848aa4dd5",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F46",
+      "split": "dev",
+      "run_id": "b26af91e-6d5e-4aa8-8f4c-0885167c5e88",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F47",
+      "split": "dev",
+      "run_id": "9bccc230-95f6-462c-b9da-0cbc7d3699ef",
+      "facts": [
+        {
+          "statement": "Integration status: unknown",
+          "evidence_ids": [
+            "ev_a98e7af94ba2037053b41817604d8cb226fa8e9f1806d8e30d2956da00785866"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_5d433bd4dfc11b26236775c5a8cbfb5ac6900a1a9a7f138d4b59f2ecfef146f8"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_0c0ac6cdc277381169b063ccab4243d5c8bd5515f348e40edd9dac8a997eb93e"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_2054bbac8cf4c9f5ded94269eff48392de9322fc7f7dc67c0aafb6a2fba674d3"
+          ]
+        },
+        {
+          "statement": "Credential status: unknown",
+          "evidence_ids": [
+            "ev_45fc40738683785eb85ebbb9bcd761a66bb7194c668b89b9aded69df7fda8ec1"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_dae86949f47e024db4e92a4919cdc3dcea948c86014feac110b32f928d5aa052"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_68386f877a8fdea27669a13e66d9b530ae6a5227924e40a748f85b39275c9387"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F48",
+      "split": "dev",
+      "run_id": "9a0e861a-d89d-41c7-95fa-1cd103094908",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F49",
+      "split": "holdout",
+      "run_id": "8d706eb0-29e0-496d-bcdf-d289a9743054",
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F50",
+      "split": "holdout",
+      "run_id": "4e297ca8-4903-4069-ae7d-535bf1cb0747",
+      "facts": [
+        {
+          "statement": "Статус интеграции: unknown",
+          "evidence_ids": [
+            "ev_55c2f03b547ad8ee6bdc7960adfd05ef10796ebfd005d9b3d620d72e51782649"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_c1717fd162ee2c41058b88ff4d46ca94dd9597179518bd44f23c8f401a0f2327"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_3a3885eb67d9346dd1c829089e006257ca1f83ca3ce1244a07c26ce669899920"
+          ]
+        },
+        {
+          "statement": "Событие доставки: 401",
+          "evidence_ids": [
+            "ev_315a502f31e406920cf7a0dd9a32277a91118ef194b0790d9cc5fab938b61f9e"
+          ]
+        },
+        {
+          "statement": "Статус credential: unknown",
+          "evidence_ids": [
+            "ev_16e1ca043adc3173675df771e566667126f92fda916465ae5711d04e009b440a"
+          ]
+        },
+        {
+          "statement": "Исторический инцидент: Заказы Shopify не приходят, HTTP 401",
+          "evidence_ids": [
+            "ev_4b5aed534a47904712e3a6ed83638475408ead94e3c1951fb6156e65c1d9d634"
+          ]
+        },
+        {
+          "statement": "Документация: Shopify: 401 и истёкший credential",
+          "evidence_ids": [
+            "ev_03a9eaf130a53448e13206e64f85cc9dc6d3cbd8345651e7001f9c34cd77a685"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    }
+  ],
+  "note": "Canonical scripted predicates do not replace human review"
+}

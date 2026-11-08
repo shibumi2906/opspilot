@@ -67,3 +67,11 @@
   blocked on absent F20 write/reconciliation boundaries and manager HIGH CVE-2026-78661
   (x/net0.61.0, fix0.62.0); no applicability exception. Do not start F22, use Jira, push,
   rebuild/migrate main Full or claim Pilot/whole L2 from these source-mounted local tests.
+
+- Owner direction 2026-11-08 explicitly authorized F22 despite F20/F21 blockers, overriding
+  the preceding historical no-F22 instruction for this stage only. F22 local scripted50/50
+  and separate MVP12/12 evidence: docs/full/evidence/f22. Overall F22 remains blocked:
+  real90 runs unauthorized (paid calls forbidden), human review pending, remote CI not run,
+  manager HIGH CVE-2026-78661 and F20 dispatch/reconciliation/live boundaries unresolved.
+  Holdout is public/inspected, never unseen. Main Full remains0019; F22 test schema0021
+  uses an independent manager/project/subnet34. No F23/F24 authorization, no push.
