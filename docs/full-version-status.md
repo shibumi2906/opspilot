@@ -77,7 +77,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F17 | done | Retention/tombstones, scoped export, real manager rotation/recovery и локальный Full Core acceptance | [evidence](full/evidence/f17/README.md); commit subject: `feat(full): complete F17 lifecycle and Core security acceptance` | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | done | Manager-backed adapters, bounded HTTPS/circuit breaker, signed durable observation ingress и recovery | [evidence](full/evidence/f18/README.md); commit subject: `feat(full): complete F18 adapter platform and signed ingress` | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
 | F19 | done | Scoped Prometheus reads: local contracts plus actual owned AWS staging health, MCP/OIDC UI; temporary resources removed | [local evidence](full/evidence/f19/README.md); [AWS evidence](full/evidence/f19-aws/README.md); local base `c984d6a`; stage commit subject below | [SEC-09](security/asvs-l2-implementation-plan.md) |
-| F20 | not_started | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
+| F20 | blocked | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
 | F21 | not_started | Fault/concurrency/load/soak evidence | — | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
 | F22 | not_started | 50 evals и отдельный real/holdout report | — | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
 | F23 | not_started | Pilot deployment/TLS/backup/restore | — | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
@@ -916,3 +916,28 @@ AWS inventory подтвердил terminated instance, ноль созданн�
 Верхняя оценка compute/disk/IPv4 до credits ~$0.152; billing ещё может запаздывать.
 MVP184 source/env fingerprints, branch/HEAD, images и volumes сохранены. Без push.
 Отдельный stage commit subject: `feat(full): verify F19 authorized AWS staging and cleanup`.
+
+
+## F20 — sandbox discovery and offline preparation, 8 ноября 2026
+
+Base `830ef61`; `C:/Users/user/Desktop/code/Ops`, `codex/opspilot-full`.
+F20 разрешён текущим запросом; F21–F24 не начаты. Статус **blocked**, не done.
+[Подготовка и remaining gates](full/f20-jira-preparation.md).
+
+В доступных environment/.env отсутствуют Jira/Atlassian key names; в `.tools` нет
+файлов с Jira/Atlassian в имени. Значения секретов не печатались. Atlassian plugin
+найден, но installed=false; подключение не подтверждено. Это не доказательство
+отсутствия sandbox у владельца: доступного site/project/credential scope нет.
+Никакие Jira проекты не читались и не изменялись; vendor/model paid calls/push0.
+
+Добавлен только offline payload helper: fixed project/type/fields, deterministic ADF,
+operation property, digest destination/mapping/version/exact bytes. Он не зарегистрирован
+в runtime и не даёт write capability. Durable dispatch/reconciliation, comment,
+manager/grant/MCP/UI wiring, simulator/security gates и live acceptance ещё не реализованы.
+Ruff format/check passed; pytest tests/test_f20_jira_payload.py:6 passed.
+253 ASVS backlog rows не изменялись; scoped security acceptance не заявлен.
+Docker isolation gate дважды не смог прочитать inventory: Linux Engine pipe отсутствует.
+Desktop запущен hidden, но Engine не был готов на повторной проверке. Builds/migrations,
+seed, dev restart не выполнялись. Source/env/head MVP проверены отдельно; images/volumes
+на этот момент не подтверждены заново. Main Full остаётся F18/schema0019.
+Локальный preparation commit subject: `feat(full-f20): prepare offline Jira payload contract`.
