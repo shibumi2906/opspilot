@@ -1,0 +1,193 @@
+{
+  "stage": "F22",
+  "base": "8e4f44e",
+  "status": "blocked",
+  "scripted": {
+    "planned_distinct": 50,
+    "planned_runs": 50,
+    "recorded_runs": 50,
+    "distinct_recorded": 50,
+    "first_pass_denominator": 50,
+    "first_pass_passed": 50,
+    "passed": 50,
+    "invariants": {
+      "unsupported_facts": 0,
+      "factual_claims": 210,
+      "false_success": 0,
+      "forbidden_calls": 0,
+      "unauthorized_writes": 0,
+      "duplicates": 0,
+      "before_decision_delta": 0,
+      "ticket_delta": 7
+    },
+    "db_predicate_denominator": 50,
+    "metric_denominator": 50,
+    "known_recorded_model_spend_usd": 0,
+    "by_split": {
+      "dev": {
+        "recorded": 30,
+        "passed": 30
+      },
+      "holdout": {
+        "recorded": 20,
+        "passed": 20
+      }
+    },
+    "unknown_usage_count": 0,
+    "setup_errors": 0,
+    "complete_unique_schedule": true,
+    "scripted_gate": true,
+    "human_review": "pending",
+    "holdout_unseen": false,
+    "real_execution": "not_run",
+    "real_gate": "NOT_MET",
+    "remote_ci": "not_run",
+    "release_gate": "NOT_MET",
+    "actual_model_spend_usd": 0,
+    "blockers": [
+      "Scripted evidence does not provide real-execution acceptance",
+      "Human claim/hypothesis review pending",
+      "Remote CI not executed",
+      "F20 dispatch/one-attempt/reconciliation incomplete; real Jira deferred",
+      "F21 manager HIGH CVE-2026-78661 remains unresolved"
+    ]
+  },
+  "real_runs": 0,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "preflight": {
+    "recorded_at": "2026-11-08T15:38:58.317728+00:00",
+    "base": "8e4f44e",
+    "real_authorization": "Owner requested completion using stated free quota only; paid calls still forbidden",
+    "token_limit": 200000,
+    "full_key_present": false,
+    "full_model": null,
+    "quota_eligibility_confirmed": false,
+    "provider_calls": 0,
+    "real_runs": 0,
+    "real_status": "blocked",
+    "stage_status": "blocked",
+    "blockers": [
+      "Full .env key/model absent at preflight",
+      "Account/project/model free quota and unused daily balance not yet confirmed",
+      "Human review pending",
+      "F20 dispatch/reconciliation/live Jira deferred; F21 manager HIGH unresolved",
+      "Remote CI/push not authorized"
+    ],
+    "docker_engine_ready": true,
+    "docker_version": "29.9.2",
+    "docker_start_requested": true,
+    "final_full_key_present": false,
+    "final_full_model": null
+  },
+  "unit_tests": 11,
+  "unit_passed": 11,
+  "static": {
+    "checks": [
+      {
+        "command": [
+          ".venv/Scripts/python.exe",
+          "-m",
+          "ruff",
+          "check",
+          "src/opspilot/evals/full.py",
+          "src/opspilot/evals/token_guard.py",
+          "tests/f22_lab.py",
+          "tests/unit/test_full_eval.py",
+          "tests/unit/test_eval_token_guard.py",
+          "scripts/run-full-f22-real.py"
+        ],
+        "exit_code": 0,
+        "output": "All checks passed!\n"
+      },
+      {
+        "command": [
+          ".venv/Scripts/python.exe",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "src/opspilot/evals/full.py",
+          "src/opspilot/evals/token_guard.py",
+          "tests/f22_lab.py",
+          "tests/unit/test_full_eval.py",
+          "tests/unit/test_eval_token_guard.py",
+          "scripts/run-full-f22-real.py"
+        ],
+        "exit_code": 0,
+        "output": "6 files already formatted\n"
+      },
+      {
+        "command": [
+          ".venv/Scripts/python.exe",
+          "-m",
+          "mypy",
+          "src/opspilot/evals/full.py",
+          "src/opspilot/evals/token_guard.py",
+          "--follow-imports=silent"
+        ],
+        "exit_code": 0,
+        "output": "Success: no issues found in 2 source files\n"
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "output": "warning: in the working copy of 'src/opspilot/evals/full.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/f22_lab.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/unit/test_full_eval.py', LF will be replaced by CRLF the next time Git touches it\n"
+      }
+    ],
+    "passed": true,
+    "shell_syntax": {
+      "bash": true,
+      "powershell": true,
+      "remote_run": false
+    }
+  },
+  "sources": {
+    "source_sha256": {
+      "src/opspilot/evals/full.py": "ad41f3416b9aee7a7d57ff19943c4205255fad7865cbb2ecfe40c0949efad8ef",
+      "src/opspilot/evals/token_guard.py": "bc26601fa6b7dd884d4f68bd3f4c12214f7349a48a43268d3bd7131768ead192",
+      "tests/f22_lab.py": "d8b2661b5f47ff16b47bb7a6f33c8521b61d4b77fb2063aacd40f85cb245cf54",
+      "tests/unit/test_eval_token_guard.py": "40d65ef413eacc77f47d42e8aa09ab4581550c54f0a40bfba4d1627cce37d98c",
+      "tests/unit/test_full_eval.py": "0ed27fa1c12f8d39c9fee77ea18d58bd481a950d19fdbbbecf59f71cb8cbc4bd",
+      "scripts/run-full-f22-real.py": "02180eb4b69d54af1c40ae0d677f6ee457989270ed71852c41c4e56c171a1b6b",
+      "scripts/test-full-f22-ci.sh": "b56453071ca771cfd2ab805eee45b496eb012b4dca33e52c6727f5fb6b33b0a0",
+      "scripts/test-full-f22.ps1": "ab1125c902f6b82c56c28952676b58868285eabdf094c266ea900b5a84a80ef9"
+    },
+    "asvs_253_entire_backlog_unchanged": true,
+    "corpus_and_split_unchanged": true
+  },
+  "secrets": {
+    "artifact_files": 434,
+    "artifact_secret_matches": 0,
+    "runtime_log_containers": 5,
+    "runtime_secret_matches": 0,
+    "runtime_unredacted_jwt_shapes": 0,
+    "private_forensics": ".tools/f22-continuation-private (ignored; never committed)",
+    "harness_stdio_logs": 13,
+    "child_stdio_captured": true,
+    "scope_note": "F22 exact-labelled retained service logs plus ignored harness stdio logs; test ASGI/worker run in process. No unrelated project logs selected. Removed --rm containers cannot be retrospectively scanned.",
+    "passed": true
+  },
+  "mvp_preserved": true,
+  "cleanup": [
+    {
+      "project": "opspilot-full-test-f22-r1",
+      "running": 0
+    },
+    {
+      "project": "opspilot-full-test-f22-r1-manager",
+      "running": 0
+    }
+  ],
+  "full_pilot": "NOT_MET",
+  "whole_asvs_l2": "NOT_MET",
+  "f20": "blocked; real Jira deferred",
+  "f21": "blocked; manager HIGH unresolved",
+  "human_review": "pending",
+  "remote_ci": "not_run",
+  "push": 0
+}

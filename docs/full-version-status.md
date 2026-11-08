@@ -1046,3 +1046,20 @@ env/head/images/volume metadata/content проверены после работ
 calls, remote CI, push0. F20 dispatch/one-attempt/reconciliation и реальные Jira gates остаются
 не закрыты; F21 functional passed, overall blocked. Full Pilot/whole L2 **NOT_MET**.
 Отдельный локальный commit subject: `feat(full-f22): add frozen Full eval corpus and honest release gates`.
+
+### F22 — продолжение с бесплатной квотой200000
+
+Base `8e4f44e`. Владелец выбрал gpt-6.1-sol/low и попросил завершить F22 в пределах
+заявленной бесплатной квоты, без платных списаний. [Continuation](full/evidence/f22/continuation/README.md).
+На preflight в Full `.env` OPENAI_API_KEY/OPENAI_MODEL пусты; credentials из MVP не
+копировались. Применимость квоты к account/project/model и её свободный остаток требуют
+подтверждения. Real/provider calls0; F22 остаётся **blocked**, не done.
+
+Добавлены общий eval-only durable token ledger, остановка dispatch при unknown usage,
+лимите или смене модели, single-use private quota claim без сброса при смене имени отчёта,
+и явный free-quota launcher без ключа в CLI arguments. Неполный real schedule не становится
+passed; catalog cost estimate не выдаётся за actual billed spend. Новые offline guards11/11,
+свежий scripted50/50 отдельно от исторических отчётов; Ruff/format/scoped mypy и source/
+ASVS comparison passed. Docker Engine29.9.2 восстановлен CLI startup; lab вновь остановлен.
+MVP сохранён по повторной проверке. Main Full0019 не менялся, build/migration/seed0.
+Human review, F20/F21 manager HIGH и remote-CI gates остаются открыты; push/Jira/paid calls0.

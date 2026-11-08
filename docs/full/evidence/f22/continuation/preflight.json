@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-11-08T15:38:58.317728+00:00",
+  "base": "8e4f44e",
+  "real_authorization": "Owner requested completion using stated free quota only; paid calls still forbidden",
+  "token_limit": 200000,
+  "full_key_present": false,
+  "full_model": null,
+  "quota_eligibility_confirmed": false,
+  "provider_calls": 0,
+  "real_runs": 0,
+  "real_status": "blocked",
+  "stage_status": "blocked",
+  "blockers": [
+    "Full .env key/model absent at preflight",
+    "Account/project/model free quota and unused daily balance not yet confirmed",
+    "Human review pending",
+    "F20 dispatch/reconciliation/live Jira deferred; F21 manager HIGH unresolved",
+    "Remote CI/push not authorized"
+  ],
+  "docker_engine_ready": true,
+  "docker_version": "29.9.2",
+  "docker_start_requested": true,
+  "final_full_key_present": false,
+  "final_full_model": null
+}

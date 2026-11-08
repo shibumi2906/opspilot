@@ -12,8 +12,8 @@ mkdir -p "$report"
 pwsh -NoProfile -File scripts/new-full-env.ps1
 uv sync --frozen --python 3.12
 python=.venv/bin/python
-"$python" -m ruff check src/opspilot/evals/full.py tests/f22_lab.py tests/unit/test_full_eval.py
-"$python" -m mypy src/opspilot/evals/full.py --follow-imports=silent
+"$python" -m ruff check src/opspilot/evals/full.py src/opspilot/evals/token_guard.py tests/f22_lab.py tests/unit/test_full_eval.py tests/unit/test_eval_token_guard.py
+"$python" -m mypy src/opspilot/evals/full.py src/opspilot/evals/token_guard.py --follow-imports=silent
 "$python" -m opspilot.cli.service_keys .tools/service-keys
 "$python" scripts/setup-full-f15-cache.py --test
 "$python" scripts/setup-full-f16-observability.py --test
@@ -43,7 +43,8 @@ chmod a+rwx docs/full/evidence/f22 "$report"
 "${c[@]}" run --rm --no-deps telemetry-init
 "${c[@]}" up -d --wait --no-build collector mcp
 "${c[@]}" run --rm --no-deps tests python -m pytest -p no:cacheprovider -q \
-  tests/unit/test_full_eval.py tests/unit/test_eval_safety.py --junitxml=/reports/ci/unit.xml
+  tests/unit/test_full_eval.py tests/unit/test_eval_safety.py tests/unit/test_eval_token_guard.py \
+  --junitxml=/reports/ci/unit.xml
 "${c[@]}" run --rm --no-deps -e F22_COMMIT="$GITHUB_SHA" -e F22_REPORT_DIR=/reports/ci \
   tests python -m tests.f22_lab
 "${c[@]}" run --rm --no-deps tests python -m opspilot.evals.runner --mode scripted \

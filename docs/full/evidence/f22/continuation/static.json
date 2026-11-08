@@ -1,0 +1,64 @@
+{
+  "checks": [
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "src/opspilot/evals/full.py",
+        "src/opspilot/evals/token_guard.py",
+        "tests/f22_lab.py",
+        "tests/unit/test_full_eval.py",
+        "tests/unit/test_eval_token_guard.py",
+        "scripts/run-full-f22-real.py"
+      ],
+      "exit_code": 0,
+      "output": "All checks passed!\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src/opspilot/evals/full.py",
+        "src/opspilot/evals/token_guard.py",
+        "tests/f22_lab.py",
+        "tests/unit/test_full_eval.py",
+        "tests/unit/test_eval_token_guard.py",
+        "scripts/run-full-f22-real.py"
+      ],
+      "exit_code": 0,
+      "output": "6 files already formatted\n"
+    },
+    {
+      "command": [
+        ".venv/Scripts/python.exe",
+        "-m",
+        "mypy",
+        "src/opspilot/evals/full.py",
+        "src/opspilot/evals/token_guard.py",
+        "--follow-imports=silent"
+      ],
+      "exit_code": 0,
+      "output": "Success: no issues found in 2 source files\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "warning: in the working copy of 'src/opspilot/evals/full.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/f22_lab.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'tests/unit/test_full_eval.py', LF will be replaced by CRLF the next time Git touches it\n"
+    }
+  ],
+  "passed": true,
+  "shell_syntax": {
+    "bash": true,
+    "powershell": true,
+    "remote_run": false
+  }
+}

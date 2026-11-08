@@ -42,7 +42,7 @@ switch($Mode){
   $commit=(& git rev-parse HEAD).Trim()
   Invoke-F22 -A @('run','--rm','--no-deps','tests','python','-m','opspilot.evals.runner','--mode','scripted','--commit',$commit,'--dirty','--output','/reports/mvp-regression')
  }
- 'Units' { Invoke-F22 -A @('run','--rm','--no-deps','tests','python','-m','pytest','-p','no:cacheprovider','-q','tests/unit/test_full_eval.py','tests/unit/test_eval_safety.py','--junitxml=/reports/unit.xml') }
+ 'Units' { Invoke-F22 -A @('run','--rm','--no-deps','tests','python','-m','pytest','-p','no:cacheprovider','-q','tests/unit/test_full_eval.py','tests/unit/test_eval_safety.py','tests/unit/test_eval_token_guard.py','--junitxml=/reports/unit.xml') }
  'Security' { & ./scripts/scan-full-f22-security.ps1 -ReportDir (Join-Path $ReportDir 'security'); if($LASTEXITCODE){throw 'Security gate NOT_MET'} }
  'Stop' {
   Invoke-F22 -A @('stop')

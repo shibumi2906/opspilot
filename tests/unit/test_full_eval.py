@@ -43,3 +43,18 @@ async def test_real_execution_denied_before_settings_or_database(monkeypatch):
     monkeypatch.setattr(f22_lab, "Settings", forbidden_settings)
     with pytest.raises(ValueError, match="explicit separate owner authorization"):
         await f22_lab.main(SimpleNamespace(mode="real", authorize_real=False))
+
+
+def test_real_report_does_not_promote_partial_runs_or_catalog_cost_to_billing():
+    results = [
+        dict(id=c.id, repeat=n, passed=True, usage={"known_spend_usd": 0.01})
+        for c, n in schedule("real")
+    ]
+    partial = accounting(results[:1], "real")
+    assert partial["real_execution"] == "incomplete"
+    assert partial["real_gate"] == "NOT_MET"
+    complete = accounting(results, "real")
+    assert complete["real_execution"] == "passed"
+    assert complete["real_gate"] == "human_review_pending"
+    assert complete["actual_model_spend_usd"] is None
+    assert complete["known_recorded_model_spend_usd"] > 0

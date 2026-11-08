@@ -1,0 +1,14 @@
+{
+  "source_sha256": {
+    "src/opspilot/evals/full.py": "ad41f3416b9aee7a7d57ff19943c4205255fad7865cbb2ecfe40c0949efad8ef",
+    "src/opspilot/evals/token_guard.py": "bc26601fa6b7dd884d4f68bd3f4c12214f7349a48a43268d3bd7131768ead192",
+    "tests/f22_lab.py": "d8b2661b5f47ff16b47bb7a6f33c8521b61d4b77fb2063aacd40f85cb245cf54",
+    "tests/unit/test_eval_token_guard.py": "40d65ef413eacc77f47d42e8aa09ab4581550c54f0a40bfba4d1627cce37d98c",
+    "tests/unit/test_full_eval.py": "0ed27fa1c12f8d39c9fee77ea18d58bd481a950d19fdbbbecf59f71cb8cbc4bd",
+    "scripts/run-full-f22-real.py": "02180eb4b69d54af1c40ae0d677f6ee457989270ed71852c41c4e56c171a1b6b",
+    "scripts/test-full-f22-ci.sh": "b56453071ca771cfd2ab805eee45b496eb012b4dca33e52c6727f5fb6b33b0a0",
+    "scripts/test-full-f22.ps1": "ab1125c902f6b82c56c28952676b58868285eabdf094c266ea900b5a84a80ef9"
+  },
+  "asvs_253_entire_backlog_unchanged": true,
+  "corpus_and_split_unchanged": true
+}

@@ -4,6 +4,11 @@
 Owner explicitly authorized F22 separately despite F20/F21 blockers. **F22 blocked,
 not done**. [Machine-readable gates](checks.json), [contracts](../../f22-eval-contracts.md).
 
+Latest [free-quota continuation](continuation/README.md): cumulative200000-token guard,
+fresh scripted50/50 and11 unit guards. Real remains unexecuted because Full credentials
+and model were absent and free-quota eligibility/remaining balance was not confirmed.
+The original evidence below is historical and preserved.
+
 | Gate | Measured outcome |
 | --- | --- |
 | Full scripted | [50/50](scripted.json), exactly 50 distinct identities, 30 dev / 20 holdout |

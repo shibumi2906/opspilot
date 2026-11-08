@@ -75,7 +75,15 @@ def accounting(results: list[dict[str, Any]], mode: str = "scripted") -> dict[st
     for key in ("unauthorized_writes", "duplicates", "before_decision_delta", "ticket_delta"):
         totals[key] = sum((r.get("db") or {}).get(key, 0) for r in results)
     known_spend = sum((r.get("usage") or {}).get("known_spend_usd", 0) for r in results)
-    spend_known = all(r.get("usage") and r["usage"].get("cost_status") == "known" for r in results)
+    real_execution = (
+        "not_run"
+        if not results
+        else "incomplete"
+        if not complete
+        else "failed"
+        if not all(r["passed"] for r in results)
+        else "passed"
+    )
     return {
         "planned_distinct": 50,
         "planned_runs": len(expected),
@@ -103,16 +111,16 @@ def accounting(results: list[dict[str, Any]], mode: str = "scripted") -> dict[st
         "scripted_gate": mode == "scripted" and complete and all(r["passed"] for r in results),
         "human_review": "pending",
         "holdout_unseen": False,
-        "real_gate": "blocked" if mode == "scripted" else "human_review_pending",
+        "real_execution": "not_run" if mode == "scripted" else real_execution,
+        "real_gate": "human_review_pending"
+        if mode == "real" and real_execution == "passed"
+        else "NOT_MET",
         "remote_ci": "not_run",
         "release_gate": "NOT_MET",
-        "actual_model_spend_usd": 0
-        if mode == "scripted"
-        else known_spend
-        if spend_known and complete
-        else None,
+        # Catalog estimates do not prove an invoice, free-tier discount or quota eligibility.
+        "actual_model_spend_usd": 0 if mode == "scripted" else None,
         "blockers": [
-            "Real 90-run authorization absent; paid calls forbidden"
+            "Scripted evidence does not provide real-execution acceptance"
             if mode == "scripted"
             else "Real execution alone cannot close human review or dependent gates",
             "Human claim/hypothesis review pending",

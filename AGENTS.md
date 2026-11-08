@@ -75,3 +75,11 @@
   manager HIGH CVE-2026-78661 and F20 dispatch/reconciliation/live boundaries unresolved.
   Holdout is public/inspected, never unseen. Main Full remains0019; F22 test schema0021
   uses an independent manager/project/subnet34. No F23/F24 authorization, no push.
+
+- Latest F22 continuation: owner selected gpt-6.1-sol/low and stated a200000 free-token
+  allowance, then requested completion. Free-quota real execution is intended, but paid
+  overage remains forbidden. See docs/full/evidence/f22/continuation: Full .env key/model
+  absent at preflight; account/project/model eligibility and unused quota await confirmation.
+  New eval-only cumulative token guard and exclusive private quota claim must precede real
+  dispatch. Never reset a claim/unknown ledger to obtain another allowance or copy MVP keys.
+  F20/F21/security/human/remote-CI blockers remain; historical reports are not overwritten.

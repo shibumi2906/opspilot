@@ -10,7 +10,7 @@ import hashlib
 import json
 import os
 import sys
-from contextlib import AsyncExitStack
+from contextlib import AsyncExitStack, nullcontext
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
@@ -29,6 +29,7 @@ from opspilot.db.engine import create_engine
 from opspilot.evals.assertions import evaluate
 from opspilot.evals.full import accounting, schedule
 from opspilot.evals.runner import articles, count_tickets, database_checks, source
+from opspilot.evals.token_guard import TokenGuard
 from opspilot.runtime.run_service import RunService
 from opspilot.runtime.worker import process_one
 from opspilot.tenancy.context import DEMO_TENANT, SECOND_TENANT, tenant_scope
@@ -220,6 +221,8 @@ async def main(args):
         raise ValueError("Only isolated test execution allowed")
     if args.mode == "real" and (not settings.openai_api_key or not settings.openai_model):
         raise ValueError("Real execution requires local credentials and fixed model")
+    if args.mode == "real" and not args.free_quota_confirmed:
+        raise ValueError("Confirm account/project/model free quota before any real dispatch")
     for role in ("migration", "workflow", "domain", "checkpoint", "identity"):
         if make_url(settings.database_url(role)).database != "opspilot_full_test":
             raise ValueError("Isolated Full test DSNs required")
@@ -227,6 +230,11 @@ async def main(args):
         raise ValueError("No external connectors allowed")
     output = Path(os.environ.get("F22_REPORT_DIR", "/reports"))
     await asyncio.to_thread(output.mkdir, parents=True, exist_ok=True)
+    token_guard = (
+        TokenGuard(output / "token-ledger.json", args.total_token_limit, settings.openai_model)
+        if args.mode == "real"
+        else None
+    )
     engine = create_engine(settings.database_url("migration"))
     report = dict(
         stage="F22",
@@ -253,11 +261,16 @@ async def main(args):
             "security_profile": settings.security_profile,
             "recovery_tenants": [str(t) for t in settings.recovery_tenants],
             "corpus": "full-split.json",
+            "reasoning_effort": settings.openai_reasoning_effort,
         },
+        remaining_schedule=[],
     )
 
     def save():
         report["summary"] = accounting(report["cases"], args.mode)
+        if token_guard:
+            report["token_guard"] = token_guard.snapshot()
+            report["free_quota_confirmation"] = "operator attestation; not a billing API proof"
         (output / (args.mode + ".json")).write_text(
             json.dumps(report, indent=2, default=str) + "\n"
         )
@@ -266,8 +279,16 @@ async def main(args):
         async with engine.connect() as guard:
             assert await guard.scalar(text("SELECT current_database()")) == "opspilot_full_test"
             assert await guard.scalar(text("SELECT pg_try_advisory_lock(1801202622)"))
-            for item in schedule(args.mode):
-                result = await run_case(settings, item, engine)
+            planned = schedule(args.mode)
+            for position, item in enumerate(planned):
+                if token_guard and token_guard.stop_reason:
+                    report["remaining_schedule"] = [
+                        dict(id=c.id, repeat=n, reason=token_guard.stop_reason)
+                        for c, n in planned[position:]
+                    ]
+                    break
+                with token_guard.installed() if token_guard else nullcontext():
+                    result = await run_case(settings, item, engine)
                 report["cases"].append(result)
                 save()
                 print(result["id"], result["passed"], result["errors"], flush=True)
@@ -299,4 +320,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=["scripted", "real"], default="scripted")
     parser.add_argument("--authorize-real", action="store_true")
+    parser.add_argument("--free-quota-confirmed", action="store_true")
+    parser.add_argument("--total-token-limit", type=int, default=200000)
     raise SystemExit(asyncio.run(main(parser.parse_args())))
