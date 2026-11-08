@@ -1,6 +1,6 @@
 # Продолжение OpsPilot Full
 
-Обновлено 7 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
+Обновлено 8 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
 Это самостоятельный Git-репозиторий, не ссылка на скрытый worktree.
 Сначала откройте эту папку как workspace в редакторе/Codex.
 
@@ -8,7 +8,10 @@
 
 - Ветка: `codex/opspilot-full`. F16: `6330f32`; F17: `017b68b`; F18 — отдельный локальный stage commit (subject в tracker).
 - F13: `2fe6613`; F14: `be246d7`; F12: `abfaf76`.
-- F01–F18 завершены; **F18 adapter platform/signed ingress принят**; F19: локальный connector и разрешённый AWS staging проверены; F20–F24 не начаты.
+- F01–F19 завершены. F20 blocked; владелец отложил реальные Jira проверки.
+  F21 выполняется по отдельному явному запросу: [локальные измерения и ограничения](docs/full/evidence/f21/README.md).
+  Полное закрытие F21 зависит от реализации write/reconciliation boundaries F20 и устранения
+  manager HIGH CVE-2026-78661. F22–F24 не начаты.
   Перед новым этапом используйте текущий HEAD и канонический tracker.
 - Схема Full: `0019_adapters`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
 - [Канонический tracker](docs/full-version-status.md).
@@ -225,3 +228,15 @@ Browse/Create/Add Comments подтверждены HTTP200; остальные 
 без чата/Git. Pure payload/verification и read-only preflight tested21; runtime write
 ещё не подключён. F20 blocked, full L2/Pilot NOT_MET. Main Full0019/MVP сохранены;
 без Jira writes/paid calls/push. F21–F24 не начинать автоматически.
+
+## F21 — отдельный запрос владельца, 8 ноября 2026
+
+F21 разрешён отдельно, пока real Jira gate F20 отложен. Реальный 30-minute scripted
+soak100 runs/200 jobs и burst100 create/decision измерены в r4/subnet30. Исправлены
+admission/maintenance lock inversion и per-request enqueue pools. Fault profile —
+r6/subnet32, fencing — отдельный fresh r7/subnet33. Main Full остаётся0019.
+[Отчёт и ограничения](docs/full/evidence/f21/README.md),
+[точные результаты](docs/full/evidence/f21/checks.json).
+Общий статус blocked: отсутствуют write/reconciliation boundaries F20, manager имеет
+HIGH CVE-2026-78661 (x/net0.61.0, fix0.62.0). Security gate/Full L2/Pilot NOT_MET.
+Не начинать F22 автоматически, не возобновлять реальные Jira вызовы по предположению.

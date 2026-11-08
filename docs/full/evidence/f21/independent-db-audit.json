@@ -1,0 +1,24 @@
+{
+  "schema": "0021_worker_admission",
+  "registered_connectors": 0,
+  "duplicate_writes": 0,
+  "unapproved_writes": 0,
+  "payload_mismatches": 0,
+  "cross_tenant_receipts": 0,
+  "unknown_jobs_without_reason": 0,
+  "run_states": {
+    "completed": 157
+  },
+  "job_states": {
+    "done": 310
+  },
+  "worker_slot_separate_lock": true,
+  "soak_window": {
+    "runs": 100,
+    "first_created": "2026-11-08T08:03:29.525564+00:00",
+    "last_created": "2026-11-08T08:32:49.943618+00:00",
+    "jobs": 200,
+    "active": 0
+  },
+  "passed": true
+}

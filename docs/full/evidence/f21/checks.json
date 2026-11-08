@@ -1,0 +1,223 @@
+{
+  "stage": "F21",
+  "base": "152d59b",
+  "recorded_at": "2026-11-08T12:54:22.632612+00:00",
+  "stage_status": "blocked",
+  "available_local_gates": "NOT_MET",
+  "functional_local_gates": "passed",
+  "commit_subject": "feat(full-f21): measure bounded load recovery and repair admission bottlenecks",
+  "load_project": "opspilot-full-test-f21-r4",
+  "fault_project": "opspilot-full-test-f21-r6",
+  "fencing_project": "opspilot-full-test-f21-r7",
+  "schema_test_only": "0021_worker_admission",
+  "main_full_schema": "0019_adapters",
+  "soak": {
+    "planned_runs": 100,
+    "completed_runs": 100,
+    "measured_seconds": 1800.009
+  },
+  "soak_db_window": {
+    "runs": 100,
+    "first_created": "2026-11-08T08:03:29.525564+00:00",
+    "last_created": "2026-11-08T08:32:49.943618+00:00",
+    "jobs": 200,
+    "active": 0
+  },
+  "load_run_count": 153,
+  "load_job_count": 306,
+  "burst": {
+    "concurrent_create_requests": 100,
+    "distinct_runs": 20,
+    "observed_nonterminal_runs": 20,
+    "concurrent_decision_requests": 100,
+    "completed": 20,
+    "cross_tenant_denials": 20
+  },
+  "quota_burst": {
+    "concurrent_distinct_create_requests": 100,
+    "http_status_counts": {
+      "202": 32,
+      "429": 68
+    },
+    "denial_codes": {
+      "RUN_ADMISSION_LIMIT": 68
+    },
+    "accepted": 32,
+    "actor_active_limit": 32,
+    "tenant_active_limit": 40,
+    "global_active_limit": 64,
+    "terminal_rejected": 32
+  },
+  "latency_seconds": {
+    "create": {
+      "samples": 201,
+      "p50": 0.501,
+      "p95": 3.177,
+      "max": 3.225
+    },
+    "decision": {
+      "samples": 232,
+      "p50": 1.904,
+      "p95": 3.876,
+      "max": 4.144
+    },
+    "completion": {
+      "samples": 100,
+      "p50": 5.699,
+      "p95": 8.625,
+      "max": 16.836
+    }
+  },
+  "service_outages": [
+    {
+      "started_at_utc": "2026-11-08T08:04:43.4213678Z",
+      "health_recovered": true,
+      "service": "mcp",
+      "stop_to_health_seconds": 7.3340882,
+      "scope": "isolated F21 test container only",
+      "stopped_seconds": 6
+    },
+    {
+      "started_at_utc": "2026-11-08T08:06:36.2309119Z",
+      "health_recovered": true,
+      "service": "redis",
+      "stop_to_health_seconds": 13.8533526,
+      "scope": "isolated F21 test container only",
+      "stopped_seconds": 6
+    },
+    {
+      "started_at_utc": "2026-11-08T08:08:23.4639954Z",
+      "health_recovered": true,
+      "service": "collector",
+      "stop_to_health_seconds": 15.806674,
+      "scope": "isolated F21 test container only",
+      "stopped_seconds": 6
+    },
+    {
+      "started_at_utc": "2026-11-08T08:10:09.7659113Z",
+      "health_recovered": true,
+      "service": "postgres",
+      "stop_to_health_seconds": 10.4402168,
+      "scope": "isolated F21 test container only",
+      "stopped_seconds": 6
+    }
+  ],
+  "process_faults": [
+    {
+      "kind": "worker_sigkill",
+      "batch": 6,
+      "replacement_seconds": 0.01
+    },
+    {
+      "kind": "api_sigkill",
+      "batch": 11,
+      "replacement_seconds": 9.743
+    }
+  ],
+  "process_fault_note": "Worker replacement_seconds measures spawn only; API includes readiness. Job recovery is measured by completion latency and dedicated fencing tests.",
+  "resource_regressions": {
+    "executed": true,
+    "passed": true,
+    "tests": 2,
+    "failed": 0,
+    "skipped": 0,
+    "successful": 2,
+    "incomplete": 0
+  },
+  "faults": {
+    "executed": true,
+    "passed": true,
+    "tests": 115,
+    "failed": 0,
+    "skipped": 1,
+    "successful": 114,
+    "incomplete": 0
+  },
+  "fencing": {
+    "executed": true,
+    "passed": true,
+    "tests": 3,
+    "failed": 0,
+    "skipped": 0,
+    "successful": 3,
+    "incomplete": 0
+  },
+  "units": {
+    "executed": true,
+    "passed": true,
+    "tests": 278,
+    "failed": 0,
+    "skipped": 0,
+    "successful": 278,
+    "incomplete": 0
+  },
+  "protected_asvs_rows": 253,
+  "source_files": 152,
+  "source_matches": true,
+  "mvp_isolation": "passed",
+  "security_scan_ref": "security/checks.json",
+  "security_scan": {
+    "images": [
+      {
+        "high_critical": 0,
+        "id": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88",
+        "archive_config_verified": true,
+        "name": "app",
+        "image": "opspilot-full/app:f19"
+      },
+      {
+        "high_critical": 0,
+        "id": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+        "archive_config_verified": true,
+        "name": "redis",
+        "image": "opspilot-full/redis:f15"
+      },
+      {
+        "high_critical": 0,
+        "id": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+        "archive_config_verified": true,
+        "name": "postgres",
+        "image": "opspilot-full/postgres:f01"
+      },
+      {
+        "high_critical": 1,
+        "id": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+        "archive_config_verified": true,
+        "name": "manager",
+        "image": "opspilot-full/manager:f17"
+      }
+    ],
+    "scanner": "aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
+    "recorded_at": "2026-11-08T12:36:43.4282430Z",
+    "python_audit_exit": 0,
+    "scope": "F21 runtime images and test Python dependencies; no web or IdP runtime was started by this lab. Existing archives verified against actual image config hashes; fresh advisory scan.",
+    "passed": false
+  },
+  "secret_scan": {
+    "artifact_files": 64,
+    "artifact_secret_matches": 0,
+    "runtime_log_containers": 42,
+    "runtime_secret_matches": 0,
+    "runtime_unredacted_jwt_shapes": 0,
+    "private_forensics": ".tools/f21-private-logs (ignored; never committed)",
+    "child_stdio_captured": false,
+    "scope_note": "API/worker child stdout was discarded by the process harness; collector/application container logs, HTTP security tests and typed protected telemetry remain separate evidence. This is not a claim to have scanned discarded bytes.",
+    "passed": true
+  },
+  "vendor_calls": 0,
+  "paid_calls": 0,
+  "push": 0,
+  "full_pilot": "NOT_MET",
+  "whole_asvs_l2": "NOT_MET",
+  "blockers": [
+    "F20 Jira write/one-attempt/reconciliation implementation and its fault boundaries remain incomplete.",
+    "The owner explicitly deferred real Jira checks; no request to recreate a token or perform Jira writes was inferred.",
+    "Fresh manager image scan has HIGH CVE-2026-78661 in x/net0.61.0 (fix0.62.0). Security gate NOT_MET; preserved runtime was not rebuilt with less than3GB free disk. No applicability exception claimed."
+  ],
+  "limits": [
+    "20 active means nonterminal accepted runs, including queue/human wait; not20 executing workers.",
+    "Sessions are explicit test fixtures; this is not IdP login-load acceptance, HA, service quorum or a promised SLO.",
+    "Existing F19 images plus read-only source mounts; no new release image or main Full deployment.",
+    "Failed/interrupted candidates remain under attempts and ignored .tools logs; only final measured gates count."
+  ]
+}

@@ -9,6 +9,7 @@ from uuid import UUID, uuid4
 from psycopg import Error as PsycopgError
 from sqlalchemy import select, text, update
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.agent.budgets import Budget, BudgetLimits
 from opspilot.agent.checkpoints import postgres_checkpointer
@@ -54,6 +55,7 @@ async def run_investigation(
     limits: BudgetLimits | None = None,
     run_id: UUID | None = None,
     queued_only: bool = False,
+    engine: AsyncEngine | None = None,
 ) -> dict[str, Any]:
     request = request.strip()
     if not 1 <= len(request) <= 4000:
@@ -76,7 +78,8 @@ async def run_investigation(
             sort_keys=True,
         ).encode()
     ).hexdigest()
-    engine = create_engine(settings.database_url("workflow"))
+    owns_engine = engine is None
+    engine = engine or create_engine(settings.database_url("workflow"))
     run_id = run_id or uuid4()
     from opspilot.runtime.plans import VERSION, wants_mixed
 
@@ -235,7 +238,8 @@ async def run_investigation(
     finally:
         if lease is not None:
             await lease.__aexit__(None, None, None)
-        await engine.dispose()
+        if owns_engine:
+            await engine.dispose()
         scope.__exit__(None, None, None)
 
 

@@ -1,0 +1,7 @@
+{
+  "hashes": {
+    "docs/full/evidence/f21/harness/load-r4.py": "8fd5372d3e2f9dc5eadc6d26664df771489b66de6c7897c94df8a6a1b476dc65",
+    "tests/f21_lab.py": "b972b8d54901f5da08aac6bec72808b518ad41e9e5d2130bf628f6c9d7d02d76"
+  },
+  "note": "Accepted load helper preserved byte for byte. Final helper additionally supports legacy tenant-partitioned worker process probes; ordinary load defaults unchanged. Application source provenance is separate."
+}

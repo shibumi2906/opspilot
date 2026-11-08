@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "stopped": [
+    "opspilot-full-test-f21-r7-api-1",
+    "opspilot-full-test-f21-r7-collector-1",
+    "opspilot-full-test-f21-r7-mcp-1",
+    "opspilot-full-test-f21-r7-manager-manager-1",
+    "opspilot-full-test-f21-r7-postgres-1",
+    "opspilot-full-test-f21-r7-redis-1"
+  ],
+  "running_f21_containers": 0,
+  "operation": "Only docker stop; all images, networks and volumes preserved. Unrelated containers not selected."
+}

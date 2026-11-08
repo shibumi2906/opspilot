@@ -27,6 +27,8 @@ RECOVERY = ROOT / ".tools/f17-recovery"
 IMAGE = "opspilot-full/manager:f17"
 PROJECT = "opspilot-full-test-f17-manager-r2"
 PORT = 18200
+APPLICATION_NETWORKS: tuple[str, ...] | None = None
+EXTERNAL_NETWORK: str | None = None
 
 
 def local_profile() -> None:
@@ -111,6 +113,8 @@ log_level = "warn"
         "volumes": [f"{PRIVATE.as_posix()}:/run/manager:ro", "manager-data:/bao/data", "manager-audit:/bao/audit"],
         "tmpfs": ["/tmp:rw,noexec,nosuid,size=16m"]}},
         "volumes": {"manager-data": {}, "manager-audit": {}}}
+    if EXTERNAL_NETWORK:
+        compose["networks"] = {"default": {"external": True, "name": EXTERNAL_NETWORK}}
     (PRIVATE / "compose.json").write_text(json.dumps(compose), encoding="utf-8")
     docker("volume", "create", PROJECT + "_manager-data")
     docker("volume", "create", PROJECT + "_manager-audit")
@@ -122,8 +126,11 @@ log_level = "warn"
     connected = json.loads(docker("inspect", container, "--format", "{{json .NetworkSettings.Networks}}"))
     # Only the manager joins isolated application networks. Application services
     # never join its common network, where duplicate MCP aliases would collide.
-    for network in (() if PROJECT == "opspilot-full" else
-                    ("opspilot-full-test-f17-manager_default", "opspilot-full-test-f17-r1_default")):
+    application_networks = APPLICATION_NETWORKS
+    if application_networks is None:
+        application_networks = (() if PROJECT == "opspilot-full" else
+            ("opspilot-full-test-f17-manager_default", "opspilot-full-test-f17-r1_default"))
+    for network in application_networks:
         if network not in connected:
             docker("network", "connect", "--alias", "manager", network, container)
 

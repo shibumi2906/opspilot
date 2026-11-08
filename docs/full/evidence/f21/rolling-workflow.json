@@ -1,0 +1,18 @@
+{
+  "passed_initial_coexistence": true,
+  "legacy_worker_origin": "/app/.venv/lib/python3.12/site-packages/opspilot/__init__.py",
+  "new_worker_origin": "/app/src/opspilot",
+  "workflow_versions": [
+    "full-graph-v1",
+    "full-graph-v2"
+  ],
+  "tenant_partitioned_workers": true,
+  "release_image_upgrade_claim": false,
+  "passed": true,
+  "immutable_expiry_preserved": true,
+  "expired_wait_writes": 0,
+  "post_upgrade_statuses": [
+    "completed",
+    "completed"
+  ]
+}

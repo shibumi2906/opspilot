@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19 завершён (локальный connector и разрешённый AWS staging проверены); F20 начат, blocked на scopes и remaining gates; F21–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 8 ноября 2026 года. **F01–F19 завершены; F20 blocked, реальные Jira проверки отложены владельцем; F21 local resilience измерен, overall blocked на F20 и manager security finding; F22–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**F19 завершён: локальный connector и отдельный разрешённый AWS staging проверены. Временные AWS-ресурсы удалены. F20–F24 не начаты и не разрешены этим запросом. Full Pilot/ASVS L2 NOT_MET.**
+**F19 завершён. F20 остаётся blocked; владелец отложил реальные Jira checks. По отдельному явному запросу проведены F21 local fault/concurrency/load/soak; общий статус blocked, см. evidence и security finding. F22–F24 не начинать автоматически. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -78,7 +78,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F18 | done | Manager-backed adapters, bounded HTTPS/circuit breaker, signed durable observation ingress и recovery | [evidence](full/evidence/f18/README.md); commit subject: `feat(full): complete F18 adapter platform and signed ingress` | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
 | F19 | done | Scoped Prometheus reads: local contracts plus actual owned AWS staging health, MCP/OIDC UI; temporary resources removed | [local evidence](full/evidence/f19/README.md); [AWS evidence](full/evidence/f19-aws/README.md); local base `c984d6a`; stage commit subject below | [SEC-09](security/asvs-l2-implementation-plan.md) |
 | F20 | blocked | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
-| F21 | not_started | Fault/concurrency/load/soak evidence | — | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
+| F21 | blocked | Local load/soak/recovery measured; F20 boundaries and manager HIGH remain | [evidence](full/evidence/f21/README.md); commit subject below | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
 | F22 | not_started | 50 evals и отдельный real/holdout report | — | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
 | F23 | not_started | Pilot deployment/TLS/backup/restore | — | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
 | F24 | not_started | Full Pilot release и traceability | — | [SEC-01/10/11/12](security/asvs-l2-implementation-plan.md) |
@@ -965,3 +965,47 @@ MVP existing isolation gate184 files/env/head/images/volume metadata/content pas
 report .tools/verification/f20-isolation-before.json. Builds/migrations/dev updates0,
 main Full schema0019. Jira writes/paid calls/remote CI/push0; ASVS253 backlog unchanged.
 Local continuation commit subject: `feat(full-f20): verify sandbox access and exact result contracts`.
+
+
+## F21 — локальные измерения и оставшиеся blockers, 8 ноября 2026
+
+Base152d59b; C:/Users/user/Desktop/code/Ops, codex/opspilot-full. Пользователь явно
+запросил F21, пока F20 incomplete и real Jira gate отложен; стандартный выбор первого
+незакрытого этапа этим запросом переопределён, F20 не объявлен done.
+[Контракты/ограничения](full/f21-resilience-contracts.md).
+
+Изолированный lab opspilot-full-test-f21-r4/subnet30/schema0021, новый F21-only manager.
+MVP сохранён по prerequisite gate; main Full остаётся0019 без rebuild/migration/seed.
+Найдены и исправлены admission/maintenance lock inversion и per-request API enqueue pools.
+Обе regression probes2 passed; первоначальный исправленный smoke100create/100decision,
+20runs/40jobs terminal и0unsafe/duplicate/false-verified прошёл. Следующий100-distinct
+burst выявил PostgreSQL connection exhaustion; после shared pool fix32accepted/68bounded429,
+без500. Все failed attempts сохраняются.
+
+Принятый soak1800.009sec:100 paced runs/200 jobs, подтверждено независимым DB audit.
+Всего harness153 completed runs/306 done jobs;0duplicate/unauthorized/rejected writes,
+false verification и attention без причины.2API+2workers+2tenant,100 concurrent create/
+decision requests,20observed active nonterminal runs. Create p95=3.177s, decision3.876s,
+paced completion8.625s. MCP/Redis/collector/PostgreSQL stop/recovery измерены отдельно;
+worker spawn и API readiness timings не приравниваются к job recovery. Fixture sessions,
+scripted workload; IdP login load/HA/quorum/SLO не заявлены. Подробные counts/limits:
+[checks](full/evidence/f21/checks.json), [отчёт](full/evidence/f21/README.md).
+
+278 unit tests passed; fault suite114 passed/1 skipped, fencing3 passed в fresh r7/subnet33.
+Fault suite использует отдельный r6/subnet32; rolling legacy/new
+workers сохранили pinned v1/v2, natural immutable expiry,0expired writes. Initial r5
+fixture пыталась изменить immutable expiry и была правильно отклонена; failed XML сохранён,
+guard не ослаблен. Source hashes152 фактически импортированных файлов зафиксированы.
+Main Full0019 не мигрирован/пересобран; текущие источники тестировались read-only mounts.
+
+SEC-02/03/05/07/09/11 + общие SEC-01/10: scoped adversarial/fencing/telemetry gates,
+fresh image/Python audit, secret scan и253 ASVS inherited-field comparison в evidence.
+Python audit0; app/PostgreSQL/Redis0HIGH/CRITICAL. **Manager x/net0.61.0 содержит HIGH
+CVE-2026-78661 (исправление0.62.0)**. Security gate NOT_MET, applicability exception нет.
+При менее3GB свободного диска тяжёлая пересборка manager не выполнялась, существующие
+images/volumes не удалялись ради неё. Второй blocker — F20 write/one-attempt/reconciliation
+ещё не реализован, real Jira gate явно отложен владельцем. Поэтому F21 **blocked**, не done.
+Full L2/Pilot NOT_MET; F22 не начат. MVP184 files/env/head/images/volume content сохранён.
+Все F21 контейнеры остановлены; images/networks/volumes сохранены, чужие проекты не выбирались.
+Paid/vendor calls/remote CI/push0. Отдельный локальный commit subject:
+`feat(full-f21): measure bounded load recovery and repair admission bottlenecks`.

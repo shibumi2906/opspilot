@@ -689,6 +689,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -798,6 +805,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -907,6 +921,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -1098,6 +1119,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -1371,6 +1399,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -1726,6 +1761,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -1835,6 +1877,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2026,6 +2075,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2381,6 +2437,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2538,6 +2601,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2613,6 +2683,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2688,6 +2765,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2763,6 +2847,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2838,6 +2929,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2913,6 +3011,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -2988,6 +3093,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -3063,6 +3175,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -3138,6 +3257,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -3213,6 +3339,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -3305,6 +3438,13 @@
         "verification_ref": "../full/evidence/f16/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "Scoped F16 contribution only; full L2 NOT_MET; no whole-requirement closure"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -4402,6 +4542,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -4663,6 +4810,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -4881,6 +5035,13 @@
         "verification_ref": "../full/evidence/f18/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -4947,6 +5108,13 @@
         "verification_ref": "../full/evidence/f18/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5013,6 +5181,13 @@
         "verification_ref": "../full/evidence/f18/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5079,6 +5254,13 @@
         "verification_ref": "../full/evidence/f18/checks.json",
         "status": "local_change_gate_passed; no whole-requirement closure",
         "closure": "No whole-requirement or production ASVS closure; all inherited fields and owners preserved."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5188,6 +5370,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5297,6 +5486,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5406,6 +5602,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5515,6 +5718,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5624,6 +5834,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5733,6 +5950,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5842,6 +6066,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -5951,6 +6182,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6060,6 +6298,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6169,6 +6414,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6278,6 +6530,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6387,6 +6646,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6496,6 +6762,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6605,6 +6878,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6714,6 +6994,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6780,6 +7067,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6846,6 +7140,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6912,6 +7213,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -6978,6 +7286,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7044,6 +7359,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7110,6 +7432,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7176,6 +7505,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7242,6 +7578,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7308,6 +7651,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7374,6 +7724,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7440,6 +7797,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7506,6 +7870,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7572,6 +7943,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7638,6 +8016,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7704,6 +8089,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7770,6 +8162,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7836,6 +8235,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7902,6 +8308,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -7968,6 +8381,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8034,6 +8454,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8100,6 +8527,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8166,6 +8600,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8232,6 +8673,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8341,6 +8789,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8450,6 +8905,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8559,6 +9021,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8668,6 +9137,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8777,6 +9253,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8886,6 +9369,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -8995,6 +9485,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9104,6 +9601,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9213,6 +9717,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9279,6 +9790,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9388,6 +9906,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9454,6 +9979,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Local IdP password/TOTP and session checks; SMTP notification, production administrator MFA and operational recovery remain deployment review. Disabled self-service reset is not proof of email recovery."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9521,6 +10053,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9588,6 +10127,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9655,6 +10201,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9722,6 +10275,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9789,6 +10349,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9856,6 +10423,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9923,6 +10497,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -9990,6 +10571,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10057,6 +10645,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10124,6 +10719,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10191,6 +10793,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10258,6 +10867,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10325,6 +10941,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10392,6 +11015,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10459,6 +11089,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10526,6 +11163,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10593,6 +11237,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10660,6 +11311,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Real local TLS/MFA/revoke/session evidence; production IdP/session deployment and independent full-requirement verification remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10737,6 +11395,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10814,6 +11479,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10891,6 +11563,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -10968,6 +11647,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11045,6 +11731,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11122,6 +11815,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11199,6 +11899,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11275,6 +11982,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11351,6 +12065,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11427,6 +12148,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11503,6 +12231,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11579,6 +12314,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11655,6 +12397,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11731,6 +12480,13 @@
         "status": "local_change_gate_passed; no whole-requirement closure",
         "scope": "DB clock expiry/revocation/roles and key overlap; uncached scoped preconditions independently at MCP; one replan/new consent within2 rounds; terminal/completed intent preservation; durable separate verification budget",
         "review": "Local implementation and measured evidence; baseline, accountable owners and future production/operational gates unchanged"
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11796,6 +12552,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11861,6 +12624,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -11926,6 +12696,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12035,6 +12812,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12144,6 +12928,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12253,6 +13044,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12362,6 +13160,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12471,6 +13276,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12536,6 +13348,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12601,6 +13420,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12666,6 +13492,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12731,6 +13564,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12796,6 +13636,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12861,6 +13708,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12926,6 +13780,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -12991,6 +13852,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13056,6 +13924,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13165,6 +14040,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13230,6 +14112,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13295,6 +14184,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13360,6 +14256,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13425,6 +14328,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13490,6 +14400,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13599,6 +14516,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13664,6 +14588,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13729,6 +14660,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13794,6 +14732,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13859,6 +14804,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -13924,6 +14876,13 @@
         "verification_ref": "../full/evidence/f14/checks.json",
         "disposition": "scoped implementation and negative matrix verified; whole-requirement verification open",
         "residual": "Single pinned first-party confidential OIDC client. Other OAuth server/client/consent flows require separate applicability review; no owner-approved N/A inferred."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15126,6 +16085,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15501,6 +16467,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15790,6 +16763,13 @@
         "scope": "Manager credential metadata checked; native HTTPS Basic authentication and denied credentials verified locally; expiry unknown.",
         "status": "local contribution verified; whole requirement and staging acceptance open",
         "remaining": "Authorized staging endpoint/credential/mapping deferred by user; production enforcement and independent review remain F23/F24."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15842,6 +16822,13 @@
         "scope": "Generated local fixture credentials; narrow exact-purpose manager ACL, independent test state, no root/unseal in applications.",
         "status": "local contribution verified; whole requirement and staging acceptance open",
         "remaining": "Authorized staging endpoint/credential/mapping deferred by user; production enforcement and independent review remain F23/F24."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15894,6 +16881,13 @@
         "scope": "Existing tenant RLS/config immutability retained; bounded mapping and no ingress; tenant boolean function permits only workflow/domain.",
         "status": "local contribution verified; whole requirement and staging acceptance open",
         "remaining": "Authorized staging endpoint/credential/mapping deferred by user; production enforcement and independent review remain F23/F24."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15946,6 +16940,13 @@
         "scope": "Operator-only origin/CA/all-answer IP allowlist, numeric socket pin and TLS hostname; no redirects/proxies; staging firewall still open.",
         "status": "local contribution verified; whole requirement and staging acceptance open",
         "remaining": "Authorized staging endpoint/credential/mapping deferred by user; production enforcement and independent review remain F23/F24."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -15998,6 +16999,13 @@
         "scope": "Fixed scoped PromQL and GET path allowlist, bounded range/cardinality/body/deadline, actual Prometheus local contract; no business writes.",
         "status": "local contribution verified; whole requirement and staging acceptance open",
         "remaining": "Authorized staging endpoint/credential/mapping deferred by user; production enforcement and independent review remain F23/F24."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17060,6 +18068,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17175,6 +18190,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17290,6 +18312,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17414,6 +18443,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17538,6 +18574,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17662,6 +18705,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17777,6 +18827,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -17892,6 +18949,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18007,6 +19071,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18122,6 +19193,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18237,6 +19315,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18352,6 +19437,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18467,6 +19559,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18537,6 +19636,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18607,6 +19713,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18677,6 +19790,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18747,6 +19867,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18817,6 +19944,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18887,6 +20021,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -18957,6 +20098,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19027,6 +20175,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19097,6 +20252,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19167,6 +20329,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19237,6 +20406,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19307,6 +20483,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19377,6 +20560,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19447,6 +20637,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19517,6 +20714,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19587,6 +20791,13 @@
         "verification_ref": "../full/evidence/f17/checks.json",
         "status": "verified; final scoped gates passed (2026-11-06)",
         "closure": "No whole-requirement closure; all inherited fields/owners/N/A preserved. Full L2 NOT_MET."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19696,6 +20907,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19805,6 +21023,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -19914,6 +21139,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -20023,6 +21255,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -20132,6 +21371,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -20241,6 +21487,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     },
     {
@@ -20350,6 +21603,13 @@
         "verification_ref": "../full/evidence/f19/checks.json",
         "status": "local change gates verified; staging acceptance blocked by user-deferred target; whole norm open",
         "closure": "No whole-norm closure. Separate authorized staging/version/scope/UI evidence, F20/F23 deployment and primary owner review remain open."
+      },
+      "f21_scope_review": {
+        "ref": "../full/f21-resilience-contracts.md",
+        "verification_ref": "../full/evidence/f21/checks.json",
+        "status": "scoped evidence recorded; security gate NOT_MET; no whole-requirement closure",
+        "implementation": "separate worker admission serialization, shared API enqueue pool, real multi-process HTTP/DB load and bounded fault/recovery gates",
+        "closure": "F20 vendor writes/reconciliation incomplete; real Jira checks deferred. Manager image HIGH CVE-2026-78661 remains; no applicability exception. Full L2/Pilot NOT_MET."
       }
     }
   ],

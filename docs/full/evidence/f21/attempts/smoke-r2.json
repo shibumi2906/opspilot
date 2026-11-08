@@ -1,0 +1,70 @@
+{
+  "started_at": "2026-11-08T07:47:18.126978+00:00",
+  "scripted": true,
+  "vendor_calls": 0,
+  "paid_calls": 0,
+  "idp_login_load_tested": false,
+  "processes": {
+    "api": 2,
+    "worker": 2
+  },
+  "tenants": 2,
+  "active_definition": "accepted nonterminal runs, including queued and human approval wait",
+  "simultaneous_worker_execution_claim": false,
+  "requested_soak_seconds": 1800,
+  "passed": false,
+  "process_health": {
+    "api_alive": 2,
+    "worker_alive": 2
+  },
+  "elapsed_seconds": 229.058,
+  "http_status_counts": {
+    "202": 141,
+    "200": 617,
+    "404": 20,
+    "500": 45,
+    "transport_error": 285
+  },
+  "latency_seconds": {
+    "create": {
+      "samples": 100,
+      "p50": 3.245,
+      "p95": 4.355,
+      "max": 4.433
+    },
+    "decision": {
+      "samples": 43,
+      "p50": 22.954,
+      "p95": 34.682,
+      "max": 118.533
+    },
+    "completion": {
+      "samples": 0,
+      "p50": null,
+      "p95": null,
+      "max": null
+    }
+  },
+  "api_pids": [
+    8,
+    13
+  ],
+  "worker_pids": [
+    17,
+    18
+  ],
+  "platform": {
+    "system": "Linux",
+    "machine": "x86_64",
+    "cpu_visible": 12
+  },
+  "phase": "failed",
+  "burst_creates_completed": 100,
+  "burst": {
+    "concurrent_create_requests": 100,
+    "distinct_runs": 20,
+    "observed_nonterminal_runs": 20,
+    "concurrent_decision_requests": 100
+  },
+  "error_class": "TimeoutError"
+}

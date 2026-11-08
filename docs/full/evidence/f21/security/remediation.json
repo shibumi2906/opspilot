@@ -1,0 +1,13 @@
+{
+  "status": "NOT_MET",
+  "vulnerability": "CVE-2026-78661",
+  "package": "golang.org/x/net",
+  "installed": "v0.61.0",
+  "fixed": "v0.62.0",
+  "image": "opspilot-full/manager:f17",
+  "applicability_exception": false,
+  "rebuild_executed": false,
+  "free_disk_bytes_at_review": 2811539456,
+  "reason": "Less than3GB free; preserve existing images, source caches and volumes. No unverified source-only patch claimed as fixed.",
+  "next_gate": "Build separate patched manager image, fresh scan, manager and F21 fault regression"
+}

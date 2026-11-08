@@ -1,0 +1,55 @@
+# F21 uses existing F19 runtime images, isolated DB/network and explicit source mounts.
+services:
+  api:
+    image: opspilot-full/app:f19
+    environment: {PYTHONPATH: /app/src}
+    volumes: ['./src:/app/src:ro']
+  mcp:
+    image: opspilot-full/app:f19
+    environment:
+      PYTHONPATH: /app/src
+      MAX_ACTOR_ACTIVE_RUNS: '32'
+      MAX_TENANT_ACTIVE_RUNS: '40'
+      MAX_GLOBAL_ACTIVE_RUNS: '64'
+    volumes:
+      - ./src:/app/src:ro
+      - ${F21_MANAGER_DIR:-./.tools/f21-manager}/ca.crt:/run/manager-client/ca.crt:ro
+      - ${F21_MANAGER_DIR:-./.tools/f21-manager}/mcp.token:/run/manager-client/token:ro
+  admin:
+    image: opspilot-full/app:f19
+    environment: {PYTHONPATH: /app/src}
+    volumes: ['./src:/app/src:ro', './migrations:/app/migrations:ro']
+  tests:
+    image: opspilot-full/tests:f19
+    mem_limit: 2304m
+    environment:
+      PYTHONPATH: /app/src
+      LLM_MODE: scripted
+      OPENAI_API_KEY: ''
+      MAX_ACTOR_ACTIVE_RUNS: '32'
+      MAX_TENANT_ACTIVE_RUNS: '40'
+      MAX_GLOBAL_ACTIVE_RUNS: '64'
+      ACTOR_REQUESTS_PER_MINUTE: '1000'
+      F21_REPORT_DIR: /reports
+    volumes:
+      - ./src:/app/src:ro
+      - ${F21_MANAGER_DIR:-./.tools/f21-manager}/service-private:/run/service-private:ro
+      - ${F21_MANAGER_DIR:-./.tools/f21-manager}/ca.crt:/run/manager-client/ca.crt:ro
+      - ${F21_MANAGER_DIR:-./.tools/f21-manager}/worker.token:/run/manager-client/token:ro
+      - ./tests/f21_lab.py:/app/tests/f21_lab.py:ro
+      - ./scripts/audit-full-f21.py:/app/scripts/audit-full-f21.py:ro
+      - ./tests/integration/test_f21_resilience.py:/app/tests/integration/test_f21_resilience.py:ro
+      - ./tests/unit:/app/tests/unit:ro
+      - ./tests/test_f20_jira_payload.py:/app/tests/test_f20_jira_payload.py:ro
+      - ./scripts/check-full-f20-jira.py:/app/scripts/check-full-f20-jira.py:ro
+      - ./scripts/resume-full-f21-faults.py:/app/scripts/resume-full-f21-faults.py:ro
+      - ./docs/full/evidence/f21:/reports
+  collector: {image: 'opspilot-full/app:f19'}
+networks:
+  default:
+    external: false
+    name: ${COMPOSE_PROJECT_NAME}_default
+    ipam:
+      config:
+        - subnet: ${F21_SUBNET_PREFIX:-10.245.28}.0/24
+          ip_range: ${F21_SUBNET_PREFIX:-10.245.28}.128/25

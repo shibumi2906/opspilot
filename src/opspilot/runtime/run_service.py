@@ -60,6 +60,7 @@ class RunService:
             client_request_id=body.client_request_id,
             run_id=run_id,
             queued_only=True,
+            engine=self.engine,
         )
         return {
             "run_id": result["run_id"],

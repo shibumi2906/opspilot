@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="3" time="65.227" timestamp="2026-11-08T12:49:01.792669+00:00" hostname="8a3f4f4faf65"><testcase classname="tests.integration.test_execution_fences" name="test_two_workers_expiry_and_stale_boundaries[kill]" time="20.189"><failure message="assert 0 == 1&#10; +  where 0 = len(set())">integration_settings = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = &lt;sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f796d7ea250&gt;
+tmp_path = PosixPath('/tmp/pytest-of-opspilot/pytest-0/test_two_workers_expiry_and_st0')
+fault = 'kill'
+
+    @pytest.mark.parametrize("fault", ["kill", "stop", "partition"])
+    async def test_two_workers_expiry_and_stale_boundaries(
+        integration_settings, admin_engine, tmp_path, fault
+    ):
+        service = RunService(integration_settings)
+        result = await service.create(
+            CreateRun(request="Investigate GreenShop", client_request_id=uuid4())
+        )
+        run = UUID(result["run_id"])
+        release = tmp_path / "release"
+        blocked = False
+        sockets = set()
+        processes = []
+        db = make_url(integration_settings.database_url("workflow"))
+
+        async def proxy(reader, writer):
+            sockets.add(writer)
+            upstream = None
+            try:
+                if blocked:
+                    return
+                other, upstream = await asyncio.open_connection(db.host, db.port or 5432)
+                sockets.add(upstream)
+
+                async def copy(source, dest):
+                    while chunk := await source.read(65536):
+                        if blocked:
+                            break
+                        dest.write(chunk)
+                        await dest.drain()
+
+                tasks = [
+                    asyncio.create_task(copy(reader, upstream)),
+                    asyncio.create_task(copy(other, writer)),
+                ]
+                await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+                for task in tasks:
+                    task.cancel()
+                await asyncio.gather(*tasks, return_exceptions=True)
+            except (ConnectionError, OSError):
+                pass
+            finally:
+                writer.close()
+                sockets.discard(writer)
+                if upstream:
+                    upstream.close()
+                    sockets.discard(upstream)
+
+        server = await asyncio.start_server(proxy, "127.0.0.1", 0)
+        proxy_port = server.sockets[0].getsockname()[1]
+
+        async def start():
+            env = {
+                **os.environ,
+                "F06_RUN": str(run),
+                "F06_RELEASE": str(release),
+                "F06_HOLD_SDK": "1" if fault == "stop" else "0",
+            }
+            if fault == "partition":
+                for role in ("workflow", "checkpoint"):
+                    url = make_url(integration_settings.database_url(role)).set(
+                        host="127.0.0.1", port=proxy_port
+                    )
+                    env[role.upper() + "_DATABASE_URL"] = url.render_as_string(hide_password=False)
+            proc = await asyncio.create_subprocess_exec(
+                sys.executable,
+                "-m",
+                "tests.f06_fault_worker",
+                env=env,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.DEVNULL,
+            )
+            processes.append(proc)
+            return proc
+
+        async def wait_status(expected):
+            async with asyncio.timeout(45):
+                while True:
+                    current = await service.snapshot(run)
+                    if current["status"] in expected:
+                        return current
+                    await asyncio.sleep(0.05)
+
+        try:
+            # Both real processes contend for the same run. Exactly one receives epoch 1.
+            first, second = await asyncio.gather(start(), start())
+            reads = [asyncio.create_task(proc.stdout.readline()) for proc in processes]
+            done, pending = await asyncio.wait(reads, timeout=20, return_when=asyncio.FIRST_COMPLETED)
+&gt;           assert len(done) == 1
+E           assert 0 == 1
+E            +  where 0 = len(set())
+
+tests/integration/test_execution_fences.py:109: AssertionError</failure></testcase><testcase classname="tests.integration.test_execution_fences" name="test_two_workers_expiry_and_stale_boundaries[stop]" time="20.206"><failure message="assert 0 == 1&#10; +  where 0 = len(set())">integration_settings = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = &lt;sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f796d3ac950&gt;
+tmp_path = PosixPath('/tmp/pytest-of-opspilot/pytest-0/test_two_workers_expiry_and_st1')
+fault = 'stop'
+
+    @pytest.mark.parametrize("fault", ["kill", "stop", "partition"])
+    async def test_two_workers_expiry_and_stale_boundaries(
+        integration_settings, admin_engine, tmp_path, fault
+    ):
+        service = RunService(integration_settings)
+        result = await service.create(
+            CreateRun(request="Investigate GreenShop", client_request_id=uuid4())
+        )
+        run = UUID(result["run_id"])
+        release = tmp_path / "release"
+        blocked = False
+        sockets = set()
+        processes = []
+        db = make_url(integration_settings.database_url("workflow"))
+
+        async def proxy(reader, writer):
+            sockets.add(writer)
+            upstream = None
+            try:
+                if blocked:
+                    return
+                other, upstream = await asyncio.open_connection(db.host, db.port or 5432)
+                sockets.add(upstream)
+
+                async def copy(source, dest):
+                    while chunk := await source.read(65536):
+                        if blocked:
+                            break
+                        dest.write(chunk)
+                        await dest.drain()
+
+                tasks = [
+                    asyncio.create_task(copy(reader, upstream)),
+                    asyncio.create_task(copy(other, writer)),
+                ]
+                await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+                for task in tasks:
+                    task.cancel()
+                await asyncio.gather(*tasks, return_exceptions=True)
+            except (ConnectionError, OSError):
+                pass
+            finally:
+                writer.close()
+                sockets.discard(writer)
+                if upstream:
+                    upstream.close()
+                    sockets.discard(upstream)
+
+        server = await asyncio.start_server(proxy, "127.0.0.1", 0)
+        proxy_port = server.sockets[0].getsockname()[1]
+
+        async def start():
+            env = {
+                **os.environ,
+                "F06_RUN": str(run),
+                "F06_RELEASE": str(release),
+                "F06_HOLD_SDK": "1" if fault == "stop" else "0",
+            }
+            if fault == "partition":
+                for role in ("workflow", "checkpoint"):
+                    url = make_url(integration_settings.database_url(role)).set(
+                        host="127.0.0.1", port=proxy_port
+                    )
+                    env[role.upper() + "_DATABASE_URL"] = url.render_as_string(hide_password=False)
+            proc = await asyncio.create_subprocess_exec(
+                sys.executable,
+                "-m",
+                "tests.f06_fault_worker",
+                env=env,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.DEVNULL,
+            )
+            processes.append(proc)
+            return proc
+
+        async def wait_status(expected):
+            async with asyncio.timeout(45):
+                while True:
+                    current = await service.snapshot(run)
+                    if current["status"] in expected:
+                        return current
+                    await asyncio.sleep(0.05)
+
+        try:
+            # Both real processes contend for the same run. Exactly one receives epoch 1.
+            first, second = await asyncio.gather(start(), start())
+            reads = [asyncio.create_task(proc.stdout.readline()) for proc in processes]
+            done, pending = await asyncio.wait(reads, timeout=20, return_when=asyncio.FIRST_COMPLETED)
+&gt;           assert len(done) == 1
+E           assert 0 == 1
+E            +  where 0 = len(set())
+
+tests/integration/test_execution_fences.py:109: AssertionError</failure></testcase><testcase classname="tests.integration.test_execution_fences" name="test_two_workers_expiry_and_stale_boundaries[partition]" time="21.224"><failure message="assert 0 == 1&#10; +  where 0 = len(set())">integration_settings = Settings(redis_url=SecretStr('**********'), redis_password=SecretStr('**********'), cache_signing_key=SecretStr('*****...ime(2026, 10, 18, 9, 0, tzinfo=datetime.timezone.utc), clarification_ttl_seconds=86400, demo_timezone='Asia/Jerusalem')
+admin_engine = &lt;sqlalchemy.ext.asyncio.engine.AsyncEngine object at 0x7f796d33bcd0&gt;
+tmp_path = PosixPath('/tmp/pytest-of-opspilot/pytest-0/test_two_workers_expiry_and_st2')
+fault = 'partition'
+
+    @pytest.mark.parametrize("fault", ["kill", "stop", "partition"])
+    async def test_two_workers_expiry_and_stale_boundaries(
+        integration_settings, admin_engine, tmp_path, fault
+    ):
+        service = RunService(integration_settings)
+        result = await service.create(
+            CreateRun(request="Investigate GreenShop", client_request_id=uuid4())
+        )
+        run = UUID(result["run_id"])
+        release = tmp_path / "release"
+        blocked = False
+        sockets = set()
+        processes = []
+        db = make_url(integration_settings.database_url("workflow"))
+
+        async def proxy(reader, writer):
+            sockets.add(writer)
+            upstream = None
+            try:
+                if blocked:
+                    return
+                other, upstream = await asyncio.open_connection(db.host, db.port or 5432)
+                sockets.add(upstream)
+
+                async def copy(source, dest):
+                    while chunk := await source.read(65536):
+                        if blocked:
+                            break
+                        dest.write(chunk)
+                        await dest.drain()
+
+                tasks = [
+                    asyncio.create_task(copy(reader, upstream)),
+                    asyncio.create_task(copy(other, writer)),
+                ]
+                await asyncio.wait(tasks, return_when=asyncio.FIRST_COMPLETED)
+                for task in tasks:
+                    task.cancel()
+                await asyncio.gather(*tasks, return_exceptions=True)
+            except (ConnectionError, OSError):
+                pass
+            finally:
+                writer.close()
+                sockets.discard(writer)
+                if upstream:
+                    upstream.close()
+                    sockets.discard(upstream)
+
+        server = await asyncio.start_server(proxy, "127.0.0.1", 0)
+        proxy_port = server.sockets[0].getsockname()[1]
+
+        async def start():
+            env = {
+                **os.environ,
+                "F06_RUN": str(run),
+                "F06_RELEASE": str(release),
+                "F06_HOLD_SDK": "1" if fault == "stop" else "0",
+            }
+            if fault == "partition":
+                for role in ("workflow", "checkpoint"):
+                    url = make_url(integration_settings.database_url(role)).set(
+                        host="127.0.0.1", port=proxy_port
+                    )
+                    env[role.upper() + "_DATABASE_URL"] = url.render_as_string(hide_password=False)
+            proc = await asyncio.create_subprocess_exec(
+                sys.executable,
+                "-m",
+                "tests.f06_fault_worker",
+                env=env,
+                stdout=asyncio.subprocess.PIPE,
+                stderr=asyncio.subprocess.DEVNULL,
+            )
+            processes.append(proc)
+            return proc
+
+        async def wait_status(expected):
+            async with asyncio.timeout(45):
+                while True:
+                    current = await service.snapshot(run)
+                    if current["status"] in expected:
+                        return current
+                    await asyncio.sleep(0.05)
+
+        try:
+            # Both real processes contend for the same run. Exactly one receives epoch 1.
+            first, second = await asyncio.gather(start(), start())
+            reads = [asyncio.create_task(proc.stdout.readline()) for proc in processes]
+            done, pending = await asyncio.wait(reads, timeout=20, return_when=asyncio.FIRST_COMPLETED)
+&gt;           assert len(done) == 1
+E           assert 0 == 1
+E            +  where 0 = len(set())
+
+tests/integration/test_execution_fences.py:109: AssertionError</failure></testcase></testsuite></testsuites>

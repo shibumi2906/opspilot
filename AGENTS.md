@@ -2,7 +2,8 @@
 
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
-  The tracker is authoritative; F01–F18 are done; F19 local and authorized AWS staging verified; F20–F24 not started.
+  The tracker is authoritative; F01–F19 are done. F20 is blocked, real Jira checks deferred
+  by the owner. F21 was explicitly authorized separately; see its local evidence/blockers.
 - Implement only the stage explicitly requested by the user. Completion of a stage does
   not authorize starting the next stage, paid calls, external writes, production deployment or push.
 - Preserve the Portfolio MVP checkout at C:/Users/user/Desktop/code/AI Incident & Operations Agent:
@@ -55,9 +56,14 @@
 - F19 AWS staging completed on2026-11-07: docs/full/evidence/f19-aws and docs/full/f19-aws-staging.md.
   Earlier deferred-staging notes are historical. Temporary EC2/EBS/VPC resources were removed.
   Cold-restart dependency errors remain documented; full L2/Pilot and F21 reliability NOT_MET.
-  F20 is not authorized. Main Full remains F18/schema0019; AWS lab schema0020 is stopped.
+  Main Full remains F18/schema0019; AWS lab schema0020 is stopped.
 
-- F19 AWS staging completed on2026-11-07: docs/full/evidence/f19-aws and docs/full/f19-aws-staging.md.
-  Earlier deferred-staging notes are historical. Temporary EC2/EBS/VPC resources were removed.
-  Cold-restart dependency errors remain documented; full L2/Pilot and F21 reliability NOT_MET.
-  F20 is not authorized. Main Full remains F18/schema0019; AWS lab schema0020 is stopped.
+- Current owner direction (2026-11-08) supersedes historical authorization notes above:
+  F20 preparation base152d59b, real Jira checks deferred; F21 explicitly requested.
+  F21 isolated test schema0021 fixes worker admission lock inversion and shared enqueue pools.
+  Accepted load r4/subnet30; fault profile r6/subnet32, fencing r7/subnet33;
+  each has its own F21-only manager/network. Run fencing in a freshly prepared project.
+  Read docs/full/evidence/f21/README.md and checks.json before continuing. F21 overall remains
+  blocked on absent F20 write/reconciliation boundaries and manager HIGH CVE-2026-78661
+  (x/net0.61.0, fix0.62.0); no applicability exception. Do not start F22, use Jira, push,
+  rebuild/migrate main Full or claim Pilot/whole L2 from these source-mounted local tests.

@@ -1,0 +1,37 @@
+{
+  "opspilot-full-test-f21-r4-api-1": {
+    "image_id": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88",
+    "image_tag": "opspilot-full/app:f19",
+    "project": "opspilot-full-test-f21-r4"
+  },
+  "opspilot-full-test-f21-r4-mcp-1": {
+    "image_id": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88",
+    "image_tag": "opspilot-full/app:f19",
+    "project": "opspilot-full-test-f21-r4"
+  },
+  "opspilot-full-test-f21-r4-postgres-1": {
+    "image_id": "sha256:1d55e381bb50adcf8be018d48571dbeb1bda5a0d1bf9af8552980b807cd7aa74",
+    "image_tag": "opspilot-full/postgres:f01",
+    "project": "opspilot-full-test-f21-r4"
+  },
+  "opspilot-full-test-f21-r4-redis-1": {
+    "image_id": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+    "image_tag": "opspilot-full/redis:f15",
+    "project": "opspilot-full-test-f21-r4"
+  },
+  "opspilot-full-test-f21-r4-collector-1": {
+    "image_id": "sha256:b9f43f02f515075492aec7cd4ed2a5a6a2cadd7f8b5fd1051b5b39c8242a8f88",
+    "image_tag": "opspilot-full/app:f19",
+    "project": "opspilot-full-test-f21-r4"
+  },
+  "opspilot-full-test-f21-r4-manager-manager-1": {
+    "image_id": "sha256:0b33108fca73c9e997337260033638542627e5160690beab6611c70698040a61",
+    "image_tag": "opspilot-full/manager:f17",
+    "project": "opspilot-full-test-f21-r4-manager"
+  },
+  "opspilot-full-test-f21-r4-soak": {
+    "image_id": "sha256:898e83690695bfa44e9e31dc543acd3d2fa265d31fde790f74fed98432515269",
+    "image_tag": "opspilot-full/tests:f19",
+    "project": "opspilot-full-test-f21-r4"
+  }
+}
