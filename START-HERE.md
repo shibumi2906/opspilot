@@ -214,3 +214,14 @@ MCP healthy/failure/recovery, real-OIDC UI/refresh; временные AWS-ре�
 Cold-start ошибки зависимости сохранены как ограничение; load/soak acceptance не заявлен.
 Main Full остаётся F18/schema0019, test lab0020 остановлен с сохранением volumes.
 F20 не начат и требует отдельного запроса; без push. Полный ASVS L2/Pilot NOT_MET.
+
+
+## F20 — подготовка и scope blocker, 8 ноября 2026
+
+F20 разрешён владельцем; отдельные Jira Free/KAN созданы. Token authenticated и project
+Browse/Create/Add Comments подтверждены HTTP200; остальные reads401 scope mismatch.
+Прежний agent список17 был неполным,29 dependency scopes по official OpenAPI:
+[текущее состояние](docs/full/f20-jira-preparation.md). Token только ignored .tools,
+без чата/Git. Pure payload/verification и read-only preflight tested21; runtime write
+ещё не подключён. F20 blocked, full L2/Pilot NOT_MET. Main Full0019/MVP сохранены;
+без Jira writes/paid calls/push. F21–F24 не начинать автоматически.

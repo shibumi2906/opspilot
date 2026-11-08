@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19 завершён (локальный connector и разрешённый AWS staging проверены); F20–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 7 ноября 2026 года. **F01–F18 завершены; F19 завершён (локальный connector и разрешённый AWS staging проверены); F20 начат, blocked на scopes и remaining gates; F21–F24 не начаты.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -941,3 +941,27 @@ Desktop запущен hidden, но Engine не был готов на повт�
 seed, dev restart не выполнялись. Source/env/head MVP проверены отдельно; images/volumes
 на этот момент не подтверждены заново. Main Full остаётся F18/schema0019.
 Локальный preparation commit subject: `feat(full-f20): prepare offline Jira payload contract`.
+
+
+### F20 — подтверждённый test site, token scope blocker; 8 ноября 2026
+
+Base a9e50bf; Ops/codex/opspilot-full. Owner создал отдельную Jira Free и KAN/OpsPilot Test,
+предоставил credential локальным файлом. Atlassian plugin не нужен. GET mypermissions200
+подтвердил valid credential и Browse/Create/Add Comments. GET project/issue/myself401:
+provider сообщает scope mismatch. Ошибка прежнего agent списка17 scopes признана;
+официальная OpenAPI показывает12 недостающих зависимостей (29 total), не invalid token.
+[Preflight](full/evidence/f20/jira-preflight.json), [scope gap](full/evidence/f20/scope-gap.json).
+
+Добавлены read-only preflight, comment payload и pure exact issue/comment/marker verification,
+узкая ADF normalization, conservative unknown/multiple-match rules. Не подключены к runtime;
+PostgreSQL dispatch_started/one attempt/late-response, pinned transport, manager/grant/MCP/UI,
+fault simulator и реальные reject/approve/comment/replay gates ещё требуют реализации.
+F20 **blocked**, не done; Full L2/Pilot NOT_MET. Подробности: full/f20-jira-preparation.md.
+
+Scoped tests21 passed; Ruff/format и mypy2 passed. Historical tests не изменены.
+Broad host unit attempts прерваны на inherited thread-timeout test после26 pass; результаты
+не приняты. Initial targeted tmp permission issue исправлен workspace basetemp.
+MVP existing isolation gate184 files/env/head/images/volume metadata/content passed;
+report .tools/verification/f20-isolation-before.json. Builds/migrations/dev updates0,
+main Full schema0019. Jira writes/paid calls/remote CI/push0; ASVS253 backlog unchanged.
+Local continuation commit subject: `feat(full-f20): verify sandbox access and exact result contracts`.

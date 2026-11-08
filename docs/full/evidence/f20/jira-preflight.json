@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-11-08T07:21:02.086999+00:00",
+  "site": "https://makegrigorev.atlassian.net",
+  "project_key": "KAN",
+  "write_requests": 0,
+  "paid_calls": 0,
+  "passed": false,
+  "discovery_status": 200,
+  "permission_status": 200,
+  "credential_authenticated": true,
+  "permissions": {
+    "BROWSE_PROJECTS": true,
+    "CREATE_ISSUES": true,
+    "ADD_COMMENTS": true
+  },
+  "project_status": 401,
+  "scope_mismatch": true,
+  "error_class": "HTTPStatusError"
+}

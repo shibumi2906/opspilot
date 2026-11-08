@@ -71,3 +71,16 @@ def approval_digest(mapping: SandboxMapping, payload: bytes) -> str:
         separators=(",", ":"),
     ).encode()
     return hashlib.sha256(envelope + b"\x00" + payload).hexdigest()
+
+
+def comment_payload(operation_id: UUID, *, body: str) -> bytes:
+    """Separate comment approval must also bind the exact target issue outside this body."""
+    return json.dumps(
+        {
+            "body": adf(body),
+            "properties": [{"key": "opspilot.operation", "value": str(operation_id)}],
+        },
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=False,
+    ).encode()

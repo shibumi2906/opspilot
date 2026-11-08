@@ -1,0 +1,27 @@
+{
+  "stage": "F20",
+  "status": "blocked",
+  "base_commit": "a9e50bf",
+  "scope": "preflight and pure payload/exact verification only",
+  "pytest_passed": 21,
+  "ruff": "passed",
+  "mypy_modules": 2,
+  "candidate_secret_matches": 0,
+  "protected_asvs_backlog_unchanged": true,
+  "mvp_isolation": "passed",
+  "jira_write_requests": 0,
+  "paid_calls": 0,
+  "push": 0,
+  "unaccepted_attempts": [
+    "Initial focused tests: 17 passed, 3 sandbox tmp permission errors; fixed with local basetemp.",
+    "Two broad host unit runs interrupted after 26 passes, stalled at inherited bounded transport thread test."
+  ],
+  "remaining": [
+    "complete credential API scopes",
+    "pinned write/read transport and mapping enrollment",
+    "PostgreSQL durable dispatch/unknown/late response handling",
+    "manager/grant/MCP/UI integration",
+    "simulator faults and full stage security gates",
+    "authorized live reject/approve/comment/replay acceptance"
+  ]
+}
