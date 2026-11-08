@@ -1,5 +1,10 @@
 # F22 free-quota continuation
 
+Latest: [real-r1](real-r1/README.md) supersedes the historical missing-credentials
+preflight below. Owner confirmed eligibility/200000 available tokens and saved
+credentials. Real attempt stopped at the quota reservation boundary:27/90 recorded,
+23passed,186340 known tokens,63 unexecuted. F22 remains blocked.
+
 Base `8e4f44e`, 2026-11-08. Owner requested completing F22 after selecting
 `gpt-6.1-sol`, reasoning low, with a stated 200,000 complimentary-token allowance.
 This authorizes the intended real evaluation within the confirmed free allowance;

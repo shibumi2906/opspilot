@@ -1,0 +1,916 @@
+{
+  "status": "pending",
+  "rows": [
+    {
+      "id": "F01",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "f2024141-ff83-4502-83ac-5c6a53920977",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_bb6b885103b46c02a25cbf2ec73aa39ba7d5ebb0eed732f2d1ab7e69ceda11a0"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F02",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "339e9f29-cf52-454e-9782-7cc3bd36a46a",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_e5c0d91d95997329ca874e528648c7b0b53aa0894d42a5fe84969c4e78199299"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F03",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "bcb865af-ae49-4172-8fd5-212f63a6507b",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_97dcb9a5343479fc60dc4156dc296788612d37d1149c72d1bb604ba680b62a7c"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F04",
+      "repeat": 1,
+      "split": "holdout",
+      "run_id": "09e0882c-24f3-41a0-8cc5-345bb2cd9b58",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_b2e3fc0aea8d92693cd3119259a6c063aa25ca8536f7ea4c16f70541bf44f83f"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F04",
+      "repeat": 2,
+      "split": "holdout",
+      "run_id": "8f4464ea-cf05-4022-9ef5-e77141d619ed",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_29f31d2f8e79851f217e5dedf764f8297d95baa17164d309ff452b1d01f3ee93"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F04",
+      "repeat": 3,
+      "split": "holdout",
+      "run_id": "ab434443-f6e2-434a-aea7-b2d3e7d654c4",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_0f738d795566fd438ebeae29fe99b9d81bd74a48ce7686b645597be60e59576d"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F05",
+      "repeat": 1,
+      "split": "holdout",
+      "run_id": "b94c7d31-17fd-4223-a5e1-938ca58d9eef",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_81ad447b41a0fe19b022f0d26c5915bf35ef58a1dd0e7afcf52dace2cbd27cdd"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F05",
+      "repeat": 2,
+      "split": "holdout",
+      "run_id": "0ed6345a-06cc-4278-a0a0-958f920c6a97",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_d537e870abeca33bc69d7b4b72a94aea825d06fed01edac99658b63a9c5f925a"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F05",
+      "repeat": 3,
+      "split": "holdout",
+      "run_id": "67864e45-7341-45a7-80c3-f3965ecf2076",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_7493d5fbdf4d572994e788fa0a994531387fc75dad555b6d4f8c012603091070"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F06",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "0a30e8d4-f98d-443f-aeb5-1dc9622650e2",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_3376e024fac6bea51704e73be99ac22ed37e44c2a4f118bc6a138ef86c0a8302"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F07",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "34590c46-ca26-42ee-a31c-41cfa512929c",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_3763f5ea309c724361463d8ec3065f04b5a591a88a96593a9f898f6f65cd04e2"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F08",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "40f57421-42ba-459e-9231-bea4484b740c",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_bfcfb81b9e72b17946dd59db0640a38cb02839333a2e2dbfc0c607ce0c04cdc8"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F09",
+      "repeat": 1,
+      "split": "holdout",
+      "run_id": "bd3a4708-7c24-4393-a443-1bd5eec68dcb",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_0831a13be12bf2b24f84f1026b10f6934c1079c71c9d2c039f16b164110e670e"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F09",
+      "repeat": 2,
+      "split": "holdout",
+      "run_id": "040ffcb1-80ed-4a4b-ba69-54a7127313ef",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_761b370eb538c2134baa2b274dcafa09df87cdd2690053ccfd7e5f2955711fd7"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F09",
+      "repeat": 3,
+      "split": "holdout",
+      "run_id": "c5af6d41-46c1-4b75-befd-8db626e84ebe",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: healthy",
+          "evidence_ids": [
+            "ev_ba25ca44e4743d0455827d3ac3660a3b038196f5cd610c28e98312bc0d9da76b"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F10",
+      "repeat": 1,
+      "split": "holdout",
+      "run_id": "ffcc5f1d-950e-4371-a1ea-1baf83f3f1ec",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_777cf89350eb28634862822edebd62d833a2246ca9c268f43962880110673bd5"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F10",
+      "repeat": 2,
+      "split": "holdout",
+      "run_id": "f11fdff4-8ee9-4475-a48c-d690360c84df",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_e97f462c23e2ff9a5782b426268590758cc9b35eb23b162694b9be9fa96aa0b7"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F10",
+      "repeat": 3,
+      "split": "holdout",
+      "run_id": "f13a65b6-9438-4632-9927-5c15d053cb72",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_189750da258cb83b04d97452df1f1aa726ecad8f1a9a6c87e47b1ed04ac6c51b"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F11",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "340e7b6f-8968-4564-9f20-994989f13fcb",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: degraded",
+          "evidence_ids": [
+            "ev_43835a766c46b0646a1b614b219134965c0a7c51fead52c8d57ae6d8f9798f9e"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_278cbfbbf51f7630aea5e307a57eccb78acf457ff108f0ca3130cc5af3645e45"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_ac6de4a1b0a77e25cb017e670f45ad25bc5632d7be8a319ad0a66c300603b11b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_c6a26e35903391d4dd028d785fe42744f120f5c267466e36734c5e1e6187dbad"
+          ]
+        },
+        {
+          "statement": "Credential status: expired",
+          "evidence_ids": [
+            "ev_9ef87921e0038c751ef90912cec6fe7e1c2a6fea9ea7932de1c1f69a8b9a32c7"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_be4dfd1872fc597bca2d97f25e3446dacc0312cf81556b80f828b40ee6da3dc2"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "H1",
+          "summary": "An expired credential is the likely cause of GreenShop's observed Shopify order-delivery failures at 08:25, 08:40 and 08:55 UTC within the requested window. Current credential metadata explicitly reports expiration; HTTP 401 alone would not establish this cause. The exact expiration time and whether it explains every failure in the window are not established.",
+          "supporting_evidence_ids": [
+            "ev_9ef87921e0038c751ef90912cec6fe7e1c2a6fea9ea7932de1c1f69a8b9a32c7",
+            "ev_278cbfbbf51f7630aea5e307a57eccb78acf457ff108f0ca3130cc5af3645e45",
+            "ev_ac6de4a1b0a77e25cb017e670f45ad25bc5632d7be8a319ad0a66c300603b11b",
+            "ev_c6a26e35903391d4dd028d785fe42744f120f5c267466e36734c5e1e6187dbad"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F12",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "29fb2e58-6b5b-4700-8f0f-83e72c7d11f6",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: degraded",
+          "evidence_ids": [
+            "ev_d6ec60bf2897dda852d56603579341f0bdf8c01702a370b1869f8583f59d7ca6"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_77d0e8cbb5a8fa3fb3f1c1aacec4c21058c3126622915d0a82869ab83e02fc12"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_2c10051dfea2222bc05bda10e68da1b93c53f0d301228c26ee58a7b61e96f0a5"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_9aca8134e06ca1b4f173221e7b90dddedd2cbe48b586ebf9acdf38c83474f894"
+          ]
+        },
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 credential: expired",
+          "evidence_ids": [
+            "ev_2e0448ee43f82ad1b3e1d4d68d7be72b29d557380d97c385881cdac943b40b4b"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "h1",
+          "summary": "\u041d\u0430\u0438\u0431\u043e\u043b\u0435\u0435 \u0432\u0435\u0440\u043e\u044f\u0442\u043d\u0430\u044f \u043f\u0440\u0438\u0447\u0438\u043d\u0430 \u043e\u0442\u043a\u0430\u0437\u043e\u0432 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 GreenShop \u2014 \u0438\u0441\u0442\u0451\u043a\u0448\u0438\u0439 credential Shopify. \u0413\u0438\u043f\u043e\u0442\u0435\u0437\u0430 \u043e\u043f\u0438\u0440\u0430\u0435\u0442\u0441\u044f \u043d\u0430 \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u0441\u0442\u0430\u0442\u0443\u0441 expired \u0438 \u043f\u043e\u0432\u0442\u043e\u0440\u044f\u044e\u0449\u0438\u0435\u0441\u044f HTTP 401, \u0430 \u043d\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u043a\u043e\u0434 \u043e\u0448\u0438\u0431\u043a\u0438 \u0438\u043b\u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0438\u043d\u0446\u0438\u0434\u0435\u043d\u0442\u044b.",
+          "supporting_evidence_ids": [
+            "ev_2e0448ee43f82ad1b3e1d4d68d7be72b29d557380d97c385881cdac943b40b4b",
+            "ev_77d0e8cbb5a8fa3fb3f1c1aacec4c21058c3126622915d0a82869ab83e02fc12",
+            "ev_2c10051dfea2222bc05bda10e68da1b93c53f0d301228c26ee58a7b61e96f0a5",
+            "ev_9aca8134e06ca1b4f173221e7b90dddedd2cbe48b586ebf9acdf38c83474f894"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F13",
+      "repeat": 1,
+      "split": "dev",
+      "run_id": "5af74c90-8bc7-4c35-bf3d-00b896e67369",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "Integration status: unknown",
+          "evidence_ids": [
+            "ev_2657426c178675ae756d90fd9746df9e378868b1d1f0e73c77611b390f572c0e"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_373b0a62ddd15f1e690cab24c0bad1abc0f398fe4d0b4cbfc735784094c902d6"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_a855bcbf3bfde461f8db6045513250f0686b592acff707d80301196cc9984f59"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_8044b7608f0e00616f2baa5c47de466423f56ed6e7d6484b80fb269a0094a7f1"
+          ]
+        },
+        {
+          "statement": "Credential status: unknown",
+          "evidence_ids": [
+            "ev_cc3fd02708772f085a1c72eeccbe86dfa7af7a802fa1ed5905351e7ada4de357"
+          ]
+        },
+        {
+          "statement": "Historical incident: \u0417\u0430\u043a\u0430\u0437\u044b Shopify \u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0434\u044f\u0442, HTTP 401",
+          "evidence_ids": [
+            "ev_a91c5213503c30ed8da6d200d908ce0aa5cf95e73a9787519e24b8734b8c0f0d"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_7ccf42e76110c996b8a35f0a0a5705faba5f5f7c23bc35bc62be22cb52e3d81d"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "authentication_rejection",
+          "summary": "The three GreenShop delivery failures in the requested window suggest authentication rejection. The underlying cause is not established.",
+          "supporting_evidence_ids": [
+            "ev_373b0a62ddd15f1e690cab24c0bad1abc0f398fe4d0b4cbfc735784094c902d6",
+            "ev_a855bcbf3bfde461f8db6045513250f0686b592acff707d80301196cc9984f59",
+            "ev_8044b7608f0e00616f2baa5c47de466423f56ed6e7d6484b80fb269a0094a7f1"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "medium",
+          "missing_checks": [
+            "credential_status_unknown",
+            "service_status_unknown"
+          ]
+        },
+        {
+          "hypothesis_id": "credential_expiration",
+          "summary": "Credential expiration is a possible but unconfirmed explanation. A historical incident involved expiration, but history does not establish the present cause; HTTP 401 alone is insufficient and current credential status is unknown.",
+          "supporting_evidence_ids": [
+            "ev_a91c5213503c30ed8da6d200d908ce0aa5cf95e73a9787519e24b8734b8c0f0d",
+            "ev_e60e84a8072f794b62392c4b045090e44ec3b06f09cd0306a5bab198a22d416b"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "low",
+          "missing_checks": [
+            "credential_status_unknown"
+          ]
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F14",
+      "repeat": 1,
+      "split": "holdout",
+      "run_id": "40dd07cf-3d9f-4e2e-8bbb-190205318e78",
+      "errors": [
+        "OUTCOME",
+        "EVIDENCE_CONFLICT"
+      ],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_64c17d815e8ddd076b011d41cbf32a95a6bcee814d1cba268d27726846e0c0e0"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_da15e221819562bc753ae8449388c059ef7e95e9a6fb56ae5e6c7756335949d2"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_c797321b7dd6bbc5366aa5601e2979fc4d42999a0243aba7ac5fabf5712d06cb"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_58e7e03d655e001dc092a8ba334efd6e68597567537fcb47f8ce694bce5cfce5"
+          ]
+        },
+        {
+          "statement": "Credential status: valid",
+          "evidence_ids": [
+            "ev_1d139387f3e16ad71802629b36e824c38da87256d6d9cf622aad5fb6b5109255"
+          ]
+        },
+        {
+          "statement": "Historical incident: \u0417\u0430\u043a\u0430\u0437\u044b Shopify \u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0434\u044f\u0442, HTTP 401",
+          "evidence_ids": [
+            "ev_d9aff03cbec59b5424fc5770e432ccba3cc7fee0fff59aaccf75a5ebc9390a8e"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_4240c658cb105896f540649a61f944992c9d9fad7bc63543088f403cee75a760"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify: 401 \u0438 \u0438\u0441\u0442\u0451\u043a\u0448\u0438\u0439 credential",
+          "evidence_ids": [
+            "ev_16a45ffb90b589835624737a0cc3a8745ac443f71145ecd175d5bab34990c324"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_b204f3f70d78fb90365e8576b19cd2a9e8e72a48bbf930a3156258b987b4f23d"
+          ]
+        },
+        {
+          "statement": "Documentation: \u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+          "evidence_ids": [
+            "ev_f7f91a210b909dfee9e54c60135e9ef8f1ead7111bd1e9205ccff03a2145fe73"
+          ]
+        },
+        {
+          "statement": "Documentation: \u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d",
+          "evidence_ids": [
+            "ev_616e70fbe4656204652fabaec89ec53d9037b5a00e41392151007565a2cea7c0"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify rate limiting",
+          "evidence_ids": [
+            "ev_38ab11a856dfb0916cd4565dcd335da2288588cfab164a8f5039844de719d959"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F14",
+      "repeat": 2,
+      "split": "holdout",
+      "run_id": "06127f39-9b79-42e3-b55d-f3f903e7ebd3",
+      "errors": [
+        "OUTCOME",
+        "EVIDENCE_CONFLICT"
+      ],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_ee0858a5b4aacce4e3236cf780fb27e1b4f12ba0d0df5cb0d59d1e494b120b1b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_6c42302051bc871a035e9bcf99045f8ba023f0d4fd997fef5695dd805f7704b0"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_008c02a407e3758ae9967729e0fd0d4a3ca09075e2c1d33f070751e80ab23a58"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_ba1776a8021d5e15c8fab5ebee4af719fc28ae50f30c5e0b45533595b2aa3b7c"
+          ]
+        },
+        {
+          "statement": "Credential status: valid",
+          "evidence_ids": [
+            "ev_4e6207f193a9945b05638dbf7abdfacf0042d3db24e0aa33716a208141871e00"
+          ]
+        },
+        {
+          "statement": "Historical incident: \u0417\u0430\u043a\u0430\u0437\u044b Shopify \u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0434\u044f\u0442, HTTP 401",
+          "evidence_ids": [
+            "ev_8ffdf067afd1ae78792f8881ff409e43d3b308fb1be41d07ff441c0d5c463215"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_c240fc8b503e4547c40b6c4f358abd65434b597a7d80beb64084c4924e278bca"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify: 401 \u0438 \u0438\u0441\u0442\u0451\u043a\u0448\u0438\u0439 credential",
+          "evidence_ids": [
+            "ev_086ffdc384183fbaa0524448901c975b1b2a8b0b149d12fa7118005720da5ea0"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_f84f179a9fbbbf87ae4b13e0dab99265cc1af1072b7acebb0c52548037780e8a"
+          ]
+        },
+        {
+          "statement": "Documentation: \u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+          "evidence_ids": [
+            "ev_7c361a95b3611b30a89a6f3e949811088ebfbe21b31ecaf8365bc13cadbb03a9"
+          ]
+        },
+        {
+          "statement": "Documentation: \u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d",
+          "evidence_ids": [
+            "ev_b4e0227cad6b940fa3b788e3d7c79be034c8d3d7de6eed57ff99edbd3f549159"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify rate limiting",
+          "evidence_ids": [
+            "ev_448050169b9d0a6859bc2c0fb675e6e767dfe243ba7475a0be763fbdde4de0b2"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F14",
+      "repeat": 3,
+      "split": "holdout",
+      "run_id": "af27743f-d4ac-4d2e-8565-9cfd6ba7926c",
+      "errors": [
+        "OUTCOME",
+        "EVIDENCE_CONFLICT"
+      ],
+      "facts": [
+        {
+          "statement": "Integration status: healthy",
+          "evidence_ids": [
+            "ev_d17856e87bc1a5629a3ed6689a9d89ede03a58b456c83f04c30c135c7e4c9d75"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_b2e5ea696b5ed66515b72f57912eeb88978fcec749090a2d2841630abe28170b"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_6373113d80ef9689e398f429ca1bba85b7bd8abcccbb6afc63702acaeb9fbda7"
+          ]
+        },
+        {
+          "statement": "Delivery event: 401",
+          "evidence_ids": [
+            "ev_cc17d7b9ed45f551736283b75ef8cfa61f0ebfa44552b2aa2ce182982bb315bc"
+          ]
+        },
+        {
+          "statement": "Credential status: valid",
+          "evidence_ids": [
+            "ev_469567bf0b7127f7e18e036900d770c8b69cc939da1b348110f19eb4843f71b5"
+          ]
+        },
+        {
+          "statement": "Historical incident: \u0417\u0430\u043a\u0430\u0437\u044b Shopify \u043d\u0435 \u043f\u0440\u0438\u0445\u043e\u0434\u044f\u0442, HTTP 401",
+          "evidence_ids": [
+            "ev_0f48784e4635ca63e454c6c18eba9d7e8b367b0230bb3aaa2a193afb5d43deef"
+          ]
+        },
+        {
+          "statement": "Historical incident: Shopify delivery failed with HTTP 401",
+          "evidence_ids": [
+            "ev_c9003567388353ca810227cec17ae157e007e57d7fba2c2f519fddf083768c9e"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify: 401 \u0438 \u0438\u0441\u0442\u0451\u043a\u0448\u0438\u0439 credential",
+          "evidence_ids": [
+            "ev_a84aa4e6275d5295dc712cddc50728a5849683149dd141d00ffd1a6db37b6016"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify credential troubleshooting",
+          "evidence_ids": [
+            "ev_3fb0a748a3ae5c1973dcb8dad5a5cbcdb6eb6b9937265c56a83b734f38d8137c"
+          ]
+        },
+        {
+          "statement": "Documentation: \u041f\u0440\u043e\u0432\u0435\u0440\u043a\u0430 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 \u0437\u0430\u043a\u0430\u0437\u043e\u0432",
+          "evidence_ids": [
+            "ev_1f6fc79e463970465f0e58859102d72e83f30cccec4750976a576f7c323e640d"
+          ]
+        },
+        {
+          "statement": "Documentation: \u041c\u043e\u043d\u0438\u0442\u043e\u0440\u0438\u043d\u0433 \u043d\u0435\u0434\u043e\u0441\u0442\u0443\u043f\u0435\u043d",
+          "evidence_ids": [
+            "ev_4bdb2e3fddf100ac5135a343224e459473118b3684d153bf19346bd2b354eeed"
+          ]
+        },
+        {
+          "statement": "Documentation: Shopify rate limiting",
+          "evidence_ids": [
+            "ev_93ac301f459ebcd77dfb214248ff9821410e18b5669ff55dbd89b1b1551c3614"
+          ]
+        }
+      ],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F15",
+      "repeat": 1,
+      "split": "holdout",
+      "run_id": "a3c1b86d-378c-44b0-89a8-33d21d6b49f4",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: degraded",
+          "evidence_ids": [
+            "ev_1529bf95c5e8cc30e7ae79a8364151bc1ff06c999a39d0ff1746bb85ba66d87d"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_e38615b0caa96d9c22dfa37d5097955eef9ae97d4d680234311b7c9e5fd8e15d"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_515f76e41ae7d3a6dfefee5300e6df2f8c1eb662225673ca0f69e07583e8394d"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_bc499b974c8a01245dc7f628f1f88dd26b01089c6c48c7b74ede52fd6f812af0"
+          ]
+        },
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 credential: expired",
+          "evidence_ids": [
+            "ev_0b8fb35ffb6eb4754964497854f0bbc8ae3ce1c40ace623b979e48c077c0bde0"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "h1",
+          "summary": "\u041d\u0430\u0438\u0431\u043e\u043b\u0435\u0435 \u0432\u0435\u0440\u043e\u044f\u0442\u043d\u0430\u044f \u043f\u0440\u0438\u0447\u0438\u043d\u0430 \u0441\u0431\u043e\u0435\u0432 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 GreenShop \u2014 \u0438\u0441\u0442\u0451\u043a\u0448\u0438\u0439 credential Shopify. \u042d\u0442\u043e \u043f\u043e\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u0435\u0442\u0441\u044f \u0442\u0435\u043a\u0443\u0449\u0438\u043c\u0438 \u043c\u0435\u0442\u0430\u0434\u0430\u043d\u043d\u044b\u043c\u0438 credential \u0438 \u0441\u043e\u0433\u043b\u0430\u0441\u0443\u0435\u0442\u0441\u044f \u0441 \u043f\u043e\u0432\u0442\u043e\u0440\u043d\u044b\u043c\u0438 \u043e\u0442\u0432\u0435\u0442\u0430\u043c\u0438 HTTP 401; \u0441\u0430\u043c \u043f\u043e \u0441\u0435\u0431\u0435 HTTP 401 \u043d\u0435 \u0434\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0438\u0441\u0442\u0435\u0447\u0435\u043d\u0438\u0435 \u0441\u0440\u043e\u043a\u0430 \u0434\u0435\u0439\u0441\u0442\u0432\u0438\u044f.",
+          "supporting_evidence_ids": [
+            "ev_0b8fb35ffb6eb4754964497854f0bbc8ae3ce1c40ace623b979e48c077c0bde0",
+            "ev_e38615b0caa96d9c22dfa37d5097955eef9ae97d4d680234311b7c9e5fd8e15d",
+            "ev_515f76e41ae7d3a6dfefee5300e6df2f8c1eb662225673ca0f69e07583e8394d",
+            "ev_bc499b974c8a01245dc7f628f1f88dd26b01089c6c48c7b74ede52fd6f812af0"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F15",
+      "repeat": 2,
+      "split": "holdout",
+      "run_id": "8f3d0ade-16b5-48d4-a638-7343b4107da7",
+      "errors": [],
+      "facts": [
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 \u0438\u043d\u0442\u0435\u0433\u0440\u0430\u0446\u0438\u0438: degraded",
+          "evidence_ids": [
+            "ev_67672768c3acf072f4e32e8ec1b6ee924ac09d13a40c0f0715cfd94da1c2fa7d"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_73ca06f7f005e74126f331382ce623b302a1c75b127c770e3a6a89b316ddbc5f"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_88de4505915d7b91a77a6a925d3ea6b5d906a87c672e23afe157d17f7f2fe80e"
+          ]
+        },
+        {
+          "statement": "\u0421\u043e\u0431\u044b\u0442\u0438\u0435 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438: 401",
+          "evidence_ids": [
+            "ev_45b4b75a4d30d5353ec35e819ed58e0f0f3b0d1b6c9e4d58e417b0cd44a5a2f0"
+          ]
+        },
+        {
+          "statement": "\u0421\u0442\u0430\u0442\u0443\u0441 credential: expired",
+          "evidence_ids": [
+            "ev_14e233182b9b70ae8143b5488e87021fd082322be5b9df5e44b662cc84f88e7e"
+          ]
+        }
+      ],
+      "hypotheses": [
+        {
+          "hypothesis_id": "h1",
+          "summary": "\u041d\u0430\u0438\u0431\u043e\u043b\u0435\u0435 \u0432\u0435\u0440\u043e\u044f\u0442\u043d\u0430\u044f \u043f\u0440\u0438\u0447\u0438\u043d\u0430 \u043e\u0442\u043a\u0430\u0437\u043e\u0432 \u0434\u043e\u0441\u0442\u0430\u0432\u043a\u0438 \u0437\u0430\u043a\u0430\u0437\u043e\u0432 GreenShop \u2014 \u0438\u0441\u0442\u0451\u043a\u0448\u0438\u0439 credential Shopify. \u0413\u0438\u043f\u043e\u0442\u0435\u0437\u0430 \u043e\u043f\u0438\u0440\u0430\u0435\u0442\u0441\u044f \u043d\u0430 \u0442\u0435\u043a\u0443\u0449\u0438\u0439 \u0441\u0442\u0430\u0442\u0443\u0441 credential expired \u0438 \u0442\u0440\u0438 \u043e\u0442\u043a\u0430\u0437\u0430 HTTP 401, \u0430 \u043d\u0435 \u0442\u043e\u043b\u044c\u043a\u043e \u043d\u0430 \u043a\u043e\u0434 \u043e\u0442\u0432\u0435\u0442\u0430 \u0438\u043b\u0438 \u0438\u0441\u0442\u043e\u0440\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0438\u043d\u0446\u0438\u0434\u0435\u043d\u0442\u044b.",
+          "supporting_evidence_ids": [
+            "ev_14e233182b9b70ae8143b5488e87021fd082322be5b9df5e44b662cc84f88e7e",
+            "ev_73ca06f7f005e74126f331382ce623b302a1c75b127c770e3a6a89b316ddbc5f",
+            "ev_88de4505915d7b91a77a6a925d3ea6b5d906a87c672e23afe157d17f7f2fe80e",
+            "ev_45b4b75a4d30d5353ec35e819ed58e0f0f3b0d1b6c9e4d58e417b0cd44a5a2f0"
+          ],
+          "contradicting_evidence_ids": [],
+          "confidence_label": "high",
+          "missing_checks": []
+        }
+      ],
+      "judgment": null,
+      "reviewer": null
+    },
+    {
+      "id": "F15",
+      "repeat": 3,
+      "split": "holdout",
+      "run_id": null,
+      "errors": [
+        "EXECUTION_UnboundLocalError"
+      ],
+      "facts": [],
+      "hypotheses": [],
+      "judgment": null,
+      "reviewer": null
+    }
+  ]
+}

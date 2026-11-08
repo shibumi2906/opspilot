@@ -1049,6 +1049,18 @@ calls, remote CI, push0. F20 dispatch/one-attempt/reconciliation и реальн
 
 ### F22 — продолжение с бесплатной квотой200000
 
+Актуальное измерение: [real-r1](full/evidence/f22/continuation/real-r1/README.md).
+После подтверждения владельцем квоты/модели и сохранения Full credentials выполнен
+реальный запуск gpt-6.1-sol/low. Записано27/90 прогонов,23passed,15/50 distinct;
+63не выполнены.114 provider calls,174237input+12103output=186340 известных токенов.
+Следующий резерв не помещался в остаток13660; GLOBAL_TOKEN_LIMIT остановил dispatch.
+F14×3 failed OUTCOME/EVIDENCE_CONFLICT при per-run budget exhaustion; F15 repeat3
+EXECUTION_UnboundLocalError на границе остановки, причина не установлена. Метрики/DB
+проверены для26, не27. Повторов сверх расписания/новой квоты/сброса ledger нет.
+Billing независимо не проверен. MVP сохранён, F22 lab/manager остановлены; secrets0.
+Общий статус blocked, real gate NOT_MET; human review/F20/F21 HIGH/remote CI открыты.
+Ниже сохранён исторический preflight до появления credentials.
+
 Base `8e4f44e`. Владелец выбрал gpt-6.1-sol/low и попросил завершить F22 в пределах
 заявленной бесплатной квоты, без платных списаний. [Continuation](full/evidence/f22/continuation/README.md).
 На preflight в Full `.env` OPENAI_API_KEY/OPENAI_MODEL пусты; credentials из MVP не

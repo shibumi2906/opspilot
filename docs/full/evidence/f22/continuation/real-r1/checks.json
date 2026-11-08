@@ -1,0 +1,120 @@
+{
+  "stage": "F22",
+  "status": "blocked",
+  "real_summary": {
+    "planned_distinct": 50,
+    "planned_runs": 90,
+    "recorded_runs": 27,
+    "distinct_recorded": 15,
+    "first_pass_denominator": 15,
+    "first_pass_passed": 14,
+    "passed": 23,
+    "invariants": {
+      "unsupported_facts": 0,
+      "factual_claims": 82,
+      "false_success": 0,
+      "forbidden_calls": 0,
+      "unauthorized_writes": 0,
+      "duplicates": 0,
+      "before_decision_delta": 0,
+      "ticket_delta": 3
+    },
+    "db_predicate_denominator": 26,
+    "metric_denominator": 26,
+    "known_recorded_model_spend_usd": 0,
+    "by_split": {
+      "dev": {
+        "recorded": 9,
+        "passed": 9
+      },
+      "holdout": {
+        "recorded": 18,
+        "passed": 14
+      }
+    },
+    "unknown_usage_count": 0,
+    "setup_errors": 0,
+    "complete_unique_schedule": false,
+    "scripted_gate": false,
+    "human_review": "pending",
+    "holdout_unseen": false,
+    "real_execution": "incomplete",
+    "real_gate": "NOT_MET",
+    "remote_ci": "not_run",
+    "release_gate": "NOT_MET",
+    "actual_model_spend_usd": null,
+    "blockers": [
+      "Real execution alone cannot close human review or dependent gates",
+      "Human claim/hypothesis review pending",
+      "Remote CI not executed",
+      "F20 dispatch/one-attempt/reconciliation incomplete; real Jira deferred",
+      "F21 manager HIGH CVE-2026-78661 remains unresolved"
+    ]
+  },
+  "token_accounting": {
+    "limit": 200000,
+    "charged_or_reserved": 186340,
+    "provider_attempts": 114,
+    "stop_reason": "GLOBAL_TOKEN_LIMIT",
+    "known_input_tokens": 174237,
+    "known_output_tokens": 12103,
+    "unknown_usage": 0,
+    "billing_eligibility_verified": false,
+    "actual_billed_usd": null
+  },
+  "remaining_runs": 63,
+  "failures": [
+    {
+      "id": "F14",
+      "repeat": 1,
+      "split": "holdout",
+      "errors": [
+        "OUTCOME",
+        "EVIDENCE_CONFLICT"
+      ],
+      "setup_error": null
+    },
+    {
+      "id": "F14",
+      "repeat": 2,
+      "split": "holdout",
+      "errors": [
+        "OUTCOME",
+        "EVIDENCE_CONFLICT"
+      ],
+      "setup_error": null
+    },
+    {
+      "id": "F14",
+      "repeat": 3,
+      "split": "holdout",
+      "errors": [
+        "OUTCOME",
+        "EVIDENCE_CONFLICT"
+      ],
+      "setup_error": null
+    },
+    {
+      "id": "F15",
+      "repeat": 3,
+      "split": "holdout",
+      "errors": [
+        "EXECUTION_UnboundLocalError"
+      ],
+      "setup_error": null
+    }
+  ],
+  "notes": [
+    "F14 all three fixed holdout repetitions exhausted per-run investigation budget; OUTCOME/EVIDENCE_CONFLICT failed. No extra repetition or prompt tuning performed.",
+    "F15 repeat3 ended with EXECUTION_UnboundLocalError when global quota guard denied further dispatch. Root cause not established; raw case remains failed and DB/metric denominator is26, not27.",
+    "114 provider dispatches have known usage; actual billing is not independently verified.",
+    "No new quota authorization or restart/resume. Private authorization claim preserved."
+  ],
+  "human_review": "pending",
+  "remote_ci": "not_run",
+  "f20": "blocked; real Jira deferred",
+  "f21": "blocked; manager HIGH unresolved",
+  "full_pilot": "NOT_MET",
+  "whole_asvs_l2": "NOT_MET",
+  "push": 0
+}

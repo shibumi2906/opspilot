@@ -1,0 +1,21 @@
+{
+  "recorded_at": "2026-11-08T20:08:29.024368+00:00",
+  "base": "2e064983e6363178a9a05a1a6b7cf0f99e0b6588",
+  "full_key_present": true,
+  "model": "gpt-6.1-sol",
+  "reasoning": "low",
+  "normal_mode": "scripted",
+  "owner_free_quota_attestation": {
+    "eligible_model": "gpt-6.1-sol",
+    "available_tokens": 200000,
+    "confirmed": true
+  },
+  "billing_api_verification": false,
+  "token_limit": 200000,
+  "mvp_isolation": "real-preflight-mvp.json",
+  "paid_overage_authorized": false,
+  "jira_authorized": false,
+  "push_authorized": false,
+  "remote_ci_authorized": false,
+  "docker_start_note": "Docker Desktop startup restored engine and automatically resumed containers with existing restart policies; no explicit main Full start/build/migration/seed command issued."
+}

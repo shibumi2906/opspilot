@@ -1,0 +1,10 @@
+[
+  {
+    "project": "opspilot-full-test-f22-r1",
+    "running": 0
+  },
+  {
+    "project": "opspilot-full-test-f22-r1-manager",
+    "running": 0
+  }
+]
