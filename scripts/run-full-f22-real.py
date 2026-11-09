@@ -5,6 +5,7 @@ import json
 import os
 import re
 import subprocess
+from datetime import UTC, datetime
 from pathlib import Path
 
 from opspilot.config import Settings
@@ -17,6 +18,7 @@ def main() -> int:
     parser.add_argument("--subnet", type=int, default=34)
     parser.add_argument("--limit", type=int, default=200000)
     parser.add_argument("--report-name", required=True)
+    parser.add_argument("--continue-real-r1", action="store_true")
     args = parser.parse_args()
     if not args.confirm_free_quota:
         parser.error("Confirm model/project eligibility and at least the requested unused quota")
@@ -37,6 +39,23 @@ def main() -> int:
     output = Path("docs/full/evidence/f22/continuation") / args.report_name
     if output.exists():
         raise ValueError("Existing report cannot receive another fresh budget")
+    log = Path(".tools") / ("f22-real-" + args.report_name + ".log")
+    if log.exists():
+        raise ValueError("Existing log cannot receive another fresh budget")
+    private = Path(".tools/f22-real")
+    claim = private / "quota-authorization.json"
+    previous = ""
+    if args.continue_real_r1:
+        if args.report_name != "real-r2" or not claim.is_file():
+            raise ValueError("Continuation requires the original claim and report name real-r2")
+        prior = json.loads((output.parent / "real-r1/real.json").read_text(encoding="utf-8"))
+        today = datetime.now(UTC).date()
+        if datetime.fromisoformat(prior["timestamp"]).date() >= today:
+            raise ValueError("A later quota day is required")
+        if settings.openai_model != prior["requested_model"]:
+            raise ValueError("Continuation requires the original model")
+        previous = "/reports/continuation/real-r1/real.json"
+        claim = private / "quota-authorization-real-r2.json"
     # Only the provider key is injected from the local settings, never MVP credentials.
     env = {
         **os.environ,
@@ -71,6 +90,8 @@ def main() -> int:
         "F22_COMMIT=" + commit,
         "-e",
         "F22_REPORT_DIR=/reports/continuation/" + args.report_name,
+        "-e",
+        "F22_PREVIOUS_REPORT=" + previous,
         "tests",
         "python",
         "-m",
@@ -82,17 +103,16 @@ def main() -> int:
         "--total-token-limit",
         str(args.limit),
     ]
-    log = Path(".tools") / ("f22-real-" + args.report_name + ".log")
     # A different report name must not reset the owner's shared quota allowance.
-    private = Path(".tools/f22-real")
     private.mkdir(exist_ok=True)
-    with (private / "quota-authorization.json").open("x", encoding="utf-8") as target:
+    with claim.open("x", encoding="utf-8") as target:
         json.dump(
             dict(
                 limit=args.limit,
                 model=settings.openai_model,
                 report=args.report_name,
                 status="reserved_before_launch",
+                previous_report=previous or None,
             ),
             target,
         )

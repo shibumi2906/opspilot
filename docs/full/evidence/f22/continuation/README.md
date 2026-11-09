@@ -5,6 +5,16 @@ preflight below. Owner confirmed eligibility/200000 available tokens and saved
 credentials. Real attempt stopped at the quota reservation boundary:27/90 recorded,
 23passed,186340 known tokens,63 unexecuted. F22 remains blocked.
 
+On a later UTC day, after the owner confirms the current free balance for the
+same project and model, the isolated lab can continue with
+`scripts/run-full-f22-real.py --confirm-free-quota --continue-real-r1 --report-name real-r2 --limit <confirmed-tokens>`.
+The continuation verifies the original schedule prefix, model, reasoning and
+prompt hash. It preserves the original claim and records only the unexecuted
+suffix in a separate report with cumulative accounting. The new claim is exclusive.
+An absent approval action now yields `EXPECTED_ACTION_MISSING` in the harness.
+The historical F15 result is preserved, and no new model result is implied by
+this offline fix. F14 failures remain in cumulative accounting.
+
 Base `8e4f44e`, 2026-11-08. Owner requested completing F22 after selecting
 `gpt-6.1-sol`, reasoning low, with a stated 200,000 complimentary-token allowance.
 This authorizes the intended real evaluation within the confirmed free allowance;

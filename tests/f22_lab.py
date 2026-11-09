@@ -40,6 +40,26 @@ def file_hash(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def continuation(previous, planned, settings):
+    report = json.loads(previous.read_text(encoding="utf-8"))
+    cases = report["cases"]
+    expected = [(case.id, repeat) for case, repeat in planned]
+    if (
+        report["mode"] != "real"
+        or report["requested_model"] != settings.openai_model
+        or report["fixed_config"]["reasoning_effort"] != settings.openai_reasoning_effort
+        or report["prompt_sha256"] != hashlib.sha256(SYSTEM_PROMPT.encode()).hexdigest()
+        or report["token_guard"]["stop_reason"] != "GLOBAL_TOKEN_LIMIT"
+        or report["token_guard"]["unknown_usage"] != 0
+        or not 0 < len(cases) < len(planned)
+        or [(case["id"], case["repeat"]) for case in cases] != expected[: len(cases)]
+        or [(row["id"], row["repeat"]) for row in report["remaining_schedule"]]
+        != expected[len(cases) :]
+    ):
+        raise ValueError("Prior report is not a compatible quota-stopped schedule prefix")
+    return report
+
+
 async def run_case(settings, item, engine):
     case, repeat = item
     spec = case.scenario
@@ -110,16 +130,21 @@ async def run_case(settings, item, engine):
                 return response.json()
 
             snapshot = await advance()
+            result["snapshot"] = snapshot
             before_decision = await count_tickets(engine)
             if case.probe in {"cross_tenant", "anonymous"}:
                 who, status = (
                     ("foreign", 404) if case.probe == "cross_tenant" else ("anonymous", 401)
                 )
                 assert (await clients[who].get(path)).status_code == status, "ACCESS_PROBE"
+            action = None
             for choice in spec.human_decisions:
                 # A repeated decision uses the original immutable action/version.
                 if snapshot.get("action"):
                     action = snapshot["action"]
+                if action is None:
+                    result["errors"].append("EXPECTED_ACTION_MISSING")
+                    break
                 body = dict(
                     action_id=action["action_id"],
                     expected_version=action["expected_version"],
@@ -229,6 +254,14 @@ async def main(args):
     if settings.prometheus_registry_file:
         raise ValueError("No external connectors allowed")
     output = Path(os.environ.get("F22_REPORT_DIR", "/reports"))
+    planned = schedule(args.mode)
+    previous = os.environ.get("F22_PREVIOUS_REPORT")
+    prior = (
+        continuation(Path(previous), planned, settings)
+        if previous and args.mode == "real"
+        else None
+    )
+    prior_cases = prior["cases"] if prior else []
     await asyncio.to_thread(output.mkdir, parents=True, exist_ok=True)
     token_guard = (
         TokenGuard(output / "token-ledger.json", args.total_token_limit, settings.openai_model)
@@ -264,10 +297,13 @@ async def main(args):
             "reasoning_effort": settings.openai_reasoning_effort,
         },
         remaining_schedule=[],
+        previous_report=previous if prior else None,
+        previous_report_sha256=file_hash(previous) if prior else None,
+        previous_recorded_runs=len(prior_cases),
     )
 
     def save():
-        report["summary"] = accounting(report["cases"], args.mode)
+        report["summary"] = accounting(prior_cases + report["cases"], args.mode)
         if token_guard:
             report["token_guard"] = token_guard.snapshot()
             report["free_quota_confirmation"] = "operator attestation; not a billing API proof"
@@ -279,8 +315,7 @@ async def main(args):
         async with engine.connect() as guard:
             assert await guard.scalar(text("SELECT current_database()")) == "opspilot_full_test"
             assert await guard.scalar(text("SELECT pg_try_advisory_lock(1801202622)"))
-            planned = schedule(args.mode)
-            for position, item in enumerate(planned):
+            for position, item in enumerate(planned[len(prior_cases) :], start=len(prior_cases)):
                 if token_guard and token_guard.stop_reason:
                     report["remaining_schedule"] = [
                         dict(id=c.id, repeat=n, reason=token_guard.stop_reason)
