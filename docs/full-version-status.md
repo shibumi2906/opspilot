@@ -1049,6 +1049,12 @@ calls, remote CI, push0. F20 dispatch/one-attempt/reconciliation и реальн
 
 ### F22 — продолжение с бесплатной квотой200000
 
+9 ноября: [real-r2](full/evidence/f22/continuation/real-r2/README.md) продолжил
+расписание с 28-го прогона после подтверждения новой квоты. Записано ещё 13,
+успешны 10. Всего 40/90, 33 успешных, 7 провалов и 50 невыполненных.
+92 вызова, 185181 токен, остановка GLOBAL_TOKEN_LIMIT. F18/F22/F24 failed.
+F22 blocked, MVP сохранён, стенд остановлен. Остальные gates остаются открыты.
+
 Актуальное измерение: [real-r1](full/evidence/f22/continuation/real-r1/README.md).
 После подтверждения владельцем квоты/модели и сохранения Full credentials выполнен
 реальный запуск gpt-6.1-sol/low. Записано27/90 прогонов,23passed,15/50 distinct;
