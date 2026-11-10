@@ -130,6 +130,7 @@ async def run_case(settings, item, engine):
             )
             assert response.status_code == 202, "CREATE_HTTP_" + str(response.status_code)
             run_id = UUID(response.json()["run_id"])
+            result["run_id"] = str(run_id)
             path = "/api/v2/runs/" + str(run_id)
             service = RunService(configured)
             stack.push_async_callback(service.close)
@@ -228,7 +229,10 @@ async def run_case(settings, item, engine):
                     c for c in state.get("tool_calls", {}).values() if c.get("verification")
                 ],
                 evidence=state.get("evidence"),
-                run_id=str(run_id),
+                workflow_errors=[
+                    {"node": error.get("node"), "code": error.get("code")}
+                    for error in state.get("errors", {}).values()
+                ],
             )
             result["errors"].extend(metrics["errors"])
             if not jobs or any(j["status"] != "done" for j in jobs):
