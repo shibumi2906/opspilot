@@ -42,7 +42,19 @@ def file_hash(path):
 
 def continuation(previous, planned, settings):
     report = json.loads(previous.read_text(encoding="utf-8"))
+    parent = report.get("previous_report")
     cases = report["cases"]
+    if parent:
+        segment = int(previous.parent.name.removeprefix("real-r"))
+        parent_path = previous.parent.parent / f"real-r{segment - 1}" / "real.json"
+        if segment < 2 or Path(parent).parent.name != parent_path.parent.name:
+            raise ValueError("Invalid prior segment")
+        if report.get("previous_report_sha256") != file_hash(parent_path):
+            raise ValueError("Prior segment hash mismatch")
+        prefix = continuation(parent_path, planned, settings)["cases"]
+        if len(prefix) != report.get("previous_recorded_runs"):
+            raise ValueError("Prior segment count mismatch")
+        cases = prefix + cases
     expected = [(case.id, repeat) for case, repeat in planned]
     if (
         report["mode"] != "real"
@@ -57,7 +69,7 @@ def continuation(previous, planned, settings):
         != expected[len(cases) :]
     ):
         raise ValueError("Prior report is not a compatible quota-stopped schedule prefix")
-    return report
+    return report | {"cases": cases}
 
 
 async def run_case(settings, item, engine):

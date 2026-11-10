@@ -46,16 +46,23 @@ def main() -> int:
     claim = private / "quota-authorization.json"
     previous = ""
     if args.continue_real_r1:
-        if args.report_name != "real-r2" or not claim.is_file():
-            raise ValueError("Continuation requires the original claim and report name real-r2")
-        prior = json.loads((output.parent / "real-r1/real.json").read_text(encoding="utf-8"))
+        match = re.fullmatch(r"real-r([1-9][0-9]*)", args.report_name)
+        if not match or int(match[1]) < 2 or not claim.is_file():
+            raise ValueError("Continuation requires the original claim and numbered report")
+        segment = int(match[1])
+        previous_name = f"real-r{segment - 1}"
+        if segment > 2 and not (private / f"quota-authorization-{previous_name}.json").is_file():
+            raise ValueError("Missing prior quota claim")
+        prior = json.loads(
+            (output.parent / previous_name / "real.json").read_text(encoding="utf-8")
+        )
         today = datetime.now(UTC).date()
         if datetime.fromisoformat(prior["timestamp"]).date() >= today:
             raise ValueError("A later quota day is required")
         if settings.openai_model != prior["requested_model"]:
             raise ValueError("Continuation requires the original model")
-        previous = "/reports/continuation/real-r1/real.json"
-        claim = private / "quota-authorization-real-r2.json"
+        previous = f"/reports/continuation/{previous_name}/real.json"
+        claim = private / f"quota-authorization-{args.report_name}.json"
     # Only the provider key is injected from the local settings, never MVP credentials.
     env = {
         **os.environ,
