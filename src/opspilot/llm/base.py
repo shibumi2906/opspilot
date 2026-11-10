@@ -30,11 +30,19 @@ class Completion(StrictModel):
 
 
 class ProviderFailure(Exception):
-    def __init__(self, code: str, *, retryable: bool = False, usage: Usage | None = None) -> None:
+    def __init__(
+        self,
+        code: str,
+        *,
+        retryable: bool = False,
+        usage: Usage | None = None,
+        dispatched: bool = True,
+    ) -> None:
         super().__init__(code)
         self.code = code
         self.retryable = retryable
-        self.usage = usage or Usage()
+        self.dispatched = dispatched
+        self.usage = usage or (Usage() if dispatched else Usage(input_tokens=0, output_tokens=0))
 
 
 class Provider(Protocol):

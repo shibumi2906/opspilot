@@ -64,7 +64,7 @@ class TokenGuard:
             if self.stop_reason or self.charged + amount > self.limit:
                 self.stop_reason = self.stop_reason or "GLOBAL_TOKEN_LIMIT"
                 self.save()
-                raise ProviderFailure("EVAL_" + self.stop_reason)
+                raise ProviderFailure("EVAL_" + self.stop_reason, dispatched=False)
             self.charged += amount
             self.entries.append(dict(operation=operation, reservation=amount, status="reserved"))
             self.save()  # Durable before any network dispatch.

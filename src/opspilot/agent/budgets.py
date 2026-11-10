@@ -8,7 +8,23 @@ from opspilot.contracts.common import StrictModel
 
 
 class BudgetExceeded(Exception):
-    pass
+    def __init__(
+        self,
+        message: str,
+        *,
+        kind: str | None = None,
+        used: int | float | None = None,
+        requested: int | float | None = None,
+        available: int | float | None = None,
+    ) -> None:
+        super().__init__(message)
+        self.details = {
+            key: value
+            for key, value in dict(
+                kind=kind, used=used, requested=requested, available=available
+            ).items()
+            if value is not None
+        }
 
 
 class BudgetLimits(StrictModel):
@@ -38,29 +54,53 @@ class Budget:
         return self.limits.active_seconds - (self.clock() - self.started)
 
     def check(self) -> None:
-        if (
-            self.remaining() <= 0
-            or self.input_tokens + self.output_tokens + self.reserved_tokens >= self.limits.tokens
-        ):
-            raise BudgetExceeded("Active time or token limit reached")
+        remaining = self.remaining()
+        if remaining <= 0:
+            raise BudgetExceeded(
+                "Active time limit reached",
+                kind="active_seconds",
+                used=self.limits.active_seconds - remaining,
+                available=0,
+            )
+        tokens = self.input_tokens + self.output_tokens + self.reserved_tokens
+        if tokens >= self.limits.tokens:
+            raise BudgetExceeded("Token limit reached", kind="tokens", used=tokens, available=0)
 
     def begin_read(self, *, verification: bool = False) -> None:
         self.check()
         # F15: research reads have their own durable cap; verification has a per-action reserve.
         if self.read_attempts >= self.limits.reads:
-            raise BudgetExceeded("Read limit reached; verification reserve preserved")
+            raise BudgetExceeded(
+                "Read limit reached; verification reserve preserved",
+                kind="reads",
+                used=self.read_attempts,
+                requested=1,
+                available=0,
+            )
         self.read_attempts += 1
 
     def begin_llm(self) -> None:
         self.check()
         if self.llm_attempts >= self.limits.llm_attempts:
-            raise BudgetExceeded("LLM attempt limit reached")
+            raise BudgetExceeded(
+                "LLM attempt limit reached",
+                kind="llm_attempts",
+                used=self.llm_attempts,
+                requested=1,
+                available=0,
+            )
         self.llm_attempts += 1
 
     def begin_round(self) -> None:
         self.check()
         if self.rounds >= self.limits.rounds:
-            raise BudgetExceeded("Investigation round limit reached")
+            raise BudgetExceeded(
+                "Investigation round limit reached",
+                kind="rounds",
+                used=self.rounds,
+                requested=1,
+                available=0,
+            )
         self.rounds += 1
 
     def usage(self, input_tokens: int | None, output_tokens: int | None) -> None:

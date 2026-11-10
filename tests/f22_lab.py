@@ -230,7 +230,11 @@ async def run_case(settings, item, engine):
                 ],
                 evidence=state.get("evidence"),
                 workflow_errors=[
-                    {"node": error.get("node"), "code": error.get("code")}
+                    {
+                        "node": error.get("node"),
+                        "code": error.get("code"),
+                        "budget": error.get("budget"),
+                    }
                     for error in state.get("errors", {}).values()
                 ],
             )

@@ -84,9 +84,13 @@ def build_graph(
                 state.setdefault("errors", {})[name] = {"code": exc.code, "node": name}
             except RunCancelled:
                 state.update({"outcome": "cancelled", "clarification": None})
-            except BudgetExceeded:
+            except BudgetExceeded as exc:
                 state.update({"outcome": "budget_exhausted", "proposed_action": None})
-                state.setdefault("errors", {})[name] = {"code": "BUDGET_EXHAUSTED", "node": name}
+                state.setdefault("errors", {})[name] = {
+                    "code": "BUDGET_EXHAUSTED",
+                    "node": name,
+                    "budget": exc.details,
+                }
             except PolicyViolation:
                 state.update({"outcome": "blocked", "proposed_action": None})
                 state.setdefault("errors", {})[name] = {"code": "POLICY_VIOLATION", "node": name}

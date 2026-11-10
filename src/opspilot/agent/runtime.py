@@ -1,5 +1,6 @@
 import asyncio
 import random
+import sys
 import time
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime
@@ -101,6 +102,7 @@ class Runtime:
             except (ValidationError, ProviderFailure, TimeoutError) as exc:
                 if isinstance(exc, ProviderFailure):
                     usage = exc.usage
+                    state["llm_calls"][call_id]["dispatched"] = exc.dispatched
                 code = (
                     exc.code
                     if isinstance(exc, ProviderFailure)
@@ -113,7 +115,9 @@ class Runtime:
                 state["llm_calls"][call_id].update(status="failed", code=code)
                 retryable = not isinstance(exc, ProviderFailure) or exc.retryable
                 if attempt == 2 or not retryable:
-                    raise ProviderFailure(code) from None
+                    if isinstance(exc, ProviderFailure):
+                        raise
+                    raise ProviderFailure(code, usage=usage) from None
                 context = context | {
                     "correction": "Previous response was invalid or unavailable; follow the schema."
                 }
@@ -121,13 +125,18 @@ class Runtime:
                 state["llm_calls"][call_id]["status"] = "completed"
                 return output
             finally:
+                original_error = sys.exception()
                 self.budget.usage(usage.input_tokens, usage.output_tokens)
-                await settle(
-                    UUID(call_id), usage, model_id, round((time.monotonic() - started) * 1000)
-                )
-                await synchronize(self.budget)
                 state["llm_calls"][call_id]["usage"] = usage.model_dump()
-                self.budget.check()
+                try:
+                    await settle(
+                        UUID(call_id), usage, model_id, round((time.monotonic() - started) * 1000)
+                    )
+                    await synchronize(self.budget)
+                except Exception:
+                    state["llm_calls"][call_id]["accounting_error"] = "USAGE_ACCOUNTING_FAILED"
+                    if original_error is None:
+                        raise
         raise AssertionError("Unreachable provider attempt")
 
     async def read(

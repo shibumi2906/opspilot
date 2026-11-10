@@ -39,7 +39,11 @@ async def reserve(
         from opspilot.observability.client import count
 
         count("budget_denials", "source")
-        raise BudgetExceeded("Durable resource reservation denied")
+        raise BudgetExceeded(
+            "Durable resource reservation denied",
+            kind=f"durable_{kind}_reservation",
+            requested=tokens if kind == "llm" else 1,
+        )
 
 
 async def settle(identity: UUID, usage: Usage, model: str | None, elapsed_ms: int) -> None:
