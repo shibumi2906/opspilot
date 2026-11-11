@@ -84,9 +84,11 @@
   dispatch. Never reset a claim/unknown ledger to obtain another allowance or copy MVP keys.
   F20/F21/security/human/remote-CI blockers remain; historical reports are not overwritten.
 
-- Latest F22 real evidence supersedes missing-key/quota notes: owner confirmed model
-  eligibility/200000 unused tokens and saved Full credentials. See continuation/real-r1:
-  27/90 recorded,23passed,186340 known tokens across114 calls;63 unexecuted.
-  GLOBAL_TOKEN_LIMIT denied next reservation. Preserve private authorization/ledger;
-  no fresh allowance or resume inferred. F14x3 failed budget/conflict; F15repeat3
-  UnboundLocalError root cause open. F22 blocked; human/F20/F21 HIGH/CI still open.
+- Latest F22 real evidence is docs/full/evidence/f22/continuation/real-r4. On 2026-11-11
+  the owner confirmed a renewed 200000-token free allowance and explicitly authorized
+  sending synthetic F22 data to OpenAI Responses API. The verified chain has 68/90
+  recorded runs, 58 passed, 10 marked failed (including the quota-interrupted
+  F39 repetition 2), and 22 unstarted. The next run is F39 repetition 3. The real-r4
+  quota guard stopped at185535 known tokens across91 calls, unknown usage0.
+  Preserve the private authorization claim and ledger. Further real dispatch requires
+  a confirmed new free allowance. F22 blocked; human review/F20/F21 HIGH/CI still open.
