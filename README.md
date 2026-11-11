@@ -12,17 +12,15 @@ All business data is synthetic; MCP transport, LangGraph execution, PostgreSQL c
 and ticket writes are real. Scripted and real evals both passed 12/12.
 See [implementation status](docs/implementation-status.md).
 
-## Full version roadmap — MVP preserved
+## Portfolio MVP and Full implementation
 
-The full product is planned in [OpsPilot Full specification](OpsPilot_Full_Project_Specification.md),
-with 24 sequential stages F01–F24 and a separate [implementation tracker](docs/full-version-status.md).
-Full implementation has not started. The completed Portfolio MVP stays in its own checkout,
-configuration and Docker resources; Full will use a separate branch/worktree, database, volumes,
-image names and ports. The roadmap does not change the MVP's current capabilities or release status.
+| Version | Where to start | Status |
+| --- | --- | --- |
+| Portfolio MVP | [README and source at the MVP tag](https://github.com/shibumi2906/opspilot/tree/opspilot-portfolio-mvp-v1.0) | Complete. Includes the incident investigation and approved ticket workflow. |
+| OpsPilot Full | [README and source on the Full branch](https://github.com/shibumi2906/opspilot/tree/codex/opspilot-full) | In development. F01–F19 complete, with partial results for F21–F22. |
 
-To begin: `Сделай F01 полной версии OpsPilot по OpsPilot_Full_Project_Specification.md, сохранив MVP`.
-After F01: `Сделай следующий этап полной версии OpsPilot`. The specification defines how to locate
-the Full worktree, choose the next unfinished stage, run its checks and create its local commit.
+See the [Full implementation tracker](https://github.com/shibumi2906/opspilot/blob/codex/opspilot-full/docs/full-version-status.md)
+for stage details and evidence.
 
 ## Portfolio quickstart
 
