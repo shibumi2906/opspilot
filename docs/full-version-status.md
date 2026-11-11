@@ -1086,3 +1086,15 @@ passed; catalog cost estimate не выдаётся за actual billed spend. Н
 ASVS comparison passed. Docker Engine29.9.2 восстановлен CLI startup; lab вновь остановлен.
 MVP сохранён по повторной проверке. Main Full0019 не менялся, build/migration/seed0.
 Human review, F20/F21 manager HIGH и remote-CI gates остаются открыты; push/Jira/paid calls0.
+
+### F22 — локальная регрессия `f24581a`, 11 ноября 2026
+
+[Свежий прогон](full/evidence/f22/continuation/scripted-f24581a/README.md) проверяет изменения
+учёта токенов и обработки отказов в `f24581a` на отдельном тестовом стенде.
+50/50 scripted, 12/12 MVP regression, 284 unit tests. Проверка изоляции MVP прошла,
+стенд остановлен.
+Цепочка real-r1…real-r3 подтверждена: 53/90 прогонов, 44 passed, 9 failed, 37 впереди.
+Следующий сценарий F30, повтор 3. Владелец сообщил об обновлении бесплатной квоты.
+Автоматическая проверка отклонила запуск real-r4, запросив явное согласие на отправку
+синтетических данных сценариев в OpenAI Responses API. Внешний запуск не состоялся.
+Общий статус F22 остаётся blocked.
