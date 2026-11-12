@@ -14,6 +14,7 @@ from contextlib import AsyncExitStack, nullcontext
 from datetime import UTC, datetime
 from importlib.metadata import version
 from pathlib import Path
+from traceback import walk_tb
 from uuid import UUID, uuid4
 
 import httpx
@@ -38,6 +39,48 @@ from tests.auth_helpers import session_client
 
 def file_hash(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+DIAGNOSTIC_ORDER = (
+    ("F25", 2),
+    ("F24", 1),
+    ("F30", 2),
+    ("F14", 1),
+    ("F18", 1),
+    ("F22", 1),
+    ("F14", 2),
+    ("F14", 3),
+    ("F39", 2),
+    ("F15", 3),
+)
+
+
+def diagnostic_schedule(planned, prior_cases):
+    failures = {(row["id"], row["repeat"]) for row in prior_cases if not row["passed"]}
+    by_id = {(case.id, repeat): (case, repeat) for case, repeat in planned}
+    if not set(DIAGNOSTIC_ORDER) <= failures:
+        raise ValueError("Diagnostics require the recorded failed runs in the approved order")
+    return [by_id[identity] for identity in DIAGNOSTIC_ORDER]
+
+
+def exception_locations(exc: Exception) -> list[dict[str, str | int]]:
+    """Report the nearest frame per project file without exception text or locals."""
+    root = Path(__file__).resolve().parents[1]
+    locations: dict[str, dict[str, str | int]] = {}
+    for frame, line in reversed(list(walk_tb(exc.__traceback__))):
+        code = frame.f_code
+        path = Path(code.co_filename).resolve()
+        if not (
+            path.is_relative_to(root / "src" / "opspilot") or path.is_relative_to(root / "tests")
+        ):
+            continue
+        if path.suffix != ".py":
+            continue
+        file = path.relative_to(root).as_posix()
+        locations.setdefault(file, {"file": file, "function": code.co_name, "line": line})
+        if len(locations) == 3:
+            break
+    return list(locations.values())
 
 
 def continuation(previous, planned, settings):
@@ -91,9 +134,9 @@ async def run_case(settings, item, engine):
         model_spend_usd=0 if settings.llm_mode == "scripted" else None,
     )
     run_id = None
-    before = await count_tickets(engine)
-    before_decision = before
     try:
+        before = await count_tickets(engine)
+        before_decision = before
         configured = settings.model_copy(
             update={
                 "scenario_id": spec.fixture,
@@ -249,12 +292,23 @@ async def run_case(settings, item, engine):
             if snapshot["status"] != spec.expected_status:
                 result["errors"].append("PUBLIC_STATUS")
             result["passed"] = not result["errors"]
+            if not result["passed"]:
+                steps = sorted(state.get("steps", {}).values(), key=lambda step: step["sequence"])
+                result["workflow_progress"] = {
+                    "intent": state.get("intent"),
+                    "outcome": state.get("outcome"),
+                    "customer_hint_present": bool(state.get("customer_hint")),
+                    "recent_steps": [
+                        {"node": step["node"], "status": step["status"]}
+                        for step in steps
+                        if step["node"] not in {"report", "plan_report"}
+                    ][-3:],
+                }
     except Exception as exc:
         # Never persist provider bodies, headers, credentials, connection strings.
         result["setup_error"] = type(exc).__name__ if run_id is None else None
         result["errors"].append("EXECUTION_" + type(exc).__name__)
-        if isinstance(exc, AssertionError):
-            result["assertion"] = str(exc)[:100]
+        result["exception_locations"] = exception_locations(exc)
     return result
 
 
@@ -282,6 +336,9 @@ async def main(args):
         else None
     )
     prior_cases = prior["cases"] if prior else []
+    diagnose = getattr(args, "diagnose_prior_failures", False)
+    diagnostics = diagnostic_schedule(planned, prior_cases) if diagnose else []
+    queue = diagnostics + planned[len(prior_cases) :]
     await asyncio.to_thread(output.mkdir, parents=True, exist_ok=True)
     token_guard = (
         TokenGuard(output / "token-ledger.json", args.total_token_limit, settings.openai_model)
@@ -321,6 +378,8 @@ async def main(args):
         previous_report_sha256=file_hash(previous) if prior else None,
         previous_recorded_runs=len(prior_cases),
     )
+    if diagnose:
+        report.update(diagnostic_cases=[], remaining_diagnostics=[])
 
     def save():
         report["summary"] = accounting(prior_cases + report["cases"], args.mode)
@@ -335,19 +394,48 @@ async def main(args):
         async with engine.connect() as guard:
             assert await guard.scalar(text("SELECT current_database()")) == "opspilot_full_test"
             assert await guard.scalar(text("SELECT pg_try_advisory_lock(1801202622)"))
-            for position, item in enumerate(planned[len(prior_cases) :], start=len(prior_cases)):
-                if token_guard and token_guard.stop_reason:
+            for position, item in enumerate(queue):
+                is_diagnostic = position < len(diagnostics)
+                stop = token_guard.stop_reason if token_guard else None
+                if not stop and is_diagnostic and (item[0].id, item[1]) == ("F14", 2):
+                    report["waiting_for_f14_review"] = True
+                    save()
+                    path = output / "f14-review.json"
+                    try:
+                        async with asyncio.timeout(360):
+                            while not await asyncio.to_thread(path.is_file):  # noqa: ASYNC110 - cross-process review
+                                await asyncio.sleep(1)
+                        review = json.loads(
+                            await asyncio.to_thread(path.read_text, encoding="utf-8")
+                        )
+                        first = next(
+                            row for row in report["diagnostic_cases"] if row["id"] == "F14"
+                        )
+                        if review.get("run_id") != first.get("run_id") or not review.get("finding"):
+                            stop = "F14_REVIEW_INVALID"
+                    except TimeoutError:
+                        stop = "F14_REVIEW_TIMEOUT"
+                    report["waiting_for_f14_review"] = False
+                if stop:
                     report["remaining_schedule"] = [
-                        dict(id=c.id, repeat=n, reason=token_guard.stop_reason)
-                        for c, n in planned[position:]
+                        dict(id=c.id, repeat=n, reason=stop)
+                        for c, n in planned[len(prior_cases) + len(report["cases"]) :]
                     ]
+                    if is_diagnostic:
+                        report["remaining_diagnostics"] = [
+                            dict(id=c.id, repeat=n, reason=stop) for c, n in diagnostics[position:]
+                        ]
                     break
                 with token_guard.installed() if token_guard else nullcontext():
                     result = await run_case(settings, item, engine)
-                report["cases"].append(result)
+                report["diagnostic_cases" if is_diagnostic else "cases"].append(result)
                 save()
-                print(result["id"], result["passed"], result["errors"], flush=True)
-                if len(report["cases"]) == int(os.environ.get("F22_DIAGNOSTIC_LIMIT", "0")):
+                print(
+                    result["id"], result["repeat"], result["passed"], result["errors"], flush=True
+                )
+                if not diagnose and len(report["cases"]) == int(
+                    os.environ.get("F22_DIAGNOSTIC_LIMIT", "0")
+                ):
                     break
             # Exact imported source/fixture/config hashes, no runtime secrets.
             paths = {
@@ -376,5 +464,6 @@ if __name__ == "__main__":
     parser.add_argument("--mode", choices=["scripted", "real"], default="scripted")
     parser.add_argument("--authorize-real", action="store_true")
     parser.add_argument("--free-quota-confirmed", action="store_true")
+    parser.add_argument("--diagnose-prior-failures", action="store_true")
     parser.add_argument("--total-token-limit", type=int, default=200000)
     raise SystemExit(asyncio.run(main(parser.parse_args())))

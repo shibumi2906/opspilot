@@ -1,0 +1,13 @@
+{
+  "case": "F40",
+  "repeat": 2,
+  "run_id": "4f796828-66f5-4792-8b8f-90c709189384",
+  "duration_seconds": 1792314000.0,
+  "maximum_duration_seconds": 604800,
+  "validation_errors": [
+    {
+      "type": "value_error",
+      "location": []
+    }
+  ]
+}

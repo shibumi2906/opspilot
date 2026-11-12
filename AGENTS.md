@@ -92,3 +92,12 @@
   quota guard stopped at185535 known tokens across91 calls, unknown usage0.
   Preserve the private authorization claim and ledger. Further real dispatch requires
   a confirmed new free allowance. F22 blocked; human review/F20/F21 HIGH/CI still open.
+
+- On 2026-11-12, real-r5 recorded the final 22 scheduled results and ten separate
+  diagnostic repeats under one allowance. The main report has 90/90 records, 78
+  passes and 12 failed records, including two quota interruptions. F14/F18/F22
+  reproduced per-run reservation denial. The F40 checkpoint confirms a model
+  event window wider than seven days. See docs/full/evidence/f22/continuation/real-r5.
+  Main schedule exhausted. MVP isolation uses existing README-only HEAD `bec833b`
+  via `-MvpDocumentationHead`; the historical fingerprints remain the source for
+  other files, images and volumes.

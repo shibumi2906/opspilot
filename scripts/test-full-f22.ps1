@@ -2,7 +2,8 @@ param(
  [ValidateSet('Prepare','Scripted','Regression','Units','Security','Stop')][string]$Mode='Scripted',
  [ValidatePattern('^opspilot-full-test-f22-[a-z0-9-]+$')][string]$Project='opspilot-full-test-f22-r1',
  [ValidateRange(34,99)][int]$Subnet=34,
- [string]$ReportDir='docs/full/evidence/f22'
+ [string]$ReportDir='docs/full/evidence/f22',
+ [string]$MvpDocumentationHead
 )
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
@@ -15,7 +16,7 @@ function Invoke-F22([string[]]$A){ & docker @c @A; if($LASTEXITCODE){throw "F22 
 New-Item -ItemType Directory -Force $ReportDir | Out-Null
 switch($Mode){
  'Prepare' {
-  & ./scripts/check-full-isolation.ps1 -MvpPath 'C:/Users/user/Desktop/code/AI Incident & Operations Agent' -ReportPath (Join-Path $ReportDir 'mvp-before.json')
+  & ./scripts/check-full-isolation.ps1 -MvpPath 'C:/Users/user/Desktop/code/AI Incident & Operations Agent' -ReportPath (Join-Path $ReportDir 'mvp-before.json') -MvpDocumentationHead $MvpDocumentationHead
   if($LASTEXITCODE){throw 'MVP prerequisite failed'}
   $env:F22_PROJECT=$Project
   & .venv/Scripts/python.exe -c "import json,subprocess,ipaddress,os; ids=subprocess.check_output(['docker','network','ls','-q'],text=True).split();ns=json.loads(subprocess.check_output(['docker','network','inspect',*ids],text=True));target=ipaddress.ip_network(os.environ['F22_SUBNET_PREFIX']+'.0/24');assert not any(target.overlaps(ipaddress.ip_network(c['Subnet'])) for n in ns if n['Name']!=os.environ['F22_PROJECT']+'_default' for c in (n['IPAM'].get('Config') or []) if 'Subnet' in c and ':' not in c['Subnet'])"

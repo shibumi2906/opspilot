@@ -1,0 +1,19 @@
+{
+  "run_id": "b4fce577-7f9d-4287-af50-b7c8da9efc0c",
+  "finding": "The reason step was denied before dispatch because its conservative reservation exceeded the remaining per-run token budget. This reproduced the earlier budget exhaustion with a specific cause.",
+  "spent_tokens": 10777,
+  "per_run_limit": 30000,
+  "available_tokens": 19223,
+  "requested_reservation": 20091,
+  "shortfall_tokens": 868,
+  "completed_rounds": 5,
+  "selected_tools": [
+    "find_customers",
+    "get_credential_status",
+    "get_customer",
+    "get_integration_events",
+    "get_service_status",
+    "search_documentation",
+    "search_incidents"
+  ]
+}

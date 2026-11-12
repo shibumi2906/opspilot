@@ -45,6 +45,26 @@ async def test_real_execution_denied_before_settings_or_database(monkeypatch):
         await f22_lab.main(SimpleNamespace(mode="real", authorize_real=False))
 
 
+async def test_setup_exception_reports_project_locations_without_exception_text(monkeypatch):
+    from tests import f22_lab
+
+    async def failed_count(_engine):
+        raise AssertionError("synthetic secret in the exception message")
+
+    monkeypatch.setattr(f22_lab, "count_tickets", failed_count)
+    result = await f22_lab.run_case(
+        SimpleNamespace(llm_mode="scripted"), schedule("scripted")[0], None
+    )
+    assert result["setup_error"] == "AssertionError"
+    assert result["errors"] == ["EXECUTION_AssertionError"]
+    assert [(item["file"], item["function"]) for item in result["exception_locations"]] == [
+        ("tests/unit/test_full_eval.py", "failed_count"),
+        ("tests/f22_lab.py", "run_case"),
+    ]
+    assert all(item["line"] > 0 for item in result["exception_locations"])
+    assert "synthetic secret" not in json.dumps(result)
+
+
 def test_real_report_does_not_promote_partial_runs_or_catalog_cost_to_billing():
     results = [
         dict(id=c.id, repeat=n, passed=True, usage={"known_spend_usd": 0.01})

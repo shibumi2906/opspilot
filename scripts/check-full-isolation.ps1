@@ -1,7 +1,22 @@
-param([Parameter(Mandatory=$true)][string]$MvpPath, [string]$ReportPath = 'docs/full/evidence/f01-isolation.json')
+param([Parameter(Mandatory=$true)][string]$MvpPath, [string]$ReportPath = 'docs/full/evidence/f01-isolation.json', [string]$MvpDocumentationHead)
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 $baseline = Get-Content -Raw .tools/mvp-before.json | ConvertFrom-Json
+$historicalHead = $baseline.head
+$head = (& git -C $MvpPath rev-parse HEAD).Trim()
+if ($MvpDocumentationHead) {
+    if ($head -ne $MvpDocumentationHead) { throw 'Unexpected MVP documentation commit' }
+    & git -C $MvpPath merge-base --is-ancestor $historicalHead $head
+    if ($LASTEXITCODE) { throw 'MVP documentation commit must descend from the baseline' }
+    $delta = @(& git -C $MvpPath diff --name-status --no-renames $historicalHead $head)
+    if ($LASTEXITCODE -or $delta.Count -ne 1 -or $delta[0] -cne "M`tREADME.md") {
+        throw 'MVP documentation commit must modify only the existing README.md'
+    }
+    $worktree = @(& git -C $MvpPath status --porcelain)
+    if ($LASTEXITCODE -or $worktree.Count) { throw 'MVP checkout must be clean' }
+    $baseline.head = $head
+    $baseline.files.'README.md' = (Get-FileHash -LiteralPath (Join-Path $MvpPath 'README.md')).Hash
+}
 $changed = @()
 foreach ($file in $baseline.files.PSObject.Properties) {
     $target = Join-Path $MvpPath $file.Name
@@ -13,7 +28,6 @@ $images = @(& docker image ls --filter 'reference=opspilot:*' --format '{{.Repos
 if ($LASTEXITCODE) { throw 'Docker image inventory failed' }
 $volumes = (& docker volume inspect opspilot_pgdata opspilot-test_pgdata | Out-String)
 if ($LASTEXITCODE) { throw 'Docker volume inventory failed' }
-$head = (& git -C $MvpPath rev-parse HEAD).Trim()
 $branch = (& git -C $MvpPath branch --show-current).Trim()
 if ($changed.Count -or (Compare-Object $baseline.images $images) -or $volumes -ne $baseline.volumes -or $head -ne $baseline.head -or $branch -ne $baseline.branch) {
     throw "MVP fingerprint mismatch: $($changed -join ', ')"
@@ -34,5 +48,6 @@ $result = [ordered]@{
     mvp_volume_fingerprint_sha256 = ([BitConverter]::ToString([Security.Cryptography.SHA256]::Create().ComputeHash([Text.Encoding]::UTF8.GetBytes((Get-Content -Raw .tools/mvp-volume-after.json).Trim()))).Replace('-', ''))
     note = 'Source/env/media fingerprints captured before Full builds. Volume content baseline captured after initial Full setup; no MVP volume was mounted by Full services. Read-only probe only.'
 }
+if ($MvpDocumentationHead) { $result['historical_mvp_head'] = $historicalHead }
 $result | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $ReportPath
 Write-Output 'MVP tracked files, env, branch/head, image tags, volume metadata and read-only volume content match.'
