@@ -101,3 +101,8 @@
   Main schedule exhausted. MVP isolation uses existing README-only HEAD `bec833b`
   via `-MvpDocumentationHead`; the historical fingerprints remain the source for
   other files, images and volumes.
+
+- F23 отдельно разрешён только как локальная подготовка на базе d17b486.
+  Runbook: docs/full/f23-pilot-runbook.md. Используйте fresh F23 project и
+  отдельную offline recovery DB. Не переключайте main Full. F20–F22 и live F23
+  остаются blocked. F24 не начат.

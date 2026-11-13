@@ -1,0 +1,22 @@
+services:
+  postgres:
+    image: ${F23_POSTGRES_IMAGE:?Set the local PostgreSQL image ID}
+    pull_policy: never
+    network_mode: none
+    command: [postgres, -c, listen_addresses=]
+    mem_limit: 768m
+    cpus: 1.0
+    environment:
+      POSTGRES_DB: opspilot_full_recovered
+      POSTGRES_USER: ops_migration
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set the isolated recovery database password}
+    volumes:
+      - recovery:/var/lib/postgresql/data
+      - ./infra/postgres/f23-recovery-roles.sql:/docker-entrypoint-initdb.d/001-roles.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, 'test "$$(cat /proc/1/comm)" = postgres && pg_isready -U ops_migration -d opspilot_full_recovered']
+      interval: 2s
+      timeout: 3s
+      retries: 30
+volumes:
+  recovery: {}

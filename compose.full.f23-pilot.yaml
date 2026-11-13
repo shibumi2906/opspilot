@@ -1,0 +1,76 @@
+# Deployment overlay for the native TLS topology. Apply only to a reviewed,
+# target-specific base with service TLS and read-only secret file mounts.
+x-application: &application
+  image: ${F23_RELEASE_APP:?Set an immutable registry reference}
+  user: "10001:10001"
+  pull_policy: never
+  read_only: true
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  pids_limit: 128
+  cpus: 1.0
+  mem_limit: 1g
+  logging:
+    driver: local
+    options: {max-size: "10m", max-file: "3"}
+services:
+  web:
+    image: ${F23_RELEASE_WEB:?Set an immutable registry reference}
+    pull_policy: never
+    user: "10001:10001"
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    ports: !override
+      - "${F23_BIND_ADDRESS:-127.0.0.1}:${F23_HTTPS_PORT:-8443}:8443"
+    read_only: true
+    tmpfs: ["/tmp:rw,nosuid,size=32m"]
+    cpus: 0.5
+    mem_limit: 256m
+  api:
+    <<: *application
+    ports: !reset []
+    environment:
+      ALLOW_DEMO_SELF_APPROVAL: "false"
+      APP_ORIGIN: ${F23_ORIGIN:?Set HTTPS application origin}
+      OIDC_ISSUER: ${F23_ISSUER:?Set the HTTPS OIDC issuer}
+      OIDC_INTERNAL_ISSUER: ${F23_ISSUER:?Set the HTTPS OIDC issuer}
+      LLM_MODE: scripted
+      OPENAI_API_KEY: ""
+  worker:
+    <<: *application
+    stop_grace_period: 2m
+    environment:
+      APP_ORIGIN: ${F23_ORIGIN:?Set HTTPS application origin}
+      OIDC_ISSUER: ${F23_ISSUER:?Set the HTTPS OIDC issuer}
+      OIDC_INTERNAL_ISSUER: ${F23_ISSUER:?Set the HTTPS OIDC issuer}
+      ALLOW_DEMO_SELF_APPROVAL: "false"
+      LLM_MODE: scripted
+      OPENAI_API_KEY: ""
+  mcp:
+    <<: *application
+    ports: !reset []
+  admin:
+    <<: *application
+    profiles: [tools]
+  postgres:
+    image: ${F23_RELEASE_POSTGRES:?Set an immutable registry reference}
+    pull_policy: never
+    ports: !reset []
+    cpus: 2.0
+    mem_limit: 2g
+  redis:
+    image: ${F23_RELEASE_REDIS:?Set an immutable registry reference}
+    pull_policy: never
+    ports: !reset []
+    cpus: 0.5
+    mem_limit: 512m
+  collector:
+    <<: *application
+    ports: !reset []
+    mem_limit: 512m
+  oidc:
+    image: ${F23_RELEASE_OIDC:?Set an immutable registry reference}
+    pull_policy: never
+    ports: !reset []
+    cpus: 1.0
+    mem_limit: 2g

@@ -1,0 +1,5 @@
+CREATE ROLE ops_workflow NOLOGIN;
+CREATE ROLE ops_domain NOLOGIN;
+CREATE ROLE ops_checkpoint NOLOGIN;
+CREATE ROLE ops_identity NOLOGIN;
+CREATE ROLE ops_ingress NOLOGIN;

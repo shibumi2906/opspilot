@@ -1,6 +1,6 @@
 # Продолжение OpsPilot Full
 
-Обновлено 8 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
+Обновлено 13 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
 Это самостоятельный Git-репозиторий, не ссылка на скрытый worktree.
 Сначала откройте эту папку как workspace в редакторе/Codex.
 
@@ -12,7 +12,8 @@
   F21 выполняется по отдельному явному запросу: [локальные измерения и ограничения](docs/full/evidence/f21/README.md).
   Полное закрытие F21 зависит от реализации write/reconciliation boundaries F20 и устранения
   manager HIGH CVE-2026-78661. F22 отдельно разрешён и локально проверен; overall blocked.
-  [F22 evidence](docs/full/evidence/f22/README.md). F23–F24 не начаты.
+  [F22 evidence](docs/full/evidence/f22/README.md). F23 локальная подготовка, live blocked. F24 не начат.
+  [F23 runbook](docs/full/f23-pilot-runbook.md).
   Перед новым этапом используйте текущий HEAD и канонический tracker.
 - Схема Full: `0019_adapters`. Pinned graphs v1/v2, DTO/state1, checkpoint SDK9 сохранены.
 - [Канонический tracker](docs/full-version-status.md).

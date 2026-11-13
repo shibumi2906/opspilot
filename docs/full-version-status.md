@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 8 ноября 2026 года. **F01–F19 завершены; F20 blocked, реальные Jira проверки отложены владельцем; F21 local resilience измерен, overall blocked на F20 и manager security finding; F22 local scripted выполнен, overall blocked; F23–F24 не начаты.**
+Дата создания: 26 октября 2026 года. Обновлено: 13 ноября 2026 года. **F01–F19 завершены; F20 blocked, реальные Jira проверки отложены владельцем; F21 local resilience измерен, overall blocked на F20 и manager security finding; F22 local scripted и real evidence записаны, overall blocked; F23 локальная подготовка, live gate blocked; F24 не начат.**
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +25,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**F19 завершён. F20 остаётся blocked; владелец отложил реальные Jira checks. По отдельному явному запросу проведены F21 local fault/concurrency/load/soak; общий статус blocked, см. evidence и security finding. F22 отдельно разрешён владельцем; local scripted принят, общий статус blocked. F23–F24 не начинать автоматически. Full Pilot/ASVS L2 NOT_MET.**
+**F19 завершён. F20 остаётся blocked; владелец отложил реальные Jira checks. По отдельному явному запросу проведены F21 local fault/concurrency/load/soak; общий статус blocked, см. evidence и security finding. F22 отдельно разрешён владельцем; local scripted принят, общий статус blocked. Владелец отдельно разрешил локальный F23. Live F23 и F24 остаются за пределами текущего запроса. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -80,7 +80,7 @@ F09 включает предварительные security contracts; F17/F23 
 | F20 | blocked | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
 | F21 | blocked | Local load/soak/recovery measured; F20 boundaries and manager HIGH remain | [evidence](full/evidence/f21/README.md); commit subject below | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
 | F22 | blocked | 50/50 local scripted + 12/12 MVP; real/human/CI/security/dependencies NOT_MET | [evidence](full/evidence/f22/README.md) | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
-| F23 | not_started | Pilot deployment/TLS/backup/restore | — | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
+| F23 | blocked | Local Compose/runbook and database recovery rehearsal; live deployment gated | [runbook](full/f23-pilot-runbook.md), [evidence](full/evidence/f23/README.md) | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
 | F24 | not_started | Full Pilot release и traceability | — | [SEC-01/10/11/12](security/asvs-l2-implementation-plan.md) |
 
 ## Запись результата этапа
@@ -1153,3 +1153,18 @@ F40 повтор 2 штатно исчерпал один разрешённый
 Проверка GitHub в режиме чтения нашла старый неудачный Portfolio checks и
 наличие файла F22 workflow на ветке Full. Подтверждённого запуска F22 нет.
 F22 остаётся blocked.
+
+## F23 — локальная репетиция, 13 ноября 2026
+
+Base `d17b486`, `C:/Users/user/Desktop/code/Ops`, ветка `codex/opspilot-full`.
+Отдельный Compose lab, офлайн recovery и проект deployment overlay описаны
+в [runbook](full/f23-pilot-runbook.md). Результаты и ограничения перечислены
+в [evidence](full/evidence/f23/README.md). Scope SEC-01/02/04/05/06/09/10/12.
+F20–F22 остаются blocked. Live F23 требует отдельного target и разрешения.
+F24, Full Pilot и полный ASVS L2 остаются NOT_MET.
+
+Локальный результат: 57 таблиц совпали по counts и SHA-256, pending interrupt
+и committed receipt сохранены. Откат схемы 0021 → 0020 проверен через restore
+в новую БД, 16,94 с на restore/SQL-сверку после готовности PostgreSQL.
+MVP184 fingerprints, images и volume checks совпали до и после. Стенд остановлен.
+Evidence commit subject: `feat(full-f23): rehearse isolated backup restore and rollback`.
