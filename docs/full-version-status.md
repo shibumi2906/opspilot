@@ -1168,3 +1168,10 @@ F24, Full Pilot и полный ASVS L2 остаются NOT_MET.
 в новую БД, 16,94 с на restore/SQL-сверку после готовности PostgreSQL.
 MVP184 fingerprints, images и volume checks совпали до и после. Стенд остановлен.
 Evidence commit subject: `feat(full-f23): rehearse isolated backup restore and rollback`.
+
+### F20–F23 — продолжение локальной подготовки
+
+[Результаты продолжения](full/evidence/f23/local-followup.md). Локальный
+симулятор сверки проверен, рецепт manager обновлён, отсутствие удалённого
+запуска F22 проверено через GitHub API. Runtime-проверки продолжения
+прерваны недоступностью Docker Engine. Статусы F20–F23 остаются blocked.

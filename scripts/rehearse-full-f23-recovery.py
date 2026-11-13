@@ -2,6 +2,7 @@
 
 import argparse
 import json
+import os
 import subprocess
 import time
 from pathlib import Path
@@ -103,7 +104,7 @@ def version(container, database):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("mode", choices=("backup", "restore"))
+    parser.add_argument("mode", choices=("backup", "restore", "smoke-copy"))
     parser.add_argument("project")
     args = parser.parse_args()
     if not args.project.startswith("opspilot-full-test-f23-"):
@@ -131,6 +132,28 @@ def main():
         with archive.open("xb") as handle:
             handle.write(Fernet(key.read_bytes()).encrypt(dump))
         evidence.write_text(json.dumps(before), encoding="utf-8")
+        return
+
+    if args.mode == "smoke-copy":
+        # This project contains synthetic data and the candidate DB remains available.
+        assert version(source, source_db) == candidate
+        query(source, "postgres", f"ALTER DATABASE {source_db} RENAME TO f23_candidate")
+        query(source, "postgres", f"CREATE DATABASE {source_db} TEMPLATE template0")
+        docker(
+            "exec",
+            "-i",
+            source,
+            "pg_restore",
+            "--exit-on-error",
+            "--single-transaction",
+            "-U",
+            "ops_migration",
+            "-d",
+            source_db,
+            data=Fernet(key.read_bytes()).decrypt(archive.read_bytes()),
+        )
+        assert_fixture(source, source_db, fixture)
+        assert version(source, source_db) == base
         return
 
     start = time.monotonic()
@@ -209,9 +232,9 @@ def main():
         "candidate_reverted_by_restore_to_fresh_database": True,
         "database_restore_and_verification_seconds": round(time.monotonic() - start, 2),
     }
-    Path("docs/full/evidence/f23/recovery.json").write_text(
-        json.dumps(result, indent=2) + "\n", encoding="utf-8"
-    )
+    (
+        Path(os.environ.get("F23_EVIDENCE_DIR", "docs/full/evidence/f23")) / "recovery.json"
+    ).write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result))
 
 
