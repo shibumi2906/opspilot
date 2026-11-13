@@ -1,0 +1,111 @@
+{
+  "limit": 200000,
+  "charged_or_reserved": 31877,
+  "provider_attempts": 14,
+  "stop_reason": null,
+  "known_input_tokens": 29451,
+  "known_output_tokens": 2426,
+  "unknown_usage": 0,
+  "entries": [
+    {
+      "operation": "classify",
+      "reservation": 9208,
+      "status": "known",
+      "input_tokens": 562,
+      "output_tokens": 84
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15009,
+      "status": "known",
+      "input_tokens": 1697,
+      "output_tokens": 71
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15201,
+      "status": "known",
+      "input_tokens": 1764,
+      "output_tokens": 110
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15949,
+      "status": "known",
+      "input_tokens": 2009,
+      "output_tokens": 72
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16090,
+      "status": "known",
+      "input_tokens": 2056,
+      "output_tokens": 29
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16933,
+      "status": "known",
+      "input_tokens": 2323,
+      "output_tokens": 25
+    },
+    {
+      "operation": "reason",
+      "reservation": 20310,
+      "status": "known",
+      "input_tokens": 4328,
+      "output_tokens": 744
+    },
+    {
+      "operation": "classify",
+      "reservation": 9160,
+      "status": "known",
+      "input_tokens": 559,
+      "output_tokens": 80
+    },
+    {
+      "operation": "investigate",
+      "reservation": 14961,
+      "status": "known",
+      "input_tokens": 1694,
+      "output_tokens": 71
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15153,
+      "status": "known",
+      "input_tokens": 1761,
+      "output_tokens": 110
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15901,
+      "status": "known",
+      "input_tokens": 2006,
+      "output_tokens": 72
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16042,
+      "status": "known",
+      "input_tokens": 2053,
+      "output_tokens": 25
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16885,
+      "status": "known",
+      "input_tokens": 2320,
+      "output_tokens": 25
+    },
+    {
+      "operation": "reason",
+      "reservation": 20091,
+      "status": "known",
+      "input_tokens": 4319,
+      "output_tokens": 908
+    }
+  ],
+  "billing_eligibility_verified": false,
+  "actual_billed_usd": null
+}

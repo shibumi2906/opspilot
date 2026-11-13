@@ -1,0 +1,6 @@
+{
+  "daily_limit": 200000,
+  "probe_run_limit": 35000,
+  "launcher_exit": 1,
+  "project": "opspilot-full-test-f22-nov13-real"
+}

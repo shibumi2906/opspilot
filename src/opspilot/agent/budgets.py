@@ -31,7 +31,7 @@ class BudgetLimits(StrictModel):
     rounds: int = Field(default=6, ge=1, le=6)
     reads: int = Field(default=15, ge=1, le=15)
     llm_attempts: int = Field(default=10, ge=1, le=10)
-    tokens: int = Field(default=30000, ge=1, le=30000)
+    tokens: int = Field(default=30000, ge=1, le=35000)
     active_seconds: float = Field(default=120, gt=0, le=120)
     recursion_limit: int = Field(default=60, ge=10, le=60)
 

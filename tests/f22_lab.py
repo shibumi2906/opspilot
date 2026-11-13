@@ -83,7 +83,7 @@ def exception_locations(exc: Exception) -> list[dict[str, str | int]]:
     return list(locations.values())
 
 
-def continuation(previous, planned, settings):
+def continuation(previous, planned, settings, *, allow_complete=False):
     report = json.loads(previous.read_text(encoding="utf-8"))
     parent = report.get("previous_report")
     cases = report["cases"]
@@ -106,7 +106,8 @@ def continuation(previous, planned, settings):
         or report["prompt_sha256"] != hashlib.sha256(SYSTEM_PROMPT.encode()).hexdigest()
         or report["token_guard"]["stop_reason"] != "GLOBAL_TOKEN_LIMIT"
         or report["token_guard"]["unknown_usage"] != 0
-        or not 0 < len(cases) < len(planned)
+        or not 0 < len(cases) <= len(planned)
+        or (len(cases) == len(planned) and not allow_complete)
         or [(case["id"], case["repeat"]) for case in cases] != expected[: len(cases)]
         or [(row["id"], row["repeat"]) for row in report["remaining_schedule"]]
         != expected[len(cases) :]
@@ -115,7 +116,34 @@ def continuation(previous, planned, settings):
     return report | {"cases": cases}
 
 
-async def run_case(settings, item, engine):
+async def enable_budget_probe(conn):
+    # The surrounding harness has already verified every DSN and the advisory lock.
+    await conn.execute(
+        text("""
+        DO $$
+        DECLARE constraint_row record;
+        BEGIN
+            IF current_database() <> 'opspilot_full_test' THEN
+                RAISE EXCEPTION 'Isolated budget probe required';
+            END IF;
+            SELECT conname, pg_get_constraintdef(oid) AS definition
+            INTO STRICT constraint_row
+            FROM pg_constraint
+            WHERE conrelid = 'workflow.usage_reservations'::regclass
+              AND contype = 'c' AND pg_get_constraintdef(oid) LIKE '%30000%';
+            IF (SELECT count(*) FROM regexp_matches(constraint_row.definition, '30000', 'g')) <> 1
+            THEN RAISE EXCEPTION 'Unexpected usage constraint'; END IF;
+            EXECUTE format(
+                'ALTER TABLE workflow.usage_reservations '
+                'DROP CONSTRAINT %1$I, ADD CONSTRAINT %1$I %2$s',
+                constraint_row.conname, replace(constraint_row.definition, '30000', '35000')
+            );
+        END $$;
+    """)
+    )
+
+
+async def run_case(settings, item, engine, *, budget_probe=False):
     case, repeat = item
     spec = case.scenario
     tenant = (DEMO_TENANT, SECOND_TENANT)[case.tenant]
@@ -144,7 +172,7 @@ async def run_case(settings, item, engine):
                 "agent_max_reads": spec.limits.reads,
                 "agent_max_llm_attempts": spec.limits.llm_attempts,
                 "agent_max_rounds": spec.limits.rounds,
-                "agent_max_tokens": spec.limits.tokens,
+                "agent_max_tokens": 35000 if budget_probe else spec.limits.tokens,
                 "agent_active_seconds": spec.limits.active_seconds,
             }
         )
@@ -329,15 +357,24 @@ async def main(args):
         raise ValueError("No external connectors allowed")
     output = Path(os.environ.get("F22_REPORT_DIR", "/reports"))
     planned = schedule(args.mode)
+    budget_probe = getattr(args, "probe_35k", False)
     previous = os.environ.get("F22_PREVIOUS_REPORT")
+    if budget_probe and (args.mode != "real" or not previous):
+        raise ValueError("Budget probe requires the completed real schedule")
     prior = (
-        continuation(Path(previous), planned, settings)
+        continuation(Path(previous), planned, settings, allow_complete=budget_probe)
         if previous and args.mode == "real"
         else None
     )
     prior_cases = prior["cases"] if prior else []
     diagnose = getattr(args, "diagnose_prior_failures", False)
-    diagnostics = diagnostic_schedule(planned, prior_cases) if diagnose else []
+    if budget_probe:
+        if len(prior_cases) != len(planned):
+            raise ValueError("Budget probe requires the completed real schedule")
+        diagnostics = [item for item in planned if item[0].id in {"F18", "F22"} and item[1] == 1]
+        diagnose = True
+    else:
+        diagnostics = diagnostic_schedule(planned, prior_cases) if diagnose else []
     queue = diagnostics + planned[len(prior_cases) :]
     await asyncio.to_thread(output.mkdir, parents=True, exist_ok=True)
     token_guard = (
@@ -380,6 +417,8 @@ async def main(args):
     )
     if diagnose:
         report.update(diagnostic_cases=[], remaining_diagnostics=[])
+    if budget_probe:
+        report["diagnostic_run_token_limit"] = 35000
 
     def save():
         report["summary"] = accounting(prior_cases + report["cases"], args.mode)
@@ -394,6 +433,9 @@ async def main(args):
         async with engine.connect() as guard:
             assert await guard.scalar(text("SELECT current_database()")) == "opspilot_full_test"
             assert await guard.scalar(text("SELECT pg_try_advisory_lock(1801202622)"))
+            if budget_probe:
+                await enable_budget_probe(guard)
+                await guard.commit()
             for position, item in enumerate(queue):
                 is_diagnostic = position < len(diagnostics)
                 stop = token_guard.stop_reason if token_guard else None
@@ -427,7 +469,7 @@ async def main(args):
                         ]
                     break
                 with token_guard.installed() if token_guard else nullcontext():
-                    result = await run_case(settings, item, engine)
+                    result = await run_case(settings, item, engine, budget_probe=budget_probe)
                 report["diagnostic_cases" if is_diagnostic else "cases"].append(result)
                 save()
                 print(
@@ -465,5 +507,6 @@ if __name__ == "__main__":
     parser.add_argument("--authorize-real", action="store_true")
     parser.add_argument("--free-quota-confirmed", action="store_true")
     parser.add_argument("--diagnose-prior-failures", action="store_true")
+    parser.add_argument("--probe-35k", action="store_true")
     parser.add_argument("--total-token-limit", type=int, default=200000)
     raise SystemExit(asyncio.run(main(parser.parse_args())))

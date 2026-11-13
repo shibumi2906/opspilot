@@ -20,11 +20,14 @@ def main() -> int:
     parser.add_argument("--report-name", required=True)
     parser.add_argument("--continue-real-r1", action="store_true")
     parser.add_argument("--diagnose-prior-failures", action="store_true")
+    parser.add_argument("--probe-35k", action="store_true")
     args = parser.parse_args()
     if not args.confirm_free_quota:
         parser.error("Confirm model/project eligibility and at least the requested unused quota")
     if args.diagnose_prior_failures and not args.continue_real_r1:
         parser.error("Diagnostic repeats require a verified continuation report")
+    if args.probe_35k and (not args.continue_real_r1 or args.diagnose_prior_failures):
+        parser.error("The 35k probe requires a completed schedule and its own diagnostic selection")
     if not re.fullmatch(r"opspilot-full-test-f22-[a-z0-9-]+", args.project):
         parser.error("F22-only project required")
     if not re.fullmatch(r"[a-z0-9-]+", args.report_name):
@@ -115,6 +118,8 @@ def main() -> int:
     ]
     if args.diagnose_prior_failures:
         command.append("--diagnose-prior-failures")
+    if args.probe_35k:
+        command.append("--probe-35k")
     # A different report name must not reset the owner's shared quota allowance.
     private.mkdir(exist_ok=True)
     with claim.open("x", encoding="utf-8") as target:
