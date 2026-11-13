@@ -1,5 +1,13 @@
 {
-  "status": "pending",
+  "status": "partial",
+  "human_review_observations": {
+    "reviewer_role": "project_owner",
+    "record": "owner-review.md",
+    "source_references": "All fact and hypothesis references resolve.",
+    "statuses": "No discrepancies found in the statuses checked by the reviewer.",
+    "ticket_and_recovery": "The reports explicitly distinguish ticket creation from delivery recovery.",
+    "item_judgments": "pending"
+  },
   "source_hashes": {
     "real-r1/real.json": "d8f8763819a48dd023a5dfe013ba9a31e2eda05d8e4f82baf25d22499dd58dcb",
     "real-r2/real.json": "cca34e0a108a81cb933e2e5a4a02483db62abcc58da6d05420629e0afdf2ad66",
