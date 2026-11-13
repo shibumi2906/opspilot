@@ -358,17 +358,34 @@ async def main(args):
     output = Path(os.environ.get("F22_REPORT_DIR", "/reports"))
     planned = schedule(args.mode)
     budget_probe = getattr(args, "probe_35k", False)
+    repeat_remaining = getattr(args, "repeat_remaining_today", False)
+    carried_tokens = int(os.environ.get("F22_CARRIED_TOKENS", "0"))
+    if repeat_remaining and not (
+        0 < carried_tokens < 200000 and args.total_token_limit + carried_tokens <= 200000
+    ):
+        raise ValueError("Today's repeat budget must account for earlier usage")
     previous = os.environ.get("F22_PREVIOUS_REPORT")
-    if budget_probe and (args.mode != "real" or not previous):
+    if (budget_probe or repeat_remaining) and (args.mode != "real" or not previous):
         raise ValueError("Budget probe requires the completed real schedule")
     prior = (
-        continuation(Path(previous), planned, settings, allow_complete=budget_probe)
+        continuation(
+            Path(previous), planned, settings, allow_complete=budget_probe or repeat_remaining
+        )
         if previous and args.mode == "real"
         else None
     )
     prior_cases = prior["cases"] if prior else []
     diagnose = getattr(args, "diagnose_prior_failures", False)
-    if budget_probe:
+    if repeat_remaining:
+        if len(prior_cases) != len(planned):
+            raise ValueError("Remaining repeats require the completed real schedule")
+        identities = {("F14", 1), ("F14", 2), ("F14", 3), ("F40", 2), ("F50", 3)}
+        failed = {(row["id"], row["repeat"]) for row in prior_cases if not row["passed"]}
+        if not identities <= failed:
+            raise ValueError("Remaining repeats must be recorded failures")
+        diagnostics = [item for item in planned if (item[0].id, item[1]) in identities]
+        diagnose = True
+    elif budget_probe:
         if len(prior_cases) != len(planned):
             raise ValueError("Budget probe requires the completed real schedule")
         diagnostics = [item for item in planned if item[0].id in {"F18", "F22"} and item[1] == 1]
@@ -419,6 +436,12 @@ async def main(args):
         report.update(diagnostic_cases=[], remaining_diagnostics=[])
     if budget_probe:
         report["diagnostic_run_token_limit"] = 35000
+    if repeat_remaining:
+        report["same_day_quota"] = {
+            "previous_segment": "real-r6",
+            "carried_tokens": carried_tokens,
+            "segment_limit": args.total_token_limit,
+        }
 
     def save():
         report["summary"] = accounting(prior_cases + report["cases"], args.mode)
@@ -433,13 +456,18 @@ async def main(args):
         async with engine.connect() as guard:
             assert await guard.scalar(text("SELECT current_database()")) == "opspilot_full_test"
             assert await guard.scalar(text("SELECT pg_try_advisory_lock(1801202622)"))
-            if budget_probe:
+            if budget_probe or repeat_remaining:
                 await enable_budget_probe(guard)
                 await guard.commit()
             for position, item in enumerate(queue):
                 is_diagnostic = position < len(diagnostics)
                 stop = token_guard.stop_reason if token_guard else None
-                if not stop and is_diagnostic and (item[0].id, item[1]) == ("F14", 2):
+                if (
+                    not repeat_remaining
+                    and not stop
+                    and is_diagnostic
+                    and (item[0].id, item[1]) == ("F14", 2)
+                ):
                     report["waiting_for_f14_review"] = True
                     save()
                     path = output / "f14-review.json"
@@ -469,7 +497,12 @@ async def main(args):
                         ]
                     break
                 with token_guard.installed() if token_guard else nullcontext():
-                    result = await run_case(settings, item, engine, budget_probe=budget_probe)
+                    result = await run_case(
+                        settings,
+                        item,
+                        engine,
+                        budget_probe=budget_probe or (repeat_remaining and item[0].id == "F14"),
+                    )
                 report["diagnostic_cases" if is_diagnostic else "cases"].append(result)
                 save()
                 print(
@@ -508,5 +541,6 @@ if __name__ == "__main__":
     parser.add_argument("--free-quota-confirmed", action="store_true")
     parser.add_argument("--diagnose-prior-failures", action="store_true")
     parser.add_argument("--probe-35k", action="store_true")
+    parser.add_argument("--repeat-remaining-today", action="store_true")
     parser.add_argument("--total-token-limit", type=int, default=200000)
     raise SystemExit(asyncio.run(main(parser.parse_args())))

@@ -1,6 +1,7 @@
 """Explicit free-quota F22 launcher. Never prints or passes a key as a CLI argument."""
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -21,6 +22,7 @@ def main() -> int:
     parser.add_argument("--continue-real-r1", action="store_true")
     parser.add_argument("--diagnose-prior-failures", action="store_true")
     parser.add_argument("--probe-35k", action="store_true")
+    parser.add_argument("--repeat-remaining-today", action="store_true")
     args = parser.parse_args()
     if not args.confirm_free_quota:
         parser.error("Confirm model/project eligibility and at least the requested unused quota")
@@ -28,6 +30,13 @@ def main() -> int:
         parser.error("Diagnostic repeats require a verified continuation report")
     if args.probe_35k and (not args.continue_real_r1 or args.diagnose_prior_failures):
         parser.error("The 35k probe requires a completed schedule and its own diagnostic selection")
+    if args.repeat_remaining_today and (
+        args.report_name != "real-r7"
+        or not args.continue_real_r1
+        or args.probe_35k
+        or args.diagnose_prior_failures
+    ):
+        parser.error("Remaining repeats require the real-r7 continuation of today's real-r6 probe")
     if not re.fullmatch(r"opspilot-full-test-f22-[a-z0-9-]+", args.project):
         parser.error("F22-only project required")
     if not re.fullmatch(r"[a-z0-9-]+", args.report_name):
@@ -51,6 +60,7 @@ def main() -> int:
     private = Path(".tools/f22-real")
     claim = private / "quota-authorization.json"
     previous = ""
+    carried_tokens = 0
     if args.continue_real_r1:
         match = re.fullmatch(r"real-r([1-9][0-9]*)", args.report_name)
         if not match or int(match[1]) < 2 or not claim.is_file():
@@ -63,11 +73,42 @@ def main() -> int:
             (output.parent / previous_name / "real.json").read_text(encoding="utf-8")
         )
         today = datetime.now(UTC).date()
-        if datetime.fromisoformat(prior["timestamp"]).date() >= today:
+        prior_day = datetime.fromisoformat(prior["timestamp"]).date()
+        if args.repeat_remaining_today:
+            ledger_path = output.parent / previous_name / "token-ledger.json"
+            ledger = json.loads(ledger_path.read_text(encoding="utf-8"))
+            entries = ledger["entries"]
+            if (
+                prior_day != today
+                or ledger != prior["token_guard"]
+                or ledger["limit"] != args.limit
+                or ledger["unknown_usage"]
+                or ledger["stop_reason"]
+                or ledger["provider_attempts"] != len(entries)
+                or any(entry["status"] != "known" for entry in entries)
+                or [(r["id"], r["repeat"], r["passed"]) for r in prior["diagnostic_cases"]]
+                != [("F18", 1, True), ("F22", 1, True)]
+                or prior["cases"]
+            ):
+                raise ValueError("Today's prior quota use must be complete and reconciled")
+            carried_tokens = sum(e["input_tokens"] + e["output_tokens"] for e in entries)
+            if not 0 < carried_tokens == ledger["charged_or_reserved"] < args.limit:
+                raise ValueError("Invalid carried token total")
+            if prior["previous_report"] != "/reports/continuation/real-r5/real.json":
+                raise ValueError("Unexpected canonical report")
+            canonical = output.parent / "real-r5/real.json"
+            if (
+                hashlib.sha256(canonical.read_bytes()).hexdigest()
+                != prior["previous_report_sha256"]
+            ):
+                raise ValueError("Canonical report hash mismatch")
+        elif prior_day >= today:
             raise ValueError("A later quota day is required")
         if settings.openai_model != prior["requested_model"]:
             raise ValueError("Continuation requires the original model")
         previous = f"/reports/continuation/{previous_name}/real.json"
+        if args.repeat_remaining_today:
+            previous = prior["previous_report"]
         claim = private / f"quota-authorization-{args.report_name}.json"
     # Only the provider key is injected from the local settings, never MVP credentials.
     env = {
@@ -105,6 +146,8 @@ def main() -> int:
         "F22_REPORT_DIR=/reports/continuation/" + args.report_name,
         "-e",
         "F22_PREVIOUS_REPORT=" + previous,
+        "-e",
+        f"F22_CARRIED_TOKENS={carried_tokens}",
         "tests",
         "python",
         "-m",
@@ -114,18 +157,22 @@ def main() -> int:
         "--authorize-real",
         "--free-quota-confirmed",
         "--total-token-limit",
-        str(args.limit),
+        str(args.limit - carried_tokens),
     ]
     if args.diagnose_prior_failures:
         command.append("--diagnose-prior-failures")
     if args.probe_35k:
         command.append("--probe-35k")
+    if args.repeat_remaining_today:
+        command.append("--repeat-remaining-today")
     # A different report name must not reset the owner's shared quota allowance.
     private.mkdir(exist_ok=True)
     with claim.open("x", encoding="utf-8") as target:
         json.dump(
             dict(
                 limit=args.limit,
+                carried_tokens=carried_tokens,
+                segment_limit=args.limit - carried_tokens,
                 model=settings.openai_model,
                 report=args.report_name,
                 status="reserved_before_launch",

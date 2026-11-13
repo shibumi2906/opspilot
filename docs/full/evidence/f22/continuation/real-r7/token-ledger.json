@@ -1,0 +1,216 @@
+{
+  "limit": 168123,
+  "charged_or_reserved": 63058,
+  "provider_attempts": 29,
+  "stop_reason": null,
+  "known_input_tokens": 58433,
+  "known_output_tokens": 4625,
+  "unknown_usage": 0,
+  "entries": [
+    {
+      "operation": "classify",
+      "reservation": 9160,
+      "status": "known",
+      "input_tokens": 559,
+      "output_tokens": 85
+    },
+    {
+      "operation": "investigate",
+      "reservation": 14961,
+      "status": "known",
+      "input_tokens": 1694,
+      "output_tokens": 71
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15153,
+      "status": "known",
+      "input_tokens": 1761,
+      "output_tokens": 114
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15901,
+      "status": "known",
+      "input_tokens": 2006,
+      "output_tokens": 72
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16042,
+      "status": "known",
+      "input_tokens": 2053,
+      "output_tokens": 25
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16885,
+      "status": "known",
+      "input_tokens": 2320,
+      "output_tokens": 25
+    },
+    {
+      "operation": "reason",
+      "reservation": 20091,
+      "status": "known",
+      "input_tokens": 4271,
+      "output_tokens": 805
+    },
+    {
+      "operation": "classify",
+      "reservation": 9160,
+      "status": "known",
+      "input_tokens": 559,
+      "output_tokens": 82
+    },
+    {
+      "operation": "investigate",
+      "reservation": 14961,
+      "status": "known",
+      "input_tokens": 1694,
+      "output_tokens": 71
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15153,
+      "status": "known",
+      "input_tokens": 1761,
+      "output_tokens": 110
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15901,
+      "status": "known",
+      "input_tokens": 2006,
+      "output_tokens": 72
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16042,
+      "status": "known",
+      "input_tokens": 2053,
+      "output_tokens": 25
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16885,
+      "status": "known",
+      "input_tokens": 2320,
+      "output_tokens": 25
+    },
+    {
+      "operation": "reason",
+      "reservation": 20091,
+      "status": "known",
+      "input_tokens": 4323,
+      "output_tokens": 698
+    },
+    {
+      "operation": "classify",
+      "reservation": 9160,
+      "status": "known",
+      "input_tokens": 559,
+      "output_tokens": 83
+    },
+    {
+      "operation": "investigate",
+      "reservation": 14961,
+      "status": "known",
+      "input_tokens": 1694,
+      "output_tokens": 71
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15153,
+      "status": "known",
+      "input_tokens": 1761,
+      "output_tokens": 110
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15901,
+      "status": "known",
+      "input_tokens": 2006,
+      "output_tokens": 72
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16042,
+      "status": "known",
+      "input_tokens": 2053,
+      "output_tokens": 25
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16885,
+      "status": "known",
+      "input_tokens": 2320,
+      "output_tokens": 25
+    },
+    {
+      "operation": "reason",
+      "reservation": 20091,
+      "status": "known",
+      "input_tokens": 4310,
+      "output_tokens": 665
+    },
+    {
+      "operation": "classify",
+      "reservation": 9138,
+      "status": "known",
+      "input_tokens": 555,
+      "output_tokens": 57
+    },
+    {
+      "operation": "classify",
+      "reservation": 9145,
+      "status": "known",
+      "input_tokens": 556,
+      "output_tokens": 95
+    },
+    {
+      "operation": "investigate",
+      "reservation": 14946,
+      "status": "known",
+      "input_tokens": 1691,
+      "output_tokens": 71
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15118,
+      "status": "known",
+      "input_tokens": 1745,
+      "output_tokens": 110
+    },
+    {
+      "operation": "investigate",
+      "reservation": 15866,
+      "status": "known",
+      "input_tokens": 1990,
+      "output_tokens": 72
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16009,
+      "status": "known",
+      "input_tokens": 2037,
+      "output_tokens": 29
+    },
+    {
+      "operation": "investigate",
+      "reservation": 16852,
+      "status": "known",
+      "input_tokens": 2304,
+      "output_tokens": 25
+    },
+    {
+      "operation": "reason",
+      "reservation": 17556,
+      "status": "known",
+      "input_tokens": 3472,
+      "output_tokens": 835
+    }
+  ],
+  "billing_eligibility_verified": false,
+  "actual_billed_usd": null
+}
