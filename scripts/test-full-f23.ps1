@@ -1,4 +1,4 @@
-param([ValidatePattern('^opspilot-full-test-f23-[a-z0-9]+$')][string]$Project='opspilot-full-test-f23-r1',[ValidateRange(35,98)][int]$Subnet=37,[string]$ManagerImage="opspilot-full/manager:f17",[switch]$RecoverySmoke,[ValidatePattern('^opspilot-full-test-f23-[a-z0-9]+$')][string]$FixtureBackupProject)
+param([ValidatePattern('^opspilot-full-test-f23-[a-z0-9]+$')][string]$Project='opspilot-full-test-f23-r1',[ValidateRange(35,98)][int]$Subnet=37,[string]$ManagerImage="opspilot-full/manager:f17",[switch]$RecoverySmoke)
 $ErrorActionPreference='Stop'
 Set-Location -LiteralPath (Split-Path -Parent $PSScriptRoot)
 $py='.venv/Scripts/python.exe'

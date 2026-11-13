@@ -1,0 +1,9 @@
+{
+  "backup_project": null,
+  "passed": true,
+  "local_restore_to_worker_smoke_seconds": 25.51,
+  "committed_extra_tickets": 0,
+  "private_network": "opspilot-full-test-f23-r7_smoke",
+  "project": "opspilot-full-test-f23-r7",
+  "pending_new_tickets": 1
+}
