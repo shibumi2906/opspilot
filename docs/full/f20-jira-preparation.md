@@ -81,3 +81,12 @@ access:184 files/env, main/HEAD, images, volume metadata and read-only volume co
 No images were built, no migrations/seed/dev updates performed. Full remains0019.
 No upstream Jira POST/PUT/DELETE, no paid calls, remote CI or push. Protected253 ASVS
 backlog rows are unchanged. Complete SEC-03/09 and SEC-01/10 stage gates remain open.
+
+## Local process/HTTP checks — 14 November 2026
+
+[Accepted evidence](evidence/f20/local-process/README.md) exercises three client
+processes against one local HTTP provider, lost responses,403/429/500, and
+independent read-back. Late duplicate evidence now escalates a previously
+verified simulator receipt to needs_attention and preserves the one-attempt
+boundary. 33 local tests passed. Production runtime integration and live Jira
+checks remain open.

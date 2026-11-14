@@ -113,8 +113,15 @@ class SimulatorReceipts:
             identity = str(operation.tenant), str(operation.operation), operation.digest()
             db.execute(
                 "UPDATE receipts SET outcome=? WHERE tenant=? AND operation=? AND digest=? "
-                "AND outcome=?",
-                (outcome, *identity, Outcome.UNKNOWN),
+                "AND (outcome=? OR (?=? AND outcome=?))",
+                (
+                    outcome,
+                    *identity,
+                    Outcome.UNKNOWN,
+                    outcome,
+                    Outcome.NEEDS_ATTENTION,
+                    Outcome.VERIFIED,
+                ),
             )
             row = db.execute(
                 "SELECT outcome FROM receipts WHERE tenant=? AND operation=? AND digest=?", identity

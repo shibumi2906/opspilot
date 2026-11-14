@@ -45,7 +45,7 @@ execution path remains part of F20.
 | Area | Verified result | Remaining work |
 | --- | --- | --- |
 | F01–F19 | Core implementation and Prometheus staging acceptance recorded | Preserve stage-specific limits when choosing a pilot target |
-| F20 — Jira | 27 local payload, verification, preflight, and simulator tests passed | Integrate trusted mappings, grants, bounded transport, PostgreSQL dispatch receipts and reconciliation into the runtime; verify authorized sandbox writes and read-back |
+| F20 — Jira | 33 local payload, verification, preflight, and simulator tests passed, including HTTP and process boundaries | Integrate trusted mappings, grants, bounded transport, PostgreSQL dispatch receipts and reconciliation into the runtime; verify authorized sandbox writes and read-back |
 | F21 — resilience | Local concurrency, fault, recovery, load, and 30-minute soak evidence recorded | Exercise the completed F20 dispatch/reconciliation boundaries and verify the release environment |
 | F22 — evaluations | 50/50 Full scripted cases; all 90 scheduled real results recorded, with 78 passes and 12 failed records; successful diagnostic repeats cover all 12 historical failures | Owner judgments for individual claims and hypotheses; successful remote CI on the intended Full commit; dependent integration and release gates |
 | F23 — pilot preparation | Local Compose/runbook, browser TLS/OIDC/MFA, encrypted backup, separate database restore, rollback, and recovered-worker checks passed | Agreed pilot host/domain/issuer, target security controls, off-host recovery, full target RTO, and deployment acceptance |

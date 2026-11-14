@@ -84,3 +84,31 @@ def test_crash_after_receipt_commit_never_redispatches(tmp_path):
     with pytest.raises(SystemExit):
         receipts.dispatch(operation, operation.digest(), crash)
     assert SimulatorReceipts(path).dispatch(operation, operation.digest(), crash) == Outcome.UNKNOWN
+
+
+def test_late_duplicate_escalates_previously_verified_operation(tmp_path):
+    marker = uuid4()
+    payload = issue_payload(MAPPING, marker, summary="Example", description="x")
+    operation = SimulatedOperation(uuid4(), marker, MAPPING, payload)
+    path = tmp_path / "receipts.db"
+    receipts = SimulatorReceipts(path)
+    receipts.dispatch(operation, operation.digest(), lambda: None)
+    observation = Observation(
+        MAPPING.site, "1", "45", {"id": "45", "fields": json.loads(payload)["fields"]}, str(marker)
+    )
+    assert receipts.reconcile(operation, [observation], complete=True) == Outcome.VERIFIED
+    assert receipts.reconcile(operation, [], complete=False) == Outcome.VERIFIED
+    restarted = SimulatorReceipts(path)
+    assert (
+        restarted.reconcile(operation, [observation, observation], complete=True)
+        == Outcome.NEEDS_ATTENTION
+    )
+
+    def unexpected_write():
+        pytest.fail("A late duplicate must never authorize another dispatch")
+
+    assert (
+        restarted.dispatch(operation, operation.digest(), unexpected_write)
+        == Outcome.NEEDS_ATTENTION
+    )
+    assert restarted.reconcile(operation, [observation], complete=True) == Outcome.NEEDS_ATTENTION

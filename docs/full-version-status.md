@@ -1184,3 +1184,11 @@ F23 r8 backup/restore57 tables и worker replay/resume passed,22.86s в
 документированном локальном scope. F20 real/scope и production integration,
 F21 boundary regressions, F22 owner/remote CI, live F23 остаются открыты.
 Security finding устранён для нового образа; исторический f17 image сохранён.
+
+### F20 — локальные process/HTTP проверки, 14 ноября 2026
+
+Выполнены33 проверки payload/preflight/reconciliation/simulator, включая
+реальный localhost HTTP и три отдельных клиентских процесса. Поздний дубль
+после verified переводит simulator receipt в needs_attention без новой
+отправки. [Evidence](full/evidence/f20/local-process/README.md).
+F20 остаётся blocked на production runtime integration и live Jira acceptance.
