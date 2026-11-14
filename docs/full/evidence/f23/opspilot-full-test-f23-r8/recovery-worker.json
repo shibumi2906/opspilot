@@ -1,0 +1,8 @@
+{
+  "private_network": "opspilot-full-test-f23-r8_smoke",
+  "local_restore_to_worker_smoke_seconds": 22.86,
+  "committed_extra_tickets": 0,
+  "pending_new_tickets": 1,
+  "project": "opspilot-full-test-f23-r8",
+  "passed": true
+}

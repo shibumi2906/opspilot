@@ -45,3 +45,36 @@
   [воркер](opspilot-full-test-f23-r7/recovery-worker.json).
 - Изоляция MVP прошла до и после обоих принятых запусков. Целевые
   live TLS/OIDC/MFA и полный RTO остаются открыты.
+- После перезапуска третья сборка manager снова остановилась на DNS
+  внутри Docker при загрузке Go-модулей с proxy.golang.org. DNS хоста
+  разрешает этот адрес. Скан исправленного образа не состоялся.
+  Повторная итоговая проверка MVP прошла, запущенных контейнеров F23 нет.
+### 14 ноября — продолжение со старым токеном
+
+[Повторный preflight](../f20/jira-preflight-2026-11-14.json) подтвердил старый
+токен и права KAN, но project/metadata/search/userinfo вернули scope mismatch.
+[Read probes](../f20/jira-read-probes-2026-11-14.json). Jira write requests 0.
+Повторные 27 локальных проверок Jira passed.
+
+Исправленный manager собран из pinned OpenBao2.7.2. Binary version
+opspilot-f17.2, build modules x/net0.62.0. Образ
+sha256:2e8154d114ef69a86c2d39c2813e4725c96cabbddd2be7faf791a0aa87f55d76.
+Сборка использовала --add-host для Go proxy, адрес разрешён локально, TLS
+и модульные checksums оставались включены. В build helper добавлена опция
+ResolveGoProxyOnHost для повторения.
+
+Стэнд r8 использовал новый manager. Backup/restore57 tables, pending interrupt
+и receipt прошли. Worker smoke дал committed extra tickets0, pending new tickets1.
+Measured22.86 seconds охватывает подготовку внутренней сети, restore и worker
+smoke с заранее готовыми PostgreSQL и manager. [Evidence](opspilot-full-test-f23-r8/recovery-worker.json).
+RTO целевого пилота, remote CI и owner item review остаются открыты.
+
+### Исправленный manager — 14 ноября
+
+Свежий Trivy scan образа manager:f23 дал HIGH/CRITICAL0.
+[Скан и идентичность](manager-nov14/checks.json),
+[raw scan](manager-nov14/manager-image.json).
+Known CVE-2026-78661 исправлена в новом образе с x/net0.62.0.
+Новый manager функционально проверен в r8. Исторический f17 image и прежние
+F21 evidence сохранены. Перевод прежних окружений на этот образ выполняется
+как отдельный rollout с их собственными проверками.

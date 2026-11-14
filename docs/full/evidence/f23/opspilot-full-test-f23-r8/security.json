@@ -1,0 +1,11 @@
+{
+  "project": "opspilot-full-test-f23-r8",
+  "protected_asvs_records_unchanged": 253,
+  "candidate_files_checked": 46,
+  "log_streams_checked": 7,
+  "artifact_secret_matches": 0,
+  "log_secret_matches": 0,
+  "log_jwt_shapes": 0,
+  "fresh_target_image_os_scan": "NOT_RUN",
+  "full_asvs_l2": "NOT_MET"
+}

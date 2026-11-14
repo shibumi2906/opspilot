@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-11-14T12:12:36.399937+00:00",
+  "write_requests": 0,
+  "results": [
+    {
+      "endpoint": "/issue/createmeta/KAN/issuetypes",
+      "status": 401,
+      "scope_mismatch": true
+    },
+    {
+      "endpoint": "/project/search?keys=KAN",
+      "status": 401,
+      "scope_mismatch": true
+    },
+    {
+      "endpoint": "/myself",
+      "status": 401,
+      "scope_mismatch": true
+    },
+    {
+      "endpoint": "/search/jql?jql=project%3DKAN&maxResults=1&fields=id,key",
+      "status": 401,
+      "scope_mismatch": true
+    }
+  ]
+}

@@ -1175,3 +1175,12 @@ Evidence commit subject: `feat(full-f23): rehearse isolated backup restore and r
 симулятор сверки проверен, рецепт manager обновлён, отсутствие удалённого
 запуска F22 проверено через GitHub API. Runtime-проверки продолжения
 прерваны недоступностью Docker Engine. Статусы F20–F23 остаются blocked.
+
+### F21/F23 — исправленный manager, 14 ноября 2026
+
+Новый отдельный manager:f23 собран и проверен в F23 r8. x/net0.62.0,
+свежий скан HIGH/CRITICAL0. [Evidence](full/evidence/f23/manager-nov14/checks.json).
+F23 r8 backup/restore57 tables и worker replay/resume passed,22.86s в
+документированном локальном scope. F20 real/scope и production integration,
+F21 boundary regressions, F22 owner/remote CI, live F23 остаются открыты.
+Security finding устранён для нового образа; исторический f17 image сохранён.

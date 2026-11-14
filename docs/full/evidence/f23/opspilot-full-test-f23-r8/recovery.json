@@ -1,0 +1,20 @@
+{
+  "project": "opspilot-full-test-f23-r8",
+  "baseline_schema": "0020_prometheus",
+  "candidate_schema": "0021_worker_admission",
+  "recovered_schema": "0020_prometheus",
+  "backup_encrypted": true,
+  "wrong_key_rejected": true,
+  "backup_bytes": 624012,
+  "restore_database": "opspilot_full_recovered",
+  "restore_network": "none",
+  "restore_default_read_only": true,
+  "workers_on_restore": 0,
+  "matching_table_counts_and_hashes": 57,
+  "pending_interrupts_preserved": 1,
+  "committed_ticket_and_receipt_preserved": 1,
+  "synthetic_fixture_duplicate_decision_effects": 0,
+  "restore_worker_replay_tested": false,
+  "candidate_reverted_by_restore_to_fresh_database": true,
+  "database_restore_and_verification_seconds": 14.84
+}
