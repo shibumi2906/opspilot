@@ -1,6 +1,11 @@
 name: Full F22 scripted evals
 on:
   workflow_dispatch:
+  push:
+    branches: [codex/opspilot-full]
+    paths:
+      - '.github/workflows/f22.yml'
+      - 'scripts/test-full-f22-ci.sh'
 permissions:
   contents: read
 jobs:
