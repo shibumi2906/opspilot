@@ -1,7 +1,6 @@
-name: Full F09 checks
+name: Historical Full F09 checks
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
