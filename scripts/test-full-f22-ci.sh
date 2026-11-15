@@ -49,7 +49,7 @@ chmod a+rwx docs/full/evidence/f22 "$report"
   tests python -m tests.f22_lab
 "${c[@]}" run --rm --no-deps tests python -m opspilot.evals.runner --mode scripted \
   --commit "$GITHUB_SHA" --dirty --output /reports/ci/mvp-regression
-"$python" scripts/scan-full-f22-secrets.py
+sudo --preserve-env=F22_PROJECT "$python" scripts/scan-full-f22-secrets.py
 cp docs/full/evidence/f22/secret-scan.json "$report/secret-scan.json"
 # Fresh scans use exported images; no Docker socket enters the scanner container.
 mkdir -p .tools/f22-ci-images "$report/security"
@@ -79,4 +79,4 @@ for path in root.glob('*.json'):
 (root / 'gate.json').write_text(json.dumps(dict(passed=not blocking, blocking=blocking), indent=2))
 raise SystemExit(bool(blocking))
 PY
-# Real/human/live gates remain separate. Known manager HIGH must fail this job.
+# Real/human/live gates remain separate. Applicable HIGH/CRITICAL findings fail this job.
