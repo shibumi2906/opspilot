@@ -5,10 +5,18 @@ action plans for human review. Authorized changes require explicit approval of t
 proposed action. Durable workers preserve progress through restarts and record
 execution results for verification and audit.
 
-**Status as of 14 November 2026 — working Full Core with locally verified pilot
-recovery. Pilot release acceptance is still open.** Remaining work includes the
-production Jira connector and reconciliation path, external integration checks,
-human evaluation review, remote CI, and deployment acceptance on an agreed target.
+**Status as of 16 November 2026 — Full release acceptance is still open.** Jira
+runtime writes and independent reconciliation are implemented with sandbox receipts;
+final backend regression and release checks remain in progress. The owner accepted
+the F22 human review package and selected this host for the local TLS pilot. Final
+source CI, deployment/restore acceptance and requirement-specific ASVS review remain.
+See [current handoff](CURRENT-HANDOFF.md). Unknown Jira writes are never redispatched.
+
+The 16 November continuation passed603 backend tests (71 dedicated-profile skips),
+native TLS/OIDC/MFA checks and an encrypted whole-pilot restore in63.88 seconds with
+preloaded images. Six exact runtime images have zero raw HIGH/CRITICAL findings.
+[Measured scope and remaining release gates](docs/full/evidence/f23/local-pilot-20261116/README.md).
+Full ASVS L2 acceptance remains open.
 
 ## Available functionality
 

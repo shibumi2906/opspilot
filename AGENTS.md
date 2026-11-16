@@ -1,5 +1,18 @@
 # OpsPilot Full continuation
 
+- Current owner direction 2026-11-16: read CURRENT-HANDOFF.md first. Complete Full,
+  authorized KAN sandbox checks and local TLS pilot; commit/push and remote CI authorized.
+  This supersedes historical stage authorization prohibitions below. Scripted only; no paid calls.
+  Preserve all dirty changes, MVP and main Full schema0019. Never redispatch unknown Jira POSTs.
+  Do not spawn agents. Labs run serially. F20 r1 preserves live receipts and must not be reset;
+  fresh backend regression uses r2/subnet65 without Jira enrollment. No Full/L2 acceptance yet.
+- Latest local evidence: F20 fresh r3/subnet66 backend603/71, actual Jira8/F21 process4 passed.
+  Final F23 recovery4/subnets85–87 uses patched exact images with raw H/C0 for all6;
+  whole-pilot cold restore63.88s,59 table hashes, pending approval/MFA, manager8 and
+  controlled deployment rollback passed. Read docs/full/evidence/f23/local-pilot-20261116.
+  r1 with live Jira receipts and all failed instances remain preserved; no unknown POST retry.
+  F23/L2 still open for host storage/OS, operational backup/retention and253 requirement reviews.
+
 - Work in this checkout: C:/Users/user/Desktop/code/Ops, branch codex/opspilot-full.
 - Read START-HERE.md, OpsPilot_Full_Project_Specification.md and docs/full-version-status.md first.
   The tracker is authoritative; F01–F19 are done. F20 is blocked, real Jira checks deferred

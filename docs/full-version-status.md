@@ -1,6 +1,13 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 13 ноября 2026 года. **F01–F19 завершены; F20 blocked, реальные Jira проверки отложены владельцем; F21 local resilience измерен, overall blocked на F20 и manager security finding; F22 local scripted и real evidence записаны, overall blocked; F23 локальная подготовка, live gate blocked; F24 не начат.**
+Дата создания: 26 октября 2026 года. Обновлено: 16 ноября 2026 года. **Full ещё не завершён. F01–F19 завершены; runtime F20 и его регрессия в работе; F21/F22/F23/F24 требуют окончательной проверки. Full Pilot и ASVS L2 NOT_MET.**
+
+Текущее разрешение владельца: закончить Full, включая тестовую Jira KAN, локальный TLS-пилот,
+commit/push и remote CI. F22 human package принят владельцем; это не приёмка Full или ASVS.
+Платные LLM-вызовы запрещены, использовать scripted. Старые ограничения авторизации ниже —
+история. [Текущий handoff](../CURRENT-HANDOFF.md) имеет приоритет для продолжения.
+Нельзя повторять unknown Jira POST или удалять failed attempt reports.
+Main Full остаётся schema0019, MVP сохраняется отдельно.
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -25,7 +32,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**F19 завершён. F20 остаётся blocked; владелец отложил реальные Jira checks. По отдельному явному запросу проведены F21 local fault/concurrency/load/soak; общий статус blocked, см. evidence и security finding. F22 отдельно разрешён владельцем; local scripted принят, общий статус blocked. Владелец отдельно разрешил локальный F23. Live F23 и F24 остаются за пределами текущего запроса. Full Pilot/ASVS L2 NOT_MET.**
+**Продолжить backend regression F20 в свежей lab без Jira enrollment, затем окончательные F21/F22 gates, локальный TLS-пилот F23 и requirement-specific release review F24. Известные live Jira receipts уже сохранены; unknown операции не переотправлять. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение
@@ -77,11 +84,11 @@ F09 включает предварительные security contracts; F17/F23 
 | F17 | done | Retention/tombstones, scoped export, real manager rotation/recovery и локальный Full Core acceptance | [evidence](full/evidence/f17/README.md); commit subject: `feat(full): complete F17 lifecycle and Core security acceptance` | [SEC-04/05/06/10](security/asvs-l2-implementation-plan.md) |
 | F18 | done | Manager-backed adapters, bounded HTTPS/circuit breaker, signed durable observation ingress и recovery | [evidence](full/evidence/f18/README.md); commit subject: `feat(full): complete F18 adapter platform and signed ingress` | [SEC-04/09](security/asvs-l2-implementation-plan.md) |
 | F19 | done | Scoped Prometheus reads: local contracts plus actual owned AWS staging health, MCP/OIDC UI; temporary resources removed | [local evidence](full/evidence/f19/README.md); [AWS evidence](full/evidence/f19-aws/README.md); local base `c984d6a`; stage commit subject below | [SEC-09](security/asvs-l2-implementation-plan.md) |
-| F20 | blocked | Authorized Jira sandbox writes/reconciliation | — | [SEC-03/09](security/asvs-l2-implementation-plan.md) |
-| F21 | blocked | Local load/soak/recovery measured; F20 boundaries and manager HIGH remain | [evidence](full/evidence/f21/README.md); commit subject below | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
-| F22 | blocked | 50/50 local scripted + 12/12 MVP; real/human/CI/security/dependencies NOT_MET | [evidence](full/evidence/f22/README.md) | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
-| F23 | blocked | Local Compose/runbook and database recovery rehearsal; live deployment gated | [runbook](full/f23-pilot-runbook.md), [evidence](full/evidence/f23/README.md) | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
-| F24 | not_started | Full Pilot release и traceability | — | [SEC-01/10/11/12](security/asvs-l2-implementation-plan.md) |
+| F20 | in_progress | Jira runtime and sandbox receipts; final regression/release review pending | [evidence](full/evidence/f20/README.md), [runtime](full/f20-jira-runtime.md) | [SEC-03/09 review](full/f20-security-contracts.md) |
+| F21 | in_progress | Historical load/soak retained; patched manager and new Jira boundaries need final acceptance | [evidence](full/evidence/f21/README.md); F20 continuation above | [SEC-02/03/05/07/09/11](security/asvs-l2-implementation-plan.md) |
+| F22 | in_progress | Human package accepted; historical CI50/50 + MVP12/12; final source CI pending | [evidence](full/evidence/f22/README.md), [owner review](full/evidence/f22/continuation/review-final/owner-review.md) | [SEC-10/11](security/asvs-l2-implementation-plan.md) |
+| F23 | in_progress | Local TLS/MFA, encrypted whole restore63.88s, rollback and6 exact-image scans passed; host/operational gates open | [current evidence](full/evidence/f23/local-pilot-20261116/README.md), [runbook](full/f23-pilot-runbook.md) | [SEC-02/04/05/06/09/10/12](security/asvs-l2-implementation-plan.md) |
+| F24 | in_progress | Documentation continuation; release traceability and 253 requirement reviews remain open | Current handoff and tracker | [SEC-01/10/11/12](security/asvs-l2-implementation-plan.md) |
 
 ## Запись результата этапа
 

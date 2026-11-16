@@ -3,14 +3,6 @@ on:
   workflow_dispatch:
   push:
     branches: [codex/opspilot-full]
-    paths:
-      - '.github/workflows/f22.yml'
-      - 'scripts/test-full-f22-ci.sh'
-      - 'src/**'
-      - 'tests/**'
-      - 'migrations/**'
-      - 'pyproject.toml'
-      - 'uv.lock'
 permissions:
   contents: read
 jobs:

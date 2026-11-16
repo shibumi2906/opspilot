@@ -1,8 +1,19 @@
 # Продолжение OpsPilot Full
 
-Обновлено 13 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
+Обновлено 16 ноября 2026 года. Рабочая папка: **C:\Users\user\Desktop\code\Ops**.
 Это самостоятельный Git-репозиторий, не ссылка на скрытый worktree.
 Сначала откройте эту папку как workspace в редакторе/Codex.
+
+Для продолжения сначала читайте [CURRENT-HANDOFF.md](CURRENT-HANDOFF.md).
+Он содержит актуальное разрешение закончить Full, локальный TLS target, commit/push/CI
+и ограничения Jira. Старые запреты этапов ниже исторические. Full ещё не завершён.
+Unknown Jira операции нельзя повторять. r1 сохраняет live receipts; чистая backend regression
+16 ноября использует свежую `opspilot-full-test-f20-r2`, subnet65, без Jira enrollment.
+
+Последний принятый backend — fresh r3/subnet66:603 passed/71 skips. Текущий TLS target —
+`opspilot-full-test-f23-recovery4`, subnets85–87. Все6 pinned runtime images H/C0,
+полный cold restore63.88s с preloaded images,59-table match, MFA/approval и rollback.
+[Измеренные границы и открытые release gates](docs/full/evidence/f23/local-pilot-20261116/README.md).
 
 ## Текущее состояние
 
