@@ -28,7 +28,13 @@ def document(
     plan_binding: dict[str, Any] | None = None,
     freshness: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    if tool not in {"create_ticket", "add_ticket_comment", "notify_manager"}:
+    if tool not in {
+        "create_ticket",
+        "add_ticket_comment",
+        "notify_manager",
+        "create_jira_issue",
+        "create_jira_comment",
+    }:
         raise ValueError("Unsupported local operation")
     target = {"customer": str(arguments["customer_id"])}
     if tool == "add_ticket_comment":
@@ -55,6 +61,15 @@ def document(
         "expires_at": expires.astimezone(UTC).isoformat(),
     }
 
+    if tool.startswith("create_jira_"):
+        result["backend"] = "jira"
+        result["connector"] = str(arguments["connector_id"])
+        result["preconditions"]["jira"] = {
+            key: arguments[key]
+            for key in ("connector_id", "mapping_version", "site", "project_id", "issue_type_id")
+        }
+        if tool == "create_jira_comment":
+            result["preconditions"]["jira"]["issue_id"] = arguments["issue_id"]
     if freshness is not None:
         result["freshness"] = freshness
     if plan_binding is not None:

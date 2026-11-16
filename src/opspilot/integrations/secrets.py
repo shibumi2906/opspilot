@@ -117,3 +117,29 @@ async def prometheus_authorization(
     ):
         raise ConnectorUnavailable()
     return "Basic " + base64.b64encode((username + ":" + password).encode()).decode()
+
+
+async def jira_authorization(
+    settings: Settings, tenant: UUID, connector: UUID, site: str, project: str
+) -> str:
+    record = await read(settings, tenant, connector, "credential")
+    if (
+        record.get("tenant_id") != str(tenant)
+        or record.get("connector_id") != str(connector)
+        or record.get("site") != site
+        or record.get("project_id") != project
+    ):
+        raise ConnectorUnavailable()
+    email, token = record.get("email"), record.get("token")
+    if (
+        not isinstance(email, str)
+        or not 3 <= len(email) <= 254
+        or ":" in email
+        or any(c.isspace() for c in email)
+        or not isinstance(token, str)
+        or not 32 <= len(token) <= 1024
+        or not token.isascii()
+        or any(ord(c) < 33 or ord(c) == 127 for c in token)
+    ):
+        raise ConnectorUnavailable()
+    return "Basic " + base64.b64encode((email + ":" + token).encode()).decode()

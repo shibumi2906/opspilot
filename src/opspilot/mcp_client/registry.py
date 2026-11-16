@@ -5,6 +5,8 @@ from opspilot.contracts.tools import (
     AddTicketCommentArgs,
     CommentData,
     CommentReceipt,
+    CreateJiraCommentArgs,
+    CreateJiraIssueArgs,
     CreateTicketArgs,
     CreateTicketData,
     CredentialData,
@@ -15,11 +17,14 @@ from opspilot.contracts.tools import (
     EventsData,
     FindCustomersArgs,
     GetCustomerArgs,
+    GetJiraOperationArgs,
     GetNotificationArgs,
     GetTicketArgs,
     GetTicketCommentArgs,
     IncidentsData,
     IntegrationArgs,
+    JiraOperationData,
+    JiraReceipt,
     NotificationData,
     NotificationReceipt,
     NotifyManagerArgs,
@@ -36,6 +41,7 @@ class ToolContract(NamedTuple):
 
 
 READ_TOOLS = {
+    "get_jira_operation": ToolContract(GetJiraOperationArgs, JiraOperationData),
     "find_customers": ToolContract(FindCustomersArgs, CustomersData),
     "get_customer": ToolContract(GetCustomerArgs, CustomerData),
     "get_service_status": ToolContract(IntegrationArgs, ServiceData),
@@ -49,6 +55,8 @@ READ_TOOLS = {
 }
 
 WRITE_TOOLS = {
+    "create_jira_issue": ToolContract(CreateJiraIssueArgs, JiraReceipt),
+    "create_jira_comment": ToolContract(CreateJiraCommentArgs, JiraReceipt),
     "create_ticket": ToolContract(CreateTicketArgs, CreateTicketData),
     "add_ticket_comment": ToolContract(AddTicketCommentArgs, CommentReceipt),
     "notify_manager": ToolContract(NotifyManagerArgs, NotificationReceipt),

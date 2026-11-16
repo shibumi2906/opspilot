@@ -3,7 +3,13 @@ from uuid import UUID
 
 from pydantic import Field, StringConstraints
 
-from opspilot.contracts.actions import CommentProposal, NotificationProposal, TicketProposal
+from opspilot.contracts.actions import (
+    CommentProposal,
+    JiraCommentProposal,
+    JiraIssueProposal,
+    NotificationProposal,
+    TicketProposal,
+)
 from opspilot.contracts.common import StrictModel
 
 
@@ -32,7 +38,13 @@ class CancelRun(StrictModel):
 
 class RevisionChange(StrictModel):
     expected_version: Annotated[int, Field(strict=True, ge=1, le=10)]
-    arguments: TicketProposal | CommentProposal | NotificationProposal
+    arguments: (
+        JiraIssueProposal
+        | JiraCommentProposal
+        | TicketProposal
+        | CommentProposal
+        | NotificationProposal
+    )
 
 
 class RevokeApproval(StrictModel):

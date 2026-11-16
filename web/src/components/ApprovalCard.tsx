@@ -48,6 +48,8 @@ export function ApprovalCard({
           <h3>
             {
               {
+                create_jira_issue: "Create a Jira issue",
+                create_jira_comment: "Add a Jira comment",
                 create_ticket: "Create an internal ticket",
                 add_ticket_comment: "Add a ticket comment",
                 notify_manager: "Notify an internal recipient",
@@ -109,6 +111,17 @@ export function ApprovalCard({
           </p>
         </details>
       )}
+      {action.arguments.site && (
+        <dl className="payload" data-testid="jira-destination">
+          <dt>Jira site</dt><dd>{action.arguments.site}</dd>
+          <dt>Project ID</dt><dd>{action.arguments.project_id}</dd>
+          <dt>Issue type ID</dt><dd>{action.arguments.issue_type_id}</dd>
+          <dt>Mapping version</dt><dd>{action.arguments.mapping_version}</dd>
+          {action.arguments.issue_id && (
+            <><dt>Jira issue ID</dt><dd>{action.arguments.issue_id}</dd></>
+          )}
+        </dl>
+      )}
       <dl className="payload">
         <dt>Customer ID</dt>
         <dd className="mono" data-testid="ticket-customer">
@@ -122,20 +135,20 @@ export function ApprovalCard({
             <dd className="description" data-testid="ticket-description">
               {action.arguments.description}
             </dd>
-            <dt>Priority</dt>
+            {action.arguments.priority && <><dt>Priority</dt>
             <dd data-testid="ticket-priority">
               <span className="priority">{action.arguments.priority}</span>
-            </dd>
+            </dd></>}
           </>
         ) : (
           <>
             <dt>
-              {action.tool_name === "add_ticket_comment"
+              {action.tool_name === "create_jira_comment" ? "Jira issue ID" : action.tool_name === "add_ticket_comment"
                 ? "Ticket ID"
                 : "Recipient ID"}
             </dt>
             <dd className="mono">
-              {action.arguments.ticket_id ?? action.arguments.recipient_id}
+              {action.arguments.ticket_id ?? action.arguments.issue_id ?? action.arguments.recipient_id}
             </dd>
             <dt>Body</dt>
             <dd className="description" data-testid="operation-body">
@@ -200,6 +213,8 @@ export function ApprovalCard({
               {busy
                 ? "Checking saved decision…"
                 : {
+                    create_jira_issue: "Approve & create Jira issue",
+                    create_jira_comment: "Approve & add Jira comment",
                     create_ticket: "Approve & create ticket",
                     add_ticket_comment: "Approve & add comment",
                     notify_manager: "Approve & notify recipient",

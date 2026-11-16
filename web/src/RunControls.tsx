@@ -131,6 +131,9 @@ export function RunControls({
           Cancellation requested. Committed or uncertain effects are retained.
         </p>
       )}
+      {owner && (snapshot.actions ?? (snapshot.action ? [snapshot.action] : []))
+        .filter((action) => action.tool_name.startsWith("create_jira_") && action.execution_status !== "not_started")
+        .map((action) => <JiraReconciliation key={action.action_id} action={action} />)}
       <button
         disabled={busy}
         onClick={() =>
@@ -253,7 +256,7 @@ export function RevisionControls({
                   }
                 />
               </label>
-              <label>
+              {"priority" in action.arguments && <label>
                 Revision priority
                 <select
                   value={draft.priority}
@@ -265,7 +268,7 @@ export function RevisionControls({
                     <option key={v}>{v}</option>
                   ))}
                 </select>
-              </label>
+              </label>}
             </>
           ) : (
             <>
@@ -281,17 +284,19 @@ export function RevisionControls({
               <label>
                 {action.tool_name === "add_ticket_comment"
                   ? "Revision ticket ID"
-                  : "Revision recipient ID"}
+                  : action.tool_name === "create_jira_comment"
+                    ? "Revision Jira issue ID"
+                    : "Revision recipient ID"}
                 <input
                   required
-                  pattern="[0-9a-fA-F-]{36}"
-                  value={draft.ticket_id ?? draft.recipient_id ?? ""}
+                  pattern={action.tool_name === "create_jira_comment" ? "[1-9][0-9]{0,19}" : "[0-9a-fA-F-]{36}"}
+                  value={draft.ticket_id ?? draft.issue_id ?? draft.recipient_id ?? ""}
                   onChange={(e) =>
                     setDraft({
                       ...draft,
                       [action.tool_name === "add_ticket_comment"
                         ? "ticket_id"
-                        : "recipient_id"]: e.target.value,
+                        : action.tool_name === "create_jira_comment" ? "issue_id" : "recipient_id"]: e.target.value,
                     })
                   }
                 />
@@ -320,4 +325,27 @@ export function RevisionControls({
         )}
     </section>
   );
+}
+
+function JiraReconciliation({ action }: { action: Action }) {
+  const [busy, setBusy] = useState(false);
+  const [message, setMessage] = useState("");
+  const lock = useRef(false);
+  async function reconcile() {
+    if (lock.current) return;
+    lock.current = true;
+    setBusy(true);
+    setMessage("");
+    try {
+      const result = await privateRequest(`/api/v2/jira/operations/${action.action_id}/reconcile`, { method: "POST" }) as {outcome: string};
+      setMessage(result.outcome === "verified" ? "Jira read-back verified. No new write was sent."
+        : result.outcome === "needs_attention" ? "Jira reconciliation requires attention. Do not repeat this write."
+        : "Jira outcome remains unknown. No new write was sent.");
+    } catch (reason) { setMessage(errorMessage(reason)); }
+    finally { lock.current = false; setBusy(false); }
+  }
+  return <div className="jira-reconciliation">
+    <button disabled={busy} onClick={() => void reconcile()}>Reconcile Jira operation {action.key ?? action.action_id}</button>
+    {message && <p role="status">{message}</p>}
+  </div>;
 }

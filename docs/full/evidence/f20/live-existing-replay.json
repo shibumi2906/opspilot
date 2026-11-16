@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "new_posts": 0,
+  "duplicate_markers": 0,
+  "operations": [
+    {
+      "tool": "create_jira_comment",
+      "independent_readback": "verified",
+      "replay": "saved_receipt",
+      "external_id_sha256": "39e5b4830d4d9c14db7368a95b65d5463ea3d09520373723430c03a5a453b5df"
+    },
+    {
+      "tool": "create_jira_issue",
+      "independent_readback": "verified",
+      "replay": "denied_expired",
+      "external_id_sha256": "21049fe0067fdec00a7d0cad94e696f579867d832045c87410c2c943d1774eb6"
+    }
+  ]
+}

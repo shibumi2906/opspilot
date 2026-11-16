@@ -41,12 +41,18 @@ def test_adf_normalization_is_narrow_and_preserves_marks_and_unknown_attributes(
     outbound = comment_payload(OP, body="exact")
     observed = {"id": "10003", "body": json.loads(outbound)["body"]}
     observed["body"]["content"][0]["attrs"] = {"localId": "vendor-assigned"}
-    assert comment_matches(outbound, observed, property_value=str(OP), operation_id=OP)
+    assert comment_matches(
+        outbound, observed, property_value={"operation_id": str(OP)}, operation_id=OP
+    )
     observed["body"]["content"][0]["attrs"]["other"] = "unexpected"
-    assert not comment_matches(outbound, observed, property_value=str(OP), operation_id=OP)
+    assert not comment_matches(
+        outbound, observed, property_value={"operation_id": str(OP)}, operation_id=OP
+    )
     observed["body"]["content"][0].pop("attrs")
     observed["body"]["content"][0]["content"][0]["marks"] = [{"type": "strong"}]
-    assert not comment_matches(outbound, observed, property_value=str(OP), operation_id=OP)
+    assert not comment_matches(
+        outbound, observed, property_value={"operation_id": str(OP)}, operation_id=OP
+    )
 
 
 def test_text_and_markers_are_literal_and_exact():

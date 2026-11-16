@@ -15,6 +15,8 @@ from opspilot.config import Settings
 from opspilot.contracts.common import Source, ToolError, ToolResult
 from opspilot.contracts.tools import (
     AddTicketCommentArgs,
+    CreateJiraCommentArgs,
+    CreateJiraIssueArgs,
     CreateTicketArgs,
     EventsArgs,
     FindCustomersArgs,
@@ -39,6 +41,7 @@ from opspilot.mcp_server.adapters.platform import configured
 from opspilot.mcp_server.adapters.platform import snapshot as connector_snapshot
 from opspilot.mcp_server.authorization import authorize_tool
 from opspilot.mcp_server.services.customers import get_customer
+from opspilot.mcp_server.services.jira import write as jira_write
 from opspilot.mcp_server.services.retrieval import search
 from opspilot.mcp_server.services.tickets import WriteDenied, local_write
 from opspilot.telemetry import traced
@@ -49,6 +52,11 @@ from opspilot.tenancy.session import TenantSession as AsyncSession
 async def read_tool(
     name: str, args: Any, engine: AsyncEngine, settings: Settings
 ) -> tuple[dict[str, Any], list[Source]] | None:
+    if name == "get_jira_operation":
+        from opspilot.mcp_server.services.jira import read_operation
+
+        value = await read_operation(engine, args.operation_id, settings)
+        return (value, []) if value else None
     if name == "get_customer":
         assert isinstance(args, GetCustomerArgs)
         customer = await get_customer(engine, args.customer_id)
@@ -214,7 +222,7 @@ def register_read_tools(
 
         trace.get_current_span().set_attribute("tool_name", name)
         contract = ALL_TOOLS[name]
-        cacheable = True
+        cacheable = name != "get_jira_operation"
         try:
             args = contract.arguments.model_validate(arguments)
             await authorize_tool(name, args, engine)
@@ -238,9 +246,20 @@ def register_read_tools(
                     isError=False,
                 )
             if name in WRITE_TOOLS:
-                assert isinstance(args, (CreateTicketArgs, AddTicketCommentArgs, NotifyManagerArgs))
+                assert isinstance(
+                    args,
+                    (
+                        CreateTicketArgs,
+                        AddTicketCommentArgs,
+                        NotifyManagerArgs,
+                        CreateJiraIssueArgs,
+                        CreateJiraCommentArgs,
+                    ),
+                )
             response = (
-                (
+                (await jira_write(engine, args, settings, name), [])
+                if name in {"create_jira_issue", "create_jira_comment"}
+                else (
                     await local_write(
                         engine,
                         cast(CreateTicketArgs | AddTicketCommentArgs | NotifyManagerArgs, args),
@@ -265,6 +284,8 @@ def register_read_tools(
                         "create_ticket": ("ticket_id", "ticket"),
                         "add_ticket_comment": ("comment_id", "ticket_comment"),
                         "notify_manager": ("notification_id", "notification"),
+                        "create_jira_issue": ("operation_id", "jira_operation"),
+                        "create_jira_comment": ("operation_id", "jira_operation"),
                     }[name]
                     sources = [Source(source_type=source_type, source_id=str(data[id_field]))]
                 result = ToolResult(

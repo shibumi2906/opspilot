@@ -44,13 +44,16 @@ export interface Action {
   key?: string;
   plan_status?: string;
   action_id: string;
-  tool_name: "create_ticket" | "add_ticket_comment" | "notify_manager";
-  arguments: TicketArguments | {
+  tool_name: "create_ticket" | "add_ticket_comment" | "notify_manager" | "create_jira_issue" | "create_jira_comment";
+  arguments: (TicketArguments | {
     customer_id: string;
     body: string;
     evidence_ids: string[];
     ticket_id?: string;
     recipient_id?: string;
+  }) & {
+    connector_id?: string; mapping_version?: number; site?: string;
+    project_id?: string; issue_type_id?: string; issue_id?: string;
   };
   arguments_hash: string;
   expected_version: number;
@@ -59,7 +62,7 @@ export interface Action {
   expires_at: string;
   approval_status: "pending" | "approved" | "rejected" | "expired" | "revoked" | "superseded";
   execution_status: "not_started" | "succeeded" | "failed" | "unknown" | "skipped_dependency";
-  result: { ticket_id?: string; comment_id?: string; notification_id?: string; created_at: string; replayed: boolean } | null;
+  result: { operation_id?: string; external_id?: string; ticket_id?: string; comment_id?: string; notification_id?: string; created_at: string; replayed: boolean } | null;
   verification: { status: string };
 }
 export interface Report {

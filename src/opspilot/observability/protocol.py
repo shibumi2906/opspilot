@@ -144,6 +144,9 @@ TOOL_NAMES = {
     "create_ticket",
     "add_ticket_comment",
     "notify_manager",
+    "create_jira_issue",
+    "create_jira_comment",
+    "get_jira_operation",
 }
 
 
@@ -217,6 +220,10 @@ def safe_attributes(values: dict[str, Any], *, metric: bool = False) -> dict[str
             "AUDIT_DATABASE_UNAVAILABLE",
             "WORKER_DATABASE_UNAVAILABLE",
             "TOOL_FAILED",
+            "JIRA_VALIDATION",
+            "JIRA_DNS",
+            "JIRA_REQUEST",
+            "JIRA_RESPONSE",
         }:
             result[key] = value
         elif key == "phase" and value in PHASES:

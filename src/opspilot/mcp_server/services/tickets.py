@@ -26,6 +26,74 @@ class WriteDenied(Exception):
         self.code = code
 
 
+async def authorize_write(
+    session: AsyncSession, args: Any, tool: str, settings: Settings
+) -> tuple[Action, Approval, AgentRun]:
+    arguments = args.arguments.model_dump(mode="json")
+    action = await session.scalar(select(Action).where(Action.id == args.action_id))
+    if action is None:
+        raise WriteDenied("APPROVAL_REQUIRED")
+    if action.run_id != args.run_id or action.tool_name != tool:
+        raise WriteDenied("STATE_CONFLICT")
+    if action.arguments != arguments or action.arguments_hash != payload_hash(arguments):
+        raise WriteDenied("PAYLOAD_MISMATCH")
+    await session.execute(text("SELECT workflow.check_fence(:r)"), {"r": args.run_id})
+    action = await session.scalar(
+        select(Action)
+        .where(Action.id == args.action_id)
+        .with_for_update()
+        .execution_options(populate_existing=True)
+    )
+    if (
+        action is None
+        or action.run_id != args.run_id
+        or action.arguments != arguments
+        or action.arguments_hash != payload_hash(arguments)
+    ):
+        raise WriteDenied("PAYLOAD_MISMATCH")
+    await session.execute(text("SELECT workflow.check_plan_action(:a)"), {"a": action.id})
+    logical = await session.get(LogicalAction, action.logical_action_id)
+    if (
+        logical is None
+        or logical.current_revision_id != action.id
+        or action.superseded_at
+        or not valid_revision(action)
+    ):
+        raise WriteDenied("STATE_CONFLICT")
+    if not await session.scalar(text("SELECT workflow.lock_approval(:a)"), {"a": action.id}):
+        raise WriteDenied("APPROVAL_REQUIRED")
+    approval = await session.scalar(select(Approval).where(Approval.action_id == action.id))
+    if approval is None or approval.decision != "approved":
+        raise WriteDenied("APPROVAL_REQUIRED")
+    run = await session.get(AgentRun, action.run_id)
+    if (
+        run is None
+        or run.actor_id != actor_id()
+        or (
+            run.status not in {"running", "waiting_for_approval"}
+            and action.execution_status != "succeeded"
+        )
+        or approval.decided_by is None
+        or approval.decided_at is None
+    ):
+        raise WriteDenied("APPROVAL_REQUIRED")
+    for user, role in [(run.actor_id, "operator"), (approval.decided_by, "approver")]:
+        allowed = await session.scalar(
+            text("SELECT identity.lock_role(:u,:t,:r)"),
+            {"t": run.tenant_id, "u": user, "r": role},
+        )
+        if not allowed:
+            raise WriteDenied("APPROVAL_REQUIRED")
+    same = run.actor_id == approval.decided_by
+    if same and (not settings.allow_demo_self_approval or not approval.self_approval_exception):
+        raise WriteDenied("APPROVAL_REQUIRED")
+    now = await session.scalar(select(func.clock_timestamp()))
+    assert now is not None
+    if now >= approval.expires_at or now >= action.expires_at:
+        raise WriteDenied("APPROVAL_EXPIRED")
+    return action, approval, run
+
+
 @traced("adapter.call")
 async def local_write(
     engine: AsyncEngine,
@@ -38,67 +106,7 @@ async def local_write(
     settings = settings or Settings()
     arguments = args.arguments.model_dump(mode="json")
     async with AsyncSession(engine) as session, session.begin():
-        action = await session.scalar(select(Action).where(Action.id == args.action_id))
-        if action is None:
-            raise WriteDenied("APPROVAL_REQUIRED")
-        if action.run_id != args.run_id or action.tool_name != tool:
-            raise WriteDenied("STATE_CONFLICT")
-        if action.arguments != arguments or action.arguments_hash != payload_hash(arguments):
-            raise WriteDenied("PAYLOAD_MISMATCH")
-        await session.execute(text("SELECT workflow.check_fence(:r)"), {"r": args.run_id})
-        action = await session.scalar(
-            select(Action)
-            .where(Action.id == args.action_id)
-            .with_for_update()
-            .execution_options(populate_existing=True)
-        )
-        if (
-            action is None
-            or action.run_id != args.run_id
-            or action.arguments != arguments
-            or action.arguments_hash != payload_hash(arguments)
-        ):
-            raise WriteDenied("PAYLOAD_MISMATCH")
-        await session.execute(text("SELECT workflow.check_plan_action(:a)"), {"a": action.id})
-        logical = await session.get(LogicalAction, action.logical_action_id)
-        if (
-            logical is None
-            or logical.current_revision_id != action.id
-            or action.superseded_at
-            or not valid_revision(action)
-        ):
-            raise WriteDenied("STATE_CONFLICT")
-        if not await session.scalar(text("SELECT workflow.lock_approval(:a)"), {"a": action.id}):
-            raise WriteDenied("APPROVAL_REQUIRED")
-        approval = await session.scalar(select(Approval).where(Approval.action_id == action.id))
-        if approval is None or approval.decision != "approved":
-            raise WriteDenied("APPROVAL_REQUIRED")
-        run = await session.get(AgentRun, action.run_id)
-        if (
-            run is None
-            or run.actor_id != actor_id()
-            or (
-                run.status not in {"running", "waiting_for_approval"}
-                and action.execution_status != "succeeded"
-            )
-            or approval.decided_by is None
-            or approval.decided_at is None
-        ):
-            raise WriteDenied("APPROVAL_REQUIRED")
-        for user, role in [(run.actor_id, "operator"), (approval.decided_by, "approver")]:
-            allowed = await session.scalar(
-                text("SELECT identity.lock_role(:u,:t,:r)"),
-                {"t": run.tenant_id, "u": user, "r": role},
-            )
-            if not allowed:
-                raise WriteDenied("APPROVAL_REQUIRED")
-        same = run.actor_id == approval.decided_by
-        if same and (not settings.allow_demo_self_approval or not approval.self_approval_exception):
-            raise WriteDenied("APPROVAL_REQUIRED")
-        now = await session.scalar(select(func.clock_timestamp()))
-        assert now is not None
-        if now >= approval.expires_at or now >= action.expires_at:
-            raise WriteDenied("APPROVAL_EXPIRED")
+        action, approval, run = await authorize_write(session, args, tool, settings)
         if action.execution_result is not None:
             try:
                 await consume(session, action, approval, run, settings)

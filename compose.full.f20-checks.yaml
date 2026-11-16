@@ -1,0 +1,24 @@
+services:
+  api:
+    image: opspilot-full/app:f20
+  mcp:
+    image: opspilot-full/app:f20
+    environment:
+      PYTHONPYCACHEPREFIX: /tmp/opspilot-pycache
+      CONNECTOR_MANAGER_URL: https://manager:8200
+      CONNECTOR_MANAGER_CA_FILE: /run/manager-client/ca.crt
+      CONNECTOR_MANAGER_TOKEN_FILE: /run/manager-client/token
+  admin:
+    image: opspilot-full/app:f20
+    environment:
+      PYTHONPYCACHEPREFIX: /tmp/opspilot-pycache
+  tests:
+    image: opspilot-full/tests:f20
+    environment:
+      PYTHONPYCACHEPREFIX: /tmp/opspilot-pycache
+    volumes:
+      - ./docs/full/evidence/f20:/reports
+  collector:
+    image: opspilot-full/app:f20
+  telemetry-init:
+    image: opspilot-full/app:f20

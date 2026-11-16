@@ -73,13 +73,15 @@ def comment_matches(
 ) -> bool:
     """Caller must independently establish exact issue destination before this check."""
     prepared = json.loads(outbound)
+    expected_marker = prepared.get("properties", [{}])[0].get("value")
     return bool(
-        prepared.get("properties") == [{"key": "opspilot.operation", "value": str(operation_id)}]
+        expected_marker in (str(operation_id), {"operation_id": str(operation_id)})
+        and prepared.get("properties") == [{"key": "opspilot.operation", "value": expected_marker}]
         and isinstance(observed.get("id"), str)
         and observed["id"].isascii()
         and observed["id"].isdigit()
         and normalize_adf(observed.get("body")) == normalize_adf(prepared["body"])
-        and property_value == str(operation_id)
+        and property_value == expected_marker
     )
 
 

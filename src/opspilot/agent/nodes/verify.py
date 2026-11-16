@@ -14,6 +14,27 @@ async def verify(state: AgentState, runtime: Runtime) -> None:
         return
     try:
         action = await saved_action(state, runtime)
+        if action["tool"] in {"create_jira_issue", "create_jira_comment"}:
+            result = await runtime.read(
+                "get_jira_operation",
+                {"operation_id": execution["operation_id"]},
+                state,
+                verification=True,
+            )
+            expected = {
+                "outcome": "verified",
+                "operation_id": execution["operation_id"],
+                "external_id": execution["external_id"],
+                "created_at": execution["created_at"],
+                "originating_action_id": state["action_id"],
+                "arguments": action["arguments"],
+            }
+            if result.ok and result.data == expected:
+                state["verification_result"] = {"status": "verified"}
+                state["outcome"] = "actions_verified"
+            else:
+                state["outcome"] = "unknown_outcome"
+            return
         read, id_field = {
             "create_ticket": ("get_ticket", "ticket_id"),
             "add_ticket_comment": ("get_ticket_comment", "comment_id"),

@@ -31,7 +31,13 @@ async def authorize_tool(name: str, args: Any, engine: AsyncEngine) -> None:
             name == "get_notification" and "admin" in roles
         ):
             raise AuthError()
-        if name in {"create_ticket", "add_ticket_comment", "notify_manager"}:
+        if name in {
+            "create_ticket",
+            "add_ticket_comment",
+            "notify_manager",
+            "create_jira_issue",
+            "create_jira_comment",
+        }:
             if (
                 claims["scope"] != "action"
                 or claims.get("tool") != name

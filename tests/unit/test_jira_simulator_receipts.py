@@ -55,7 +55,7 @@ def test_comment_reconciliation_scope(tmp_path, scenario):
         "1",
         "46" if scenario == "wrong_issue" else "45",
         {"id": "3", "body": json.loads(payload)["body"]},
-        str(marker),
+        {"operation_id": str(marker)},
     )
     with pytest.raises(ValueError, match="No matching dispatch receipt"):
         receipts.reconcile(operation, [observed], complete=True)

@@ -110,6 +110,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     app.include_router(adapters_router)
     app.include_router(ingress_router)
+    from opspilot.api.routes_jira import router as jira_router
+
+    app.include_router(jira_router)
     return app
 
 

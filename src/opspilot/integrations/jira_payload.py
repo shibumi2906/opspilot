@@ -78,7 +78,9 @@ def comment_payload(operation_id: UUID, *, body: str) -> bytes:
     return json.dumps(
         {
             "body": adf(body),
-            "properties": [{"key": "opspilot.operation", "value": str(operation_id)}],
+            "properties": [
+                {"key": "opspilot.operation", "value": {"operation_id": str(operation_id)}}
+            ],
         },
         sort_keys=True,
         separators=(",", ":"),

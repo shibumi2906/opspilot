@@ -1,10 +1,16 @@
 from datetime import timedelta
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 from uuid import UUID
 
 from pydantic import AwareDatetime, Field, StringConstraints, model_validator
 
-from opspilot.contracts.actions import CommentProposal, NotificationProposal, TicketProposal
+from opspilot.contracts.actions import (
+    CommentProposal,
+    JiraCommentProposal,
+    JiraIssueProposal,
+    NotificationProposal,
+    TicketProposal,
+)
 from opspilot.contracts.common import StrictModel
 
 
@@ -188,3 +194,35 @@ class NotificationData(NotificationProposal):
     notification_id: UUID
     originating_action_id: UUID
     created_at: AwareDatetime
+
+
+class CreateJiraIssueArgs(StrictModel):
+    run_id: UUID
+    action_id: UUID
+    arguments: "JiraIssueProposal"
+
+
+class CreateJiraCommentArgs(StrictModel):
+    run_id: UUID
+    action_id: UUID
+    arguments: "JiraCommentProposal"
+
+
+class JiraReceipt(StrictModel):
+    operation_id: UUID
+    external_id: str
+    created_at: AwareDatetime
+    replayed: bool
+
+
+class GetJiraOperationArgs(StrictModel):
+    operation_id: UUID
+
+
+class JiraOperationData(StrictModel):
+    operation_id: UUID
+    outcome: Literal["unknown", "verified", "needs_attention"]
+    external_id: str | None
+    created_at: AwareDatetime
+    originating_action_id: UUID
+    arguments: dict[str, Any]

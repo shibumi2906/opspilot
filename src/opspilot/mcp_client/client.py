@@ -8,6 +8,7 @@ from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 from mcp.types import Tool
 from opentelemetry.trace import Status, StatusCode
+from sqlalchemy.exc import SQLAlchemyError
 
 from opspilot.auth.context import AuthError
 from opspilot.auth.service_context import action_context, mint
@@ -33,7 +34,7 @@ class MCPClient:
         if operation:
             try:
                 grant_headers["X-OpsPilot-Grant"] = await issue(self.settings, operation)
-            except AuthError:
+            except (AuthError, SQLAlchemyError):
                 # Missing/stale authorization never grants a write; MCP returns the precise denial.
                 pass
         bearer = (
@@ -49,7 +50,7 @@ class MCPClient:
                 "Authorization": f"Bearer {bearer}",
             },
             verify=client_context(self.settings),
-            timeout=5,
+            timeout=httpx.Timeout(5, read=45),
             trust_env=False,
         ) as http:
             async with streamable_http_client(self.settings.mcp_url, http_client=http) as streams:
@@ -84,7 +85,16 @@ class MCPClient:
             .model_dump(mode="json", by_alias=True)
         )
         with span("mcp.client.tool", tool_name=name) as current:
-            response = await session.call_tool(name, arguments)
+            # Jira effects include independent GET verification after the single POST.
+            # Ordinary tools retain their existing SDK deadline.
+            deadline = (
+                45
+                if name in {"create_jira_issue", "create_jira_comment", "get_jira_operation"}
+                else 5
+            )
+            response = await session.call_tool(
+                name, arguments, read_timeout_seconds=timedelta(seconds=deadline)
+            )
             result = ToolResult.model_validate(response.structuredContent)
             current.set_attribute("status", "ok" if result.ok else "error")
             if not result.ok:

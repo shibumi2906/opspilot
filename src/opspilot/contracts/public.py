@@ -89,7 +89,10 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
                 "verification_status wave dependencies",
             )
             item["result"] = (
-                pick(effect["result"], "ticket_id comment_id notification_id created_at")
+                pick(
+                    effect["result"],
+                    "operation_id external_id ticket_id comment_id notification_id created_at",
+                )
                 if effect.get("result")
                 else None
             )
@@ -112,10 +115,17 @@ def public_snapshot(value: dict[str, Any]) -> dict[str, Any]:
                 "create_ticket": "customer_id title description priority evidence_ids",
                 "add_ticket_comment": "customer_id ticket_id body evidence_ids",
                 "notify_manager": "customer_id recipient_id body evidence_ids",
+                "create_jira_issue": "customer_id title description evidence_ids connector_id "
+                "mapping_version site project_id issue_type_id",
+                "create_jira_comment": "customer_id body evidence_ids connector_id mapping_version "
+                "site project_id issue_type_id issue_id",
             }.get(action.get("tool_name"), ""),
         )
         result["action"]["result"] = (
-            pick(action["result"], "ticket_id comment_id notification_id created_at replayed")
+            pick(
+                action["result"],
+                "operation_id external_id ticket_id comment_id notification_id created_at replayed",
+            )
             if action.get("result")
             else None
         )

@@ -5,7 +5,14 @@ from uuid import UUID
 
 from pydantic import Field, StringConstraints, model_validator
 
-from opspilot.contracts.actions import CommentProposal, NotificationProposal, TicketProposal
+from opspilot.contracts.actions import (
+    CommentProposal,
+    JiraBinding,
+    JiraCommentProposal,
+    JiraIssueProposal,
+    NotificationProposal,
+    TicketProposal,
+)
 from opspilot.contracts.common import StrictModel
 
 Key = Annotated[str, StringConstraints(pattern=r"^[a-z][a-z0-9_]{0,31}$")]
@@ -18,15 +25,37 @@ class DeferredComment(StrictModel):
     customer_id: UUID
 
 
+class DeferredJiraComment(JiraBinding):
+    issue_from: Key
+    body: Annotated[str, StringConstraints(min_length=1, max_length=6000)]
+    evidence_ids: Annotated[list[str], Field(min_length=1, max_length=30)]
+
+
 class PlanItem(StrictModel):
     key: Key
-    tool: Literal["create_ticket", "add_ticket_comment", "notify_manager"]
-    arguments: TicketProposal | CommentProposal | NotificationProposal | DeferredComment
+    tool: Literal[
+        "create_ticket",
+        "add_ticket_comment",
+        "notify_manager",
+        "create_jira_issue",
+        "create_jira_comment",
+    ]
+    arguments: (
+        JiraIssueProposal
+        | JiraCommentProposal
+        | DeferredJiraComment
+        | TicketProposal
+        | CommentProposal
+        | NotificationProposal
+        | DeferredComment
+    )
     depends_on: Annotated[list[Key], Field(max_length=2)] = []
 
     @model_validator(mode="after")
     def exact_type(self) -> "PlanItem":
         expected = {
+            "create_jira_issue": (JiraIssueProposal,),
+            "create_jira_comment": (JiraCommentProposal, DeferredJiraComment),
             "create_ticket": (TicketProposal,),
             "add_ticket_comment": (CommentProposal, DeferredComment),
             "notify_manager": (NotificationProposal,),
@@ -40,6 +69,11 @@ class PlanItem(StrictModel):
             and self.arguments.ticket_from not in self.depends_on
         ):
             raise ValueError("Deferred ticket must be an explicit dependency")
+        if (
+            isinstance(self.arguments, DeferredJiraComment)
+            and self.arguments.issue_from not in self.depends_on
+        ):
+            raise ValueError("Deferred Jira issue must be an explicit dependency")
         return self
 
 
@@ -62,6 +96,10 @@ class MixedPlan(StrictModel):
                 and by_key[a.arguments.ticket_from].tool != "create_ticket"
             ):
                 raise ValueError("Deferred target must be a ticket action")
+            if isinstance(a.arguments, DeferredJiraComment) and (
+                by_key[a.arguments.issue_from].tool != "create_jira_issue"
+            ):
+                raise ValueError("Deferred Jira target must be an issue action")
             doc = a.arguments.model_dump_json()
             intent = (a.tool, doc)
             if intent in intents:
@@ -83,8 +121,13 @@ class MixedPlan(StrictModel):
             if ready is None:
                 raise ValueError("Cyclic plan")
             wave = max([waves[d] for d in ready.depends_on] + [1])
-            if isinstance(ready.arguments, DeferredComment):
-                wave = max(wave, waves[ready.arguments.ticket_from] + 1)
+            if isinstance(ready.arguments, (DeferredComment, DeferredJiraComment)):
+                source = (
+                    ready.arguments.ticket_from
+                    if isinstance(ready.arguments, DeferredComment)
+                    else ready.arguments.issue_from
+                )
+                wave = max(wave, waves[source] + 1)
             if wave > 2:
                 raise ValueError("Approval wave limit")
             result.append((ready, wave))

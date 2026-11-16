@@ -10,8 +10,13 @@ from sqlalchemy.ext.asyncio import AsyncEngine
 
 from opspilot.agent.evidence import canonical_proposal
 from opspilot.config import Settings
-from opspilot.contracts.actions import CommentProposal
-from opspilot.contracts.plans import DeferredComment, MixedPlan, PlanItem
+from opspilot.contracts.actions import (
+    CommentProposal,
+    JiraCommentProposal,
+    JiraIssueProposal,
+    TicketProposal,
+)
+from opspilot.contracts.plans import DeferredComment, DeferredJiraComment, MixedPlan, PlanItem
 from opspilot.db.models_plans import PlanSlot, RunPlan
 from opspilot.db.models_workflow import Action, Approval
 from opspilot.runtime.actions import Conflict, prepare
@@ -33,7 +38,9 @@ TERMINAL = {
 
 
 def wants_mixed(request: str) -> bool:
-    return bool(re.search(r"\bnotify\b|\binbox\b|\bcomment\b|уведом|комментар", request, re.I))
+    return bool(
+        re.search(r"\bjira\b|\bnotify\b|\binbox\b|\bcomment\b|уведом|комментар", request, re.I)
+    )
 
 
 def engine() -> AsyncEngine:
@@ -46,8 +53,40 @@ def engine() -> AsyncEngine:
 async def canonical_plan(state: Any) -> MixedPlan | None:
     if not wants_mixed(state["request"]):
         return None
-    ticket = canonical_proposal(state)
-    actions = [PlanItem(key="ticket", tool="create_ticket", arguments=ticket)]
+    ticket: TicketProposal | JiraIssueProposal = canonical_proposal(state)
+    jira = bool(re.search(r"\bjira\b", state["request"], re.I))
+    if jira:
+        from opspilot.integrations.jira_registry import for_customer
+
+        async with TenantSession(engine()) as session:
+            target = await for_customer(session, ticket.customer_id)
+        ticket = JiraIssueProposal(**ticket.model_dump(exclude={"priority"}), **target)
+        # Only an explicit user destination can select an existing issue. The
+        # exact numeric ID is shown for approval and project-checked by MCP.
+        existing = re.search(
+            r"\bjira\s+comment\s+issue\s+([1-9][0-9]{0,19})\b", state["request"], re.I
+        )
+        if existing:
+            return MixedPlan(
+                actions=[
+                    PlanItem(
+                        key="comment",
+                        tool="create_jira_comment",
+                        arguments=JiraCommentProposal(
+                            **target,
+                            issue_id=existing.group(1),
+                            customer_id=ticket.customer_id,
+                            body=ticket.description,
+                            evidence_ids=ticket.evidence_ids,
+                        ),
+                    )
+                ]
+            )
+    actions = [
+        PlanItem(
+            key="ticket", tool="create_jira_issue" if jira else "create_ticket", arguments=ticket
+        )
+    ]
     if re.search(r"\bnotify\b|\binbox\b|уведом", state["request"], re.I):
         async with TenantSession(engine()) as session, session.begin():
             candidates = await session.scalars(
@@ -85,13 +124,23 @@ async def canonical_plan(state: Any) -> MixedPlan | None:
         actions.append(
             PlanItem(
                 key="comment",
-                tool="add_ticket_comment",
+                tool="create_jira_comment" if jira else "add_ticket_comment",
                 depends_on=["ticket"],
-                arguments=DeferredComment(
-                    ticket_from="ticket",
-                    customer_id=ticket.customer_id,
-                    body=ticket.description,
-                    evidence_ids=ticket.evidence_ids,
+                arguments=(
+                    DeferredJiraComment(
+                        **target,
+                        issue_from="ticket",
+                        customer_id=ticket.customer_id,
+                        body=ticket.description,
+                        evidence_ids=ticket.evidence_ids,
+                    )
+                    if jira
+                    else DeferredComment(
+                        ticket_from="ticket",
+                        customer_id=ticket.customer_id,
+                        body=ticket.description,
+                        evidence_ids=ticket.evidence_ids,
+                    )
                 ),
             )
         )
@@ -132,6 +181,13 @@ async def materialize(
     if slot.action_id is not None:
         return
     args = dict(slot.template)
+    if "issue_from" in args:
+        source = next(s for s in slots if s.key == args.pop("issue_from"))
+        action = await session.get(Action, source.action_id)
+        if source.status != "verified" or action is None or not action.execution_result:
+            return
+        args["issue_id"] = action.execution_result["external_id"]
+        args = JiraCommentProposal.model_validate(args).model_dump(mode="json")
     if "ticket_from" in args:
         source = next(s for s in slots if s.key == args.pop("ticket_from"))
         action = await session.get(Action, source.action_id)

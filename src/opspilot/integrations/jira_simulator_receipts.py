@@ -4,12 +4,14 @@ The caller supplies an approved digest and synthetic transport. This module is
 not registered with MCP and does not provide production grant authorization.
 """
 
+import json
 import sqlite3
 from collections.abc import Callable
 from contextlib import closing
 from dataclasses import dataclass
 from hashlib import sha256
 from pathlib import Path
+from typing import Any
 from uuid import UUID
 
 from opspilot.integrations.jira_payload import SandboxMapping, approval_digest
@@ -43,7 +45,7 @@ class Observation:
     site: str
     project_id: str
     issue_id: str
-    record: dict
+    record: dict[str, Any]
     marker: object
 
 
@@ -87,8 +89,9 @@ class SimulatorReceipts:
         self, operation: SimulatedOperation, observations: list[Observation], *, complete: bool
     ) -> Outcome:
         matches = []
+        expected_marker = json.loads(operation.payload)["properties"][0]["value"]
         for observed in observations:
-            if observed.marker != str(operation.operation):
+            if observed.marker != expected_marker:
                 continue
             mapping = operation.mapping
             scope = observed.site == mapping.site and observed.project_id == mapping.project_id

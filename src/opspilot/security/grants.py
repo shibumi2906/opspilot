@@ -82,7 +82,14 @@ def verify(token: str, settings: Settings, *, now: datetime) -> dict[str, Any]:
         if (
             type(value["ver"]) is not int
             or value["ver"] != 1
-            or value["tool"] not in {"create_ticket", "add_ticket_comment", "notify_manager"}
+            or value["tool"]
+            not in {
+                "create_ticket",
+                "add_ticket_comment",
+                "notify_manager",
+                "create_jira_issue",
+                "create_jira_comment",
+            }
             or type(value["epoch"]) is not int
             or value["epoch"] < 1
         ):

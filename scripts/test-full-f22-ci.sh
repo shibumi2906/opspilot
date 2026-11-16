@@ -45,6 +45,11 @@ chmod a+rwx docs/full/evidence/f22 "$report"
 "${c[@]}" run --rm --no-deps tests python -m pytest -p no:cacheprovider -q \
   tests/unit/test_full_eval.py tests/unit/test_eval_safety.py tests/unit/test_eval_token_guard.py \
   --junitxml=/reports/ci/unit.xml
+"${c[@]}" run --rm --no-deps tests python -m pytest -p no:cacheprovider -q \
+  tests/unit/test_readiness.py tests/unit/test_jira_transport.py \
+  tests/unit/test_jira_verification.py tests/test_f20_jira_payload.py \
+  tests/integration/test_f20_jira_runtime.py \
+  --junitxml=/reports/ci/jira-runtime.xml
 "${c[@]}" run --rm --no-deps -e F22_COMMIT="$GITHUB_SHA" -e F22_REPORT_DIR=/reports/ci \
   tests python -m tests.f22_lab
 "${c[@]}" run --rm --no-deps tests python -m opspilot.evals.runner --mode scripted \

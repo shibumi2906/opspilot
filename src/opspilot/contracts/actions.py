@@ -41,3 +41,25 @@ class NotificationProposal(StrictModel):
     @classmethod
     def normalize_ids(cls, value: list[str]) -> list[str]:
         return sorted(set(value))
+
+
+class JiraBinding(StrictModel):
+    customer_id: UUID
+    connector_id: UUID
+    mapping_version: Annotated[int, Field(strict=True, ge=1)]
+    site: Annotated[str, StringConstraints(pattern=r"^https://[a-z0-9][a-z0-9-]*\.atlassian\.net$")]
+    project_id: Annotated[str, StringConstraints(pattern=r"^[1-9][0-9]{0,19}$")]
+    issue_type_id: Annotated[str, StringConstraints(pattern=r"^[1-9][0-9]{0,19}$")]
+
+
+class JiraIssueProposal(JiraBinding):
+    title: Annotated[str, StringConstraints(min_length=1, max_length=200)]
+    description: Annotated[str, StringConstraints(min_length=1, max_length=6000)]
+    evidence_ids: Annotated[list[str], Field(min_length=1, max_length=30)]
+
+
+class JiraCommentProposal(JiraBinding):
+    issue_id: Annotated[str, StringConstraints(pattern=r"^[1-9][0-9]{0,19}$")]
+    body: Annotated[str, StringConstraints(min_length=1, max_length=6000)]
+
+    evidence_ids: Annotated[list[str], Field(min_length=1, max_length=30)]

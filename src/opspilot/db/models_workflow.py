@@ -63,7 +63,8 @@ class Action(TenantOwned, Base):
             ["tenant_id", "run_id"], ["workflow.agent_runs.tenant_id", "workflow.agent_runs.id"]
         ),
         CheckConstraint(
-            "tool_name IN ('create_ticket','add_ticket_comment','notify_manager')",
+            "tool_name IN ('create_ticket','add_ticket_comment','notify_manager',"
+            "'create_jira_issue','create_jira_comment')",
             name="ck_actions_tool",
         ),
         CheckConstraint(

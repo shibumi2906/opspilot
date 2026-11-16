@@ -74,6 +74,11 @@ def mint(settings: Settings) -> str:
         "scope": "read",
         "run": _run.get(),
     }
+    from opspilot.runtime.fencing import current_fence
+
+    read_fence = current_fence()
+    if _run.get() and read_fence is not None and str(read_fence.run) == _run.get():
+        claims.update(execution_owner=str(read_fence.owner), execution_epoch=read_fence.epoch)
     if operation:
         from opspilot.runtime.fencing import current_fence
 
@@ -137,7 +142,14 @@ def verify(token: str, settings: Settings) -> dict[str, Any]:
         if claims["scope"] == "action":
             UUID(claims["action"])
             if (
-                claims.get("tool") not in {"create_ticket", "add_ticket_comment", "notify_manager"}
+                claims.get("tool")
+                not in {
+                    "create_ticket",
+                    "add_ticket_comment",
+                    "notify_manager",
+                    "create_jira_issue",
+                    "create_jira_comment",
+                }
                 or len(claims.get("hash", "")) != 64
             ):
                 raise ValueError("invalid action binding")
