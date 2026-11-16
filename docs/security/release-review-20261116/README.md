@@ -10,11 +10,13 @@ preserve the existing backlog and its identities, owners, baseline and N/A field
 Each row has its own assessment; existing primary stage contributions remain
 traceable in the structured file. Chapter source references identify the reviewed
 implementation, not a claim that every line was independently penetration-tested.
+[The43 N/A decisions](not-applicable-proposals.md) were explicitly accepted by the owner
+for this local profile; the [scoped approval record](owner-na-review.json) binds their exact IDs/rationales.
 
 | Disposition | Rows | Meaning |
 |---|---:|---|
 | supported_in_local_scope | 157 | Source and existing scoped evidence support the control; full normative closure remains open |
-| not_applicable_proposed | 43 | Mechanism absent from this profile; owner applicability approval is still required |
+| not_applicable_owner_reviewed | 43 | Owner explicitly accepted applicability for this local profile; re-review on feature/deployment change |
 | verification_needed | 41 | A target/configuration/negative test or operational acceptance is missing |
 | gap | 12 | A concrete unresolved implementation or deployment difference |
 
@@ -50,7 +52,9 @@ inventory, patch deadlines and independent alert/escalation acceptance.
 
 The previously successful backend603, browser/MFA, image scans and remote CI are
 valuable evidence with narrower scope. They do not waive these gaps. F22 owner
-review also does not constitute owner approval of these 43 N/A proposals.
+review was not the basis for the43 N/A decisions; they received a separate explicit
+owner response on16 November2026. The other210 applicable requirements remain open
+for full normative closure, including the12 gaps and41 missing verifications.
 
 Reproduce the completeness/protection check from the repository root:
 

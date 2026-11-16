@@ -10,7 +10,8 @@
 Пять согласованных commits до688c5cc опубликованы, remote CI SUCCESS.
 Новые [operational backups](docs/full/f23-operational-backups.md) установлены/проверены;
 [253-row release assessment](docs/security/release-review-20261116/README.md) выявил12 gaps,
-41 missing verification и43 proposed N/A. Это не полная L2 приёмка.
+41 missing verification;43 N/A отдельно подтверждены владельцем для local profile.
+Это не полная L2 приёмка.
 Host C: не зашифрован; owner пока запретил включение до сохранения recovery key вне ПК.
 Unknown Jira операции нельзя повторять. r1 сохраняет live receipts; чистая backend regression
 16 ноября использует свежую `opspilot-full-test-f20-r2`, subnet65, без Jira enrollment.

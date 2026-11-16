@@ -1,0 +1,26 @@
+{
+  "checks": [
+    {
+      "directory": ".tools/full-backups/opspilot-full-test-f23-recovery4",
+      "inheritance_protected": true,
+      "unexpected_allow_rules": 0
+    },
+    {
+      "directory": ".tools/full-backup-keys/opspilot-full-test-f23-recovery4",
+      "inheritance_protected": true,
+      "unexpected_allow_rules": 0
+    },
+    {
+      "directory": ".tools/full-backup-verification/opspilot-full-test-f23-scheduledrestore3",
+      "inheritance_protected": true,
+      "unexpected_allow_rules": 0
+    },
+    {
+      "directory": ".tools/host-recovery",
+      "inheritance_protected": true,
+      "unexpected_allow_rules": 0
+    }
+  ],
+  "passed": true,
+  "allowed_principals": "owner,SYSTEM,Administrators"
+}

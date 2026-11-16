@@ -57,6 +57,23 @@ def main():
             if row["L"] in {"1", "2"}
         }
         assert ids == set(expected)
+    proposals = [row for row in assessments if row["disposition"] == "not_applicable_proposed"]
+    reviewed = set()
+    owner_path = REVIEW / "owner-na-review.json"
+    if owner_path.exists():
+        owner = json.loads(owner_path.read_bytes())
+        canonical = [{"id": row["id"], "assessment": row["assessment"]} for row in proposals]
+        assert (
+            owner["proposal_canonical_sha256"]
+            == hashlib.sha256(
+                json.dumps(canonical, sort_keys=True, separators=(",", ":")).encode()
+            ).hexdigest()
+        ), "Owner applicability decision does not cover changed proposals"
+        assert owner["decision"] == "accepted_applicability_only"
+        assert owner["profile"] == "opspilot-full-test-f23-recovery4; scripted local pilot only"
+        reviewed = set(owner["accepted_ids"])
+        assert reviewed == {row["id"] for row in proposals}
+        assert not owner["accepts_other_requirements"] and not owner["accepts_full_release_or_l2"]
     rows = []
     for assessment in assessments:
         assert assessment["disposition"] in DISPOSITIONS
@@ -81,6 +98,13 @@ def main():
                 "N/A requires owner review",
             }
         )
+        if assessment["id"] in reviewed:
+            rows[-1].update(
+                disposition="not_applicable_owner_reviewed",
+                owner_review_ref="docs/security/release-review-20261116/owner-na-review.json",
+                closure="N/A owner-reviewed only for the exact scripted local pilot scope; "
+                "reassess if functionality or deployment changes",
+            )
     assert all((ROOT / ref).is_file() for refs in SOURCE_REFS.values() for ref in refs)
     result = {
         "review_date": "2026-11-16",
@@ -95,18 +119,35 @@ def main():
         "rows": len(rows),
         "dispositions": dict(Counter(row["disposition"] for row in rows)),
         "full_norms_closed": 0,
-        "owner_na_approvals": 0,
+        "owner_na_approvals": len(reviewed),
+        "applicable_requirements": 253 - len(reviewed),
         "full_asvs_l2": "NOT_MET",
         "requirements": rows,
     }
     path = REVIEW / "review.json"
+    proposal_text = (
+        "# Proposed non-applicable requirements\n\n"
+        "Scope: scripted local recovery4 pilot only. "
+        + (
+            "Owner confirmed all43 in [owner review](owner-na-review.json). "
+            if reviewed
+            else "These43 proposals require owner applicability review. "
+        )
+        + "This is not an acceptance of the other210 requirements "
+        "or a whole ASVS L2 pass. Existing protected backlog fields remain unchanged.\n\n"
+        "| ID | Rationale |\n|---|---|\n"
+        + "".join("| " + row["id"] + " | " + row["assessment"] + " |\n" for row in proposals)
+    )
     if args.write:
         path.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        (REVIEW / "not-applicable-proposals.md").write_text(proposal_text, encoding="utf-8")
     else:
         assert json.loads(path.read_bytes()) == result, (
             "Regenerate review.json after changing assessments"
         )
     print(json.dumps({k: v for k, v in result.items() if k != "requirements"}))
+    if not args.write:
+        assert (REVIEW / "not-applicable-proposals.md").read_text(encoding="utf-8") == proposal_text
 
 
 if __name__ == "__main__":

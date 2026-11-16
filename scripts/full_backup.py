@@ -6,6 +6,7 @@ Keys, archives, catalog and detailed logs remain local and ignored.
 
 import argparse
 import base64
+import csv
 import hashlib
 import json
 import os
@@ -16,6 +17,7 @@ import subprocess
 import sys
 import time
 from datetime import UTC, datetime, timedelta
+from functools import lru_cache
 from pathlib import Path
 
 from cryptography.fernet import Fernet
@@ -34,6 +36,66 @@ def confined(value, parent):
     if not path.is_relative_to(parent.resolve()) or path == parent.resolve():
         raise ValueError("Backup path escapes its explicitly owned directory")
     return path
+
+
+@lru_cache(maxsize=1)
+def windows_owner_sid():
+    raw = subprocess.check_output(
+        ["whoami.exe", "/user", "/fo", "csv", "/nh"],
+        creationflags=subprocess.CREATE_NO_WINDOW,
+        timeout=30,
+    )
+    row = next(csv.reader(raw.decode("utf-8", errors="replace").splitlines()))
+    sid = row[1]
+    if not re.fullmatch(r"S-\d+(?:-\d+)+", sid):
+        raise ValueError("Cannot establish the local recovery-file owner")
+    return sid
+
+
+def private_directory(path):
+    path = confined(path, ROOT / ".tools")
+    path.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if os.name == "nt":
+        # Replace the DACL, not merely inherited entries: pre-existing explicit
+        # grants must not silently retain access to recovery keys or plaintext config.
+        literal_path = str(path).replace("'", "''")
+        command = (
+            "$ErrorActionPreference='Stop';"
+            "$acl=[Security.AccessControl.DirectorySecurity]::new();"
+            "$acl.SetAccessRuleProtection($true,$false);"
+            "foreach($sid in @('" + windows_owner_sid() + "','S-1-5-18','S-1-5-32-544')){"
+            "$identity=[Security.Principal.SecurityIdentifier]::new($sid);"
+            "$rule=[Security.AccessControl.FileSystemAccessRule]::new($identity,"
+            "'FullControl','ContainerInherit,ObjectInherit','None','Allow');"
+            "$acl.AddAccessRule($rule)};"
+            "[IO.Directory]::SetAccessControl('" + literal_path + "',$acl)"
+        )
+        subprocess.run(
+            [
+                "powershell.exe",
+                "-NoProfile",
+                "-NonInteractive",
+                "-EncodedCommand",
+                base64.b64encode(command.encode("utf-16le")).decode(),
+            ],
+            check=True,
+            capture_output=True,
+            timeout=30,
+            creationflags=subprocess.CREATE_NO_WINDOW,
+        )
+    else:
+        path.chmod(0o700)
+    return path
+
+
+def require_fresh_docker_target(target):
+    for arguments in (
+        ("ps", "-aq", "--filter", "label=com.docker.compose.project=" + target),
+        ("ps", "-aq", "--filter", "name=" + target + "-"),
+        ("volume", "ls", "-q", "--filter", "name=" + target + "_"),
+    ):
+        if docker(*arguments).strip():
+            raise ValueError("Existing recovery Docker state preserved; choose a fresh target")
 
 
 def retention_plan(records, now):
@@ -72,8 +134,8 @@ class Store:
             or self.keys.is_relative_to(self.archives)
         ):
             raise ValueError("Recovery keys and archive directories must be separate")
-        self.archives.mkdir(parents=True, exist_ok=True)
-        self.keys.mkdir(parents=True, exist_ok=True)
+        private_directory(self.archives)
+        private_directory(self.keys)
         self.catalog = self.archives / "catalog.json"
         self.journal = self.archives / "interrupted-operation.json"
         self.lock_path = self.archives / "operation.lock"
@@ -421,12 +483,14 @@ class Store:
     def verify_restore(self, identifier, target):
         if not re.fullmatch(r"opspilot-full-test-f23-[a-z0-9]+", target) or target == self.project:
             raise ValueError("Fresh independent recovery project required")
+        require_fresh_docker_target(target)
         row = next(r for r in self.records() if r["id"] == identifier)
         bundle = self.load(row)
         directory = ROOT / ".tools/full-backup-verification" / target
         if directory.exists():
             raise ValueError("Existing recovery state preserved; choose a fresh target")
-        directory.mkdir(parents=True)
+        private_directory(directory.parent)
+        private_directory(directory)
         password = secrets.token_hex(32)
         config = {
             "name": target,
@@ -587,7 +651,8 @@ def main():
             result["passed"] = result["within_24h"]
         result["recovered_interrupted_operation"] = recovered
     output = ROOT / ".tools/full-backup-operations" / store.project
-    output.mkdir(parents=True, exist_ok=True)
+    private_directory(output.parent)
+    private_directory(output)
     result["completed_at_utc"] = datetime.now(UTC).isoformat()
     (output / ("last-" + args.mode + ".json")).write_text(json.dumps(result, indent=2))
     print(json.dumps(result))
@@ -602,7 +667,7 @@ if __name__ == "__main__":
         import traceback
 
         log = ROOT / ".tools/full-backup-errors"
-        log.mkdir(parents=True, exist_ok=True)
+        private_directory(log)
         (
             log / (datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ-") + secrets.token_hex(4) + ".log")
         ).write_text(traceback.format_exc())

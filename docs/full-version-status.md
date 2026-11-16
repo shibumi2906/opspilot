@@ -14,7 +14,7 @@ Main Full остаётся schema0019, MVP сохраняется отдельн
 Windows recovery4 backup03:00/15:00 и token refresh30min установлены, actual task results0;
 fresh offline restore scheduled copy59 tables/5 volumes passed. [Runbook](full/f23-operational-backups.md).
 Новый [review всех253 ASVS IDs](security/release-review-20261116/README.md):157 scoped support,
-43 proposed N/A,41 missing verification,12 gaps. Это расширяет конкретный remaining backlog,
+43 owner-reviewed N/A,41 missing verification,12 gaps. Это расширяет конкретный remaining backlog,
 а не закрывает Full/L2. C: FullyDecrypted; Defender/TPM/online Windows Update проверены.
 Recovery key подготовлен в закрытом ignored local file; owner явно отложил шифрование,
 пока не сохранит копию вне ПК. Ни один recovery key не попадает в reports/Git/chat.
@@ -42,7 +42,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Исправить12 выявленных ASVS gaps, выполнить41 missing verification, получить owner review43 N/A и завершить host storage encryption только после нового подтверждения recovery copy. Backend603/71, TLS restore/rollback, remote CI688c5cc и operational backup уже имеют scoped evidence. Известные live Jira receipts сохранены; unknown операции не переотправлять. Full Pilot/ASVS L2 NOT_MET.**
+**Исправить12 выявленных ASVS gaps, выполнить41 missing verification и завершить host storage encryption только после нового подтверждения recovery copy. Owner review43 N/A уже получен только для local profile. Backend603/71, TLS restore/rollback, remote CI688c5cc и operational backup имеют scoped evidence. Известные live Jira receipts сохранены; unknown операции не переотправлять. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение

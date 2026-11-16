@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "backup_id": "20261116T130000Z-a6cd96c0420a",
+  "target": "opspilot-full-test-f23-scheduledrestore3",
+  "tables_matched": 59,
+  "source_counts": {
+    "pending": 0,
+    "unknown": 0
+  },
+  "egress": "none",
+  "application_roles": "NOLOGIN",
+  "read_only": true,
+  "volume_payloads_verified": 5,
+  "source_modified": false,
+  "recovered_interrupted_operation": false,
+  "completed_at_utc": "2026-11-16T13:23:32.787456+00:00"
+}

@@ -2,6 +2,16 @@
 
 ## Актуально после продолжения host/backup/ASVS
 
+Operational commit `f34b94d` также pushed, CI43874457691 **SUCCESS**:
+Full50/50, MVP12/12, Jira/readiness45, F22 units12, backup units7;
+security/Python/secret gates passed и144 source hashes matched exact SHA.
+После него добавлены exact private-directory DACL и fresh Docker target guards,
+локально37 tests passed (backup9), fresh third offline restore59-table match,
+native ACL audit4 dirs passed. Первый Windows ACL attempt не загрузил nested
+Security module; raw failed XML сохранён ignored, framework API fix проверен.
+Новые follow-up изменения и owner43 N/A approval требуют своего final CI SHA;
+актуальное состояние публикации `.tools/f23-operations-ci.json` имеет приоритет.
+
 Пять ранее согласованных коммитов95494c3…688c5cc **pushed** в
 `github.com/shibumi2906/opspilot`, `codex/opspilot-full`. CI на688c5cc **SUCCESS**:
 https://github.com/shibumi2906/opspilot/actions/runs/43831486862.
@@ -14,7 +24,10 @@ security gate passed, source hashes144 matched. Public report:
 
 **Full ещё НЕ завершён.** Новый requirement-specific assessment всех253 IDs:
 `docs/security/release-review-20261116/README.md`, `requirements.tsv`, `review.json`.
-157 scoped support,43 proposed N/A (owner approval нет),41 missing verification,12 concrete gaps.
+157 scoped support,43 owner-reviewed N/A,41 missing verification,12 concrete gaps.
+Owner отдельно подтвердил ровно43 N/A для local profile; approval и proposal hash в
+`docs/security/release-review-20261116/owner-na-review.json`. Это не Full/L2 acceptance
+и не approval private-CA12.2.2. Не запрашивать повторно те же43 решения при неизменном scope.
 Все253 исходных backlog records/owners/baselines/N/A сохранены. Никаких blanket L2 passes.
 Не считать прежние три агрегированных release gates исчерпывающим списком: новый review
 выявил парольные/onboarding/recovery/service-credential/production-profile пробелы.

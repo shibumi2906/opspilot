@@ -159,3 +159,21 @@ def test_lock_contention_cannot_overlap_capture_and_releases_on_exit(tmp_path, m
         assert second.lock.closed
     with Store(config):
         pass  # The previous process/handle no longer owns the lock.
+
+
+@pytest.mark.parametrize("existing_resource", ["container", "volume"])
+def test_existing_recovery_docker_resources_are_never_adopted(existing_resource, monkeypatch):
+    calls = []
+
+    def inspect_only(*arguments):
+        calls.append(arguments)
+        assert arguments[:2] in {("ps", "-aq"), ("volume", "ls")}
+        if arguments[0] == ("ps" if existing_resource == "container" else "volume"):
+            return b"preserved-resource\n"
+        return b""
+
+    check = MODULE["require_fresh_docker_target"]
+    monkeypatch.setitem(check.__globals__, "docker", inspect_only)
+    with pytest.raises(ValueError, match="Existing recovery Docker state preserved"):
+        check("opspilot-full-test-f23-existing")
+    assert calls

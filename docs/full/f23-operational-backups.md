@@ -46,7 +46,8 @@ all files. Prune targets individual owned files only, never directory trees.
 An OS handle lock serializes capture, refresh, verification and retention. A durable
 pre-stop journal records the exact running services. A later backup/refresh resumes
 an interrupted operation before proceeding; failed resume preserves the journal.
-Seven unit cases cover retention, forged dates, lock contention and interrupted/unsafe resume behavior.
+Nine unit cases cover retention, forged dates, lock contention, preservation of existing
+Docker targets and interrupted/unsafe resume behavior.
 Automatic crash recovery has unit evidence; it has not been validated with a second
 deliberate host power-off.
 
@@ -73,6 +74,13 @@ From the Ops checkout, while Docker Desktop is running:
 Get-ScheduledTaskInfo -TaskName OpsPilot-Full-Backup-Recovery4
 Get-ScheduledTaskInfo -TaskName OpsPilot-Full-Secrets-Recovery4
 ```
+
+The tool itself restricts its created directories: owner/SYSTEM/Administrators on
+Windows, mode0700 on Linux. The Windows helper replaces the access DACL, including
+unexpected explicit grants. The native ACL check found no unexpected allow rules.
+Restore rejects existing project-labelled or name-matching containers/volumes before
+creating recovery state, so an absent local directory cannot cause adoption of a
+preserved Docker target.
 
 Status authenticates retained copies and returns nonzero when the latest is older
 than24h. Inspect both scheduler LastTaskResult and ignored per-mode results under
