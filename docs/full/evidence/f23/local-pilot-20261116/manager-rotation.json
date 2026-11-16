@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "project": "opspilot-full-test-f23-recovery3",
+  "checks": [
+    "TLS worker signing and MCP public verification",
+    "MCP private-key access denied",
+    "new signing version and old signature overlap",
+    "revoked signing identity denied",
+    "revoked service token denied",
+    "sealed manager fails closed without file fallback",
+    "original identity restored through safe CAS configuration rollback",
+    "protected audit contains no raw private key or root credential"
+  ],
+  "scope": "actual recovered pilot manager; signature overlap, not an in-flight business-job claim",
+  "deployment_image_rollback": "NOT_RUN"
+}

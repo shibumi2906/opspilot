@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "source": "opspilot-full-test-f23-pilot2",
+  "target": "opspilot-full-test-f23-recovery2",
+  "stage": "browser committed replay",
+  "observed": "59-table offline comparison, restored dependencies, browser OIDC/MFA and pending approval completed before probe failure",
+  "error": "probe assumed actions array; restored v1 completed snapshot uses the singular action",
+  "retained": "recovery2 volumes, private state, logs and completed synthetic pending-operation receipt",
+  "full_rto_acceptance": false,
+  "correction": "handle both v1 singular action and v2 action arrays; repeat complete restore in a fresh project"
+}

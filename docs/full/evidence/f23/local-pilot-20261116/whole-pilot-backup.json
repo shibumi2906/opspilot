@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "source": "opspilot-full-test-f23-pilot2",
+  "tables": 59,
+  "named_volume_archives": 5,
+  "encrypted_bytes": 6034124,
+  "encrypted_sha256": "48e4a36bb5b92718e15da972dd3e3e26a027f466810d0bea7b935dfccecfb87a",
+  "key_separate_directory": true,
+  "source_writers_stopped": true,
+  "source_schema": "0023_jira_audit",
+  "off_host_copy": false
+}

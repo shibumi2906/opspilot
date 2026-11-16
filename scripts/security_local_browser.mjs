@@ -1,6 +1,6 @@
 import {lookup} from 'node:dns/promises';
 import assert from 'node:assert/strict';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { X509Certificate, createHash, createHmac, randomUUID } from 'node:crypto';
 import { createRequire } from 'node:module';
 const require=createRequire('/app/web/package.json');
@@ -81,9 +81,9 @@ try {
  const created=await page.evaluate(async({csrf,id})=>{const r=await fetch('/api/v2/runs',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({request:'Investigate GreenShop checkout incident',client_request_id:id})});return {status:r.status,body:await r.json()};},{csrf:me.body.csrf_token,id:randomUUID()});
  assert([200,202].includes(created.status), 'run creation status '+created.status);
  checks.push('authorized run accepted in hardened profile');
- async function savedSnapshot(p) {
+ async function savedSnapshot(p,target=created.body.snapshot_url) {
    for(let attempt=0;attempt<180;attempt++) {
-     const r=await p.evaluate(async path=>{const response=await fetch(path);return {status:response.status,body:await response.json()};},created.body.snapshot_url);
+     const r=await p.evaluate(async path=>{const response=await fetch(path);return {status:response.status,body:await response.json()};},target);
      assert.equal(r.status,200);
      if(!['queued','running'].includes(r.body.status)) return r.body;
      await p.waitForTimeout(250);
@@ -105,6 +105,12 @@ try {
    const completed=await savedSnapshot(approvalPage);assert.equal(completed.status,'completed');assert.equal(completed.outcome,'actions_verified');
    checks.push('operator cannot approve; separate fresh-MFA approver completes signed TLS MCP action with verified outcome');
  } finally {await approvalContext.close();}
+ if(process.env.F23_LEAVE_PENDING==='1') {
+   const extra=await page.evaluate(async({csrf,id})=>{const r=await fetch('/api/v2/runs',{method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({request:'Investigate GreenShop checkout incident',client_request_id:id})});return {status:r.status,body:await r.json()};},{csrf:me.body.csrf_token,id:randomUUID()});
+   assert.equal(extra.status,202);
+   const saved=await savedSnapshot(page,extra.body.snapshot_url);assert.equal(saved.status,'waiting_for_approval');
+   writeFileSync('/reports/recovery-fixture.json',JSON.stringify({pending:extra.body.run_id,committed:created.body.run_id,pending_action:saved.action.action_id,tenant:'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',synthetic:true},null,2),{flag:'wx'});
+ }
 
  // Keep an authenticated TLS stream open independently of /auth/me requests.
  const streamStatus=await page.evaluate(async path=>{
@@ -129,7 +135,16 @@ try {
  checks.push('cookie-authenticated SSE over native trusted TLS has no URL credentials');
 
  // Direct IdP administrative disable must invalidate an existing BFF session.
- const tokenResponse=await fetch(issuer+'/realms/master/protocol/openid-connect/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams({client_id:'admin-cli',grant_type:'password',username:'security-admin',password:credentials.admin})});
+ const adminParameters={client_id:'admin-cli',grant_type:'password',username:'security-admin',password:credentials.admin};
+ if(existsSync(lab+'admin-mfa/credential.json')) {
+   const previousCounter=Math.floor(Date.now()/30000);
+   while(Math.floor(Date.now()/30000)===previousCounter)await new Promise(resolve=>setTimeout(resolve,250));
+   const key=Buffer.from(JSON.parse(readFileSync(lab+'admin-mfa/credential.json')).raw_secret_base64,'base64');
+   const b=Buffer.alloc(8);b.writeBigUInt64BE(BigInt(Math.floor(Date.now()/30000)));
+   const h=createHmac('sha1',key).update(b).digest(),i=h[19]&15;
+   adminParameters.totp=String((h.readUInt32BE(i)&0x7fffffff)%1000000).padStart(6,'0');
+ }
+ const tokenResponse=await fetch(issuer+'/realms/master/protocol/openid-connect/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(adminParameters)});
  assert.equal(tokenResponse.status,200);const adminToken=(await tokenResponse.json()).access_token;
 
  // Separate IdP policy evidence; synthetic account only, no email delivery or real users.

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "realm": "master",
+  "administrator": "local pilot bootstrap identity",
+  "browser_password_alone_denied": true,
+  "invalid_otp_denied": true,
+  "browser_mfa_login": true,
+  "password_grant_without_otp_denied": true,
+  "privileged_mfa_token_verified": true,
+  "pre_enrollment_sessions_revoked": true,
+  "recovery": "Private OTP recovery state retained separately from public evidence; host encryption remains independently required"
+}

@@ -1,0 +1,10 @@
+{
+  "passed": false,
+  "source": "opspilot-full-test-f23-pilot2",
+  "target": "opspilot-full-test-f23-recovery1",
+  "stage": "pg_restore before application startup",
+  "error": "source initializer created empty schemas; pg_restore rejected existing checkpoints schema",
+  "transaction": "single transaction rolled back",
+  "retained": "target volumes/private state and original encrypted backup",
+  "correction": "fresh recovery project initializes only NOLOGIN roles and no application schemas"
+}

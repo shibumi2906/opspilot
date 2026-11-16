@@ -29,6 +29,7 @@ PROJECT = "opspilot-full-test-f17-manager-r2"
 PORT = 18200
 APPLICATION_NETWORKS: tuple[str, ...] | None = None
 EXTERNAL_NETWORK: str | None = None
+MANAGEMENT_SUBNET: str | None = None
 
 
 def local_profile() -> None:
@@ -115,6 +116,13 @@ log_level = "warn"
         "volumes": {"manager-data": {}, "manager-audit": {}}}
     if EXTERNAL_NETWORK:
         compose["networks"] = {"default": {"external": True, "name": EXTERNAL_NETWORK}}
+    if MANAGEMENT_SUBNET:
+        # An internal application network cannot publish loopback management ports.
+        # Only the manager joins this separate bridge; application services stay private.
+        ipaddress.ip_network(MANAGEMENT_SUBNET)
+        compose.setdefault("networks", {})["management"] = {
+            "ipam": {"config": [{"subnet": MANAGEMENT_SUBNET}]}}
+        compose["services"]["manager"]["networks"] = ["default", "management"]
     (PRIVATE / "compose.json").write_text(json.dumps(compose), encoding="utf-8")
     docker("volume", "create", PROJECT + "_manager-data")
     docker("volume", "create", PROJECT + "_manager-audit")

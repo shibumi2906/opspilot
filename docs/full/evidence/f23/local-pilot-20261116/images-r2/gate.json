@@ -1,0 +1,40 @@
+{
+  "scanned_at_utc": "2026-11-16T07:49:44.6322062Z",
+  "full_asvs_l2": "NOT_MET",
+  "scanner": "aquasec/trivy@sha256:790fd66d1697395d8693d1acaa1ea702406a20f109b6fc7bac8db623eca6c06c",
+  "blocking": [],
+  "passed": true,
+  "images": [
+    {
+      "image_id": "sha256:29b10c53576ba452e396bb82b74c640a20975b300c30f9f7419dbc2b56e91a55",
+      "high_critical": 0,
+      "image": "app"
+    },
+    {
+      "image_id": "sha256:070c7d868d4c5229845e70051dcf20fcb42d085d3b1d5ef1f7f8520f2a2a3070",
+      "high_critical": 0,
+      "image": "web"
+    },
+    {
+      "image_id": "sha256:98a0f3ad6cca8d14d19f609adab94bfe3b0b1b064cd21b0c04617d964362f3e8",
+      "high_critical": 0,
+      "image": "postgres"
+    },
+    {
+      "image_id": "sha256:9714d6506aee826dd23242ddc8ac829f196ee743330160441031e7df86aef71c",
+      "high_critical": 0,
+      "image": "redis"
+    },
+    {
+      "image_id": "sha256:85de69de633d4cfc444186100a7952e33e81c1c9e25724bd0e0269595a0b5971",
+      "high_critical": 0,
+      "image": "oidc"
+    },
+    {
+      "image_id": "sha256:2e8154d114ef69a86c2d39c2813e4725c96cabbddd2be7faf791a0aa87f55d76",
+      "high_critical": 0,
+      "image": "manager"
+    }
+  ],
+  "project": "opspilot-full-test-f23-recovery3"
+}

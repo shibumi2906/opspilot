@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "restored_user_mfa": true,
+  "pending_interrupt_preserved": true,
+  "pending_approval_completed": true,
+  "operator_approval_denied": true,
+  "committed_replay_status": 200,
+  "restored_master_admin_mfa": true,
+  "synthetic": true
+}

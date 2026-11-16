@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "source": "opspilot-full-test-f23-recovery3",
+  "target": "opspilot-full-test-f23-recovery4",
+  "tables_matched_before_writes": 59,
+  "offline_reconciliation_seconds": 15.75,
+  "full_cold_restore_seconds": 63.88,
+  "scope": "key retrieval, decryption, config/volumes/empty DB, manager unseal/token refresh, IdP, services and browser approval smoke; images preloaded",
+  "egress": "business services internal-only; no Jira enrollment",
+  "committed_extra_tickets": 0,
+  "pending_new_tickets": 1,
+  "host_storage_encryption": "unverified",
+  "full_asvs_l2": "NOT_MET",
+  "rto_target_met": true
+}

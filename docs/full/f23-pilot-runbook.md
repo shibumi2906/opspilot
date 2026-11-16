@@ -1,5 +1,27 @@
 # F23 — локальная подготовка пилота
 
+## Продолжение 16 ноября: выбран локальный TLS target
+
+Актуальный профиль и отдельные результаты:
+[local-pilot-20261116](evidence/f23/local-pilot-20261116/README.md).
+Последний accepted functional project — `opspilot-full-test-f23-recovery4`.
+Все6 exact runtime images raw H/C0; полный cold restore63.88s на этой машине с
+preloaded images,59-table match и browser approval/admin MFA. Это заменяет только
+исторические ограничения о невыбранном target и отсутствии local browser/manager restore.
+Full/L2 остаются NOT_MET: host encryption/OS assessment, operational backup/retention,
+final SHA CI и requirement-specific ASVS review открыты.
+
+One-time preparation: `test-full-f23-local-pilot.ps1 -Mode Prepare` создаёт новый
+project и три свободные подсети; существующие credentials не пересоздавать.
+`-Mode Start` требует уже запущенный и unsealed manager с актуальными короткими токенами.
+`-Mode Probe`/`Fixture` пишут уникальные отчёты. AdminMfa enrollment не повторять
+после verified state. Для повторных репетиций выбирать новые project/subnets.
+Backup/restore runner сохраняет источники и failed instances; архив и ключи остаются
+ignored. Прежде чем включать egress восстановленной среды, сверить receipts и
+неизвестные операции с доступным оригиналом. Текущий lab Jira не подключает.
+
+Ниже сохранён исходный исторический runbook; новые разрешения/результаты выше имеют приоритет.
+
 Рабочая копия Ops, ветка `codex/opspilot-full`, исходный коммит `d17b486`.
 Локальная репетиция использует отдельный Compose project, синтетический GreenShop
 и scripted LLM. Для локального восстановления PostgreSQL запускается без сети,

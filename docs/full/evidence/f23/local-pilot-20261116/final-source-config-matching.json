@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "runtime_source_files_matched": 183,
+  "configuration_sha256": {
+    "compose.json": "dc809c638da3dba9d884c0beccf3c6a8e5860bb46afed779807faa4ddea95bf7",
+    "manager/compose.json": "6f6bec524099b2f12f0edcbaa052a86d9d331f63ac2ccd49f274c40beb3b431e"
+  },
+  "probe_script_sha256": {
+    "scripts\\security_local_browser.mjs": "023f68bf81f62409839deb0bb1e6b414b4fdf954b655513f0f4879f15a22e901",
+    "scripts\\security_pilot_admin_mfa.mjs": "f473f575e373896a3209c53e8020d5c4410b094454aad948f6d871d0a8eb4dd9",
+    "scripts\\security_pilot_restore_browser.mjs": "dd40d1404b7662bfb4b203fa69d39db515421350b87857874dbfeabc86024409",
+    "scripts\\rehearse-full-f23-pilot-recovery.py": "8d3ab69708e5a72f67e4d8f67b3b92711a7737d22ac6cf05397adcf69350695d",
+    "scripts\\rehearse-full-f23-pilot-rollback.py": "829c9d728f2da3307d040b2f0315e0e11664189e449dc0104fc957f113b17197"
+  },
+  "source_manifest_preserved": true
+}

@@ -12,14 +12,31 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--project")
     args = parser.parse_args()
-    if args.project and not re.fullmatch(r"opspilot-full-test-f20-[a-z0-9]+", args.project):
-        raise SystemExit("Explicit F20 test project required")
+    if args.project and not re.fullmatch(r"opspilot-full-test-f(?:20|23)-[a-z0-9]+", args.project):
+        raise SystemExit("Explicit F20/F23 test project required")
     files = set(
         subprocess.check_output(["git", "diff", "--name-only", "HEAD"], text=True).splitlines()
     )
     files.update(
         subprocess.check_output(
             ["git", "ls-files", "--others", "--exclude-standard"], text=True
+        ).splitlines()
+    )
+    files.update(
+        subprocess.check_output(
+            [
+                "git",
+                "ls-files",
+                "src",
+                "tests",
+                "scripts",
+                ".github",
+                "web",
+                "migrations",
+                "docs/full/evidence/f20",
+                "docs/full/evidence/f23/local-pilot-20261116",
+            ],
+            text=True,
         ).splitlines()
     )
     values = set()
@@ -32,7 +49,12 @@ def main():
         if isinstance(obj, dict):
             for key, value in obj.items():
                 if key in {
-                    "token", "root_token", "email", "keys", "keys_base64", "raw_secret_base64"
+                    "token",
+                    "root_token",
+                    "email",
+                    "keys",
+                    "keys_base64",
+                    "raw_secret_base64",
                 }:
                     if isinstance(value, str):
                         values.add(value)
@@ -56,6 +78,7 @@ def main():
         *Path(".tools/f20-private").glob("*.txt"),
         *Path(".tools/f20").glob("*/manager/*.token"),
         *Path(".tools/service-keys/private").glob("*.pem"),
+        *Path(".tools/f23-pilot-recovery-keys").glob("*/backup.key"),
     ]:
         values.update(path.read_text().splitlines())
     pilot_roots = list(Path(".tools").glob("opspilot-full-test-f23-*"))
@@ -66,7 +89,8 @@ def main():
             path = pilot / name
             if path.is_file():
                 values.update(
-                    value for value in json.loads(path.read_bytes()).values()
+                    value
+                    for value in json.loads(path.read_bytes()).values()
                     if isinstance(value, str)
                 )
         for path in pilot.rglob("*"):
@@ -90,18 +114,32 @@ def main():
     assert current == baseline and len(current["requirements"]) == 253
     log_matches = jwt_shapes = log_streams = 0
     if args.project:
-        private = Path(".tools/f20") / args.project / "log-scan"
+        base = (
+            Path(".tools/f20")
+            if args.project.startswith("opspilot-full-test-f20-")
+            else Path(".tools")
+        )
+        lab = base / args.project
+        private = lab / "log-scan"
         private.mkdir(parents=True, exist_ok=True)
         for project in (args.project, args.project + "-manager"):
             containers = subprocess.check_output(
                 ["docker", "ps", "-aq", "--filter", "label=com.docker.compose.project=" + project],
-                text=True, timeout=30,
+                text=True,
+                timeout=30,
             ).split()
             for container in containers:
                 raw = subprocess.check_output(
                     ["docker", "logs", container], stderr=subprocess.STDOUT, timeout=30
                 )
                 (private / (container + ".log")).write_bytes(raw)
+                log_streams += 1
+                log_matches += any(value in raw for value in needles)
+                jwt_shapes += len(re.findall(rb"eyJ[\w-]{12,}\.[\w-]{12,}\.[\w-]{12,}", raw))
+        for name in ("rehearsal.log", "recovery.log"):
+            path = lab / name
+            if path.is_file():
+                raw = path.read_bytes()
                 log_streams += 1
                 log_matches += any(value in raw for value in needles)
                 jwt_shapes += len(re.findall(rb"eyJ[\w-]{12,}\.[\w-]{12,}\.[\w-]{12,}", raw))

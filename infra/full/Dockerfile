@@ -5,7 +5,7 @@ RUN tar -xzf /tmp/gosu.tar.gz --strip-components=1
 RUN CGO_ENABLED=0 go build -trimpath -ldflags='-s -w' -o /out/gosu .
 
 FROM postgres@sha256:aa6cb33cf4c19c765cefcf48d96176258800870a9a1e930ad126200f9d825139 AS postgres
-RUN apk --no-cache upgrade
+RUN apk --no-cache upgrade && apk add --no-cache 'krb5-libs>=1.22.3-r0' 'libxslt>=1.1.43-r4'
 COPY --from=gosu-build /out/gosu /usr/local/bin/gosu
 RUN postgres --version | grep 'PostgreSQL) 16\.' && gosu --version && gosu postgres id
 

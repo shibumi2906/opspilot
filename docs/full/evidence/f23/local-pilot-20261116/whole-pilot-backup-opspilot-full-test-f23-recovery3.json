@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "source": "opspilot-full-test-f23-recovery3",
+  "tables": 59,
+  "named_volume_archives": 5,
+  "encrypted_bytes": 6717644,
+  "encrypted_sha256": "a8c18433764c1cc1c8d9fc57d21b24af771016d7bba01911fe2c3e0064ac5bad",
+  "key_separate_directory": true,
+  "source_writers_stopped": true,
+  "source_schema": "0023_jira_audit",
+  "off_host_copy": false
+}
