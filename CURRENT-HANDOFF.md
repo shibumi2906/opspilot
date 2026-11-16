@@ -2,6 +2,14 @@
 
 ## Итоговый локальный snapshot перед final push/CI
 
+**Push сейчас blocked автоматической проверкой разрешений.** Команда была отклонена
+до исполнения: текущие trusted user messages не дают явного разрешения на передачу
+именно этих исходников и evidence в `github.com/shibumi2906/opspilot`, branch
+`codex/opspilot-full`. Локальные коммиты сохранены; remote CI НЕ запускался.
+Не обходить отказ другим API/remote/инструментом. Следующий шаг публикации — получить
+прямое подтверждение владельца для этого payload и destination. Проверка credentials
+в public artifacts/logs дала0; это не заменяет требуемое разрешение на external egress.
+
 Самый свежий functional target — **opspilot-full-test-f23-recovery4**, subnets85/86/87,
 сейчас running, HTTPS8443/8543 и manager18270. Источник recovery3 остановлен.
 Patched web:f23 и postgres:f23 собраны отдельными tags; старые tags/volumes сохранены.
