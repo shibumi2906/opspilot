@@ -1,0 +1,254 @@
+id	disposition	assessment
+v5.0.0-1.1.1	supported_in_local_scope	Strict JSON/DTO boundaries and one OIDC URL parse; final cross-component canonicalization proof remains open.
+v5.0.0-1.1.2	supported_in_local_scope	React text rendering, JSON serialization and parameterized SQL avoid interpolating data into interpreters.
+v5.0.0-1.2.1	supported_in_local_scope	React renders text and attributes; reverse proxy supplies fixed security headers; no dynamic XML response.
+v5.0.0-1.2.2	supported_in_local_scope	OIDC uses urlencode and a fixed callback; UI object identifiers are encoded; external destinations are allowlisted.
+v5.0.0-1.2.3	supported_in_local_scope	API JSON serializers and React bindings handle output; no server-generated executable JavaScript strings.
+v5.0.0-1.2.4	supported_in_local_scope	SQLAlchemy bound parameters and typed stored functions cover business queries; operator SQL is a separate trusted boundary.
+v5.0.0-1.2.5	supported_in_local_scope	Business inputs do not become shell commands; operational Docker subprocesses pass argument arrays without shell=True.
+v5.0.0-1.2.6	not_applicable_proposed	No LDAP connector or LDAP query construction exists in the selected profile; owner must approve this applicability decision.
+v5.0.0-1.2.7	not_applicable_proposed	No XPath query feature exists; OIDC uses JSON rather than XML assertions.
+v5.0.0-1.2.8	not_applicable_proposed	No LaTeX processor or user-supplied TeX is accepted.
+v5.0.0-1.2.9	verification_needed	No dynamic regex feature is exposed; complete an inventory of regex construction in integrations and operational tools.
+v5.0.0-1.3.1	not_applicable_proposed	No WYSIWYG or untrusted HTML authoring; user and model output are displayed as text.
+v5.0.0-1.3.2	supported_in_local_scope	Business operations use a fixed registry and strict DTOs; arbitrary model-generated code is never executed.
+v5.0.0-1.3.3	supported_in_local_scope	Allowlisted actions, bounded schemas and server validation protect sensitive contexts; broad interpreter inventory still needs closure.
+v5.0.0-1.3.4	not_applicable_proposed	No user SVG upload or rendering pathway; checked-in SVG assets are trusted source artifacts.
+v5.0.0-1.3.5	supported_in_local_scope	Model/user strings render as text; no user stylesheet or expression-template interpreter is exposed.
+v5.0.0-1.3.6	supported_in_local_scope	Connector URLs and destination tuples are trusted enrollment configuration with bounded paths and no automatic redirects.
+v5.0.0-1.3.7	supported_in_local_scope	Static application templates and React components do not compile user input into templates.
+v5.0.0-1.3.8	not_applicable_proposed	Application code makes no JNDI queries; the managed IdP's JVM dependency risks remain covered by image scanning.
+v5.0.0-1.3.9	not_applicable_proposed	No memcache client or server; Redis has a different protocol and restricted ACL.
+v5.0.0-1.3.10	verification_needed	Structured logging and fixed formatting are present; verify all formatting boundaries across Python, proxy and IdP before closure.
+v5.0.0-1.3.11	not_applicable_proposed	The local profile has no SMTP/IMAP connector; simulated notifications are durable local domain records.
+v5.0.0-1.4.1	verification_needed	Python/TypeScript use managed memory; native proxy, database, Redis and JVM still require component-specific assurance.
+v5.0.0-1.4.2	supported_in_local_scope	Strict bounded DTO integers, resource budgets and database constraints limit numeric inputs; native dependencies remain a separate risk.
+v5.0.0-1.4.3	verification_needed	Context-managed pools and bounded concurrency exist; no complete native allocation/use-after-free verification is available.
+v5.0.0-1.5.1	not_applicable_proposed	No untrusted application XML parser or SAML pathway; archive/operator inputs are separate trusted local operations.
+v5.0.0-1.5.2	supported_in_local_scope	External payloads are JSON decoded into strict DTOs; no untrusted pickle or arbitrary object deserialization.
+v5.0.0-2.1.1	supported_in_local_scope	Stage security contracts and typed action/adapter DTOs define accepted structure and limits; consolidate their release inventory.
+v5.0.0-2.1.2	supported_in_local_scope	Approval revisions, tenant/object relationships and freshness contracts define contextual validation.
+v5.0.0-2.1.3	supported_in_local_scope	F15/F21 document actor, tenant and global capacity, rolling quotas and reservation behavior.
+v5.0.0-2.2.1	supported_in_local_scope	Strict DTOs, registry enums, tenant scoping and integration admission checks validate decision inputs.
+v5.0.0-2.2.2	supported_in_local_scope	API, worker, MCP and PostgreSQL enforce validation independently of browser controls.
+v5.0.0-2.2.3	supported_in_local_scope	Server-side action/tenant/revision/recipient/freshness relationships are covered by negative boundary regressions.
+v5.0.0-2.3.1	supported_in_local_scope	Durable state transitions require approved revision and fenced execution; reconciliation never redispatches unknown Jira POSTs.
+v5.0.0-2.3.2	supported_in_local_scope	Database-backed reservations enforce documented per-actor/tenant/global business limits.
+v5.0.0-2.3.3	supported_in_local_scope	Local writes and receipts share transactions; remote Jira uses an honest unknown-outcome ledger rather than claiming distributed atomicity.
+v5.0.0-2.3.4	supported_in_local_scope	Lease fencing, row/advisory locking and uniqueness constraints prevent duplicate reservations and committed business effects.
+v5.0.0-2.4.1	supported_in_local_scope	Admission limits, durable usage budgets and concurrent request limits cover expensive functions; F21 load evidence is scoped.
+v5.0.0-3.2.1	supported_in_local_scope	JSON content types, attachment exports, nosniff and CSP constrain browser interpretation.
+v5.0.0-3.2.2	supported_in_local_scope	Workspace renders user/model content through React text nodes rather than innerHTML.
+v5.0.0-3.3.1	supported_in_local_scope	Hardened profile uses Secure __Host- cookies; ordinary HTTP development configuration is outside this assessment target.
+v5.0.0-3.3.2	supported_in_local_scope	Session and login binding cookies use SameSite=Lax with additional origin/CSRF validation.
+v5.0.0-3.3.3	supported_in_local_scope	Hardened session/login cookies use __Host- scope with Path=/ and no Domain attribute.
+v5.0.0-3.3.4	supported_in_local_scope	Session and binding cookies are HttpOnly; session values are not returned in JSON or JavaScript state.
+v5.0.0-3.4.1	supported_in_local_scope	TLS proxy emits one-year HSTS including subdomains; local CA trust remains an explicit deployment limitation.
+v5.0.0-3.4.2	supported_in_local_scope	Same-origin BFF and fixed origins avoid reflected wildcard credentialed CORS.
+v5.0.0-3.4.3	supported_in_local_scope	Static CSP denies objects/base URI and restricts scripts/connect/frame ancestors; native TLS browser evidence exists.
+v5.0.0-3.4.4	supported_in_local_scope	API/proxy security headers include X-Content-Type-Options: nosniff.
+v5.0.0-3.4.5	supported_in_local_scope	No-referrer policy prevents hostname/path/query disclosure to other sites.
+v5.0.0-3.4.6	supported_in_local_scope	Proxy CSP sets frame-ancestors none for the application; review IdP endpoint coverage separately.
+v5.0.0-3.5.1	supported_in_local_scope	Cookie mutation routes enforce origin and CSRF checks; authentication callback has one-time browser-bound state.
+v5.0.0-3.5.2	supported_in_local_scope	Sensitive JSON mutations require expected content type and origin rather than trusting preflight alone.
+v5.0.0-3.5.3	supported_in_local_scope	Business mutations use POST/PATCH/DELETE; GET diagnostics and SSE do not commit business operations.
+v5.0.0-3.5.4	supported_in_local_scope	Application and IdP use separate app.opspilot.localhost and idp.opspilot.localhost hostnames.
+v5.0.0-3.5.5	not_applicable_proposed	No application postMessage receiver; authentication uses top-level redirects and server callback.
+v5.0.0-3.7.1	supported_in_local_scope	Browser UI uses current HTML/React/TypeScript with no plugin runtimes; CI dependency audits are available.
+v5.0.0-3.7.2	supported_in_local_scope	OIDC destination is pinned; connector calls do not create user-controlled automatic browser redirects.
+v5.0.0-4.1.1	supported_in_local_scope	FastAPI JSON and static asset responses set media types; validate full proxy/IdP error-response coverage before closure.
+v5.0.0-4.1.2	supported_in_local_scope	Selected pilot exposes HTTPS only; backend clients use HTTPS and reject invalid certificates rather than relying on redirects.
+v5.0.0-4.1.3	supported_in_local_scope	Proxy overwrites forwarded identity/address headers; API does not trust arbitrary forwarded user identities.
+v5.0.0-4.2.1	verification_needed	Proxy request-size/framing controls exist; a complete deployed HTTP smuggling matrix across proxy and ASGI is not recorded.
+v5.0.0-4.3.1	not_applicable_proposed	No GraphQL or user-programmable database-expression endpoint.
+v5.0.0-4.3.2	not_applicable_proposed	No GraphQL schema or introspection endpoint is exposed.
+v5.0.0-4.4.1	not_applicable_proposed	Progress delivery uses authenticated HTTPS SSE; no WebSocket transport.
+v5.0.0-4.4.2	not_applicable_proposed	No WebSocket upgrade handshake; SSE separately enforces cookie/session/origin policies.
+v5.0.0-4.4.3	not_applicable_proposed	No dedicated WebSocket sessions or tokens exist.
+v5.0.0-4.4.4	not_applicable_proposed	No HTTPS-to-WebSocket session transition exists.
+v5.0.0-5.1.1	not_applicable_proposed	Product has no user upload feature; protected exports and operator backups are assessed separately.
+v5.0.0-5.2.1	not_applicable_proposed	No user file acceptance; JSON request bodies and telemetry envelopes have separate size admission controls.
+v5.0.0-5.2.2	not_applicable_proposed	No user file extension/content acceptance feature; internal backups are authenticated, operator-created artifacts.
+v5.0.0-5.2.3	not_applicable_proposed	No untrusted user archive extraction; operational restore accepts only authenticated locally generated encrypted backups.
+v5.0.0-5.3.1	supported_in_local_scope	Generated exports stream as data and are not placed in executable public server directories.
+v5.0.0-5.3.2	supported_in_local_scope	Export selectors are allowlisted; backup paths are resolved and confined to explicitly owned .tools directories.
+v5.0.0-5.4.1	supported_in_local_scope	Protected export filenames come from server allowlists rather than arbitrary request-provided paths.
+v5.0.0-5.4.2	supported_in_local_scope	Content-Disposition uses controlled filenames; untrusted diagnostic content is not interpolated into headers.
+v5.0.0-5.4.3	not_applicable_proposed	Application does not redistribute files obtained from untrusted sources; exports are bounded server-generated data.
+v5.0.0-6.1.1	supported_in_local_scope	Hardening contract defines IdP brute-force delays, failure factors and API admission controls; operational lockout monitoring remains reviewable.
+v5.0.0-6.1.2	gap	A complete documented context-word/permutation denylist for organization, project and role names is not demonstrated.
+v5.0.0-6.1.3	supported_in_local_scope	Hardened password-plus-TOTP OIDC is documented; API service identities and admin realm are separate authentication boundaries.
+v5.0.0-6.2.1	supported_in_local_scope	Hardened realm minimum password length is 15; no composition classes are required.
+v5.0.0-6.2.2	verification_needed	IdP account console supports password changes; fresh deployed change/relogin evidence for the release profile is required.
+v5.0.0-6.2.3	verification_needed	Realm maxAuthAge(0) requires fresh authentication; verify current-password enforcement on deployed account-console change flow.
+v5.0.0-6.2.4	gap	Current 97,746-entry blacklist has only 329 entries of length at least 15; the 3000 policy-matching password requirement is unmet.
+v5.0.0-6.2.5	supported_in_local_scope	Length/maximum/username/email/blacklist policies impose no uppercase, lowercase, numeric or symbol composition requirement.
+v5.0.0-6.2.6	supported_in_local_scope	Keycloak password forms mask input; application BFF never renders the password itself.
+v5.0.0-6.2.7	verification_needed	Standard Keycloak forms are used; record paste, password-manager and autocomplete behavior on the actual deployed forms.
+v5.0.0-6.2.8	verification_needed	Application never transforms passwords; verify Unicode, whitespace and long-password fidelity through the deployed IdP.
+v5.0.0-6.2.9	supported_in_local_scope	Realm maxLength(128) permits passwords of at least 64 characters; add target form boundary evidence before final closure.
+v5.0.0-6.2.10	supported_in_local_scope	No periodic password-expiration policy is configured; maxAuthAge controls recent authentication rather than password age.
+v5.0.0-6.2.11	gap	Username/email checks exist but complete project/organization/role context-word enforcement is not demonstrated.
+v5.0.0-6.2.12	verification_needed	A static common-password blacklist exists; document breached-password dataset provenance, freshness and operational update policy.
+v5.0.0-6.3.1	supported_in_local_scope	IdP brute-force protection and mandatory TOTP are configured; native browser verifies invalid and valid factor boundaries.
+v5.0.0-6.3.2	gap	Synthetic personas and a bootstrap administrator remain enrolled; production account provisioning/removal must be separated from this test profile.
+v5.0.0-6.3.3	supported_in_local_scope	Actual app and master administrator require password plus TOTP; recovered MFA was exercised after full restore.
+v5.0.0-6.3.4	verification_needed	App/master MFA evidence exists; inventory every enabled IdP/direct/service grant and test absence of weaker alternative user pathways.
+v5.0.0-6.4.1	gap	Generator assigns persistent temporary=false shared fixture passwords; release onboarding needs expiring, individually delivered initial secrets.
+v5.0.0-6.4.2	supported_in_local_scope	No password hints or knowledge-question authentication is configured.
+v5.0.0-6.4.3	gap	Self-service reset is disabled and no tested operator password-recovery process preserving MFA is accepted for release.
+v5.0.0-6.4.4	gap	MFA enrollment and encrypted restoration work, but lost-factor identity proofing and authorized recovery are not documented/tested sufficiently.
+v5.0.0-6.5.1	verification_needed	otpPolicyCodeReusable=false is configured; capture explicit same-step TOTP replay rejection rather than infer it from configuration alone.
+v5.0.0-6.5.2	not_applicable_proposed	No lookup recovery codes or out-of-band codes are enabled; TOTP seed confidentiality is assessed through secret/storage controls.
+v5.0.0-6.5.3	supported_in_local_scope	Synthetic TOTP seeds use secrets.token_hex; real admin enrollment is generated by Keycloak and preserved without factor reset.
+v5.0.0-6.5.4	not_applicable_proposed	No lookup secret or out-of-band code authentication; TOTP digits and timing have their own configured controls.
+v5.0.0-6.5.5	supported_in_local_scope	TOTP period is 30 seconds with zero look-ahead window; no long-lived out-of-band code flow exists.
+v5.0.0-6.6.1	not_applicable_proposed	No SMS, voice or other PSTN authentication option is enabled.
+v5.0.0-6.6.2	not_applicable_proposed	No out-of-band challenge delivery; TOTP and OIDC transaction binding are separate reviewed mechanisms.
+v5.0.0-6.6.3	not_applicable_proposed	No out-of-band code entry mechanism; IdP brute-force control still applies to TOTP.
+v5.0.0-6.8.1	supported_in_local_scope	Users are identified by pinned issuer plus stable subject, never by email matching.
+v5.0.0-6.8.2	supported_in_local_scope	RS256 ID tokens require trusted JWKS, valid signature, issuer, audience, lifetime and nonce.
+v5.0.0-6.8.3	not_applicable_proposed	No SAML assertion consumption; selected federation protocol is OIDC code plus PKCE.
+v5.0.0-6.8.4	supported_in_local_scope	Hardened ID token validation requires configured acr and recent integer auth_time; missing assurance fails closed.
+v5.0.0-7.1.1	supported_in_local_scope	Idle, absolute and recent-authentication limits are configured and documented; consolidate RP/IdP effective-limit justification for release.
+v5.0.0-7.1.2	supported_in_local_scope	IdentityStore enforces bounded concurrent sessions by revoking older sessions; release documentation must retain the chosen cap and behavior.
+v5.0.0-7.1.3	supported_in_local_scope	BFF/IdP session coordination is implemented through encrypted access token userinfo checks and bounded lifetimes.
+v5.0.0-7.2.1	supported_in_local_scope	IdentityStore validates session hash, revocation, expiration, disabled account and memberships on the backend.
+v5.0.0-7.2.2	supported_in_local_scope	Browser sessions use dynamic random reference tokens rather than fixed shared API keys.
+v5.0.0-7.2.3	supported_in_local_scope	Session and login secrets use secrets.token_urlsafe with at least 256 random bits; only hashes are database selectors.
+v5.0.0-7.2.4	supported_in_local_scope	New authentication creates a new token and revokes the prior session; session rotation is covered by identity tests.
+v5.0.0-7.3.1	supported_in_local_scope	Database last_seen timestamps enforce inactivity; background progress polling is not unrestricted lifetime extension.
+v5.0.0-7.3.2	supported_in_local_scope	Absolute database expiry and hardened IdP access-token limits force reauthentication.
+v5.0.0-7.4.1	supported_in_local_scope	Logout revokes backend session records; further cookie use fails authentication and UI clears private state.
+v5.0.0-7.4.2	supported_in_local_scope	Account disable transaction revokes sessions and subsequent authentication checks disabled_at.
+v5.0.0-7.4.3	verification_needed	Application exposes revoke-all; verify IdP factor-change events consistently offer/perform cross-system session termination.
+v5.0.0-7.4.4	supported_in_local_scope	Authenticated shell has visible logout; browser coverage exercises loss of private state after logout.
+v5.0.0-7.4.5	supported_in_local_scope	Recent-authenticated tenant administrators can revoke allowed users' sessions without gaining access to their business data.
+v5.0.0-7.5.1	verification_needed	App administrative operations require recent auth; deployed IdP email/password/MFA attribute changes need explicit reauthentication tests.
+v5.0.0-7.5.2	supported_in_local_scope	Own-session listing and individual/all termination are implemented with recent-authentication enforcement.
+v5.0.0-7.6.1	supported_in_local_scope	Hardened BFF checks IdP userinfo and local session limits; no refresh-based unlimited session extension.
+v5.0.0-7.6.2	supported_in_local_scope	Login begins with user action, browser-bound one-time state and explicit hardened IdP authentication.
+v5.0.0-8.1.1	supported_in_local_scope	Role, tenant, action, recipient and object authorization contracts are documented across stage security contracts.
+v5.0.0-8.1.2	supported_in_local_scope	DTO/export projections and action-specific argument schemas define field-level read/write boundaries.
+v5.0.0-8.2.1	supported_in_local_scope	Server require_role, MCP grant and database permission checks enforce function access independently of UI visibility.
+v5.0.0-8.2.2	supported_in_local_scope	Tenant sessions, object joins and forced row-level security protect identifiers from cross-scope object access.
+v5.0.0-8.2.3	supported_in_local_scope	Strict extra-field rejection, approved action hashes and positive response projections restrict unauthorized fields.
+v5.0.0-8.3.1	supported_in_local_scope	API/worker/MCP/database enforce authorization; manipulating browser state cannot create a valid execution grant.
+v5.0.0-8.4.1	supported_in_local_scope	Cross-tenant negative tests and PostgreSQL RLS/fencing cover reads, writes, sessions, notifications and operations.
+v5.0.0-9.1.1	supported_in_local_scope	OIDC, service and grant tokens verify signatures before trusting claims.
+v5.0.0-9.1.2	supported_in_local_scope	OIDC permits RS256 only; service/grant implementations have fixed asymmetric algorithms and reject algorithm confusion.
+v5.0.0-9.1.3	supported_in_local_scope	JWKS and grant/service key rings are trusted configuration; token-controlled key URLs are not fetched.
+v5.0.0-9.2.1	supported_in_local_scope	ID-token exp/iat/optional nbf and grant/service validity windows are verified before acceptance.
+v5.0.0-9.2.2	supported_in_local_scope	OIDC ID-token, service-auth and operation-grant verification use separate contexts and claim contracts.
+v5.0.0-9.2.3	supported_in_local_scope	Client/service audience restrictions are checked against configured identifiers.
+v5.0.0-9.2.4	supported_in_local_scope	Service issuer/audience are environment-specific and grant scopes identify intended tools/actions; issuer/client token mapping is pinned.
+v5.0.0-10.1.1	supported_in_local_scope	BFF keeps IdP access tokens encrypted server-side; browser receives only HttpOnly reference session cookies.
+v5.0.0-10.1.2	supported_in_local_scope	Independent random state, browser binding, nonce and PKCE verifier are stored against a short-lived one-time login transaction.
+v5.0.0-10.2.1	supported_in_local_scope	Authorization code exchange requires S256 PKCE and one-time browser-bound state validation.
+v5.0.0-10.2.2	not_applicable_proposed	One pinned authorization server is supported; metadata issuer validation additionally rejects unexpected issuers.
+v5.0.0-10.3.1	not_applicable_proposed	Business APIs do not accept user OAuth bearer tokens; BFF access token is consumed only by the pinned IdP userinfo endpoint.
+v5.0.0-10.3.2	not_applicable_proposed	No delegated OAuth resource-server API; application permissions come from authoritative memberships, not user-supplied scope claims.
+v5.0.0-10.3.3	not_applicable_proposed	No user OAuth resource-server authorization; BFF identities use pinned issuer plus stable subject.
+v5.0.0-10.3.4	not_applicable_proposed	No bearer-token resource API; BFF authentication still requires recent MFA assurance from the ID token.
+v5.0.0-10.4.1	supported_in_local_scope	Realm redirect URIs specify the exact application callback without wildcard redirect patterns.
+v5.0.0-10.4.2	verification_needed	Keycloak code flow is configured; capture deployed second-exchange rejection and related issued-token revocation behavior.
+v5.0.0-10.4.3	verification_needed	Confirm effective deployed authorization-code lifetime rather than relying on IdP defaults.
+v5.0.0-10.4.4	supported_in_local_scope	Configured app client uses standard code flow with implicit/direct-password grants disabled; inventory other enabled realm clients before release.
+v5.0.0-10.4.5	verification_needed	App does not request offline access or retain refresh tokens; inventory IdP account/admin public clients and their replay behavior.
+v5.0.0-10.4.6	supported_in_local_scope	Application sends S256 PKCE and realm client requires it; add deployed plain/missing challenge negative proof before closure.
+v5.0.0-10.4.7	verification_needed	Application client is statically provisioned; explicitly verify unauthenticated dynamic client registration is disabled in the deployed IdP.
+v5.0.0-10.4.8	verification_needed	App session does not use refresh tokens; confirm absolute refresh/offline-session limits for every enabled IdP client.
+v5.0.0-10.4.9	verification_needed	App session revocation exists; verify user-facing OAuth grant/token revocation in the deployed IdP account console.
+v5.0.0-10.4.10	not_applicable_proposed	The app OAuth client is public with S256 PKCE; it is not configured as a confidential OAuth client.
+v5.0.0-10.4.11	supported_in_local_scope	Default scopes are explicit and optional scopes empty; requested scopes are openid/profile with bounded role mapping.
+v5.0.0-10.5.1	supported_in_local_scope	ID-token nonce hash must match the consumed login transaction; callback replay is rejected.
+v5.0.0-10.5.2	supported_in_local_scope	IdentityStore derives user identity from issuer and subject rather than mutable email or display name.
+v5.0.0-10.5.3	supported_in_local_scope	Discovery issuer and token/JWKS endpoint URLs must exactly match preconfigured trusted values.
+v5.0.0-10.5.4	supported_in_local_scope	ID-token aud equals the configured client; multiple audiences require matching azp.
+v5.0.0-10.5.5	not_applicable_proposed	No OIDC back-channel logout receiver; local revocation and hardened userinfo checks coordinate session termination.
+v5.0.0-10.6.1	verification_needed	App requests code only and disables implicit flow; inspect all effective IdP client response types rather than generalize from one client.
+v5.0.0-10.6.2	verification_needed	App logout revokes its own session; separately exercise IdP RP-initiated logout confirmation and token-hint handling.
+v5.0.0-10.7.1	verification_needed	First-party app is statically trusted; document that trust decision and verify unknown clients cannot bypass consent.
+v5.0.0-10.7.2	verification_needed	No explicit third-party consent UI proof exists; assess enabled clients before deciding conditional applicability.
+v5.0.0-10.7.3	verification_needed	Local session management is verified; OAuth consent review/modify/revoke behavior needs its own IdP evidence.
+v5.0.0-11.1.1	supported_in_local_scope	Manager ACL/key version/rotation/revoke/seal/rollback contracts exist; consolidate lifecycle and break-glass handling into a release inventory.
+v5.0.0-11.1.2	verification_needed	Release manifest pins images and TLS files; complete inventory of every signing, cache, session, IdP, backup and storage key is still needed.
+v5.0.0-11.2.1	supported_in_local_scope	Cryptography/PyJWT/OpenSSL and managed IdP implementations perform crypto; no custom encryption primitive is implemented.
+v5.0.0-11.2.2	verification_needed	Versioned signing keys and manager rotation exist; data re-encryption and algorithm migration need a tested lifecycle procedure.
+v5.0.0-11.2.3	supported_in_local_scope	TLS RSA keys use 3072 bits, IdP RSA uses 4096, signing Ed25519 and Fernet AES/HMAC meet the selected security strength.
+v5.0.0-11.3.1	supported_in_local_scope	Selected application encryption uses Fernet authenticated AES-CBC with PKCS7; no ECB or RSA PKCS1v1.5 encryption is used.
+v5.0.0-11.3.2	supported_in_local_scope	Fernet uses AES-128-CBC with HMAC authentication; TLS cipher configuration is separate and restricted.
+v5.0.0-11.3.3	supported_in_local_scope	Backup and IdP-token ciphertext use Fernet authentication; tampered backup catalog/archive cannot enter deletion or restore paths.
+v5.0.0-11.4.1	supported_in_local_scope	SHA256/HMAC-SHA256 protect hashes/MACs; TOTP HMAC-SHA1 follows its specified protocol and is not used for collision-sensitive signatures.
+v5.0.0-11.4.2	verification_needed	Password hashing is delegated to the pinned IdP; inspect effective stored algorithm and cost parameters without exposing hashes.
+v5.0.0-11.4.3	supported_in_local_scope	Approval/state/data integrity fingerprints use SHA256 and asymmetric signatures; no short collision-sensitive digest is selected.
+v5.0.0-11.4.4	not_applicable_proposed	Application encryption/signing keys are CSPRNG-generated, not derived from passwords; IdP password verification has its own KDF requirement.
+v5.0.0-11.5.1	supported_in_local_scope	Session, login, service, grant and backup secrets use secrets or library CSPRNG; UUID object identifiers are never treated as authentication secrets.
+v5.0.0-11.6.1	supported_in_local_scope	Key generation uses cryptography RSA/Ed25519 and IdP key provider; no deterministic ad-hoc prime generation.
+v5.0.0-12.1.1	supported_in_local_scope	Native TLS profile restricts protocols to TLS1.2/1.3; old-protocol rejection is included in local TLS probes.
+v5.0.0-12.1.2	supported_in_local_scope	Proxy TLS configuration uses restricted modern suites; target-specific negotiation evidence should include every service listener.
+v5.0.0-12.1.3	not_applicable_proposed	Service authentication uses signed short-lived tokens over validated TLS, not client-certificate identity mapping.
+v5.0.0-12.2.1	supported_in_local_scope	Published app/IdP listeners use HTTPS on loopback; no plaintext business listener is published.
+v5.0.0-12.2.2	gap	Pilot uses a private local CA, not public-trust certificates; acceptable internal pilot scope needs owner applicability approval before any external target.
+v5.0.0-12.3.1	supported_in_local_scope	Application, MCP, IdP, manager, PostgreSQL and Redis use validated service TLS; operator offline docker-exec is a local trust boundary.
+v5.0.0-12.3.2	supported_in_local_scope	Python clients, proxy upstreams and database/cache clients validate configured CA and hostname; invalid-cert probes fail closed.
+v5.0.0-12.3.3	supported_in_local_scope	Internal HTTP services use HTTPS over private networks; no silent fallback to HTTP in hardened configuration.
+v5.0.0-12.3.4	supported_in_local_scope	Consumers mount only relevant internal CA/server identities; signing CA private key is not mounted into application services.
+v5.0.0-13.1.1	supported_in_local_scope	Adapter, Jira, telemetry, OIDC, manager and service network contracts specify trusted endpoints; unify release communication inventory.
+v5.0.0-13.2.1	gap	Worker/MCP manager tokens are short-lived, but database/Redis service authentication still uses long-lived local credentials.
+v5.0.0-13.2.2	supported_in_local_scope	Separate database roles/DSNs, restricted Redis ACL, manager policies and observer isolation implement least privilege.
+v5.0.0-13.2.3	supported_in_local_scope	Selected pilot generates random service credentials; no public development default authenticates to the hardened pilot.
+v5.0.0-13.2.4	supported_in_local_scope	Adapters and Jira use trusted destination allowlists; external writes require enrollment and exact scoped grants.
+v5.0.0-13.2.5	verification_needed	Internal Docker network and application allowlists exist; record complete firewall/proxy/IdP egress policy including edge-network services.
+v5.0.0-13.3.1	gap	Grant keys use manager, but database/cache/IdP bootstrap secrets and backup keys retain local-file provisioning outside a complete managed lifecycle.
+v5.0.0-13.3.2	supported_in_local_scope	Each service mounts only its scoped keys/DSN; workers do not mount private signing keys and observer has ingress-only credentials.
+v5.0.0-13.4.1	supported_in_local_scope	Baked runtime images exclude .git; native pilot runs pinned images rather than mounting the checkout into application containers.
+v5.0.0-13.4.2	supported_in_local_scope	Hardened API/proxy disable debug behavior; local test profiles are explicitly separate from production acceptance.
+v5.0.0-13.4.3	supported_in_local_scope	Proxy serves built static assets with no directory index feature enabled.
+v5.0.0-13.4.4	verification_needed	API/proxy method handling is constrained; retain explicit TRACE rejection evidence for all published app/IdP endpoints.
+v5.0.0-13.4.5	supported_in_local_scope	Diagnostics are authenticated/role scoped and backend metrics are private; no unauthenticated internal data export.
+v5.0.0-14.1.1	supported_in_local_scope	Security contracts classify credentials, user/run data, audit metadata and public reports; release-wide classification inventory requires consolidation.
+v5.0.0-14.1.2	verification_needed	Stage contracts cover access/encryption/logging; reconcile retention, privacy/deletion and backup exceptions for every classified data type.
+v5.0.0-14.2.1	supported_in_local_scope	Passwords and service tokens use bodies/headers; OIDC authorization code/state query parameters are one-time protocol artifacts with no-referrer protection.
+v5.0.0-14.2.2	supported_in_local_scope	Cache is scoped/signed/TTL-bounded; sensitive API responses use no-store and database invalidation fences stale entries.
+v5.0.0-14.2.3	supported_in_local_scope	Scripted pilot makes no paid LLM calls or third-party tracker requests; real integration/LLM egress requires its own authorized scope.
+v5.0.0-14.2.4	gap	Encrypted backups exist but Windows C: and Docker VHD storage are fully decrypted; owner deferred encryption until recovery copy is saved.
+v5.0.0-14.3.1	supported_in_local_scope	UI clears private DOM/state on logout/session failure; browser regression covers scoped workspace cleanup.
+v5.0.0-14.3.2	supported_in_local_scope	API and proxy private responses send Cache-Control no-store; native browser/header evidence exists.
+v5.0.0-14.3.3	supported_in_local_scope	BFF stores credentials server-side; browser storage does not persist IdP tokens or private business payloads by design.
+v5.0.0-15.1.1	verification_needed	Blocking vulnerability gates exist; define explicit risk-based patch deadlines and ongoing dependency refresh ownership.
+v5.0.0-15.1.2	supported_in_local_scope	Python/npm SBOMs, lockfiles, pinned runtime image manifests and raw scans document supply chain; refresh inventory for any subsequent change.
+v5.0.0-15.1.3	supported_in_local_scope	F15/F21 document expensive model/tool work, queue/admission/concurrency limits and timeout boundaries.
+v5.0.0-15.2.1	verification_needed	Six final images have raw HIGH/CRITICAL0 and Windows Update reports none pending; lower-severity findings need deadline-based review, not automatic acceptance.
+v5.0.0-15.2.2	supported_in_local_scope	Admission, durable reservations, fenced leases and bounded pools prevent uncontrolled expensive concurrent work; scoped load/fault evidence exists.
+v5.0.0-15.2.3	gap	Selected deployment intentionally contains synthetic users/fixtures; a separate production profile without these identities is still required.
+v5.0.0-15.3.1	supported_in_local_scope	Response DTOs and protected positive-schema exports expose approved fields rather than raw domain objects.
+v5.0.0-15.3.2	supported_in_local_scope	OIDC and integration HTTP clients disable automatic redirects; enrollment validates trusted endpoint identities.
+v5.0.0-15.3.3	supported_in_local_scope	Strict action DTOs reject extra fields; approved argument hashes bind exact effect-relevant fields.
+v5.0.0-15.3.4	supported_in_local_scope	Proxy replaces client-controlled forwarding fields; verify address provenance again if adding an external load balancer.
+v5.0.0-15.3.5	supported_in_local_scope	Strict Pydantic types, explicit enum/range validation and database constraints avoid truthiness/type-coercion security decisions.
+v5.0.0-15.3.6	verification_needed	UI has no generic untrusted deep-merge feature; complete JavaScript dependency and object-key/prototype-pollution review before closure.
+v5.0.0-15.3.7	verification_needed	Routes use typed fields and JSON schemas; add deployed duplicate query/header/body parameter negative matrix for decision-bearing endpoints.
+v5.0.0-16.1.1	verification_needed	F16 documents structured events and telemetry journal; consolidate proxy/IdP/manager/scheduler/OS logging locations, ACLs and retention.
+v5.0.0-16.2.1	supported_in_local_scope	Audit records include time, actor, tenant, run/action and outcome identifiers with redacted projections.
+v5.0.0-16.2.2	verification_needed	Database events use UTC/timezone-aware timestamps; record host/Docker/IdP time-source synchronization and drift tolerance.
+v5.0.0-16.2.3	verification_needed	Application log sinks are defined; scheduler error files and IdP/manager channels need inclusion in the consolidated inventory.
+v5.0.0-16.2.4	supported_in_local_scope	Structured JSON telemetry and versioned receiver contracts support correlation; metadata export has positive-schema protection.
+v5.0.0-16.2.5	supported_in_local_scope	Exact-secret/JWT artifact and runtime-log gates passed; new operational key/error paths must join the secret inventory before publication.
+v5.0.0-16.3.1	verification_needed	App authentication audit and IdP events are enabled; verify complete factor/success/failure metadata across app and master realm.
+v5.0.0-16.3.2	supported_in_local_scope	Authorization denials produce structured safe events; negative tenant/role/fencing regressions preserve failure visibility.
+v5.0.0-16.3.3	supported_in_local_scope	Admission, grant, approval and integration failure paths emit security events; reconcile all defined event classes before release acceptance.
+v5.0.0-16.3.4	supported_in_local_scope	Unexpected errors and unavailable/TLS dependencies fail closed with safe diagnostics; F21 fault tests cover core dependency boundaries.
+v5.0.0-16.4.1	supported_in_local_scope	JSON logging and bounded schema projection prevent raw newlines/fields becoming independent attacker-controlled log records.
+v5.0.0-16.4.2	verification_needed	Audit tables/journal seals and least-privilege access resist application mutation; host ACL/encryption and independent operator log review remain gates.
+v5.0.0-16.4.3	verification_needed	Separate collector/journal uses authenticated transport; independent detection, alert handling and escalation acceptance is not established by collection alone.
+v5.0.0-16.5.1	supported_in_local_scope	Public errors use stable generic codes and correlation metadata; detailed operational tracebacks remain ignored private files.
+v5.0.0-16.5.2	supported_in_local_scope	Unavailable manager/IdP/database/integrations fail closed or retain explicit unknown state; no hidden provider redispatch fallback.
+v5.0.0-16.5.3	supported_in_local_scope	Transactions, fencing and unknown-outcome reconciliation prevent commits after failed validation or uncertain remote writes.
+v5.0.0-17.1.1	not_applicable_proposed	No WebRTC TURN service or user media relay is part of this application.
+v5.0.0-17.2.1	not_applicable_proposed	No DTLS media certificate or WebRTC media server exists; ordinary TLS keys have separate lifecycle requirements.
+v5.0.0-17.2.2	not_applicable_proposed	No DTLS-SRTP negotiation or media encryption profile is exposed.
+v5.0.0-17.2.3	not_applicable_proposed	No RTP/SRTP media processing or media injection surface exists.
+v5.0.0-17.2.4	not_applicable_proposed	No SRTP packet parser or media server; HTTP/telemetry malformed input is separately bounded.
+v5.0.0-17.3.1	not_applicable_proposed	No WebRTC signaling service; API/SSE admission limits are assessed independently.
+v5.0.0-17.3.2	not_applicable_proposed	No media signaling protocol implementation; malformed JSON/API inputs remain part of general validation requirements.

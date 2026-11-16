@@ -1,0 +1,24 @@
+[
+  {
+    "interactive": true,
+    "last_run_utc": "2026-11-16T13:00:00.0000000Z",
+    "next_run_utc": "2026-11-17T01:00:00.0000000Z",
+    "background": true,
+    "last_result": 0,
+    "execution_time_limit": "PT20M",
+    "state": "Ready",
+    "task": "OpsPilot-Full-Backup-Recovery4",
+    "multiple_instances": "Queue"
+  },
+  {
+    "interactive": true,
+    "last_run_utc": "2026-11-16T13:02:32.0000000Z",
+    "next_run_utc": "2026-11-16T13:32:15.0000000Z",
+    "background": true,
+    "last_result": 1,
+    "execution_time_limit": "PT20M",
+    "state": "Ready",
+    "task": "OpsPilot-Full-Secrets-Recovery4",
+    "multiple_instances": "Queue"
+  }
+]

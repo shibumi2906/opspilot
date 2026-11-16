@@ -1,5 +1,16 @@
 # OpsPilot Full continuation
 
+- Latest host direction2026-11-16: owner has NOT saved the independent BitLocker
+  recovery copy and explicitly says not to enable encryption yet. RecoveryPassword
+  protector/local ignored file prepared, C: remains decrypted. Never print/upload
+  .tools/host-recovery/BitLocker-C-recovery.txt or recovery values.
+  Two actual Windows tasks now maintain recovery4 backups03:00/15:00 and manager
+  tokens30min. Disable these exact owned tasks before deliberately stopping that pilot;
+  allow active capture to finish. See docs/full/f23-operational-backups.md.
+  Read docs/security/release-review-20261116/README.md:253 individually assessed,
+  12 gaps/41 verification items/43 proposed N/A remain; no Full/L2 acceptance.
+  Published688c5cc CI succeeded; this does not cover subsequent operational changes.
+
 - Current owner direction 2026-11-16: read CURRENT-HANDOFF.md first. Complete Full,
   authorized KAN sandbox checks and local TLS pilot; commit/push and remote CI authorized.
   This supersedes historical stage authorization prohibitions below. Scripted only; no paid calls.

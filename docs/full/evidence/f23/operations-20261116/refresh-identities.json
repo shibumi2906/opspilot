@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "identities_refreshed": [
+    "worker",
+    "mcp"
+  ],
+  "existing_keys_and_acl_preserved": true,
+  "recovered_interrupted_operation": false,
+  "completed_at_utc": "2026-11-16T13:15:13.364249+00:00"
+}

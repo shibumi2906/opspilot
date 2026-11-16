@@ -1,0 +1,17 @@
+{
+  "requires_logged_in_owner": true,
+  "background_executable": "pythonw.exe",
+  "enabled": true,
+  "project": "opspilot-full-test-f23-recovery4",
+  "stored_windows_password": false,
+  "registered_at_utc": "2026-11-16T12:57:17.6259946Z",
+  "refresh_interval_minutes": 30,
+  "tasks": [
+    "OpsPilot-Full-Backup-Recovery4",
+    "OpsPilot-Full-Secrets-Recovery4"
+  ],
+  "backup_local_times": [
+    "03:00",
+    "15:00"
+  ]
+}

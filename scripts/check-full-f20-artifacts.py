@@ -79,8 +79,14 @@ def main():
         *Path(".tools/f20").glob("*/manager/*.token"),
         *Path(".tools/service-keys/private").glob("*.pem"),
         *Path(".tools/f23-pilot-recovery-keys").glob("*/backup.key"),
+        *Path(".tools/full-backup-keys").glob("*/*.key"),
     ]:
         values.update(path.read_text().splitlines())
+    for path in Path(".tools/full-backup-verification").glob("*/compose.json"):
+        record = json.loads(path.read_bytes())
+        values.add(record["services"]["postgres"]["environment"]["POSTGRES_PASSWORD"])
+    for path in Path(".tools/host-recovery").glob("*.txt"):
+        values.update(re.findall(r"\b\d{6}(?:-\d{6}){7}\b", path.read_text(encoding="utf-8")))
     pilot_roots = list(Path(".tools").glob("opspilot-full-test-f23-*"))
     for pilot in pilot_roots:
         if not pilot.is_dir():
@@ -151,7 +157,8 @@ def main():
         "log_secret_matches": log_matches,
         "log_jwt_shapes": jwt_shapes,
         "scope": (
-            "Full env, F20 credentials/recovery/tokens, service keys, generated F23 pilot secrets"
+            "Full env, F20 credentials/recovery/tokens, service keys, generated F23 pilot secrets, "
+            "operational backup keys, offline restore passwords and host BitLocker recovery password"
         ),
         "full_asvs_l2": "NOT_MET",
     }

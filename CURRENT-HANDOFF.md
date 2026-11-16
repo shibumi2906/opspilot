@@ -1,8 +1,54 @@
 # Продолжение Full — 16 ноября 2026
 
-## Итоговый локальный snapshot перед final push/CI
+## Актуально после продолжения host/backup/ASVS
 
-**Push сейчас blocked автоматической проверкой разрешений.** Команда была отклонена
+Пять ранее согласованных коммитов95494c3…688c5cc **pushed** в
+`github.com/shibumi2906/opspilot`, `codex/opspilot-full`. CI на688c5cc **SUCCESS**:
+https://github.com/shibumi2906/opspilot/actions/runs/43831486862.
+Full scripted50/50, MVP12/12, Jira/readiness45/45, F22 units12/12,
+security gate passed, source hashes144 matched. Public report:
+`docs/full/evidence/f23/operations-20261116/ci-688c5cc.json`.
+Это не CI для последующих operational-backup/review изменений; проверять их новый SHA отдельно.
+Итог публикации новых operational изменений искать в ignored `.tools/f23-operations-ci.json`
+и статусе текущего SHA в GitHub. Не выдавать CI688c5cc за проверку новых инструментов.
+
+**Full ещё НЕ завершён.** Новый requirement-specific assessment всех253 IDs:
+`docs/security/release-review-20261116/README.md`, `requirements.tsv`, `review.json`.
+157 scoped support,43 proposed N/A (owner approval нет),41 missing verification,12 concrete gaps.
+Все253 исходных backlog records/owners/baselines/N/A сохранены. Никаких blanket L2 passes.
+Не считать прежние три агрегированных release gates исчерпывающим списком: новый review
+выявил парольные/onboarding/recovery/service-credential/production-profile пробелы.
+
+Настоящие Windows tasks для recovery4 установлены и проверены: backup03:00/15:00
+и at-logon; refresh manager identities каждые30min и at-logon, limited interactive owner,
+без сохранения Windows password, background pythonw. Обе задачи LastTaskResult0.
+Хост и Docker Desktop должны работать; offline/off-host SLA не заявлен.
+Encrypted logical/volume/config backup59 tables/5 volumes; actual scheduled retention
+удаляет только superseded copies нового owned store,7 available UTCdays/4ISOweeks+holds.
+Последняя scheduled copy восстановлена в fresh networkless/NOLOGIN/read-only DB,59 hashes matched.
+Первый console task был прерван0xC000013A и оставил часть сервисов остановленными;
+original services восстановлены, исправлены background subprocesses и durable resume journal.
+Failure сохранён, автоматический crash resume имеет unit evidence, без второго power-off теста.
+Runbook: `docs/full/f23-operational-backups.md`, evidence `operations-20261116`.
+Перед deliberate stop recovery4 отключить обе exact-owned tasks и дождаться active operation.
+
+Elevated read-only host audit: Windows11 Pro25H2 build26200.9974, TPM ready,
+Defender AV/realtime on, fresh online WUA result2/pending0. Это patch/config assessment,
+не полное доказательство отсутствия OS/third-party уязвимостей. Docker VHDs наC:.
+C: FullyDecrypted/ProtectionOff. По просьбе владельца добавлен один RecoveryPassword protector
+и закрытый temporary local file `.tools/host-recovery/BitLocker-C-recovery.txt`.
+**Не читать/печатать ключ в tools/chat/Git. Шифрование НЕ включено.** Последний явный ответ:
+«Ещё не сохранил — шифрование пока не включать». Не включать до нового подтверждения
+сохранённой вне ПК recovery copy. Никакого forced reboot, UAC/security UI не автоматизировать.
+
+Unknown Jira r1 state/receipts сохранены, новых provider POST0, paid LLM0.
+Main Full0019/MVP не менялись; offline verification DBs stopped и volumes сохранены.
+Последующие исходники/evidence сохранять отдельным коммитом. Старый pre-push отказ ниже
+исторический и снят прямым owner approval именно для пяти уже опубликованных коммитов.
+
+## Исторический snapshot перед первым final push/CI
+
+**На момент этого исторического snapshot push был blocked автоматической проверкой.** Команда была отклонена
 до исполнения: текущие trusted user messages не дают явного разрешения на передачу
 именно этих исходников и evidence в `github.com/shibumi2906/opspilot`, branch
 `codex/opspilot-full`. Локальные коммиты сохранены; remote CI НЕ запускался.

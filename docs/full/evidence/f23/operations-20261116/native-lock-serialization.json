@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "task": "OpsPilot-Full-Secrets-Recovery4",
+  "held_lock_seconds": 12,
+  "task_waited_while_locked": true,
+  "completed_after_release": true,
+  "last_task_result": 0,
+  "second_provider_dispatch": false
+}

@@ -1,0 +1,62 @@
+{
+  "checked_at_utc": "2026-11-16T12:45:13.6859768Z",
+  "administrator": true,
+  "settings_changed": false,
+  "os": {
+    "caption": "\u041c\u0430\u0439\u043a\u0440\u043e\u0441\u043e\u0444\u0442 Windows 11 Pro",
+    "ubr": 9974,
+    "build": "26200",
+    "version": "10.0.26200",
+    "display_version": "25H2"
+  },
+  "storage": {
+    "encryption_method": "None",
+    "encryption_percentage": 0,
+    "recovery_protector_present": false,
+    "mount_point": "C:",
+    "volume_status": "FullyDecrypted",
+    "protection_status": "Off"
+  },
+  "defender": {
+    "real_time_enabled": true,
+    "quick_scan_end_utc": "2026-11-11T15:35:23.9360000Z",
+    "signatures_updated_utc": "2026-11-16T06:06:25.0000000Z",
+    "antivirus_enabled": true,
+    "full_scan_end_utc": null
+  },
+  "tpm": {
+    "enabled": true,
+    "ready": true,
+    "present": true
+  },
+  "hotfixes": [
+    {
+      "id": "KB5127690",
+      "installed_on": "10/14/2026 00:00:00"
+    },
+    {
+      "id": "KB5054156",
+      "installed_on": "10/19/2025 00:00:00"
+    },
+    {
+      "id": "KB5132061",
+      "installed_on": "11/11/2026 00:00:00"
+    },
+    {
+      "id": "KB5132688",
+      "installed_on": "11/11/2026 00:00:00"
+    }
+  ],
+  "update_assessment": {
+    "installs_performed": false,
+    "result_code": 2,
+    "fresh_online_assessment": true,
+    "online": true,
+    "pending": [],
+    "status": "completed"
+  },
+  "docker_storage": {
+    "vhd_on_c_confirmed": true,
+    "vhd_count": 2
+  }
+}

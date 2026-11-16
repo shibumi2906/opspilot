@@ -1,0 +1,67 @@
+{
+  "head": "688c5cc9c068ec731f389289d5427364f5cd5f2d",
+  "repo": "shibumi2906/opspilot",
+  "branch": "codex/opspilot-full",
+  "pushed": true,
+  "ci_status": "SUCCESS",
+  "blocker": null,
+  "no_alternate_upload_without_approval": true,
+  "run_id": 43831486862,
+  "run_url": "https://github.com/shibumi2906/opspilot/actions/runs/43831486862",
+  "explicit_owner_push_approval": true,
+  "conclusion": "success",
+  "full_scripted": {
+    "passed": 50,
+    "total": 50
+  },
+  "mvp_scripted": {
+    "passed": 12,
+    "total": 12
+  },
+  "junit": {
+    "unit": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "12",
+      "time": "2.245",
+      "timestamp": "2026-11-16T08:41:40.587596+00:00",
+      "hostname": "8b8a7ebc8376"
+    },
+    "jira-runtime": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "45",
+      "time": "46.494",
+      "timestamp": "2026-11-16T08:41:46.428492+00:00",
+      "hostname": "5701b4754f98"
+    }
+  },
+  "security_gate": {
+    "passed": true,
+    "blocking": []
+  },
+  "secret_gate": {
+    "artifact_files": 467,
+    "artifact_secret_matches": 0,
+    "runtime_log_containers": 5,
+    "runtime_secret_matches": 0,
+    "runtime_unredacted_jwt_shapes": 0,
+    "private_forensics": ".tools/f22-private-logs (ignored; never committed)",
+    "harness_stdio_logs": 0,
+    "child_stdio_captured": false,
+    "scope_note": "F22 exact-labelled retained service logs plus ignored harness stdio logs; test ASGI/worker run in process. No unrelated project logs selected. Removed --rm containers cannot be retrospectively scanned.",
+    "passed": true
+  },
+  "python_vulnerabilities": 0,
+  "ci_source_hashes_verified": 144,
+  "artifact_directory": ".tools\\f22-ci-43831486862",
+  "remaining_full_release_gates": [
+    "host encryption/OS evidence",
+    "operational backup schedule and retention",
+    "requirement-specific ASVS review"
+  ]
+}

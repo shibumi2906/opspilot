@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "backup_id": "20261116T130000Z-a6cd96c0420a",
+  "tables": 59,
+  "volume_archives": 5,
+  "source_counts": {
+    "pending": 0,
+    "unknown": 0
+  },
+  "encrypted_bytes": 6716772,
+  "source_services_resumed": true,
+  "retention": {
+    "applied": true,
+    "keep": [
+      "20261116T130000Z-a6cd96c0420a"
+    ],
+    "remove": [
+      "20261116T125721Z-506b12249165"
+    ]
+  },
+  "recovered_interrupted_operation": false,
+  "completed_at_utc": "2026-11-16T13:01:17.660075+00:00"
+}

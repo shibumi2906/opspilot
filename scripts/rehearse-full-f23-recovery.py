@@ -12,7 +12,13 @@ from cryptography.fernet import Fernet, InvalidToken
 
 
 def docker(*args, data=None):
-    result = subprocess.run(["docker", *args], input=data, capture_output=True, timeout=120)
+    result = subprocess.run(
+        ["docker", *args],
+        input=data,
+        capture_output=True,
+        timeout=120,
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+    )
     if result.returncode:
         raise RuntimeError(f"Docker {args[0]} operation failed ({result.returncode})")
     return result.stdout

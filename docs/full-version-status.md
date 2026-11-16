@@ -1,6 +1,6 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 16 ноября 2026 года. **Full ещё не завершён. F01–F19 завершены; runtime F20 и его регрессия в работе; F21/F22/F23/F24 требуют окончательной проверки. Full Pilot и ASVS L2 NOT_MET.**
+Дата создания: 26 октября 2026 года. Обновлено: 16 ноября 2026 года. **Full ещё не завершён. F01–F19 завершены; runtime F20 и fresh backend603/71 проверены; окончательная release/security приёмка F21–F24 открыта. Full Pilot и ASVS L2 NOT_MET.**
 
 Текущее разрешение владельца: закончить Full, включая тестовую Jira KAN, локальный TLS-пилот,
 commit/push и remote CI. F22 human package принят владельцем; это не приёмка Full или ASVS.
@@ -8,6 +8,16 @@ commit/push и remote CI. F22 human package принят владельцем; �
 история. [Текущий handoff](../CURRENT-HANDOFF.md) имеет приоритет для продолжения.
 Нельзя повторять unknown Jira POST или удалять failed attempt reports.
 Main Full остаётся schema0019, MVP сохраняется отдельно.
+
+Продолжение16 ноября: commits до688c5cc опубликованы, remote CI SUCCESS
+(Full50/50, MVP12/12, Jira/readiness45/45, units12/12, security gate passed).
+Windows recovery4 backup03:00/15:00 и token refresh30min установлены, actual task results0;
+fresh offline restore scheduled copy59 tables/5 volumes passed. [Runbook](full/f23-operational-backups.md).
+Новый [review всех253 ASVS IDs](security/release-review-20261116/README.md):157 scoped support,
+43 proposed N/A,41 missing verification,12 gaps. Это расширяет конкретный remaining backlog,
+а не закрывает Full/L2. C: FullyDecrypted; Defender/TPM/online Windows Update проверены.
+Recovery key подготовлен в закрытом ignored local file; owner явно отложил шифрование,
+пока не сохранит копию вне ПК. Ни один recovery key не попадает в reports/Git/chat.
 
 Источник требований: [OpsPilot_Full_Project_Specification.md](../OpsPilot_Full_Project_Specification.md).
 Portfolio MVP завершён отдельно; его статус — [implementation-status.md](implementation-status.md).
@@ -32,7 +42,7 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Продолжить backend regression F20 в свежей lab без Jira enrollment, затем окончательные F21/F22 gates, локальный TLS-пилот F23 и requirement-specific release review F24. Известные live Jira receipts уже сохранены; unknown операции не переотправлять. Full Pilot/ASVS L2 NOT_MET.**
+**Исправить12 выявленных ASVS gaps, выполнить41 missing verification, получить owner review43 N/A и завершить host storage encryption только после нового подтверждения recovery copy. Backend603/71, TLS restore/rollback, remote CI688c5cc и operational backup уже имеют scoped evidence. Известные live Jira receipts сохранены; unknown операции не переотправлять. Full Pilot/ASVS L2 NOT_MET.**
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение

@@ -5,6 +5,7 @@ import base64
 import hashlib
 import ipaddress
 import json
+import os
 import runpy
 import ssl
 import subprocess
@@ -27,6 +28,7 @@ def compose(root, project, *args, manager=False):
         ["docker", "compose", "-p", name, "-f", str(config), *args],
         capture_output=True,
         timeout=240,
+        creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
     )
     with (root / "recovery.log").open("ab") as log:
         log.write(result.stdout + result.stderr)
