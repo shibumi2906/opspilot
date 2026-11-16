@@ -1,12 +1,12 @@
 {
-  "status": "partial",
+  "status": "accepted_by_owner",
   "human_review_observations": {
     "reviewer_role": "project_owner",
     "record": "owner-review.md",
     "source_references": "All fact and hypothesis references resolve.",
     "statuses": "No discrepancies found in the statuses checked by the reviewer.",
     "ticket_and_recovery": "The reports explicitly distinguish ticket creation from delivery recovery.",
-    "item_judgments": "pending"
+    "item_judgments": "Owner accepted the entire submitted package on 2026-11-15."
   },
   "source_hashes": {
     "real-r1/real.json": "d8f8763819a48dd023a5dfe013ba9a31e2eda05d8e4f82baf25d22499dd58dcb",
@@ -75,9 +75,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -120,9 +120,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -165,9 +165,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -210,9 +210,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -255,9 +255,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -300,9 +300,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -345,9 +345,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -390,9 +390,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -435,9 +435,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -480,9 +480,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -525,9 +525,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -570,9 +570,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -615,9 +615,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -660,9 +660,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -705,9 +705,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -750,9 +750,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -795,9 +795,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -840,9 +840,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -1022,9 +1022,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -1178,9 +1178,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -1426,9 +1426,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -1755,9 +1755,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -2084,9 +2084,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -2413,9 +2413,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -2569,9 +2569,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -2725,9 +2725,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r1/real.json",
@@ -2747,9 +2747,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -2904,9 +2904,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -3120,9 +3120,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -3449,9 +3449,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -3605,9 +3605,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -3789,9 +3789,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -3947,9 +3947,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -4104,9 +4104,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -4260,9 +4260,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -4416,9 +4416,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -4577,9 +4577,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -4906,9 +4906,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -5088,9 +5088,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r2/real.json",
@@ -5139,9 +5139,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -5402,9 +5402,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -5558,9 +5558,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -5714,9 +5714,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -5742,9 +5742,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -5924,9 +5924,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -6080,9 +6080,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -6262,9 +6262,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -6419,9 +6419,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -6602,9 +6602,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -6784,9 +6784,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -6967,9 +6967,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -7123,9 +7123,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r3/real.json",
@@ -7174,9 +7174,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -7330,9 +7330,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -7350,9 +7350,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -7370,9 +7370,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -7526,9 +7526,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -7682,9 +7682,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -7944,9 +7944,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -8100,9 +8100,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -8257,9 +8257,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -8414,9 +8414,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -8571,9 +8571,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -8728,9 +8728,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -8884,9 +8884,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -9040,9 +9040,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -9066,9 +9066,9 @@
         "search_incidents"
       ],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r4/real.json",
@@ -9095,9 +9095,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9121,9 +9121,9 @@
         "search_incidents"
       ],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9152,9 +9152,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9181,9 +9181,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9212,9 +9212,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9238,9 +9238,9 @@
         "search_incidents"
       ],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9269,9 +9269,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9295,9 +9295,9 @@
         "search_incidents"
       ],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9326,9 +9326,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9357,9 +9357,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9388,9 +9388,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9408,9 +9408,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9428,9 +9428,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9448,9 +9448,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9468,9 +9468,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9717,9 +9717,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9737,9 +9737,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9757,9 +9757,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9777,9 +9777,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -9797,9 +9797,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -10064,9 +10064,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -10278,9 +10278,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -10334,9 +10334,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     }
   ],
   "diagnostic_rows": [
@@ -10492,9 +10492,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -10754,9 +10754,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -10910,9 +10910,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -11248,9 +11248,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -11586,9 +11586,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -11924,9 +11924,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -12262,9 +12262,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -12600,9 +12600,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -12626,9 +12626,9 @@
         "search_incidents"
       ],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r5/real.json",
@@ -12782,9 +12782,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r6/real.json",
@@ -13001,9 +13001,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r6/real.json",
@@ -13221,9 +13221,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r7/real.json",
@@ -13441,9 +13441,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r7/real.json",
@@ -13604,9 +13604,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r7/real.json",
@@ -13766,9 +13766,9 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r7/real.json",
@@ -13797,9 +13797,9 @@
       "hypotheses": [],
       "missing_checks": [],
       "cited_evidence": {},
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     },
     {
       "source": "real-r7/real.json",
@@ -14066,9 +14066,17 @@
           }
         }
       },
-      "reviewer": null,
-      "judgment": null,
-      "notes": null
+      "reviewer": "project_owner",
+      "judgment": "accepted",
+      "notes": "Included in blanket owner acceptance on 2026-11-15; recorded run outcome retained."
     }
-  ]
+  ],
+  "human_review_acceptance": {
+    "date": "2026-11-15",
+    "reviewer_role": "project_owner",
+    "scope": "Entire submitted canonical and diagnostic review package",
+    "confirmation": "я всё принял",
+    "method": "Blanket owner acceptance in the project conversation",
+    "limitations": "No separate item commentary supplied. Recorded failures and absent reports retained."
+  }
 }
