@@ -4,3 +4,5 @@ web/safe-nginx.sh text eol=lf
 infra/secrets-manager/* text eol=lf
 src/opspilot/evals/full-cases.json text eol=lf
 scripts/test-full-f22-ci.sh text eol=lf
+docs/assets/full/demo-en-script.json text eol=lf
+docs/assets/full/opspilot-full-demo-en.srt text eol=lf

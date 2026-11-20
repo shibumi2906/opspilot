@@ -150,7 +150,7 @@ def main():
         elapsed += duration
         print(f"Encoded {key}", flush=True)
     srt = out / "opspilot-full-demo-en.srt"
-    srt.write_text("\n".join(captions), encoding="utf-8")
+    srt.write_text("\n".join(captions), encoding="utf-8", newline="\n")
     listing = encoded / "segments.txt"
     listing.write_text(
         "\n".join(f"file '{s['key']}.mp4'" for s in plan["scenes"]), encoding="utf-8"
