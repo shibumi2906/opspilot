@@ -1,5 +1,7 @@
 # OpsPilot Full — a five-minute review
 
+Prefer a narrated walkthrough? [Watch Full in English, 3 minutes](demo-video.md).
+
 This tour is for a recruiter, reviewer or developer exploring the completed portfolio.
 Start with the [README](../../README.md). Installation is optional for the first pass.
 

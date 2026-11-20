@@ -9,6 +9,16 @@
 [Completion record](docs/full/portfolio-completion.md),
 [machine-readable status](docs/full/portfolio-status.json).
 
+20Nov: по просьбе владельца добавлено новое [Full demo на английском](docs/full/demo-video.md):
+3 минуты, настоящие UI scenes, offline Zira, captions/SRT, approved local ticket,
+reopen того же action/hash, separate approver и rejected second run без ticket.
+Сборочные файлы private `.tools/full-demo-video-20261120`; partial capture продолжен
+по guard с evidence до approval, без повторного создания run/операции. MVP не тронут.
+Владелец явно разрешил push видео и связанных README/docs/scripts в GitHub.
+Локальные packaging/hash/link checks, Ruff, JS/PS syntax, decode MP4 и candidate
+secret scan passed. Результат нового remote CI проверять по точному SHA видеокоммита;
+предыдущий remote CI не является проверкой этих изменений.
+
 README заменён на актуальную витрину: SVG hero, свежие настоящие Full screenshots,
 демо-маршрут, инженерные решения, архитектура, отдельные измерения и пути проверки.
 Старое видео сохранено и явно названо MVP. Архитектура F01 сохранена отдельно.

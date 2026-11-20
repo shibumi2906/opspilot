@@ -29,6 +29,14 @@ control what the application executes.
 
 ## See it in action
 
+**[Watch Full in English — 3 minutes](docs/assets/full/opspilot-full-demo-en.mp4)**
+· [English subtitles](docs/assets/full/opspilot-full-demo-en.srt)
+· [Transcript & recording notes](docs/full/demo-video.md)
+
+An actual Full session: investigate sources, reopen the saved action, switch to a
+separate approver, verify one local ticket and reject a second action. English
+offline synthetic narration and captions; authentication stays off-camera.
+
 ![Actual Full workspace with tenant selection and role-aware navigation](docs/assets/full/workspace.png)
 
 *Actual Full interface, captured on 20 November 2026 with synthetic data and the
@@ -55,7 +63,7 @@ worker execution, MCP calls, authorization and the local ticket write use the ac
 application. A verified ticket records follow-up work; it does not claim to repair
 order delivery.
 
-**Video:** [Watch the narrated MVP walkthrough, 2m 38s](docs/assets/opspilot-demo-narrated.mp4)
+**Earlier MVP video:** [Narrated walkthrough, 2m 38s](docs/assets/opspilot-demo-narrated.mp4)
 · [Silent recording](docs/assets/opspilot-demo.webm)
 
 This preserved video shows the earlier **Portfolio MVP**, including approval, restart

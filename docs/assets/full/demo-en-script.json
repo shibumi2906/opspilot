@@ -1,0 +1,119 @@
+[
+  {
+    "key": "intro",
+    "chapter": "OpsPilot Full",
+    "role": "Portfolio demonstration",
+    "points": [
+      "Evidence-led investigation",
+      "Human-controlled execution",
+      "Verified local effects"
+    ],
+    "narration": "Ops Pilot Full. Evidence-led incident investigation, with human-controlled and verified execution."
+  },
+  {
+    "key": "workspace",
+    "chapter": "A scoped workspace",
+    "role": "Operator",
+    "points": [
+      "Tenant-aware access",
+      "Role-specific navigation",
+      "Synthetic data / scripted model"
+    ],
+    "narration": "This is the actual Full application, using synthetic data and a scripted model for a repeatable demonstration. The operator works inside a selected tenant. Authentication, database persistence, worker execution, and M C P tool calls use the running backend."
+  },
+  {
+    "key": "investigate",
+    "chapter": "Investigate the incident",
+    "role": "Operator",
+    "points": [
+      "Describe the incident",
+      "Follow the investigation trail",
+      "Collect bounded evidence"
+    ],
+    "narration": "We ask why Green Shop orders are failing today. A durable worker collects operational evidence and builds the investigation trail. The model proposes the next step, while explicit application code controls validation, permissions, and execution."
+  },
+  {
+    "key": "evidence",
+    "chapter": "Inspect the sources",
+    "role": "Operator",
+    "points": [
+      "Linked observations",
+      "Explicit hypotheses",
+      "Context is not proof"
+    ],
+    "narration": "The sources show a degraded integration, repeated H T T P four oh one responses, and an expired credential. Each observation links back to its evidence. Historical incidents and documentation provide context. They support a hypothesis, rather than proving that every delivery failure has the same cause."
+  },
+  {
+    "key": "approval",
+    "chapter": "Review the saved action",
+    "role": "Operator",
+    "points": [
+      "Exact payload and revision",
+      "Approval expiry",
+      "Operator cannot self-approve"
+    ],
+    "narration": "Ops Pilot proposes an internal ticket. Its exact fields, evidence, revision, and expiry are saved before approval. No ticket has been created yet. In this profile, the investigating operator cannot approve their own proposed write."
+  },
+  {
+    "key": "persisted",
+    "chapter": "Reopen persisted state",
+    "role": "Operator / new page",
+    "points": [
+      "Same saved investigation",
+      "Same action identity",
+      "Same payload hash"
+    ],
+    "narration": "We reopen the same investigation in a new page. The saved action identity and payload hash are unchanged. Persistence preserves the proposal and the pending decision; reopening the page does not grant permission to execute it."
+  },
+  {
+    "key": "approver",
+    "chapter": "A separate approver",
+    "role": "Approver",
+    "points": [
+      "Separate MFA-authenticated identity",
+      "Same proposed payload",
+      "Explicit approval"
+    ],
+    "narration": "Now we switch to a separate, M F A authenticated approver. This person reviews the same proposed operation. The core binds approval to that exact saved revision, instead of treating a general yes as permission for arbitrary changes."
+  },
+  {
+    "key": "verified",
+    "chapter": "Execute and verify",
+    "role": "Approver",
+    "points": [
+      "Core rechecks permissions",
+      "Scoped MCP execution",
+      "Independent result verification"
+    ],
+    "narration": "After approval, the worker rechecks the operation and calls the authorized M C P tool. The ticket and its receipt are saved, then the result is read back and verified. Verified means the ticket matches the approved fields. It does not mean order delivery has recovered, or that credentials have been repaired."
+  },
+  {
+    "key": "history",
+    "chapter": "Keep decisions traceable",
+    "role": "Operator",
+    "points": [
+      "Persisted investigation history",
+      "Status and filters",
+      "Reopen completed work"
+    ],
+    "narration": "The completed investigation is available in history, with its status and saved result. Reviewers can filter investigations and reopen prior work. Role-specific inbox, diagnostics, audit, and administration views extend the same scoped workspace."
+  },
+  {
+    "key": "rejected",
+    "chapter": "Respect a rejection",
+    "role": "Approver / second investigation",
+    "points": [
+      "A new proposal",
+      "Explicit rejection",
+      "Zero additional tickets"
+    ],
+    "narration": "In a second investigation, the approver chooses Reject. The decision is recorded and the workflow ends without creating another ticket. The evidence remains available. A declined proposal is a valid outcome, not an instruction to try the write again."
+  },
+  {
+    "key": "outro",
+    "chapter": "Clarity before action",
+    "role": "OpsPilot Full / portfolio edition",
+    "points": ["The model proposes", "The core enforces", "The human decides"],
+    "narration": "The model proposes. The core enforces. The human decides. Explore the architecture and recorded checks in the Ops Pilot Full Read Me."
+  }
+]

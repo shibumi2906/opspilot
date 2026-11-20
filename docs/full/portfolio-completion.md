@@ -10,6 +10,8 @@ by this work; it is not part of this closeout.
 
 ## Delivered
 
+- An [English Full demonstration](demo-video.md): actual UI, offline narration,
+  English captions, separate approval, verified local ticket and rejection.
 - A portfolio-first [README](../../README.md): actual Full screenshots, workflow,
   engineering decisions, system architecture, measured results and navigation.
 - A [guided tour](showcase-tour.md), lightweight local contract-check instructions
@@ -19,7 +21,7 @@ by this work; it is not part of this closeout.
 - Four fresh [Full screenshots](../assets/full/capture.json) from the actual TLS pilot:
   OIDC/TOTP sign-in, operator/approver separation, exact approval, one local ticket,
   independent verification and persisted history. Synthetic data and scripted mode
-  remain visible. The existing narrated video is explicitly identified as the MVP.
+  remain visible. The older narrated video is explicitly identified as the MVP.
 - Verified [CI at79a856b](evidence/f23/operations-20261116/ci-79a856b.json): Full50/50,
   MVP12/12, Jira/readiness45, F22 units12, backup units9, security/secret gates passed
   and144 source hashes matched. Later packaging commits receive their own CI status.

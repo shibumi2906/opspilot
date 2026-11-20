@@ -1,0 +1,87 @@
+{
+  "captured_on": "2026-11-20",
+  "actual_application_ui": true,
+  "synthetic": true,
+  "model": "scripted",
+  "authentication_recorded": false,
+  "voice": "Microsoft Zira Desktop - English (United States)",
+  "speech_engine": "Windows SAPI (installed offline voice)",
+  "narration_tempo": 1.08,
+  "paid_calls": 0,
+  "external_tts_requests": 0,
+  "jira_dispatches": 0,
+  "approved_local_tickets": 1,
+  "rejected_runs_without_ticket": 1,
+  "same_saved_action_verified": true,
+  "duration_seconds": 180,
+  "width": 1920,
+  "height": 1080,
+  "video_codec": "h264",
+  "audio_codec": "aac",
+  "language": "en",
+  "captions": "burned in and embedded selectable English; separate SRT",
+  "chapters": [
+    {
+      "key": "intro",
+      "title": "OpsPilot Full",
+      "start_seconds": 0
+    },
+    {
+      "key": "workspace",
+      "title": "A scoped workspace",
+      "start_seconds": 9
+    },
+    {
+      "key": "investigate",
+      "title": "Investigate the incident",
+      "start_seconds": 27
+    },
+    {
+      "key": "evidence",
+      "title": "Inspect the sources",
+      "start_seconds": 44
+    },
+    {
+      "key": "approval",
+      "title": "Review the saved action",
+      "start_seconds": 66
+    },
+    {
+      "key": "persisted",
+      "title": "Reopen persisted state",
+      "start_seconds": 83
+    },
+    {
+      "key": "approver",
+      "title": "A separate approver",
+      "start_seconds": 98
+    },
+    {
+      "key": "verified",
+      "title": "Execute and verify",
+      "start_seconds": 114
+    },
+    {
+      "key": "history",
+      "title": "Keep decisions traceable",
+      "start_seconds": 134
+    },
+    {
+      "key": "rejected",
+      "title": "Respect a rejection",
+      "start_seconds": 151
+    },
+    {
+      "key": "outro",
+      "title": "Clarity before action",
+      "start_seconds": 168
+    }
+  ],
+  "sha256": {
+    "opspilot-full-demo-en.mp4": "5334511c8f0c752c3ccf8d555458b5ccb3e33483850c9e7e419c1068a3b5cb5f",
+    "opspilot-full-demo-en.srt": "567d27274637399dfabcd67f812d9b9bec0d5c47d91880f106d05e3b2d4493e1",
+    "demo-en-script.json": "35e251d019f54897ed304b99e7cfa086218aef4a350622ffa5fff91eb9d5dcaa"
+  },
+  "scope": "Portfolio Full demo; no production or ASVS certification claim",
+  "capture_recovery": "Loading-label assertion stopped before approval; retained run resumed without recreating it"
+}

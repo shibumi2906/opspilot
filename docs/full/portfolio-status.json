@@ -14,6 +14,7 @@
   "paid_provider_calls": 0,
   "bitlocker_action": "none; existing owner deferral preserved",
   "capture_ref": "docs/assets/full/capture.json",
+  "english_demo_ref": "docs/assets/full/demo-en-metadata.json",
   "verified_baseline_ci_ref": "docs/full/evidence/f23/operations-20261116/ci-79a856b.json",
   "completion_ref": "docs/full/portfolio-completion.md"
 }

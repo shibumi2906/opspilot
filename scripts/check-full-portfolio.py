@@ -37,6 +37,23 @@ def main():
         path = ROOT / "docs/assets/full" / name
         assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, name
 
+    video = read(scope["english_demo_ref"])
+    assert video["actual_application_ui"] and video["synthetic"]
+    assert video["model"] == "scripted" and not video["authentication_recorded"]
+    assert video["paid_calls"] == video["external_tts_requests"] == video["jira_dispatches"] == 0
+    assert video["approved_local_tickets"] == video["rejected_runs_without_ticket"] == 1
+    assert video["same_saved_action_verified"] and video["duration_seconds"] == 180
+    assert (video["width"], video["height"], video["language"]) == (1920, 1080, "en")
+    assert len(video["chapters"]) == 11
+    assert set(video["sha256"]) == {
+        "opspilot-full-demo-en.mp4",
+        "opspilot-full-demo-en.srt",
+        "demo-en-script.json",
+    }
+    for name, expected in video["sha256"].items():
+        path = ROOT / "docs/assets/full" / name
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, name
+
     ci = read(scope["verified_baseline_ci_ref"])
     assert ci["head"] == "79a856b8227498cc2a1b311bd832bdb34559beca"
     assert ci["ci_status"] == "SUCCESS" and ci["pushed"]
@@ -62,6 +79,7 @@ def main():
         "docs/full/architecture.md",
         "docs/full/portfolio-completion.md",
         "docs/full/showcase-tour.md",
+        "docs/full/demo-video.md",
     ]
     links = 0
     for relative in files:
@@ -84,6 +102,7 @@ def main():
                 "passed": True,
                 "portfolio": "complete",
                 "screenshots_verified": 4,
+                "english_demo_seconds": video["duration_seconds"],
                 "local_document_links": links,
                 "baseline_full_scripted": "50/50",
                 "baseline_backend": "603 passed / 71 dedicated-profile skips",

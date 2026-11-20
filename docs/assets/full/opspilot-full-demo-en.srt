@@ -1,0 +1,156 @@
+1
+00:00:00,300 --> 00:00:07,483
+Ops Pilot Full. Evidence-led incident investigation, with human-controlled and
+verified execution.
+
+2
+00:00:09,300 --> 00:00:14,329
+This is the actual Full application, using synthetic data and a scripted
+
+3
+00:00:14,329 --> 00:00:19,358
+model for a repeatable demonstration. The operator works inside a selected
+tenant.
+
+4
+00:00:19,358 --> 00:00:24,387
+Authentication, database persistence, worker execution, and M C P tool calls
+use
+
+5
+00:00:24,387 --> 00:00:25,644
+the running backend.
+
+6
+00:00:27,300 --> 00:00:32,573
+We ask why Green Shop orders are failing today. A durable worker
+
+7
+00:00:32,573 --> 00:00:37,847
+collects operational evidence and builds the investigation trail. The model
+proposes the
+
+8
+00:00:37,847 --> 00:00:42,681
+next step, while explicit application code controls validation, permissions,
+and execution.
+
+9
+00:00:44,300 --> 00:00:49,434
+The sources show a degraded integration, repeated H T T P four
+
+10
+00:00:49,434 --> 00:00:54,567
+oh one responses, and an expired credential. Each observation links back to
+
+11
+00:00:54,567 --> 00:00:59,701
+its evidence. Historical incidents and documentation provide context. They
+support a hypothesis,
+
+12
+00:00:59,701 --> 00:01:04,407
+rather than proving that every delivery failure has the same cause.
+
+13
+00:01:06,300 --> 00:01:11,586
+Ops Pilot proposes an internal ticket. Its exact fields, evidence, revision,
+and
+
+14
+00:01:11,586 --> 00:01:16,872
+expiry are saved before approval. No ticket has been created yet. In
+
+15
+00:01:16,872 --> 00:01:21,718
+this profile, the investigating operator cannot approve their own proposed
+write.
+
+16
+00:01:23,300 --> 00:01:27,907
+We reopen the same investigation in a new page. The saved action
+
+17
+00:01:27,907 --> 00:01:32,514
+identity and payload hash are unchanged. Persistence preserves the proposal
+and the
+
+18
+00:01:32,514 --> 00:01:37,121
+pending decision; reopening the page does not grant permission to execute it.
+
+19
+00:01:38,300 --> 00:01:42,935
+Now we switch to a separate, M F A authenticated approver. This
+
+20
+00:01:42,935 --> 00:01:47,570
+person reviews the same proposed operation. The core binds approval to that
+
+21
+00:01:47,570 --> 00:01:52,205
+exact saved revision, instead of treating a general yes as permission for
+
+22
+00:01:52,205 --> 00:01:52,977
+arbitrary changes.
+
+23
+00:01:54,300 --> 00:01:58,653
+After approval, the worker rechecks the operation and calls the authorized M
+
+24
+00:01:58,653 --> 00:02:03,005
+C P tool. The ticket and its receipt are saved, then the
+
+25
+00:02:03,005 --> 00:02:07,358
+result is read back and verified. Verified means the ticket matches the
+
+26
+00:02:07,358 --> 00:02:11,711
+approved fields. It does not mean order delivery has recovered, or that
+
+27
+00:02:11,711 --> 00:02:13,162
+credentials have been repaired.
+
+28
+00:02:14,300 --> 00:02:20,065
+The completed investigation is available in history, with its status and saved
+
+29
+00:02:20,065 --> 00:02:25,830
+result. Reviewers can filter investigations and reopen prior work. Role-
+specific inbox, diagnostics,
+
+30
+00:02:25,830 --> 00:02:30,153
+audit, and administration views extend the same scoped workspace.
+
+31
+00:02:31,300 --> 00:02:36,105
+In a second investigation, the approver chooses Reject. The decision is
+recorded
+
+32
+00:02:36,105 --> 00:02:40,910
+and the workflow ends without creating another ticket. The evidence remains
+available.
+
+33
+00:02:40,910 --> 00:02:45,716
+A declined proposal is a valid outcome, not an instruction to try
+
+34
+00:02:45,716 --> 00:02:46,917
+the write again.
+
+35
+00:02:48,300 --> 00:02:53,809
+The model proposes. The core enforces. The human decides. Explore the
+architecture
+
+36
+00:02:53,809 --> 00:02:58,400
+and recorded checks in the Ops Pilot Full Read Me.
