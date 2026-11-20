@@ -1,0 +1,19 @@
+{
+  "edition": "OpsPilot Full — portfolio",
+  "status": "complete",
+  "scope_decided_on": "2026-11-20",
+  "acceptance_scope": "engineering portfolio and local synthetic demonstrator",
+  "scope_authority": "Explicit owner instruction: showcase only; finish practical additions and README, then consider the project complete",
+  "production_release_accepted": false,
+  "asvs_l2_compliance_claimed": false,
+  "production_backlog_ref": "docs/security/release-review-20261116/README.md",
+  "owner_reviewed_na": 43,
+  "mvp_in_scope": false,
+  "mvp_files_edited": false,
+  "new_jira_dispatches": 0,
+  "paid_provider_calls": 0,
+  "bitlocker_action": "none; existing owner deferral preserved",
+  "capture_ref": "docs/assets/full/capture.json",
+  "verified_baseline_ci_ref": "docs/full/evidence/f23/operations-20261116/ci-79a856b.json",
+  "completion_ref": "docs/full/portfolio-completion.md"
+}

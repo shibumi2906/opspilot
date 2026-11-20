@@ -12,6 +12,9 @@ mkdir -p "$report"
 pwsh -NoProfile -File scripts/new-full-env.ps1
 uv sync --frozen --python 3.12
 python=.venv/bin/python
+"$python" -m ruff check scripts/check-full-portfolio.py
+"$python" scripts/check-full-portfolio.py | tee "$report/portfolio.json"
+node --check scripts/capture-full-showcase.mjs
 "$python" -m ruff check scripts/full_backup.py scripts/check-full-release-review.py tests/unit/test_full_backup.py
 "$python" scripts/check-full-release-review.py
 "$python" -m pytest -p no:cacheprovider -q tests/unit/test_full_backup.py \

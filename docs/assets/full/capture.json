@@ -1,0 +1,20 @@
+{
+  "captured_at_utc": "2026-11-20T10:39:32.354Z",
+  "profile": "opspilot-full-test-f23-recovery4",
+  "synthetic": true,
+  "model": "scripted",
+  "actual_application_ui": true,
+  "authentication": "OIDC password + TOTP, separate operator and approver contexts",
+  "tls_policy": "two exact generated leaf SPKIs; no global certificate bypass",
+  "operator_approval_denied": true,
+  "approver_approval_enabled": true,
+  "demonstrated_effect": "one newly approved local create_ticket; no Jira enrollment or dispatch",
+  "verification": "verified",
+  "screenshot_sha256": {
+    "workspace.png": "7e4fb9b7c4cc3f505f6807c83e7ef54826b72d5e252f5c90b860891170831140",
+    "approval.png": "62b027355d5ea3d19912cc0c2c2432b4cb72e26a4dc4d742035266c89e16a4d4",
+    "verified.png": "d0f9b3bbbf23c21869f080e275991b2fa0d6b79c6d65c02d3f427ebdabfbe7d0",
+    "history.png": "1bd8cb4424ba475eed2784b289765e225d0059ebb4293882d5e2f1ac534f4504"
+  },
+  "completed_result_captured_after_read_only_resume": true
+}

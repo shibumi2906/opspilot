@@ -1,5 +1,16 @@
 # OpsPilot Full continuation
 
+- Owner scope2026-11-20 supersedes the previous finish-all-production request:
+  this project is needed only as a portfolio showcase. Deliver polished Full README,
+  useful presentation/docs and feasible local checks; mark the portfolio edition complete.
+  Production deployment/ASVS L2 backlog remains documented, not a blocker for that
+  portfolio delivery. Do not resume production hardening automatically.
+  Owner explicitly reiterated: do not touch the completed MVP. Edit only this Ops repo;
+  preserve all existing MVP dirty work and do not rebuild/start/reseed its resources.
+  Do not enable BitLocker, repeat unknown Jira operations, call paid providers or spawn agents.
+  Read docs/full/portfolio-completion.md and docs/full/portfolio-status.json first.
+  The original full-stage acceptance records and253 protected ASVS entries stay unchanged.
+
 - Latest host direction2026-11-16: owner has NOT saved the independent BitLocker
   recovery copy and explicitly says not to enable encryption yet. RecoveryPassword
   protector/local ignored file prepared, C: remains decrypted. Never print/upload

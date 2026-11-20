@@ -1,5 +1,10 @@
 # OpsPilot demo
 
+> **Historical MVP recording.** These media files are preserved unchanged in the
+> Full portfolio. Fresh Full screenshots and its current walkthrough are in the
+> [showcase tour](full/showcase-tour.md). The reproduction commands below describe
+> the original MVP environment; do not run them in the prepared Ops Full checkout.
+
 The recording uses synthetic data and the explicitly labeled **scripted provider**.
 LangGraph, MCP transport, PostgreSQL approval/checkpoints, the API restart and ticket writes
 are real. This video is separate from the paid real-provider eval report.

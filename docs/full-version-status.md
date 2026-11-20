@@ -1,8 +1,16 @@
 # OpsPilot Full — статус реализации
 
-Дата создания: 26 октября 2026 года. Обновлено: 16 ноября 2026 года. **Full ещё не завершён. F01–F19 завершены; runtime F20 и fresh backend603/71 проверены; окончательная release/security приёмка F21–F24 открыта. Full Pilot и ASVS L2 NOT_MET.**
+Дата создания: 26 октября 2026 года. Обновлено: 20 ноября 2026 года.
 
-Текущее разрешение владельца: закончить Full, включая тестовую Jira KAN, локальный TLS-пилот,
+**Выбранный владельцем результат: PORTFOLIO COMPLETE.** Владелец ограничил цель
+витриной проекта: посильные дополнения, красивый README и завершение портфолио-версии.
+[Запись завершения](full/portfolio-completion.md), [статус](full/portfolio-status.json).
+Свежие снимки Full и актуальная архитектура добавлены, реальные измерения/CI доступны.
+MVP завершён отдельно и не входит в изменения. Production release и полный ASVS L2
+по прежней спецификации остаются NOT_MET; это будущий hardening scope, а не незаконченная
+работа по текущей портфолио-поставке. Исторические stage statuses ниже сохранены.
+
+Предыдущее разрешение владельца (история16 ноября): закончить Full, включая тестовую Jira KAN, локальный TLS-пилот,
 commit/push и remote CI. F22 human package принят владельцем; это не приёмка Full или ASVS.
 Платные LLM-вызовы запрещены, использовать scripted. Старые ограничения авторизации ниже —
 история. [Текущий handoff](../CURRENT-HANDOFF.md) имеет приоритет для продолжения.
@@ -42,7 +50,10 @@ MVP `.env`, UI 8081, БД, volumes, images, source/media и ветка сохр�
 
 ## Текущая очередь
 
-**Исправить12 выявленных ASVS gaps, выполнить41 missing verification и завершить host storage encryption только после нового подтверждения recovery copy. Owner review43 N/A уже получен только для local profile. Backend603/71, TLS restore/rollback, remote CI688c5cc и operational backup имеют scoped evidence. Известные live Jira receipts сохранены; unknown операции не переотправлять. Full Pilot/ASVS L2 NOT_MET.**
+**Текущая портфолио-поставка завершена; активной очереди доработок нет.** Прежние12 ASVS
+gaps/41 verifications остаются отдельным production backlog. Owner review43 N/A сохранён
+для local profile. BitLocker не включать без нового подтверждения владельца. Unknown
+Jira операции не повторять. Новая работа — только по отдельному запросу владельца.
 
 По отдельному запросу пользователя выполнен локальный security baseline для ASVS L2 hardening F01–F08:
 [security tracker](security/hardening/status.md). Это не начало F09 и не утверждение

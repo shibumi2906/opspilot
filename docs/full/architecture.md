@@ -1,89 +1,90 @@
-# Full architecture baseline (F01)
+# OpsPilot Full — architecture
 
-F01 isolates the inherited application; it does not claim Full Core authorization or workers exist.
-Application baseline: `01019b69dbf0b300d2ab2a600089f19a638d2108`.
-Planning base: `f9f8d79`. Canonical tracker: [../full-version-status.md](../full-version-status.md).
-MVP remains in its original checkout, branch, config and Docker project.
+Current portfolio architecture, 20 November 2026. The [F01 baseline](architecture-f01.md)
+is retained separately; its stage limitations are historical.
+[Portfolio scope](portfolio-completion.md) · [Implementation history](../full-version-status.md)
 
 ## Boundaries
 
-Browser → API → deterministic core/LangGraph → authenticated private MCP → domain DB.
-The model selects bounded reads and proposes typed writes; core owns policy, approval and verification.
-PostgreSQL owns workflow/domain/receipts/checkpoints; MCP owns transactional domain effects.
-The existing F01 runtime still runs orchestration in API with one ticket action and service-token MCP.
-F02–F04 add tenancy/OIDC/authorization; F05–F07 separate workers and durable fenced ownership/events.
-F08–F17 extend the local Core; F18–F24 add adapters and actual pilot acceptance.
-No new migration, tenant table, OIDC service or worker is introduced by F01.
+The React workspace talks to a FastAPI backend-for-frontend. OIDC establishes a
+server-side session; tenant memberships and roles come from authoritative storage.
+The browser submits requests and decisions. It does not hold provider tokens or
+decide which domain writes are authorized.
 
-## Resources
+PostgreSQL owns durable jobs, workflow state, action revisions, approvals, checkpoints,
+events and receipts. Separate workers execute LangGraph under per-run leases and
+ownership epochs. Database and MCP fences reject stale ownership at commit boundaries.
 
-Full Compose is standalone: `compose.full.yaml`, project `opspilot-full`, DB `opspilot_full`,
-volume `opspilot-full_pgdata`; tests use `compose.full.test.yaml`, project `opspilot-full-test`,
-DB `opspilot_full_test`, volume `opspilot-full-test_pgdata`. App images use `opspilot-full/*`.
-Postgres/collector/Jaeger use own opspilot-full/* tags built FROM pinned upstream digests; immutable layers may be shared. MVP image tags never move.
-No Full service mounts MVP source, media, env or volumes. DB/MCP are private to each project network.
-Full public ports: UI 8091, API 8011 (8010 occupied), Jaeger 16696; 8181 reserved for F03 OIDC.
-Independent randomly generated local secrets are ignored by Git. No MVP credentials are copied.
+The model adapter selects bounded reads and proposes typed actions. Core code owns
+validation, policy, budget, approval, signing, execution and verification. The default
+showcase selects a scripted provider so its behavior is repeatable.
 
-## Setup and checks
+## Request-to-effect path
 
-From this Full worktree, run `powershell -File scripts/new-full-env.ps1` once.
-It refuses to overwrite .env and checks prospective public ports. Adjust only the Full template if busy.
-Then `docker compose -p opspilot-full -f compose.full.yaml up -d --build --wait postgres`,
-`docker compose -p opspilot-full -f compose.full.yaml run --rm admin`,
-`docker compose -p opspilot-full -f compose.full.yaml run --rm admin python -m opspilot.cli.seed`,
-and `docker compose -p opspilot-full -f compose.full.yaml up -d --build --wait mcp api worker web`.
-Use `powershell -File scripts/test-full-f01.ps1` for lint/types/backend/browser/recovery/12 scripted evals.
-Tests stop only their project and preserve its volume. No paid provider requests are part of F01.
-Both URL and server database identity are checked before domain/application SQL; migration uses the same guard.
-Tests/evals only accept opspilot_full_test; neither MVP DB name is allowed by Full engine.
-Legacy Compose filenames and stage test scripts in this checkout also address Full resources.
+1. API authenticates the actor, selects the tenant and validates the request.
+2. A transaction commits the run, start job and associated public events.
+3. A worker claims fenced ownership, reads evidence through MCP and saves a checkpoint.
+4. Core validates a proposed action and persists its immutable revision and payload hash.
+5. An authorized reviewer approves that exact revision before its expiry.
+6. A durable resume job rechecks actor/tenant permissions, cancellation and preconditions.
+7. A scoped signed grant authorizes the exact MCP tool call.
+8. The effect and receipt are recorded; independent verification determines the result.
 
-## Preservation evidence
+Multi-action plans add dependencies, approval waves and per-action outcomes.
+Authenticated SSE exposes bounded progress/replay; authoritative snapshots remain
+the recovery source for reconnecting clients.
 
-Local ignored `.tools/mvp-before.json` captures all tracked MVP file hashes, .env hash, branch/head,
-MVP image IDs, volume metadata and container inventory before any Full build/migration.
-The MVP `.tools/opspilot-full-workspace.json` is the only local pointer added there (ignored).
-Final evidence compares file fingerprints and Docker resources; existing MVP containers are never started.
+## Data and trust boundaries
 
-## F02 update
+| Boundary | Responsibility |
+|---|---|
+| API / identity store | Cookie session, CSRF/origin checks, memberships and response projection |
+| Workflow PostgreSQL role | Jobs, graph state, approvals, checkpoints and durable resource reservations |
+| Private MCP server | Typed tool registry, grant validation and bounded domain effects |
+| Tenant-scoped database sessions | Row-level security plus explicit tenant/object/actor checks |
+| Redis | Scoped cache; durable business truth and operation receipts remain in PostgreSQL |
+| OpenBao manager | Scoped service access and managed signing-key lifecycle used by the pilot |
+| Telemetry collector | Bounded structured events, protected journal and separate seal state |
+| OIDC provider | Password/TOTP authentication and identity session lifecycle |
 
-Tenant foundation is now implemented; see [tenancy.md](tenancy.md) and
-[ADR 004](adr/004-tenant-isolation.md). Schema head is 0003_tenant_rls, runtime checkpoint DDL is now
-administrative. Use scripts/test-full-f02.ps1 for the current stage gate; its regression portion reuses
-the F01 script. F02 reports go to evidence/f02/evals, preserving evidence/evals as the F01 baseline.
-OIDC and public multi-user authorization remain unimplemented F03/F04 work.
+The integration registry accepts trusted enrollment, not model-supplied destinations.
+Observation ingress is signed and durable. Prometheus is a read connector. Enrolled
+Jira issue/comment writes use a durable dispatch-started receipt and one network
+attempt. A timeout or crash can leave an explicit unknown outcome; reconciliation
+reads existing results and never blindly retries the write.
 
-## F04 current boundary
+## Deployment profiles
 
-F04 supersedes the fixed local MCP scope/V1 baseline described above. Authenticated V2 and signed
-per-actor/tenant/run MCP context are implemented; see [authorization.md](authorization.md).
-API background execution is still not F05 durable workers; F06 fencing remains future work.
+- **Preserved main Full development:** project opspilot-full, schema0019_adapters.
+- **Recorded local TLS pilot:** opspilot-full-test-f23-recovery4, test schema0023,
+  separate private/edge/management networks and loopback HTTPS listeners.
+- **Ephemeral CI:** a separately initialized GitHub-hosted scripted stack; no model
+  or Jira credentials are supplied.
 
-## F05 update
+The pilot runs pinned images with private service TLS, OIDC/TOTP and separate
+operator/approver identities. It is a synthetic demonstrator. Production identity
+onboarding, comprehensive secret lifecycle and host/off-host protections remain in
+the [production-hardening assessment](../security/release-review-20261116/README.md).
 
-Full API now commits durable start/resume jobs; the separate single worker owns graph execution.
-Schema head 0006_command_jobs. See [durable-jobs.md](durable-jobs.md) for queue semantics, recovery,
-shutdown and the exact F06 boundary. Current gate: scripts/test-full-f05.ps1. Previous stage text above
-records the historical baseline; canonical progress is docs/full-version-status.md.
+## Recovery and operations
 
-## F06 current boundary
+The [backup tool](../../scripts/full_backup.py) quiesces pilot writers, records a
+logical database dump and five volume/config payloads, then resumes the recorded
+service set. Each bundle is authenticated and encrypted; retention validates every
+catalog entry before removing owned files. A durable pre-stop journal supports
+interrupted-operation recovery. Offline verification refuses existing Docker targets.
 
-Two independent workers use DB-clock per-run ownership epochs, heartbeat/reaper and transactional
-fencing for snapshots, local operations and SDK checkpoint/pending writes. Schema 0007_execution_fences;
-workflow full-graph-v1, public state 1. See [execution-fencing.md](execution-fencing.md) and
-[ADR 006](adr/006-fenced-checkpoint-adapter.md). Current gate: scripts/test-full-f06.ps1. F07 events/outbox
-are not implemented by this stage; earlier stage sections record their historical boundary.
+The whole-pilot rehearsal matched59 table hashes and measured63.88 seconds on the
+recorded host with preloaded images. It included recovered IdP/manager and approval
+behavior. [Evidence and limits](evidence/f23/local-pilot-20261116/README.md)
 
+## Design records
 
-## F07 current boundary
-
-Schema head is `0008_transactional_events`. Run/action/approval state transitions append
-versioned public events, append-only audit and outbox in the same DB transaction.
-Per-run stream locking allocates monotonic sequences. Two workers publish bounded batches
-of identifier-only PostgreSQL wakeups; repeated/out-of-order delivery cannot change state.
-Authorized event/audit replay has signed scope-bound cursors, at most 100 items per page
-and a 1000-sequence public window with snapshot reset. Snapshots read the committed source
-projection and authoritative run/approval/receipt rows under repeatable read, then export
-through the public DTO allowlist (version 1). See [F07 evidence/contract](evidence/f07/README.md).
-Current gate: `scripts/test-full-f07.ps1`. SSE is F13; storage retention is F17.
+- [Tenant isolation](adr/004-tenant-isolation.md)
+- [Graph versioning](adr/002-graph-versioning.md)
+- [Permissions](adr/003-permissions.md)
+- [Durable jobs](durable-jobs.md)
+- [Execution fencing](execution-fencing.md)
+- [Checkpoint adapter](adr/006-fenced-checkpoint-adapter.md)
+- [Jira dispatch and reconciliation](f20-jira-runtime.md)
+- [Operational backups](f23-operational-backups.md)

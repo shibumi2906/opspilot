@@ -1,4 +1,36 @@
-# Продолжение Full — 16 ноября 2026
+# OpsPilot Full — завершение портфолио, 20 ноября 2026
+
+## Текущий результат: PORTFOLIO COMPLETE
+
+Владелец изменил цель: «этот проект мне нужен только как витрина» и попросил
+дополнить посильное, сделать красивый README и считать проект законченным.
+**Портфолио-версия завершена.** Production release/полный ASVS L2 остаются отдельным
+непринятым scope, а не причиной снова открывать завершённую витрину.
+[Completion record](docs/full/portfolio-completion.md),
+[machine-readable status](docs/full/portfolio-status.json).
+
+README заменён на актуальную витрину: SVG hero, свежие настоящие Full screenshots,
+демо-маршрут, инженерные решения, архитектура, отдельные измерения и пути проверки.
+Старое видео сохранено и явно названо MVP. Архитектура F01 сохранена отдельно.
+Native capture20Nov: OIDC/TOTP, operator/approver, один approved local ticket,
+verified outcome и история. Нулевые Jira dispatch/paid calls; неизвестные операции
+старого r1 не повторялись. Частичные capture attempts сохранены private; после
+успешной записи снимки результата досняты read-only без повторного эффекта.
+
+**MVP не трогать: он готов.** До уточнения владельца старый clean-check остановился
+на уже имевшихся незакоммиченных MVP изменениях; ничего там не исправлялось,
+не stage/commit/reset и не запускалось. Все изменения этого closeout только в Ops.
+Full recovery4 возобновлён из существующих pinned containers для снимков, без
+build/seed/migration. Main Full schema0019 и сохранённые Jira labs не переключались.
+
+Baseline CI79a856b SUCCESS (Full50/MVP12/Jira45/units12/backup9, security/secret0,
+144 source hashes). Новый portfolio packaging commit должен иметь собственный CI;
+актуальное локальное состояние `.tools/full-portfolio-ci.json`, проверять точный SHA.
+Проверки: scripts/check-full-portfolio.py, scripts/check-full-release-review.py.
+
+Не включать BitLocker: прежнее явное отложенное решение владельца сохраняется.
+Production backlog12 gaps/41 verifications и43 approved N/A сохранён как история
+и будущий hardening scope. Ниже — прежняя хронология, не текущий план продолжения.
 
 ## Актуально после продолжения host/backup/ASVS
 

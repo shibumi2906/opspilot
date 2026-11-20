@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="400" viewBox="0 0 1280 400" role="img" aria-labelledby="title desc">
+  <title id="title">OpsPilot Full — clarity before action</title>
+  <desc id="desc">An evidence-led incident workbench. Investigate, review, approve, and verify. Portfolio edition.</desc>
+  <rect width="1280" height="400" rx="20" fill="#142f29"/>
+  <path d="M855 0v400M0 324h1280" stroke="#315047"/>
+  <g fill="none" stroke="#315047" stroke-width="1">
+    <circle cx="1140" cy="90" r="190"/><circle cx="1140" cy="90" r="140"/><circle cx="1140" cy="90" r="90"/>
+    <path d="M855 90h425M1140 0v324"/>
+  </g>
+  <rect x="54" y="48" width="38" height="38" rx="10" stroke="#9ec8ad" fill="none"/>
+  <path d="m65 75 17-17m-10 0h10v10" stroke="#c5ddc7" stroke-width="2" fill="none"/>
+  <text x="107" y="77" fill="#f4f3e9" font-family="Arial,Helvetica,sans-serif" font-size="30" font-weight="700">OpsPilot<tspan fill="#c5ddc7">.</tspan></text>
+  <text x="54" y="132" fill="#b5d1bc" font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing="3">AI INCIDENT &amp; OPERATIONS WORKBENCH</text>
+  <text x="51" y="199" fill="#f4f3e9" font-family="Georgia,serif" font-size="56">Clarity before action.</text>
+  <text x="55" y="240" fill="#c6d5ce" font-family="Arial,Helvetica,sans-serif" font-size="19">Evidence-led investigation. Human-approved execution.</text>
+  <g font-family="Arial,Helvetica,sans-serif" font-size="12" letter-spacing="1">
+    <rect x="55" y="266" width="164" height="28" rx="14" fill="#25483e"/>
+    <text x="72" y="285" fill="#d9e7dc">PORTFOLIO EDITION</text>
+    <text x="238" y="285" fill="#b5d1bc">PYTHON / LANGGRAPH / MCP</text>
+  </g>
+  <g font-family="Arial,Helvetica,sans-serif" font-size="15">
+    <rect x="910" y="113" width="300" height="56" rx="10" fill="#f4f3e9"/>
+    <circle cx="939" cy="141" r="8" fill="#225b48"/>
+    <text x="964" y="147" fill="#142f29">Investigate the evidence</text>
+    <path d="M1060 170v30" stroke="#adc9b6" stroke-width="2"/>
+    <rect x="910" y="201" width="300" height="56" rx="10" fill="#25483e" stroke="#8cae97"/>
+    <path d="m931 229 7 7 14-14" stroke="#c5ddc7" stroke-width="2" fill="none"/>
+    <text x="964" y="235" fill="#f4f3e9">Approve the exact action</text>
+  </g>
+  <g fill="#c6d5ce" font-family="Arial,Helvetica,sans-serif" font-size="13">
+    <text x="55" y="367">DURABLE WORKFLOWS</text><text x="330" y="367">SCOPED TOOL ACCESS</text>
+    <text x="620" y="367">VERIFIED EFFECTS</text><text x="911" y="367">TRACEABLE DECISIONS</text>
+  </g>
+</svg>
